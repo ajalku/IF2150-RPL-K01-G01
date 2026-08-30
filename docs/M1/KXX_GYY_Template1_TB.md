@@ -57,7 +57,7 @@ Celah sistem pada situs SP4N-Lapor! adalah belum _discovery-based_ melainkan han
 
 ### C. Sapawarga
 
-<table width="100%">
+<table width="100%" align ="center">
 <tr>
 <td width="50%" align="center" valign="top">
 <img src="./assets/gambar/Gambar Aduan Sapawarga.png" alt="Tampilan Sapawarga" height="400">
@@ -138,4 +138,8 @@ Berikut ini adalah _activity diagram_ perangkat lunak ini mencakup kegiatan yang
 <br>
 
 # Referensi
+- Putri, P. A. (2025). _Pengaruh clicktivism terhadap agenda setting: Studi kasus perbaikan jalan di Provinsi Lampung tahun 2023_ [Skripsi, Universitas Gadjah Mada]. Perpustakaan Universitas Gadjah Mada. https://etd.repository.ugm.ac.id/penelitian/detail/258848
+
+- Schiff, K. J. (2025). _Does collective citizen input impact government service provision? Evidence from SeeClickFix requests._ Public Administration Review, 85(1), 32–45. https://doi.org/10.1111/puar.13747 
+
 - Diagram UML: https://www.drawio.com/, https://staruml.io/
