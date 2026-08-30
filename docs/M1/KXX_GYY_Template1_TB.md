@@ -35,7 +35,45 @@ Dipersiapkan oleh:
 Tuliskan deskripsi permasalahan yang kalian pilih secara naratif dan spesifik. Tambahkan keterkaitan permasalahan tersebut dengan Tujuan Pembangunan Berkelanjutan (SDGs) yang telah disepakati. Dukung argumen kalian dengan data yang kredibel, serta jelaskan urgensi mengapa masalah ini perlu dan layak untuk segera diselesaikan.
 
 ## 1.2 Analisis Kondisi Saat Ini
-Lakukan analisis terhadap proses yang berjalan saat ini di dunia nyata, baik itu sistem lama ataupun solusi yang sudah ada. Soroti kesenjangan atau celah dari kondisi tersebut yang nantinya akan diselesaikan oleh perangkat lunak kalian.
+Beberapa solusi terhadap masalah tersebut telah dilakukan di Indonesia. Berikut adalah beberapa contohnya beserta masing-masing kekurangannya.
+### A. Media Sosial
+Salah satu hal sederhana yang dilakukan masyarakat saat ini adalah melakukan posting di berbagai media sosial. Contoh nyata yang berkaitan adalah sebuah konten yang menyuarakan keresahan jalanan di Lampung yang viral sehingga pengerjaan perbaikan jalan tersebut dipercepat. Menurut Pratiwi (2025), _clicktivism_, yaitu pemanfaatan fitur _like, comment, dan share_, mampu menciptakan tekanan publik yang signifikan terhadap pemerintah. Sehingga, aduan menggunakan media sosial dinilai cukup berdampak. <br><br>
+Kekurangan dari solusi ini adalah identitas dan validitas pelapor tidak selalu terverifikasi. Dengan memanfaatkan algoritma, seseorang dapat mengakali agar kontennya viral menggunakan beberapa akun palsu. Akibatnya, popularitas suatu aduan belum tentu merepresentasikan urgensi. Selain itu, media sosial adalah ruang yang terlalu luas untuk melakukan keluhan. Sehingga, pemerintah harus memilah berbagai konten terlebih dahulu untuk menemukan keluhan masyarakat yang membutuhkan tindak lanjut. 
+
+### B. SP4N-LAPOR! 
+
+<br>
+
+<p align="center">
+<img alt="Tampilan SP4N-LAPOR" src="./assets/gambar/gambar SP4N-LAPOR!.png" width="70%">
+</p>
+<p align="center">
+<i>Gambar 1.1 Tampilan Antarmuka SP4N-LAPOR! </i>
+</p>
+
+<br>
+SP4N-Lapor! adalah situs layanan aspirasi dan pengaduan online dari rakyat ke instansi pemerintah yang berwenang. Teknis pengaduan yang digunakan adalah seperti pengisian formulir. Pengguna diarahkan untuk mengisi klasifikasi laporan, judul dan isi laporan, tanggal, lokasi, lampiran, dan instansi tujuan. Pengguna juga dapat memilih aduan akan dikirim secara anonim (tidak ada nama di laporan) atau rahasia (laporan tidak dipublikasikan). Setelah melapor, laporan akan diverifikasi dan ditindaklanjuti. Pengguna dapat menanggapi kembali balasan yang diberikan oleh instansi dan laporan akan terus ditindaklanjuti hingga benar-benar selesai. <br><br>
+Celah sistem pada situs SP4N-Lapor! adalah belum _discovery-based_ melainkan hanya melaporkan aduan. Sehingga, pengguna hanya membuka situs ini untuk melapor, bukan untuk meningkatkan kesadaran masalah yang terjadi di sekitar. Berdasarkan hasil analisis cepat, sangat sedikit warga yang berkomentar terhadap suatu laporan. Ini dapat mengindikasikan, meskipun ada fitur komentar dan dukungan, laporan masih bersifat individualis. 	Selain itu, tidak adanya label urgensi suatu masalah menyebabkan tidak ada indikator yang membantu membedakan tingkat urgensi laporan. 
+
+### Sapawarga
+
+<table width="100%">
+<tr>
+<td width="50%" align="center" valign="top">
+<img src="./assets/gambar/Gambar Aduan Sapawarga.png" alt="Tampilan Sapawarga" height="400">
+<br>
+<i>Gambar 1.2 Tampilan Antarmuka Sapawarga</i>
+</td>
+<td width="50%" align="center" valign="top">
+<img src="./assets/gambar/Detail Aduan Sapawarga.png" alt="Tampilan Detail Sapawarga" height="400">
+<br>
+<i>Gambar 1.3 Tampilan Detail Antarmuka Sapawarga</i>
+</td>
+</tr>
+</table>
+
+Sapawarga adalah salah satu aplikasi resmi pemerintah Provinsi Jawa Barat yang mewadahi aspirasi berbagai sektor yang terintegrasi. Salah satu fitur yang membuat aplikasi ini cukup menjawab permasalahan adalah Aduan Warga. Fitur ini memampukan warga Jawa Barat untuk mengadukan masalah-masalah yang dihadapi ke pemerintah. Seluruh aduan warga dapat terlihat, sehingga pengguna dapat melihat aduan apa saja yang sudah diunggah. Pengguna juga dapat melihat status aduan, seperti menunggu verifikasi, terverifikasi, gagal diverifikasi, dialihkan ke Hotline Jabar, ditindaklanjuti, ditinjau ulang, dikoordinasikan, dialihkan ke SP4N Lapor, ditolak, pengerjaan ditunda, dan selesai. Hingga saat ini, sudah ada 12.8 ribu aduan yang masuk dan masih tetap aktif.<br><br> 
+Berbeda dengan solusi yang pertama, aplikasi Sapawarga tidak dapat dilihat seberapa populer aduan yang dibuat. Walaupun ada fitur like (_upvote_), namun pengguna tidak dapat mengetahui berapa orang yang melakukan like. Pengguna lain juga tidak bisa menanggapi aduan tersebut, seperti membuat keluhan yang berkaitan hingga memvalidasi aduan tersebut. Dari celah tersebut, dapat ditarik masalah utamanya adalah aplikasi ini tidak mengizinkan warga untuk berkolaborasi dalam permintaan layanan. Padahal Menurut Schiff (2025), melalui studi yang dilakukan di Oakland dan San Francisco, ditemukan bahwa permintaan dengan komentar dan follow diselesaikan 5 hari lebih cepat rata-rata daripada permintaan tanpa kolaborasi antar warga. 
 
 ---
 
