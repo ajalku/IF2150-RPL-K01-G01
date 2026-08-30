@@ -32,7 +32,13 @@ Dipersiapkan oleh:
 # BAB 1: Analisis Permasalahan
 
 ## 1.1 Latar Belakang Masalah
-Tuliskan deskripsi permasalahan yang kalian pilih secara naratif dan spesifik. Tambahkan keterkaitan permasalahan tersebut dengan Tujuan Pembangunan Berkelanjutan (SDGs) yang telah disepakati. Dukung argumen kalian dengan data yang kredibel, serta jelaskan urgensi mengapa masalah ini perlu dan layak untuk segera diselesaikan.
+Seiring perkembangan kultur yang semakin maju dan pertumbuhan populasi manusia yang terus naik, wilayah
+perkotaan sebagai tempat bermukim manusia menjadi penting untuk mendapat perhatian. Hal ini sejalan dengan *Sustainable Development Goals* ke-11 yaitu Kota dan Pemukiman yang Berkelanjutan. Sebuah kota selayaknya harus dibenahi secara sungguh-sungguh supaya bisa menjamin aksesibilitas bagi warganya. Apalagi meninjau laju kenaikan penduduk kota yang diperkirakan bisa mencapai angka 73% di 2045 nanti. Tentunya ini merupakan tantangan sendiri bagi bangsa kita (Sobarna, 2020).
+
+Guna membangun kota yang berkelanjutan, fasilitas publik yang aman dan universal menjadi instrumen utama yang tercantum pada Indikator SDG 11.7.1. Namun, pada kenyataannya fasilitas publik justru memiliki banyak catatan yang harus diperbaiki. Mulai dari infrastruktur layanan publik yang terbengkalai, akses jalan yang tidak ramah pejalan kaki, hingga maraknya aksi vandalisme. Berdasarkan kajian Ombudsman Republik Indonesia, faktor dibalik fenomena ini antara lain adalah banyaknya titik kritis dalam proses pembangunan yang luput dari perhatian pengelola atau pemerintah. Oleh karena itu, penting untuk mencari solusi agar publik tidak lagi dirugikan dengan janji pemerintah atas fasilitas publik yang ujung-ujungnya hanya menghamburkan uang rakyat.
+
+Kegagalan ini berkaitan dengan salah satu indikator SDG 11 itu sendiri. Berdasarkan SDG 11 Extended Report 2025 pada Indikator 11.3.2, keterlibatan masyarakat pada perencanaan dan pengelolaan kota masih terbatas. Pada tahun 2024, hanya ada 19% kota yang menunjukkan tingkat partisipasi tinggi dari warganya. Padahal untuk membangun kota yang berkelanjutan, dibutuhkan suatu sistem inklusif yang melibatkan seluruh pihak baik dari masyarakat dari berbagai macam kelas maupun dari pihak pemerintah (UNSD 2025). Maka dari itu, kami merancang sistem digital untuk pengaduan fasilitas publik untuk meningkatkan transparansi pembangunan dan pengelolaan kota.
+
 
 ## 1.2 Analisis Kondisi Saat Ini
 Beberapa solusi terhadap masalah tersebut telah dilakukan di Indonesia. Berikut adalah beberapa contohnya beserta masing-masing kekurangannya.
