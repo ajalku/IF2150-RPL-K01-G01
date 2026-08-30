@@ -43,10 +43,27 @@ Lakukan analisis terhadap proses yang berjalan saat ini di dunia nyata, baik itu
 
 ## 2.1 Deskripsi Perangkat Lunak
 Abstraksikan solusi perangkat lunak yang diusulkan dari sudut pandang pengguna. Jelaskan target platform yang akan digunakan (misalnya: desktop application) beserta alasan pemilihannya. Deskripsikan juga nilai unik (inovasi inti) dari perangkat lunak kalian dan apa yang membedakannya dari solusi yang sudah ada.
+---
+RuangRespons (Temporary(?) name) adalah suatu sistem untuk melaporkan kerusakan sarana/prasarana serta kondisi kritis (Contohnya seperti ada pohon tumbang/hewan liar). Untuk sistem pelaporannya, pengguna mengisi sebuah form berisi lokasi (bisa otomatis terisi), nama masalah, tag kategori, tingkat permasalahan (sgt urgent, urgent, tdk urgent), foto (opsional), deskripsi (opsional). Untuk platform, dipilih sebagai web app sehingga dapat digunakan secara universal asalkan mempunyai browser dan koneksi internet.
+
+Improvement sistem ini dibandingkan dengan sistem yang sudah ada (seperti yang di aplikasi sapawarga) adalah sebagai berikut:
+1. Sistem ini bisa mencangkup lebih banyak hal tidak hanya masalah infrastuktur.
+2. Sistem ini tidak perlu menginstall aplikasi dan dapat diakses melalui browser.
+3. Sistem ini dapat bekerja secara universal di berbagai daerah.
 
 ## 2.2 Asumsi dan Batasan
 Definisikan secara tegas asumsi (baik teknis maupun dari sisi pengguna) yang menjadi dasar pengembangan. Tuliskan batasan seperti regulasi/hukum, keterbatasan sumber daya, dan ruang lingkup solusi.
+---
+Pengguna utama dari perangkat lunak ini adalah civitas sebuah kota dan pemerintahnya. 
 
+Regulasi / Hukum
+- Harus memastikan keamanan data pengguna
+Keterbatasan Sumber Daya
+- Tim development kecil
+Ruang Lingkup
+- Terbatas di Indonesia
+
+{Note: Kurang kepikiran T^T -Arya}
 ---
 
 # BAB 3: Spesifikasi Kebutuhan dan Proses Bisnis
