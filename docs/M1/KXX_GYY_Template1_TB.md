@@ -113,7 +113,7 @@ Ruang Lingkup
 # BAB 3: Spesifikasi Kebutuhan dan Proses Bisnis
 
 ## 3.1 Identifikasi Aktor
-Buatlah daftar seluruh aktor (pengguna) yang akan berinteraksi langsung dengan sistem solusi yang kalian kembangkan. Berikan penjelasan singkat mengenai peran dan karakteristik dari masing-masing aktor tersebut.
+Pada sistem ini terdapat dua aktor yang berinteraksi langsung dengan perangkat lunak, yaitu Pengguna dan Admin. Pengguna berperan dalam memperoleh informasi dan melaporkan permasalahan di lingkungan, sedangkan Admin berperan dalam memantau dan memperbarui status laporan yang masuk.
 
 | Aktor | Deskripsi |
 | :--- | :--- |
@@ -122,7 +122,7 @@ Buatlah daftar seluruh aktor (pengguna) yang akan berinteraksi langsung dengan s
 
 
 ## 3.2 Kebutuhan Pengguna Awal
-Definisikan apa yang ingin dicapai oleh pengguna saat menggunakan sistem ini dalam format *User Story* (Sebagai [Aktor], saya ingin [Aktivitas/Kebutuhan], sehingga [Tujuan/Nilai]). Pastikan kalian berfokus pada "apa yang ingin dilakukan pengguna".
+Di bawah ini adalah tabel _Kebutuhan Pengguna Awal_. Kebutuhan pengguna awal ini menggambarkan aktivitas yang dapat dilakukan oleh setiap aktor saat menggunakan sistem beserta tujuan atau nilai yang ingin dicapai. Kebutuhan tersebut dirumuskan dalam bentuk User Story dengan berfokus pada kebutuhan dan tujuan pengguna. 
 
 | ID | Aktor | Kebutuhan / Aktivitas | Tujuan / Nilai |
 | :--- | :--- | :--- | :--- |
