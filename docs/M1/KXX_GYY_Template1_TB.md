@@ -55,7 +55,7 @@ Kekurangan dari solusi ini adalah identitas dan validitas pelapor tidak selalu t
 SP4N-Lapor! adalah situs layanan aspirasi dan pengaduan online dari rakyat ke instansi pemerintah yang berwenang. Teknis pengaduan yang digunakan adalah seperti pengisian formulir. Pengguna diarahkan untuk mengisi klasifikasi laporan, judul dan isi laporan, tanggal, lokasi, lampiran, dan instansi tujuan. Pengguna juga dapat memilih aduan akan dikirim secara anonim (tidak ada nama di laporan) atau rahasia (laporan tidak dipublikasikan). Setelah melapor, laporan akan diverifikasi dan ditindaklanjuti. Pengguna dapat menanggapi kembali balasan yang diberikan oleh instansi dan laporan akan terus ditindaklanjuti hingga benar-benar selesai. <br><br>
 Celah sistem pada situs SP4N-Lapor! adalah belum _discovery-based_ melainkan hanya melaporkan aduan. Sehingga, pengguna hanya membuka situs ini untuk melapor, bukan untuk meningkatkan kesadaran masalah yang terjadi di sekitar. Berdasarkan hasil analisis cepat, sangat sedikit warga yang berkomentar terhadap suatu laporan. Ini dapat mengindikasikan, meskipun ada fitur komentar dan dukungan, laporan masih bersifat individualis. 	Selain itu, tidak adanya label urgensi suatu masalah menyebabkan tidak ada indikator yang membantu membedakan tingkat urgensi laporan. 
 
-### Sapawarga
+### C. Sapawarga
 
 <table width="100%">
 <tr>
