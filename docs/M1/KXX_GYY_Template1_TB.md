@@ -56,8 +56,8 @@ Buatlah daftar seluruh aktor (pengguna) yang akan berinteraksi langsung dengan s
 
 | Aktor | Deskripsi |
 | :--- | :--- |
-| *Kasir* | *Pengguna ini bertindak sebagai pihak yang bertanggung jawab untuk memproses transaksi harian dan melayani pembayaran pelanggan. Karakteristik dari pengguna ini adalah mengutamakan kecepatan dan keakuratan saat bertransaksi.* |
-| ... | ... |
+| *Pengguna* | *Pengguna merupakan masyarakat yang menggunakan sistem untuk memperoleh informasi mengenai permasalahan di lingkungan sekitar dan melaporkan permasalahan yang ditemukan. Pengguna dapat melihat peta dan laporan yang tersedia, melihat detail suatu laporan, memberikan upvote pada laporan, serta membuat dan menyimpan laporan baru. Karakteristik pengguna adalah membutuhkan proses pelaporan yang sederhana dan akses informasi yang mudah mengenai permasalahan di lingkungan.* |
+| *Admin* | *Admin merupakan pihak yang bertanggung jawab untuk memantau dan mengelola laporan yang dibuat oleh pengguna. Admin dapat melihat daftar laporan, melihat detail laporan, serta mengubah dan menyimpan status laporan sesuai dengan perkembangan penanganannya di lapangan. Karakteristik admin adalah membutuhkan informasi laporan yang jelas agar dapat melakukan pemantauan dan memperbarui status laporan secara tepat.* |
 
 
 ## 3.2 Kebutuhan Pengguna Awal
