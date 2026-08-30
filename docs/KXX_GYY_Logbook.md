@@ -35,7 +35,8 @@
 | :--- | :--- | :--- | :--- | :--- | :--- | 
 | *04-05-2026* | *[Nama Mahasiswa]* | *[Jelaskan Pekerjaan secara Singkat]* | *[Durasi Pengerjaan]* | *[On Progress/Done]* | [Kendala yang dialami, jika tidak ada cukup tandai "-"] | 
 | *30-08-2026* | *Ravinka Fathia Adinegara* | *Membuat activity diagram* | *4* | *Done* | *-* | 
-| *30-08-2026* | *Samantha Michelle Sujatmoko Silaban* | *Menyusun BAB 1.2* | *4* | *Done* | *-* | 
+| *30-08-2026* | *Samantha Michelle Sujatmoko Silaban* | *Menyusun BAB 1.2* | *4* | *Done* | *-* |
+| *30-08-2026* | *Syakira Azzahra Rachmania* | *Menyusun BAB 1.1* | *3* | *Done* | *-* |
 | | | | | | | |
 
 **Catatan/Evaluasi Milestone 1:**
