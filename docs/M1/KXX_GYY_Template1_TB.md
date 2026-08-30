@@ -126,9 +126,14 @@ Definisikan apa yang ingin dicapai oleh pengguna saat menggunakan sistem ini dal
 
 | ID | Aktor | Kebutuhan / Aktivitas | Tujuan / Nilai |
 | :--- | :--- | :--- | :--- |
-| US-01 | *Kasir* |  *Memindai barcode barang* | *Proses pembayaran berjalan cepat dan akurat* |
-| US-02 | *[Nama Aktor]* | *[Kebutuhan pengguna]* | *[Tujuan yang dicapai pengguna]* |
-| ... | ... | ... | ... |
+| US-01 | *Pengguna* |  *Mengakses sistem melalui proses registrasi atau login* | *Dapat menggunakan fitur-fitur sistem sesuai dengan perannya* |
+| US-02 | *Pengguna* | *Menjelajahi peta dan informasi laporan yang tersedia* | *Dapat mengetahui permasalahan yang telah dilaporkan beserta lokasi dan detailnya* |
+| US-03 | *Pengguna* | *Memberikan upvote pada laporan* | *Dapat menunjukkan bahwa suatu permasalahan dianggap penting atau relevan* |
+| US-04 | *Pengguna* | *Membuat laporan permasalahan baru dengan memasukkan informasi yang diperlukan* | *Dapat menyampaikan permasalahan di lingkungan kampus agar tercatat dan dapat ditindaklanjuti* |
+| US-05 | *Admin* |  *Mengakses sistem melalui proses login* | *Dapat menggunakan fitur pengelolaan laporan sesuai dengan perannya* |
+| US-06 | *Admin* |  *Memantau laporan yang tersedia beserta detailnya* | *Dapat mengetahui dan memahami permasalahan yang perlu ditindaklanjuti* |
+| US-07 | *Admin* |  *Memperbarui status laporan* | *Dapat mencatat perkembangan penanganan permasalahan dan memberikan informasi terbaru kepada pengguna* |
+
 
 ## 3.3 Model Proses Bisnis
 Berikut ini adalah _activity diagram_ perangkat lunak ini mencakup kegiatan yang dapat dilakukan oleh pengelola (admin) serta kegiatan yang dapat dilakukan oleh pengguna sesuai dengan bagian 3.1.
