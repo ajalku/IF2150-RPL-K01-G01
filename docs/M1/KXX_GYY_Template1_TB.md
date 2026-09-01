@@ -114,8 +114,8 @@ Pada sistem ini terdapat dua aktor yang berinteraksi langsung dengan perangkat l
 
 | Aktor | Deskripsi |
 | :--- | :--- |
-| *Pengguna* | *Pengguna merupakan masyarakat yang menggunakan sistem untuk memperoleh informasi mengenai permasalahan di lingkungan sekitar dan melaporkan permasalahan yang ditemukan. Pengguna dapat melihat peta dan laporan yang tersedia, melihat detail suatu laporan, memberikan upvote pada laporan, serta membuat dan menyimpan laporan baru. Karakteristik pengguna adalah membutuhkan proses pelaporan yang sederhana dan akses informasi yang mudah mengenai permasalahan di lingkungan.* |
-| *Admin* | *Admin merupakan pihak yang bertanggung jawab untuk memantau dan mengelola laporan yang dibuat oleh pengguna. Admin dapat melihat daftar laporan, melihat detail laporan, serta mengubah dan menyimpan status laporan sesuai dengan perkembangan penanganannya di lapangan. Karakteristik admin adalah membutuhkan informasi laporan yang jelas agar dapat melakukan pemantauan dan memperbarui status laporan secara tepat.* |
+| *Pengguna* | **Peran:** Masyarakat yang menggunakan sistem untuk memperoleh informasi dan melaporkan permasalahan di lingkungan sekitar.<br> **Aktivitas:** <br>- Melakukan registrasi atau login<br>- Menjelajahi peta dan informasi laporan<br>- Memberikan *upvote* pada laporan<br>- Membuat laporan baru<br> **Karakteristik:** Membutuhkan proses pelaporan yang sederhana dan akses informasi yang mudah mengenai permasalahan di lingkungan. |
+| *Admin* | **Peran:** Pihak yang bertanggung jawab untuk memantau dan mengelola laporan yang dibuat oleh pengguna.<br> **Aktivitas:** <br>-Melakukan login<br>- Memantau laporan beserta detailnya<br>- Memperbarui status laporan<br>**Karakteristik:** Membutuhkan informasi laporan yang jelas agar dapat melakukan pemantauan dan memperbarui status laporan secara tepat. |
 
 
 ## 3.2 Kebutuhan Pengguna Awal
