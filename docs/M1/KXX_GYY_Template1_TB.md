@@ -86,28 +86,25 @@ Berbeda dengan solusi yang pertama, aplikasi Sapawarga tidak dapat dilihat seber
 # BAB 2: Analisis Solusi
 
 ## 2.1 Deskripsi Perangkat Lunak
-Abstraksikan solusi perangkat lunak yang diusulkan dari sudut pandang pengguna. Jelaskan target platform yang akan digunakan (misalnya: desktop application) beserta alasan pemilihannya. Deskripsikan juga nilai unik (inovasi inti) dari perangkat lunak kalian dan apa yang membedakannya dari solusi yang sudah ada.
----
-RuangRespons (Temporary(?) name) adalah suatu sistem untuk melaporkan kerusakan sarana/prasarana serta kondisi kritis (Contohnya seperti ada pohon tumbang/hewan liar). Untuk sistem pelaporannya, pengguna mengisi sebuah form berisi lokasi (bisa otomatis terisi), nama masalah, tag kategori, tingkat permasalahan (sgt urgent, urgent, tdk urgent), foto (opsional), deskripsi (opsional). Untuk platform, dipilih sebagai web app sehingga dapat digunakan secara universal asalkan mempunyai browser dan koneksi internet.
 
-Improvement sistem ini dibandingkan dengan sistem yang sudah ada (seperti yang di aplikasi sapawarga) adalah sebagai berikut:
-1. Sistem ini bisa mencangkup lebih banyak hal tidak hanya masalah infrastuktur.
+RAWAT (Ruang Aspirasi Warga dan Aduan Terpadu) adalah suatu sistem untuk melaporkan kerusakan sarana/prasarana atau suatu kondisi kritis (Contohnya seperti ada pohon tumbang/hewan liar). Untuk sistem pelaporannya, pengguna mengisi sebuah form berisi lokasi (bisa otomatis terisi), nama masalah, tag kategori, tingkat permasalahan (sgt urgent, urgent, tdk urgent), foto (opsional), deskripsi (opsional). Laporan tersebut akan disimpan dan ditampilkan di suatu halaman yang dapat diurutkan berdasarkan urgensi, tag, atau waktu posting. Untuk platform, dipilih sebagai web app sehingga dapat digunakan secara universal asalkan mempunyai browser dan koneksi internet.
+
+Inovasi sistem ini dibandingkan dengan sistem yang sudah ada (seperti yang di aplikasi sapawarga) adalah sebagai berikut:
+1. Sistem ini dapat mengkategorikan laporan berdasarkan urgensi.
 2. Sistem ini tidak perlu menginstall aplikasi dan dapat diakses melalui browser.
-3. Sistem ini dapat bekerja secara universal di berbagai daerah.
 
 ## 2.2 Asumsi dan Batasan
-Definisikan secara tegas asumsi (baik teknis maupun dari sisi pengguna) yang menjadi dasar pengembangan. Tuliskan batasan seperti regulasi/hukum, keterbatasan sumber daya, dan ruang lingkup solusi.
----
+
 Pengguna utama dari perangkat lunak ini adalah civitas sebuah kota dan pemerintahnya. 
 
 Regulasi / Hukum
-- Harus memastikan keamanan data pengguna
+- Undang-undang keamanan data
 Keterbatasan Sumber Daya
 - Tim development kecil
+- Ketersediaan server
 Ruang Lingkup
-- Terbatas di Indonesia
+- Terbatas di suatu kota
 
-{Note: Kurang kepikiran T^T -Arya}
 ---
 
 # BAB 3: Spesifikasi Kebutuhan dan Proses Bisnis
