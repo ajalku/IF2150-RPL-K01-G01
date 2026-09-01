@@ -7,9 +7,9 @@ TOPIC BRAINSTORMING
 </h1>
 <br>
 
-## *Nama Perangkat Lunak*
+## *RAWAT (Ruang Aspirasi Warga dan Aduan Terpadu)*
 
-### Untuk: *Agatha*
+### Untuk: *Agatha Tatianingseto*
 
 Dipersiapkan oleh:
 | Informasi | Keterangan |
@@ -150,7 +150,7 @@ Berikut ini adalah _activity diagram_ perangkat lunak ini mencakup kegiatan yang
 <br>
 
 <p align="center">
-<img alt="Activity Diagram" src="./assets/diagram/diagram-activity-1.jpg" width="70%">
+<img alt="Activity Diagram" src="./assets/diagram/diagram-activity-1-revisi-1.jpg" width="70%">
 </p>
 <p align="center">
 <i>Gambar 1. Activity Diagram</i>

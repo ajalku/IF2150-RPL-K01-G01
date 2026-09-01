@@ -37,6 +37,7 @@
 | *30-08-2026* | *Ravinka Fathia Adinegara* | *Membuat activity diagram* | *4* | *Done* | *-* | 
 | *30-08-2026* | *Samantha Michelle Sujatmoko Silaban* | *Menyusun BAB 1.2* | *4* | *Done* | *-* |
 | *30-08-2026* | *Syakira Azzahra Rachmania* | *Menyusun BAB 1.1* | *3* | *Done* | *-* |
+| *02-08-2026* | *Ravinka Fathia Adinegara* | *Revisi activity diagram* | *1* | *Done* | *-* |
 | | | | | | | |
 
 **Catatan/Evaluasi Milestone 1:**
