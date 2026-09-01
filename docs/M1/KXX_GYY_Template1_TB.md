@@ -159,8 +159,8 @@ Berikut ini adalah _activity diagram_ perangkat lunak ini mencakup kegiatan yang
 <br>
 
 # Referensi
-- Putri, P. A. (2025). _Pengaruh clicktivism terhadap agenda setting: Studi kasus perbaikan jalan di Provinsi Lampung tahun 2023_ [Skripsi, Universitas Gadjah Mada]. Perpustakaan Universitas Gadjah Mada. https://etd.repository.ugm.ac.id/penelitian/detail/258848
+- Putri, P. A. (2025). _Pengaruh clicktivism terhadap agenda setting: Studi kasus perbaikan jalan di Provinsi Lampung tahun 2023_ (Skripsi Sarjana, Universitas Gadjah Mada). https://etd.repository.ugm.ac.id/penelitian/detail/258848
 
-- Schiff, K. J. (2025). _Does collective citizen input impact government service provision? Evidence from SeeClickFix requests._ Public Administration Review, 85(1), 32–45. https://doi.org/10.1111/puar.13747 
+- Schiff, K. J. (2023). Does collective citizen input impact government service provision? Evidence from SeeClickFix requests. _Public Administration Review_, 85(1), 32–45. https://doi.org/10.1111/puar.13747 
 
 - Diagram UML: https://www.drawio.com/, https://staruml.io/
