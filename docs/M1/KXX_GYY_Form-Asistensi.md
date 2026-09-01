@@ -4,41 +4,39 @@
 
 | Informasi | Keterangan |
 | --- | --- |
-| **Hari** | *\[Hari\]* |
-| **Tanggal** | *\[DD/MM/YYYY\]* |
-| **Kelas** | *\[Kelas\]* |
-| **Nomor Kelompok** | *\[Nomor Kelompok\]*  |
-| **Nama Kelompok** | *\[Nama Kelompok\]*  |
-| **Nama Perangkat Lunak** | *\[Nama P/L\]*  |
-| **Dokumen** | *\[Nama Dokumen yang diasistensikan\]*  |
+| **Hari** | *Selasa* |
+| **Tanggal** | *01/09/2026* |
+| **Kelas** | *K01* |
+| **Nomor Kelompok** | *1*  |
+| **Nama Kelompok** | *berjiwa ksatria*  |
+| **Nama Perangkat Lunak** | *RAWAT (Ruang Aspirasi Warga dan Aduan Terpadu)*  |
+| **Dokumen** | *K01_G01_Template1_TB.md*  |
 
 ### Anggota Kelompok
 
 | NIM | Nama |
 | --- | --- |
-| *\[NIM 1\]* | *\[Nama Anggota 1\]* |
-| *\[NIM 2\]* | *\[Nama Anggota 2\]* |
-| *\[NIM 3\]* | *\[Nama Anggota 3\]* |
-| *\[NIM 4\]* | *\[Nama Anggota 4\]* |
-| *\[NIM 5\]* | *\[Nama Anggota 5\]* |
+| *13525103* | *Ravinka Fathia Adinegara* |
+| *13525013* | *Samantha Michelle S. Silaban* |
+| *13525055* | *Syakira Azzahra Rachmania* |
+| *13525043* | *Aufa Tatsbita Zahra* |
+| *13525046* | *Ghiffari Arya Adhitya* |
 
 ### Catatan
 
 | Catatan |
 | --- |
-| 1. *\[Berikan catatan hasil asistensi\]*  |
-| 2. ... |
-| 3. ... |
-| 4. ... |
-
-**Notes for this section:**  
-*Catatan dapat dituliskan dalam bentuk paragraf atau poin-poin, disesuaikan saja.* 
+| 1. *Asumsi dan batasan bisa dilengkapi lagi sama cakupannya, misalnya kalo di kota bandung apakah mencakup transportasi umum, penerangan, dsb. Biasanya asumsi dari eksternal, batasan dari internal*  |
+| 2. *Kebutuhan awal sebaiknya berbentuk poin-poin* |
+| 3. *Buat Activity Diagram berdasarkan aktivitas yang utamanya saja, dapat diidentifikasi dari awal usernya hingga akhir. Activty Diagram sebaiknya berbentuk swimlane* |
+| 4. *Untuk tabel aktivitas (3.3) adopsi dari user story pengguna awal.* | 
+| 5. *Untuk referensi dapat dimasukkan daftar pustaka format APA, lampiran, serta link workspace ketika membuat diagram* | 
 
 ## Dokumentasi
 
 <!-- ![](./assets/foto-asistensi.jpg) -->
 <p align="center">
-  <img src="./assets/foto-asistensi.jpg" width="100%">
+  <img src="./assets/Asistensi1.png" width="100%">
 </p>
 
 <p align="center">
