@@ -114,8 +114,8 @@ Pada sistem ini terdapat dua aktor yang berinteraksi langsung dengan perangkat l
 
 | Aktor | Deskripsi |
 | :--- | :--- |
-| *Pengguna* | **Peran:** Masyarakat yang menggunakan sistem untuk memperoleh informasi dan melaporkan permasalahan di lingkungan sekitar.<br> **Aktivitas:** <br>- Melakukan registrasi atau login<br>- Menjelajahi peta dan informasi laporan<br>- Memberikan *upvote* pada laporan<br>- Membuat laporan baru<br> **Karakteristik:** Membutuhkan proses pelaporan yang sederhana dan akses informasi yang mudah mengenai permasalahan di lingkungan. |
-| *Admin* | **Peran:** Pihak yang bertanggung jawab untuk memantau dan mengelola laporan yang dibuat oleh pengguna.<br> **Aktivitas:** <br>-Melakukan login<br>- Memantau laporan beserta detailnya<br>- Memperbarui status laporan<br>**Karakteristik:** Membutuhkan informasi laporan yang jelas agar dapat melakukan pemantauan dan memperbarui status laporan secara tepat. |
+| *Pengguna* | **Peran:** Masyarakat yang menggunakan sistem untuk memperoleh informasi dan melaporkan permasalahan di lingkungan sekitar.<br><br> **Aktivitas:** <br>- Melakukan registrasi atau login<br>- Menjelajahi peta dan informasi laporan<br>- Memberikan *upvote* pada laporan<br>- Membuat laporan baru<br><br> **Karakteristik:** Membutuhkan proses pelaporan yang sederhana dan akses informasi yang mudah mengenai permasalahan di lingkungan. |
+| *Admin* | **Peran:** Pihak yang bertanggung jawab untuk memantau dan mengelola laporan yang dibuat oleh pengguna.<br><br> **Aktivitas:** <br>-Melakukan login<br>- Memantau laporan beserta detailnya<br>- Memperbarui status laporan<br><br>**Karakteristik:** Membutuhkan informasi laporan yang jelas agar dapat melakukan pemantauan dan memperbarui status laporan secara tepat. |
 
 
 ## 3.2 Kebutuhan Pengguna Awal
@@ -132,7 +132,20 @@ Di bawah ini adalah tabel _Kebutuhan Pengguna Awal_. Kebutuhan pengguna awal ini
 | US-07 | *Admin* |  *Memperbarui status laporan* | *Dapat mencatat perkembangan penanganan permasalahan dan memberikan informasi terbaru kepada pengguna* |
 
 
-## 3.3 Model Proses Bisnis
+## 3.3 Deskripsi Aktivitas
+Berikut ini adalah Tabel Deskripsi Aktivitas perangkat lunak RAWAT sesuai dengan User Story yang terdapat pada  bagian 3.2.
+| ID | Aktivitas | Penjelasan | ID User Story |
+| :--- | :--- | :--- | :--- |
+| A01 | *Mengakses sistem* | *Admin maupun pengguna memulai proses mengakses sistem, yakni dengan melakukan login atau registrasi bagi pengguna yang belum mendaftar* | *US-01 dan US-05* |
+| A02 | *Menjelajahi peta* | *Sistem akan menampilkan peta lokasi yang dipilih beserta informasi terkait laporan yang ada di daerah tersebut* | *US-02*|
+| A03 | *Melihat informasi laporan* | *Sistem akan menampilkan informasi dan data terkait laporan yang ada, seperti alamat/lokasi, nama masalah, tag kategori, tingkat permasalahan, beserta foto dan deskripsi (jika ada)* | *US-02*|
+| A04 | *Memberikan upvote* | *Pengguna dapat memberikan upvote pada masalah yang dianggap urgent atau relevan* | *US-03*|
+| A05 | *Membuat laporan baru* | *Pengguna dapat membuat laporan baru dan memasukkan data terkait berupa lokasi (bisa langsung pilih di peta), nama masalah, tag kategori, tingkat permasalahan, serta foto dan deskripsi (opsional)* | *US-04*|
+| A06 | *Memantau laporan* | *Admin dapat melakukan pemantauan terhadap laporan yang masuk dan sistem bisa  menampilkannya berdasarkan kategori, lokasi, ataupun tingkat permasalahan/urgensi, sehingga memudahkan admin dalam melakukan proses pemantauan ini* | *US-06*|
+| A07 | *Memperbarui status  laporan* | *Admin dapat memperbarui status laporan sesuai dengan kondisi terkini dan sistem akan menyimpan informasi tersebut* | *US-07*|
+
+
+## 3.4 Model Proses Bisnis
 Berikut ini adalah _activity diagram_ perangkat lunak ini mencakup kegiatan yang dapat dilakukan oleh pengelola (admin) serta kegiatan yang dapat dilakukan oleh pengguna sesuai dengan bagian 3.1.
 <br>
 
