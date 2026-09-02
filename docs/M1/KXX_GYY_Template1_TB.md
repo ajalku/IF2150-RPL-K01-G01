@@ -87,23 +87,27 @@ Berbeda dengan solusi yang pertama, aplikasi Sapawarga tidak dapat dilihat seber
 
 ## 2.1 Deskripsi Perangkat Lunak
 
-RAWAT (Ruang Aspirasi Warga dan Aduan Terpadu) adalah suatu sistem untuk melaporkan kerusakan sarana/prasarana atau suatu kondisi kritis (Contohnya seperti ada pohon tumbang/hewan liar). Untuk sistem pelaporannya, pengguna mengisi sebuah form berisi lokasi (bisa otomatis terisi), nama masalah, tag kategori, tingkat permasalahan (sgt urgent, urgent, tdk urgent), foto (opsional), deskripsi (opsional). Laporan tersebut akan disimpan dan ditampilkan di suatu halaman yang dapat diurutkan berdasarkan urgensi, tag, atau waktu posting. Untuk platform, dipilih sebagai web app sehingga dapat digunakan secara universal asalkan mempunyai browser dan koneksi internet.
+RAWAT (Ruang Aspirasi Warga dan Aduan Terpadu) adalah suatu sistem untuk melaporkan kerusakan sarana/prasarana atau suatu kondisi kritis (Contohnya seperti ada pohon tumbang/hewan liar). Sistem ini dapat digunakan oleh pemerintah lokal untuk mengidentifikasikan daerah yang perlu perbaikan berdasarkan urgensi dan keinginan masyarakat. Untuk sistem pelaporannya, pengguna mengisi sebuah form berisi lokasi (otomatis terisi, namun dapat dipilih manual), nama masalah, tag kategori (terdapat pilihan untuk memperlihatkan tag populer), tingkat permasalahan (sangat urgent, urgent, tidak urgent) dan beberapa yang opsional seperti foto dan deskripsi singkat (max 500 kata). Laporan tersebut akan disimpan dan ditampilkan di suatu halaman yang dapat diurutkan berdasarkan urgensi, tag, waktu posting, atau jumlah upvote. Setiap laporan terdapat fitur upvote dan komentar agar masyarakat dapat lebih menekankan isu tersebut. Untuk platform, dipilih sebagai web app sehingga dapat digunakan secara universal asalkan mempunyai browser dan koneksi internet.
 
-Inovasi sistem ini dibandingkan dengan sistem yang sudah ada (seperti yang di aplikasi sapawarga) adalah sebagai berikut:
+Inovasi sistem ini dibandingkan dengan sistem yang sudah ada bisa dilihat dari hal-hal tersebut:
 1. Sistem ini dapat mengkategorikan laporan berdasarkan urgensi.
 2. Sistem ini tidak perlu menginstall aplikasi dan dapat diakses melalui browser.
+3. Sistem ini mempunyai fitur komentar dan upvote untuk setiap postingannya.
 
 ## 2.2 Asumsi dan Batasan
 
-Pengguna utama dari perangkat lunak ini adalah civitas sebuah kota dan pemerintahnya. 
+Pengguna langsung dari sistem ini diasumsikan adalah civitas kota dan pemerintahnya. Untuk mengakses sistem ini, diasumsikan pengguna mempunyai gawai dengan koneksi internet dan web browser. Selain itu, dapat diasumsikan perlunya pemaparan media terkait dengan sistem ini agar civitas mengetahuinya dan sistem pelaporan dapat berjalan dengan baik. 
 
 Regulasi / Hukum
-- Undang-undang keamanan data
+- UU No.27 Tahun 2022 tentang perlindungan data pribadi
+- UU No.22 Tahun 2009 tentang lalu lintas dan angkutan jalan
 Keterbatasan Sumber Daya
 - Tim development kecil
-- Ketersediaan server
+- Ketersediaan infrastruktur IT
 Ruang Lingkup
-- Terbatas di suatu kota
+- Keadaan sarana/prasarana
+- Situasi kritis
+- Berbatas di Indonesia
 
 ---
 
