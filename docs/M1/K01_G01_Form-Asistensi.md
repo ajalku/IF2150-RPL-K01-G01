@@ -10,7 +10,7 @@
 | **Nomor Kelompok** | *1*  |
 | **Nama Kelompok** | *berjiwa ksatria*  |
 | **Nama Perangkat Lunak** | *RAWAT (Ruang Aspirasi Warga dan Aduan Terpadu)*  |
-| **Dokumen** | *K01_G01_Template1_TB.md*  |
+| **Dokumen** | *K01_G01_Final_TB.md*  |
 
 ### Anggota Kelompok
 
