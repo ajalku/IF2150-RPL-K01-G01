@@ -101,7 +101,7 @@ Inovasi sistem ini dibandingkan dengan sistem yang sudah ada bisa dilihat dari h
 ### 2.2.1 Asumsi
 Pengguna langsung dari sistem ini diasumsikan adalah civitas kota dan pemerintahnya. Untuk mengakses sistem ini, diasumsikan pengguna mempunyai gawai dengan koneksi internet dan web browser. Selain itu, dapat diasumsikan perlunya pemaparan media terkait dengan sistem ini agar masyarakat mengetahuinya dan sistem pelaporan dapat berjalan dengan baik.
 
-Pengguna diasumsikan tidak saling bekerja sama untuk mengelabui sistem dengan cara mengunggah laporan yang tidak jujur kemudian saling meng-_upvote_-nya. Apabila ada laporan yang tidak jujur, pengguna lain diasumsikan akan berkomentar untuk menyanggah laporan tersebut kemudian tidak meng-_upvote_-nya.
+Pengguna diasumsikan tidak saling bekerja sama untuk mengelabui sistem dengan cara mengunggah laporan yang tidak jujur kemudian saling meng-_upvote_-nya. Apabila ada laporan yang tidak jujur, pengguna lain diasumsikan akan berkomentar untuk menyanggah laporan tersebut kemudian tidak meng-_upvote_-nya. Pengguna juga diasumsikan berdialektika dengan baik dan jelas dalam menulis deskripsi sehingga pengelola dapat memahami apa yang pengguna maksud dan apa yang perlu diperbaiki.
 
 ### 2.2.2 Batasan
 #### Batasan Regulasi atau Hukum
@@ -120,9 +120,10 @@ Pengguna diasumsikan tidak saling bekerja sama untuk mengelabui sistem dengan ca
 * Terbatas di Indonesia
 
 #### Batasan Situasi Kritis
-* Mencakup keadaan yang berkaitan dengan infrastruktur atau RHA
-* Tidak cocok untuk melapor kegiatan kriminal yang sudah terjadi
+* Mencakup keadaan yang berkaitan dengan infrastruktur atau RHA tinggi
+* Tidak cocok untuk melapor kegiatan kriminal yang sudah atau sedang terjadi
 * Tidak cocok untuk melapor aktivitas orang mencurigakan
+* Mengutamakan masalah infrastruktur konkret dan rasional
 
 ---
 
