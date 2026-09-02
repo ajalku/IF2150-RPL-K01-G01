@@ -29,15 +29,16 @@
 ---
 
 ### Milestone 1
-**Periode:** [Tanggal Mulai] - [Tanggal Selesai]
+**Periode:** 27-08-2026 - 02-09-2026
 
 | Tanggal | Nama Anggota | Deskripsi Pekerjaan | Durasi (Jam) | Status | Kendala / *Blocker* | 
 | :--- | :--- | :--- | :--- | :--- | :--- | 
-| *04-05-2026* | *[Nama Mahasiswa]* | *[Jelaskan Pekerjaan secara Singkat]* | *[Durasi Pengerjaan]* | *[On Progress/Done]* | [Kendala yang dialami, jika tidak ada cukup tandai "-"] | 
 | *30-08-2026* | *Ravinka Fathia Adinegara* | *Membuat activity diagram* | *4* | *Done* | *-* | 
 | *30-08-2026* | *Samantha Michelle Sujatmoko Silaban* | *Menyusun BAB 1.2* | *4* | *Done* | *-* |
 | *30-08-2026* | *Syakira Azzahra Rachmania* | *Menyusun BAB 1.1* | *3* | *Done* | *-* |
 | *30-08-2026* | *Ghiffari Arya Adhitya* | *Menyusun Bab 2* | *3* | *Done* | *-* |
+| *30-08-2026* | *Aufa Tatsbita Zahra* | *Menyusun Bab 3.1 dan 3.2* | *3* | *Done* | *-* |
+| *01-09-2026* | *Aufa Tatsbita Zahra* | *Menyusun Bab 3.3* | *1* | *Done* | *-* |
 | *02-09-2026* | *Ravinka Fathia Adinegara* | *Revisi activity diagram* | *1* | *Done* | *-* |
 | *02-09-2026* | *Ghiffari Arya Adhitya* | *Revisi Bab 2* | *1* | *Done* | *-* |
 | | | | | | | |
