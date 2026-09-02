@@ -53,4 +53,4 @@ Kami yang bertanda tangan di bawah ini menyatakan bahwa seluruh log penggunaan A
 | <img src="./assets/ttd-anggota2.jpg" width="100"> | **13525013 - Samantha Michelle S Silaban** |
 | <img src="./assets/ttd-anggota3.jpg" width="100"> | **13525055 - Syakira Azzahra Rachmania** |
 | <img src="./assets/ttd-anggota4.jpg" width="100"> | **13525043 - Aufa Tatsbita Zahra** |
-| <img src="./assets/ttd-anggota5.jpg" width="100"> | **13525046 - Ghiffari Arya Adhitya** |
+| <img src="./assets/ttd-anggota5.png" width="100"> | **13525046 - Ghiffari Arya Adhitya** |
