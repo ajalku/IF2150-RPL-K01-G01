@@ -99,23 +99,30 @@ Inovasi sistem ini dibandingkan dengan sistem yang sudah ada bisa dilihat dari h
 ## 2.2 Asumsi dan Batasan
 
 ### 2.2.1 Asumsi
-Pengguna langsung dari sistem ini diasumsikan adalah civitas kota dan pemerintahnya. Untuk mengakses sistem ini, diasumsikan pengguna mempunyai gawai dengan koneksi internet dan web browser. Selain itu, dapat diasumsikan perlunya pemaparan media terkait dengan sistem ini agar masyarakat mengetahuinya dan sistem pelaporan dapat berjalan dengan baik. 
+Pengguna langsung dari sistem ini diasumsikan adalah civitas kota dan pemerintahnya. Untuk mengakses sistem ini, diasumsikan pengguna mempunyai gawai dengan koneksi internet dan web browser. Selain itu, dapat diasumsikan perlunya pemaparan media terkait dengan sistem ini agar masyarakat mengetahuinya dan sistem pelaporan dapat berjalan dengan baik.
+
+Pengguna diasumsikan tidak saling bekerja sama untuk mengelabui sistem dengan cara mengunggah laporan yang tidak jujur kemudian saling meng-_upvote_-nya. Apabila ada laporan yang tidak jujur, pengguna lain diasumsikan akan berkomentar untuk menyanggah laporan tersebut kemudian tidak meng-_upvote_-nya.
 
 ### 2.2.2 Batasan
-Regulasi / Hukum
+#### Batasan Regulasi atau Hukum
 * UU No.27 Tahun 2022 tentang perlindungan data pribadi
 * UU No.22 Tahun 2009 tentang lalu lintas dan angkutan jalan
 
-Keterbatasan Sumber Daya
+#### Batasan Keterbatasan Sumber Daya
 * Tim development kecil
 * Perlunya tim untuk maintenance sistem
 * Ketersediaan infrastruktur IT
 * Anggaran terbatas sesuai alokasi pemerintah
 
-Ruang Lingkup
+#### Batasan Ruang Lingkup
 * Keadaan sarana/prasarana
 * Situasi kritis
 * Terbatas di Indonesia
+
+#### Batasan Situasi Kritis
+* Mencakup keadaan yang berkaitan dengan infrastruktur atau RHA
+* Tidak cocok untuk melapor kegiatan kriminal yang sudah terjadi
+* Tidak cocok untuk melapor aktivitas orang mencurigakan
 
 ---
 
