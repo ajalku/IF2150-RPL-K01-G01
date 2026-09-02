@@ -103,19 +103,19 @@ Pengguna langsung dari sistem ini diasumsikan adalah civitas kota dan pemerintah
 
 ### 2.2.2 Batasan
 Regulasi / Hukum
-- UU No.27 Tahun 2022 tentang perlindungan data pribadi
-- UU No.22 Tahun 2009 tentang lalu lintas dan angkutan jalan
+* UU No.27 Tahun 2022 tentang perlindungan data pribadi
+* UU No.22 Tahun 2009 tentang lalu lintas dan angkutan jalan
 
 Keterbatasan Sumber Daya
-- Tim development kecil
-- Perlunya tim untuk maintenance sistem
-- Ketersediaan infrastruktur IT
-- Anggaran terbatas sesuai alokasi pemerintah
+* Tim development kecil
+* Perlunya tim untuk maintenance sistem
+* Ketersediaan infrastruktur IT
+* Anggaran terbatas sesuai alokasi pemerintah
 
 Ruang Lingkup
-- Keadaan sarana/prasarana
-- Situasi kritis
-- Berbatas di Indonesia
+* Keadaan sarana/prasarana
+* Situasi kritis
+* Terbatas di Indonesia
 
 ---
 
@@ -165,7 +165,7 @@ Berikut ini adalah _activity diagram_ perangkat lunak ini mencakup kegiatan yang
 <img alt="Activity Diagram" src="./assets/diagram/diagram-activity-1-revisi-1.jpg" width="70%">
 </p>
 <p align="center">
-<i>Gambar 1. Activity Diagram</i>
+<i>Gambar 3.1 Diagram aktivitas alur pelaporan</i>
 </p>
 
 <br>
