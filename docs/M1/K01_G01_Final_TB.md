@@ -180,7 +180,7 @@ Berikut ini adalah _activity diagram_ perangkat lunak ini mencakup kegiatan yang
 <br>
 
 <p align="center">
-<img alt="Activity Diagram" src="./assets/diagram/diagram-activity-1-revisi-1.jpg" width="70%">
+<img alt="Activity Diagram" src="./assets/diagram/diagram-activity-1-revisi-2.jpg" width="70%">
 </p>
 <p align="center">
 <i>Gambar 3.1 Diagram aktivitas alur pelaporan</i>
@@ -202,3 +202,4 @@ Berikut ini adalah _activity diagram_ perangkat lunak ini mencakup kegiatan yang
 
 ## Lampiran
 - Diagram UML: https://www.drawio.com/, https://staruml.io/
+- Diagram Aktivitas: https://drive.google.com/file/d/1UE7Cg7zwuS4GTihCJLqRHOCB6KCYIKXL/view?usp=sharing
