@@ -37,7 +37,7 @@ perkotaan sebagai tempat bermukim manusia menjadi penting untuk mendapat perhati
 
 Guna membangun kota yang berkelanjutan, fasilitas publik yang aman dan universal menjadi instrumen utama yang tercantum pada Indikator SDG 11.7.1. Namun, pada kenyataannya fasilitas publik justru memiliki banyak catatan yang harus diperbaiki. Mulai dari infrastruktur layanan publik yang terbengkalai, akses jalan yang tidak ramah pejalan kaki, hingga maraknya aksi vandalisme. Berdasarkan kajian Ombudsman Republik Indonesia, faktor dibalik fenomena ini antara lain adalah banyaknya titik kritis dalam proses pembangunan yang luput dari perhatian pengelola atau pemerintah. Oleh karena itu, penting untuk mencari solusi agar publik tidak lagi dirugikan dengan janji pemerintah atas fasilitas publik yang ujung-ujungnya hanya menghamburkan uang rakyat.
 
-Kegagalan ini berkaitan dengan salah satu indikator SDG 11 itu sendiri. Berdasarkan SDG 11 Extended Report 2025 pada Indikator 11.3.2, keterlibatan masyarakat pada perencanaan dan pengelolaan kota masih terbatas. Pada tahun 2024, hanya ada 19% kota yang menunjukkan tingkat partisipasi tinggi dari warganya. Padahal untuk membangun kota yang berkelanjutan, dibutuhkan suatu sistem inklusif yang melibatkan seluruh pihak baik dari masyarakat dari berbagai macam kelas maupun dari pihak pemerintah (UNSD 2025). Maka dari itu, kami merancang sistem digital untuk pengaduan fasilitas publik untuk meningkatkan transparansi pembangunan dan pengelolaan kota.
+Kegagalan ini berkaitan dengan salah satu indikator SDG 11 itu sendiri. Berdasarkan SDG 11 Extended Report 2025 pada Indikator 11.3.2, keterlibatan masyarakat pada perencanaan dan pengelolaan kota masih terbatas. Pada tahun 2024, hanya ada 19% kota yang menunjukkan tingkat partisipasi tinggi dari warganya. Padahal untuk membangun kota yang berkelanjutan, dibutuhkan suatu sistem inklusif yang melibatkan seluruh pihak baik dari masyarakat dari berbagai macam kelas maupun dari pihak pemerintah (United Nations Statistics Division, 2025). Maka dari itu, kami merancang sistem digital untuk pengaduan fasilitas publik untuk meningkatkan transparansi pembangunan dan pengelolaan kota.
 
 
 ## 1.2 Analisis Kondisi Saat Ini
@@ -165,8 +165,14 @@ Berikut ini adalah _activity diagram_ perangkat lunak ini mencakup kegiatan yang
 <br>
 
 # Referensi
+- Ombudsman Republik Indonesia. (2020). _Masalah pedestrian sebagai pelayanan barang publik._ Ombudsman RI. https://ombudsman.go.id
+
 - Putri, P. A. (2025). _Pengaruh clicktivism terhadap agenda setting: Studi kasus perbaikan jalan di Provinsi Lampung tahun 2023_ (Skripsi Sarjana, Universitas Gadjah Mada). https://etd.repository.ugm.ac.id/penelitian/detail/258848
 
 - Schiff, K. J. (2023). Does collective citizen input impact government service provision? Evidence from SeeClickFix requests. _Public Administration Review_, 85(1), 32–45. https://doi.org/10.1111/puar.13747 
+
+- Sobarna, C. (2020). Bandung kota untuk semua: Harapan dan tantangan yang selaras dengan Sustainable Development Goals (SDGs). _Metahumaniora_, 10(3), 295–309. https://doi.org
+
+- United Nations Statistics Division. (2025). _The Sustainable Development Goals extended report 2025: Goal 11 sustainable cities and communities._ United Nations Department of Economic and Social Affairs.
 
 - Diagram UML: https://www.drawio.com/, https://staruml.io/
