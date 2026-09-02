@@ -189,7 +189,7 @@ Berikut ini adalah _activity diagram_ perangkat lunak ini mencakup kegiatan yang
 <br>
 
 # Referensi
-##Daftar Pustaka
+## Daftar Pustaka
 - Ombudsman Republik Indonesia. (2020). _Masalah pedestrian sebagai pelayanan barang publik._ Ombudsman RI. https://ombudsman.go.id
 
 - Putri, P. A. (2025). _Pengaruh clicktivism terhadap agenda setting: Studi kasus perbaikan jalan di Provinsi Lampung tahun 2023_ (Skripsi Sarjana, Universitas Gadjah Mada). https://etd.repository.ugm.ac.id/penelitian/detail/258848
@@ -200,5 +200,5 @@ Berikut ini adalah _activity diagram_ perangkat lunak ini mencakup kegiatan yang
 
 - United Nations Statistics Division. (2025). _The Sustainable Development Goals extended report 2025: Goal 11 sustainable cities and communities._ United Nations Department of Economic and Social Affairs.
 
-##Lampiran
+## Lampiran
 - Diagram UML: https://www.drawio.com/, https://staruml.io/
