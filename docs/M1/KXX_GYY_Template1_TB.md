@@ -101,9 +101,11 @@ Pengguna langsung dari sistem ini diasumsikan adalah civitas kota dan pemerintah
 Regulasi / Hukum
 - UU No.27 Tahun 2022 tentang perlindungan data pribadi
 - UU No.22 Tahun 2009 tentang lalu lintas dan angkutan jalan
+
 Keterbatasan Sumber Daya
 - Tim development kecil
 - Ketersediaan infrastruktur IT
+
 Ruang Lingkup
 - Keadaan sarana/prasarana
 - Situasi kritis
