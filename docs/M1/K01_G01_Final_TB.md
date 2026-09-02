@@ -43,7 +43,7 @@ Kegagalan ini berkaitan dengan salah satu indikator SDG 11 itu sendiri. Berdasar
 ## 1.2 Analisis Kondisi Saat Ini
 Beberapa solusi terhadap masalah tersebut telah dilakukan di Indonesia. Berikut adalah beberapa contohnya beserta masing-masing kekurangannya.
 ### A. Media Sosial
-Salah satu hal sederhana yang dilakukan masyarakat saat ini adalah melakukan posting di berbagai media sosial. Contoh nyata yang berkaitan adalah sebuah konten yang menyuarakan keresahan jalanan di Lampung yang viral sehingga pengerjaan perbaikan jalan tersebut dipercepat. Menurut Pratiwi (2025), _clicktivism_, yaitu pemanfaatan fitur _like, comment, dan share_, mampu menciptakan tekanan publik yang signifikan terhadap pemerintah. Sehingga, aduan menggunakan media sosial dinilai cukup berdampak. <br><br>
+Salah satu hal sederhana yang dilakukan masyarakat saat ini adalah melakukan posting di berbagai media sosial. Contoh nyata yang berkaitan adalah sebuah konten yang menyuarakan keresahan jalanan di Lampung yang viral sehingga pengerjaan perbaikan jalan tersebut dipercepat. Menurut Putri (2025), _clicktivism_, yaitu pemanfaatan fitur _like, comment, dan share_, mampu menciptakan tekanan publik yang signifikan terhadap pemerintah. Sehingga, aduan menggunakan media sosial dinilai cukup berdampak. <br><br>
 Kekurangan dari solusi ini adalah identitas dan validitas pelapor tidak selalu terverifikasi. Dengan memanfaatkan algoritma, seseorang dapat mengakali agar kontennya viral menggunakan beberapa akun palsu. Akibatnya, popularitas suatu aduan belum tentu merepresentasikan urgensi. Selain itu, media sosial adalah ruang yang terlalu luas untuk melakukan keluhan. Sehingga, pemerintah harus memilah berbagai konten terlebih dahulu untuk menemukan keluhan masyarakat yang membutuhkan tindak lanjut. 
 
 ### B. SP4N-LAPOR! 
@@ -79,7 +79,7 @@ Celah sistem pada situs SP4N-Lapor! adalah belum discovery-based melainkan hanya
 </table>
 
 Sapawarga adalah salah satu aplikasi resmi pemerintah Provinsi Jawa Barat yang mewadahi aspirasi berbagai sektor yang terintegrasi. Salah satu fitur yang membuat aplikasi ini cukup menjawab permasalahan adalah Aduan Warga. Fitur ini memampukan warga Jawa Barat untuk mengadukan masalah-masalah yang dihadapi ke pemerintah. Seluruh aduan warga dapat terlihat, sehingga pengguna dapat melihat aduan apa saja yang sudah diunggah. Pengguna juga dapat melihat status aduan, seperti menunggu verifikasi, terverifikasi, gagal diverifikasi, dialihkan ke Hotline Jabar, ditindaklanjuti, ditinjau ulang, dikoordinasikan, dialihkan ke SP4N Lapor, ditolak, pengerjaan ditunda, dan selesai. Hingga saat ini, sudah ada 12.8 ribu aduan yang masuk dan masih tetap aktif.<br><br> 
-Berbeda dengan solusi yang pertama, aplikasi Sapawarga tidak dapat dilihat seberapa populer aduan yang dibuat. Walaupun ada fitur like (_upvote_), namun pengguna tidak dapat mengetahui berapa orang yang melakukan like. Pengguna lain juga tidak bisa menanggapi aduan tersebut, seperti membuat keluhan yang berkaitan hingga memvalidasi aduan tersebut. Dari celah tersebut, dapat ditarik masalah utamanya adalah aplikasi ini tidak mengizinkan warga untuk berkolaborasi dalam permintaan layanan. Padahal Menurut Schiff (2025), melalui studi yang dilakukan di Oakland dan San Francisco, ditemukan bahwa permintaan dengan komentar dan follow diselesaikan 5 hari lebih cepat rata-rata daripada permintaan tanpa kolaborasi antar warga. 
+Berbeda dengan solusi yang pertama, aplikasi Sapawarga tidak dapat dilihat seberapa populer aduan yang dibuat. Walaupun ada fitur like (_upvote_), namun pengguna tidak dapat mengetahui berapa orang yang melakukan like. Pengguna lain juga tidak bisa menanggapi aduan tersebut, seperti membuat keluhan yang berkaitan hingga memvalidasi aduan tersebut. Dari celah tersebut, dapat ditarik masalah utamanya adalah aplikasi ini tidak mengizinkan warga untuk berkolaborasi dalam permintaan layanan. Padahal Menurut Schiff (2023), melalui studi yang dilakukan di Oakland dan San Francisco, ditemukan bahwa permintaan dengan komentar dan follow diselesaikan 5 hari lebih cepat rata-rata daripada permintaan tanpa kolaborasi antar warga. 
 
 ---
 
@@ -189,6 +189,7 @@ Berikut ini adalah _activity diagram_ perangkat lunak ini mencakup kegiatan yang
 <br>
 
 # Referensi
+##Daftar Pustaka
 - Ombudsman Republik Indonesia. (2020). _Masalah pedestrian sebagai pelayanan barang publik._ Ombudsman RI. https://ombudsman.go.id
 
 - Putri, P. A. (2025). _Pengaruh clicktivism terhadap agenda setting: Studi kasus perbaikan jalan di Provinsi Lampung tahun 2023_ (Skripsi Sarjana, Universitas Gadjah Mada). https://etd.repository.ugm.ac.id/penelitian/detail/258848
@@ -199,4 +200,5 @@ Berikut ini adalah _activity diagram_ perangkat lunak ini mencakup kegiatan yang
 
 - United Nations Statistics Division. (2025). _The Sustainable Development Goals extended report 2025: Goal 11 sustainable cities and communities._ United Nations Department of Economic and Social Affairs.
 
+##Lampiran
 - Diagram UML: https://www.drawio.com/, https://staruml.io/
