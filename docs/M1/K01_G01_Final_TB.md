@@ -144,8 +144,8 @@ Pada sistem ini terdapat dua aktor yang berinteraksi langsung dengan perangkat l
 
 | Aktor | Deskripsi |
 | :--- | :--- |
-| *Pengguna* | * **Peran:** Masyarakat yang menggunakan sistem untuk memperoleh informasi dan melaporkan permasalahan di lingkungan sekitar.<br> * **Aktivitas:** Dapat melakukan pelaporan melalui form dengan mengisi detail keadaan, dapat menjelajahi peta dan melihat laporan yang telah dibuat oleh pengguna lain, serta melakukan review terhadap laporan pengguna lain dan memberikan reaksi berupa upvote. <br> * **Karakteristik:** Membutuhkan proses pelaporan yang sederhana dan akses informasi yang mudah mengenai permasalahan di lingkungan. |
-| *Admin* | * **Peran:** Pihak yang bertanggung jawab untuk memantau dan mengelola laporan yang dibuat oleh pengguna.<br> * **Aktivitas:** Dapat memantau laporan yang telah dibuat oleh pengguna beserta detailnya, juga memperbarui status laporan sesuai dengan kondisi terkini.<br> * **Karakteristik:** Membutuhkan informasi laporan yang jelas agar dapat melakukan pemantauan dan memperbarui status laporan secara tepat. |
+| *Pengguna* | - **Peran:** Masyarakat yang menggunakan sistem untuk memperoleh informasi dan melaporkan permasalahan di lingkungan sekitar.<br> - **Aktivitas:** Dapat melakukan pelaporan melalui form dengan mengisi detail keadaan, dapat menjelajahi peta dan melihat laporan yang telah dibuat oleh pengguna lain, serta melakukan review terhadap laporan pengguna lain dan memberikan reaksi berupa upvote. <br> - **Karakteristik:** Membutuhkan proses pelaporan yang sederhana dan akses informasi yang mudah mengenai permasalahan di lingkungan. |
+| *Admin* | - **Peran:** Pihak yang bertanggung jawab untuk memantau dan mengelola laporan yang dibuat oleh pengguna.<br> - **Aktivitas:** Dapat memantau laporan yang telah dibuat oleh pengguna beserta detailnya, juga memperbarui status laporan sesuai dengan kondisi terkini.<br> - **Karakteristik:** Membutuhkan informasi laporan yang jelas agar dapat melakukan pemantauan dan memperbarui status laporan secara tepat. |
 
 
 ## 3.2 Kebutuhan Pengguna Awal
