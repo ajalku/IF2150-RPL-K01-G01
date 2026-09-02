@@ -89,7 +89,7 @@ Berbeda dengan solusi yang pertama, aplikasi Sapawarga tidak dapat dilihat seber
 
 RAWAT (Ruang Aspirasi Warga dan Aduan Terpadu) adalah suatu sistem untuk melaporkan kerusakan sarana/prasarana atau suatu kondisi kritis. Kondisi kritis mencakupi hal-hal yang bersifat mendesak dan mengganggu masyarakat sekitar (contohnya pohon tumbang/ada hewan liar seperti ular). Sistem ini digunakan oleh pemerintah lokal untuk mengidentifikasikan daerah yang perlu perbaikan berdasarkan urgensi dan keinginan masyarakat. 
 
-Fungsi utama dari sistem ini adalah sistem pelaporannya. Pengguna mengisi sebuah form berisi lokasi (otomatis terisi, namun dapat dipilih manual), nama masalah, tag kategori, tingkat permasalahan (sangat urgent, urgent, tidak urgent) dan beberapa yang opsional seperti foto dan deskripsi singkat (max 500 kata). Untuk tag kategori laporan, user dapat memilih dari tag yang sering digunakan ataupun membuat tag baru. Sistem tag bertujuan untuk mengkategori berbagai situasi kritis agar isu utama terlihat jelas dalam laporan. Laporan tersebut akan disimpan dan ditampilkan di suatu halaman yang dapat diurutkan berdasarkan urgensi, tag, waktu posting, atau jumlah upvote. Setiap laporan terdapat fitur upvote dan komentar agar masyarakat dapat lebih menekankan suatu isu. Untuk platform, dipilih sebagai web app sehingga dapat digunakan secara universal asalkan mempunyai browser dan koneksi internet.
+Fungsi utama dari sistem ini adalah sistem pelaporannya. Pengguna mengisi sebuah form berisi lokasi, nama masalah, tag kategori, tingkat urgensi dan beberapa yang opsional seperti foto dan deskripsi singkat. Laporan tersebut akan disimpan dan ditampilkan di suatu halaman yang dapat diurutkan berdasarkan urgensi, tag, waktu posting, atau jumlah upvote. Setiap laporan terdapat fitur upvote dan komentar agar masyarakat dapat lebih menekankan suatu isu. Untuk platform, dipilih sebagai web app sehingga dapat digunakan secara universal asalkan mempunyai browser dan koneksi internet.
 
 Inovasi sistem ini dibandingkan dengan sistem yang sudah ada bisa dilihat dari hal-hal tersebut:
 1. Sistem ini dapat mengkategorikan laporan berdasarkan urgensi.
@@ -99,9 +99,23 @@ Inovasi sistem ini dibandingkan dengan sistem yang sudah ada bisa dilihat dari h
 ## 2.2 Asumsi dan Batasan
 
 ### 2.2.1 Asumsi
-Pengguna langsung dari sistem ini diasumsikan adalah civitas kota dan pemerintahnya. Untuk mengakses sistem ini, diasumsikan pengguna mempunyai gawai dengan koneksi internet dan web browser. Selain itu, dapat diasumsikan perlunya pemaparan media terkait dengan sistem ini agar masyarakat mengetahuinya dan sistem pelaporan dapat berjalan dengan baik.
+#### Pengguna Langsung
+* Pengguna adalah civitas kota dan pemerintahnya.
+* Pengguna mempunyai gawai dengan koneksi internet dan web browser
+* Pengguna diasumsikan tidak saling bekerja sama untuk mengelabui sistem (contohnya, laporan tidak jujur dan mengupvotenya)
+* Pengguna diasumsikan akan menyanggah laporan yang tidak sesuai menggunakan fitur komentar
+* Pengguna diasumsikan berdialetika dengan baik dan jelas dalam menulis deskripsi agar pengelola dapat memahami laporan
 
-Pengguna diasumsikan tidak saling bekerja sama untuk mengelabui sistem dengan cara mengunggah laporan yang tidak jujur kemudian saling meng-_upvote_-nya. Apabila ada laporan yang tidak jujur, pengguna lain diasumsikan akan berkomentar untuk menyanggah laporan tersebut kemudian tidak meng-_upvote_-nya. Pengguna juga diasumsikan berdialektika dengan baik dan jelas dalam menulis deskripsi sehingga pengelola dapat memahami apa yang pengguna maksud dan apa yang perlu diperbaiki.
+#### Pengguna pengelola
+* Pengelola memiliki sebuah tim untuk menangani isu yang dilaporkan
+* Pengelola tidak menyalahgunakan sistem untuk alasan pribadi atau untuk membuat kerusuhan di masyarakat
+* Pengelola tidak menyebarluaskan data pengguna sistem
+
+#### Operasional Sistem
+* Terdapat pemaparan media terkait dengan sistem ini agar masyarakat mengetahuinya dan sistem pelaporan dapat berjalan dengan baik.
+* Diasumsikan terdapat infrastruktur IT yang dapat menampung sistem
+* Terdapat tim untuk maintenance sistem
+* Terdapat anggaran untuk develop dan maintain sistem
 
 ### 2.2.2 Batasan
 #### Batasan Regulasi atau Hukum
@@ -110,14 +124,10 @@ Pengguna diasumsikan tidak saling bekerja sama untuk mengelabui sistem dengan ca
 
 #### Batasan Keterbatasan Sumber Daya
 * Tim development kecil
-* Perlunya tim untuk maintenance sistem
-* Ketersediaan infrastruktur IT
-* Anggaran terbatas sesuai alokasi pemerintah
 
 #### Batasan Ruang Lingkup
-* Keadaan sarana/prasarana
-* Situasi kritis
-* Terbatas di Indonesia
+* Sistem hanya berfungsi di dalam kota yang sudah menerapkan sistem
+* Sistem ini tidak dapat menyelesaikan isu yang dilaporkan secara langsung
 
 #### Batasan Situasi Kritis
 * Mencakup keadaan yang berkaitan dengan infrastruktur atau RHA tinggi
