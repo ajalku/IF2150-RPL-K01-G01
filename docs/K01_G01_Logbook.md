@@ -54,5 +54,7 @@
 | Tanggal | Nama Anggota | Deskripsi Pekerjaan | Durasi (Jam) | Status | Kendala / *Blocker* | 
 | :--- | :--- | :--- | :--- | :--- | :--- | 
 | *06-09-2026* | *Ravinka Fathia Adinegara* | *Menyusun 1.1 menyesuaikan dengan milestone 1* | *2* | *Done* | *-* |
+| *06-09-2026* | *Samantha Michelle S. Silaban* | *Menyusun bab 2.5* | *1.5* | *Done* | *-* |
+
 
 <!-- Gunakan format penulisan Logbook yang sama untuk setiap Milestone dan pastikan pembuatan Daftar Isi juga sudah sesuai sebelum Logbook dikumpulkan. -->

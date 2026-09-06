@@ -147,8 +147,6 @@ Untuk setiap kebutuhan yang telah diidentifikasi sebagai "didukung oleh perangka
 
 ## 2.5 Kebutuhan Non-Fungsional (KNF)
 
-Uraikan dengan ringkas Kebutuhan Non-Fungsional dalam tabel sebagai berikut. Isilah kolom kebutuhan dengan kalimat yang jelas, spesifik, dan terukur (kelak dapat diuji untuk dipenuhi). Kolom ID KNF adalah nomor Kebutuhan Non-Fungsional yang harus ditelusuri pada saat pengujian. Hubungkan ID Kebutuhan Non-Fungsional dengan ID Pemetaan Kebutuhan Umum dari sistem.
-
 | ID KNF | ID Kebutuhan | Parameter | Deskripsi Kebutuhan |
 | :--- | :--- | :--- | :--- |
 | *KNF01* | *R02* | *Security* | *Ketika pengguna melakukan login, sistem hanya boleh memberikan akses kepada User dengan kredensial yang sudah terverifikasi.* |
