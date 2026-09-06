@@ -7,25 +7,23 @@ REQUIREMENT GATHERING
 </h1>
 <br>
 
-## *Nama Perangkat Lunak*
+## *RAWAT (Ruang Aspirasi Warga dan Aduan Terpadu)*
 
-### Untuk: *[Nama Asisten]*
+### Untuk: *Agatha Tatianingseto*
 
 Dipersiapkan oleh:
-
 | Informasi | Keterangan |
 | --- | --- |
-| Kelas | *\[Kelas\]* |
-| Kelompok | *\[Nomor Kelompok\]* |
+| Kelas | *K01* |
+| Kelompok | *01*  |
 
 | NIM | Nama |
-| --- | --- |
-| *\[NIM 1\]* | *\[Nama Anggota 1\]* |
-| *\[NIM 2\]* | *\[Nama Anggota 2\]* |
-| *\[NIM 3\]* | *\[Nama Anggota 3\]* |
-| *\[NIM 4\]* | *\[Nama Anggota 4\]* |
-| *\[NIM 5\]* | *\[Nama Anggota 5\]* |
-
+|---|---|
+| *13525103* | *Ravinka Fathia Adinegara* |
+| *13525013* | *Samantha Michelle S Silaban* |
+| *13525055* | *Syakira Azzahra Rachmania* |
+| *13525043* | *Aufa Tatsbita Zahra* |
+| *13525046* | *Ghiffari Arya Adhitya* |
 ---
 
 ## Daftar Perubahan
