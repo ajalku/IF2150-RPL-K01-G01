@@ -151,22 +151,15 @@ Uraikan dengan ringkas Kebutuhan Non-Fungsional dalam tabel sebagai berikut. Isi
 
 | ID KNF | ID Kebutuhan | Parameter | Deskripsi Kebutuhan |
 | :--- | :--- | :--- | :--- |
-| *KNF01* | *R03* | *Reliability* | *Proses transaksi pembayaran harus memenuhi prinsip ACID untuk mencegah terjadinya data tersangkut (lost update) apabila terjadi kegagalan jaringan di tengah proses.* |
-| *KNF02* | *R04* | *Security* | *Sistem harus mengenkripsi PIN atau password pengguna menggunakan algoritma SHA-256 sebelum data dikirimkan ke server, serta tidak menyimpannya dalam bentuk plain-text di database.* |
-| ... | ... | ... | ... |
+| *KNF01* | *R02* | *Security* | *Ketika pengguna melakukan login, sistem hanya boleh memberikan akses kepada User dengan kredensial yang sudah terverifikasi.* |
+| *KNF02* | *R04* | *Functional Stability* |*Ketika User mengakses peta, informasi yang disediakan sistem harus konsisten dengan visual dan tata letak yang jelas.* |
+| *KNF03* | *R06* | *Interaction Capability* |*1. Ketika User ingin melihat detail laporan, alur dari home hingga mencapai halaman detail laporan dapat mudah dimengerti* <br><br> *2.Ketika User mengakses detail laporan, sistem harus menyajikan label status kedaruratan yang mudah dibedakan satu dengan yang lain*|
+| *KNF04* | *R10* | *Functional Stability* |*Ketika jumlah upvote suatu laporan berubah, User dapat melihat trending melalui jumlah upvote dan urutan laporan berdasarkan data upvote terbaru.* |
+| *KNF05* | *R10* | *Interaction Capability* |*Ketika User menggunakan fitur interaksi pada suatu laporan, User harus tahu tindakan interaksi sudah berhasil dilakukan atau tidak* |
+| *KNF06* | *R11* | *Interaction Capability* |*Ketika User mengisi laporan, kuesioner yang ditanyakan sistem harus mudah dimengerti dan memiliki instruksi format file yang spesifik (contoh: pdf atau jpg), serta menjawab kebutuhan informasi User pihak lain (admin)* |
+| *KNF07* | *R13* | *Functional Stability* |*Setelah User (masyarakat) mengirim laporan, sistem harus menampilkan data yang sama dengan data terakhir yang berhasil disimpan ketika diakses pihak User lain (admin)* |
+| *KNF07* | *R16* | *Security* |*Ketika admin mengakses data laporan, sistem hanya boleh menampilkan data yang sesuai dengan hak masing-masing akun.* |
 
-Silakan pilih yang relevan. Tidak perlu semua parameter menjadi kebutuhan non-fungsional. Berikut merupakan penjelasan dari setiap parameter. **Parameter dari Kebutuhan Non-Fungsional tidak terbatas hanya di bawah ini** karena hanya merupakan panduan sehingga dapat ditambah KNF yang lain, misalnya *constraint* dari sistem.
-
-| Parameter | Penjelasan |
-| :--- | :--- |
-| *Availability* | Ketersediaan aplikasi, misalnya harus terus-menerus beroperasi 7 hari per minggu, 24 jam per hari tanpa gagal. |
-| *Reliability* | Keandalan, misalnya tidak pernah boleh gagal (atau kegagalan yang ditolerir adalah …%) sehingga harus dipikirkan *fault tolerant architecture*. Biasanya hanya perlu untuk *critical application* yang jika gagal akan berakibat fatal. |
-| *Ergonomy* | Kenyamanan pakai bagi pengguna. |
-| *Portability* | Kemudahan untuk dibawa dan dioperasikan ke mesin/sistem operasi/*platform* yang lain. |
-| *Memory* | Jika perhitungan kapasitas memori internal kritis (misalnya untuk P/L yang harus dijadikan *chips* dan ukurannya harus kecil). |
-| *Response time* | Batasan waktu yang harus dipenuhi. Sangat penting untuk aplikasi *real time*. Contoh: "Aplikasi harus mampu menampilkan hasil dalam 4 detik", atau "ATM harus menarik kembali kartu yang tidak diambil dalam waktu 3 menit". |
-| *Safety* | Yang menyangkut keselamatan manusia, misalnya untuk P/L yang dipakai pada sistem kontrol di pabrik. |
-| *Security* | Aspek keamanan yang harus dipenuhi. |
 
 <br>
 
