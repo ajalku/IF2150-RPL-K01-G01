@@ -65,9 +65,13 @@ Definisikan apa yang ingin dicapai oleh pengguna saat menggunakan sistem ini dal
 
 | ID | Aktor | Kebutuhan / Aktivitas | Tujuan / Nilai |
 | :--- | :--- | :--- | :--- |
-| US-01 | *Kasir* | *Memindai barcode barang* | *Proses pembayaran berjalan cepat dan akurat* |
-| US-02 | *[Nama Aktor]* | *[Kebutuhan pengguna]* | *[Tujuan yang dicapai pengguna]* |
-| ... | ... | ... | ... |
+| US-01 | *Pengguna* |  *Mengakses sistem melalui proses registrasi atau login* | *Dapat menggunakan fitur-fitur sistem sesuai dengan perannya* |
+| US-02 | *Pengguna* | *Menjelajahi peta dan informasi laporan yang tersedia* | *Dapat mengetahui permasalahan yang telah dilaporkan beserta lokasi dan detailnya* |
+| US-03 | *Pengguna* | *Memberikan upvote pada laporan* | *Dapat menunjukkan bahwa suatu permasalahan dianggap penting atau relevan* |
+| US-04 | *Pengguna* | *Membuat laporan permasalahan baru dengan memasukkan informasi yang diperlukan* | *Dapat menyampaikan permasalahan di lingkungan agar tercatat dan dapat ditindaklanjuti* |
+| US-05 | *Admin* |  *Mengakses sistem melalui proses login* | *Dapat menggunakan fitur pengelolaan laporan sesuai dengan perannya* |
+| US-06 | *Admin* |  *Memantau laporan yang tersedia beserta detailnya* | *Dapat mengetahui dan memahami permasalahan yang perlu ditindaklanjuti* |
+| US-07 | *Admin* |  *Memperbarui status laporan* | *Dapat mencatat perkembangan penanganan permasalahan dan memberikan informasi terbaru kepada pengguna* |
 
 ## 2.2 Deskripsi Aktivitas
 
@@ -75,9 +79,13 @@ Buatlah daftar seluruh aktivitas yang terdapat dalam sistem solusi, lengkap deng
 
 | ID | Aktivitas | Penjelasan | ID User Story |
 | :--- | :--- | :--- | :--- |
-| A01 | *Melakukan Pembayaran* | *Pelanggan melakukan pembayaran secara digital.* | *US-01* |
-| A02 | *Menerima Pembayaran* | *Toko menerima pembayaran secara real-time.* | *US-02* |
-| ... | ... | ... | ... |
+| A01 | *Mengakses sistem* | *Admin maupun pengguna memulai proses mengakses sistem, yakni dengan melakukan login atau registrasi bagi pengguna yang belum mendaftar* | *US-01 dan US-05* |
+| A02 | *Menjelajahi peta* | *Sistem akan menampilkan peta lokasi yang dipilih beserta informasi terkait laporan yang ada di daerah tersebut* | *US-02*|
+| A03 | *Melihat informasi laporan* | *Sistem akan menampilkan informasi dan data terkait laporan yang ada, seperti alamat/lokasi, nama masalah, tag kategori, tingkat permasalahan, beserta foto dan deskripsi (jika ada)* | *US-02*|
+| A04 | *Memberikan upvote* | *Pengguna dapat memberikan upvote pada masalah yang dianggap urgent atau relevan* | *US-03*|
+| A05 | *Membuat laporan baru* | *Pengguna dapat membuat laporan baru dan memasukkan data terkait berupa lokasi (bisa langsung pilih di peta), nama masalah, tag kategori, tingkat permasalahan, serta foto dan deskripsi (opsional)* | *US-04*|
+| A06 | *Memantau laporan* | *Admin dapat melakukan pemantauan terhadap laporan yang masuk dan sistem bisa  menampilkannya berdasarkan kategori, lokasi, ataupun tingkat permasalahan/urgensi, sehingga memudahkan admin dalam melakukan proses pemantauan ini* | *US-06*|
+| A07 | *Memperbarui status  laporan* | *Admin dapat memperbarui status laporan sesuai dengan kondisi terkini dan sistem akan menyimpan informasi tersebut* | *US-07*|
 
 ## 2.3 Pemetaan Kebutuhan
 
@@ -91,11 +99,22 @@ Lengkapi juga dengan penjelasannya dan apakah keperluan tersebut perlu didukung 
 
 | ID Kebutuhan | ID Aktivitas | Jenis Kebutuhan | Deskripsi Kebutuhan | P/L |
 | :--- | :--- | :--- | :--- | :--- |
-| *R01* | *A01* | *User* | *Pengguna dapat memilih metode pembayaran dan melakukan pembayaran secara digital.* | *Ya* |
-| *R02* | *A01* | *Business* | *Transaksi digital sesuai dengan ketentuan UU ITE yang berlaku.* | *Tidak* |
-| *R03* | *A01* | *System* | *Sistem harus mengintegrasikan API Payment Gateway dengan prinsip ACID (Atomicity, Consistency, Isolation, Durability), jika terjadi kegagalan jaringan saat saldo terpotong, sistem harus secara otomatis membatalkan transaksi atau meneruskan dana (reliable).* | *Ya* |
-| *R04* | *A01* | *System* | *Kata sandi (password) atau PIN pengguna saat otorisasi pembayaran harus di-hash menggunakan algoritma SHA-256 dan tidak disimpan dalam bentuk plain-text.* | *Ya* |
-| *R05* | *A02* | *Business* | *Toko harus memiliki rekening bank aktif dan valid untuk menerima pencairan dana dari sistem.* | *Tidak* |
+| *R01* | *A01* | *User* | *Pengguna maupun admin dapat melakukan proses login atau registrasi (bagi pengguna baru).* | *Ya* |
+| *R02* | *A01* | *System* | *Sistem harus memeriksa kredensial user sebelum memberikan akses akun* | *Tidak* |
+| *R03* | *A02* | *User* | *Peta interaktif yang menampilkan informasi terkait laporan yang ada* | *Tidak* |
+| *R04* | *A02* | *System* | *Sistem dapat mengintegrasikan map* | *Ya* |
+| *R05* | *A03* | *User* | *Pengguna dapat melihat informasi mengenai laporan seperti alamat/lokasi, nama masalah, tag kategori, tingkat permasalahan, beserta foto dan deskripsi (jika ada)* | *Ya* |
+| *R06* | *A03* | *System* | *Sistem memperlihatkan status kedaruratan suatu laporan* | *Ya* |
+| *R07* | *A03* | *System* | *Sistem dapat menyajikan tampilan interaktif dan mudah dipahami untuk akses laporan* | *Ya* |
+| *R08* | *A03* | *Business* | *Informasi yang ada harus sesuai UU ITE* | *Ya* |
+| *R09* | *A04* | *User* | *Pengguna dapat melakukan upvote untuk suatu laporan yang dirasa urgent atau relevan* | *Ya* |
+| *R10* | *A04* | *System* | *Sistem memiliki algoritma sehingga masalah yang punya banyak poin upvote akan muncul di atas (semacam trending gitu)* | *Ya* |
+| *R11* | *A05* | *User* | *Pengguna dapat membuat laporan baru dan memasukkan data terkait laporan tersebut* | *Ya* |
+| *R12* | *A06* | *User* | *Admin dapat mengakses informasi mengenai laporan kemudian memprosesnya* | *Ya* |
+| *R13* | *A06* | *System* | *Sistem menyediakan proses sinkronisasi sesuai status laporan* | *Ya* |
+| *R14* | *A06* | *Business* | *Hak akses data hanya untuk akun pihak yang berkepentingan saja* | *Ya* |
+| *R15* | *A07* | *User* | *Admin dapat memperbarui status penanganan laporan* | *Ya* |
+| *R16* | *A07* | *System* | *Sistem menyediakan proses sinkronisasi sesuai status laporan* | *Ya* |
 | ... | ... | ... | ... | ... |
 
 ## 2.4 Kebutuhan Fungsional (KF)
