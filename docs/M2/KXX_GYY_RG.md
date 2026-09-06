@@ -42,9 +42,27 @@ Dipersiapkan oleh:
 
 ## 1.1 Deskripsi Umum Sistem
 
-Abstraksikan sistem solusi menurut sudut pandang pengguna yang telah ditentukan. Jelaskan secara ringkas mengenai apa saja ekspektasi pengguna terhadap sistem yang akan dikembangkan, alur kerja sistem yang diinginkan, serta harapan dari penerapan solusi dalam bentuk narasi.
+<!-- Abstraksikan sistem solusi menurut sudut pandang pengguna yang telah ditentukan. Jelaskan secara ringkas mengenai apa saja ekspektasi pengguna terhadap sistem yang akan dikembangkan, alur kerja sistem yang diinginkan, serta harapan dari penerapan solusi dalam bentuk narasi.
 
-> *Sistem adalah kesatuan utuh antara perangkat lunak, pengguna, perangkat keras, dan proses bisnis (urutan langkah logis yang dilakukan di dunia nyata untuk menyelesaikan suatu pekerjaan atau mencapai tujuan tertentu).*
+> *Sistem adalah kesatuan utuh antara perangkat lunak, pengguna, perangkat keras, dan proses bisnis (urutan langkah logis yang dilakukan di dunia nyata untuk menyelesaikan suatu pekerjaan atau mencapai tujuan tertentu).* -->
+
+Secara umum, sistem dengan nama RAWAT (Ruang Aspirasi Warga dan Aduan Terpadu adalah sebuah sistem yang memungkinkan pengubungan lebih lanjut antara para pengguna fasilitas umum seperti penduduk kota dan pengelolanya seperti pemerintah agar keluhan dan masalah terkait kerusakan fasilitas umum dapat ditangani dan pengelola dapat lebih mudah mengawasi fasilitas umum apa saja yang perlu perhatian lebih. Dalam sistem ini, pengguna dapat melapor hal-hal yang terasa mengganggu atau rusak di lingkungan atau di tempat publik. Pemerintah lokal dapat menggunakan sistem ini untuk mengawasi kondisi lapangan langsung dari warga yang menggunakan fasilitas yang tersedia.
+
+Fungsi utama dari RAWAT adalah untuk melaporkan kondisi tertentu yang menyangkut fasilitas umum atau hal yang berkaitan dengan ruang masyarakat yang dinilai mengganggu banyak pengguna fasilitas, seperti pohon tumbang atau banyaknya ular yang berkeliaran. Dalam sistem ini, terdapat sebuah seksi yang memungkinkan pengguna untuk menuliskan lokasi, nama kerusakan, jenis kerusakan, tingkat urgensi, serta hal-hal yang bersifat opsional seperti foto dan deskripsi singkat. Laporan tersebut akan disimpan dan ditampilkan di suatu halaman yang dapat diurutkan berdasarkan urgensi, tag, waktu posting, atau jumlah upvote. Setiap laporan terdapat fitur upvote dan komentar agar masyarakat dapat lebih menekankan suatu isu. Untuk platform, dipilih sebagai web app sehingga dapat digunakan secara universal asalkan mempunyai browser dan koneksi internet.
+
+Inovasi sistem ini dibandingkan dengan sistem yang sudah ada bisa dilihat dari hal-hal berikut.
+* Sistem ini dapat mengkategorikan laporan berdasarkan urgensi.
+* Sistem ini tidak perlu menginstall aplikasi dan dapat diakses melalui browser.
+* Sistem ini mempunyai fitur komentar dan upvote untuk setiap postingannya.
+
+Seperti yang telah disebutkan, fitur utama dari aplikasi adalah pelaporan fasilitas umum yang rusak. Berikut ini alur lengkap dari sistem kerja RAWAT.
+1. Pengguna membuka peta dan memilih lokasi fasilitas atau ruang umum yang ingin dilaporkan.
+2. Pengguna mengisi formulir yang berisi nama, tingkat penggunaan, jenis yang dapat ditulis sendiri atau memilih yang sudah ada, serta menambah foto dan deskripsi apabila dibutuhkan.
+3. Pengguna menekan tombol simpan.
+4. Sistem menyimpan laporan tersebut dan menampilkannya bersama laporan lain.
+5. Admin mengecek laporan dan menangani laporan.
+6. Admin menandai laporan tersebut sebagai selesai setelah ditangani.
+7. Sistem menandai laporan tersebut sebagai selesai dan tidak menampilkannya di laman utama lagi.
 
 ## 1.2 Deskripsi Pengguna Perangkat Lunak
 
