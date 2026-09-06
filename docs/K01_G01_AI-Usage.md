@@ -7,7 +7,7 @@
 | Kelas | *K01* |
 | Nomor Kelompok | *01* |
 | Nama Kelompok | *berjiwa ksatria* |
-| Nama Perangkat Lunak | *[Nama P/L]* |
+| Nama Perangkat Lunak | *RAWAT (Ruang Aspirasi Warga dan Aduan Terpadu* |
 
 **Anggota Kelompok:**
 
