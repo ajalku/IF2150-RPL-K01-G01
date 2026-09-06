@@ -44,7 +44,8 @@
 | | | | | | | |
 
 **Catatan/Evaluasi Milestone 1:**
-* *Terdapat beberapa hal yang diperbaiki saat asistensi seperti asumsi dan batasan, deskripsi perangkat lunak, diagram, dan daftar pustaka. Lebih baik percakapan dengan asisten _full_ di-_record_ agar sama sekali tidak ada hal yang tertinggal.*
+* *Terdapat beberapa hal yang diperbaiki saat asistensi seperti asumsi dan batasan, deskripsi perangkat lunak, diagram, dan daftar pustaka.
+* Lebih baik percakapan dengan asisten _full_ di-_record_ agar sama sekali tidak ada hal yang tertinggal.*
 
 ---
 
