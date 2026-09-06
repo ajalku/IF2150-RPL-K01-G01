@@ -23,7 +23,7 @@
 
 ### Daftar Isi
 * [Milestone 1](#milestone-1)
-* Notes: Copy bagian Daftar Isi seperti Milestone 1 untuk Milestone berikutnya, contoh ``* [Milestone 2](#milestone-2)``. Ketika Daftar isi diklik maka akan langsung diarahkan ke bagian bawah sesuai dengan Milestone tujuan.
+* [Milestone 2](#milestone-2)
 
 
 ---
@@ -44,9 +44,15 @@
 | | | | | | | |
 
 **Catatan/Evaluasi Milestone 1:**
-* *(Isi jika ada catatan khusus untuk asisten atau evaluasi singkat kerja tim)*
+* *Terdapat beberapa hal yang diperbaiki saat asistensi seperti asumsi dan batasan, deskripsi perangkat lunak, diagram, dan daftar pustaka. Lebih baik percakapan dengan asisten _full_ di-_record_ agar sama sekali tidak ada hal yang tertinggal.*
 
 ---
 
+### Milestone 2
+**Periode:** 2 September 2026 - 9 September 2026
 
-``Gunakan format penulisan Logbook yang sama untuk setiap Milestone dan pastikan pembuatan Daftar Isi juga sudah sesuai sebelum Logbook dikumpulkan. ``
+| Tanggal | Nama Anggota | Deskripsi Pekerjaan | Durasi (Jam) | Status | Kendala / *Blocker* | 
+| :--- | :--- | :--- | :--- | :--- | :--- | 
+| *06-09-2026* | *Ravinka Fathia Adinegara* | *Menyusun 1.1 menyesuaikan dengan milestone 1* | *2* | *Done* | *-* |
+
+<!-- Gunakan format penulisan Logbook yang sama untuk setiap Milestone dan pastikan pembuatan Daftar Isi juga sudah sesuai sebelum Logbook dikumpulkan. -->
