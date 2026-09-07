@@ -141,21 +141,24 @@ Untuk setiap kebutuhan yang telah diidentifikasi sebagai "didukung oleh perangka
 
 | ID KF | ID Kebutuhan | Penjelasan |
 | :--- | :--- | :--- |
-| *KF01* | *R01* | *Perangkat lunak dapat menyediakan fitur registrasi akun untuk pengguna baru dan fiturlogin bagi admin maupun pengguna.* |
+| *KF01* | *R01* | *Perangkat lunak dapat menyediakan fitur registrasi akun untuk pengguna baru dan fitur login bagi admin maupun pengguna.* |
 | *KF02* | *R02* | *Perangkat lunak dapat memvalidasi kredensial pengguna atau admin sebelum memberikan akses ke sistem.* |
-| *KF03* | *R04* | *Perangkat lunak dapat menampilkan peta interaktif yang terintegrasi dengan sistem untuk menunjukkan lokasi laporan.* |
-| *KF04* | *R05* | *Perangkat lunak dapat menampilkan informasi laporan  berupa lokasi, nama masalah, kategori, tingkat permasalahan, serta foto dan deskripsi apabila tersedia.* |
-| *KF05* | *R06* | *Perangkat lunak dapat menampilkan tingkat kedaruratan atau tingkat permasalahan pada setiap laporan* |
-| *KF06* | *R07* | *Perangkat lunak dapat menyediakan tampilan yang interaktif dan mudah dipahami untuk mengakses laporan.* |
-| *KF07* | *R08* | *Perangkat lunak dapat menampilkan dan mengelola informasi laporan sesuai dengan ketentuan perundang-undangan* |
-| *KF08* | *R09* | *Perangkat lunak dapat memungkinkan pengguna memberikan upvote pada laporan* |
-| *KF09* | *R10* | *Perangkat lunak dapat mengurutkan atau memprioritaskan tampilan laporan berdasarkan jumlah upvote yang diperoleh.* |
-| *KF10* | *R11* | *Perangkat lunak dapat menyediakan fitur pembuatan laporan baru dengan informasi lokasi, nama masalah, kategori, tingkat permasalahan, foto, dan deskripsi.* |
-| *KF11* | *R12* | *Perangkat lunak dapat memungkinkan admin melihat dan memproses laporan yang masuk.* |
-| *KF12* | *R13* | *Perangkat lunak dapat memperbarui informasi laporan sesuai dengan perubahan status yang dilakukan oleh admin.* |
-| *KF13* | *R14* | *Perangkat lunak dapat membatasi akses terhadap data dan fitur berdasarkan hak akses akun pengguna atau admin.* |
-| *KF14* | *R15* | *Perangkat lunak dapat memungkinkan admin memperbarui status penanganan suatu laporan.* |
-| *KF15* | *R16* | *Perangkat lunak dapat melakukan sinkronisasi dengan menyimpan dan menampilkan status laporan terbaru kepada pengguna.* |
+| *KF03* | *R04* | *Perangkat lunak dapat menampilkan peta interaktif yang terintegrasi dengan sistem berdasarkan data lokasi laporan yang tersimpan.* |
+| *KF04* | *R04* | *Perangkat lunak dapat menampilkan informasi umum suatu laporan pada peta dengan menggunakan simbol, penanda, dan tata letak yang konsisten.* |
+| *KF05* | *R05* | *Perangkat lunak dapat menampilkan detail informasi laporan berupa lokasi, nama masalah, kategori, tingkat permasalahan, serta foto dan deskripsi apabila tersedia.* |
+| *KF06* | *R06* | *Perangkat lunak dapat menampilkan tingkat kedaruratan atau tingkat permasalahan pada setiap laporan dengan label yang sesuai dengan tingkat kedaruratannya.* |
+| *KF07* | *R07* | *Perangkat lunak dapat menyediakan navigasi dari halaman utama hingga ke halaman detail laporan dan memberikan tutorial awal mengenai cara penggunaannya.* |
+| *KF08* | *R08* | *Perangkat lunak dapat menampilkan dan mengelola informasi laporan sesuai dengan ketentuan perundang-undangan* |
+| *KF09* | *R09* | *Perangkat lunak dapat memungkinkan pengguna memberikan upvote pada laporan* |
+| *KF10* | *R09* | *Perangkat lunak dapat memberikan notifikasi singkat kepada pengguna ketika upvote yang dilakukan oleh pengguna gagal ataupun berhasil.* |
+| *KF11* | *R10* | *Perangkat lunak dapat menampilkan laporan yang sedang trending dengan mengurutkan atau memprioritaskan tampilan laporan berdasarkan jumlah upvote terbaru yang diperoleh.* |
+| *KF12* | *R11* | *Perangkat lunak dapat menyediakan fitur pembuatan laporan baru dengan menyediakan isian untuk data yang diperlukan, seperti informasi lokasi, nama masalah, kategori, tingkat permasalahan, foto (opsional), dan deskripsi (opsional).* |
+| *KF13* | *R11* | *Perangkat lunak dapat memberikan informasi mengenai format file foto yang dapat diinput oleh pengguna dan memvalidasi apakah input file dari pengguna sesuai dengan ketentuan, juga memberikan notifikasi apakah pengiriman laporan gagal/berhasil.* |
+| *KF14* | *R12* | *Perangkat lunak dapat memungkinkan admin melihat dan memproses laporan yang masuk.* |
+| *KF15* | *R13* | *Perangkat lunak dapat melakukan sinkronisasi dengan menyimpan dan menampilkan data terakhir yang berhasil diinput oleh user.* |
+| *KF16* | *R14* | *Perangkat lunak dapat membatasi akses terhadap data dan fitur berdasarkan hak akses akun pengguna atau admin.* |
+| *KF17* | *R15* | *Perangkat lunak dapat memungkinkan admin memperbarui status penanganan suatu laporan.* |
+| *KF18* | *R16* | *Perangkat lunak dapat melakukan sinkronisasi dengan menyimpan dan menampilkan status laporan yang telah diperbarui oleh admin kepada pengguna.* |
 
 ## 2.5 Kebutuhan Non-Fungsional (KNF)
 
