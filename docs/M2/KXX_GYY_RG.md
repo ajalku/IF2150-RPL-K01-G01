@@ -66,11 +66,10 @@ Seperti yang telah disebutkan, fitur utama dari aplikasi adalah pelaporan fasili
 
 ## 1.2 Deskripsi Pengguna Perangkat Lunak
 
-Buatlah daftar seluruh aktor (pengguna) yang akan berinteraksi langsung dengan sistem solusi yang kalian kembangkan. Berikan penjelasan singkat mengenai peran dan karakteristik dari masing-masing aktor tersebut.
-
 | Aktor | Deskripsi |
 | :--- | :--- |
-| *Kasir* | *Pengguna ini bertindak sebagai pihak yang bertanggung jawab untuk memproses transaksi harian dan melayani pembayaran pelanggan. Karakteristik dari pengguna ini adalah mengutamakan kecepatan dan keakuratan saat bertransaksi.* |
+| *Pengguna* | *Pihak ini melaporkan isu-isu yang terjadi di daerah dan berhak memperoleh informasi terkait laporan yang tersedia. Karakteristik dari pengguna ini mengutamakan kemudahan pelaporan dan keakuratan informasi lingkungan* |
+| *Admin* | *Pengguna ini bertugas memantau dan mengelola sistem. Pengguna ini mengutamakan kejelasan informasi di laporan dan integritas data laporan* |
 | ... | ... |
 
 ---
