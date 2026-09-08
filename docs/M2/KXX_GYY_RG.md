@@ -165,12 +165,13 @@ Untuk setiap kebutuhan yang telah diidentifikasi sebagai "didukung oleh perangka
 | :--- | :--- | :--- | :--- |
 | *KNF01* | *R02* | *Security* | *Ketika pengguna melakukan login, sistem hanya boleh memberikan akses kepada User dengan kredensial yang sudah terverifikasi.* |
 | *KNF02* | *R04* | *Functional Stability* |*Ketika User mengakses peta, informasi yang disediakan sistem harus konsisten dengan visual dan tata letak yang jelas.* |
-| *KNF03* | *R06* | *Interaction Capability* |*1. Ketika User ingin melihat detail laporan, alur dari home hingga mencapai halaman detail laporan dapat mudah dimengerti* <br><br> *2.Ketika User mengakses detail laporan, sistem harus menyajikan label status kedaruratan yang mudah dibedakan satu dengan yang lain*|
-| *KNF04* | *R10* | *Functional Stability* |*Ketika jumlah upvote suatu laporan berubah, User dapat melihat trending melalui jumlah upvote dan urutan laporan berdasarkan data upvote terbaru.* |
-| *KNF05* | *R10* | *Interaction Capability* |*Ketika User menggunakan fitur interaksi pada suatu laporan, User harus tahu tindakan interaksi sudah berhasil dilakukan atau tidak* |
-| *KNF06* | *R11* | *Interaction Capability* |*Ketika User mengisi laporan, kuesioner yang ditanyakan sistem harus mudah dimengerti dan memiliki instruksi format file yang spesifik (contoh: pdf atau jpg), serta menjawab kebutuhan informasi User pihak lain (admin)* |
-| *KNF07* | *R13* | *Functional Stability* |*Setelah User (masyarakat) mengirim laporan, sistem harus menampilkan data yang sama dengan data terakhir yang berhasil disimpan ketika diakses pihak User lain (admin)* |
-| *KNF07* | *R16* | *Security* |*Ketika admin mengakses data laporan, sistem hanya boleh menampilkan data yang sesuai dengan hak masing-masing akun.* |
+| *KNF03* | *R06* | *Interaction Capability* |*Ketika User mengakses detail laporan, sistem harus menyajikan label status kedaruratan yang mudah dibedakan satu dengan yang lain.*| 
+| *KNF04* | *R07* | *Interaction Capability* |*Ketika User ingin melihat detail laporan, alur dari home hingga mencapai halaman detail laporan dapat mudah dimengerti.*|
+| *KNF05* | *R10* | *Functional Stability* |*Sistem harus menampilkan laporan teratas berdasarkan data upvote terbaru dan tingkat status kedaruratan secara akurat.* |
+| *KNF06* | *R10* | *Interaction Capability* |*Ketika User menggunakan fitur interaksi pada suatu laporan, User harus tahu tindakan interaksi sudah berhasil dilakukan atau tidak* |
+| *KNF07* | *R11* | *Interaction Capability* |*Ketika User mengisi laporan, kuesioner yang ditanyakan sistem harus mudah dimengerti dan memiliki instruksi format file yang spesifik (contoh: pdf atau jpg), serta menjawab kebutuhan informasi User pihak lain (admin)* |
+| *KNF08* | *R13* | *Functional Stability* |*Sistem harus menampilkan status penanganan laporan yang konsisten antar User.*|
+| *KNF09* | *R16* | *Security* |*Ketika User mengakses data laporan, sistem hanya boleh menampilkan data yang sesuai dengan hak masing-masing akun.* |
 
 
 <br>
