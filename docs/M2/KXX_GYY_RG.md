@@ -158,17 +158,22 @@ Untuk setiap kebutuhan yang telah diidentifikasi sebagai "didukung oleh perangka
 
 ## 2.5 Kebutuhan Non-Fungsional (KNF)
 
+Berikut adalah kebutuhan non-fungsional perangkat lunak berdasarkan ISO/IEC 25010:2023.
+
 | ID KNF | ID Kebutuhan | Parameter | Deskripsi Kebutuhan |
 | :--- | :--- | :--- | :--- |
-| *KNF01* | *R02* | *Security* | *Ketika pengguna melakukan login, sistem hanya boleh memberikan akses kepada User dengan kredensial yang sudah terverifikasi.* |
-| *KNF02* | *R04* | *Functional Stability* |*Ketika User mengakses peta, informasi yang disediakan sistem harus konsisten dengan visual dan tata letak yang jelas.* |
-| *KNF03* | *R06* | *Interaction Capability* |*Ketika User mengakses detail laporan, sistem harus menyajikan label status kedaruratan yang mudah dibedakan satu dengan yang lain.*| 
-| *KNF04* | *R07* | *Interaction Capability* |*Ketika User ingin melihat detail laporan, alur dari home hingga mencapai halaman detail laporan dapat mudah dimengerti.*|
-| *KNF05* | *R10* | *Functional Stability* |*Sistem harus menampilkan laporan teratas berdasarkan data upvote terbaru dan tingkat status kedaruratan secara akurat.* |
-| *KNF06* | *R10* | *Interaction Capability* |*Ketika User menggunakan fitur interaksi pada suatu laporan, User harus tahu tindakan interaksi sudah berhasil dilakukan atau tidak* |
-| *KNF07* | *R11* | *Interaction Capability* |*Ketika User mengisi laporan, kuesioner yang ditanyakan sistem harus mudah dimengerti dan memiliki instruksi format file yang spesifik (contoh: pdf atau jpg), serta menjawab kebutuhan informasi User pihak lain (admin)* |
-| *KNF08* | *R13* | *Functional Stability* |*Sistem harus menampilkan status penanganan laporan yang konsisten antar User.*|
-| *KNF09* | *R16* | *Security* |*Ketika User mengakses data laporan, sistem hanya boleh menampilkan data yang sesuai dengan hak masing-masing akun.* |
+| *KNF01* | *R01* | *Security* | *Sistem harus melindungi kredensial User melalui koneksi terenkripsi HTTPS dan password harus disimpan dalam bentuk hash.* |
+| *KNF02* | *R04* | *Compatibility* |*Sistem harus dapat mengirimkan data alamat ke layanan peta eksternal melalui API dan menggunakan hasil geocoding yang dikembalikan untuk menampilkan lokasi pada peta.* |
+| *KNF03* | *R07* | *Interaction Capability* |*Sistem harus memenuhi 90% UI/UX guideline yang dibuat berdasarkan Nielsen’s 10 Usability Heuristics.*| 
+| *KNF04* | *R10* | *Performance Efficiency* |*Sistem harus dapat menghitung 95% permintaan untuk menampilkan ranking laporan trending selama maksimal 2 detik.*|
+| *KNF05* | *R10* | *Performance Efficiency* |*Sistem harus mampu melayani 1000 pengguna aktif secara bersamaan pada fitur trending dengan tingkat kegagalan request kurang dari 1%* |
+| *KNF06* | *R11* | *Availability* |*Sistem harus menjaga layanan pelaporan tetap dapat diakses oleh User selama 24 jam per hari di luar pemeliharaan terjadwal.* |
+| *KNF07* | *R11* | *Flexibility* |*Sistem harus dapat berfungsi pada Google Chrome, Microsoft Edge, dan Mozilla Firefox tanpa kehilangan fungsi utama* |
+| *KNF08* | *R11* | *Interaction Capability* |*Apabila pengguna mengisi kuesioner dengan format yang salah, sistem harus dapat  menolak jawaban tersebut tanpa menghapus data lain yang telah diisi.*|
+| *KNF09* | *R13* | *Performance Efficiency* |*Sistem harus menyelesaikan sinkronisasi perubahan status laporan dalam waktu maksimal 5 detik setelah perubahan status berhasil disimpan.* |
+| *KNF10* | *R13* | *Reliability* |*Apabila terjadi gangguan sinkronisasi, sistem harus dapat kembali memulihkan status laporan ke kondisi terbaru tanpa kehilangan data laporan lain.* |
+| *KNF10* | *R14* | *Security* |*Sistem harus menerapkan Role-Based Access Control (RBAC) dengan memeriksa role User pada setiap permintaan akses ke data yang dilindungi.* |
+
 
 
 <br>
