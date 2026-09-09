@@ -1,4 +1,4 @@
-7<h1>
+<h1>
 IF2150 REKAYASA PERANGKAT LUNAK
 <br>
 TUGAS 2
@@ -31,9 +31,7 @@ Dipersiapkan oleh:
 | Revisi | Deskripsi |
 | :--- | :--- |
 | *A* | *Menambahkan user story 08 dan user story 09 pada 2.1* |
-| *B* | |
-| *C* | |
-| ... | |
+
 
 <br>
 <br>
