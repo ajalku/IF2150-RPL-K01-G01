@@ -70,7 +70,7 @@ Seperti yang telah disebutkan, fitur utama dari aplikasi adalah pelaporan fasili
 | :--- | :--- |
 | *Pengguna* | *Pihak ini melaporkan isu-isu yang terjadi di daerah dan berhak memperoleh informasi terkait laporan yang tersedia. Karakteristik dari pengguna ini mengutamakan kemudahan pelaporan dan keakuratan informasi lingkungan* |
 | *Admin* | *Pengguna ini bertugas memantau dan mengelola sistem. Pengguna ini mengutamakan kejelasan informasi di laporan dan integritas data laporan* |
-| ... | ... |
+
 
 ---
 
@@ -78,7 +78,6 @@ Seperti yang telah disebutkan, fitur utama dari aplikasi adalah pelaporan fasili
 
 ## 2.1 Kebutuhan Pengguna Awal
 
-Definisikan apa yang ingin dicapai oleh pengguna saat menggunakan sistem ini dalam format *User Story* (Sebagai [Aktor], saya ingin [Aktivitas/Kebutuhan], sehingga [Tujuan/Nilai]). Pastikan kalian berfokus pada "apa yang ingin dilakukan pengguna".
 
 | ID | Aktor | Kebutuhan / Aktivitas | Tujuan / Nilai |
 | :--- | :--- | :--- | :--- |
@@ -94,7 +93,7 @@ Definisikan apa yang ingin dicapai oleh pengguna saat menggunakan sistem ini dal
 
 ## 2.2 Deskripsi Aktivitas
 
-Buatlah daftar seluruh aktivitas yang terdapat dalam sistem solusi, lengkap dengan ID dan penjelasan. Telusuri hubungan aktivitas tersebut dengan *user story* yang sudah dituliskan sebelumnya. Bisa dibuat dalam bentuk tabel.
+
 
 | ID | Aktivitas | Penjelasan | ID User Story |
 | :--- | :--- | :--- | :--- |
@@ -132,7 +131,6 @@ Berikut ini adalah tabel pemetaan kebutuhan yang disusun berdasarkan tabel deskr
 
 ## 2.4 Kebutuhan Fungsional (KF)
 
-Untuk setiap kebutuhan yang telah diidentifikasi sebagai "didukung oleh perangkat lunak", buatlah daftar kebutuhan fungsional P/L, lengkap dengan ID Kebutuhan Fungsional (KF) dan penjelasannya. Hubungkan ID Kebutuhan Fungsional dengan ID Pemetaan Kebutuhan dari sistem.
 
 | ID KF | ID Kebutuhan | Penjelasan |
 | :--- | :--- | :--- |
