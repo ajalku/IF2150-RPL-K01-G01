@@ -30,7 +30,7 @@ Dipersiapkan oleh:
 
 | Revisi | Deskripsi |
 | :--- | :--- |
-| *A* | *Deskripsikan perubahan yang dilakukan dari dokumen sebelumnya pada dokumen ini. Jika tidak terdapat perubahan, harap kosongkan tabel.* |
+| *A* | *Menambahkan user story 08 dan user story 09 pada 2.1* |
 | *B* | |
 | *C* | |
 | ... | |
