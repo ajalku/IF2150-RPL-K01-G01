@@ -97,8 +97,8 @@ Buatlah daftar seluruh aktivitas yang terdapat dalam sistem solusi, lengkap deng
 | ID | Aktivitas | Penjelasan | ID User Story |
 | :--- | :--- | :--- | :--- |
 | A01 | *Mengakses sistem* | *Admin maupun pengguna memulai proses mengakses sistem, yakni dengan melakukan login atau registrasi bagi pengguna yang belum mendaftar* | *US-01 dan US-05* |
-| A02 | *Menjelajahi peta* | *Sistem akan menampilkan peta lokasi yang dipilih beserta informasi terkait laporan yang ada di daerah tersebut* | *US-02*|
-| A03 | *Melihat informasi laporan* | *Sistem akan menampilkan informasi dan data terkait laporan yang ada, seperti alamat/lokasi, nama masalah, tag kategori, tingkat permasalahan, beserta foto dan deskripsi (jika ada)* | *US-02*|
+| A02 | *Menjelajahi peta* | *Pengguna dapat mengakses peta lokasi yang dipilih beserta informasi terkait laporan yang ada di daerah tersebut* | *US-02*|
+| A03 | *Melihat informasi laporan* | *Pengguna dapat melihat informasi dan data terkait laporan yang ada, seperti alamat/lokasi, nama masalah, tag kategori, tingkat permasalahan, beserta foto dan deskripsi (jika ada)* | *US-02*|
 | A04 | *Memberikan upvote* | *Pengguna dapat memberikan upvote pada masalah yang dianggap urgent atau relevan* | *US-03*|
 | A05 | *Membuat laporan baru* | *Pengguna dapat membuat laporan baru dan memasukkan data terkait berupa lokasi (bisa langsung pilih di peta), nama masalah, tag kategori, tingkat permasalahan, serta foto dan deskripsi (opsional)* | *US-04*|
 | A06 | *Memantau laporan* | *Admin dapat melakukan pemantauan terhadap laporan yang masuk dan sistem bisa  menampilkannya berdasarkan kategori, lokasi, ataupun tingkat permasalahan/urgensi, sehingga memudahkan admin dalam melakukan proses pemantauan ini* | *US-06*|
@@ -106,33 +106,27 @@ Buatlah daftar seluruh aktivitas yang terdapat dalam sistem solusi, lengkap deng
 
 ## 2.3 Pemetaan Kebutuhan
 
-Perhatikan kembali semua aktivitas yang telah didefinisikan pada tabel deskripsi aktivitas atau *activity diagram*. Jabarkan kebutuhan sistem yang akan dibuat dengan mengacu pada aktivitas-aktivitas tersebut. Setiap aktivitas (ID Aktivitas) dapat memiliki satu atau lebih kebutuhan yang berbeda. Pastikan untuk mengidentifikasi dan mengisi semua jenis kebutuhan yang relevan untuk setiap aktivitas, yaitu:
-
-- **User Requirement**, yaitu kebutuhan dari sudut pandang pengguna (apa yang dapat dilakukan pengguna).
-- **Business Requirement**, yaitu aturan, kebijakan, atau standar bisnis yang harus dipenuhi oleh sistem.
-- **System Requirement**, yaitu kebutuhan yang menjelaskan apa yang harus dilakukan sistem dan bagaimana sistem harus bekerja dari segi performa, keamanan, keandalan, dsb.
-
-Lengkapi juga dengan penjelasannya dan apakah keperluan tersebut perlu didukung oleh perangkat lunak atau tidak. Jenis kebutuhan tidak terbatas hanya dari tiga jenis di atas, dapat ditambahkan yang lain juga bila diperlukan, misalnya kebutuhan regulasi (*Legal*).
+Berikut ini adalah tabel pemetaan kebutuhan yang disusun berdasarkan tabel deskripsi aktivitas yang tertera sebelumnya.
 
 | ID Kebutuhan | ID Aktivitas | Jenis Kebutuhan | Deskripsi Kebutuhan | P/L |
 | :--- | :--- | :--- | :--- | :--- |
 | *R01* | *A01* | *User* | *Pengguna maupun admin dapat melakukan proses login atau registrasi (bagi pengguna baru).* | *Ya* |
-| *R02* | *A01* | *System* | *Sistem harus memeriksa kredensial user sebelum memberikan akses akun* | *Tidak* |
-| *R03* | *A02* | *User* | *Peta interaktif yang menampilkan informasi terkait laporan yang ada* | *Tidak* |
-| *R04* | *A02* | *System* | *Sistem dapat mengintegrasikan map* | *Ya* |
+| *R02* | *A01* | *System* | *Sistem harus memeriksa kredensial user sebelum memberikan akses akun* | *Ya* |
+| *R03* | *A02* | *User* | *Pengguna dapat mengakses peta interaktif yang menampilkan informasi terkait laporan yang ada* | *Ya* |
+| *R04* | *A02* | *System* | *Sistem dapat mengintegrasikan informasi terkait laporan pada map, terdapat ikon pada titik lokasi yang dilaporkan sesuai dengan kategorinya* | *Ya* |
 | *R05* | *A03* | *User* | *Pengguna dapat melihat informasi mengenai laporan seperti alamat/lokasi, nama masalah, tag kategori, tingkat permasalahan, beserta foto dan deskripsi (jika ada)* | *Ya* |
 | *R06* | *A03* | *System* | *Sistem memperlihatkan status kedaruratan suatu laporan* | *Ya* |
 | *R07* | *A03* | *System* | *Sistem dapat menyajikan tampilan interaktif dan mudah dipahami untuk akses laporan* | *Ya* |
-| *R08* | *A03* | *Business* | *Informasi yang ada harus sesuai UU ITE* | *Ya* |
+| *R08* | *A03* | *Business* | *Informasi yang ada harus sesu kondisi riil, bukan berita bohong, sesuai yang tercantum pada Pasal 28 Undang-Undang Nomor 1 Tahun 2024 tentang Informasi dan Transaksi Elektronik* | *Tidak* |
 | *R09* | *A04* | *User* | *Pengguna dapat melakukan upvote untuk suatu laporan yang dirasa urgent atau relevan* | *Ya* |
-| *R10* | *A04* | *System* | *Sistem memiliki algoritma sehingga masalah yang punya banyak poin upvote akan muncul di atas (semacam trending gitu)* | *Ya* |
+| *R10* | *A04* | *System* | *Sistem memiliki algoritma sehingga masalah yang punya banyak poin upvote ataupun masalah yang tergolong urgent akan muncul di atas* | *Ya* |
 | *R11* | *A05* | *User* | *Pengguna dapat membuat laporan baru dan memasukkan data terkait laporan tersebut* | *Ya* |
 | *R12* | *A06* | *User* | *Admin dapat mengakses informasi mengenai laporan kemudian memprosesnya* | *Ya* |
 | *R13* | *A06* | *System* | *Sistem menyediakan proses sinkronisasi sesuai status laporan* | *Ya* |
-| *R14* | *A06* | *Business* | *Hak akses data hanya untuk akun pihak yang berkepentingan saja* | *Ya* |
+| *R14* | *A06* | *Business* | *Hak akses data hanya untuk akun pihak yang berkepentingan saja, sesuai dengan aspek confidentiality pada CIA Triad (Stallings, 2018)* | *Tidak* |
 | *R15* | *A07* | *User* | *Admin dapat memperbarui status penanganan laporan* | *Ya* |
-| *R16* | *A07* | *System* | *Sistem menyediakan proses sinkronisasi sesuai status laporan* | *Ya* |
-| ... | ... | ... | ... | ... |
+
+
 
 ## 2.4 Kebutuhan Fungsional (KF)
 
@@ -177,4 +171,8 @@ Untuk setiap kebutuhan yang telah diidentifikasi sebagai "didukung oleh perangka
 <br>
 
 # Referensi
-- Diagram UML: https://www.drawio.com/, https://staruml.io/
+## Daftar Pustaka
+- Republik Indonesia. (2024). Undang-Undang Nomor 1 Tahun 2024 tentang Perubahan Kedua atas Undang-Undang Nomor 11 Tahun 2008 tentang Informasi dan Transaksi Elektronik. Lembaran Negara RI Tahun 2024 Nomor 3.
+
+
+- Stallings, W. (2018). Computer Security: Principles and Practice (4th ed.). Pearson.
