@@ -1,4 +1,4 @@
-<h1>
+7<h1>
 IF2150 REKAYASA PERANGKAT LUNAK
 <br>
 TUGAS 2
@@ -89,6 +89,8 @@ Definisikan apa yang ingin dicapai oleh pengguna saat menggunakan sistem ini dal
 | US-05 | *Admin* |  *Mengakses sistem melalui proses login* | *Dapat menggunakan fitur pengelolaan laporan sesuai dengan perannya* |
 | US-06 | *Admin* |  *Memantau laporan yang tersedia beserta detailnya* | *Dapat mengetahui dan memahami permasalahan yang perlu ditindaklanjuti* |
 | US-07 | *Admin* |  *Memperbarui status laporan* | *Dapat mencatat perkembangan penanganan permasalahan dan memberikan informasi terbaru kepada pengguna* |
+| US-08 | *Pengguna* | *Memberikan komentar* | *Dapat memberikan komentar di bawah laporan pengguna lain untuk mendukung atau mengomentari laporan tersebut* |
+| US-09 | *Pengguna* | *Mengelola profil* | *Dapat mengubah foto profil dan _display name_ yang akan ditampilkan ketika pengguna mengunggah laporan atau memberi komentar* |
 
 ## 2.2 Deskripsi Aktivitas
 
