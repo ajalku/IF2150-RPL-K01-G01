@@ -33,7 +33,7 @@
 | 4. P/L itu artinya apakah kebutuhan didukung oleh perangkat lunak, kalo ada kebutuhan bisnis yang tidak disupport sama perangkat lunak gapapa|
 | 5. Tulis sumber yang dipakai, referensi pecah aja jadi daftar pustaka sama lampiran|
 | 6. Di pemetaan kebutuhan/kebutuhan non fungsional, tulisin juga sistem harus mampu merespon dalam waktu kurang dari berapa detik, sistem harus bisa menampung berapa pengguna dalam waktu yang sama, perangkat lunak dapat diakses di Windows/IOS?|
-| 7. * Kebutuhan non fungsional masih kurang tepat, sesuain sama contoh yang ada di tabel di bawah. Kebutuhan non fungsional itu cenderung berupa something in the background tapi kerasa manfaatnya sama pengguna.|
+| 7. Kebutuhan non fungsional masih kurang tepat, sesuain sama contoh yang ada di tabel di bawah. Kebutuhan non fungsional itu cenderung berupa something in the background tapi kerasa manfaatnya sama pengguna.|
 
  
 
