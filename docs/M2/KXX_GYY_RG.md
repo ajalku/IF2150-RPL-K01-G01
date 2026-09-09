@@ -117,7 +117,7 @@ Berikut ini adalah tabel pemetaan kebutuhan yang disusun berdasarkan tabel deskr
 | *R05* | *A03* | *User* | *Pengguna dapat melihat informasi mengenai laporan seperti alamat/lokasi, nama masalah, tag kategori, tingkat permasalahan, beserta foto dan deskripsi (jika ada)* | *Ya* |
 | *R06* | *A03* | *System* | *Sistem memperlihatkan status kedaruratan suatu laporan* | *Ya* |
 | *R07* | *A03* | *System* | *Sistem dapat menyajikan tampilan interaktif dan mudah dipahami untuk akses laporan* | *Ya* |
-| *R08* | *A03* | *Business* | *Informasi yang ada harus sesu kondisi riil, bukan berita bohong, sesuai yang tercantum pada Pasal 28 Undang-Undang Nomor 1 Tahun 2024 tentang Informasi dan Transaksi Elektronik* | *Tidak* |
+| *R08* | *A03* | *Business* | *Informasi yang ada harus sesi kondisi riil, bukan berita bohong, sesuai yang tercantum pada Pasal 28 Undang-Undang Nomor 1 Tahun 2024 tentang Informasi dan Transaksi Elektronik* | *Tidak* |
 | *R09* | *A04* | *User* | *Pengguna dapat melakukan upvote untuk suatu laporan yang dirasa urgent atau relevan* | *Ya* |
 | *R10* | *A04* | *System* | *Sistem memiliki algoritma sehingga masalah yang punya banyak poin upvote ataupun masalah yang tergolong urgent akan muncul di atas* | *Ya* |
 | *R11* | *A05* | *User* | *Pengguna dapat membuat laporan baru dan memasukkan data terkait laporan tersebut* | *Ya* |
@@ -135,23 +135,24 @@ Untuk setiap kebutuhan yang telah diidentifikasi sebagai "didukung oleh perangka
 | ID KF | ID Kebutuhan | Penjelasan |
 | :--- | :--- | :--- |
 | *KF01* | *R01* | *Perangkat lunak dapat menyediakan fitur registrasi akun untuk pengguna baru dan fitur login bagi admin maupun pengguna.* |
-| *KF02* | *R02* | *Perangkat lunak dapat memvalidasi kredensial pengguna atau admin sebelum memberikan akses ke sistem.* |
+| *KF02* | *R02* | *Ketika pengguna atau admin hendak mengakses perangkat lunak, perangkat lunak dapat memvalidasi kredensial pengguna atau admin tersebut.* |
 | *KF03* | *R04* | *Perangkat lunak dapat menampilkan peta interaktif yang terintegrasi dengan sistem berdasarkan data lokasi laporan yang tersimpan.* |
 | *KF04* | *R04* | *Perangkat lunak dapat menampilkan informasi umum suatu laporan pada peta dengan menggunakan simbol, penanda, dan tata letak yang konsisten.* |
-| *KF05* | *R05* | *Perangkat lunak dapat menampilkan detail informasi laporan berupa lokasi, nama masalah, kategori, tingkat permasalahan, serta foto dan deskripsi apabila tersedia.* |
+| *KF05* | *R05* | *Ketika pengguna hendak melihat detail laporan, perangkat lunak harus dapat menampilkan detail informasi berupa lokasi, nama masalah, kategori, tingkat permasalahan, serta foto dan deskripsi apabila tersedia.* |
 | *KF06* | *R06* | *Perangkat lunak dapat menampilkan tingkat kedaruratan atau tingkat permasalahan pada setiap laporan dengan label yang sesuai dengan tingkat kedaruratannya.* |
 | *KF07* | *R07* | *Perangkat lunak dapat menyediakan navigasi dari halaman utama hingga ke halaman detail laporan dan memberikan tutorial awal mengenai cara penggunaannya.* |
-| *KF08* | *R08* | *Perangkat lunak dapat menampilkan dan mengelola informasi laporan sesuai dengan ketentuan perundang-undangan* |
-| *KF09* | *R09* | *Perangkat lunak dapat memungkinkan pengguna memberikan upvote pada laporan* |
-| *KF10* | *R09* | *Perangkat lunak dapat memberikan notifikasi singkat kepada pengguna ketika upvote yang dilakukan oleh pengguna gagal ataupun berhasil.* |
+| *KF08* | *R08* | *Perangkat lunak harus menampilkan dan mengelola informasi laporan sesuai dengan ketentuan perundang-undangan* |
+| *KF09* | *R09* | *Bila pengguna merasa laporan pengguna lain relevan, maka perangkat lunak harus memungkinkan pengguna memberikan upvote pada laporan tersebut.* |
+| *KF10* | *R09* | *Ketika upvote yang dilakukan oleh pengguna gagal ataupun berhasil, perangkat lunak harus memberikan notifikasi singkat kepada pengguna .* |
 | *KF11* | *R10* | *Perangkat lunak dapat menampilkan laporan yang sedang trending dengan mengurutkan atau memprioritaskan tampilan laporan berdasarkan jumlah upvote terbaru yang diperoleh.* |
-| *KF12* | *R11* | *Perangkat lunak dapat menyediakan fitur pembuatan laporan baru dengan menyediakan isian untuk data yang diperlukan, seperti informasi lokasi, nama masalah, kategori, tingkat permasalahan, foto (opsional), dan deskripsi (opsional).* |
+| *KF12* | *R11* | *Ketika pengguna hendak membuat laporan baru, perangkat lunak harus menyediakan formulir isian untuk data yang diperlukan, seperti informasi lokasi, nama masalah, kategori, tingkat permasalahan, foto (opsional), dan deskripsi (opsional).* |
 | *KF13* | *R11* | *Perangkat lunak dapat memberikan informasi mengenai format file foto yang dapat diinput oleh pengguna dan memvalidasi apakah input file dari pengguna sesuai dengan ketentuan, juga memberikan notifikasi apakah pengiriman laporan gagal/berhasil.* |
-| *KF14* | *R12* | *Perangkat lunak dapat memungkinkan admin melihat dan memproses laporan yang masuk.* |
-| *KF15* | *R13* | *Perangkat lunak dapat melakukan sinkronisasi dengan menyimpan dan menampilkan data terakhir yang berhasil diinput oleh user.* |
+| *KF14* | *R12* | *Ketika admin hendak memeriksa laporan pengguna, perangkat lunak harus memungkinkan admin melihat dan memproses laporan yang masuk.* |
+| *KF15* | *R13* | *Ketika ada laporan baru yang masuk, perangkat lunak dapat melakukan sinkronisasi dengan menyimpan dan menampilkan data terakhir yang berhasil diinput oleh user.* |
 | *KF16* | *R14* | *Perangkat lunak dapat membatasi akses terhadap data dan fitur berdasarkan hak akses akun pengguna atau admin.* |
-| *KF17* | *R15* | *Perangkat lunak dapat memungkinkan admin memperbarui status penanganan suatu laporan.* |
+| *KF17* | *R15* | *Ketika terjadi perubahan status laporan di lapangan, perangkat lunak dapat memungkinkan admin memperbarui status penanganan laporan tersebut.* |
 | *KF18* | *R16* | *Perangkat lunak dapat melakukan sinkronisasi dengan menyimpan dan menampilkan status laporan yang telah diperbarui oleh admin kepada pengguna.* |
+
 
 ## 2.5 Kebutuhan Non-Fungsional (KNF)
 
