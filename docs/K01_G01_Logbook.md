@@ -55,12 +55,12 @@
 | :--- | :--- | :--- | :--- | :--- | :--- | 
 | *06-09-2026* | *Ravinka Fathia Adinegara* | *Menyusun 1.1 menyesuaikan dengan milestone 1* | *2* | *Done* | *-* |
 | *06-09-2026* | *Samantha Michelle S. Silaban* | *Menyusun bab 2.5* | *1.5* | *Done* | *-* |
-| *06-09-2026* | *Syakira Azzahra Rachmania* | *Menyusun BAB 2.3* | *1* | *Done* | *-* |
-| *06-09-2026* | *Aufa Tatsbita Zahra* | *Menyusun BAB 2.4* | *2* | *Done* | *-* |
+| *06-09-2026* | *Syakira Azzahra Rachmania* | *Menyusun bab 2.3* | *1* | *Done* | *-* |
+| *06-09-2026* | *Aufa Tatsbita Zahra* | *Menyusun bab 2.4* | *2* | *Done* | *-* |
 | *07-09-2026* | *Ghiffari Arya Adhitya* | *Menyusun bab 1.2* | *0.5* | *Done* | *-* |
-| *07-09-2026* | *Aufa Tatsbita Zahra* | *Revisi BAB 2.4* | *1* | *Done* | *-* |
+| *07-09-2026* | *Aufa Tatsbita Zahra* | *Revisi bab 2.4* | *1* | *Done* | *-* |
 | *09-09-2026* | *Samantha Michelle S. Silaban* | *Revisi bab 2.5* | *1.5* | *Done* | *-* |
-| *09-09-2026* | *Syakira Azzahra Rachmania* | *Revisi BAB 2.3* | *1* | *Done* | *-* |
+| *09-09-2026* | *Syakira Azzahra Rachmania* | *Revisi bab 2.3* | *1* | *Done* | *-* |
 | *09-09-2026* | *Aufa Tatsbita Zahra* | *Revisi BAB 2.4* | *0.5* | *Done* | *-* |
 
 
