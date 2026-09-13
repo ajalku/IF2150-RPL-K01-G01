@@ -177,7 +177,42 @@ Format tabel skenario: kolom **Aksi Aktor** berisi apa yang dilakukan/diinput ak
 | No | Aksi Aktor | Reaksi Perangkat Lunak |
 | :--- | :--- | :--- |
 | 1 | *Pengguna/Admin menekan menu Peta Laporan* | *Sistem menampilkan peta dengan penanda lokai laporan* |
-| 2 | *Pengguna menekan salah satu titik penanda lokasi* | *Sistem menampilkan pop-up detail laporan* |
+| 2 | *Pengguna/Admin menekan salah satu titik penanda lokasi* | *Sistem menampilkan pop-up detail laporan* |
 
+### 3.4.x Skenario UC09
+**Nama Use Case:** *Melakukan Upvote*
+
+**Skenario Normal**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna menekan tombol Upvote pada suatu laporan di halaman utama* | *Sistem mencatat upvote pengguna dan memperbarui jumlah laporan.*|
+| 2 | *-* | *Sistem menghitung ulang skor popularitas berdasarkan bobot urgensi 60% dan upvote 40%* |
+| 3 | *-* | *Sistem memperbarui tampilan jumlah upvote dan jika pengurutan Populer sedang aktif, sistem memperbarui urutan laporan* |
+
+### 3.4.x Skenario UC12
+**Nama Use Case:** *Mengunggah Laporan Baru*
+
+**Skenario Normal**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna yang sudah login menekan Buat Laporan* | *Sistem menampilkan formulir berisi lokasi, nama masalah, kategiri, tingkat permasalahan, pilihan privat/publik, foto (opsional), dan deskripsi (opsional).*|
+| 2 | *Pegguna yang sudah login mengisi formulir kemudian menekan tombol kirim* | *Sistem memvalidasi kelengkapan data wajib, titik lokasi, dan format foto jika diunggah.* |
+| 3 | *-* | *Sistem menampilkan konfirmasi "Apakah data laporan sudah sesuai?"* |
+| 4 | *Pengguna menekan tombol Ya* | *Sistem membuat ID unik dan menyimpan laporan ke database, kemudian menampilkan pesan bahwa laporan berhasil dibuat"* |
+
+### 3.4.x Skenario UC17
+**Nama Use Case:** *Memperbarui Status Penanganan Laporan*
+
+**Skenario Normal**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Admin menekan menu Kelola Laporan* | *Sistem menampilkan daftar laporan dengan pilihan pengurutan berdasarkan terbaru, urgensi, dan popularitas.*|
+| 2 | *Admin memilih salah satu lappran* | *Sistem menampilkan detail laporan* |
+| 3 | *Admin menekan tombol Lakukan Tindakan* | *Sistem menampilkan formulir pop-up berisi kolom tanggapan dan dropdown status laporan yang dapat dipilih."* |
+| 4 | *Admin mengisi tanggapan, memilih status, kemudian menekan tombol Simpan* | *Sistem memvalidasi isian dan menampilkan konfirmasi "Apakah tanggapan dan status laporan sudah sesuai?"* |
+| 5 | *Admin menekan tombol Ya* | *Sistem menyimpan tanggapan, memperbarui status laporan, menutup pop-up, dan menampilkan tanggapan admin sebagai komentar teratas pada laporan tersebut* |
 
 
