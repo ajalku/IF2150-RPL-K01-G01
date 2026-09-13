@@ -121,15 +121,17 @@ Format tabel skenario: kolom **Aksi Aktor** berisi apa yang dilakukan/diinput ak
 
 ### 3.4.1 Skenario UC01
 
-**Nama Use Case:** *Melakukan Pembayaran Digital*
+**Nama Use Case:** *Melakukan Registrasi Akun*
 
 **Skenario Normal**
 
 | No | Aksi Aktor | Reaksi Perangkat Lunak |
 | :--- | :--- | :--- |
-| 1 | *Pelanggan memilih menu checkout* | *Sistem menampilkan ringkasan pesanan dan pilihan metode pembayaran* |
-| 2 | *Pelanggan memilih metode pembayaran (misal: e-wallet)* | *Sistem mengarahkan pelanggan ke halaman konfirmasi e-wallet* |
-| 3 | *Pelanggan mengonfirmasi pembayaran* | *Sistem menerima respons pembayaran berhasil, memperbarui status pesanan menjadi "Lunas", dan menampilkan notifikasi pembayaran berhasil* |
+| 1 | *Pengguna menekan pilihan Registrasi* | *Sistem menampilkan formulir berisi NIK, email, dan password* |
+| 2 | *Pengguna mengisi formulir dan menekan tombol Daftar.* | *Sistem memvalidasi kelengkapan data, format NIK (jumlah digit), serta ketentuan password (minimal 8 karakter, 1 huruf kapital, 1 angka, dan simbol). Sistem mematikan NIK dan email belum terdaftar.* |
+| 3 | *-* | *Sistem melakukan hashing password dan menyimpan data akun ke database* |
+| 4 | *-* | *Sistem menampilkan pesan akun berhasil dibuat dan menampilkan halaman utama* |
+
 
 
 <br>
@@ -146,13 +148,16 @@ Format tabel skenario: kolom **Aksi Aktor** berisi apa yang dilakukan/diinput ak
 
 ### 3.4.2 Skenario UC02
 
-**Nama Use Case:** *Memverifikasi Status Pembayaran*
+**Nama Use Case:** *Melakukan Proses Login*
 
 **Skenario Normal**
 
 | No | Aksi Aktor | Reaksi Perangkat Lunak |
 | :--- | :--- | :--- |
-| 1 | *Kasir memasukkan ID Pesanan pelanggan* | *Sistem menampilkan status pembayaran ("Lunas") beserta detail transaksi* |
+| 1 | *Pengguna/Admin menekan tombol* | *Sistem menampilkan formulir berisi email dan password* |
+| 2 | *Pengguna memasukkan email dan password dan menekan tombol masuk* | *Sistem mencari akun berdasarkan email dan memverifikasi kecocokan password* |
+| 3 | *-* | *Sistem menampilkan halaman utama sesuai peran pengguna/admin* |
+
 
 <br>
 
@@ -163,4 +168,16 @@ Format tabel skenario: kolom **Aksi Aktor** berisi apa yang dilakukan/diinput ak
 | 1 | *Kasir memasukkan ID Pesanan yang salah/tidak ada* | *Sistem menampilkan pesan "ID Pesanan tidak ditemukan" dan meminta kasir memasukkan ulang* |
 
 
-<sub>*Lanjutkanlah pola 3.4.x ini untuk setiap ID UC yang telah diidentifikasi pada 3.2, sampai seluruh use case memiliki skenario normal dan skenario alternatif (tidak usah dibuat jika use case tersebut memang tidak memiliki skenario alternatif).*<sub>
+### 3.4.3 Skenario UC03
+
+**Nama Use Case:** *Mengakses Peta Interaktif*
+
+**Skenario Normal**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna/Admin menekan menu Peta Laporan* | *Sistem menampilkan peta dengan penanda lokai laporan* |
+| 2 | *Pengguna menekan salah satu titik penanda lokasi* | *Sistem menampilkan pop-up detail laporan* |
+
+
+
