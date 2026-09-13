@@ -75,8 +75,23 @@ Identifikasi seluruh use case yang mencakup Kebutuhan Fungsional pada BAB 2. Sat
 
 | ID UC | Nama Use Case | Deskripsi Singkat | Aktor Terlibat | ID KF Terkait |
 | :--- | :--- | :--- | :--- | :--- |
-| *UC01* | *Melakukan Pembayaran Digital* | *Pelanggan memilih metode pembayaran dan menyelesaikan transaksi.* | *Pelanggan* | *KF01, KF02* |
-| *UC02* | *Memverifikasi Status Pembayaran* | *Kasir mengecek status transaksi pelanggan sebelum menyerahkan barang.* | *Kasir* | *KF03* |
+| *UC01* | *Melakukan Registrasi Akun* | *User membuat sebuah akun baru.* | *Pengguna, Admin* | *KF01, KF02* |
+| *UC02* | *Melakukan Proses Login* | *User dapat login atau masuk ke akun yang telah dibuat* | *Pengguna, Admin* | *KF01, KF02* |
+| *UC03* | *Mengakses Peta Interaktif* | *Pengguna dapat melihat peta interaktif yang menampilkan lokasi dari laporan yang ada* | *Pengguna, Admin* | *KF03, KF04* |
+| *UC04* | *Melihat Detail Laporan* | *Pengguna dapat melihat detail informasi dari laporan berupa lokasi, nama masalah, kategori, tingkat permasalahan, serta foto dan deskripsi apabila tersedia.* | *Pengguna, Admin* | *KF05* |
+| *UC05* | *Melihat Label Tingkat Kedaruratan* | *Pengguna dapat melihat label jelas mengenai tingkat kedaruratan suatu laporan.* | *Pengguna, Admin* | *KF06* |
+| *UC06* | *Melakukan Navigasi antar halaman* | *Pengguna dapat mengakses navigasi dari halaman utama ke halaman detail laporan* | *Pengguna, Admin* | *KF07* |
+| *UC07* | *Mendapat Tutorial Navigasi antar halaman* | *Pengguna mendapat tutorial cara navigasi antar halaman untuk saat pertama kali menggunakan perangkat lunak* | *Pengguna, Admin* | *KF07* |
+| *UC08* | *undang-undang (?)*|*report(?)*|*Pengguna, Admin*|*KF08* |
+| *UC09* | *Melakukan Upvote* | *Pengguna dapat memberikan upvote untuk laporan yang menurutnya relevan* | *Pengguna* | *KF09* |
+| *UC10* | *Mendapat Notifikasi Upvote* | *Pengguna mendapat notifikasi singkat terkait barhasil atau gagalnya aksi upvote yang dilakukan.* | *Pengguna* | *KF10* |
+| *UC11* | *ada algoritma buat halaman utamanya gitu(?)* | *...* | *Pengguna* | *KF11* |
+| *UC12* | *Mengunggah Laporan Baru* | *Pengguna dapat membuat laporan baru dengan mengisi formulir data terkait laporan tersebut, seperti lokasi, nama masalah, kategori, tingkat permasalahan, foto (opsional), dan deskripsi (opsional).* | *Pengguna* | *KF12* |
+| *UC13* | *Mendapat Notifikasi Terkait Input File* | *Mendapat notifikasi terkait kesesuaian format file dan keberhasilan proses upload file.* | *Pengguna* | *KF13* |
+| *UC14* | *Memeriksa Laporan* | *Admin dapat mengakses dan memproses laporan yang masuk.* | *Admin* | *KF14* |
+| *UC15* | *Sinkronisasi* | *Pengguna dan Admin dapat melihat laporan yang terkini* | *Pengguna, Admin* | *KF15, KF18* |
+| *UC16* | *Akses info nya beda(?)* | *...* | *Pengguna* | *KF11* |
+| *UC17* | *Memperbarui Status Penanganan Laporan* | *Admin dapat mengupdate status penanganan laporan sesuai kondisi lapangan.* | *Admin* | *KF17* |
 | *...* | *...* | *...* | *...* | *...* |
 
 ## 3.3 Use Case Diagram
