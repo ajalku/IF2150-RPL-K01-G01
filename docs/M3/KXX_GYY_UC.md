@@ -133,15 +133,40 @@ Format tabel skenario: kolom **Aksi Aktor** berisi apa yang dilakukan/diinput ak
 
 <br>
 
-**Skenario Alternatif 1: Otorisasi Pembayaran Gagal**
-
+**Skenario Alternatif 1: Data Registrasi Tidak Lengkap**
 
 | No | Aksi Aktor | Reaksi Perangkat Lunak |
 | :--- | :--- | :--- |
-| 1 | *Pelanggan memilih menu checkout* | *Sistem menampilkan ringkasan pesanan dan pilihan metode pembayaran* |
-| 2 | *Pelanggan memilih metode pembayaran (misal: e-wallet)* | *Sistem mengarahkan pelanggan ke halaman konfirmasi e-wallet* |
-| 3 | *Pelanggan mengonfirmasi pembayaran* | *Sistem menerima respons pembayaran gagal (misal: saldo tidak cukup). Sistem menampilkan pesan error dan meminta pelanggan memilih metode pembayaran lain* |
-| 4 | *Pelanggan memilih metode pembayaran lain* | *Sistem kembali ke langkah 2 skenario normal* |
+| 1 | *Pengguna menekan pilihan Registrasi* | *Sistem menampilkan formulir berisi NIK, email, dan password* |
+| 2 | *Pengguna mengisi hanya sebagian data formulir dan menekan tombol Daftar.* | *Sistem memvalidasi kelengkapan data, format NIK (jumlah digit), serta ketentuan password (minimal 8 karakter, 1 huruf kapital, 1 angka, dan simbol). Sistem menyadari input data pengguna tidak lengkap.* |
+| 3 | *-* | *Sistem menampilkan pesan bahwa data registrasi yang diinput pengguna belum lengkap dan menunjukkan kolom yang masih belum diisi* |
+| 4 | *Pengguna melengkapi data formulir dan menekan ulang tombol Daftar* | *Sistem memvalidasi ulang kelengkapan data, format NIK (jumlah digit), serta ketentuan password (minimal 8 karakter, 1 huruf kapital, 1 angka, dan simbol). Sistem memastikan NIK dan email belum terdaftar.* |
+| 5 | *-* | *Sistem melakukan hashing password dan menyimpan data akun ke database* |
+| 6 | *-* | *Sistem menampilkan pesan akun berhasil dibuat dan menampilkan halaman utama* |
+
+**Skenario Alternatif 2: Format NIK Tidak Valid**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna menekan pilihan Registrasi* | *Sistem menampilkan formulir berisi NIK, email, dan password* |
+| 2 | *Pengguna mengisi data registrasi, namun menginput NIK dengan jumlah digit yang tidak sesuai.* | *Sistem memvalidasi kelengkapan data, format NIK (jumlah digit), serta ketentuan password (minimal 8 karakter, 1 huruf kapital, 1 angka, dan simbol), sistem menyadari kesalahan jumlah digit NIK yang diinput oleh pengguna.* |
+| 3 | *-* | *Sistem menampilkan pesan bahwa data NIK yang diinput pengguna belum valid dan meminta pengguna untuk menginput ulang NIK yang sesuai* |
+| 4 | *Pengguna membetulkan NIK yang diinput dan menekan ulang tombol Daftar* | *Sistem memvalidasi ulang kelengkapan data, termasuk format NIK (jumlah digit). Sistem memastikan NIK dan email belum terdaftar* |
+| 5 | *-* | *Sistem melakukan hashing password dan menyimpan data akun ke database* |
+| 6 | *-* | *Sistem menampilkan pesan akun berhasil dibuat dan menampilkan halaman utama* |
+
+**Skenario Alternatif 3: Format Password Tidak Valid**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna menekan pilihan Registrasi* | *Sistem menampilkan formulir berisi NIK, email, dan password* |
+| 2 | *Pengguna mengisi data registrasi, namun menginput password yang tidak sesuai dengan ketentuan.* | *Sistem memvalidasi kelengkapan data, format NIK (jumlah digit), serta ketentuan password (minimal 8 karakter, 1 huruf kapital, 1 angka, dan simbol), sistem menerima password yang ternyata tidak sesuai dengan ketentuan.* |
+| 3 | *-* | *Sistem menampilkan pesan bahwa password tidak valid, di mana password minimal terdiri dari 8 karakter, 1 huruf kapital, 1 angka, dan simbol. Lalu, meminta pengguna untuk menginput ulang password* |
+| 4 | *Pengguna memperbaiki password sesuai ketentuan dan menekan ulang tombol Daftar* | *Sistem memvalidasi ulang kelengkapan data, format NIK (jumlah digit), serta ketentuan password (minimal 8 karakter, 1 huruf kapital, 1 angka, dan simbol). Sistem memastikan NIK dan email belum terdaftar.* |
+| 5 | *-* | *Sistem melakukan hashing password dan menyimpan data akun ke database* |
+| 6 | *-* | *Sistem menampilkan pesan akun berhasil dibuat dan menampilkan halaman utama* |
+
+
 
 ### 3.4.2 Skenario UC02
 
@@ -158,11 +183,36 @@ Format tabel skenario: kolom **Aksi Aktor** berisi apa yang dilakukan/diinput ak
 
 <br>
 
-**Skenario Alternatif 1: ID Pesanan Tidak Ditemukan**
+**Skenario Alternatif 1: Data Login Belum Terisi Lengkap**
 
 | No | Aksi Aktor | Reaksi Perangkat Lunak |
 | :--- | :--- | :--- |
-| 1 | *Kasir memasukkan ID Pesanan yang salah/tidak ada* | *Sistem menampilkan pesan "ID Pesanan tidak ditemukan" dan meminta kasir memasukkan ulang* |
+| 1 | *Pengguna/Admin menekan tombol* | *Sistem menampilkan formulir berisi email dan password* |
+| 2 | *Pengguna hanya memasukkan email/password saja, atau bahkan tidak mengisi keduanya, lalu menekan tombol masuk* | *Sistem tidak menerima input data login yang lengkap* |
+| 3 | *-* | *Sistem menampilkan pesan bahwa data login yang diinput masih belum lengkap (email/password masih belum terisi), dan meminta pengguna melengkapi inputnya* |
+| 4 | *Pengguna melengkapi data login (email/password yang tadi belum terisi) dan menekan tombol masuk* | *Sistem mencari akun berdasarkan email dan memverifikasi kecocokan password* |
+| 5 | *-* | *Sistem menampilkan halaman utama sesuai peran pengguna/admin* |
+
+**Skenario Alternatif 2: Email Belum Terdaftar**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna/Admin menekan tombol* | *Sistem menampilkan formulir berisi email dan password* |
+| 2 | *Pengguna memasukkan email dan password dan menekan tombol masuk* | *Sistem tidak menemukan akun yang cocok dengan email yang diinput pengguna* |
+| 3 | *-* | *Sistem menampilkan pesan bahwa email yang diinput masih belum terdaftar* |
+| 4 | *Pengguna memasukkan ulang email dan password dan menekan tombol masuk* | *Sistem mencari akun berdasarkan email dan memverifikasi kecocokan password* |
+| 5 | *-* | *Sistem menampilkan halaman utama sesuai peran pengguna/admin* |
+
+**Skenario Alternatif 3: Password Tidak Sesuai**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna/Admin menekan tombol* | *Sistem menampilkan formulir berisi email dan password* |
+| 2 | *Pengguna memasukkan email dan password dan menekan tombol masuk* | *Sistem menerima password yang tidak sesuai* |
+| 3 | *-* | *Sistem menampilkan pesan bahwa password yang diinput salah dan meminta pengguna untuk menginput ulang email dan password yang benar* |
+| 4 | *Pengguna memasukkan ulang email dan password dan menekan tombol masuk* | *Sistem mencari akun berdasarkan email dan memverifikasi kecocokan password* |
+| 5 | *-* | *Sistem menampilkan halaman utama sesuai peran pengguna/admin* |
+
 
 
 ### 3.4.3 Skenario UC03
@@ -176,6 +226,18 @@ Format tabel skenario: kolom **Aksi Aktor** berisi apa yang dilakukan/diinput ak
 | 1 | *Pengguna/Admin menekan menu Peta Laporan* | *Sistem menampilkan peta dengan penanda lokai laporan* |
 | 2 | *Pengguna/Admin menekan salah satu titik penanda lokasi* | *Sistem menampilkan pop-up detail laporan* |
 
+<br>
+
+**Skenario Alternatif 1: Gagal Memuat Data Laporan**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna/Admin menekan menu Peta Laporan* | *Sistem menampilkan peta dengan penanda lokasi laporan* |
+| 2 | *Pengguna/Admin menekan salah satu titik penanda lokasi* | *Sistem gagal menampilkan pop-up detail laporan karena koneksi terputus atau jaringan tidak stabil* |
+| 3 | *-* | *Sistem menampilkan pesan error tidak dapat menampilkan detail laporan karena koneksi terputus atau jaringan tidak stabil* |
+| 4 | *Pengguna/Admin menekan ulang salah satu titik penanda lokasi setelah koneksi membaik* | *Sistem menampilkan pop-up detail laporan* |
+
+
 ### 3.4.x Skenario UC09
 **Nama Use Case:** *Melakukan Upvote*
 
@@ -186,6 +248,19 @@ Format tabel skenario: kolom **Aksi Aktor** berisi apa yang dilakukan/diinput ak
 | 1 | *Pengguna menekan tombol Upvote pada suatu laporan di halaman utama* | *Sistem mencatat upvote pengguna dan memperbarui jumlah laporan.*|
 | 2 | *-* | *Sistem menghitung ulang skor popularitas berdasarkan bobot urgensi 60% dan upvote 40%* |
 | 3 | *-* | *Sistem memperbarui tampilan jumlah upvote dan jika pengurutan Populer sedang aktif, sistem memperbarui urutan laporan* |
+
+<br>
+
+**Skenario Alternatif 1: Pengguna Gagal Melakukan Upvote**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna menekan tombol Upvote pada suatu laporan di halaman utama* | *Sistem gagal mencatat upvote pengguna karena gangguan jaringan.*|
+| 2 | *-* | *Sistem menampilkan pesan error, upvote gagal karena koneksi terputus atau jaringan tidak stabil* |
+| 3  *Pengguna merefresh sistem, lalu menekan ulang tombol Upvote pada suatu laporan di halaman utama* | *Sistem mencatat upvote pengguna dan memperbarui jumlah laporan.*|
+| 4 | *-* | *Sistem menghitung ulang skor popularitas berdasarkan bobot urgensi 60% dan upvote 40%* |
+| 5 | *-* | *Sistem memperbarui tampilan jumlah upvote dan jika pengurutan Populer sedang aktif, sistem memperbarui urutan laporan* |
+
 
 ### 3.4.x Skenario UC12
 **Nama Use Case:** *Mengunggah Laporan Baru*
@@ -199,6 +274,41 @@ Format tabel skenario: kolom **Aksi Aktor** berisi apa yang dilakukan/diinput ak
 | 3 | *-* | *Sistem menampilkan konfirmasi "Apakah data laporan sudah sesuai?"* |
 | 4 | *Pengguna menekan tombol Ya* | *Sistem membuat ID unik dan menyimpan laporan ke database, kemudian menampilkan pesan bahwa laporan berhasil dibuat"* |
 
+<br>
+
+**Skenario Alternatif 1: Data Wajib untuk Membuat Laporan Masih Belum Lengkap**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna yang sudah login menekan Buat Laporan* | *Sistem menampilkan formulir berisi lokasi, nama masalah, kategori, tingkat permasalahan, pilihan privat/publik, foto (opsional), dan deskripsi (opsional).*|
+| 2 | *Pengguna yang sudah login mengisi formulir, namun terdapat data wajib yang belum diisi, kemudian menekan tombol kirim* | *Sistem menerima data wajib yang belum lengkap dan menampilkan pesan bahwa data wajib laporan yang diinput pengguna belum lengkap dan menunjukkan kolom yang masih belum diisi.* |
+| 3 | *Pengguna melengkapi formulir kemudian menekan ulang tombol kirim* | *Sistem memvalidasi kelengkapan data wajib, titik lokasi, dan format foto jika diunggah.* |
+| 4 | *-* | *Sistem menampilkan konfirmasi "Apakah data laporan sudah sesuai?"* |
+| 5 | *Pengguna menekan tombol Ya* | *Sistem membuat ID unik dan menyimpan laporan ke database, kemudian menampilkan pesan bahwa laporan berhasil dibuat"* |
+
+**Skenario Alternatif 2: Format File Foto yang Diunggah Tidak Sesuai**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna yang sudah login menekan Buat Laporan* | *Sistem menampilkan formulir berisi lokasi, nama masalah, kategori, tingkat permasalahan, pilihan privat/publik, foto (opsional), dan deskripsi (opsional).*|
+| 2 | *Pengguna yang sudah login mengisi formulir, lalu mengunggah foto yang tidak sesuai dengan ketentuan sistem* | *Sistem menyadari kesalahan format file foto dan menolak input dari pengguna, lalu menampilkan pesan bahwa input foto harus dalam format yang sesuai.* |
+| 3 | *Pengguna memperbaiki input foto dengan mengunggah file yang sesuai, lalu melengkapi formulir, kemudian menekan tombol kirim* | *Sistem memvalidasi kelengkapan data wajib, titik lokasi, dan format foto.* |
+| 4 | *-* | *Sistem menampilkan konfirmasi "Apakah data laporan sudah sesuai?"* |
+| 5 | *Pengguna menekan tombol Ya* | *Sistem membuat ID unik dan menyimpan laporan ke database, kemudian menampilkan pesan bahwa laporan berhasil dibuat"* |
+
+**Skenario Alternatif 3: Pengguna Membatalkan Konfirmasi Pengiriman Laporan**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna yang sudah login menekan Buat Laporan* | *Sistem menampilkan formulir berisi lokasi, nama masalah, kategori, tingkat permasalahan, pilihan privat/publik, foto (opsional), dan deskripsi (opsional).*|
+| 2 | *Pengguna yang sudah login mengisi formulir kemudian menekan tombol kirim* | *Sistem memvalidasi kelengkapan data wajib, titik lokasi, dan format foto jika diunggah.* |
+| 3 | *-* | *Sistem menampilkan konfirmasi "Apakah data laporan sudah sesuai?"* |
+| 4 | *Pengguna menekan tombol Tidak* | *Sistem mengembalikan pengguna ke laman pengisian formulir"* |
+| 5 | *Pengguna diperbolehkan untuk mengedit data input terlebih dahulu, kemudian menekan ulang tombol kirim* | *Sistem memvalidasi kelengkapan data wajib, titik lokasi, dan format foto jika diunggah.* |
+| 6 | *-* | *Sistem menampilkan konfirmasi "Apakah data laporan sudah sesuai?"* |
+| 7 | *Pengguna menekan tombol Ya* | *Sistem membuat ID unik dan menyimpan laporan ke database, kemudian menampilkan pesan bahwa laporan berhasil dibuat"* |
+
+
 ### 3.4.x Skenario UC17
 **Nama Use Case:** *Memperbarui Status Penanganan Laporan*
 
@@ -211,5 +321,20 @@ Format tabel skenario: kolom **Aksi Aktor** berisi apa yang dilakukan/diinput ak
 | 3 | *Admin menekan tombol Lakukan Tindakan* | *Sistem menampilkan formulir pop-up berisi kolom tanggapan dan dropdown status laporan yang dapat dipilih."* |
 | 4 | *Admin mengisi tanggapan, memilih status, kemudian menekan tombol Simpan* | *Sistem memvalidasi isian dan menampilkan konfirmasi "Apakah tanggapan dan status laporan sudah sesuai?"* |
 | 5 | *Admin menekan tombol Ya* | *Sistem menyimpan tanggapan, memperbarui status laporan, menutup pop-up, dan menampilkan tanggapan admin sebagai komentar teratas pada laporan tersebut* |
+
+<br>
+
+**Skenario Alternatif 1: Admin Membatalkan Konfirmasi Perubahan Status Laporan**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Admin menekan menu Kelola Laporan* | *Sistem menampilkan daftar laporan dengan pilihan pengurutan berdasarkan terbaru, urgensi, dan popularitas.*|
+| 2 | *Admin memilih salah satu lappran* | *Sistem menampilkan detail laporan* |
+| 3 | *Admin menekan tombol Lakukan Tindakan* | *Sistem menampilkan formulir pop-up berisi kolom tanggapan dan dropdown status laporan yang dapat dipilih."* |
+| 4 | *Admin mengisi tanggapan, memilih status, kemudian menekan tombol Simpan* | *Sistem memvalidasi isian dan menampilkan konfirmasi "Apakah tanggapan dan status laporan sudah sesuai?"* |
+| 5 | *Admin menekan tombol Tidak* | *Sistem kembali menampilkan formulir pop-up berisi kolom tanggapan dan dropdown status laporan yang dapat dipilih.* |
+| 6 | *Admin dapat mengedit kembali tanggapan, memilih status, kemudian menekan tombol Simpan lagi* | *Sistem memvalidasi isian dan menampilkan konfirmasi "Apakah tanggapan dan status laporan sudah sesuai?"* |
+| 7 | *Admin menekan tombol Ya* | *Sistem menyimpan tanggapan, memperbarui status laporan, menutup pop-up, dan menampilkan tanggapan admin sebagai komentar teratas pada laporan tersebut* |
+
 
 
