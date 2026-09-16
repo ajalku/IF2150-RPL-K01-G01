@@ -77,6 +77,6 @@
 | *15-09-2026* | *Ravinka Fathia Adinegara* | *Membuat use case diagram* | *2* | *Done* | *-* |
 | *16-09-2026* | *Ravinka Fathia Adinegara* | *Merevisi diagram* | *0.25* | *Done* | *-* |
 | *16-09-2026* | *Samantha Michelle S. Silaban* | *Menambahkan skenario normal* | *1* | *Done* | *-* |
-| *16-09-2026* | *Aufa Tatsbita Zahra* | *Merevisi skenario alternatif* | *1* | *Done* | *-* |
+| *16-09-2026* | *Aufa Tatsbita Zahra* | *Merevisi skenario alternatif* | *1.5* | *Done* | *-* |
 
 <!-- Gunakan format penulisan Logbook yang sama untuk setiap Milestone dan pastikan pembuatan Daftar Isi juga sudah sesuai sebelum Logbook dikumpulkan. -->
