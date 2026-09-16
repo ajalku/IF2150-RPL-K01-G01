@@ -63,7 +63,13 @@
 | *09-09-2026* | *Syakira Azzahra Rachmania* | *Revisi bab 2.3* | *1* | *Done* | *-* |
 | *09-09-2026* | *Aufa Tatsbita Zahra* | *Revisi bab 2.4* | *0.5* | *Done* | *-* |
 
+### Milestone 3
+**Periode:** 2 September 2026 - 9 September 2026
 
+| Tanggal | Nama Anggota | Deskripsi Pekerjaan | Durasi (Jam) | Status | Kendala / *Blocker* | 
+| :--- | :--- | :--- | :--- | :--- | :--- | 
+| *15-09-2026* | *Ravinka Fathia Adinegara* | *Mengerjakan diagram* | *2* | *Done* | *-* |
+| *16-09-2026* | *Ravinka Fathia Adinegara* | *Merevisi diagram* | *0.25* | *Done* | *-* |
 
 
 
