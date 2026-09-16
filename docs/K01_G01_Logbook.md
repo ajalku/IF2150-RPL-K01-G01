@@ -24,6 +24,7 @@
 ### Daftar Isi
 * [Milestone 1](#milestone-1)
 * [Milestone 2](#milestone-2)
+* [Milestone 3](#milestone-3)
 
 
 ---
@@ -65,6 +66,16 @@
 
 
 
+### Milestone 3
+**Periode:** 9 September 2026 - 16 September 2026
 
+| Tanggal | Nama Anggota | Deskripsi Pekerjaan | Durasi (Jam) | Status | Kendala / *Blocker* | 
+| :--- | :--- | :--- | :--- | :--- | :--- | 
+| *13-09-2026* | *Samantha Michelle S. Silaban* | *Menyusun skenario normal* | *1.5* | *Progress* | *-* |
+| *13-09-2026* | *Syakira Azzahra Rachmania* | *Menyusun use case* | *1.5* | *Done* | *-* |
+ *14-09-2026* | *Aufa Tatsbita Zahra* | *Membuat skenario alternatif* | *2* | *Done* | *-* |
+| *15-09-2026* | *Syakira Azzahra Rachmania* | *Merevisi use case* | *1* | *Done* | *-* |
+| *16-09-2026* | *Samantha Michelle S. Silaban* | *Menambahkan skenario normal* | *1* | *Done* | *-* |
+ *16-09-2026* | *Aufa Tatsbita Zahra* | *Merevisi skenario alternatif* | *1* | *Done* | *-* |
 
 <!-- Gunakan format penulisan Logbook yang sama untuk setiap Milestone dan pastikan pembuatan Daftar Isi juga sudah sesuai sebelum Logbook dikumpulkan. -->
