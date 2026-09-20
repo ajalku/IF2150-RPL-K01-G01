@@ -173,14 +173,13 @@ Identifikasi seluruh kelas yang diperlukan berdasarkan use case dan skenarionya.
 
 | ID Kelas | Nama Kelas | Deskripsi Kelas | ID Use Case |
 | :--- | :--- | :--- | :--- |
-| *C01* | *Pelanggan* | *Menyimpan data akun pelanggan yang membuat pesanan.* | *UC01, UC05* |
-| *C02* | *Pesanan* | *Menyimpan data pesanan beserta status pembayarannya.* | *UC01, UC03, UC05* |
-| *C03* | *Keranjang* | *Menyimpan sementara item yang dipilih sebelum checkout.* | *UC01, UC02* |
-| *C04* | *MetodePembayaran* | *Kelas abstrak yang merepresentasikan metode pembayaran yang dipilih pelanggan.* | *UC03, UC04* |
-| *C05* | *Kartu* | *Merealisasikan pembayaran melalui kartu kredit/debit dengan mengirimkan permintaan ke payment gateway (dummy).* | *UC03, UC04* |
-| *C06* | *EWallet* | *Merealisasikan pembayaran melalui e-wallet, termasuk pengecekan saldo, dengan mengirimkan permintaan ke payment gateway (dummy).* | *UC03, UC04* |
-| *C07* | *RiwayatTransaksi* | *Menyimpan catatan transaksi beserta status yang dikembalikan payment gateway (dummy).* | *UC03, UC05* |
-| *...* | *...* | *...* | *...* |
+| *C01* | *Pengguna* | *Menyimpan data pengguna yang dapat melakukan registrasi, login, membuat laporan, melihat laporan, memberikan upvote, dan memberikan komentar.* | *UC01, UC02, UC03, 0C04, UC05, UC06, UC07, UC08* |
+| *C02* | *Admin* | *Menyimpan data admin yang dapat melakukan login, memeriksa laporan, dan memperbarui status penanganan laporan.* | *UC02, UC03, UC04, UC05, UC08, UC09* |
+| *C03* | *Laporan* | *Menyimpan informasi laporan mengenai masalah fasilitas atau ruang umum, termasuk lokasi, nama masalah, kategori, tingkat permasalahan, foto (opsional), dan deskripsi (opsional).* | *UC01, UC02* |
+| *C04* | *Lokasi* | *Merepresentasikan lokasi geografis yang terkait dengan suatu laporan dan digunakan dalam pemetaan laporan.* | *UC03, UC04, UC07* |
+| *C05* | *Upvote* | *Menyimpan informasi pemberian upvote olehh pengguna terhadap suatu laporan.* | *UC06* |
+| *C06* | *Tanggapan* | *Menyimpan tanggapan yang diberikan admin terhadap laporan yang sedang diproses.* | *UC09* |
+| *C07* | *Tutorial* | *Merepresentasikan tutorial onboarding yang membantu pengguna memahami navigasi dan fitur utama sistem.* | *UC05* |
 
 Pastikan setiap kelas memiliki tanggung jawab yang jelas dan memang diperlukan untuk merealisasikan fungsi yang dimodelkan. Hindari kelas yang tidak memiliki keterkaitan dengan KF atau use case manapun.
 
