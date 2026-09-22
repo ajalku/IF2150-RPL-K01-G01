@@ -173,20 +173,24 @@ Identifikasi seluruh kelas yang diperlukan berdasarkan use case dan skenarionya.
 
 | ID Kelas | Nama Kelas | Deskripsi Kelas | ID Use Case |
 | :--- | :--- | :--- | :--- |
-| *C01* | *Pengguna* | *Menyimpan data pengguna yang dapat melakukan registrasi, login, membuat laporan, melihat laporan, memberikan upvote, dan memberikan komentar.* | *UC01, UC02, UC03, 0C04, UC05, UC06, UC07, UC08* |
-| *C02* | *Admin* | *Menyimpan data admin yang dapat melakukan login, memeriksa laporan, dan memperbarui status penanganan laporan.* | *UC02, UC03, UC04, UC05, UC08, UC09* |
-| *C03* | *Laporan* | *Menyimpan informasi laporan mengenai masalah fasilitas atau ruang umum, termasuk lokasi, nama masalah, kategori, tingkat permasalahan, foto (opsional), dan deskripsi (opsional).* | *UC01, UC02* |
-| *C04* | *Lokasi* | *Merepresentasikan lokasi geografis yang terkait dengan suatu laporan dan digunakan dalam pemetaan laporan.* | *UC03, UC04, UC07* |
-| *C05* | *Upvote* | *Menyimpan informasi pemberian upvote olehh pengguna terhadap suatu laporan.* | *UC06* |
-| *C06* | *Tanggapan* | *Menyimpan tanggapan yang diberikan admin terhadap laporan yang sedang diproses.* | *UC09* |
-| *C07* | *AutentikasiView* | *Menampilkan halaman untuk registrasi dan login pengguna maupun admin.* | *UC01, UC02* |
-| *C08* | *PetaView* | *Menampilkan peta interaktif beserta titik lokasi laporan dan informasi terkait laporan.* | *UC03* |
-| *C09* | *LaporanView* | *Menampilkan informasi laporan serta halaman untuk membuat, melihat, memeriksa, menampilkan jumlah upvote, dan memperbarui status/tanggapan laporan.* | *UC04, UC06, UC07, UC08, UC09* |
-| *C10* | *TutorialView* | *Menampilkan tutorial navigasi dan menyediakan tombol pilihan Next, Skip, dan Selesai.* | *UC05* |
-| *C11* | *AutentikasiController* | *Menangani proses registrasi, validasi data akun, login, verifikasi kredensial, dan pengaturan hak akses berdasarkan jenis akun.* | *UC01, UC02* |
-| *C12* | *PetaController* | *Menangani proses pengambilan data laporan dan lokasi untuk ditampilkan pada peta serta pencarian laporan di sekitar pengguna.* | *UC03* |
-| *C13* | *LaporanController* | *Menangani proses pengambilan, pembuatan, pemeriksaan, pemberian upvote, dan pembaruan data status laporan serta penyimpanan tanggapan admin.* | *UC04, UC06, UC07, UC08, UC09* |
-| *C14* | *TutorialController* | *Menangani proses perpindahan langkah tutorial serta aksi Skip dan Selesai.* | *UC05* |
+| *C01* | *Pengguna* | *Menyimpan data pengguna maupun admin yang dapat melakukan registrasi, login, membuat laporan, melihat laporan dan peta lokasi laporan, memberikan upvote, memeriksa laporan, mengatur status laporan, dan memberikan tanggapan sesuai dengan hak akses berdasarkan role.* | *UC01, UC02, UC03, UC04, UC05, UC06, UC07, UC08, UC09* |
+| *C02* | *Laporan* | *Menyimpan informasi laporan mengenai masalah fasilitas atau ruang umum, termasuk nama masalah, lokasi, kategori, tingkat permasalahan, foto (opsional), deskripsi (opsional), dan status laporan.* | *UC04, UC06, UC07, UC08, UC09* |
+| *C03* | *Lokasi* | *Menyimpan informasi lokasi geografis yang terkait dengan suatu laporan dan digunakan untuk menampilkan laporan pada peta.* | *UC03, UC04, UC07* |
+| *C04* | *Upvote* | *Menyimpan informasi pemberian upvote oleh pengguna terhadap suatu laporan.* | *UC06* |
+| *C05* | *Tanggapan* | *Menyimpan tanggapan yang diberikan admin terhadap laporan yang sedang diproses.* | *UC09* |
+| *C06* | *Tutorial* | *Menyimpan informasi tutorial navigasi yang ditampilkan kepada pengguna.* | *UC05* |
+| *C07* | *PenggunaView* | *Menampilkan halaman registrasi dan login serta informasi pengguna sesuai dengan hak akses berdasarkan role.* | *UC01, UC02* |
+| *C08* | *LaporanView* | *Menampilkan informasi laporan serta halaman untuk membuat, melihat, memeriksa, dan memperbarui laporan.* | *UC04, UC07, UC08, UC09* |
+| *C09* | *LokasiView* | *Menampilkan informasi lokasi laporan dan peta interaktif yang digunakan untuk melihat laporan berdasarkan lokasi.* | *UC03, UC04, UC07* |
+| *C10* | *UpvoteView* | *Menampilkan tombol dan jumlah upvote pada laporan serta memungkinkan pengguna memberikan upvote.* | *UC06* |
+| *C11* | *TanggapanView* | *Menampilkan tanggapan admin pada laporan serta menyediakan tampilan untuk memberikan tanggapan terhadap laporan.* | *UC09* |
+| *C12* | *TutorialView* | *Menampilkan tutorial navigasi dan menyediakan tombol Next, Skip, dan Selesai.* | *UC05* |
+| *C13* | *PenggunaController* | *Menangani proses registrasi, login, validasi data akun, verifikasi kredensial, dan pengaturan hak akses pengguna berdasarkan role.* | *UC01, UC02* |
+| *C14* | *LaporanController* | *Menangani proses pembuatan, pengambilan, pemeriksaan, dan pembaruan data laporan serta pengelolaan informasi terkait laporan.* | *UC04, UC07, UC08, UC09* |
+| *C15* | *LokasiController* | *Menangani proses pengambilan dan pengelolaan data lokasi laporan serta pencarian laporan berdasarkan lokasi untuk ditampilkan pada peta.* | *UC03, UC04, UC07* |
+| *C16* | *UpvoteController* | *Menangani proses pemberian upvote oleh pengguna terhadap suatu laporan serta pengelolaan jumlah upvote.* | *UC06* |
+| *C17* | *TanggapanController* | *Menangani proses pembuatan, pengambilan, dan penyimpanan tanggapan admin terhadap suatu laporan.* | *UC09* |
+| *C18* | *TutorialController* | *Menangani proses perpindahan langkah tutorial serta aksi Next, Skip, dan Selesai.* | *UC05* |
 
 Pastikan setiap kelas memiliki tanggung jawab yang jelas dan memang diperlukan untuk merealisasikan fungsi yang dimodelkan. Hindari kelas yang tidak memiliki keterkaitan dengan KF atau use case manapun.
 
