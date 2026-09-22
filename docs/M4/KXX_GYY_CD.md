@@ -179,7 +179,14 @@ Identifikasi seluruh kelas yang diperlukan berdasarkan use case dan skenarionya.
 | *C04* | *Lokasi* | *Merepresentasikan lokasi geografis yang terkait dengan suatu laporan dan digunakan dalam pemetaan laporan.* | *UC03, UC04, UC07* |
 | *C05* | *Upvote* | *Menyimpan informasi pemberian upvote olehh pengguna terhadap suatu laporan.* | *UC06* |
 | *C06* | *Tanggapan* | *Menyimpan tanggapan yang diberikan admin terhadap laporan yang sedang diproses.* | *UC09* |
-| *C07* | *Tutorial* | *Merepresentasikan tutorial onboarding yang membantu pengguna memahami navigasi dan fitur utama sistem.* | *UC05* |
+| *C07* | *AutentikasiView* | *Menampilkan halaman untuk registrasi dan login pengguna maupun admin.* | *UC01, UC02* |
+| *C08* | *PetaView* | *Menampilkan peta interaktif beserta titik lokasi laporan dan informasi terkait laporan.* | *UC03* |
+| *C09* | *LaporanView* | *Menampilkan informasi laporan serta halaman untuk membuat, melihat, memeriksa, menampilkan jumlah upvote, dan memperbarui status/tanggapan laporan.* | *UC04, UC06, UC07, UC08, UC09* |
+| *C10* | *TutorialView* | *Menampilkan tutorial navigasi dan menyediakan tombol pilihan Next, Skip, dan Selesai.* | *UC05* |
+| *C11* | *AutentikasiController* | *Menangani proses registrasi, validasi data akun, login, verifikasi kredensial, dan pengaturan hak akses berdasarkan jenis akun.* | *UC01, UC02* |
+| *C12* | *PetaController* | *Menangani proses pengambilan data laporan dan lokasi untuk ditampilkan pada peta serta pencarian laporan di sekitar pengguna.* | *UC03* |
+| *C13* | *LaporanController* | *Menangani proses pengambilan, pembuatan, pemeriksaan, pemberian upvote, dan pembaruan data status laporan serta penyimpanan tanggapan admin.* | *UC04, UC06, UC07, UC08, UC09* |
+| *C14* | *TutorialController* | *Menangani proses perpindahan langkah tutorial serta aksi Skip dan Selesai.* | *UC05* |
 
 Pastikan setiap kelas memiliki tanggung jawab yang jelas dan memang diperlukan untuk merealisasikan fungsi yang dimodelkan. Hindari kelas yang tidak memiliki keterkaitan dengan KF atau use case manapun.
 
