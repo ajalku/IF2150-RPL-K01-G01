@@ -231,7 +231,7 @@ Buat diagram kelas untuk setiap use case pada 3.2.
 | :--- | :--- | :--- | :--- |
 | *C08* | *PenggunaView* | *-* | *+ tampilkanFormRegistrasi(), + tampilkanErrorMsgs()* |
 | *C15* | *PenggunaController* | *-* | *+registrasi, -hashPassword(), -cekAkunTerdaftar() -validasiData()* |
-| *C01* | *Pengguna* | *- idPengguna, - nama, - NIK, - email, - password, - role, - NoTelp * | * +simpanDataPengguna()* |
+| *C01* | *Pengguna* | *- idPengguna, - nama, - NIK, - email, - password, - role, - NoTelp* | *+simpanDataPengguna()* |
 
 
 ### 4.2.2 Use Case UC02
@@ -251,7 +251,7 @@ Buat diagram kelas untuk setiap use case pada 3.2.
 #### Diagram Kelas
 
 <p align="center">
-<img alt="Class Diagram UC01" src="./assets/diagram/diagram-uc01.png" width="70%">
+<img alt="Class Diagram UC02" src="./assets/diagram/diagram-uc01.png" width="70%">
 </p>
 <p align="center">
 <i>Gambar 3. Diagram Kelas Use Case UC02</i>
@@ -262,7 +262,7 @@ Buat diagram kelas untuk setiap use case pada 3.2.
 | :--- | :--- | :--- | :--- |
 | *C08* | *PenggunaView* | *-* | *+ tampilkanFormLogin(), + tampilkanErrorMsgs()* |
 | *C15* | *PenggunaController* | *-* | *+login(), -hashPassword(), -validasiKredensial()* |
-| *C01* | *Pengguna* | *- idPengguna, - email, - password, - role* | * +getRole(), + getPenggunaByEmail(), +getPenggunaByNIK* |
+| *C01* | *Pengguna* | *- idPengguna, - email, - password, - role* | *+getRole(), + getPenggunaByEmail(), +getPenggunaByNIK* |
 
 
 ### 4.2.3 Use Case UC03
@@ -292,7 +292,7 @@ Buat diagram kelas untuk setiap use case pada 3.2.
 #### Diagram Kelas
 
 <p align="center">
-<img alt="Class Diagram UC01" src="./assets/diagram/diagram-uc03.png" width="70%">
+<img alt="Class Diagram UC03" src="./assets/diagram/diagram-uc03.png" width="70%">
 </p>
 <p align="center">
 <i>Gambar 4. Diagram Kelas Use Case UC04</i>
@@ -304,14 +304,14 @@ Buat diagram kelas untuk setiap use case pada 3.2.
 | *C08* | *PenggunaView* | *-* | *+ tampilkanPermintaanIzinLokasi() * |
 | *C15* | *PenggunaController* | *-* | *+setIzinLokasi() +cekIzinLokasi()* |
 | *C01* | *Pengguna* | *- idPengguna, -lokasiSaatIni, -izinLokasi* | * +getIzinLokasi()* |
-| *C11* | *LokasiView* | *map* |*+tampilkan[eta() ,  +tampilkanErrorMsgs(),+tampilkanLaporanSektiar(), +tampilkanTitikLaporan(), +zoomLokasi()* |
-| *C18* |*LokasiController* | *-* | *+cariLaporanTerdekat(), -ambilLokasiPengguna(), -mintaIzinLokasi(), +ambilLokasiLaporan(), -hitungJarak() * |
+| *C11* | *LokasiView* | *map* |*+tampilkanPeta() ,  +tampilkanErrorMsgs(),+tampilkanLaporanSektiar(), +tampilkanTitikLaporan(), +zoomLokasi()* |
+| *C18* |*LokasiController* | *-* | *+cariLaporanTerdekat(), -ambilLokasiPengguna(), -mintaIzinLokasi(), +ambilLokasiLaporan(), -hitungJarak()* |
 | *C04* | *Lokasi* | *- latitude, -longitude,  -alamat* | * +getKoordinat(), +getAlamat()* |
-| *C03* | *Laporan* | *- idLaporan, - namaMasalah, - kategori, - tingkatPermasalahan, -foto, -deskripsi, -statusLaporan* | * +getDetailLaporan* |
-| *C03* | *Laporan* | *- idLaporan, - namaMasalah, - kategori, - tingkatPermasalahan, -foto, -deskripsi, -statusLaporan* | * +getDetailLaporan*() |
-| *C10* | *LaporanView* | *-* | * +tampilkanDetailLaporan() |
-| *C17* | *LaporanController* | *-* | * +lihatDetailLaporan() |
-| *C22* | *MapAPI* | *- apiKey, -baseURL* | * +getAPIKey(), +getBaseURL() * |
+| *C03* | *Laporan* | *- idLaporan, - namaMasalah, - kategori, - tingkatPermasalahan, -foto, -deskripsi, -statusLaporan* | *+getDetailLaporan* |
+| *C03* | *Laporan* | *- idLaporan, - namaMasalah, - kategori, - tingkatPermasalahan, -foto, -deskripsi, -statusLaporan* | *+getDetailLaporan*() |
+| *C10* | *LaporanView* | *-* | *+tampilkanDetailLaporan()* |
+| *C17* | *LaporanController* | *-* | *+lihatDetailLaporan()* |
+| *C22* | *MapAPI* | *- apiKey, -baseURL* | *+getAPIKey(), +getBaseURL()* |
 | *C23* | *MapAPIService* | *-* | *+geocode(), -kirimRequest(), -prosesResponse()* |
 | *C24* | *MapAPIView* | *-* | *+renderMap(), +renderMarker(), +setCenter()* |
 
@@ -354,14 +354,14 @@ Buat diagram kelas untuk setiap use case pada 3.2.
 | :--- | :--- | :--- | :--- |
 | *C09* | *HomepageView* | *-* | *+tampilkanDaftarLaporan(), +tampilkanMenuFilterLaporan()* |
 | *C16* | *HomepageController* | *-* | *+loadHomepage(), +pilihLaporan, urutkanLaporan(), filterLaporan()* |
-| *C01* | *Homepage* | *- daftarLaporan* | * +getDaftarLaporan(), +refreshPage()* |
+| *C01* | *Homepage* | *- daftarLaporan* | *+getDaftarLaporan(), +refreshPage()* |
 | *C11* | *LokasiView* | *map* |*+tampilkanPeta() ,  +tampilkanErrorMsgs(),+ +tampilkanTitikLaporan()* |
 | *C18* |*LokasiController* | *-* | *+ambilLokasiLaporan()* |
-| *C04* | *Lokasi* | *- latitude, -longitude,  -alamat* | * +getKoordinat(), +getAlamat()* |
-| *C03* | *Laporan* | *- idLaporan, - namaMasalah, - kategori, - tingkatPermasalahan, -foto, -deskripsi, -statusLaporan* | * +getDetailLaporan() * |
-| *C10* | *LaporanView* | *-* | * +tampilkanDetailLaporan() |
-| *C17* | *LaporanController* | *-* | * +lihatDetailLaporan() |
-| *C22* | *MapAPI* | *- apiKey, -baseURL* | * +getAPIKey(), +getBaseURL() * |
+| *C04* | *Lokasi* | *- latitude, -longitude,  -alamat* | *+getKoordinat(), +getAlamat()* |
+| *C03* | *Laporan* | *- idLaporan, - namaMasalah, - kategori, - tingkatPermasalahan, -foto, -deskripsi, -statusLaporan* | *+getDetailLaporan()* |
+| *C10* | *LaporanView* | *-* | *+tampilkanDetailLaporan()* |
+| *C17* | *LaporanController* | *-* | *+lihatDetailLaporan()* |
+| *C22* | *MapAPI* | *- apiKey, -baseURL* | *+getAPIKey(), +getBaseURL()* |
 | *C23* | *MapAPIService* | *-* | *+geocode(), -kirimRequest(), -prosesResponse()* |
 | *C24* | *MapAPIView* | *-* | *+renderMap(), +renderMarker(), +setCenter()* |
 
@@ -377,9 +377,9 @@ Buat diagram kelas untuk setiap use case pada 3.2.
 | *C08* | *PenggunaView* | *Menampilkan halaman registrasi dan login serta informasi pengguna sesuai dengan hak akses berdasarkan role.* |
 | *C15* | *PenggunaController* | *Menangani proses registrasi, login, validasi data akun, verifikasi kredensial, dan pengaturan hak akses pengguna berdasarkan role.* |
 | *C01* | *Pengguna* | *Menyimpan data pengguna maupun admin yang dapat melakukan registrasi, login, mengedit profil, membuat laporan, melihat laporan dan peta lokasi laporan, memberikan upvote, memeriksa laporan, mengatur status laporan, dan memberikan tanggapan sesuai dengan hak akses berdasarkan role.* |
-| *C11* | *TutorialView* | *Menampilkan tutorial navigasi dan menyediakan tombol Next, Skip, dan Selesai.* |
-| *C18* | *TutorialController* | *Menangani proses perpindahan langkah tutorial serta aksi Next, Skip, dan Selesai.* |
-| *C04* | *Tutorial* | *Menyimpan informasi tutorial navigasi yang ditampilkan kepada pengguna.* |
+| *C14* | *TutorialView* | *Menampilkan tutorial navigasi dan menyediakan tombol Next, Skip, dan Selesai.* |
+| *C21* | *TutorialController* | *Menangani proses perpindahan langkah tutorial serta aksi Next, Skip, dan Selesai.* |
+| *C07* | *Tutorial* | *Menyimpan informasi tutorial navigasi yang ditampilkan kepada pengguna.* |
 | *C09* | *HomepageView* | *Menampilkan halaman utama sistem beserta daftar laporan dan fitur yang dapat diakses pengguna maupun admin.* |
 | *C10* | *LaporanView* | *Menampilkan informasi laporan serta halaman untuk membuat, melihat, memeriksa, dan memperbarui laporan.* |
 
@@ -401,10 +401,10 @@ Buat diagram kelas untuk setiap use case pada 3.2.
 | *C08* | *PenggunaView* | *-* | *+tampilkanOpsiTutorial()* |
 | *C15* | *PenggunaController* | *-* | *+cekStatusTutorial() |
 | *C01* | *Pengguna* | *-statusTutorial* | * +sudahLihatTutorial()* |
-| *C11* | *TutorialView* | *-* | *+tampilkanTutorial(), +tampilkanLangkah(), +tutupTutorial*|
-| *C18* | *TutorialController* | *-* | *+skipTutorial(), nextTutorial(), finisihTutorial(), startTutorial()*|
+| *C14* | *TutorialView* | *-* | *+tampilkanTutorial(), +tampilkanLangkah(), +tutupTutorial*|
+| *C07* | *TutorialController* | *-* | *+skipTutorial(), nextTutorial(), finisihTutorial(), startTutorial()*|
 | *C04* | *Tutorial* | *-langkahSaatIni, -totalLangkah* | *+getLangkahSaatIni(), +getTotalLangkah()*|
-| *C10* | *LaporanView* | *-* | * +tampilkanDetailLaporan()*|
+| *C10* | *LaporanView* | *-* | *+tampilkanDetailLaporan()*|
 | *C09* | *HomepageView* | *-* | *+tampilkanDaftarLaporan(), +tampilkanMenuFilterLaporan()* |
 
 
