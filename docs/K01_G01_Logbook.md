@@ -79,4 +79,10 @@
 | *16-09-2026* | *Samantha Michelle S. Silaban* | *Menambahkan skenario normal* | *1* | *Done* | *-* |
 | *16-09-2026* | *Aufa Tatsbita Zahra* | *Merevisi skenario alternatif* | *1.5* | *Done* | *-* |
 
+### Milestone 4
+**Periode:** 16 September 2026 - 23 September 2026
+| Tanggal | Nama Anggota | Deskripsi Pekerjaan | Durasi (Jam) | Status | Kendala / *Blocker* | 
+| :--- | :--- | :--- | :--- | :--- | :--- | 
+| *23-09-2026* | *Ravinka Fathia Adinegara* | *Menyusun diagram kelas keseluruhan dan tabelnya* | *3* | *Done* | *-* |
+
 <!-- Gunakan format penulisan Logbook yang sama untuk setiap Milestone dan pastikan pembuatan Daftar Isi juga sudah sesuai sebelum Logbook dikumpulkan. -->
