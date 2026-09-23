@@ -25,6 +25,7 @@
 * [Milestone 1](#milestone-1)
 * [Milestone 2](#milestone-2)
 * [Milestone 3](#milestone-3)
+* [Milestone 4](#milestone-4)
 
 
 ---
@@ -91,5 +92,6 @@
 | *23-09-2026* | *Samantha Michelle S. Silaban* | *Merevisi class diagram* | *3* | *Done* | *-* |
 | *23-09-2026* | *Syakira Azzahra Rachmania* | *Merevisi class diagram* | *3* | *Done* | *-* |
 | *23-09-2026* | *Ravinka Fathia Adinegara* | *Menyusun diagram kelas keseluruhan dan tabelnya* | *3* | *Done* | *-* |
+| *23-09-2026* | *Ghiffari Arya Adhitya* | *Menyusun tabel traceability* | *1.5* | *Done* | *-* |
 
 <!-- Gunakan format penulisan Logbook yang sama untuk setiap Milestone dan pastikan pembuatan Daftar Isi juga sudah sesuai sebelum Logbook dikumpulkan. -->
