@@ -599,10 +599,10 @@ Buat diagram kelas untuk setiap use case pada 3.2.
 Gabungkan seluruh kelas dan hubungan antarkelas dari diagram kelas setiap use case menjadi satu diagram kelas keseluruhan. Pastikan tidak ada kelas yang terduplikasi.
 
 <p align="center">
-<img alt="Class Diagram Keseluruhan" src="./assets/diagram/diagram.full.drawio.png" width="70%">
+<img alt="Class Diagram Keseluruhan" src="./assets/diagram/diagram.full.revisi1.drawio.png.drawio.png" width="70%">
 </p>
 <p align="center">
-<i>Gambar X. Diagram Kelas Keseluruhan</i>
+<i>Gambar 12. Diagram Kelas Keseluruhan</i>
 </p>
 <br>
 
