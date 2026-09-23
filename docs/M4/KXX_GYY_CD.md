@@ -620,17 +620,33 @@ Gabungkan seluruh kelas dan hubungan antarkelas dari diagram kelas setiap use ca
 ---
 
 # BAB 5: Traceability
-Cocokkan setiap kebutuhan fungsional, use case, dengan diagram kelas yang mendukung atau mengimplementasikan kebutuhan tersebut.
 
 | ID Kelas | ID Use Case | ID KF |
 | :--- | :--- | :--- |
-| *C01* | *UC01, UC05* | *KF01, KF06* |
-| *C02* | *UC01, UC03, UC05* | *KF01, KF02, KF05, KF06* |
-| *C03* | *UC01, UC02* | *KF01, KF02* |
-| *C04* | *UC03, UC04* | *KF03* |
-| *C05* | *UC03, UC04* | *KF03* |
-| *C06* | *UC03, UC04* | *KF03, KF04* |
-| *C07* | *UC03, UC05* | *KF04, KF05* |
+| *C01* | *UC01, UC02, UC03, UC04, UC05, UC06, UC07, UC08, UC09, UC10* | *KF01, KF02, KF03, KF04, KF05, KF06, KF07, KF08, KF09, KF10, KF11, KF12, KF13, KF14, KF15, KF17, KF18* |
+| *C02* | *UC03, UC04, UC06, UC07, UC08, UC09, UC10* | *KF03, KF04，KF05, KF06，KF08, KF09, KF10, KF11，KF12, KF13, KF14，KF15, KF17, KF18* |
+| *C03* | *UC04, UC06, UC07, UC08, UC09* | *KF05, KF06, KF09, KF10, KF11, KF12, KF13, KF15, KF08, KF14, KF17, KF18* |
+| *C04* | *UC03, UC04, UC07* | *KF03, KF04, KF05, KF06, KF12, KF13, KF15* |
+| *C05* | *UC06* | *KF09, KF10, KF11* |
+| *C06* | *UC09* | *KF17, KF18* |
+| *C07* | *UC05*| *KF07* |
+| *C08* | *UC01, UC02* | *KF01, KF02* |
+| *C09* | *UC03, UC04, UC06, UC07, UC08, UC09, UC10* | *KF03, KF04, KF05, KF06, KF09, KF10, KF11, KF12, KF13, KF15, KF08, KF14, KF15, KF17, KF18* |
+| *C10* | *UC04, UC07, UC08, UC09* | *KF05, KF06, KF12, KF13, KF15, KF08, KF14, KF15, KF17, KF18* | 
+| *C11* | *UC03, UC04, UC07* | *KF03, KF04, KF05, KF06, KF12, KF13, KF15* |
+| *C12* | *UC06* | *KF09, KF10, KF11* |
+| *C13* | *UC09* | *KF17, KF18* |
+| *C14* | *UC05*| *KF07* |
+| *C15* | *UC01, UC02* | *KF01, KF02* |
+| *C16* | *UC03, UC04, UC06, UC07, UC08, UC09, UC10* | *KF03, KF04, KF05, KF06, KF09, KF10, KF11, KF12, KF13, KF15, KF08, KF14, KF15, KF17, KF18* |
+| *C17* | *UC04, UC07, UC08, UC09* | *KF05, KF06, KF12, KF13, KF15, KF08, KF14, KF15, KF17, KF18* | 
+| *C18* | *UC03, UC04, UC07* | *KF03, KF04, KF05, KF06, KF12, KF13, KF15* |
+| *C19* | *UC06* | *KF09, KF10, KF11* |
+| *C20* | *UC09* | *KF17, KF18* |
+| *C21* | *UC05*| *KF07* |
+| *C22* | *UC03, UC04* | *KF03, KF04, KF05, KF06* |
+| *C23* | *UC03, UC04* | *KF03, KF04, KF05, KF06* |
+| *C24* | *UC03, UC04* | *KF03, KF04, KF05, KF06* |
 
 
 ---
