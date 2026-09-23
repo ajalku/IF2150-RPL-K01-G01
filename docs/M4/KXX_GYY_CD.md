@@ -417,11 +417,19 @@ Buat diagram kelas untuk setiap use case pada 3.2.
 #### Identifikasi Kelas
 
 | ID Kelas | Nama Kelas | Deskripsi Kelas |
-| :--- | :--- | :--- |
-| *C01* | *Pelanggan* | *Menyimpan data akun pelanggan yang membuat pesanan.* |
-| *C02* | *Pesanan* | *Menyimpan data pesanan yang dibuat dari isi keranjang.* |
-| *C03* | *Keranjang* | *Menyimpan sementara item yang dipilih sebelum checkout.* |
-| *...* | *...* | *...* |
+| --- | --- | --- |
+| *C01* | *Pengguna* | *Menyimpan data pengguna yang memiliki hak akses untuk memberikan upvote pada suatu laporan.* |
+| *C02* | *Homepage* | *Menyimpan informasi daftar laporan yang ditampilkan pada halaman utama sistem.* |
+| *C03* | *Laporan* | *Menyimpan informasi detail laporan yang menerima penambahan upvote.* |
+| *C05* | *Upvote* | *Menyimpan informasi pemberian upvote oleh pengguna terhadap suatu laporan.* |
+| *C08* | *PenggunaView* | *-* | *-* |
+| *C09* | *HomepageView* | *Menampilkan halaman utama sistem beserta daftar laporan yang urutannya dapat dipengaruhi oleh upvote.* |
+| *C10* | *LaporanView* | *-* | *-* |
+| *C12* | *UpvoteView* | *Menampilkan tombol dan jumlah upvote pada laporan serta memungkinkan pengguna memberikan upvote.* |
+| *C15* | *PenggunaController* | *-* | *-* |
+| *C16* | *HomepageController* | *Menangani proses pengambilan dan pengelolaan daftar laporan yang ditampilkan pada halaman utama.* |
+| *C10* | *LaporanController* | *-* | *-* |
+| *C19* | *UpvoteController* | *Menangani proses pemberian upvote oleh pengguna terhadap suatu laporan serta pengelolaan jumlah upvote.* |
 
 #### Diagram Kelas
 
@@ -455,11 +463,19 @@ Buat diagram kelas untuk setiap use case pada 3.2.
 #### Identifikasi Kelas
 
 | ID Kelas | Nama Kelas | Deskripsi Kelas |
-| :--- | :--- | :--- |
-| *C01* | *Pelanggan* | *Menyimpan data akun pelanggan yang membuat pesanan.* |
-| *C02* | *Pesanan* | *Menyimpan data pesanan yang dibuat dari isi keranjang.* |
-| *C03* | *Keranjang* | *Menyimpan sementara item yang dipilih sebelum checkout.* |
-| *...* | *...* | *...* |
+| --- | --- | --- |
+| *C01* | *Pengguna* | *Menyimpan data akun pengguna yang harus berstatus sudah login untuk dapat membuat dan mengunggah laporan baru.* |
+| *C02* | *HomePage* | *Menyimpan informasi daftar laporan yang ditampilkan pada halaman utama sistem.* |
+| *C03* | *Laporan* | *Menyimpan data informasi laporan baru mengenai masalah fasilitas umum, termasuk nama masalah, kategori, tingkat permasalahan, privasi, foto, dan deskripsi.* |
+| *C04* | *Lokasi* | *Menyimpan informasi titik koordinat geografis dan alamat yang dipilih oleh pengguna untuk laporan baru tersebut.* |
+| *C08* | *PenggunaView* | *Menampilkan antarmuka profil atau status login pengguna saat berinteraksi dengan sistem pelaporan.* |
+| *C09* | *HomepageView* | *Menampilkan halaman utama sistem tempat pengguna mengakses tombol pembuatan laporan.* |
+| *C10* | *LaporanView* | *Menampilkan formulir pengisian data untuk membuat laporan, serta pesan error validasi, konfirmasi, dan notifikasi sukses.* |
+| *C11* | *LokasiView* | *Menampilkan peta interaktif yang memungkinkan pengguna untuk menentukan dan memilih titik lokasi masalah.* |
+| *C15* | *PenggunaController* | *Menangani pengecekan status login pengguna sebelum mengizinkan proses pembuatan laporan.* |
+| *C16* | *HomepageController* | *Menangani proses pengambilan data dan pemuatan halaman utama sistem.* |
+| *C17* | *LaporanController* | *Menangani proses validasi kelengkapan data wajib dan format foto, pembuatan ID unik, serta penyimpanan laporan baru ke sistem.* |
+| *C18* | *LokasiController* | *Menangani proses pengambilan data titik koordinat atau pencarian lokasi pada peta saat pengguna mengisi formulir laporan.* |
 
 #### Diagram Kelas
 
@@ -494,11 +510,16 @@ Buat diagram kelas untuk setiap use case pada 3.2.
 #### Identifikasi Kelas
 
 | ID Kelas | Nama Kelas | Deskripsi Kelas |
-| :--- | :--- | :--- |
-| *C01* | *Pelanggan* | *Menyimpan data akun pelanggan yang membuat pesanan.* |
-| *C02* | *Pesanan* | *Menyimpan data pesanan yang dibuat dari isi keranjang.* |
-| *C03* | *Keranjang* | *Menyimpan sementara item yang dipilih sebelum checkout.* |
-| *...* | *...* | *...* |
+| --- | --- | --- |
+| *C01* | *Pengguna* | *Menyimpan data admin yang memeriksa laporan serta pengguna pelapor yang menerima permintaan konfirmasi ulang.* |
+| *C02* | *Homepage* | *Menyimpan informasi daftar laporan yang ditampilkan pada halaman utama sistem tempat admin memilih laporan.* |
+| *C03* | *Laporan* | *Menyimpan data detail laporan yang diperiksa, termasuk pembaruan status (valid/tidak valid) dan perhitungan waktu (tenggat 2 minggu).* |
+| *C08* | *PenggunaView* | *Menampilkan notifikasi admin dan formulir antarmuka bagi pengguna untuk mengirimkan konfirmasi ulang.* |
+| *C09* | *HomepageView* | *Menampilkan antarmuka halaman utama tempat admin mengakses dan memilih laporan yang akan diperiksa.* |
+| *C10* | *LaporanView* | *Menampilkan antarmuka detail laporan yang sedang ditinjau dan diperiksa oleh admin.* |
+| *C15* | *PenggunaController* | *Menangani proses alur logika ketika pengguna mengirimkan konfirmasi ulang atas laporan mereka.* |
+| *C16* | *HomepageController* | *Menangani proses pengambilan dan pengelolaan daftar laporan yang akan dimuat pada halaman utama.* |
+| *C17* | *LaporanController* | *Menangani logika pemeriksaan detail laporan, pengaturan status validitas, pengecekan batas waktu konfirmasi 2 minggu, dan eksekusi penghapusan otomatis.* |
 
 #### Diagram Kelas
 
@@ -529,11 +550,19 @@ Buat diagram kelas untuk setiap use case pada 3.2.
 #### Identifikasi Kelas
 
 | ID Kelas | Nama Kelas | Deskripsi Kelas |
-| :--- | :--- | :--- |
-| *C01* | *Pelanggan* | *Menyimpan data akun pelanggan yang membuat pesanan.* |
-| *C02* | *Pesanan* | *Menyimpan data pesanan yang dibuat dari isi keranjang.* |
-| *C03* | *Keranjang* | *Menyimpan sementara item yang dipilih sebelum checkout.* |
-| *...* | *...* | *...* |
+| --- | --- | --- |
+| *C01* | *Pengguna* | *Menyimpan data admin yang memiliki hak akses (role) untuk memberikan tanggapan dan memperbarui status penanganan laporan.* |
+| *C02* | *Homepage* | *Menyimpan informasi daftar laporan yang urutannya dapat difilter pada halaman utama sebelum admin menindaklanjutinya.* |
+| *C03* | *Laporan* | *Menyimpan data detail laporan yang status penanganannya akan diperbarui oleh admin.* |
+| *C06* | *Tanggapan* | *Menyimpan data tanggapan yang diberikan oleh admin sebagai bentuk tindak lanjut terhadap suatu laporan.* |
+| *C08* | *PenggunaView* | *Menampilkan antarmuka yang berkaitan dengan sesi atau hak akses admin yang sedang mengelola laporan.* |
+| *C09* | *HomepageView* | *Menampilkan antarmuka halaman utama beserta daftar laporan yang dapat difilter urutannya oleh admin.* |
+| *C10* | *LaporanView* | *Menampilkan antarmuka detail laporan yang dipilih admin, serta memunculkan hasil akhir tanggapan admin sebagai komentar teratas.* |
+| *C13* | *TanggapanView* | *Menampilkan formulir pop-up bagi admin untuk mengisi tanggapan dan memilih status laporan, serta memunculkan pesan konfirmasi.* |
+| *C15* | *PenggunaController* | *Menangani proses pengecekan hak akses (role) admin yang berwenang untuk melakukan pembaruan status.* |
+| *C16* | *HomepageController* | *Menangani proses logika pemuatan daftar laporan dan eksekusi pemfilteran urutannya di halaman utama.* |
+| *C17* | *LaporanController* | *Menangani proses penarikan data detail laporan dari sistem saat admin memilih salah satu laporan.* |
+| *C20* | *TanggapanController* | *Menangani proses validasi isian form popup dan mengeksekusi penyimpanan tanggapan sekaligus pembaruan status laporan ke database.* |
 
 #### Diagram Kelas
 
@@ -554,7 +583,7 @@ Buat diagram kelas untuk setiap use case pada 3.2.
 | *C08* | *PenggunaView* | *-* | *-* |
 | *C09* | *HomepageView* | *-* | *+tampilkanHomepage(), +pilihFilter()* |
 | *C10* | *LaporanView* | *-* | *+tampilkanDetailLaporan(), +tampilkanTanggapanTeratas()* |
-| *C02* | *TanggapanView* | *-dataPopupForm* | *+tampilkanPopup(), +submitPopupForm(), +tampilkanKonfirmasi()* |
+| *C13* | *TanggapanView* | *-dataPopupForm* | *+tampilkanPopup(), +submitPopupForm(), +tampilkanKonfirmasi()* |
 | *C15* | *PenggunaController* | *-* | *-* |
 | *C16* | *HomepageController* | *-* | *+loadHomepage(), +filterLaporan()* |
 | *C17* | *LaporanController* | *-* | *+ambilDetailLaporan()* |
