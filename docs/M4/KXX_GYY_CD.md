@@ -628,38 +628,71 @@ Buat diagram kelas untuk setiap use case pada 3.2.
 Gabungkan seluruh kelas dan hubungan antarkelas dari diagram kelas setiap use case menjadi satu diagram kelas keseluruhan. Pastikan tidak ada kelas yang terduplikasi.
 
 <p align="center">
-<img alt="Class Diagram Keseluruhan" src="./assets/diagram/diagram.full.drawio.png" width="70%">
+<img alt="Class Diagram Keseluruhan" src="./assets/diagram/diagram.full.revisi1.drawio.png.drawio.png" width="70%">
 </p>
 <p align="center">
-<i>Gambar X. Diagram Kelas Keseluruhan</i>
+<i>Gambar 12. Diagram Kelas Keseluruhan</i>
 </p>
 <br>
 
 | ID Kelas | Nama Kelas | Atribut | Metode/Operasi |
 | :--- | :--- | :--- | :--- |
-| *C01* | *Pelanggan* | *idPelanggan, nama, email* | *lihatRiwayatPesanan()* |
-| *C02* | *Pesanan* | *idPesanan, total, status* | *hitungTotal(), perbaruiStatus()* |
-| *C03* | *Keranjang* | *daftarItem* | *tambahItem(), checkout()* |
-| *C04* | *MetodePembayaran* | *-* | *kirimKePaymentGatewayDummy()* |
-| *C05* | *Kartu* | *nomorKartu, masaBerlaku* | *kirimKePaymentGatewayDummy()* |
-| *C06* | *EWallet* | *saldo, idAkun* | *cekSaldo(), kirimKePaymentGatewayDummy()* |
-| *C07* | *RiwayatTransaksi* | *idTransaksi, waktu, status* | *catatTransaksi(), tampilkanNotifikasi()* |
+| *C01* | *Pengguna* | *-idPengguna, -nama, -role* | *+getRole()* |
+| *C02* | *HomePage* | *-sortBy* | *+getDaftarLaporan()* |
+| *C03* | *Laporan* | *-idLaporan, -namaMasalah, -kategori, -tingkatPermasalahan, -statusPrivasi, -foto, -deskripsi, -statusLaporan, -titikLokasi, -bobotUrgensi* | *+getDetailLaporan(), +perbaruiStatus()* |
+| *C04* | *Lokasi* | *Menyimpan informasi lokasi geografis yang terkait dengan suatu laporan dan digunakan untuk menampilkan laporan pada peta.* |
+| *C05* | *Upvote* | *waktuUpvote, statusUpvote* | *upvote()* |
+| *C06* | *Tanggapan* | *-statusTanggapan, -waktuTanggapan, -deskripsiTanggapan* | *+simpanTanggapan()* |
+| *C07* | *Tutorial* | *Menyimpan informasi tutorial navigasi yang ditampilkan kepada pengguna.* |
+| *C08* | *PenggunaView* | *-* | *-* |
+| *C09* | *HomepageView* | *-* | *+tampilkanHomepage(), +pilihFilter()* |
+| *C10* | *LaporanView* | *-* | *+tampilkanDetailLaporan(), +tampilkanTanggapanTeratas()* |
+| *C11* | *LokasiView* | *-map* | *+tampilkanMap(), +pilihTitikLokasi()* |
+| *C12* | *UpvoteView* | *-* | *+klikUpvote(), +tampilkanJumlahUpvote(), +tampilkanPesanError(), +updateUpvoteButton()* |
+| *C13* | *TanggapanView* | *-dataPopupForm* | *+tampilkanPopup(), +submitPopupForm(), +tampilkanKonfirmasi()* |
+| *C14* | *TutorialView* | *-* | *+tampilkanTutorial(), +tampilkanLangkah(), +tutupTutorial*|
+| *C15* | *PenggunaController* | *-* | *-* |
+| *C16* | *HomepageController* | *-* | *+loadHomepage(), +filterLaporan()* |
+| *C17* | *LaporanController* | *-* | *+ambilDetailLaporan()* |
+| *C18* | *LokasiController* | *-* | *getDataLokasi(), cariLokasi()* |
+| *C19* | *UpvoteController* | *-* | *prosesUpvote(), sudahUpvote()* |
+| *C20* | *TanggapanController* | *-* | *validasiTanggapan(), simpanTanggapan(), simpanStatus()* |
+| *C21* | *TutorialController* | *Menangani proses perpindahan langkah tutorial serta aksi Next, Skip, dan Selesai.* |
+| *C22* | *MapAPI* | *- apiKey, -baseURL* | * +getAPIKey(), +getBaseURL() * |
+| *C23* | *MapAPIService* | *-* | *+geocode(), -kirimRequest(), -prosesResponse()* |
+| *C24* | *MapAPIView* | *-* | *+renderMap(), +renderMarker(), +setCenter()* |
 
 
 ---
 
 # BAB 5: Traceability
-Cocokkan setiap kebutuhan fungsional, use case, dengan diagram kelas yang mendukung atau mengimplementasikan kebutuhan tersebut.
 
 | ID Kelas | ID Use Case | ID KF |
 | :--- | :--- | :--- |
-| *C01* | *UC01, UC05* | *KF01, KF06* |
-| *C02* | *UC01, UC03, UC05* | *KF01, KF02, KF05, KF06* |
-| *C03* | *UC01, UC02* | *KF01, KF02* |
-| *C04* | *UC03, UC04* | *KF03* |
-| *C05* | *UC03, UC04* | *KF03* |
-| *C06* | *UC03, UC04* | *KF03, KF04* |
-| *C07* | *UC03, UC05* | *KF04, KF05* |
+| *C01* | *UC01, UC02, UC03, UC04, UC05, UC06, UC07, UC08, UC09, UC10* | *KF01, KF02, KF03, KF04, KF05, KF06, KF07, KF08, KF09, KF10, KF11, KF12, KF13, KF14, KF15, KF17, KF18* |
+| *C02* | *UC03, UC04, UC06, UC07, UC08, UC09, UC10* | *KF03, KF04，KF05, KF06，KF08, KF09, KF10, KF11，KF12, KF13, KF14，KF15, KF17, KF18* |
+| *C03* | *UC04, UC06, UC07, UC08, UC09* | *KF05, KF06, KF09, KF10, KF11, KF12, KF13, KF15, KF08, KF14, KF17, KF18* |
+| *C04* | *UC03, UC04, UC07* | *KF03, KF04, KF05, KF06, KF12, KF13, KF15* |
+| *C05* | *UC06* | *KF09, KF10, KF11* |
+| *C06* | *UC09* | *KF17, KF18* |
+| *C07* | *UC05*| *KF07* |
+| *C08* | *UC01, UC02* | *KF01, KF02* |
+| *C09* | *UC03, UC04, UC06, UC07, UC08, UC09, UC10* | *KF03, KF04, KF05, KF06, KF09, KF10, KF11, KF12, KF13, KF15, KF08, KF14, KF15, KF17, KF18* |
+| *C10* | *UC04, UC07, UC08, UC09* | *KF05, KF06, KF12, KF13, KF15, KF08, KF14, KF15, KF17, KF18* | 
+| *C11* | *UC03, UC04, UC07* | *KF03, KF04, KF05, KF06, KF12, KF13, KF15* |
+| *C12* | *UC06* | *KF09, KF10, KF11* |
+| *C13* | *UC09* | *KF17, KF18* |
+| *C14* | *UC05*| *KF07* |
+| *C15* | *UC01, UC02* | *KF01, KF02* |
+| *C16* | *UC03, UC04, UC06, UC07, UC08, UC09, UC10* | *KF03, KF04, KF05, KF06, KF09, KF10, KF11, KF12, KF13, KF15, KF08, KF14, KF15, KF17, KF18* |
+| *C17* | *UC04, UC07, UC08, UC09* | *KF05, KF06, KF12, KF13, KF15, KF08, KF14, KF15, KF17, KF18* | 
+| *C18* | *UC03, UC04, UC07* | *KF03, KF04, KF05, KF06, KF12, KF13, KF15* |
+| *C19* | *UC06* | *KF09, KF10, KF11* |
+| *C20* | *UC09* | *KF17, KF18* |
+| *C21* | *UC05*| *KF07* |
+| *C22* | *UC03, UC04* | *KF03, KF04, KF05, KF06* |
+| *C23* | *UC03, UC04* | *KF03, KF04, KF05, KF06* |
+| *C24* | *UC03, UC04* | *KF03, KF04, KF05, KF06* |
 
 
 ---
