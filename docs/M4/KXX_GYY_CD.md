@@ -608,13 +608,30 @@ Gabungkan seluruh kelas dan hubungan antarkelas dari diagram kelas setiap use ca
 
 | ID Kelas | Nama Kelas | Atribut | Metode/Operasi |
 | :--- | :--- | :--- | :--- |
-| *C01* | *Pelanggan* | *idPelanggan, nama, email* | *lihatRiwayatPesanan()* |
-| *C02* | *Pesanan* | *idPesanan, total, status* | *hitungTotal(), perbaruiStatus()* |
-| *C03* | *Keranjang* | *daftarItem* | *tambahItem(), checkout()* |
-| *C04* | *MetodePembayaran* | *-* | *kirimKePaymentGatewayDummy()* |
-| *C05* | *Kartu* | *nomorKartu, masaBerlaku* | *kirimKePaymentGatewayDummy()* |
-| *C06* | *EWallet* | *saldo, idAkun* | *cekSaldo(), kirimKePaymentGatewayDummy()* |
-| *C07* | *RiwayatTransaksi* | *idTransaksi, waktu, status* | *catatTransaksi(), tampilkanNotifikasi()* |
+| *C01* | *Pengguna* | *-idPengguna, -nama, -role* | *+getRole()* |
+| *C02* | *HomePage* | *-sortBy* | *+getDaftarLaporan()* |
+| *C03* | *Laporan* | *-idLaporan, -namaMasalah, -kategori, -tingkatPermasalahan, -statusPrivasi, -foto, -deskripsi, -statusLaporan, -titikLokasi, -bobotUrgensi* | *+getDetailLaporan(), +perbaruiStatus()* |
+| *C04* | *Lokasi* | *Menyimpan informasi lokasi geografis yang terkait dengan suatu laporan dan digunakan untuk menampilkan laporan pada peta.* |
+| *C05* | *Upvote* | *waktuUpvote, statusUpvote* | *upvote()* |
+| *C06* | *Tanggapan* | *-statusTanggapan, -waktuTanggapan, -deskripsiTanggapan* | *+simpanTanggapan()* |
+| *C07* | *Tutorial* | *Menyimpan informasi tutorial navigasi yang ditampilkan kepada pengguna.* |
+| *C08* | *PenggunaView* | *-* | *-* |
+| *C09* | *HomepageView* | *-* | *+tampilkanHomepage(), +pilihFilter()* |
+| *C10* | *LaporanView* | *-* | *+tampilkanDetailLaporan(), +tampilkanTanggapanTeratas()* |
+| *C11* | *LokasiView* | *-map* | *+tampilkanMap(), +pilihTitikLokasi()* |
+| *C12* | *UpvoteView* | *-* | *+klikUpvote(), +tampilkanJumlahUpvote(), +tampilkanPesanError(), +updateUpvoteButton()* |
+| *C13* | *TanggapanView* | *-dataPopupForm* | *+tampilkanPopup(), +submitPopupForm(), +tampilkanKonfirmasi()* |
+| *C14* | *TutorialView* | *-* | *+tampilkanTutorial(), +tampilkanLangkah(), +tutupTutorial*|
+| *C15* | *PenggunaController* | *-* | *-* |
+| *C16* | *HomepageController* | *-* | *+loadHomepage(), +filterLaporan()* |
+| *C17* | *LaporanController* | *-* | *+ambilDetailLaporan()* |
+| *C18* | *LokasiController* | *-* | *getDataLokasi(), cariLokasi()* |
+| *C19* | *UpvoteController* | *-* | *prosesUpvote(), sudahUpvote()* |
+| *C20* | *TanggapanController* | *-* | *validasiTanggapan(), simpanTanggapan(), simpanStatus()* |
+| *C21* | *TutorialController* | *Menangani proses perpindahan langkah tutorial serta aksi Next, Skip, dan Selesai.* |
+| *C22* | *MapAPI* | *- apiKey, -baseURL* | * +getAPIKey(), +getBaseURL() * |
+| *C23* | *MapAPIService* | *-* | *+geocode(), -kirimRequest(), -prosesResponse()* |
+| *C24* | *MapAPIView* | *-* | *+renderMap(), +renderMarker(), +setCenter()* |
 
 
 ---
