@@ -234,6 +234,157 @@ Pada diagram kelas, cukup tampilkan nama kelas saja. Atribut dan metode/operasi 
 | *C03* | *Keranjang* | *daftarItem* | *tambahItem(), checkout()* |
 | *...* | *...* | *...* | *...* |
 
+
+### 4.2.6 Use Case UC06
+
+**Nama Use Case:** *Melakukan Upvote*
+
+#### Identifikasi Kelas
+
+| ID Kelas | Nama Kelas | Deskripsi Kelas |
+| :--- | :--- | :--- |
+| *C01* | *Pelanggan* | *Menyimpan data akun pelanggan yang membuat pesanan.* |
+| *C02* | *Pesanan* | *Menyimpan data pesanan yang dibuat dari isi keranjang.* |
+| *C03* | *Keranjang* | *Menyimpan sementara item yang dipilih sebelum checkout.* |
+| *...* | *...* | *...* |
+
+#### Diagram Kelas
+
+<p align="center">
+<img alt="Class Diagram UC06" src="./assets/diagram/diagram-uc06.jpg" width="70%">
+</p>
+<p align="center">
+<i>Gambar 7. Diagram Kelas Use Case UC06</i>
+</p>
+<br>
+
+| ID Kelas | Nama Kelas | Atribut | Metode/Operasi |
+| :--- | :--- | :--- | :--- |
+| *C01* | *Pengguna* | *-idPengguna, -nama* | *+getPenggunaById()* |
+| *C02* | *HomePage* | *-sortBy* | *+getDaftarLaporan(), +getSortBy(), +refreshPage()* |
+| *C03* | *Laporan* | *-idLaporan, -jumlahUpvote, -skorPopuler, -skorUrgensi* | *+tambahUpvote(), +hitungSkorPopularitas(), +getJumlahUpvote(), +getSkorPopuler()* |
+| *C05* | *Upvote* | *-waktuUpvote, -statusUpvote* | *+upvote()* |
+| *C08* | *PenggunaView* | *-* | *-* |
+| *C09* | *HomePageView* | *-* | *+tampilkanHomepage()* |
+| *C10* | *LaporanView* | *-* | *-* |
+| *C12* | *UpvoteView* | *-* | *+klikUpvote(), +tampilkanJumlahUpvote(), +tampilkanPesanError(), +updateUpvoteButton()* |
+| *C15* | *PenggunaController* | *-* | *-* |
+| *C16* | *HomePageController* | *-* | *+urutkanLaporan(), +ambilListLaporan()* |
+| *C17* | *LaporanController* | *-* | *-* |
+| *C19* | *UpvoteController* | *-* | *+prosesUpvote(), +sudahUpvote()* |
+
+### 4.2.7 Use Case UC07
+
+**Nama Use Case:** *Mengunggah Laporan Baru*
+
+#### Identifikasi Kelas
+
+| ID Kelas | Nama Kelas | Deskripsi Kelas |
+| :--- | :--- | :--- |
+| *C01* | *Pelanggan* | *Menyimpan data akun pelanggan yang membuat pesanan.* |
+| *C02* | *Pesanan* | *Menyimpan data pesanan yang dibuat dari isi keranjang.* |
+| *C03* | *Keranjang* | *Menyimpan sementara item yang dipilih sebelum checkout.* |
+| *...* | *...* | *...* |
+
+#### Diagram Kelas
+
+<p align="center">
+<img alt="Class Diagram UC07" src="./assets/diagram/diagram-uc07.jpg" width="70%">
+</p>
+<p align="center">
+<i>Gambar 8. Diagram Kelas Use Case UC07</i>
+</p>
+<br>
+
+| ID Kelas | Nama Kelas | Atribut | Metode/Operasi |
+| :--- | :--- | :--- | :--- |
+| *C01* | *Pengguna* | *-idPengguna, -nama* | *+getPenggunaById()* |
+| *C02* | *HomePage* | *-* | *+getDaftarLaporan()* |
+| *C03* | *Laporan* | *-idLaporan, -namaMasalah, -kategori, -tingkatPermasalahan, -statusPrivasi, -foto, -deskripsi, -statusLaporan, -titikLokasi, -bobotUrgensi* | *+simpanLaporan()* |
+| *C04* | *Lokasi* | *-latitude, -longitude, -alamat* | *+getKoordinat(), +getAlamat()* |
+| *C08* | *PenggunaView* | *-* | *-* |
+| *C09* | *HomepageView* | *-* | *+tampilkanHomepage()* |
+| *C10* | *LaporanView* | *-dataForm* | *+tampilkanForm(), +tampilkanErrorMsg(), +tampilkanKonfirmasi(), +tampilkanPesanBerhasil(), +klikPost(), +klikYa(), +klikTidak()* |
+| *C11* | *LokasiView* | *-map* | *+tampilkanMap(), +pilihTitikLokasi()* |
+| *C15* | *PenggunaController* | *-* | *+sudahLogin()* |
+| *C16* | *HomepageController* | *-* | *+loadHomepage()* |
+| *C17* | *LaporanController* | *-* | *+validasiKelengkapanData(), +validasiFoto(), +buatIdUnik(), +simpanLaporan()* |
+| *C18* | *LokasiController* | *-* | *+getDataLokasi(), +cariLokasi()* |
+
+
+### 4.2.8 Use Case UC08
+
+**Nama Use Case:** *Memeriksa Laporan*
+
+#### Identifikasi Kelas
+
+| ID Kelas | Nama Kelas | Deskripsi Kelas |
+| :--- | :--- | :--- |
+| *C01* | *Pelanggan* | *Menyimpan data akun pelanggan yang membuat pesanan.* |
+| *C02* | *Pesanan* | *Menyimpan data pesanan yang dibuat dari isi keranjang.* |
+| *C03* | *Keranjang* | *Menyimpan sementara item yang dipilih sebelum checkout.* |
+| *...* | *...* | *...* |
+
+#### Diagram Kelas
+
+<p align="center">
+<img alt="Class Diagram UC08" src="./assets/diagram/diagram-uc08.jpg" width="70%">
+</p>
+<p align="center">
+<i>Gambar 9. Diagram Kelas Use Case UC08</i>
+</p>
+<br>
+
+| ID Kelas | Nama Kelas | Atribut | Metode/Operasi |
+| :--- | :--- | :--- | :--- |
+| *C01* | *Pengguna* | *-idPengguna, -nama, -role* | *getPenggunaById(), getRole()* |
+| *C02* | *HomePage* | *-* | *getDaftarLaporan()* |
+| *C03* | *Laporan* | *-idLaporan, -namaMasalah, -kategori, -tingkatPermasalahan, -statusPrivasi, -foto, -deskripsi, -statusLaporan, -titikLokasi, -bobotUrgensi, -logWaktu* | *+getDetailLaporan(), +updateStatusLaporan(), +hapusLaporan()* |
+| *C08* | *PenggunaView* | *-* | *+tampilkanFormKonfirmasi(), +tampilkanNotifAdmin(), +klikKonfirmasi* |
+| *C09* | *HomepageView* | *-* | *+tampilkanHomepage()* |
+| *C10* | *LaporanView* | *-* | *+tampilkanDetailLaporan()* |
+| *C15* | *PenggunaController* | *-* | *kirimKonfirmasiUlang()* |
+| *C16* | *HomepageController* | *-* | *loadHomepage()* |
+| *C17* | *LaporanController* | *-* | *+lihatDetailLaporan(), +updateStatusLaporan(), kirimPermintaanKonfirmasi(), +setBatasWaktu2Minggu(), +cekBatasWaktu(), +hapusLaporanOtomatis()* |
+
+### 4.2.9 Use Case UC09
+
+**Nama Use Case:** *Memperbarui Status Penanganan Laporan*
+
+#### Identifikasi Kelas
+
+| ID Kelas | Nama Kelas | Deskripsi Kelas |
+| :--- | :--- | :--- |
+| *C01* | *Pelanggan* | *Menyimpan data akun pelanggan yang membuat pesanan.* |
+| *C02* | *Pesanan* | *Menyimpan data pesanan yang dibuat dari isi keranjang.* |
+| *C03* | *Keranjang* | *Menyimpan sementara item yang dipilih sebelum checkout.* |
+| *...* | *...* | *...* |
+
+#### Diagram Kelas
+
+<p align="center">
+<img alt="Class Diagram UC09" src="./assets/diagram/diagram-uc09.jpg" width="70%">
+</p>
+<p align="center">
+<i>Gambar 10. Diagram Kelas Use Case UC09</i>
+</p>
+<br>
+
+| ID Kelas | Nama Kelas | Atribut | Metode/Operasi |
+| :--- | :--- | :--- | :--- |
+| *C01* | *Pengguna* | *-idPengguna, -nama, -role* | *+getRole()* |
+| *C02* | *HomePage* | *-sortBy* | *+getDaftarLaporan()* |
+| *C03* | *Laporan* | *-idLaporan, -namaMasalah, -kategori, -tingkatPermasalahan, -statusPrivasi, -foto, -deskripsi, -statusLaporan, -titikLokasi, -bobotUrgensi* | *+getDetailLaporan(), +perbaruiStatus()* |
+| *C06* | *Tanggapan* | *-statusTanggapan, -waktuTanggapan, -deskripsiTanggapan* | *+simpanTanggapan()* |
+| *C08* | *PenggunaView* | *-* | *-* |
+| *C09* | *HomepageView* | *-* | *+tampilkanHomepage(), +pilihFilter()* |
+| *C10* | *LaporanView* | *-* | *+tampilkanDetailLaporan(), +tampilkanTanggapanTeratas()* |
+| *C02* | *TanggapanView* | *-dataPopupForm* | *+tampilkanPopup(), +submitPopupForm(), +tampilkanKonfirmasi()* |
+| *C15* | *PenggunaController* | *-* | *-* |
+| *C16* | *HomepageController* | *-* | *+loadHomepage(), +filterLaporan()* |
+| *C17* | *LaporanController* | *-* | *+ambilDetailLaporan()* |
+| *C20* | *TanggapanController* | *-* | *validasiTanggapan(), simpanTanggapan(), simpanStatus()* |
+
 > Lanjutkan pola **4.2.x** untuk setiap use case pada 3.2.
 
 ## 4.3 Diagram Kelas Keseluruhan
