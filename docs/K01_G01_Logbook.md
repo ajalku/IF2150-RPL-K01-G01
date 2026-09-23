@@ -83,8 +83,11 @@
 **Periode:** 16 September 2026 - 23 September 2026
 | Tanggal | Nama Anggota | Deskripsi Pekerjaan | Durasi (Jam) | Status | Kendala / *Blocker* | 
 | :--- | :--- | :--- | :--- | :--- | :--- | 
+| *20-09-2026* | *Aufa Tatsbita Zahra* | *Menentukan identifikasi kelas* | *1* | *Done* | *-* |
+| *22-09-2026* | *Aufa Tatsbita Zahra* | *Merevisi identifikasi kelas* | *3* | *Done* | *Ternyata masih banyak yang perlu dilengkapi* |
 | *22-09-2026* | *Samantha Michelle S. Silaban* | *Menyusun class diagram* | *3* | *Done* | *Bingung sehingga perlu banyak revisi* |
 | *22-09-2026* | *Syakira Azzahra Rachmania* | *Menyusun class diagram* | *3* | *Done* | *Bingung sehingga perlu banyak revisi* |
+| *23-09-2026* | *Aufa Tatsbita Zahra* | *Merevisi identifikasi kelas* | *1* | *Done* | *-* |
 | *23-09-2026* | *Samantha Michelle S. Silaban* | *Merevisi class diagram* | *3* | *Done* | *-* |
 | *23-09-2026* | *Syakira Azzahra Rachmania* | *Merevisi class diagram* | *3* | *Done* | *-* |
 | *23-09-2026* | *Ravinka Fathia Adinegara* | *Menyusun diagram kelas keseluruhan dan tabelnya* | *3* | *Done* | *-* |
