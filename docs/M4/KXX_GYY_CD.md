@@ -14,35 +14,45 @@ CLASS DIAGRAM
 Dipersiapkan oleh:
 | Informasi | Keterangan |
 | --- | --- |
-| Kelas | *\[Kelas\]* |
-| Kelompok | *\[Nomor Kelompok\]*  |
+| Kelas | *K01* |
+| Kelompok | *01* |
 
 | NIM | Nama |
 |---|---|
-| *[NIM 1]* | *[Nama Anggota 1]* |
-| *[NIM 2]* | *[Nama Anggota 2]* |
-| *[NIM 3]* | *[Nama Anggota 3]* |
-| *[NIM 4]* | *[Nama Anggota 4]* |
-| *[NIM 5]* | *[Nama Anggota 5]* |
+| *13525103* | *Ravinka Fathia Adinegara* |
+| *13525013* | *Samantha Michelle S Silaban* |
+| *13525055* | *Syakira Azzahra Rachmania* |
+| *13525043* | *Aufa Tatsbita Zahra* |
+| *13525046* | *Ghiffari Arya Adhitya* |
 ---
 
 ## Daftar Perubahan
 
 | Revisi | Deskripsi |
 | :--- | :--- |
-| *A* | *Deskripsikan perubahan yang dilakukan dari dokumen sebelumnya pada dokumen ini. Jika tidak terdapat perubahan, harap kosongkan tabel.* |
-| *B* |  |
-| *C* |  |
-| ... |  |
 
 <br>
 <br>
 
 # BAB 1: Deskripsi Perangkat Lunak
 
-Tuliskan overview perangkat lunak dalam narasi yang dapat memberikan gambaran tentang konteks perangkat lunak aplikasi Anda.
+Secara umum, sistem dengan nama RAWAT (Ruang Aspirasi Warga dan Aduan) Terpadu adalah sebuah sistem yang memungkinkan pengubungan lebih lanjut antara para pengguna fasilitas umum seperti penduduk kota dan pengelolanya seperti pemerintah agar keluhan dan masalah terkait kerusakan fasilitas umum dapat ditangani dan pengelola dapat lebih mudah mengawasi fasilitas umum apa saja yang perlu perhatian lebih. Dalam sistem ini, pengguna dapat melapor hal-hal yang terasa mengganggu atau rusak di lingkungan atau di tempat publik. Pemerintah lokal dapat menggunakan sistem ini untuk mengawasi kondisi lapangan langsung dari warga yang menggunakan fasilitas yang tersedia.
 
-Pada bagian ini, Anda diperbolehkan untuk menyalin dari dokumen sebelumnya.
+Fungsi utama dari RAWAT adalah untuk melaporkan kondisi tertentu yang menyangkut fasilitas umum atau hal yang berkaitan dengan ruang masyarakat yang dinilai mengganggu banyak pengguna fasilitas, seperti pohon tumbang atau banyaknya ular yang berkeliaran. Dalam sistem ini, terdapat sebuah seksi yang memungkinkan pengguna untuk menuliskan lokasi, nama kerusakan, jenis kerusakan, tingkat urgensi, serta hal-hal yang bersifat opsional seperti foto dan deskripsi singkat. Laporan tersebut akan disimpan dan ditampilkan di suatu halaman yang dapat diurutkan berdasarkan urgensi, tag, waktu posting, atau jumlah upvote. Setiap laporan terdapat fitur upvote dan komentar agar masyarakat dapat lebih menekankan suatu isu. Untuk platform, dipilih sebagai web app sehingga dapat digunakan secara universal asalkan mempunyai browser dan koneksi internet.
+
+Inovasi sistem ini dibandingkan dengan sistem yang sudah ada bisa dilihat dari hal-hal berikut.
+* Sistem ini dapat mengkategorikan laporan berdasarkan urgensi.
+* Sistem ini tidak perlu menginstall aplikasi dan dapat diakses melalui browser.
+* Sistem ini mempunyai fitur komentar dan upvote untuk setiap postingannya.
+
+Seperti yang telah disebutkan, fitur utama dari aplikasi adalah pelaporan fasilitas umum yang rusak. Berikut ini alur lengkap dari sistem kerja RAWAT.
+1. Pengguna membuka peta dan memilih lokasi fasilitas atau ruang umum yang ingin dilaporkan.
+2. Pengguna mengisi formulir yang berisi nama, tingkat penggunaan, jenis yang dapat ditulis sendiri atau memilih yang sudah ada, serta menambah foto dan deskripsi apabila dibutuhkan.
+3. Pengguna menekan tombol simpan.
+4. Sistem menyimpan laporan tersebut dan menampilkannya bersama laporan lain.
+5. Admin mengecek laporan dan menangani laporan.
+6. Admin menandai laporan tersebut sebagai selesai setelah ditangani.
+7. Sistem menandai laporan tersebut sebagai selesai dan tidak menampilkannya di laman utama lagi.
 
 ---
 
@@ -50,24 +60,26 @@ Pada bagian ini, Anda diperbolehkan untuk menyalin dari dokumen sebelumnya.
 
 ## 2.1 Kebutuhan Fungsional
 
-Salin ulang seluruh Kebutuhan Fungsional (KF) yang telah dirumuskan pada dokumen sebelumnya, lengkap dengan ID KF, ID Kebutuhan (mengacu ke ID pada tabel Pemetaan Kebutuhan di dokumen *Requirement Gathering*), dan penjelasannya.
-
-Pada bagian ini, Anda diperbolehkan untuk menyalin dari dokumen sebelumnya.
-
-<sub> ***Catatan***: *Kebutuhan ditulis mengikuti pola EARS. Pada contoh di bawah, sebagian besar KF dipicu oleh satu aksi pelanggan, sehingga memakai pola event-driven "Ketika ⟨pemicu⟩, sistem harus ⟨respons⟩".*
-<sub>
-
-Tabel 2.1. Daftar Kebutuhan Fungsional
-
 | ID KF | ID Kebutuhan | Penjelasan |
 | :--- | :--- | :--- |
-| *KF01* | *R01* | *Ketika pelanggan membuka halaman katalog, sistem harus menampilkan daftar produk yang tersedia.* |
-| *KF02* | *R02* | *Ketika pelanggan memilih "Tambah ke Keranjang" pada suatu produk, sistem harus menyimpan produk tersebut ke dalam keranjang pelanggan.* |
-| *KF03* | *R03* | *Ketika pelanggan menekan tombol checkout, sistem harus menampilkan pilihan metode pembayaran yang tersedia.* |
-| *KF04* | *R04* | *Ketika pelanggan memilih metode pembayaran, sistem harus mengirimkan permintaan otorisasi beserta nominal tagihan dan ID pesanan ke payment gateway (dummy).* |
-| *KF05* | *R04* | *Ketika payment gateway (dummy) mengembalikan status pembayaran berhasil, sistem harus memperbarui status pesanan menjadi "Lunas" dan menampilkan notifikasi pembayaran berhasil.* |
-| *KF06* | *R05* | *Ketika pelanggan membuka menu riwayat pesanan, sistem harus menampilkan daftar pesanan beserta statusnya.* |
-| *KFXX* | *...* | *...* |
+| *KF01* | *R01* | *Perangkat lunak dapat menyediakan fitur registrasi akun untuk pengguna baru dan fitur login bagi admin maupun pengguna.* |
+| *KF02* | *R02* | *Ketika pengguna atau admin hendak mengakses perangkat lunak, perangkat lunak dapat memvalidasi kredensial pengguna atau admin tersebut.* |
+| *KF03* | *R04* | *Perangkat lunak dapat menampilkan peta interaktif yang terintegrasi dengan sistem berdasarkan data lokasi laporan yang tersimpan.* |
+| *KF04* | *R04* | *Perangkat lunak dapat menampilkan informasi umum suatu laporan pada peta dengan menggunakan simbol, penanda, dan tata letak yang konsisten.* |
+| *KF05* | *R05* | *Ketika pengguna hendak melihat detail laporan, perangkat lunak harus dapat menampilkan detail informasi berupa lokasi, nama masalah, kategori, tingkat permasalahan, serta foto dan deskripsi apabila tersedia.* |
+| *KF06* | *R06* | *Perangkat lunak dapat menampilkan tingkat kedaruratan atau tingkat permasalahan pada setiap laporan dengan label yang sesuai dengan tingkat kedaruratannya.* |
+| *KF07* | *R07* | *Perangkat lunak dapat menyediakan navigasi dari halaman utama hingga ke halaman detail laporan dan memberikan tutorial awal mengenai cara penggunaannya.* |
+| *KF08* | *R08* | *Perangkat lunak harus menampilkan dan mengelola informasi laporan sesuai dengan ketentuan perundang-undangan* |
+| *KF09* | *R09* | *Bila pengguna merasa laporan pengguna lain relevan, maka perangkat lunak harus memungkinkan pengguna memberikan upvote pada laporan tersebut.* |
+| *KF10* | *R09* | *Ketika upvote yang dilakukan oleh pengguna gagal ataupun berhasil, perangkat lunak harus memberikan notifikasi singkat kepada pengguna .* |
+| *KF11* | *R10* | *Perangkat lunak dapat menampilkan laporan yang sedang trending dengan mengurutkan atau memprioritaskan tampilan laporan berdasarkan jumlah upvote terbaru yang diperoleh.* |
+| *KF12* | *R11* | *Ketika pengguna hendak membuat laporan baru, perangkat lunak harus menyediakan formulir isian untuk data yang diperlukan, seperti informasi lokasi, nama masalah, kategori, tingkat permasalahan, foto (opsional), dan deskripsi (opsional).* |
+| *KF13* | *R11* | *Perangkat lunak dapat memberikan informasi mengenai format file foto yang dapat diinput oleh pengguna dan memvalidasi apakah input file dari pengguna sesuai dengan ketentuan, juga memberikan notifikasi apakah pengiriman laporan gagal/berhasil.* |
+| *KF14* | *R12* | *Ketika admin hendak memeriksa laporan pengguna, perangkat lunak harus memungkinkan admin melihat dan memproses laporan yang masuk.* |
+| *KF15* | *R13* | *Ketika ada laporan baru yang masuk, perangkat lunak dapat melakukan sinkronisasi dengan menyimpan dan menampilkan data terakhir yang berhasil diinput oleh user.* |
+| *KF16* | *R14* | *Perangkat lunak dapat membatasi akses terhadap data dan fitur berdasarkan hak akses akun pengguna atau admin.* |
+| *KF17* | *R15* | *Ketika terjadi perubahan status laporan di lapangan, perangkat lunak dapat memungkinkan admin memperbarui status penanganan laporan tersebut.* |
+| *KF18* | *R16* | *Perangkat lunak dapat melakukan sinkronisasi dengan menyimpan dan menampilkan status laporan yang telah diperbarui oleh admin kepada pengguna.* |
 
 
 ---
@@ -76,92 +88,366 @@ Tabel 2.1. Daftar Kebutuhan Fungsional
 
 ## 3.1 Identifikasi Aktor
 
-Tuliskan kembali daftar aktor yang terlibat dan deskripsi perannya dalam perangkat lunak (P/L). Deskripsi peran harus menjelaskan wewenang aktor tersebut dalam perangkat lunak. Perlu diingat bahwa aktor yang dimaksud adalah pengguna yang berinteraksi langsung dengan P/L. Komponen seperti database, payment gateway, atau library bukan aktor.
-
-Pada bagian ini, Anda diperbolehkan untuk menyalin dari dokumen sebelumnya.
-
 | Aktor | Deskripsi |
 | :--- | :--- |
-| *Pelanggan* | *Pengguna yang memesan produk, mengelola keranjang, dan menyelesaikan pembayaran melalui sistem.* |
-| *...* | *...* |
+| *Pengguna* | *Pihak ini melaporkan isu-isu yang terjadi di daerah dan berhak memperoleh informasi terkait laporan yang tersedia. Karakteristik dari pengguna ini mengutamakan kemudahan pelaporan dan keakuratan informasi lingkungan* |
+| *Admin* | *Pengguna ini bertugas memantau dan mengelola sistem. Pengguna ini mengutamakan kejelasan informasi di laporan dan integritas data laporan* |
 
 ## 3.2 Identifikasi Use Case
 
-Use case berfungsi untuk mendeskripsikan interaksi aktor-aktor yang terlibat dengan sistem. Isi daftar use case dan deskripsi singkatnya dalam tabel di bawah.
-
-Pada bagian ini, Anda diperbolehkan untuk menyalin dari dokumen sebelumnya.
-
-| ID UC | Nama Use Case | Deskripsi Singkat | Aktor | ID KF |
+| ID UC | Nama Use Case | Deskripsi Singkat | Aktor Terlibat | ID KF Terkait |
 | :--- | :--- | :--- | :--- | :--- |
-| *UC01* | *Memesan Produk* | *Pelanggan memilih produk hingga pesanan tersimpan di sistem.* | *Pelanggan* | *KF01, KF02* |
-| *UC02* | *Melihat Keranjang* | *Pelanggan melihat daftar item yang telah dipilih sebelum checkout.* | *Pelanggan* | *KF02* |
-| *UC03* | *Melakukan Pembayaran* | *Pelanggan menyelesaikan pembayaran atas pesanan yang dibuat.* | *Pelanggan* | *KF03, KF04, KF05* |
-| *UC04* | *Memilih Metode Pembayaran* | *Pelanggan memilih metode pembayaran alternatif (kartu atau e-wallet).* | *Pelanggan* | *KF03* |
-| *UC05* | *Melihat Riwayat Pesanan* | *Pelanggan melihat daftar pesanan yang pernah dibuat beserta statusnya.* | *Pelanggan* | *KF06* |
-| *...* | *...* | *...* | *...* | *...* |
+| *UC01* | *Melakukan Registrasi Akun* | *User membuat sebuah akun baru.* | *Pengguna, Admin* | *KF01, KF02* |
+| *UC02* | *Melakukan Proses Login* | *User dapat login atau masuk ke akun yang telah dibuat* | *Pengguna, Admin* | *KF01, KF02* |
+| *UC03* | *Mengakses Peta Interaktif* | *Pengguna dapat melihat peta interaktif yang menampilkan titik lokasi dari laporan yang ada. Jika titik lokasi diklik, pengguna dapat melihat popup informasi dari laporan tersebut.* | *Pengguna, Admin* | *KF03, KF04* |
+| *UC04* | *Melihat Detail Laporan* | *Pengguna dapat melihat detail informasi dari laporan berupa lokasi, nama masalah, kategori, label tingkat kedaruratan laporan, serta foto dan deskripsi apabila tersedia.* | *Pengguna, Admin* | *KF05, KF06* |
+| *UC05* | *Mendapat Tutorial Navigasi antar halaman* | *Pengguna mendapat tutorial cara navigasi antar halaman untuk saat pertama kali menggunakan perangkat lunak* | *Pengguna, Admin* | *KF07* |
+| *UC06* | *Melakukan Upvote* | *Pengguna dapat memberikan upvote untuk laporan yang menurutnya relevan serta mendapat notifikasi apakah upvote berhasil atau tidak, kemudian laporan yang memiliki poin upvote dan atau urgensi tinggi akan cenderung muncul di feeds laporan.* | *Pengguna* | *KF09, KF10, KF11* |
+| *UC07* | *Mengunggah Laporan Baru* | *Pengguna dapat membuat laporan baru dengan mengisi formulir data terkait laporan tersebut, seperti lokasi, nama masalah, kategori, tingkat permasalahan, foto (opsional), dan deskripsi (opsional). Jika pengguna akan mengunggah file, pengguna akan mendapat notifikasi jika format file tidak sesuai dan notifikasi terkait keberhasilan proses upload file.* | *Pengguna* | *KF12, KF13, KF15* |
+| *UC08* | *Memeriksa Laporan* | *Admin dapat mengakses dan memproses laporan yang masuk. Jika laporan yang diajukan tidak benar atau tidak sesuai kondisi nyata, maka admin dapat melakukan report laporan.* | *Admin* | *KF08, KF14, KF15* |
+| *UC09* | *Memperbarui Status Penanganan Laporan* | *Admin dapat mengupdate status penanganan laporan sesuai kondisi lapangan.* | *Admin* | *KF17, KF18* |
 
 ## 3.3 Use Case Diagram
-Buatlah diagram use case keseluruhan berdasarkan identifikasi use case beserta aktor yang melakukan use case tersebut. Perhatikan garis `<<extend>>` dan `<<include>>`.
-
-Pada bagian ini, Anda diperbolehkan untuk menyalin dari dokumen sebelumnya.
-
 <br>
 <p align="center">
-<img alt="Use Case Diagram" src="../M4/assets/diagram/contoh-uc-diagram.webp" width="80%">
+<img alt="Use Case Diagram" src="./assets/diagram/diagram.revisi2.drawio.png" width="70%">
 </p>
 <p align="center">
-<i>Gambar 1. Use Case Diagram</i>
+<i>Gambar 1. Contoh Use Case Diagram</i>
 </p>
 <br>
 
 ## 3.4 Skenario Use Case
-Salin ulang skenario **setiap** use case (skenario normal dan alternatif) dari dokumen *Use Case & Scenario Use Case*. Skenario ini menjadi dasar penentuan atribut dan metode/operasi kelas pada BAB 4.
-
-Pada bagian ini, Anda diperbolehkan untuk menyalin dari dokumen sebelumnya.
-
 ### 3.4.1 Skenario UC01
 
-**Nama Use Case:** *Memesan Produk*
+**Nama Use Case:** *Melakukan Registrasi Akun*
 
 **Skenario Normal**
 
 | No | Aksi Aktor | Reaksi Perangkat Lunak |
 | :--- | :--- | :--- |
-| 1 | *Pelanggan memilih produk dari katalog* | *Sistem menampilkan detail produk dan menambahkannya ke keranjang* |
-| 2 | *Pelanggan menekan tombol checkout* | *Sistem membuat pesanan baru dari isi keranjang dan menampilkan ringkasan pesanan* |
-| ... | *...* | *...* |
+| 1 | *Pengguna menekan pilihan Registrasi* | *Sistem menampilkan formulir berisi NIK, email, dan password* |
+| 2 | *Pengguna mengisi formulir dan menekan tombol Daftar.* | *Sistem memvalidasi kelengkapan data, format NIK (jumlah digit), serta ketentuan password (minimal 8 karakter, 1 huruf kapital, 1 angka, dan simbol). Sistem memastikan NIK dan email belum terdaftar.* |
+| 3 | *-* | *Sistem melakukan hashing password dan menyimpan data akun ke database* |
+| 4 | *-* | *Sistem menampilkan pesan akun berhasil dibuat dan menampilkan halaman utama* |
 
-**Skenario Alternatif 1: Produk Tidak Tersedia**
+
+
+<br>
+
+**Skenario Alternatif 1: Data Registrasi Tidak Lengkap**
 
 | No | Aksi Aktor | Reaksi Perangkat Lunak |
 | :--- | :--- | :--- |
-| 1 | *Pelanggan memilih produk dari katalog* | *Sistem menampilkan pesan "Produk tidak tersedia" karena stok habis* |
-| 2 | *Pelanggan memilih produk lain* | *Sistem kembali ke langkah 1 skenario normal* |
-| ... | *...* | *...* |
+| 1 | *Pengguna menekan pilihan Registrasi* | *Sistem menampilkan formulir berisi NIK, email, dan password* |
+| 2 | *Pengguna mengisi hanya sebagian data formulir dan menekan tombol Daftar.* | *Sistem memvalidasi kelengkapan data, format NIK (jumlah digit), serta ketentuan password (minimal 8 karakter, 1 huruf kapital, 1 angka, dan simbol). Sistem menyadari input data pengguna tidak lengkap.* |
+| 3 | *-* | *Sistem menampilkan pesan bahwa data registrasi yang diinput pengguna belum lengkap dan menunjukkan kolom yang masih belum diisi* |
+| 4 | *Pengguna melengkapi data formulir dan menekan ulang tombol Daftar* | *Sistem memvalidasi ulang kelengkapan data, format NIK (jumlah digit), serta ketentuan password (minimal 8 karakter, 1 huruf kapital, 1 angka, dan simbol). Sistem memastikan NIK dan email belum terdaftar.* |
+| 5 | *-* | *Sistem melakukan hashing password dan menyimpan data akun ke database* |
+| 6 | *-* | *Sistem menampilkan pesan akun berhasil dibuat dan menampilkan halaman utama* |
+
+**Skenario Alternatif 2: Format NIK Tidak Valid**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna menekan pilihan Registrasi* | *Sistem menampilkan formulir berisi NIK, email, dan password* |
+| 2 | *Pengguna mengisi data registrasi, namun menginput NIK dengan jumlah digit yang tidak sesuai.* | *Sistem memvalidasi kelengkapan data, format NIK (jumlah digit), serta ketentuan password (minimal 8 karakter, 1 huruf kapital, 1 angka, dan simbol), sistem menyadari kesalahan jumlah digit NIK yang diinput oleh pengguna.* |
+| 3 | *-* | *Sistem menampilkan pesan bahwa data NIK yang diinput pengguna belum valid dan meminta pengguna untuk menginput ulang NIK yang sesuai* |
+| 4 | *Pengguna membetulkan NIK yang diinput dan menekan ulang tombol Daftar* | *Sistem memvalidasi ulang kelengkapan data, termasuk format NIK (jumlah digit). Sistem memastikan NIK dan email belum terdaftar* |
+| 5 | *-* | *Sistem melakukan hashing password dan menyimpan data akun ke database* |
+| 6 | *-* | *Sistem menampilkan pesan akun berhasil dibuat dan menampilkan halaman utama* |
+
+**Skenario Alternatif 3: Format Password Tidak Valid**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna menekan pilihan Registrasi* | *Sistem menampilkan formulir berisi NIK, email, dan password* |
+| 2 | *Pengguna mengisi data registrasi, namun menginput password yang tidak sesuai dengan ketentuan.* | *Sistem memvalidasi kelengkapan data, format NIK (jumlah digit), serta ketentuan password (minimal 8 karakter, 1 huruf kapital, 1 angka, dan simbol), sistem menerima password yang ternyata tidak sesuai dengan ketentuan.* |
+| 3 | *-* | *Sistem menampilkan pesan bahwa password tidak valid, di mana password minimal terdiri dari 8 karakter, 1 huruf kapital, 1 angka, dan simbol. Lalu, meminta pengguna untuk menginput ulang password* |
+| 4 | *Pengguna memperbaiki password sesuai ketentuan dan menekan ulang tombol Daftar* | *Sistem memvalidasi ulang kelengkapan data, format NIK (jumlah digit), serta ketentuan password (minimal 8 karakter, 1 huruf kapital, 1 angka, dan simbol). Sistem memastikan NIK dan email belum terdaftar.* |
+| 5 | *-* | *Sistem melakukan hashing password dan menyimpan data akun ke database* |
+| 6 | *-* | *Sistem menampilkan pesan akun berhasil dibuat dan menampilkan halaman utama* |
+
+
+
+### 3.4.2 Skenario UC02
+
+**Nama Use Case:** *Melakukan Proses Login*
+
+**Skenario Normal**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna/Admin menekan tombol* | *Sistem menampilkan formulir berisi email dan password* |
+| 2 | *Pengguna memasukkan email dan password dan menekan tombol masuk* | *Sistem mencari akun berdasarkan email dan memverifikasi kecocokan password* |
+| 3 | *-* | *Sistem menampilkan halaman utama sesuai peran pengguna/admin* |
+
+
+<br>
+
+**Skenario Alternatif 1: Data Login Belum Terisi Lengkap**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna/Admin menekan tombol* | *Sistem menampilkan formulir berisi email dan password* |
+| 2 | *Pengguna hanya memasukkan email/password saja, atau bahkan tidak mengisi keduanya, lalu menekan tombol masuk* | *Sistem tidak menerima input data login yang lengkap* |
+| 3 | *-* | *Sistem menampilkan pesan bahwa data login yang diinput masih belum lengkap (email/password masih belum terisi), dan meminta pengguna melengkapi inputnya* |
+| 4 | *Pengguna melengkapi data login (email/password yang tadi belum terisi) dan menekan tombol masuk* | *Sistem mencari akun berdasarkan email dan memverifikasi kecocokan password* |
+| 5 | *-* | *Sistem menampilkan halaman utama sesuai peran pengguna/admin* |
+
+**Skenario Alternatif 2: Email Belum Terdaftar**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna/Admin menekan tombol* | *Sistem menampilkan formulir berisi email dan password* |
+| 2 | *Pengguna memasukkan email dan password dan menekan tombol masuk* | *Sistem tidak menemukan akun yang cocok dengan email yang diinput pengguna* |
+| 3 | *-* | *Sistem menampilkan pesan bahwa email yang diinput masih belum terdaftar* |
+| 4 | *Pengguna memasukkan ulang email dan password dan menekan tombol masuk* | *Sistem mencari akun berdasarkan email dan memverifikasi kecocokan password* |
+| 5 | *-* | *Sistem menampilkan halaman utama sesuai peran pengguna/admin* |
+
+**Skenario Alternatif 3: Password Tidak Sesuai**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna/Admin menekan tombol* | *Sistem menampilkan formulir berisi email dan password* |
+| 2 | *Pengguna memasukkan email dan password dan menekan tombol masuk* | *Sistem menerima password yang tidak sesuai* |
+| 3 | *-* | *Sistem menampilkan pesan bahwa password yang diinput salah dan meminta pengguna untuk menginput ulang email dan password yang benar* |
+| 4 | *Pengguna memasukkan ulang email dan password dan menekan tombol masuk* | *Sistem mencari akun berdasarkan email dan memverifikasi kecocokan password* |
+| 5 | *-* | *Sistem menampilkan halaman utama sesuai peran pengguna/admin* |
+
+
 
 ### 3.4.3 Skenario UC03
 
-**Nama Use Case:** *Melakukan Pembayaran*
+**Nama Use Case:** *Mengakses Peta Interaktif*
 
 **Skenario Normal**
 
 | No | Aksi Aktor | Reaksi Perangkat Lunak |
 | :--- | :--- | :--- |
-| 1 | *Pelanggan menekan tombol "Bayar" pada ringkasan pesanan* | *Sistem menampilkan pilihan metode pembayaran yang tersedia (mis. Kartu, E-Wallet)* |
-| 2 | *Pelanggan memilih salah satu metode pembayaran* | *Sistem mengirimkan permintaan otorisasi ke payment gateway (dummy) sesuai metode yang dipilih* |
-| 3 | *-* | *Payment gateway (dummy) mengembalikan status pembayaran berhasil; sistem memperbarui status pesanan menjadi "Lunas" dan menampilkan notifikasi pembayaran berhasil* |
-| ... | *...* | *...* |
+| 1 | *Pengguna/Admin menekan menu "Peta Laporan"* | *Sistem menampilkan peta yang menampilkan titik lokasi laporan* |
+| 2 | *Pengguna/Admin menekan "lihat laporan sekitar saya"* | *Sistem menampilkan peta yang di zoom in mendekati area pengguna* |
+| 3 | *Pengguna/Admin menekan salah satu titik laporan pada peta* | *Sistem menampilkan pop up detail laporan* |
 
-**Skenario Alternatif 1: Pembayaran Dummy Gagal**
+
+<br>
+
+**Skenario Alternatif 1: Pengguna Belum Mengaktifkan Akses Lokasi di Perangkat**
 
 | No | Aksi Aktor | Reaksi Perangkat Lunak |
 | :--- | :--- | :--- |
-| 1 | *Pelanggan menekan tombol "Bayar" pada ringkasan pesanan* | *Sistem menampilkan pilihan metode pembayaran yang tersedia* |
-| 2 | *Pelanggan memilih salah satu metode pembayaran* | *Sistem mengirimkan permintaan otorisasi ke payment gateway (dummy), yang mengembalikan status gagal (mis. saldo e-wallet dummy tidak mencukupi)* |
-| 3 | *Pelanggan memilih untuk mencoba lagi atau memilih metode lain* | *Sistem kembali ke langkah 1 skenario normal* |
-| ... | *...* | *...* |
+| 1 | *Pengguna/Admin menekan menu "Peta Laporan"* | *Sistem menampilkan peta yang menampilkan titik lokasi laporan* |
+| 2 | *Pengguna/Admin menekan "lihat laporan sekitar saya"* | *Sistem meminta izin untuk mengakses lokasi perangkat* |
+| 3 | *Pengguna/Admin menolak izin akses lokasi"* | *Sistem menampilkan pesan kesalahan bahwa lokasi pengguna tidak dapat diakses dan tidak dapat menampilkan laporan di sekitar pengguna* |
+| 4 | *Pengguna/Admin kembali menekan "lihat laporan sekitar saya"* | *Sistem kembali meminta izin untuk mengakses lokasi perangkat. * |
+| 5 | *Pengguna/Admin memberikan izin akses lokasi"* | *Sistem menampilkan peta yang di-zoom mendekati area pengguna* |
+| 6 | *Pengguna/Admin menekan salah satu titik laporan pada peta* | *Sistem menampilkan pop up detail laporan* |
 
-<sub>*Lanjutkan pola 3.4.x ini untuk setiap ID UC pada 3.2, sampai seluruh use case tercakup.*<sub>
+
+**Skenario Alternatif 2: API Peta Gagal Dimuat**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna/Admin menekan menu "Peta Laporan"* | *Sistem meminta data peta melalui API* |
+| 2 | - | *API gagal memberikan respons sehingga sistem gagal memuat peta dan menampilkan pesan kesalahan bahwa peta tidak dapat dimuat* |
+| 3 | *Pengguna/Admin melakukan refresh halaman* | *Sistem kembali meminta data peta melalui API* |
+| 4 | - | *Sistem menampilkan peta yang menampilkan titik lokasi laporan apabila API berhasil memberikan respons* |
+| 5 | *Pengguna/Admin menekan "lihat laporan sekitar saya"* | *Sistem menampilkan peta yang di zoom in mendekati area pengguna* |
+| 6 | *Pengguna/Admin menekan salah satu titik laporan pada peta* | *Sistem menampilkan pop up detail laporan* |
+
+
+**Skenario Alternatif 3: Tidak Terdapat Laporan di Sekitar Pengguna**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna/Admin menekan menu "Peta Laporan"* | *Sistem menampilkan peta yang menampilkan titik lokasi laporan* |
+| 2 | *Pengguna/Admin menekan "lihat laporan sekitar saya"* | *Sistem tidak menemukan laporan di sekitar pengguna dan menampilkan pesan bahwa tidak terdapat laporan pada area tersebut* |
+| 3 | *Pengguna/Admin memperbesar atau menggeser peta* | *Sistem memuat laporan yang tersedia pada area peta yang ditampilkan dan menampilkan titik lokasi laporan yang tersedia pada area tersebut* |
+| 4 | *Pengguna/Admin menekan salah satu titik laporan pada peta* | *Sistem menampilkan pop up detail laporan* |
+
+
+### 3.4.4 Skenario UC04
+
+**Nama Use Case:** *Melihat laporan*
+
+**Skenario Normal**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna/Admin menekan salah satu laporan pada halaman utama yang dapat difilter berdasarkan terbaru, urgensi, dan popularitas* | *Sistem menampilkan sebagian detail laporan* |
+| 2 | *Pengguna/Admin menggulir halaman* | *Sistem menampilkan seluruh detail laporan* |
+
+<br>
+
+**Skenario Alternatif 1: Detail laporan tidak lengkap**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna/Admin menekan salah satu laporan pada halaman utama yang dapat difilter berdasarkan terbaru, urgensi, dan popularitas* | *Sistem menampilkan sebagian detail laporan* |
+| 2 | *Pengguna/Admin menggulir halaman* | *Sistem hanya menampilkan detail laporan yang tersedia karena beberapa informasi, yakni foto atau deskripsi tidak tersedia* |
+
+
+**Skenario Alternatif 2: Laporan gagal dimuat**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna/Admin menekan salah satu laporan pada halaman utama yang dapat difilter berdasarkan terbaru, urgensi, dan popularitas* | *Sistem gagal memuat detail laporan karena adanya gangguan* |
+| 2 | *-* | *Sistem menampilkan pesan bahwa detail laporan gagal dimuat* |
+| 3 | *Pengguna/Admin memilih untuk memuat ulang laporan* | *Sistem mencoba memuat kembali detail laporan tersebut* |
+| 4 | *-* | *Sistem menampilkan detail laporan apabila berhasil dimuat* |
+
+
+
+### 3.4.5 Skenario UC05
+
+**Nama Use Case:** *Mendapat Tutorial Navigasi antar Halaman*
+
+**Skenario Normal**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak (Pengguna) |
+| :--- | :--- | :--- |
+| 1 | *Pengguna selesai melakukan registrasi* | *Sistem  onboarding tutorial* |
+| 2 | *Pengguna menekan pilihan "Mulai Tutorial"* | *Sistem menampilkan penjelasan fitur halaman utama* |
+| 3 | *Pengguna mengonfirmasi pilihan "Next"* | *Sistem berpindah ke halaman peta dan menampilkan penjelasannya* |
+| 4 | *Pengguna mengonfirmasi pilihan "Next"* | *Sistem menampilkan cara membuat laporan* |
+| 5 | *Pengguna memilih "Selesai" pada akhir tutorial* | *Sistem menutup oboarding tutorial* |
+
+<br>
+
+**Skenario Alternatif 1: Pengguna Memilih Skip Tutorial**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak (Pengguna) |
+| :--- | :--- | :--- |
+| 1 | *Pengguna selesai melakukan registrasi* | *Sistem  onboarding tutorial* |
+| 2 | *Pengguna menekan pilihan "Skip Tutorial"* | *Sistem menutup onboarding tutorial* |
+
+
+### 3.4.6 Skenario UC06
+**Nama Use Case:** *Melakukan Upvote*
+
+**Skenario Normal**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna menekan tombol Upvote pada suatu laporan di halaman utama* | *Sistem mencatat upvote pengguna dan memperbarui jumlah laporan.*|
+| 2 | *-* | *Sistem menghitung ulang skor popularitas berdasarkan bobot urgensi 60% dan upvote 40%* |
+| 3 | *-* | *Sistem memperbarui tampilan jumlah upvote dan jika pengurutan Populer sedang aktif, sistem memperbarui urutan laporan* |
+
+<br>
+
+**Skenario Alternatif 1: Pengguna Gagal Melakukan Upvote**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna menekan tombol Upvote pada suatu laporan di halaman utama* | *Sistem gagal mencatat upvote pengguna karena gangguan jaringan.*|
+| 2 | *-* | *Sistem menampilkan pesan error, upvote gagal karena koneksi terputus atau jaringan tidak stabil* |
+| 3 | *Pengguna merefresh sistem, lalu menekan ulang tombol Upvote pada suatu laporan di halaman utama* | *Sistem mencatat upvote pengguna dan memperbarui jumlah laporan.*|
+| 4 | *-* | *Sistem menghitung ulang skor popularitas berdasarkan bobot urgensi 60% dan upvote 40%* |
+| 5 | *-* | *Sistem memperbarui tampilan jumlah upvote dan jika pengurutan Populer sedang aktif, sistem memperbarui urutan laporan* |
+
+
+### 3.4.7 Skenario UC07
+**Nama Use Case:** *Mengunggah Laporan Baru*
+
+**Skenario Normal**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna yang sudah login menekan Buat Laporan* | *Sistem menampilkan formulir berisi lokasi, nama masalah, kategiri, tingkat permasalahan, pilihan privat/publik, foto (opsional), dan deskripsi (opsional).*|
+| 2 | *Pegguna yang sudah login mengisi formulir kemudian menekan tombol kirim* | *Sistem memvalidasi kelengkapan data wajib, titik lokasi, dan format foto jika diunggah.* |
+| 3 | *-* | *Sistem menampilkan konfirmasi "Apakah data laporan sudah sesuai?"* |
+| 4 | *Pengguna menekan tombol Ya* | *Sistem membuat ID unik dan menyimpan laporan ke database, kemudian menampilkan pesan bahwa laporan berhasil dibuat"* |
+
+<br>
+
+**Skenario Alternatif 1: Data Wajib untuk Membuat Laporan Masih Belum Lengkap**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna yang sudah login menekan Buat Laporan* | *Sistem menampilkan formulir berisi lokasi, nama masalah, kategori, tingkat permasalahan, pilihan privat/publik, foto (opsional), dan deskripsi (opsional).*|
+| 2 | *Pengguna yang sudah login mengisi formulir, namun terdapat data wajib yang belum diisi, kemudian menekan tombol kirim* | *Sistem menerima data wajib yang belum lengkap dan menampilkan pesan bahwa data wajib laporan yang diinput pengguna belum lengkap dan menunjukkan kolom yang masih belum diisi.* |
+| 3 | *Pengguna melengkapi formulir kemudian menekan ulang tombol kirim* | *Sistem memvalidasi kelengkapan data wajib, titik lokasi, dan format foto jika diunggah.* |
+| 4 | *-* | *Sistem menampilkan konfirmasi "Apakah data laporan sudah sesuai?"* |
+| 5 | *Pengguna menekan tombol Ya* | *Sistem membuat ID unik dan menyimpan laporan ke database, kemudian menampilkan pesan bahwa laporan berhasil dibuat"* |
+
+**Skenario Alternatif 2: Format File Foto yang Diunggah Tidak Sesuai**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna yang sudah login menekan Buat Laporan* | *Sistem menampilkan formulir berisi lokasi, nama masalah, kategori, tingkat permasalahan, pilihan privat/publik, foto (opsional), dan deskripsi (opsional).*|
+| 2 | *Pengguna yang sudah login mengisi formulir, lalu mengunggah foto yang tidak sesuai dengan ketentuan sistem* | *Sistem menyadari kesalahan format file foto dan menolak input dari pengguna, lalu menampilkan pesan bahwa input foto harus dalam format yang sesuai.* |
+| 3 | *Pengguna memperbaiki input foto dengan mengunggah file yang sesuai, lalu melengkapi formulir, kemudian menekan tombol kirim* | *Sistem memvalidasi kelengkapan data wajib, titik lokasi, dan format foto.* |
+| 4 | *-* | *Sistem menampilkan konfirmasi "Apakah data laporan sudah sesuai?"* |
+| 5 | *Pengguna menekan tombol Ya* | *Sistem membuat ID unik dan menyimpan laporan ke database, kemudian menampilkan pesan bahwa laporan berhasil dibuat"* |
+
+**Skenario Alternatif 3: Pengguna Membatalkan Konfirmasi Pengiriman Laporan**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Pengguna yang sudah login menekan Buat Laporan* | *Sistem menampilkan formulir berisi lokasi, nama masalah, kategori, tingkat permasalahan, pilihan privat/publik, foto (opsional), dan deskripsi (opsional).*|
+| 2 | *Pengguna yang sudah login mengisi formulir kemudian menekan tombol kirim* | *Sistem memvalidasi kelengkapan data wajib, titik lokasi, dan format foto jika diunggah.* |
+| 3 | *-* | *Sistem menampilkan konfirmasi "Apakah data laporan sudah sesuai?"* |
+| 4 | *Pengguna menekan tombol Tidak* | *Sistem mengembalikan pengguna ke laman pengisian formulir"* |
+| 5 | *Pengguna diperbolehkan untuk mengedit data input terlebih dahulu, kemudian menekan ulang tombol kirim* | *Sistem memvalidasi kelengkapan data wajib, titik lokasi, dan format foto jika diunggah.* |
+| 6 | *-* | *Sistem menampilkan konfirmasi "Apakah data laporan sudah sesuai?"* |
+| 7 | *Pengguna menekan tombol Ya* | *Sistem membuat ID unik dan menyimpan laporan ke database, kemudian menampilkan pesan bahwa laporan berhasil dibuat"* |
+
+### 3.4.8 Skenario UC08
+**Nama Use Case:** *Memeriksa laporan*
+
+**Skenario Normal**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Admin membuka salah satu laporan pada halaman utama* | *Sistem menampilkan detail laporan tersebut*|
+| 2 | *Admin menentukan laporan valid* | *Sistem mempertahankan laporan sebagai laporan yang dapat ditindaklanjuti* |
+
+<br>
+
+**Skenario Alternatif 1: Laporan Ternyata Tidak Valid dan Pengguna Mengirimkan Konfirmasi Ulang Sebelum Jangka Waktu 2 Minggu Berakhir**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Admin membuka salah satu laporan pada halaman utama* | *Sistem menampilkan detail laporan tersebut*|
+| 2 | *Admin menyadari terdapat kejanggalan dalam laporan, dan mengklasifikasikan laporan sebagai tidak valid* | *Sistem menyimpan status laporan sebagai tidak valid dan mengirimkan permintaan konfirmasi kepada Pengguna yang mengirimkan laporan tersebut, lalu menunggu paling lambat hingga 2 minggu setelah laporan ditetapkan sebagai tidak valid* |
+| 3 | *Pengguna mengirimkan konfirmasi ulang sebelum jangka waktu 2 minggu berakhir* | *Sistem mengirimkan notifikasi kepada Admin mengenai adanya konfirmasi ulang dari Pengguna* |
+| 4 | *Admin memeriksa konfirmasi laporan dan mengklasifikasikan ulang status laporan* | *Sistem menyimpan status laporan, jika valid maka laporan tersebut akan diproses dan ditangani, namun jika statusnya masih tidak valid, maka sistem akan membuang/menghapus laporan tersebut* |
+
+
+**Skenario Alternatif 2: Laporan Ternyata Tidak Valid dan Pengguna Tidak Mengirimkan Konfirmasi Ulang Hingga Jangka Waktu 2 Minggu Berakhir**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Admin membuka salah satu laporan pada halaman utama* | *Sistem menampilkan detail laporan tersebut*|
+| 2 | *Admin menyadari terdapat kejanggalan dalam laporan, dan mengklasifikasikan laporan sebagai tidak valid* | *Sistem menyimpan status laporan sebagai tidak valid dan mengirimkan permintaan konfirmasi kepada Pengguna yang mengirimkan laporan tersebut, lalu menunggu paling lambat hingga 2 minggu setelah laporan ditetapkan sebagai tidak valid* |
+| 3 | *Pengguna ternyata tidak mengirimkan konfirmasi ulang hingga jangka waktu 2 minggu berakhir* | *Sistem secara otomatis membuang/menghapus laporan tersebut* |
+
+### 3.4.9 Skenario UC09
+**Nama Use Case:** *Memperbarui Status Penanganan Laporan*
+
+**Skenario Normal**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Admin membuka halaman utama* | *Sistem menampilkan daftar laporan yang dapat difilter urutannya berdasarkan terbaru, urgensi, dan popularitas.*|
+| 2 | *Admin memilih salah satu laporan* | *Sistem menampilkan detail laporan* |
+| 3 | *Admin menekan tombol Lakukan Tindakan* | *Sistem menampilkan formulir pop-up berisi kolom tanggapan dan dropdown status laporan yang dapat dipilih."* |
+| 4 | *Admin mengisi tanggapan, memilih status, kemudian menekan tombol Simpan* | *Sistem memvalidasi isian dan menampilkan konfirmasi "Apakah tanggapan dan status laporan sudah sesuai?"* |
+| 5 | *Admin menekan tombol Ya* | *Sistem menyimpan tanggapan, memperbarui status laporan, menutup pop-up, dan menampilkan tanggapan admin sebagai komentar teratas pada laporan tersebut* |
+
+<br>
+
+**Skenario Alternatif 1: Admin Membatalkan Konfirmasi Perubahan Status Laporan**
+
+| No | Aksi Aktor | Reaksi Perangkat Lunak |
+| :--- | :--- | :--- |
+| 1 | *Admin membuka halaman utama* | *Sistem menampilkan daftar laporan yang dapat difilter urutannya berdasarkan terbaru, urgensi, dan popularitas.*|
+| 2 | *Admin memilih salah satu lappran* | *Sistem menampilkan detail laporan* |
+| 3 | *Admin menekan tombol Lakukan Tindakan* | *Sistem menampilkan formulir pop-up berisi kolom tanggapan dan dropdown status laporan yang dapat dipilih."* |
+| 4 | *Admin mengisi tanggapan, memilih status, kemudian menekan tombol Simpan* | *Sistem memvalidasi isian dan menampilkan konfirmasi "Apakah tanggapan dan status laporan sudah sesuai?"* |
+| 5 | *Admin menekan tombol Tidak* | *Sistem kembali menampilkan formulir pop-up berisi kolom tanggapan dan dropdown status laporan yang dapat dipilih.* |
+| 6 | *Admin dapat mengedit kembali tanggapan, memilih status, kemudian menekan tombol Simpan lagi* | *Sistem memvalidasi isian dan menampilkan konfirmasi "Apakah tanggapan dan status laporan sudah sesuai?"* |
+| 7 | *Admin menekan tombol Ya* | *Sistem menyimpan tanggapan, memperbarui status laporan, menutup pop-up, dan menampilkan tanggapan admin sebagai komentar teratas pada laporan tersebut* |
 
 ---
 
