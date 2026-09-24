@@ -7,7 +7,7 @@ SPESIFIKASI KEBUTUHAN PERANGKAT LUNAK (SKPL)
 </h1>
 <br>
 
-## *Nama Perangkat Lunak*
+## *RAWAT (Ruang Aspirasi Warga dan Aduan Terpadu)*
 
 ### Untuk: *Agatha Tatianingseto*
 
