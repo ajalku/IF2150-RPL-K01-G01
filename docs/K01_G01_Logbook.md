@@ -26,6 +26,7 @@
 * [Milestone 2](#milestone-2)
 * [Milestone 3](#milestone-3)
 * [Milestone 4](#milestone-4)
+* [Milestone 5](#milestone-5)
 
 
 ---
@@ -93,5 +94,11 @@
 | *23-09-2026* | *Syakira Azzahra Rachmania* | *Merevisi class diagram* | *3* | *Done* | *-* |
 | *23-09-2026* | *Ravinka Fathia Adinegara* | *Menyusun diagram kelas keseluruhan dan tabelnya* | *3* | *Done* | *-* |
 | *23-09-2026* | *Ghiffari Arya Adhitya* | *Menyusun tabel traceability* | *1.5* | *Done* | *-* |
+
+## Milestone 5
+**Periode:** 25 September 2026 - 30 September 2026
+| Tanggal | Nama Anggota | Deskripsi Pekerjaan | Durasi (Jam) | Status | Kendala / *Blocker* | 
+| :--- | :--- | :--- | :--- | :--- | :--- | 
+| *25-09-2026* | *Ravinka Fathia Adinegara* | *Menyalin dari dokumen-dokumen sebelumnya* | *0.75* | *Done* | *-* |
 
 <!-- Gunakan format penulisan Logbook yang sama untuk setiap Milestone dan pastikan pembuatan Daftar Isi juga sudah sesuai sebelum Logbook dikumpulkan. -->
