@@ -120,7 +120,6 @@ Berikut ini adalah gambar diagram proses bisnis dari sistem terkait.
 
 | Pengguna | Kebutuhan |
 | :--- | :--- |
-<!-- | *Pelanggan* | *Pelanggan harus dapat memesan produk, mengelola keranjang, dan menyelesaikan pembayaran melalui sistem.* | -->
 | *Pengguna* | *Pihak ini harus dapat melaporkan isu-isu yang terjadi di daerah dan berhak memperoleh informasi terkait laporan yang tersedia. Karakteristik dari pengguna ini mengutamakan kemudahan pelaporan dan keakuratan informasi lingkungan* |
 | *Admin* | *Pengguna ini harus dapat memantau dan mengelola sistem, mengutamakan kejelasan informasi di laporan dan integritas data laporan* |
 
