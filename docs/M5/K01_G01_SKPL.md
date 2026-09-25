@@ -1072,7 +1072,7 @@ Berikut ini adalah use case diagram dari identifikasi use case yang telah dijaba
 <img alt="Contoh Class Diagram Keseluruhan" src="./assets/diagram/diagram.full.revisi1.drawio.png" width="70%">
 </p>
 <p align="center">
-<i>Gambar 4. Contoh Diagram Kelas Keseluruhan</i>
+<i>Gambar 12. Diagram Kelas Keseluruhan</i>
 </p>
 
 | ID Kelas | Nama Kelas | Atribut | Metode/Operasi |
