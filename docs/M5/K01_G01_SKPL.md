@@ -65,12 +65,12 @@ Tabel 1.4. Aturan Penomoran
 
 | Hal/Bagian | Penomoran | Keterangan |
 | :--- | :--- | :--- |
-| *Kebutuhan Fungsional* | *KFXX* | |
-| *Kebutuhan Non-Fungsional* | *KNFXX* | |
-| *Aktor* | *AXX* | |
-| *Use Case* | *UCXX* | |
-| *Kelas* | *CXX* | |
-| *...* | *...* |
+| *Kebutuhan Fungsional* | *KFXX* | *KF merupakan singkatan dari Kebutuhan Fungsional, diikuti nomor urut dua digit.* |
+| *Kebutuhan Non-Fungsional* | *KNFXX* | *KNF merupakan singkatan dari Kebutuhan Non-Fungsional, diikuti nomor urut dua digit.* |
+| *Kebutuhan/Requirement* | *RXX* | *R merupakan singkatan dari Requirement, diikuti nomor urut dua digit.* |
+| *Aktor* | *AXX* | *A merupakan singkatan dari Aktor, diikuti nomor urut dua digit.* |
+| *Use Case* | *UCXX* | *UC merupakan singkatan dari Use Case, diikuti nomor urut dua digit.* |
+| *Kelas* | *CXX* | *C merupakan singkatan dari Class/Kelas, diikuti nomor urut dua digit.* |
 
 ## 1.5 Referensi
 <!-- Dokumentasi P/L yang dirujuk oleh dokumen ini. Referensi dapat berupa buku, panduan, ataupun dokumentasi lain yang dipakai dalam pengembangan P/L ini. -->
