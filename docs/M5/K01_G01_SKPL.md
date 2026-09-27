@@ -206,8 +206,8 @@ Tabel 3.2. Kebutuhan Non-Fungsional
 
 | ID Aktor | Aktor | Deskripsi |
 | :--- | :--- | :--- |
-| *A01* | *Pelanggan* | *Pengguna yang memesan produk, mengelola keranjang, dan menyelesaikan pembayaran melalui sistem.* |
-| *...* | *...* | *...* |
+| *A01* | *Pengguna* | *Pihak yang dapat membuat laporan, mengakses peta dan detail laporan, dan melakukan upvote terhadap laporan yang dianggap relevan.* |
+| *A02* | *Admin* | *Pihak yang berperan memeriksa laporan dan memperbarui status penanganan laporan.* |
 
 ## 4.2 Identifikasi Use Case
 <!-- Salin ulang daftar Use Case versi terbaru dari BAB 3.2 dokumen *Class Diagram*, pastikan seluruh ID KF yang dirujuk sudah sesuai dengan tabel pada 3.1. -->
