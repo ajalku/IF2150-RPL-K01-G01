@@ -75,13 +75,11 @@ Tabel 1.4. Aturan Penomoran
 ## 1.5 Referensi
 <!-- Dokumentasi P/L yang dirujuk oleh dokumen ini. Referensi dapat berupa buku, panduan, ataupun dokumentasi lain yang dipakai dalam pengembangan P/L ini. -->
 ## Daftar Pustaka
-- Ombudsman Republik Indonesia. (2020). _Masalah pedestrian sebagai pelayanan barang publik._ Ombudsman RI. https://ombudsman.go.id
+- Hendradjaya, B. (2015). Pemodelan dengan diagram UML (_Unified Modeling Language_) [Diktat Kuliah Dasar Rekayasa Perangkat Lunak]. KK Rekayasa Perangkat Lunak & Data, Institut Teknologi Bandung.
 
 - Putri, P. A. (2025). _Pengaruh clicktivism terhadap agenda setting: Studi kasus perbaikan jalan di Provinsi Lampung tahun 2023_ (Skripsi Sarjana, Universitas Gadjah Mada). https://etd.repository.ugm.ac.id/penelitian/detail/258848
 
 - Schiff, K. J. (2023). Does collective citizen input impact government service provision? Evidence from SeeClickFix requests. _Public Administration Review_, 85(1), 32–45. https://doi.org/10.1111/puar.13747 
-
-- Sobarna, C. (2020). Bandung kota untuk semua: Harapan dan tantangan yang selaras dengan Sustainable Development Goals (SDGs). _Metahumaniora_, 10(3), 295–309. https://doi.org
 
 - United Nations Statistics Division. (2025). _The Sustainable Development Goals extended report 2025: Goal 11 sustainable cities and communities._ United Nations Department of Economic and Social Affairs.
 
