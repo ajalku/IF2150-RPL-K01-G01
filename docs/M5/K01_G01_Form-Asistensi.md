@@ -4,8 +4,8 @@
 
 | Informasi | Keterangan |
 | --- | --- |
-| **Hari** | *\[Hari\]* |
-| **Tanggal** | *\[DD/MM/YYYY\]* |
+| **Hari** | *-* |
+| **Tanggal** | *-* |
 | **Kelas** | *K01* |
 | **Nomor Kelompok** | *1*  |
 | **Nama Kelompok** | *berjiwa ksatria*  |
@@ -25,23 +25,11 @@
 
 ### Catatan
 
-| Catatan |
-| --- |
-| 1. *\[Berikan catatan hasil asistensi\]*  |
-| 2. ... |
-| 3. ... |
-| 4. ... |
+Ket: Tidak dilakukan asistensi
 
 <!-- **Notes for this section:**  
 *Catatan dapat dituliskan dalam bentuk paragraf atau poin-poin, disesuaikan saja.* --> 
 
-## Dokumentasi
+<!-- ## Dokumentasi -->
 
 <!-- ![](./assets/foto-asistensi.jpg) -->
-<p align="center">
-  <img src="./assets/foto-asistensi.jpg" width="100%">
-</p>
-
-<p align="center">
-  <i>Gambar 1. Dokumentasi kegiatan asistensi.</i>
-</p>

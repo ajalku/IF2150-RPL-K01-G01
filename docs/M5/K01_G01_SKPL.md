@@ -144,10 +144,16 @@ Berikut ini adalah gambar diagram proses bisnis dari sistem terkait.
 
 ## 2.4 Batasan Perangkat Lunak
 Batasan yang harus dituliskan, di antaranya:
-1. *P/L harus memakai file data/API dari sistem lain (sebutkan, misal Payment Gateway dummy).*
-2. *P/L harus memakai format data yang sama dengan sistem lain.*
-3. *P/L harus berfungsi pada platform tertentu (misal: web browser modern, atau desktop Windows dan Linux).*
-4. *...*
+1. *P/L harus memakai file data/API dari sistem lain, yaitu Map untuk menunjukkan peta dan lokasi.*
+2. *P/L harus berfungsi pada perangkat mobile dan PC, serta tersedia dalam web browser modern.*
+3. *P/L tidak menyediakan fitur pesan pribadi, interaksi terbatas pada komentar publik dan upvote.*
+4. *Pelaporan pada P/L terbatas pada keadaan terkait infrastruktur atau RHA tinggi*
+5. *P/L tidak cocok untuk pelaporan keadaan kriminal yang sudah atau sedang terjadi*
+6. *P/L tidak cocok untuk pelaporan aktivitas orang sekitar yang mencurigakan*
+7. *P/L harus beroperasi sesuai dengan UU No. 27 tahun 2022 tentang perlindungan data pribadi*
+8. *P/L harus beroperasi sesuai dengan UU No. 22 tahun 2009 tentang lalu lintas dan angkutan jalan*
+9. *P/L hanya berfungsi di kota yang memiliki sistem listrik dan jaringan internet memadai serta pemerintah yang terhubung dengan sistem*
+10. *P/L tidak dapat menyelesaikan masalah yang dilaporkan secara langsung*
 
 ## 2.5 Lingkungan Operasi Perangkat Lunak
 Spesifikasi *operating system* atau lingkungan yang dibutuhkan P/L untuk beroperasi. Bagian ini digunakan untuk memastikan pengguna memiliki spesifikasi yang cukup untuk menjalankan P/L. Misalnya mencakup komponen server, client, OS, DBMS, tetapi tidak menutupi kemungkinan komponen lain.
@@ -158,8 +164,6 @@ Spesifikasi *operating system* atau lingkungan yang dibutuhkan P/L untuk beroper
 | *Client* | *Web browser modern, sistem dapat dijalankan di web browser seperti Firefox, Chrome, Edge, Opera, Safari, dan web browser serupa.* |
 | *DBMS* | *PostgreSQL* |
 | *OS* | *Cross-Platform, diharapkan sistem dapat berjalan di seluruh OS seperti Windows, Linux, MacOS, Android, dan IOS melalui web browser* |
-| *...* | *...* |
-
 ---
 
 # BAB 3: Deskripsi Kebutuhan Perangkat Lunak
