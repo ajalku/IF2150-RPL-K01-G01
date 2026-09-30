@@ -78,7 +78,6 @@ Tabel 1.4. Aturan Penomoran
 
 ## 1.5 Referensi
 <!-- Dokumentasi P/L yang dirujuk oleh dokumen ini. Referensi dapat berupa buku, panduan, ataupun dokumentasi lain yang dipakai dalam pengembangan P/L ini. -->
-## Daftar Pustaka
 - Hendradjaya, B. (2015). Pemodelan dengan diagram UML (_Unified Modeling Language_) [Diktat Kuliah Dasar Rekayasa Perangkat Lunak]. KK Rekayasa Perangkat Lunak & Data, Institut Teknologi Bandung.
 
 - Putri, P. A. (2025). _Pengaruh clicktivism terhadap agenda setting: Studi kasus perbaikan jalan di Provinsi Lampung tahun 2023_ (Skripsi Sarjana, Universitas Gadjah Mada). https://etd.repository.ugm.ac.id/penelitian/detail/258848
@@ -87,8 +86,6 @@ Tabel 1.4. Aturan Penomoran
 
 - United Nations Statistics Division. (2025). _The Sustainable Development Goals extended report 2025: Goal 11 sustainable cities and communities._ United Nations Department of Economic and Social Affairs.
 
-## Lampiran
-- Diagram Aktivitas: https://drive.google.com/file/d/1UE7Cg7zwuS4GTihCJLqRHOCB6KCYIKXL/view?usp=sharing
 
 
 ## 1.6 Deskripsi Umum Dokumen (Ikhtisar)
@@ -1156,4 +1153,5 @@ Berikut ini adalah use case diagram dari identifikasi use case yang telah dijaba
 ---
 
 # Referensi
-- Diagram UML: [https://www.drawio.com/](https://www.drawio.com/), [https://staruml.io/](https://staruml.io/)
+- Diagram Aktivitas:[https://www.drawio.com/] (https://drive.google.com/file/d/1UE7Cg7zwuS4GTihCJLqRHOCB6KCYIKXL/view?usp=sharing)
+- Diagram kelas : [https://www.drawio.com/](https://drive.google.com/file/d/1VeQtCAhvq1oU0M-OBRhnjMX0biJqLZMr/view?usp=sharing)
