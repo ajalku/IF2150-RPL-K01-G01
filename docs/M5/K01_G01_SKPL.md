@@ -125,7 +125,7 @@ Berikut ini adalah gambar diagram proses bisnis dari sistem terkait.
 <img alt="Activity Diagram" src="./assets/diagram/diagram-activity-1-revisi-2.jpg" width="70%">
 </p>
 <p align="center">
-<i>Gambar 2. Activity Diagram Proses Bisnis</i>
+<i>Gambar 1. Activity Diagram Proses Bisnis</i>
 </p>
 
 ## 2.2 Deskripsi Umum Perangkat Lunak
@@ -694,7 +694,7 @@ Berikut ini adalah use case diagram dari identifikasi use case yang telah dijaba
 <img alt="Class Diagram UC01" src="./assets/diagram/diagram-uc01.png" width="70%">
 </p>
 <p align="center">
-<i>Gambar 2. Diagram Kelas Use Case UC01</i>
+<i>Gambar 3. Diagram Kelas Use Case UC01</i>
 </p>
 <br>
 
@@ -725,7 +725,7 @@ Berikut ini adalah use case diagram dari identifikasi use case yang telah dijaba
 <img alt="Class Diagram UC02" src="./assets/diagram/diagram-uc01.png" width="70%">
 </p>
 <p align="center">
-<i>Gambar 3. Diagram Kelas Use Case UC02</i>
+<i>Gambar 4. Diagram Kelas Use Case UC02</i>
 </p>
 <br>
 
@@ -766,7 +766,7 @@ Berikut ini adalah use case diagram dari identifikasi use case yang telah dijaba
 <img alt="Class Diagram UC03" src="./assets/diagram/diagram-uc03.png" width="70%">
 </p>
 <p align="center">
-<i>Gambar 4. Diagram Kelas Use Case UC03</i>
+<i>Gambar 5. Diagram Kelas Use Case UC03</i>
 </p>
 <br>
 
@@ -817,7 +817,7 @@ Berikut ini adalah use case diagram dari identifikasi use case yang telah dijaba
 <img alt="Class Diagram UC04" src="./assets/diagram/diagram-uc04.png" width="70%">
 </p>
 <p align="center">
-<i>Gambar 5. Diagram Kelas Use Case UC04</i>
+<i>Gambar 6. Diagram Kelas Use Case UC04</i>
 </p>
 <br>
 
@@ -863,7 +863,7 @@ Berikut ini adalah use case diagram dari identifikasi use case yang telah dijaba
 <img alt="Class Diagram UC05" src="./assets/diagram/diagram-uc05.png" width="70%">
 </p>
 <p align="center">
-<i>Gambar 6. Diagram Kelas Use Case UC05</i>
+<i>Gambar 7. Diagram Kelas Use Case UC05</i>
 </p>
 <br>
 
@@ -908,7 +908,7 @@ Berikut ini adalah use case diagram dari identifikasi use case yang telah dijaba
 <img alt="Class Diagram UC06" src="./assets/diagram/diagram-uc06.jpg" width="70%">
 </p>
 <p align="center">
-<i>Gambar 7. Diagram Kelas Use Case UC06</i>
+<i>Gambar 8. Diagram Kelas Use Case UC06</i>
 </p>
 <br>
 
@@ -954,7 +954,7 @@ Berikut ini adalah use case diagram dari identifikasi use case yang telah dijaba
 <img alt="Class Diagram UC07" src="./assets/diagram/diagram-uc07.jpg" width="70%">
 </p>
 <p align="center">
-<i>Gambar 8. Diagram Kelas Use Case UC07</i>
+<i>Gambar 9. Diagram Kelas Use Case UC07</i>
 </p>
 <br>
 
@@ -998,7 +998,7 @@ Berikut ini adalah use case diagram dari identifikasi use case yang telah dijaba
 <img alt="Class Diagram UC08" src="./assets/diagram/diagram-uc08.jpg" width="70%">
 </p>
 <p align="center">
-<i>Gambar 9. Diagram Kelas Use Case UC08</i>
+<i>Gambar 10. Diagram Kelas Use Case UC08</i>
 </p>
 <br>
 
@@ -1041,7 +1041,7 @@ Berikut ini adalah use case diagram dari identifikasi use case yang telah dijaba
 <img alt="Class Diagram UC09" src="./assets/diagram/diagram-uc09.jpg" width="70%">
 </p>
 <p align="center">
-<i>Gambar 10. Diagram Kelas Use Case UC09</i>
+<i>Gambar 11. Diagram Kelas Use Case UC09</i>
 </p>
 <br>
 
@@ -1078,7 +1078,7 @@ Berikut ini adalah use case diagram dari identifikasi use case yang telah dijaba
 <img alt="Class Diagram UC10" src="./assets/diagram/diagram-uc01.png" width="70%">
 </p>
 <p align="center">
-<i>Gambar 11. Diagram Kelas Use Case UC10</i>
+<i>Gambar 12. Diagram Kelas Use Case UC10</i>
 </p>
 <br>
 
@@ -1095,7 +1095,7 @@ Berikut ini adalah use case diagram dari identifikasi use case yang telah dijaba
 <img alt="Contoh Class Diagram Keseluruhan" src="./assets/diagram/diagram.full.revisi1.drawio.png" width="70%">
 </p>
 <p align="center">
-<i>Gambar 12. Diagram Kelas Keseluruhan</i>
+<i>Gambar 13. Diagram Kelas Keseluruhan</i>
 </p>
 
 | ID Kelas | Nama Kelas | Atribut | Metode/Operasi |
