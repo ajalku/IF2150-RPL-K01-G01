@@ -150,10 +150,10 @@ Spesifikasi *operating system* atau lingkungan yang dibutuhkan P/L untuk beroper
 
 | Komponen | Spesifikasi |
 | :--- | :--- |
-| *Server* | *[contoh: Node.js v20, dijalankan pada layanan cloud]* |
-| *Client* | *[contoh: Web Browser modern (Chrome, Firefox terbaru)]* |
-| *DBMS* | *[contoh: PostgreSQL 15]* |
-| *OS* | *[contoh: Cross-platform (Windows/Linux/MacOS) melalui browser]* |
+| *Server* | *Node.js* |
+| *Client* | *Web browser modern, sistem dapat dijalankan di web browser seperti Firefox, Chrome, Edge, Opera, Safari, dan web browser serupa.* |
+| *DBMS* | *PostgreSQL* |
+| *OS* | *Cross-Platform, diharapkan sistem dapat berjalan di seluruh OS seperti Windows, Linux, MacOS, Android, dan IOS melalui web browser* |
 | *...* | *...* |
 
 ---
