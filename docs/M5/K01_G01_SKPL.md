@@ -56,7 +56,11 @@ Tabel 1.3. Definisi Istilah dan Singkatan
 | *KNF* | *Singkatan dari Kebutuhan Non-Fungsional.* |
 | *UC* | *Singkatan dari Use Case.* |
 | *EARS* | *Easy Approach to Requirements Syntax, yaitu pola penulisan kebutuhan agar konsisten dan mudah diuji.* |
-| *...* | *...* |
+| *RAWAT* | *Singkatan dari nama P/L yaitu (Ruang Aspirasi Warga dan Aduan Terpadu)* |
+| *NIK* | *Singkatan dari Nomor Induk Kependudukan* |
+| *API* | *Singkatan dari Application Programming Interface, yaitu perantara agar dua sistem dapat terhubung* |
+| *Upvote* | *Memberikan dukungan positif terhadap sesuatu (post/komentar)* |
+
 
 ## 1.4 Aturan Penomoran
 <!-- Tuliskan aturan penomoran (ID) yang digunakan dalam dokumen ini. Gunakan pola ID yang **sama** dengan yang sudah dipakai pada dokumen-dokumen sebelumnya, jangan membuat pola baru di dokumen ini. -->
@@ -90,7 +94,7 @@ Tabel 1.4. Aturan Penomoran
 ## 1.6 Deskripsi Umum Dokumen (Ikhtisar)
 <!-- Tuliskan sistematika pembahasan dokumen SKPL ini secara runut (misalnya: BAB 2 membahas deskripsi umum P/L, BAB 3 membahas kebutuhan fungsional dan non-fungsional, dst). -->
 Dalam dokumen ini, BAB 1 membahas pendahuluan yang mencakup tujuan penulisan dokumen; lingkup masalah; definisi, istilah, dan singkatan; aturan penomoran; serta referensi. Kemudian, BAB 2 membahas deskripsi perangkat lunak yang mencakup deskripsi umum sistem, deskripsi umum perangkat lunak, pengguna dan kebutuhan pengguna, batasan perangkat lunak, dan lingkungan operasi perangkat lunak. BAB 3 merupakan deskripsi kebutuhan perangkat lunak mencakup kebutuhan fungsional dan kebutuhan nonfungsional. BAB 4 merupakan pemodelan use case yang mencakup identifikasi aktor, identifikasi use case, use case diagram, dan skenario use case. Terakhir, BAB 5 membahas pemodelan kelas yang mencakup identifikasi kelas, diagram kelas per use case, diagram kelas keseluruhan, dan traceability.
----
+
 
 # BAB 2: Deskripsi Perangkat Lunak
 
