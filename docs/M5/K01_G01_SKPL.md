@@ -1153,5 +1153,5 @@ Berikut ini adalah use case diagram dari identifikasi use case yang telah dijaba
 ---
 
 # Referensi
-- Diagram Aktivitas:[https://www.drawio.com/] (https://drive.google.com/file/d/1UE7Cg7zwuS4GTihCJLqRHOCB6KCYIKXL/view?usp=sharing)
+- Diagram Aktivitas:[https://www.drawio.com/](https://drive.google.com/file/d/1UE7Cg7zwuS4GTihCJLqRHOCB6KCYIKXL/view?usp=sharing)
 - Diagram kelas : [https://www.drawio.com/](https://drive.google.com/file/d/1VeQtCAhvq1oU0M-OBRhnjMX0biJqLZMr/view?usp=sharing)
