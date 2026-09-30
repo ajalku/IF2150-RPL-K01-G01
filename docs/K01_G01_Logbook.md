@@ -101,7 +101,7 @@
 | :--- | :--- | :--- | :--- | :--- | :--- | 
 | *25-09-2026* | *Ravinka Fathia Adinegara* | *Menyalin dari dokumen-dokumen sebelumnya* | *0.75* | *Done* | *-* |
 | *27-09-2026* | *Samantha Michelle S. Silaban* | *Menyelesaikan bab 1.2* | *0.25* | *Done* | *-* |
-| *27-09-2026* | *Aufa Tatsbita Zahra* | *Menyelesaikan bab 1.4 dan 4.1* |  | *Done* | *-* |
+| *27-09-2026* | *Aufa Tatsbita Zahra* | *Menyelesaikan bab 1.4 dan 4.1* | *0.4* | *Done* | *-* |
 | *29-09-2026* | *Syakira Azzahra Rachmania* | *Menyelesaikan bab 1.1 dan menyalin 1.5* | *0.35* | *Done* | *-* |
 | *30-09-2026* | *Samantha Michelle S. Silaban* | *Menyelesaikan bab 1.3* | *0.25* | *Done* | *-* |
 | *30-09-2026* | *Ravinka Fathia Adinegara* | *Mengerjakan bab 2.5 dan 1.6* | *0.25* | *Done* | *-* |
