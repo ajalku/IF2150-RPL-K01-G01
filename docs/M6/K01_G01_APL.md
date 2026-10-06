@@ -31,7 +31,18 @@ Dipersiapkan oleh:
 
 # BAB 1: Style/Pattern Arsitektur Acuan
 
-Pada bagian ini, tentukan *architectural style* atau *pattern* yang menjadi acuan untuk aplikasi yang Anda kembangkan. Misalnya *layered architecture*, *client-server*, *repository*, *pipe and filter architecture*, atau MVC (*Model-View-Controller*).
+<!--Pada bagian ini, tentukan *architectural style* atau *pattern* yang menjadi acuan untuk aplikasi yang Anda kembangkan. Misalnya *layered architecture*, *client-server*, *repository*, *pipe and filter architecture*, atau MVC (*Model-View-Controller*).-->
+
+## Pemilihan Arsitektur 1:  MVC
+Arsitektur Model-View-Controller (MVC) dipakai dengan penjelasan fungsi per komponen sebagai berikut.
+- Model : Menyimpan dan merepresentasikan data suatu objek serta menyediakan data ketika dibutuhkan  
+- View : Mengatur penyajian data dari Model agar dapat dibaca dan dipahami pengguna.
+- Controller : Menerima masukan pengguna, melakukan pengolahan yang diperlukan terhadap data dari Model, dan memberikan hasilnya kepada View untuk ditampilkan. 
+
+Alasan pemilihan arsitektur ini adalah: 
+- Banyak pengerjaan frontend dan backend yang dilakukan terpisah. Contohnya, pada kebutuhan fungsional yang berkaitan dengan pengisian form seperti KF01 ( Perangkat lunak dapat menyediakan fitur registrasi akun untuk pengguna baru dan fitur login bagi admin maupun pengguna), KF12 (Ketika pengguna hendak membuat laporan baru, perangkat lunak harus menyediakan formulir isian untuk data yang diperlukan, seperti informasi lokasi, nama masalah, kategori, tingkat permasalahan, foto (opsional), dan deskripsi (opsional)), dan KF14 (Ketika admin hendak memeriksa laporan pengguna, perangkat lunak harus memungkinkan admin melihat dan memproses laporan yang masuk) akan memisahkan pengerjaan penampilan formulir dan penyimpanan data formulir. 
+- Mayoritas UI menggunakan data dari Model yang sama. Contohnya, KF04 (Perangkat lunak dapat menampilkan informasi umum suatu laporan pada peta dengan menggunakan simbol, penanda, dan tata letak yang konsisten.) dan KF05 (Ketika pengguna hendak melihat detail laporan, perangkat lunak harus dapat menampilkan detail informasi berupa lokasi, nama masalah, kategori, tingkat permasalahan, serta foto dan deskripsi apabila tersedia) sama-sama menggunakan Model Laporan karena mengakses data pada class laporan. 
+- Dari sisi jenis pengguna, MVC cocok karena P/L ini banyak berhubungan langsung dengan user, yaitu masyarakat umum. Ini juga didiukung dengan KNF03 dan KNF08 yang berparameter Intercation Capability
 
 <p align="center">
 <img alt="Contoh Arsitektur MVC" src="./assets/diagram/contoh-arsitektur-mvc.webp" width="70%">
@@ -40,7 +51,23 @@ Pada bagian ini, tentukan *architectural style* atau *pattern* yang menjadi acua
 <i>Gambar 1. Contoh Arsitektur MVC</i>
 </p>
 
-Isi bab ini dengan hal-hal berikut:
+## Pemilihan Arsitektur 2:  Client-Server
+
+Tabel 1.1. Lingkungan Operasi Perangkat Lunak
+| Komponen | Spesifikasi |
+| :--- | :--- |
+| *Server* | *Node.js* |
+| *Client* | *Web browser modern, sistem dapat dijalankan di web browser seperti Firefox, Chrome, Edge, Opera, Safari, dan web browser serupa.* |
+| *DBMS* | *PostgreSQL* |
+| *OS* | *Cross-Platform, diharapkan sistem dapat berjalan di seluruh OS seperti Windows, Linux, MacOS, Android, dan IOS melalui web browser* |
+
+
+Node.js digunakan sebagai runtime environment untuk menjalankan aplikasi pada sisi server yang akan menerapkan pola MVC. Web browser akan digunakan sebagai lingkungan View ditampilkan agar pengguna dapat berinteraksi dengan sistem. PostgreSQL akan digunakan untuk menyimpan data yang dikelola dan diakses melalui Model. Sistem ini juga dapat dijalankan melalui OS apapun (cross-platform) karena tampilan View berbasis web dan dijalankan dengan web browser modern sehingga tidak bergantung pada sistem operasi apapun. 
+
+
+
+
+<!--Isi bab ini dengan hal-hal berikut:
 1. **Style/pattern yang dipilih** beserta penjelasan singkat peran setiap bagiannya. Untuk MVC, jelaskan peran *Model*, *View*, dan *Controller*.
 2. **Alasan pemilihan** berdasarkan karakteristik P/L Anda, misalnya jenis pengguna, alur proses bisnis, serta KF dan KNF pada dokumen SKPL.
 3. **Gambar style/pattern yang diterapkan pada P/L Anda.** Jangan hanya menyalin Gambar 1. Isi setiap bagian pattern dengan komponen milik P/L Anda. Misalnya, kotak *Controller* berisi daftar *controller* yang ada di aplikasi dan kotak *Model* berisi daftar *model* yang ada di aplikasi.
@@ -57,7 +84,7 @@ Tabel 1.1. Lingkungan Operasi Perangkat Lunak
 | *OS* | *[contoh: Cross-platform (Windows/Linux/MacOS) melalui browser]* |
 | *...* | *...* |
 
-<sub><b><i>Catatan</i></b>: <i>Style/pattern yang dipilih di bab ini menjadi acuan untuk BAB 2 (pengelompokan komponen) dan BAB 3 (model arsitektur). Contoh pada dokumen ini memakai MVC secara konsisten dari BAB 1 sampai BAB 3. Kelompok boleh memakai pattern lain selama alasannya dijelaskan dan BAB 2 serta BAB 3 disesuaikan. Tabel 1.1 harus sama persis dengan subbab 2.5 dokumen SKPL; jangan menambah atau mengubah isinya karena SKPL sudah final.</i></sub>
+<sub><b><i>Catatan</i></b>: <i>Style/pattern yang dipilih di bab ini menjadi acuan untuk BAB 2 (pengelompokan komponen) dan BAB 3 (model arsitektur). Contoh pada dokumen ini memakai MVC secara konsisten dari BAB 1 sampai BAB 3. Kelompok boleh memakai pattern lain selama alasannya dijelaskan dan BAB 2 serta BAB 3 disesuaikan. Tabel 1.1 harus sama persis dengan subbab 2.5 dokumen SKPL; jangan menambah atau mengubah isinya karena SKPL sudah final.</i></sub> -->
 
 ---
 
