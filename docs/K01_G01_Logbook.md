@@ -112,5 +112,7 @@
 | Tanggal | Nama Anggota | Deskripsi Pekerjaan | Durasi (Jam) | Status | Kendala / *Blocker* | 
 | :--- | :--- | :--- | :--- | :--- | :--- | 
 | *06-10-2026* | *Samantha Michelle S. Silaban* | *Draft bab 1 bagian MVC* | *0.25* | *On Progress* | *-* |
-| *07-10-2026* | *Samantha Michelle S. Silaban* | *Finalisasi bab 1 bagian MVC* | *0.25* | *On Progress* | *-* |
+| *07-10-2026* | *Samantha Michelle S. Silaban* | *Finalisasi bab 1 bagian MVC* | *0.25* | *Done* | *-* |
+| *06-10-2026* | *Syakira Azzahra Rachmania* | *Draft bab 1 bagian Client-Server* | *0.25* | *On Progress* | *-* |
+| *07-10-2026* | *Syakira Azzahra Rachmania* | *Finalisasi bab 1 bagian Client-Server* | *0.25* | *Done* | *-* |
 <!-- Gunakan format penulisan Logbook yang sama untuk setiap Milestone dan pastikan pembuatan Daftar Isi juga sudah sesuai sebelum Logbook dikumpulkan. -->
