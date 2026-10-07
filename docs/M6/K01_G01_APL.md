@@ -65,6 +65,8 @@ Arsitektur *client-server* membagi sistem menjadi *client* yang meminta *service
 <i>Gambar 1. Diagram Arsitektur Client-Server</i>
 </p>
 
+
+## Lingkungan Operasi
 Tabel 1.1. Lingkungan Operasi Perangkat Lunak
 | Komponen | Spesifikasi |
 | :--- | :--- |
@@ -74,7 +76,7 @@ Tabel 1.1. Lingkungan Operasi Perangkat Lunak
 | *OS* | *Cross-Platform, diharapkan sistem dapat berjalan di seluruh OS seperti Windows, Linux, MacOS, Android, dan IOS melalui web browser* |
 
 
-Node.js digunakan sebagai _runtime environment_ untuk menjalankan aplikasi pada sisi server yang akan menerapkan pola MVC. Web browser akan digunakan sebagai lingkungan View ditampilkan agar pengguna dapat berinteraksi dengan sistem. PostgreSQL akan digunakan untuk menyimpan data yang dikelola dan diakses melalui Model. Sistem ini juga dapat dijalankan melalui OS apapun (_cross-platform_) karena tampilan View berbasis web dan dijalankan dengan web browser modern sehingga tidak bergantung pada sistem operasi apapun. 
+Node.js digunakan sebagai _runtime environment_ untuk menjalankan aplikasi pada sisi server atau _backend_. Web browser akan digunakan sebagai *client* yang menerima lingkungan View untuk ditampilkan agar pengguna dapat berinteraksi dengan sistem. PostgreSQL akan digunakan untuk menyimpan data yang dikelola dan diakses melalui Model. Sistem ini juga dapat dijalankan melalui OS apapun (_cross-platform_) karena tampilan View berbasis web dan dijalankan dengan web browser modern sehingga tidak bergantung pada sistem operasi apapun. 
 
 
 
@@ -147,9 +149,9 @@ Ketentuan pengisian Tabel 2.1:
 
 # BAB 3: Model Arsitektur Perangkat Lunak
 
-*Architectural View* adalah bagaimana cara kita melihat/mendeskripsikan arsitektur sebuah sistem dari sudut pandang tertentu. Dalam perancangan arsitektur aplikasi, dibutuhkan *Architectural View* yang dapat mempermudah pemahaman dari proses aplikasi yang akan dikembangkan. Tujuan dari *Architectural View* adalah menjadi bahan komunikasi, pemisahan masalah, mempermudah analisis, dan pemandu saat eksekusi pengembangan sistem tersebut.
+*Architectural View* adalah bagaimana cara kita melihat/mendeskripsikan arsitektur sebuah sistem dari sudut pandang tertentu. Dalam perancangan arsitektur aplikasi, dibutuhkan *Architectural View* yang dapat mempermudah pemahaman dari proses aplikasi yang akan dikembangkan. Tujuan dari *Architectural View* adalah menjadi bahan komunikasi, pemisahan masalah, mempermudah analisis, dan pemandu saat eksekusi pengembangan sistem.
 
-Buatlah model arsitektur dari aplikasi yang akan dirancang dalam bentuk *view*. Model arsitektur ini berfungsi untuk memperlihatkan bagaimana setiap komponen, modul, dan subsistem saling berinteraksi serta berkolaborasi dalam menjalankan fungsi utama sistem secara keseluruhan. Anda dapat membuat satu atau lebih *view* tergantung kebutuhan dalam bentuk gambar. Pilihlah notasi yang sesuai. Contoh *view* yang dapat digunakan antara lain ***Logical View***, ***Process View***, ***Development View***, serta ***Physical View***.
+<!--Buatlah model arsitektur dari aplikasi yang akan dirancang dalam bentuk *view*. Model arsitektur ini berfungsi untuk memperlihatkan bagaimana setiap komponen, modul, dan subsistem saling berinteraksi serta berkolaborasi dalam menjalankan fungsi utama sistem secara keseluruhan. Anda dapat membuat satu atau lebih *view* tergantung kebutuhan dalam bentuk gambar. Pilihlah notasi yang sesuai. Contoh *view* yang dapat digunakan antara lain ***Logical View***, ***Process View***, ***Development View***, serta ***Physical View***.
 
 Ketentuan pengisian BAB 3:
 1. Setiap view menggambarkan **keseluruhan sistem**, bukan satu use case atau satu fitur saja.
@@ -158,7 +160,7 @@ Ketentuan pengisian BAB 3:
 4. Setiap view harus **mencerminkan style/pattern pada BAB 1**. Misalnya, jika memilih MVC, pembagian *Model*, *View*, dan *Controller* harus terlihat jelas pada diagram.
 5. Jika membuat lebih dari satu view, setiap view harus menggambarkan sistem yang sama dari sudut pandang berbeda. View tambahan melengkapi view pertama, bukan mengulanginya.
 6. Beri label pada setiap garis atau panah yang menghubungkan komponen agar hubungan antarkomponen dapat dipahami tanpa penjelasan tambahan.
-7. Jika membuat *Physical View*, gambarkan lingkungan operasi pada Tabel 1.1.
+7. Jika membuat *Physical View*, gambarkan lingkungan operasi pada Tabel 1.1.-->
 
 ## 3.1 Development View
 
@@ -189,4 +191,4 @@ Model arsitektur yang dipilih adalah Development View dengan jenis Component Dia
 # Referensi
 
 - Sommerville, I. (2016). *Software Engineering* (10th ed.). Pearson. Chapter 6: *Architectural Design*: [https://software-engineering-book.com/slides/](https://software-engineering-book.com/slides/)
-- Diagram arsitektur: [https://www.drawio.com/](https://www.drawio.com/), [https://staruml.io/](https://staruml.io/)
+- Diagram arsitektur: [https://drive.google.com/file/d/1a9N-nzasATQvmG2plCPrJ9EqbMEHwKSg/view?usp=sharing](https://drive.google.com/file/d/1a9N-nzasATQvmG2plCPrJ9EqbMEHwKSg/view?usp=sharing)
