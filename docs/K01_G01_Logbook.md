@@ -27,6 +27,7 @@
 * [Milestone 3](#milestone-3)
 * [Milestone 4](#milestone-4)
 * [Milestone 5](#milestone-5)
+* [Milestone 6](#milestone-6)
 
 
 ---
@@ -106,4 +107,10 @@
 | *30-09-2026* | *Samantha Michelle S. Silaban* | *Menyelesaikan bab 1.3* | *0.25* | *Done* | *-* |
 | *30-09-2026* | *Ravinka Fathia Adinegara* | *Mengerjakan bab 2.5 dan 1.6* | *0.25* | *Done* | *-* |
 
+## Milestone 5
+**Periode:** 25 September 2026 - 30 September 2026
+| Tanggal | Nama Anggota | Deskripsi Pekerjaan | Durasi (Jam) | Status | Kendala / *Blocker* | 
+| :--- | :--- | :--- | :--- | :--- | :--- | 
+| *06-10-2026* | *Samantha Michelle S. Silaban* | *Draft bab 1 bagian MVC* | *0.25* | *On Progress* | *-* |
+| *07-10-2026* | *Samantha Michelle S. Silaban* | *Finalisasi bab 1 bagian MVC* | *0.25* | *On Progress* | *-* |
 <!-- Gunakan format penulisan Logbook yang sama untuk setiap Milestone dan pastikan pembuatan Daftar Isi juga sudah sesuai sebelum Logbook dikumpulkan. -->
