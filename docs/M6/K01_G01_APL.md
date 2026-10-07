@@ -52,6 +52,18 @@ Alasan pemilihan arsitektur ini adalah:
 </p>
 
 ## Pemilihan Arsitektur 2:  Client-Server
+Arsitektur *client-server* membagi sistem menjadi *client* yang meminta *service* dan *server* yang menyediakan *service*.
+- Client : Mengirim *request* ke server dengan menggunakan protokol HTTP. Pada P/L ini, *client* dapat mengajukan laporan serta memberikan *upvote* dan komentar pada laporan. Data-data tadi kemudian akan diproses oleh *server*.
+- Server : Menerima *request* dan memprosesnya, lalu mengembalikan *response* ke *client*. *Server* akan memproses data laporan serta menyusun homepage yang bisa diakses *client*.
+
+*Client* memerlukan *service* bersama dengan keadaan data terpusat yakni laporan-laporan yang diajukan. Seperti yang tertera pada Kebutuhan Non-Fungsional KNF05 dan KNF06 pada SKPL, sistem harus mampu melayani 1000 pengguna aktif secara bersamaan pada fitur trending dengan tingkat kegagalan *request* kurang dari 1% dan sistem harus menjaga layanan laporan tersedia 24 jam. Selain itu, sesuai KNF09 dan KNF10 sistem harus bisa melakukan sinkronisasi data dan menerapkan *Role-Based Access Control*. Jadi arsitektur *client-server* cocok untuk mendukung kebutuhan-kebutuhan yang disebutkan tadi sebab pengguna dan admin perlu mengakses data yang sudah disinkronisasi. 
+
+<p align="center">
+<img alt="Diagram Arsitektur Client-Server" src="./assets/diagram/diagram-client-server.png" width="70%">
+</p>
+<p align="center">
+<i>Gambar 1. Diagram Arsitektur Client-Server</i>
+</p>
 
 Tabel 1.1. Lingkungan Operasi Perangkat Lunak
 | Komponen | Spesifikasi |
