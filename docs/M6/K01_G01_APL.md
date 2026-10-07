@@ -62,7 +62,7 @@ Arsitektur *client-server* membagi sistem menjadi *client* yang meminta *service
 <img alt="Diagram Arsitektur Client-Server" src="./assets/diagram/diagram-client-server.png" width="70%">
 </p>
 <p align="center">
-<i>Gambar 1. Diagram Arsitektur Client-Server</i>
+<i>Gambar 2. Diagram Arsitektur Client-Server</i>
 </p>
 
 
@@ -183,7 +183,7 @@ Model arsitektur yang dipilih adalah Development View dengan jenis Component Dia
 <img alt="Development View pada Komponen" src="./assets/diagram/component diagram.png" width="100%">
 </p>
 <p align="center">
-<i>Gambar 2. Contoh Logical View pada P/L E-Commerce</i>  
+<i>Gambar 3. Development View</i>  
 </p>
 
 ---
