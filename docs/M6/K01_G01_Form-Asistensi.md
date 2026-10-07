@@ -4,8 +4,8 @@
 
 | Informasi | Keterangan |
 | --- | --- |
-| **Hari** | *\[Hari\]* |
-| **Tanggal** | *\[DD/MM/YYYY\]* |
+| **Hari** | *Selasa* |
+| **Tanggal** | *06/10/2006* |
 | **Kelas** | *01* |
 | **Nomor Kelompok** | *01*  |
 | **Nama Kelompok** | *berjiwa ksatria*  |
@@ -26,19 +26,17 @@
 
 | Catatan |
 | --- |
-| 1. *\[Berikan catatan hasil asistensi\]*  |
-| 2. ... |
-| 3. ... |
-| 4. ... |
+| 1. Tabel 1.1 digabung untuk dua arsitektur  |
+| 2. Database pada arsitektur client-server yang awalnya di Entitiy seharusnya dipindah ke Server |
+| 3. Database pada arsitektur MVC dua arah |
+| 4. Integrasi Eksternal dibuat diagram terpisah |
 
-**Notes for this section:**  
-*Catatan dapat dituliskan dalam bentuk paragraf atau poin-poin, disesuaikan saja.* 
 
 ## Dokumentasi
 
 <!-- ![](./assets/foto-asistensi.jpg) -->
 <p align="center">
-  <img src="./assets/foto-asistensi.jpg" width="100%">
+  <img src="./assets/asistensi-m6.jpeg" width="100%">
 </p>
 
 <p align="center">
