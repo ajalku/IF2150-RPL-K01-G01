@@ -36,19 +36,19 @@ Dipersiapkan oleh:
 ## Pemilihan Arsitektur 1:  MVC
 Arsitektur Model-View-Controller (MVC) dipakai dengan penjelasan fungsi per komponen sebagai berikut.
 - Model : Menyimpan dan merepresentasikan data suatu objek serta menyediakan data ketika dibutuhkan  
-- View : Mengatur penyajian data dari Model agar dapat dibaca dan dipahami pengguna.
+- View : Mengatur penyajian data dari Model agar dapat dibaca dan dipahami pengguna dan menjadi media untuk menerima masukan pengguna.
 - Controller : Menerima masukan pengguna, melakukan pengolahan yang diperlukan terhadap data dari Model, dan memberikan hasilnya kepada View untuk ditampilkan. 
 
 Alasan pemilihan arsitektur ini adalah: 
-- Banyak pengerjaan frontend dan backend yang dilakukan terpisah. Contohnya, pada kebutuhan fungsional yang berkaitan dengan pengisian form seperti KF01 ( Perangkat lunak dapat menyediakan fitur registrasi akun untuk pengguna baru dan fitur login bagi admin maupun pengguna), KF12 (Ketika pengguna hendak membuat laporan baru, perangkat lunak harus menyediakan formulir isian untuk data yang diperlukan, seperti informasi lokasi, nama masalah, kategori, tingkat permasalahan, foto (opsional), dan deskripsi (opsional)), dan KF14 (Ketika admin hendak memeriksa laporan pengguna, perangkat lunak harus memungkinkan admin melihat dan memproses laporan yang masuk) akan memisahkan pengerjaan penampilan formulir dan penyimpanan data formulir. 
-- Mayoritas UI menggunakan data dari Model yang sama. Contohnya, KF04 (Perangkat lunak dapat menampilkan informasi umum suatu laporan pada peta dengan menggunakan simbol, penanda, dan tata letak yang konsisten.) dan KF05 (Ketika pengguna hendak melihat detail laporan, perangkat lunak harus dapat menampilkan detail informasi berupa lokasi, nama masalah, kategori, tingkat permasalahan, serta foto dan deskripsi apabila tersedia) sama-sama menggunakan Model Laporan karena mengakses data pada class laporan. 
-- Dari sisi jenis pengguna, MVC cocok karena P/L ini banyak berhubungan langsung dengan user, yaitu masyarakat umum. Ini juga didiukung dengan KNF03 dan KNF08 yang berparameter Intercation Capability
+- Banyak pengerjaan fitur yang membutuhkan pemisahan antara antarmuka pengguna dan proses pengolahan data. Contohnya pada kebutuhan fungsional yang berkaitan dengan pengisian form, seperti KF01, KF12, dan KF14. Bagian View akan bertanggung jawab untuk menampilkan formulir, sedangkan Controller dan Model akan menangani input dan penyimpanan data. Ini sesuai dengan prinsip MVC. 
+- Mayoritas UI menggunakan data dari Model yang sama. Contohnya, KF04 menggunakan Model Laporan untuk menampilkan informasi umum pada peta, sedangkan KF05 menggunakan Model Laporan untuk menampilkan informasi laporan secara rinci. Dengan menggunakan arsitektur MVC, satu Model dapat digunakan beberapa View tanpa menduplikasi. 
+- Dari sisi jenis pengguna, MVC cocok karena P/L ini banyak berinteraksi langsung dengan _user_, yaitu masyarakat umum. Ini juga didukung dengan KNF03 dan KNF08 yang berparameter Intercation Capability.
 
 <p align="center">
-<img alt="Contoh Arsitektur MVC" src="./assets/diagram/contoh-arsitektur-mvc.webp" width="70%">
+<img alt="Diagram Arsitektur MVC" src="./assets/diagram/diagram-MVC.jpg" width="70%">
 </p>
 <p align="center">
-<i>Gambar 1. Contoh Arsitektur MVC</i>
+<i>Gambar 1. Gambar Diagram Arsitektur MVC</i>
 </p>
 
 ## Pemilihan Arsitektur 2:  Client-Server
@@ -74,7 +74,7 @@ Tabel 1.1. Lingkungan Operasi Perangkat Lunak
 | *OS* | *Cross-Platform, diharapkan sistem dapat berjalan di seluruh OS seperti Windows, Linux, MacOS, Android, dan IOS melalui web browser* |
 
 
-Node.js digunakan sebagai runtime environment untuk menjalankan aplikasi pada sisi server yang akan menerapkan pola MVC. Web browser akan digunakan sebagai lingkungan View ditampilkan agar pengguna dapat berinteraksi dengan sistem. PostgreSQL akan digunakan untuk menyimpan data yang dikelola dan diakses melalui Model. Sistem ini juga dapat dijalankan melalui OS apapun (cross-platform) karena tampilan View berbasis web dan dijalankan dengan web browser modern sehingga tidak bergantung pada sistem operasi apapun. 
+Node.js digunakan sebagai _runtime environment_ untuk menjalankan aplikasi pada sisi server yang akan menerapkan pola MVC. Web browser akan digunakan sebagai lingkungan View ditampilkan agar pengguna dapat berinteraksi dengan sistem. PostgreSQL akan digunakan untuk menyimpan data yang dikelola dan diakses melalui Model. Sistem ini juga dapat dijalankan melalui OS apapun (_cross-platform_) karena tampilan View berbasis web dan dijalankan dengan web browser modern sehingga tidak bergantung pada sistem operasi apapun. 
 
 
 
@@ -102,9 +102,9 @@ Tabel 1.1. Lingkungan Operasi Perangkat Lunak
 
 # BAB 2: Identifikasi Komponen / Modul / Subsistem
 
-Pada bagian ini, lakukan identifikasi terhadap komponen, modul, atau subsistem yang menyusun aplikasi berdasarkan *pattern* arsitektur yang telah ditetapkan sebelumnya. Setiap komponen memiliki tanggung jawab tertentu dalam mendukung fungsionalitas sistem.
+<!--Pada bagian ini, lakukan identifikasi terhadap komponen, modul, atau subsistem yang menyusun aplikasi berdasarkan *pattern* arsitektur yang telah ditetapkan sebelumnya. Setiap komponen memiliki tanggung jawab tertentu dalam mendukung fungsionalitas sistem.
 
-Setiap komponen memiliki tanggung jawab tertentu dalam mendukung fungsionalitas sistem secara keseluruhan. Komponen dapat dikelompokkan berdasarkan lapisan arsitektur (misalnya *Model*, *View*, dan *Controller* pada pattern MVC), atau berdasarkan fungsi atau peran komponen di dalam sistem (misalnya modul autentikasi, manajemen data, dan integrasi eksternal).
+Setiap komponen memiliki tanggung jawab tertentu dalam mendukung fungsionalitas sistem secara keseluruhan. Komponen dapat dikelompokkan berdasarkan lapisan arsitektur (misalnya *Model*, *View*, dan *Controller* pada pattern MVC), atau berdasarkan fungsi atau peran komponen di dalam sistem (misalnya modul autentikasi, manajemen data, dan integrasi eksternal).-->
 
 Tabel 2.1. Identifikasi Komponen/Modul/Subsistem
 
@@ -135,14 +135,14 @@ Tabel 2.1. Identifikasi Komponen/Modul/Subsistem
 | *MapAPI*       | *Integrasi Eksternal, Server* | *Menyimpan konfigurasi layanan API eksternal seperti apiKey dan baseURL.* |
 | *MapAPIService* | *Integrasi Eksternal, Server* | *Mengatur proses request ke API, memproses response, dan mengirim hasil ke MapAPIView.* |
 | *Database*                    | *Penyimpanan Data*    | *Menyimpan data Model secara persisten menggunakan PostgreSQL sebagai DBMS.*   |
-
+<!--
 Ketentuan pengisian Tabel 2.1:
 1. Kolom **Jenis** mengikuti pengelompokan pada *style/pattern* di BAB 1. Untuk MVC, jenisnya adalah *Model*, *View*, dan *Controller*. Jenis lain boleh ditambahkan, misalnya *Pendukung* untuk komponen bantu yang dipakai bersama, atau *Integrasi Eksternal* untuk penghubung ke sistem di luar P/L yang disebutkan pada subbab 2.2 dokumen SKPL. Kolom ini juga boleh diisi dengan *Subsistem*, *Modul*, atau *Komponen* apabila komponen dikelompokkan berdasarkan fungsinya. Tuliskan subsistem terlebih dahulu, lalu komponen penyusunnya di baris-baris berikutnya.
 2. Komponen **tidak sama dengan** kelas. Satu komponen boleh mewadahi beberapa kelas dari diagram kelas pada dokumen SKPL. Pastikan seluruh kelas tercakup oleh setidaknya satu komponen.
 3. Pastikan seluruh use case pada dokumen SKPL dapat dijalankan oleh komponen-komponen yang didaftarkan di tabel ini. Jangan menambahkan komponen untuk fitur yang tidak ada di SKPL.
 
 <sub><b><i>Catatan</i></b>: <i>Nama komponen pada Tabel 2.1 harus dipakai sama persis pada gambar di BAB 1 dan setiap view di BAB 3. Jika saat membuat view ternyata dibutuhkan komponen baru, tambahkan komponen tersebut ke Tabel 2.1 terlebih dahulu.</i></sub>
-
+-->
 ---
 
 # BAB 3: Model Arsitektur Perangkat Lunak
