@@ -102,6 +102,7 @@ Tabel 2.1. Lingkungan Implementasi Perangkat Lunak
 | *Development Tools* | *Visual Studio Code, Git* |
 | *Filing System* | *Local File System* |
 | *Bahasa Pemrograman* | *JavaScript* |
+
 Lingkungan implementasi RAWAT menggunakan sistem operasi _Cross-Platform_ yang memungkinkan aplikasi diakses melalui web browser pada berbagai perangkat. PostgreSQL digunakan sebagai DBMS untuk mengelola basis data, sedangkan Visual Studio Code digunakan sebagai editor kode dan Git untuk mengelola versi kode. Foto laporan disimpan menggunakan Local File System pada server, sementara JavaScript digunakan sebagai bahasa pemrograman dalam pengembangan aplikasi.
 
 ## 2.2 Style/Pattern Arsitektur Acuan
