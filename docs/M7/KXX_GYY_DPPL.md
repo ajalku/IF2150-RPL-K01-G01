@@ -114,7 +114,7 @@ Gunakan hasil **BAB 1 Style/Pattern Arsitektur Acuan pada dokumen APL**, termasu
 
 Terdapat dua arsitektur acuan yang digunakan, yakni MVC dan Client-Server.
 
-## Pemilihan Arsitektur 1:  MVC
+### Pemilihan Arsitektur 1:  MVC
 Arsitektur Model-View-Controller (MVC) dipakai dengan penjelasan fungsi per komponen sebagai berikut.
 - Model : Menyimpan dan merepresentasikan data suatu objek serta menyediakan data ketika dibutuhkan  
 - View : Mengatur penyajian data dari Model agar dapat dibaca dan dipahami pengguna dan menjadi media untuk menerima masukan pengguna.
@@ -132,7 +132,7 @@ Alasan pemilihan arsitektur ini adalah:
 <i>Gambar 1. Gambar Diagram Arsitektur MVC</i>
 </p>
 
-## Pemilihan Arsitektur 2:  Client-Server
+### Pemilihan Arsitektur 2:  Client-Server
 Arsitektur *client-server* membagi sistem menjadi *client* yang meminta *service* dan *server* yang menyediakan *service*.
 - Client : Mengirim *request* ke server dengan menggunakan protokol HTTP. Pada P/L ini, *client* dapat mengajukan laporan serta memberikan *upvote* dan komentar pada laporan. Data-data tadi kemudian akan diproses oleh *server*.
 - Server : Menerima *request* dan memprosesnya, lalu mengembalikan *response* ke *client*. *Server* akan memproses data laporan serta menyusun homepage yang bisa diakses *client*.
