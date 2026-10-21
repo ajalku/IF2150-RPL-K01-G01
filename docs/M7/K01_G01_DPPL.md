@@ -759,7 +759,7 @@ Tabel 3.9. Identifikasi Kelas Use Case UC09
 ### 3.9.3 Diagram Kelas
 
 <p align="center">
-<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/DK-UC09.svg" width="35%">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/diagram-kelas-UC09.drawio.png" width="35%">
 </p>
 <p align="center">
 <i>Gambar 5. Diagram Kelas Memperbarui Stauts Penangan Laporan</i>
