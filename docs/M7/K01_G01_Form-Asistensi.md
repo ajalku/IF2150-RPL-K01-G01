@@ -29,6 +29,9 @@
 | 1. Untuk pembuatan diagram sekuens dapat digunakan mermaid maupun draw.io. Asisten sendiri menggunakan draw.io  |
 | 2. Tidak ada aturan penempatan kelas di diagram sekuens |
 | 3. Overall diagram sudah aman |
+| 4. User berhasil atau gagal, activation diuble kalau self message. Trus tampilkan form itu dibuat jdi dr view ke pengguna pke putus". Trs yg validasi kredensial itu di kanan |
+| 5. Analisis yang kemarin di SKPL, perancangan yang namanya mau diubah |
+| 6. UC10 langsung aja di sequence diagram |
 
 <!-- **Notes for this section:**  
 *Catatan dapat dituliskan dalam bentuk paragraf atau poin-poin, disesuaikan saja.*  -->
