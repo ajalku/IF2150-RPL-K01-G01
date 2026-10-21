@@ -771,7 +771,7 @@ Tabel 3.9. Identifikasi Kelas Use Case UC09
 **ID Use Case:** *UC10*  
 **Nama Use Case:** *Mengedit Profil*
 
-### 3.9.1 Identifikasi Kelas
+### 3.10.1 Identifikasi Kelas
 
 Tabel 3.9. Identifikasi Kelas Use Case UC09
 
@@ -782,7 +782,7 @@ Tabel 3.9. Identifikasi Kelas Use Case UC09
 | 3 | *Pengguna* | *Pengguna* |
 
 
-### 3.9.2 Sequence Diagram
+### 3.10.2 Sequence Diagram
  
 
 - **Skenario Normal**
@@ -794,7 +794,7 @@ Tabel 3.9. Identifikasi Kelas Use Case UC09
 <i>Gambar 1. Sequence Diagram UC10</i>
 </p>
 
-- **Skenario Alternatif 1 : Pengguna membatalkan penghapusan akun **
+- **Skenario Alternatif 1 : Pengguna membatalkan penghapusan akun**
 
 <p align="center">
 <img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/alternatif-1-UC10.svg" width="50%">
