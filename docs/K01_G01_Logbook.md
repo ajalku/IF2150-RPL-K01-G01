@@ -126,6 +126,10 @@
 | *20-10-2026* | *Ravinka Fathia Adinegara* | *Mengerjakan sekuens diagram UC06* | *1* | *On Progress* | *-* |
 | *21-10-2026* | *Ravinka Fathia Adinegara* | *Mengerjakan sekuens diagram UC06 dan UC07* | *2* | *Done* | *-* |
 | *21-10-2026* | *Ghiffari Arya Adhitya* | *Menyelesaikan bab 5 & membuat logo* | *2* | *Done* | *-* |
-
+| *20-10-2026* | *Syakira Azzahra Rachmania* | *Mengerjakan sekuens diagram UC06 dan UC07 dan UC08* | *5* | *On Progress* | *-* |
+| *20-10-2026* | *Syakira Azzahra Rachmania* | *Mengerjakan sekuens diagram UC07 dan UC08* | *5* | *On Progress* | *-* |
+| *21-10-2026* | *Samantha Michelle S. Silaban* | *Mengerjakan sekuens diagram UC01 dan UC02 dan UC03 dan UC10* | *5* | *Done* | *-* |
+| *21-10-2026* | *Samantha Michelle S. Silaban* | *Mengerjakan sekuens diagram UC01 dan UC02 dan UC03 dan UC10* | *5* | *Done* | *-* |
+| *21-10-2026* | *Aufa Tatsbita Zahra* |*Bab 2 dan diagram UC09* | *4* | *Done* | *-* |
 
 <!-- Gunakan format penulisan Logbook yang sama untuk setiap Milestone dan pastikan pembuatan Daftar Isi juga sudah sesuai sebelum Logbook dikumpulkan. -->
