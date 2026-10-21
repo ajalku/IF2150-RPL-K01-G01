@@ -746,10 +746,10 @@ Tabel 3.9. Identifikasi Kelas Use Case UC09
 <i>Gambar 1. Sequence Diagram UC09</i>
 </p>
 
-- **Skenario Alternatif 1 : Admin membatalkan konfirmasi perubahan status laporan **
+- **Skenario Alternatif 1 : Admin membatalkan konfirmasi perubahan status laporan**
 
 <p align="center">
-<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/alternatif-1-UC09.svg" width="50%">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/diagramSekuensUC09Alt.drawio (1).png" width="50%">
 </p>
 <p align="center">
 <i>Gambar 2. Sequence Diagram UC09 - Admin membatalkan konfirmasi perubahan status laporan</i>
