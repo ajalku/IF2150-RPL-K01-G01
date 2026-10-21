@@ -447,6 +447,60 @@ Tabel 3.4 Identifikasi Kelas Use Case [UC04]
 
 <br>
 
+## 3.9 Use Case Memperbarui Status Penanganan Laporan
+
+**ID Use Case:** *UC09*  
+**Nama Use Case:** *Memperbarui Status Penanganan Laporan*
+
+### 3.9.1 Identifikasi Kelas
+
+Tabel 3.9. Identifikasi Kelas Use Case UC09
+
+| No | Nama Kelas Perancangan | Nama Kelas Analisis Terkait |
+|:--- | :--- | :--- |
+| 1 | *C01 - Pengguna* | *C01 - Pengguna (entity)* |
+| 2 | *C02 - Homepage* | *C02 - Homepage (entity)* |
+| 3 | *C03 - Laporan* | *C03 - Laporan (entity)* |
+| 4 | *C06 - Tanggapan* | *C06 - Tanggapan (entity)* |
+| 5 | *C08 - PenggunaView* | *C08 - PenggunaView (boundary)* |
+| 6 | *C09 - HomepageView* | *C09 - HomepageView (boundary)* |
+| 7 | *C10 - LaporanView* | *C10 - LaporanView (boundary)* |
+| 8 | *C13 - TanggapanView* | *C13 - TanggapanView (boundary)* |
+| 9 | *C15 - PenggunaController* | *C15 - PenggunaController (control)* |
+| 10 | *C16 - HomepageController* | *C16 - HomepageController (control)* |
+| 11 | *C17 - LaporanController* | *C17 - LaporanController (control)* |
+| 12 | *C20 - TanggapanController* | *C20 - TanggapanController (control)* |
+
+### 3.9.2 Sequence Diagram
+
+- **Skenario Normal**
+
+<p align="center">
+<img alt="Sequence Diagram UC09 Skenario Normal" src="./assets/diagram/diagramSekuensUC09Utama.drawio.png" width="60%">
+</p>
+<p align="center">
+<i>Gambar X. Sequence Diagram UC09 - Skenario Normal</i>
+</p>
+
+- **Skenario Alternatif 1: Admin Membatalkan Konfirmasi Perubahan Status Laporan**
+
+<p align="center">
+<img alt="Sequence Diagram UC09 Skenario Alternatif 1" src="./assets/diagram/diagramSekuensUC09Alt.drawio (1).png" width="60%">
+</p>
+<p align="center">
+<i>Gambar X. Sequence Diagram UC09 - Skenario Alternatif 1: Admin Membatalkan Konfirmasi Perubahan Status Laporan</i>
+</p>
+
+### 3.9.3 Diagram Kelas
+
+<p align="center">
+<img alt="Diagram Kelas UC09" src="./assets/diagram/diagramKelasUC09.drawio.png" width="70%">
+</p>
+<p align="center">
+<i>Gambar X. Diagram Kelas Use Case UC09</i>
+</p>
+<br>
+
 ---
 
 # BAB 4: Diagram Kelas Keseluruhan
