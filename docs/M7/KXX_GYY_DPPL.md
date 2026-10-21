@@ -429,7 +429,7 @@ Tabel 4.1 Daftar Kelas Perancangan Keseluruhan
 | *C19* | *UpvoteController* | *-* | *+prosesUpvote(), +sudahUpvote()* |
 | *C20* | *TanggapanController* | *-* | *+validasiTanggapan(), +simpanTanggapan(), +simpanStatus()* |
 | *C21* | *TutorialController* | *-* | *+skipTutorial(), +nextTutorial(), +finishTutorial(), +startTutorial()* |
-| *C22* | *MapAPI* | *-apiKey, -baseURL* | * +getAPIKey(), +getBaseURL() * |
+| *C22* | *MapAPI* | *-apiKey, -baseURL* | *+getAPIKey(), +getBaseURL()* |
 | *C23* | *MapAPIService* | *-* | *+geocode(), -kirimRequest(), -prosesResponse()* |
 | *C24* | *MapAPIView* | *-* | *+renderMap(), +renderMarker(), +setCenter()* |
 | *...* | *...* | *...* | *...* |
