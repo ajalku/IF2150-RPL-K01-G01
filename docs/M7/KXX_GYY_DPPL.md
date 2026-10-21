@@ -31,20 +31,20 @@ Dipersiapkan oleh:
 
 | Revisi | Deskripsi |
 | :--- | :--- |
-| *A* | *Deskripsikan perubahan yang dilakukan dari dokumen sebelumnya pada dokumen ini. Jika tidak terdapat perubahan, harap kosongkan tabel.* |
+| *A* | *(Dibenarkan di dokumen ini) Melengkapi bagian tabel kelas keseluruhan* |
 | *B* |  |
 | *C* |  |
 | ... |  |
 
 ---
 
-<br>
+<!-- <br>
 
 > **Petunjuk pengerjaan:** *[Silahkan hapus bagian ini setelah selesai mengerjakan]*
 >
 > Dokumen ini melanjutkan **Spesifikasi Kebutuhan Perangkat Lunak (SKPL)** dan **Arsitektur Perangkat Lunak (APL)**. Gunakan nama, ID, kebutuhan, dan use case yang konsisten dengan kedua dokumen tersebut. Contoh pola ID baru di bawah dapat disesuaikan dengan kesepakatan kelompok, ID yang sudah ada tetap dipertahankan.
 
-<br>
+<br> -->
 
 ---
 
@@ -77,7 +77,7 @@ Tabel 1.4. Aturan Penomoran
 
 | Hal/Bagian | Penomoran | Keterangan |
 | :--- | :--- | :--- |
-| *Uce Case* | *UCXX* | |
+| *Use Case* | *UCXX* | |
 | *Kelas* | *CXX* | |
 | *...* | *...* |
 
@@ -285,6 +285,108 @@ Pada diagram, pastikan:
 
 Silahkan lanjutkan untuk  *use case* berikutnya dengan content yang sama dengan 3.1
 
+## 3.4 Use Case Melihat Laporan
+
+**ID Use Case:** *UC04*  
+**Nama Use Case:** *Melihat Laporan*
+
+### 3.4.1 Identifikasi Kelas
+
+Tabel 3.4 Identifikasi Kelas Use Case [UC04]
+| No | Nama Kelas Perancangan | Nama Kelas Analisis Terkait |
+|:--- | :--- | :--- |
+| *1* | *HomepageView* | *HomepageView*  |
+| *2* | *HomepageController* | *HomepageController* |
+| *3* | *Homepage* | *Homepage* |
+| *4* | *LokasiView* | *LokasiView* |
+| *5* |*LokasiController* | *LokasiController* |
+| *6* | *Lokasi* | *Lokasi* |
+| *7* | *Laporan* | *Laporan* |
+| *8* | *LaporanView* | *LaporanView* |
+| *9* | *LaporanController* | *LaporanController* |
+| *10* | *MapAPI* | *MapAPI* |
+| *11* | *MapAPIService* | *-* | *MapAPIService* |
+| *12* | *MapAPIView* | *-* | *MapAPIView* |
+| ... | *...* | *...* |
+
+### 3.4.2 Sequence Diagram
+
+**Skenario Normal**
+<p align="center">
+<img alt="SD-UC04-0" src="./assets/diagram/SD-UC04-0.png" width="50%">
+</p>
+<p align="center">
+<i>Gambar X. Sequence Diagram [UC04]</i>
+</p>
+
+**Skenario Alternatif 1: Detail laporan tidak lengkap**
+<p align="center">
+<img alt="SD-UC04-1" src="./assets/diagram/SD-UC04-1.png" width="50%">
+</p>
+<p align="center">
+<i>Gambar X. Sequence Diagram [UC04]</i>
+</p>
+
+**Skenario Alternatif 2: Laporan gagal dimuat**
+<p align="center">
+<img alt="SD-UC04-2" src="./assets/diagram/SD-UC04-2.png" width="50%">
+</p>
+<p align="center">
+<i>Gambar X. Sequence Diagram [UC04]</i>
+</p>
+
+### 3.4.3 Diagram Kelas
+<p align="center">
+<img alt="CD-UC04" src="./assets/diagram/CD-UC04.png" width="35%">
+</p>
+<p align="center">
+<i>Gambar X. Class Diagram [UC04]</i>
+</p>
+
+### 3.5.1 Identifikasi Kelas
+
+| No | Nama Kelas Perancangan | Nama Kelas Analisis Terkait |
+|:--- | :--- | :--- |
+| *C09* | *HomepageView* | *HomepageView* |
+| *C16* | *HomepageController* | *HomepageController* |
+| *C01* | *Homepage* | *Homepage* |
+| *C11* | *LokasiView* | *LokasiView* |
+| *C18* |*LokasiController* | *LokasiController* |
+| *C04* | *Lokasi* | *Lokasi* |
+| *C03* | *Laporan* | *Laporan* |
+| *C10* | *LaporanView* | *LaporanView* |
+| *C17* | *LaporanController* | *LaporanController* |
+| *C22* | *MapAPI* | *MapAPI* |
+| *C23* | *MapAPIService* | *MapAPIService* |
+| *C24* | *MapAPIView* | *MapAPIView* |
+| ... | *...* | *...* |
+
+### 3.5.2 Sequence Diagram
+
+**Skenario Normal**
+<p align="center">
+<img alt="SD-UC04-0" src="./assets/diagram/SD-UC04-0.png" width="50%">
+</p>
+<p align="center">
+<i>Gambar X. Sequence Diagram [UC05]</i>
+</p>
+
+**Skenario Alternatif 1: Pengguna Memilih Skip Tutorial**
+<p align="center">
+<img alt="SD-UC04-1" src="./assets/diagram/SD-UC04-1.png" width="50%">
+</p>
+<p align="center">
+<i>Gambar X. Sequence Diagram [UC05]</i>
+</p>
+
+### 3.5.3 Diagram Kelas
+<p align="center">
+<img alt="CD-UC05" src="./assets/diagram/CD-UC05.png" width="35%">
+</p>
+<p align="center">
+<i>Gambar X. Class Diagram [UC05]</i>
+</p>
+
 <br>
 
 ---
@@ -293,22 +395,43 @@ Silahkan lanjutkan untuk  *use case* berikutnya dengan content yang sama dengan 
 
 ## 4.1 Diagram Kelas
 
-**Bagian ini diisi dengan diagram kelas keseluruhan.**
+<!-- **Bagian ini diisi dengan diagram kelas keseluruhan.** -->
 
 <p align="center">
-<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/contoh-class_diargam.png" width="35%">
+<img alt="diagram kelas keseluruhan" src="./assets/diagram/CD-FULL.png" width="35%">
 </p>
 <p align="center">
-<i>Gambar 4.1. Diagram Kelas Perancangan Keseluruhan [Nama P/L]</i>
+<i>Gambar 4.1 Diagram Kelas Perancangan Keseluruhan RAWAT</i>
 </p>
 
-Tabel 4.1. Daftar Kelas Perancangan Keseluruhan
+Tabel 4.1 Daftar Kelas Perancangan Keseluruhan
 
 | ID Kelas | Nama Kelas | Atribut | Metode/Operasi |
 | :--- | :--- | :--- | :--- |
-| *[C01]* | *[Nama kelas]* | *[Daftar atribut]* | *[Daftar metode/operasi]* |
-| *[C02]* | *[Nama kelas]* | *[Daftar atribut]* | *[Daftar metode/operasi]* |
-| *[C03]* | *[Nama kelas]* | *[Daftar atribut]* | *[Daftar metode/operasi]* |
+| *C01* | *Pengguna* | *-idPengguna, -nama, -role, -NIK, -email, -password, -NoTelp, -lokasiSaatIni, -izinLokasi, -statusTutorial* | *+getRole(), +simpanDataPengguna(), +getPenggunaByEmail(), getPenggunaByNIK(), getIzinLokasi(), +sudahLihatTutorial(), getPenggunaById(), +hapusAkun(), +updateDataPengguna()* |
+| *C02* | *HomePage* | *-sortBy, -daftarLaporan* | *+getDaftarLaporan(), +refreshPage(), getSortBy()* |
+| *C03* | *Laporan* | *-idLaporan, -namaMasalah, -kategori, -tingkatPermasalahan, -statusPrivasi, -foto, -deskripsi, -statusLaporan, -titikLokasi, -bobotUrgensi, -jumlahUpvote, -skorPopuler, -skorUrgensi* | *+getDetailLaporan(), +perbaruiStatus(), +updateStatusLaporan(), +hapusLaporan(), +simpanLaporan(), +tambahUpvote(), +hitungSkorPopularitas, +getJumlahUpvote(), getSkorPopuler()* |
+| *C04* | *Lokasi* | *Menyimpan informasi lokasi geografis yang terkait dengan suatu laporan dan digunakan untuk menampilkan laporan pada peta.* |
+| *C05* | *Upvote* | *waktuUpvote, statusUpvote* | *upvote()* |
+| *C06* | *Tanggapan* | *-statusTanggapan, -waktuTanggapan, -deskripsiTanggapan* | *+simpanTanggapan()* |
+| *C07* | *Tutorial* | *Menyimpan informasi tutorial navigasi yang ditampilkan kepada pengguna.* |
+| *C08* | *PenggunaView* | *-* | *-* |
+| *C09* | *HomepageView* | *-* | *+tampilkanHomepage(), +pilihFilter()* |
+| *C10* | *LaporanView* | *-* | *+tampilkanDetailLaporan(), +tampilkanTanggapanTeratas()* |
+| *C11* | *LokasiView* | *-map* | *+tampilkanMap(), +pilihTitikLokasi()* |
+| *C12* | *UpvoteView* | *-* | *+klikUpvote(), +tampilkanJumlahUpvote(), +tampilkanPesanError(), +updateUpvoteButton()* |
+| *C13* | *TanggapanView* | *-dataPopupForm* | *+tampilkanPopup(), +submitPopupForm(), +tampilkanKonfirmasi()* |
+| *C14* | *TutorialView* | *-* | *+tampilkanTutorial(), +tampilkanLangkah(), +tutupTutorial*|
+| *C15* | *PenggunaController* | *-* | *-* |
+| *C16* | *HomepageController* | *-* | *+loadHomepage(), +filterLaporan()* |
+| *C17* | *LaporanController* | *-* | *+ambilDetailLaporan()* |
+| *C18* | *LokasiController* | *-* | *getDataLokasi(), cariLokasi()* |
+| *C19* | *UpvoteController* | *-* | *prosesUpvote(), sudahUpvote()* |
+| *C20* | *TanggapanController* | *-* | *validasiTanggapan(), simpanTanggapan(), simpanStatus()* |
+| *C21* | *TutorialController* | *Menangani proses perpindahan langkah tutorial serta aksi Next, Skip, dan Selesai.* |
+| *C22* | *MapAPI* | *- apiKey, -baseURL* | * +getAPIKey(), +getBaseURL() * |
+| *C23* | *MapAPIService* | *-* | *+geocode(), -kirimRequest(), -prosesResponse()* |
+| *C24* | *MapAPIView* | *-* | *+renderMap(), +renderMarker(), +setCenter()* |
 | *...* | *...* | *...* | *...* |
 
 <br>
