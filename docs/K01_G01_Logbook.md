@@ -119,4 +119,12 @@
 | *07-10-2026* | *Aufa Tatsbita Zahra* | *Finalisasi bab 2* | *0.25* | *Done* | *-* |
 | *07-10-2026* | *Ravinka Fathia Adinegara* | *Membuat development diagram* | *2* | *Done* | *Sempat bingung memilih model yang cocok dan makna setiap simbol; di kelas baru dijelaskan hari H pengumpulan* |
 
+## Milestone 7
+**Periode:** 8 Oktober 2026 - 21 Oktober 2026
+| Tanggal | Nama Anggota | Deskripsi Pekerjaan | Durasi (Jam) | Status | Kendala / *Blocker* | 
+| :--- | :--- | :--- | :--- | :--- | :--- | 
+| *20-10-2026* | *Ravinka Fathia Adinegara* | *Mengerjakan sekuens diagram UC06* | *1* | *On Progress* | *-* |
+| *21-10-2026* | *Ravinka Fathia Adinegara* | *Mengerjakan sekuens diagram UC06 dan UC07* | *2* | *Done* | *-* |
+
+
 <!-- Gunakan format penulisan Logbook yang sama untuk setiap Milestone dan pastikan pembuatan Daftar Isi juga sudah sesuai sebelum Logbook dikumpulkan. -->

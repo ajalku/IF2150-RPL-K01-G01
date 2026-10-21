@@ -7,24 +7,24 @@ DESKRIPSI PERANCANGAN PERANGKAT LUNAK (DPPL)
 </h1>
 <br>
 
-## *Nama Perangkat Lunak*
+## *RAWAT (Ruang Aspirasi Warga dan Aduan Terpadu)*
 ### *[Logo Perangkat Lunak]*
 
-### Untuk: *[Nama Asisten]*
+### Untuk: *Agatha Tatianingseto*
 
 Dipersiapkan oleh:
 | Informasi | Keterangan |
 | --- | --- |
-| Kelas | *\[Kelas\]* |
-| Kelompok | *\[Nomor Kelompok\]*  |
+| Kelas | *K01* |
+| Kelompok | *01* |
 
 | NIM | Nama |
 |---|---|
-| *[NIM 1]* | *[Nama Anggota 1]* |
-| *[NIM 2]* | *[Nama Anggota 2]* |
-| *[NIM 3]* | *[Nama Anggota 3]* |
-| *[NIM 4]* | *[Nama Anggota 4]* |
-| *[NIM 5]* | *[Nama Anggota 5]* |
+| *13525103* | *Ravinka Fathia Adinegara* |
+| *13525013* | *Samantha Michelle S Silaban* |
+| *13525055* | *Syakira Azzahra Rachmania* |
+| *13525043* | *Aufa Tatsbita Zahra* |
+| *13525046* | *Ghiffari Arya Adhitya* |
 ---
 
 ## Daftar Perubahan
@@ -35,8 +35,6 @@ Dipersiapkan oleh:
 | *B* |  |
 | *C* |  |
 | ... |  |
-
----
 
 <!-- <br>
 
@@ -52,7 +50,8 @@ Dipersiapkan oleh:
 # BAB 1: Pendahuluan
 
 ## 1.1 Tujuan Penulisan Dokumen
-Tuliskan dengan ringkas tujuan dokumen DPPL ini dibuat dan siapa saja yang akan menggunakan dokumen ini.
+<!-- Tuliskan dengan ringkas tujuan dokumen DPPL ini dibuat dan siapa saja yang akan menggunakan dokumen ini. -->
+Dokumen Deskripsi Perancangan Perangkat Lunak (DPPL) ini merupakan sebuah dokumen yang ditulis dengan tujuan memperoleh kejelasan untuk alur penggunaan dokumen agar perangkat lunak dapat dikembangkan sesuai alur pengguna seharusnya. Selain itu, dokumen ini juga ditulis untuk memperjelas spesifikasi teknis dan lingkungan (environment) perangkat lunak. Dokumen ini dapat digunakan oleh pengembang sebagai pemandu bagaimana perangkat lunak harus dibuat, dipertahankan, dan diuji. Bagi pengguna, dokumen ini dapat digunakan untuk memahami alur semestinya atau alternatif (terkaan) dari perangkat lunak.
 
 ## 1.2 Lingkup Masalah
 <!-- Tuliskan dengan ringkas nama aplikasi dan deskripsi singkatnya. Bagian ini maksimal berisi satu paragraf, dapat diambil dari SKPL. -->
@@ -82,10 +81,14 @@ Tabel 1.4. Aturan Penomoran
 | *...* | *...* |
 
 ## 1.5 Referensi
-Cantumkan dokumentasi P/L yang dirujuk oleh dokumen ini, **minimal dokumen SKPL dan APL**. Tambahkan buku, panduan, atau dokumentasi lain apabila digunakan.
+<!-- Cantumkan dokumentasi P/L yang dirujuk oleh dokumen ini, **minimal dokumen SKPL dan APL**. Tambahkan buku, panduan, atau dokumentasi lain apabila digunakan. -->
+Berikut ini adalah dokumentasi yang dirujuk oleh dokumen ini.
+* [SKPL RAWAT](https://github.com/ajalku/IF2150-RPL-K01-G01/blob/main/docs/M5/K01_G01_SKPL.md)
+* [APL RAWAT](https://github.com/ajalku/IF2150-RPL-K01-G01/blob/main/docs/M6/K01_G01_APL.md)
 
 ## 1.6 Deskripsi Umum Dokumen (Ikhtisar)
-Tuliskan sistematika pembahasan dokumen ini secara ringkas dan runut, dengan maksimal 1 paragraf.
+<!-- Tuliskan sistematika pembahasan dokumen ini secara ringkas dan runut, dengan maksimal 1 paragraf. -->
+Dokumen ini adalah Deskripsi Perancangan Perangkat Lunak atau disingkat DPPL. Bab 1 berisi Pendahuluan, lengkapnya terdapat tujuan penulisan dokumen; lingkup masalah; definisi, istilah, dan singkatan; aturan penomoran; referensi; serta deskripsi umum dokumen (bagian ini). Bab 2 berisi Perancangan Arsitektur yang mengandung rancangan lingkungan implementasi, _style/pattern_ arsitektur acuan, identifikasi komponen, dan model arsitektur perangkat lunak. Pada bab 3, yaitu Realisasi Use Case, berisi tiap use case beserta identifikasi kelas, diagram sekuens setiap skenario use case, serta diagram kelasnya. Terakhir, bab 5 berisi matriks kerunutan atau pemetaan kelas perancangan dengan use case terkait.
 
 <br>
 
