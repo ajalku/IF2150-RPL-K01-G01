@@ -8,7 +8,9 @@ DESKRIPSI PERANCANGAN PERANGKAT LUNAK (DPPL)
 <br>
 
 ## *RAWAT (Ruang Aspirasi Warga dan Aduan Terpadu)*
-### *[Logo Perangkat Lunak]*
+<p align="left">
+  <img src="././assets/logo_placeholder.png" width="20%">
+</p>
 
 ### Untuk: *Agatha Tatianingseto*
 

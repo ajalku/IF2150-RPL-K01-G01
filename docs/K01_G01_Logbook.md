@@ -125,6 +125,7 @@
 | :--- | :--- | :--- | :--- | :--- | :--- | 
 | *20-10-2026* | *Ravinka Fathia Adinegara* | *Mengerjakan sekuens diagram UC06* | *1* | *On Progress* | *-* |
 | *21-10-2026* | *Ravinka Fathia Adinegara* | *Mengerjakan sekuens diagram UC06 dan UC07* | *2* | *Done* | *-* |
+| *21-10-2026* | *Ghiffari Arya Adhitya* | *Menyelesaikan bab 5 & membuat logo* | *2* | *Done* | *-* |
 
 
 <!-- Gunakan format penulisan Logbook yang sama untuk setiap Milestone dan pastikan pembuatan Daftar Isi juga sudah sesuai sebelum Logbook dikumpulkan. -->
