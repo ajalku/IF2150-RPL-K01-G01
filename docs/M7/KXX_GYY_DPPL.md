@@ -229,119 +229,198 @@ Model arsitektur yang dipilih adalah Development View dengan jenis Component Dia
 
 # BAB 3: Realisasi Use Case
 
-## 3.1 Use Case [Nama Use Case 1]
+## 3.1 Use Case Melakukan Registrasi Akun
 
-**ID Use Case:** *[UC01 sesuai SKPL]*  
-**Nama Use Case:** *[Nama use case sesuai SKPL]*
+**ID Use Case:** *UC01*  
+**Nama Use Case:** *Melakukan Registrasi Akun*
 
 ### 3.1.1 Identifikasi Kelas
-
-Identifikasi kelas yang terkait dengan use case tersebut. Kelas di tahap perancangan dapat berbeda dengan dengan kelas di tahap analisis. Dapat menggunakan tabel di bawah:
 
 Tabel 3.1. Identifikasi Kelas Use Case [UC01]
 
 | No | Nama Kelas Perancangan | Nama Kelas Analisis Terkait |
 |:--- | :--- | :--- |
-| 1 | *[Nama kelas perancangan]* | *[Nama kelas analisis pada SKPL]* |
-| 2 | *[Nama kelas perancangan]* | *[Nama kelas analisis pada SKPL]* |
-| ... | *...* | *...* |
+| 1 | *PenggunaView* | *PenggunaView* |
+| 2 | *PenggunaController* | *PenggunaController* |
+| 3 | *Pengguna* | *Pengguna* |
 
 ### 3.1.2 Sequence Diagram
-
-Buat *sequence diagram* untuk **setiap skenario use case**, mencakup skenario normal dan alternatif pada subbab 4.4 SKPL. Diagram melibatkan kelas-kelas yang telah diidentifikasi pada SKPL. 
+ 
 
 - **Skenario Normal**
 
 <p align="center">
-<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/contoh-sequence_diagram.png" width="50%">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/normal-UC01.svg" width="50%">
 </p>
 <p align="center">
-<i>Gambar X. Sequence Diagram [UC01]</i>
+<i>Gambar 1. Sequence Diagram UC01</i>
 </p>
 
-- **Skenario Alternatif [Nomor]: [Nama Skenario]**
+- **Skenario Alternatif 1 : Data Registrasi Tidak Lengkap **
 
 <p align="center">
-<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/contoh-sequence_diagram.png" width="50%">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/alternatif-1-UC01.svg" width="50%">
 </p>
 <p align="center">
-<i>Gambar X. Sequence Diagram [UC01] - [Nama skenario alternatif]</i>
+<i>Gambar 2. Sequence Diagram [UC01] - Data Registrasi Tidak Lengkap</i>
 </p>
+
+- **Skenario Alternatif 2 : Format NIK Tidak Valid **
+
+<p align="center">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/alternatif-2-UC01.svg" width="50%">
+</p>
+<p align="center">
+<i>Gambar 3. Sequence Diagram [UC01] - Format NIK Tidak Valid</i>
+</p>
+
+- **Skenario Alternatif 3 : Format Password Tidak Valid **
+
+<p align="center">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/alternatif-3-UC01.svg" width="50%">
+</p>
+<p align="center">
+<i>Gambar 4. Sequence Diagram [UC01] - Format Password Tidak Valid</i>
+</p>
+
 
 ### 3.1.3 Diagram Kelas
 
-Buatlah diagram kelas untuk use case ini yang terdiri atas kelas-kelas dari 3.1.1. **Setiap kelas pada diagram wajib menampilkan atribut dan metode/operasi langsung di dalam kotak kelasnya**, sehingga tidak perlu membuat tabel daftar atribut dan metode per kelas pada subbab ini. Daftar lengkap atribut dan metode seluruh kelas disajikan pada Tabel 4.1 (Bab 4).
-
 <p align="center">
-<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/contoh_class-diagram2.jpg" width="35%">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/DK-UC01.svg" width="35%">
 </p>
 <p align="center">
-<i>Gambar X. Diagram Kelas [Nama Uce Case]</i>
+<i>Gambar 5. Diagram Kelas Melakukan Registrasi</i>
 </p>
 
-## 3.8 Use Case Memeriksa Laporan
 
-**ID Use Case:** *[UC01 sesuai SKPL]*  
-**Nama Use Case:** *[Nama use case sesuai SKPL]*
+## 3.2 Use Case Melakukan Proses Login
 
-### 3.8.1 Identifikasi Kelas
+**ID Use Case:** *UC02*  
+**Nama Use Case:** *Melakukan Proses Login*
 
+### 3.1.1 Identifikasi Kelas
 
-Tabel 3.8. Identifikasi Kelas Use Case [UC08]
+Tabel 3.1. Identifikasi Kelas Use Case [UC02]
 
-| ID Kelas | Nama Kelas | Deskripsi Kelas |
-| --- | --- | --- |
-| *C01* | *Pengguna* | *Menyimpan data admin yang memeriksa laporan serta pengguna pelapor yang menerima permintaan konfirmasi ulang.* |
-| *C02* | *Homepage* | *Menyimpan informasi daftar laporan yang ditampilkan pada halaman utama sistem tempat admin memilih laporan.* |
-| *C03* | *Laporan* | *Menyimpan data detail laporan yang diperiksa, termasuk pembaruan status (valid/tidak valid) dan perhitungan waktu (tenggat 2 minggu).* |
-| *C08* | *PenggunaView* | *Menampilkan notifikasi admin dan formulir antarmuka bagi pengguna untuk mengirimkan konfirmasi ulang.* |
-| *C09* | *HomepageView* | *Menampilkan antarmuka halaman utama tempat admin mengakses dan memilih laporan yang akan diperiksa.* |
-| *C10* | *LaporanView* | *Menampilkan antarmuka detail laporan yang sedang ditinjau dan diperiksa oleh admin.* |
-| *C15* | *PenggunaController* | *Menangani proses alur logika ketika pengguna mengirimkan konfirmasi ulang atas laporan mereka.* |
-| *C16* | *HomepageController* | *Menangani proses pengambilan dan pengelolaan daftar laporan yang akan dimuat pada halaman utama.* |
-| *C17* | *LaporanController* | *Menangani logika pemeriksaan detail laporan, pengaturan status validitas, pengecekan batas waktu konfirmasi 2 minggu, dan eksekusi penghapusan otomatis.* |
+| No | Nama Kelas Perancangan | Nama Kelas Analisis Terkait |
+|:--- | :--- | :--- |
+| 1 | *PenggunaView* | *PenggunaView* |
+| 2 | *PenggunaController* | *PenggunaController* |
+| 3 | *Pengguna* | *Pengguna* |
 
-### 3.8.2 Sequence Diagram
+### 3.1.2 Sequence Diagram
+ 
 
 - **Skenario Normal**
 
 <p align="center">
-<img alt="SD08" src="./assets/diagram/sequence diagram-SD08-1.drawio.svg" width="50%">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/normal-UC02.svg" width="50%">
 </p>
 <p align="center">
-<i>Gambar Sequence Diagram [UC08]</i>
+<i>Gambar 1. Sequence Diagram UC02</i>
 </p>
 
-- **Skenario Alternatif 1: Laporan Ternyata Tidak Valid dan Pengguna Mengirimkan Konfirmasi Ulang Sebelum Jangka Waktu 2 Minggu Berakhir**
+- **Skenario Alternatif 1 : Data Login Tidak Lengkap **
 
 <p align="center">
-<img alt="SD08" src="./assets/diagram/sequence diagram-SD08-2.drawio.svg" width="50%">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/alternatif-1-UC02.svg" width="50%">
 </p>
 <p align="center">
-<i>Gambar Sequence Diagram [UC08] - Laporan Ternyata Tidak Valid dan Pengguna Mengirimkan Konfirmasi Ulang Sebelum Jangka Waktu 2 Minggu Berakhir</i>
+<i>Gambar 2. Sequence Diagram UC02 - Data Login Tidak Lengkap</i>
 </p>
 
-- **Skenario Alternatif 2: Laporan Ternyata Tidak Valid dan Pengguna Tidak Mengirimkan Konfirmasi Ulang Hingga Jangka Waktu 2 Minggu Berakhir**
+- **Skenario Alternatif 2 : Email Belum Terdaftar**
 
 <p align="center">
-<img alt="SD08" src="./assets/diagram/sequence diagram-SD08-3.drawio.svg" width="50%">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/alternatif-2-UC02.svg" width="50%">
 </p>
 <p align="center">
-<i>Gambar Sequence Diagram [UC08] - Laporan Ternyata Tidak Valid dan Pengguna Tidak Mengirimkan Konfirmasi Ulang Hingga Jangka Waktu 2 Minggu Berakhir</i>
+<i>Gambar 3. Sequence Diagram UC02 - Email Belum Terdaftar</i>
 </p>
 
-### 3.8.3 Diagram Kelas
+- **Skenario Alternatif 3 : Password Tidak Sesuai **
 
 <p align="center">
-<img alt="diagram kelas UC08" src="./assets/diagram/sequence diagram-UC08-1.drawio.svg" width="35%">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/alternatif-3-UC02.svg" width="50%">
 </p>
 <p align="center">
-<i>Gambar Diagram Kelas Memeriksa Laporan</i>
+<i>Gambar 4. Sequence Diagram UC02 - Password Tidak Sesuai</i>
 </p>
 
-## 3.2 Use Case XX
 
-Silahkan lanjutkan untuk  *use case* berikutnya dengan content yang sama dengan 3.1
+## 3.3 Use Case Mengakses Peta Interaktif
+
+**ID Use Case:** *UC03*  
+**Nama Use Case:** *Mengakses Peta Interaktif*
+
+### 3.3.1 Identifikasi Kelas
+
+Tabel 3.1. Identifikasi Kelas Use Case [UC02]
+
+| No | Nama Kelas Perancangan | Nama Kelas Analisis Terkait |
+|:--- | :--- | :--- |
+| 1 | *PenggunaView* | *PenggunaView* |
+| 2 | *PenggunaController* | *PenggunaController* |
+| 3 | *Pengguna* | *Pengguna* |
+| 4 | *Lokasi* | *Lokasi* |
+| 5 | *LokasiController* | *LokasiContorller* |
+| 6 | *LokasiView* | *LokasiView* |
+| 7 | *Laporan* | *Laporan* |
+| 8 | *LaporanController* | *LaporanCotnroller* |
+| 9 | *LaporanView* | *LaporanView* |
+| 10 | *MapAPI* | *MapAPI* |
+| 11 | *MapAPIService* | *MapAPIService*|
+| 12 | *MapAPIView* | *MapAPIView*|
+
+### 3.3.2 Sequence Diagram
+ 
+
+- **Skenario Normal**
+
+<p align="center">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/normal-UC03.svg" width="50%">
+</p>
+<p align="center">
+<i>Gambar 1. Sequence Diagram UC03</i>
+</p>
+
+- **Skenario Alternatif 1 : Pengguna Belum Mengaktifkan Akses Lokasi di Perangkat **
+
+<p align="center">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/alternatif-1-UC03.svg" width="50%">
+</p>
+<p align="center">
+<i>Gambar 2. Sequence Diagram UC03 - Pengguna Belum Mengaktifkan Akses Lokasi di Perangkat</i>
+</p>
+
+- **Skenario Alternatif 2 : API Peta Gagal Dimuat**
+
+<p align="center">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/alternatif-2-UC03.svg" width="50%">
+</p>
+<p align="center">
+<i>Gambar 3. Sequence Diagram UC03 - API Peta Gagal Dimuat</i>
+</p>
+
+- **Skenario Alternatif 3 : Tidak Terdapat Laporan di Sekitar Pengguna**
+
+<p align="center">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/alternatif-3-UC03.svg" width="50%">
+</p>
+<p align="center">
+<i>Gambar 4. Tidak Terdapat Laporan di Sekitar Pengguna</i>
+</p>
+
+### 3.3.3 Diagram Kelas
+
+<p align="center">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/DK-UC03.svg" width="35%">
+</p>
+<p align="center">
+<i>Gambar 5. Diagram Kelas Mengakses Peta Interaktif</i>
+</p>
+
 
 ## 3.4 Use Case Melihat Laporan
 
@@ -401,6 +480,8 @@ Tabel 3.4 Identifikasi Kelas Use Case [UC04]
 <i>Gambar X. Class Diagram [UC04]</i>
 </p>
 
+## 3.5 Use Case Mendapat Tutorial Navigasi Antar Halaman
+
 ### 3.5.1 Identifikasi Kelas
 
 | No | Nama Kelas Perancangan | Nama Kelas Analisis Terkait |
@@ -447,6 +528,188 @@ Tabel 3.4 Identifikasi Kelas Use Case [UC04]
 
 <br>
 
+
+## 3.6 Use Case Melakukan Upvote
+
+### 3.6.1 Identifikasi Kelas
+
+| No | Nama Kelas Perancangan | Nama Kelas Analisis Terkait |
+|:--- | :--- | :--- |
+| *1* | *Pengguna* | *Pengguna* |
+| *2* | *Laporan* | *Laporan* |
+| *3* | *Homepage* | *Homepage* |
+| *4* | *Upvote* | *Upvote* |
+| *5* |*UpvoteController* | *UpvoteController* |
+| *6* | *LaporanController* | *LaporanController* |
+| *7* | *LaporanView* | *LaporanView* |
+| *8* | *PenggunaView* | *PenggunaView* |
+| *9* | *PenggunaController* | *PenggunaController* |
+| *10* | *UpvoteView* | *UpvoteView* |
+| *11* | *HomepageView* | *HomepageView* |
+| *12* | *HomepageController* | *HomepageController* |
+
+### 3.6.2 Sequence Diagram
+
+**Skenario Normal**
+<p align="center">
+<img alt="SD-UC04-0" src="./assets/diagram/SD06-0.png" width="50%">
+</p>
+<p align="center">
+<i>Gambar X. Sequence Diagram [UC06]</i>
+</p>
+
+**Skenario Alternatif 1: Pengguna Gagal Melakukan Upvote**
+<p align="center">
+<img alt="SD-UC04-1" src="./assets/diagram/SD06-1.png" width="50%">
+</p>
+<p align="center">
+<i>Gambar X. Sequence Diagram UC06</i>
+</p>
+
+### 3.6.3 Diagram Kelas
+<p align="center">
+<img alt="CD-UC05" src="./assets/diagram/CD06.png" width="35%">
+</p>
+<p align="center">
+<i>Gambar X. Class Diagram UC06</i>
+</p>
+
+<br>
+
+## 3.7 Use Case Mengunggah Laporan Baru
+
+**ID Use Case:** *UC07*  
+**Nama Use Case:** *Mengunggah Laporan Baru*
+
+### 3.7.1 Identifikasi Kelas
+
+
+Tabel 3.7. Identifikasi Kelas Use Case [UC07]
+| No | Nama Kelas Perancangan | Nama Kelas Analisis Terkait |
+|:--- | :--- | :--- |
+| 1 | *Pengguna* | *Pengguna* |
+| 2 | *HomePage* | *HomePage* |
+| 3 | *Laporan* | *Laporan* |
+| 4 | *Lokasi* | *Lokasi* |
+| 5 | *PenggunaView* | *PenggunaView* |
+| 6 | *HomepageView* | *HomepageView* |
+| 7 | *LaporanView* | *LaporanView* |
+| 8 | *LokasiView* | *LokasiView* |
+| 9 | *PenggunaController* | *PenggunaController* |
+| 10 | *HomepageController* | *HomepageController* |
+| 11 | *LaporanController* | *LaporanController* |
+| 12 | *LokasiController* | *LokasiController* |
+
+
+### 3.7.2 Sequence Diagram
+
+- **Skenario Normal**
+
+<p align="center">
+<img alt="SD07" src="./assets/diagram/sequence diagram-SD07-1.drawio.svg" width="50%">
+</p>
+<p align="center">
+<i>Gambar Sequence Diagram [UC07]</i>
+</p>
+
+- **Skenario Alternatif 1: Data Wajib unutk Membuat Laporan Masih Belum Lengkap**
+
+<p align="center">
+<img alt="SD07" src="./assets/diagram/sequence diagram-SD07-2.drawio.svg" width="50%">
+</p>
+<p align="center">
+<i>Gambar Sequence Diagram [UC07] - Data Wajib unutk Membuat Laporan Masih Belum Lengkap</i>
+</p>
+
+- **Skenario Alternatif 2: Format File Foto yang Diunggah Tidak Sesuai**
+
+<p align="center">
+<img alt="SD07" src="./assets/diagram/sequence diagram-SD07-3.drawio.svg" width="50%">
+</p>
+<p align="center">
+<i>Gambar Sequence Diagram [UC07] - Format File Foto yang Diunggah Tidak Sesuai</i>
+</p>
+
+- **Skenario Alternatif 3: Pengguna Membatalkan Konfirmasi Pengiriman Laporan**
+
+<p align="center">
+<img alt="SD07" src="./assets/diagram/sequence diagram-SD07-4.drawio.svg" width="50%">
+</p>
+<p align="center">
+<i>Gambar Sequence Diagram [UC07] - Pengguna Membatalkan Konfirmasi Pengiriman Laporan</i>
+</p>
+
+### 3.7.3 Diagram Kelas
+
+<p align="center">
+<img alt="diagram kelas UC07" src="./assets/diagram/sequence diagram-UC07.drawio.svg" width="35%">
+</p>
+<p align="center">
+<i>Gambar Diagram Mengunggah Laporan Baru</i>
+</p>
+
+## 3.8 Use Case Memeriksa Laporan
+
+**ID Use Case:** *UC08*  
+**Nama Use Case:** *Memeriksa Laporan*
+
+### 3.8.1 Identifikasi Kelas
+
+
+Tabel 3.8. Identifikasi Kelas Use Case [UC08]
+
+| No | Nama Kelas Perancangan | Nama Kelas Analisis Terkait |
+|:--- | :--- | :--- |
+| 1 | *Pengguna* | *Pengguna* |
+| 2 | *HomePage* | *HomePage* |
+| 3 | *Laporan* | *Laporan* |
+
+| 4 | *PenggunaView* | *PenggunaView* |
+| 5 | *HomepageView* | *HomepageView* |
+| 6 | *LaporanView* | *LaporanView* |
+
+| 7 | *PenggunaController* | *PenggunaController* |
+| 8 | *HomepageController* | *HomepageController* |
+| 9 | *LaporanController* | *LaporanController* |
+
+### 3.8.2 Sequence Diagram
+
+- **Skenario Normal**
+
+<p align="center">
+<img alt="SD08" src="./assets/diagram/sequence diagram-SD08-1.drawio.svg" width="50%">
+</p>
+<p align="center">
+<i>Gambar Sequence Diagram [UC08]</i>
+</p>
+
+- **Skenario Alternatif 1: Laporan Ternyata Tidak Valid dan Pengguna Mengirimkan Konfirmasi Ulang Sebelum Jangka Waktu 2 Minggu Berakhir**
+
+<p align="center">
+<img alt="SD08" src="./assets/diagram/sequence diagram-SD08-2.drawio.svg" width="50%">
+</p>
+<p align="center">
+<i>Gambar Sequence Diagram [UC08] - Laporan Ternyata Tidak Valid dan Pengguna Mengirimkan Konfirmasi Ulang Sebelum Jangka Waktu 2 Minggu Berakhir</i>
+</p>
+
+- **Skenario Alternatif 2: Laporan Ternyata Tidak Valid dan Pengguna Tidak Mengirimkan Konfirmasi Ulang Hingga Jangka Waktu 2 Minggu Berakhir**
+
+<p align="center">
+<img alt="SD08" src="./assets/diagram/sequence diagram-SD08-3.drawio.svg" width="50%">
+</p>
+<p align="center">
+<i>Gambar Sequence Diagram [UC08] - Laporan Ternyata Tidak Valid dan Pengguna Tidak Mengirimkan Konfirmasi Ulang Hingga Jangka Waktu 2 Minggu Berakhir</i>
+</p>
+
+### 3.8.3 Diagram Kelas
+
+<p align="center">
+<img alt="diagram kelas UC08" src="./assets/diagram/sequence diagram-UC08.drawio.svg" width="35%">
+</p>
+<p align="center">
+<i>Gambar Diagram Kelas Memeriksa Laporan</i>
+</p>
+
 ## 3.9 Use Case Memperbarui Status Penanganan Laporan
 
 **ID Use Case:** *UC09*  
@@ -472,34 +735,84 @@ Tabel 3.9. Identifikasi Kelas Use Case UC09
 | 12 | *C20 - TanggapanController* | *C20 - TanggapanController (control)* |
 
 ### 3.9.2 Sequence Diagram
+ 
 
 - **Skenario Normal**
 
 <p align="center">
-<img alt="Sequence Diagram UC09 Skenario Normal" src="./assets/diagram/diagramSekuensUC09Utama.drawio.png" width="60%">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/normal-UC09.png" width="50%">
 </p>
 <p align="center">
-<i>Gambar X. Sequence Diagram UC09 - Skenario Normal</i>
+<i>Gambar 1. Sequence Diagram UC09</i>
 </p>
 
-- **Skenario Alternatif 1: Admin Membatalkan Konfirmasi Perubahan Status Laporan**
+- **Skenario Alternatif 1 : Admin membatalkan konfirmasi perubahan status laporan **
 
 <p align="center">
-<img alt="Sequence Diagram UC09 Skenario Alternatif 1" src="./assets/diagram/diagramSekuensUC09Alt.drawio (1).png" width="60%">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/alternatif-1-UC03.svg" width="50%">
 </p>
 <p align="center">
-<i>Gambar X. Sequence Diagram UC09 - Skenario Alternatif 1: Admin Membatalkan Konfirmasi Perubahan Status Laporan</i>
+<i>Gambar 2. Sequence Diagram UC09 - Admin membatalkan konfirmasi perubahan status laporan</i>
 </p>
+
 
 ### 3.9.3 Diagram Kelas
 
 <p align="center">
-<img alt="Diagram Kelas UC09" src="./assets/diagram/diagramKelasUC09.drawio.png" width="70%">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/DK-UC09.svg" width="35%">
 </p>
 <p align="center">
-<i>Gambar X. Diagram Kelas Use Case UC09</i>
+<i>Gambar 5. Diagram Kelas Memperbarui Stauts Penangan Laporan</i>
 </p>
-<br>
+
+
+## 3.10 Use Case Mengedit Profil
+
+**ID Use Case:** *UC10*  
+**Nama Use Case:** *Mengedit Profil*
+
+### 3.9.1 Identifikasi Kelas
+
+Tabel 3.9. Identifikasi Kelas Use Case UC09
+
+| No | Nama Kelas Perancangan | Nama Kelas Analisis Terkait |
+|:--- | :--- | :--- |
+| 1 | *PenggunaView* | *PenggunaView* |
+| 2 | *PenggunaController* | *PenggunaController* |
+| 3 | *Pengguna* | *Pengguna* |
+
+
+### 3.9.2 Sequence Diagram
+ 
+
+- **Skenario Normal**
+
+<p align="center">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/normal-UC10.svg" width="50%">
+</p>
+<p align="center">
+<i>Gambar 1. Sequence Diagram UC10</i>
+</p>
+
+- **Skenario Alternatif 1 : Pengguna membatalkan penghapusan akun **
+
+<p align="center">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/alternatif-1-UC10.svg" width="50%">
+</p>
+<p align="center">
+<i>Gambar 2. Sequence Diagram UC10 - Pengguna membatalkan penghapusan akun </i>
+</p>
+
+
+### 3.10.3 Diagram Kelas
+
+<p align="center">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/DK-UC10.svg" width="35%">
+</p>
+<p align="center">
+<i>Gambar 5. Diagram Kelas Mengedit Laporan</i>
+</p>
+
 
 ---
 
