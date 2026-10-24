@@ -311,6 +311,7 @@ Tabel 5.1.1. Query Operasi [Nama Operasi]
 
 # BAB 6: Perancangan Antarmuka
 
+<!--
 ## 6.1 Rancangan Antarmuka [ID Layar 1]
 
 Masukkan versi awal prototipe antarmuka, dimana untuk setiap antarmuka/layar, tuliskan spesifikasi rinci objek yang ditampilkan dan reaksi sistem terhadap interaksi pengguna.
@@ -337,6 +338,174 @@ Tabel 6.1. Spesifikasi Objek Antarmuka [ID Layar]
 ## 6.X Rancangan Antarmuka [ID Layar X]
 
 *[Ulangi pola 6.1 untuk layar berikutnya sampai semua layar teridentifikasi]*
+-->
+
+## 6.1 Rancangan Antarmuka I-01
+
+<--Masukkan versi awal prototipe antarmuka, dimana untuk setiap antarmuka/layar, tuliskan spesifikasi rinci objek yang ditampilkan dan reaksi sistem terhadap interaksi pengguna.--!>
+
+**Antarmuka:** *I-01*  
+**Nama Layar:** *Login Page*
+
+<p align="center">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/contoh-design.png" width="50%">
+</p>
+<p align="center">
+<i>Gambar 6.1. Rancangan Antarmuka I-01 - Login Page</i>
+</p>
+
+Tabel 6.1. Spesifikasi Objek Antarmuka I-01
+
+| Id_Objek | Jenis | Konten | Keterangan |
+| :--- | :--- | :--- | :--- |
+| *I-01-TXT1* | *Text Box* | *Akun email* | *...* |
+| *I-01-TXT2* | *Text Box* | *Password akun* | *...* |
+| *I-01-BTN1* | *Button* | *Tombol Login* | *...* |
+
+## 6.2 Rancangan Antarmuka I-02
+
+**Antarmuka:** *I-02*  
+**Nama Layar:** *Registration Page*
+
+<p align="center">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/contoh-design.png" width="50%">
+</p>
+<p align="center">
+<i>Gambar 6.2. Rancangan Antarmuka I-02 - Registration Page</i>
+</p>
+
+Tabel 6.2. Spesifikasi Objek Antarmuka I-02
+
+| Id_Objek | Jenis | Konten | Keterangan |
+| :--- | :--- | :--- | :--- |
+| *I-02-TXT1* | *Text Box* | *NIK* | *...* |
+| *I-02-TXT2* | *Text Box* | *Akun email* | *...* |
+| *I-02-TXT3* | *Text Box* | *Password akun* | *...* |
+| *I-01-BTN1* | *Button* | *Tombol daftar* | *...* |
+
+
+## 6.3 Rancangan Antarmuka I-03
+
+**Antarmuka:** *I-03*  
+**Nama Layar:** *Homepage*
+
+<p align="center">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/contoh-design.png" width="50%">
+</p>
+<p align="center">
+<i>Gambar 6.3. Rancangan Antarmuka I-03 - Homepage</i>
+</p>
+
+Tabel 6.3. Spesifikasi Objek Antarmuka I-03
+
+| Id_Objek | Jenis | Konten | Keterangan |
+| :--- | :--- | :--- | :--- |
+| *I-03-BTN1* | *Button* | *Post Laporan* | *...* |
+| *I-03-BTN2* | *Button* | *Lihat Laporan* | *...* |
+| *I-03-BTN3* | *Button* | *Upvote* | *...* |
+| *I-03-BTN4* | *Button* | *Komentar(?)* | *...* |
+| *I-03-BTN5* | *Button* | *Profil* | *...* |
+| *I-03-BTN6* | *Button* | *Menu Map* | *...* |
+
+## 6.4 Rancangan Antarmuka I-04
+
+**Antarmuka:** *I-04*  
+**Nama Layar:** *Page Laporan*
+
+<p align="center">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/contoh-design.png" width="50%">
+</p>
+<p align="center">
+<i>Gambar 6.4. Rancangan Antarmuka I-04 - Page Laporan</i>
+</p>
+
+Tabel 6.4. Spesifikasi Objek Antarmuka I-04
+
+| Id_Objek | Jenis | Konten | Keterangan |
+| :--- | :--- | :--- | :--- |
+| *I-04-TXT1* | *Text* | *Nama masalah* | *...* |
+
+
+## 6.5 Rancangan Antarmuka I-05
+
+**Antarmuka:** *I-05*  
+**Nama Layar:** *Post Laporan*
+
+<p align="center">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/contoh-design.png" width="50%">
+</p>
+<p align="center">
+<i>Gambar 6.5. Rancangan Antarmuka I-05 - Post Laporan</i>
+</p>
+
+Tabel 6.5. Spesifikasi Objek Antarmuka I-05
+
+| Id_Objek | Jenis | Konten | Keterangan |
+| :--- | :--- | :--- | :--- |
+| *I-05-TXT1* | *Text Box* | *Nama masalah* | *...* |
+| *I-05-TXT2* | *Text Box* | *...* | *...* |
+| *I-05-TXT3* | *Text Box* | *...* | *...* |
+| *I-05-BTN1* | *Button* | *Tombol post* | *...* |
+
+## 6.6 Rancangan Antarmuka I-06
+
+**Antarmuka:** *I-06*  
+**Nama Layar:** *Periksa Laporan*
+
+<p align="center">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/contoh-design.png" width="50%">
+</p>
+<p align="center">
+<i>Gambar 6.6. Rancangan Antarmuka I-06 - Periksa Laporan</i>
+</p>
+
+Tabel 6.6. Spesifikasi Objek Antarmuka I-06
+
+| Id_Objek | Jenis | Konten | Keterangan |
+| :--- | :--- | :--- | :--- |
+| *I-06-TXT1* | *Text Box* | *...* | *...* |
+| *I-06-TXT2* | *Text Box* | *...* | *...* |
+| *I-06-TXT3* | *Text Box* | *...* | *...* |
+| *I-06-BTN1* | *Button* | *Tombol validasi (?)* | *...* |
+
+## 6.2 Rancangan Antarmuka I-07
+
+**Antarmuka:** *I-07*  
+**Nama Layar:** *Peta Interaktif*
+
+<p align="center">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/contoh-design.png" width="50%">
+</p>
+<p align="center">
+<i>Gambar 6.7. Rancangan Antarmuka I-07 - Peta Interaktif</i>
+</p>
+
+Tabel 6.7. Spesifikasi Objek Antarmuka I-07
+
+| Id_Objek | Jenis | Konten | Keterangan |
+| :--- | :--- | :--- | :--- |
+| *I-07-TXT1* | *Text Box* | *...* | *...* |
+| *I-07-TXT2* | *Text Box* | *...* | *...* |
+| *I-07-TXT3* | *Text Box* | *...* | *...* |
+| *I-07-BTN1* | *Button* | *...* | *...* |
+
+## 6.8 Rancangan Antarmuka I-08
+
+**Antarmuka:** *I-08*  
+**Nama Layar:** *Profil (???)*
+
+<p align="center">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/contoh-design.png" width="50%">
+</p>
+<p align="center">
+<i>Gambar 6.8. Rancangan Antarmuka I-08 - Profil</i>
+</p>
+
+Tabel 6.8. Spesifikasi Objek Antarmuka I-08
+
+| Id_Objek | Jenis | Konten | Keterangan |
+| :--- | :--- | :--- | :--- |
+| *...* | *...* | *...* | *...* |
 
 ## 6.Y Rancangan Antarmuka Keseluruhan
 
