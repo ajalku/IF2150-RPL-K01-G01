@@ -244,7 +244,172 @@ Tabel 4.1. Daftar Kelas Perancangan Keseluruhan
 
 # BAB 5: Perancangan Rinci Kelas
 
-Bagian ini diisi dengan daftar seluruh kelas dalam tabel berikut:
+Tabel 5.1. Daftar Kelas Perancangan dan Kelas Analisis Terkait
+
+| No | Nama Kelas Perancangan | Nama Kelas Analisis Terkait |
+| :--- | :--- | :--- |
+| 1 | *Pengguna* | *Pengguna* |
+| 2 | *PenggunaView* | *PenggunaView* |
+| 3 | *PenggunaController* | *PenggunaController* |
+
+## 5.1 Kelas [Nama Kelas 1]
+
+**Nama Kelas:** *Pengguna*  
+**ID Kelas:** *C01*
+
+Tabel 5.1.1. Operasi Kelas Pengguna
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *simpanDataPengguna(nama:String, NIK:String, email:String, hashPassword:String, noTelp : String) : Boolean* | *Public* | *Menyimpan data pengguna baru ke database, mengembalikan True jika berhasil tersimpan dan False jika gagal tersimpan.* |
+| *getPenggunaByEmail(email: String) : Pengguna* | *Public* | *Mencari pengguna berdasarkan email. Mengembalikan objek Pengguna.* |
+| *getRole() : String* | *Public* | *Memberikan informasi _role_ dari pengguna* |
+| *getIzinLokasi() : StatusIzin* | *Public* | *Memberikan informasi status izin lokasi (DITERIMA/DITOLAK/BELUM_DIMINTA* |
+| *getLokasiSaatIni() : Object* | *Public* | *Memberikan longitude dan latitude dari lokasi pengguna* |
+| *hapusDataPengguna() : Boolean* | *Public* | *Menghapus data akun pengguna dari database dan mengembalikan status keberhasilan penghapusan.* |
+| *updateDataPengguna(dataPengguna : Map<String, String>) : Boolean* | *Public* | *Menyimpan data akun pengguna terbaru ke database dan mengembalikan status keberhasilan penyimpanan.* |
+| *sudahLihatTutorial() : Boolean* | *Public* | *Memberikan informasi status melihat tutorial, True jika sudah dan False jika belum.* |
+| *getPenggunaById(idPengguna : String) : Pengguna* | *Public* | *Memberikan data Pengguna melalui ID Pengguna.* |
+
+
+
+
+Tabel 5.1.2. Atribut Kelas Pengguna
+
+| Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *idPengguna* | *Private* | *String* |
+| *nama* | *Private* | *String* |
+| *NIK* | *Private* | *String* |
+| *email* | *Private* | *String* |
+| *hashPassword* | *Private* | *String* |
+| *noTelp* | *Private* | *String* |
+| *role* | *Private* | *String* |
+| *statusIzin* | *Private* | *StatusIzin (enum)* |
+| *statusTutorial* | *Private* | *Boolean* |
+| *latitude* | *Private* | *Double* |
+| *longitude* | *Private* | *Double* |
+
+
+### 5.1.1 Algoritma/Query
+
+**Nama Kelas:** *Pengguna*  
+**Nama Operasi:** *simpanDataPengguna(nama : String, NIK : String, email : String, hashPassword : String, noTelp : String) : Boolean*  
+**ID Algoritma:** *Algo-001*
+
+```text
+ALGORITMA simpanDataPengguna
+
+INPUT: nama, NIK, email, hashPassword, noTelp
+OUTPUT: Boolean
+
+1. Jalankan query INSERT untuk menyimpan data pengguna. [Q-001]
+2. IF penyimpanan berhasil THEN
+      RETURN true
+   ELSE
+      RETURN false
+   ENDIF
+```
+Tabel 5.1.1. Query Operasi simpanDataPengguna()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-001* | *INSERT INTO pengguna (nama, nik, email, hash_password, no_telp) VALUES ($1, $2, $3, $4, $5);* | *Menyimpan data pengguna baru ke database* |
+
+### 5.1.2 Algoritma/Query
+
+**Nama Kelas:** *Pengguna*  
+**Nama Operasi:** *getPenggunaByEmail(email: String) : Pengguna*  
+**ID Algoritma:** *Algo-002*
+```text
+ALGORITMA getPenggunaByEmail
+
+INPUT: email
+OUTPUT: Pengguna atau null
+
+1. Cari data pengguna berdasarkan email. [Q-002]
+2. IF pengguna ditemukan THEN
+      Buat objek Pengguna dari hasil query.
+      RETURN objek Pengguna
+   ELSE
+      RETURN null
+   ENDIF
+
+```
+Tabel 5.1.2. Query Operasi getPenggunaByEmail()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-002* | *SELECT * FROM pengguna WHERE email = $1;* | *Mencari pengguna berdasarkan email* |
+
+### 5.1.2 Algoritma/Query
+
+**Nama Kelas:** *Pengguna*  
+**Nama Operasi:** *updateDatapengguna(dataPengguna : Map<String, String>) : Boolean*  
+**ID Algoritma:** *Algo-003*
+```text
+ALGORITMA updateDataPengguna
+
+INPUT: dataPengguna
+OUTPUT: Boolean
+
+1. Ambil idPengguna dari objek Pengguna saat ini.
+
+2. IF dataPengguna memiliki atribut "nama" THEN
+      Tambahkan nama ke daftar perubahan.
+   ENDIF
+
+3. IF dataPengguna memiliki atribut "noTelp" THEN
+      Tambahkan noTelp ke daftar perubahan.
+   ENDIF
+
+4. IF dataPengguna memiliki atribut "hashPassword" THEN
+      Tambahkan password ke daftar perubahan.
+   ENDIF
+
+6. IF daftar perubahan kosong THEN
+      RETURN false
+   ENDIF
+
+7. Jalankan query UPDATE berdasarkan daftar perubahan
+   dan idPengguna.
+
+8. IF pembaruan berhasil THEN
+      RETURN true
+   ELSE
+      RETURN false
+   ENDIF
+
+```
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-003* | *UPDATE pengguna SET nama = $1 WHERE id_pengguna = $2;* | *Contoh query jika hanya nama yang diperbarui* |
+
+### 5.1.2 Algoritma/Query
+
+**Nama Kelas:** *Pengguna*  
+**Nama Operasi:** *hapusDataPengguna() : Boolean*  
+**ID Algoritma:** *Algo-004*
+``` text
+ALGORITMA hapusDataPengguna
+
+INPUT: Tidak ada
+OUTPUT: Boolean
+
+1. Ambil idPengguna dari objek Pengguna saat ini.
+2. Jalankan query DELETE berdasarkan idPengguna.
+3. IF satu record data pengguna berhasil dihapus THEN
+      RETURN true
+   ELSE
+      RETURN false
+   ENDIF
+```
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-004* | *DELETE FROM pengguna WHERE id_pengguna = $1* | *Menghapus data akun pengguna berdasarkan ID* |
+
+
+
+<!--Bagian ini diisi dengan daftar seluruh kelas dalam tabel berikut:
 
 Tabel 5.1. Daftar Kelas Perancangan dan Kelas Analisis Terkait
 
@@ -306,6 +471,7 @@ Tabel 5.1.1. Query Operasi [Nama Operasi]
 *[Ulangi pola 5.1: nama dan ID kelas, tabel operasi, tabel atribut, serta subbab algoritma/query untuk operasi penting jika diperlukan.]*
 
 <br>
+-->
 
 ---
 
