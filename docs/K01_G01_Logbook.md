@@ -132,4 +132,10 @@
 | *21-10-2026* | *Samantha Michelle S. Silaban* | *Mengerjakan sekuens diagram UC01 dan UC02 dan UC03 dan UC10* | *5* | *Done* | *-* |
 | *21-10-2026* | *Aufa Tatsbita Zahra* |*Bab 2 dan diagram UC09* | *4* | *Done* | *-* |
 
+## Milestone 8
+**Periode:** 21 Oktober 2026 - 24 Oktober 2026
+| Tanggal | Nama Anggota | Deskripsi Pekerjaan | Durasi (Jam) | Status | Kendala / *Blocker* | 
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| *21-10-2026* | *Samantha Michelle S. Silaban* | *Mengerjakan BAB 5 kelas pengguna* | *2* | *Done* | *-* |
+
 <!-- Gunakan format penulisan Logbook yang sama untuk setiap Milestone dan pastikan pembuatan Daftar Isi juga sudah sesuai sebelum Logbook dikumpulkan. -->
