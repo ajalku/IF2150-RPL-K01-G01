@@ -32,16 +32,12 @@
 Silakan catat penggunaan AI yang berdampak signifikan pada pengerjaan tugas (misal: *generate* fungsi algoritma yang kompleks, *generate* draf dokumen SKPL/DPPL, atau *debugging* error utama). 
 *Penggunaan sepele seperti memperbaiki *typo* atau auto-complete satu baris kode tidak perlu dicatat.*
 
-### Milestone 1
+### Milestone 8
 | Tool AI | Tujuan Penggunaan | Contoh Prompt Utama | Modifikasi & Validasi Manusia |
 | :--- | :--- | :--- | :--- |
-| | | | | |
+|ChatGPT | Membuat query dan gambaran pseudocode | Buatkan contoh gambaran pseudocode untuk method ini dan berikan & jelaskan implementasi query  | Terdapat beberapa alur yang tidak sesuai diharapkan, seperti pengecekan daftar perubahan. | |
 
-### Milestone 2
-| Tool AI | Tujuan Penggunaan | Contoh Prompt Utama | Modifikasi & Validasi Manusia |
-| :--- | :--- | :--- | :--- |
-| | | | | |
-| | | | | |
+
 
 ---
 ### Pernyataan Integritas dan Persetujuan
