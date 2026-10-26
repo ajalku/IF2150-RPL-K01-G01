@@ -29,7 +29,7 @@ Tabel 5.2.2. Atribut Kelas [Nama Kelas 1]
 | :--- | :--- | :--- |
 | *sortBy* | *Public* | *string* |
 | *daftarLaporan* | *Public* | *array [...] of laporan* |
-| *sortType* | *Public* | *string* |
+| *sortType* | *Public* | *SortType (enum)* |
 | *filterBy* | *Public* | *string* |
 | *...* | *...* | *...* |
 <!-- | *[Nama atribut]* | *[Visibility]* | *[Tipe sesuai bahasa pemrograman yang digunakan]* | -->
@@ -83,7 +83,7 @@ Tabel 5.2.1. Query Operasi getDaftarLaporan()
 
 | No Query | Query | Keterangan |
 | :--- | :--- | :--- |
-| *Q-006* | *SELECT * FROM daftarLaporan ORDER BY waktuLapor ASC* | *Contoh query jika ingin mengurutkan daftar laporan menaik berdasarkan waktuLapor* |
+| *Q-006* | *SELECT * FROM laporan ORDER BY waktuLapor ASC* | *Contoh query jika ingin mengurutkan daftar laporan menaik berdasarkan waktuLapor* |
 | *...* | *...* | *...* |
 
 ## 5.3 Kelas Laporan
@@ -362,19 +362,19 @@ Tabel 5.9.1. Operasi Kelas HomepageView
 
 <!-- | *[Signature operasi, termasuk parameter dan tipe kembalian]* | *[Visibility]* | *[Tanggung jawab operasi]* | -->
 
-Tabel 5.1.2. Atribut Kelas HomepageView
+Tabel 5.9.2. Atribut Kelas HomepageView
 
 | Nama Atribut | Visibility (private, public) | Tipe |
 | :--- | :--- | :--- |
 | *-* | *-* | *-* |
 ||||
 
-5.10 Kelas LaporanView
+## 5.10 Kelas LaporanView
 
 **Nama Kelas:** *LaporanView*  
 **ID Kelas:** *C10*
 
-Tabel 5.9.1. Operasi Kelas LaporanView
+Tabel 5.10.1. Operasi Kelas LaporanView
 
 | Nama Operasi | Visibility (private, public) | Keterangan |
 | :--- | :--- | :--- |
@@ -391,9 +391,215 @@ Tabel 5.9.1. Operasi Kelas LaporanView
 
 <!-- | *[Signature operasi, termasuk parameter dan tipe kembalian]* | *[Visibility]* | *[Tanggung jawab operasi]* | -->
 
-Tabel 5.9.2. Atribut Kelas LaporanView
+Tabel 5.10.2. Atribut Kelas LaporanView
 
 | Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *-* | *-* | *-* |
+||||
+
+---
+
+<!-- PEMBATAS -->
+
+## 5.16 Kelas HomepageController
+
+**Nama Kelas:** *HomepageController*  
+**ID Kelas:** *C16*
+
+Tabel 5.16.1. Operasi Kelas HomepageController
+
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *loadHomepage()* | *Private* | *Memuat homepage, prosedur tanpa parameter yang dilakukan ketika pengguna memulai sesi baru di aplikasi* |
+| *pilihLaporan()* | *Public* | *Memilih laporan berdasarkan aksi pengguna* |
+| *urutkanLaporan(daftarLaporan: array [...] of laporan, sortBy: string, sortType: SortType): Boolean* | *Private* | *Mengurutkan laporan berdasarkan pilihan pengguna dengan sortType yang dipilih (ASC/DESC)* |
+| *filterLaporan(daftarLaporan: array [...] of laporan, filterBy: string): Boolean* | *Private* | *Memfilter laporan berdasarkan pilihan pengguna* |
+| *ambilListLaporan(): array [...] of laporan* | *Public* | *Mengambil daftar laporan yang tersedia* |
+||||
+
+<!-- | *[Signature operasi, termasuk parameter dan tipe kembalian]* | *[Visibility]* | *[Tanggung jawab operasi]* | -->
+
+Tabel 5.16.2. Atribut Kelas HomepageController
+
+| Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *-* | *-* | *-* |
+||||
+
+### 5.16.1 Algoritma/Query
+
+<!-- ID ALGORITMA PERLU DIGANTI -->
+**Nama Kelas:** *HomepageController*  
+**Nama Operasi:** *urutkanLaporan(daftarLaporan: array [...] of laporan, sortBy: string, sortType: SortType): Boolean*  
+**ID Algoritma:** *[Algo-00X]*
+
+<!-- ID QUERY PERLU DIGANTI -->
+```text
+ALGORITMA urutkanLaporan
+
+INPUT: daftarLaporan, sortBy, sortType
+OUTPUT: Boolean
+
+1. Jalankan query SELECT dan ORDER BY untuk melakukan sorting pada daftar laporan [Q-00X]
+2. IF sorting berhasil THEN
+     RETURN true
+   ELSE
+     RETURN false
+   ENDIF
+
+```
+
+Tabel 5.16.3. Query Operasi urutkanLaporan()
+
+<!-- ID QUERY PERLU DIGANTI -->
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-00x* | *SELECT * FROM laporan ORDER BY waktuLapor ASC* | *Contoh query jika ingin mengurutkan daftar laporan menaik berdasarkan waktuLapor* |
+||||
+
+### 5.16.2 Algoritma/Query
+
+<!-- ID ALGORITMA PERLU DIGANTI -->
+**Nama Kelas:** *HomepageController*  
+**Nama Operasi:** *filterLaporan(daftarLaporan: array [...] of laporan, filterBy: string): Boolean*
+**ID Algoritma:** *[Algo-00X]*
+
+<!-- ID QUERY PERLU DIGANTI -->
+```text
+ALGORITMA filterLaporan
+
+INPUT: daftarLaporan, filterBy
+OUTPUT: Boolean
+
+1. Jalankan query SELECT untuk melakukan filtering pada daftar laporan [Q-00X]
+2. IF filtering berhasil THEN
+     RETURN true
+   ELSE
+     RETURN false
+   ENDIF
+
+```
+
+Tabel 5.16.4. Query Operasi filterLaporan()
+
+<!-- ID QUERY PERLU DIGANTI -->
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-00x* | *SELECT * FROM laporan WHERE kategori = $1* | *Contoh query jika ingin memfilter laporan berdasarkan kategori* |
+||||
+
+### 5.16.3 Algoritma/Query
+<!-- ID ALGORITMA PERLU DIGANTI -->
+**Nama Kelas:** *HomepageController*  
+**Nama Operasi:** *ambilListLaporan(): array [...] of laporan* 
+**ID Algoritma:** *Algo-00X*
+
+<!-- ID QUERY PERLU DIGANTI -->
+```text
+ALGORITMA filterLaporan
+
+INPUT: daftarLaporan, filterBy
+OUTPUT: Boolean
+
+1. Jalankan query SELECT untuk mengambil daftarLaporan [Q-00X]
+2. IF laporan >= 1 THEN
+     RETURN daftarLaporan
+   ELSE
+     RETURN []
+   ENDIF
+
+```
+
+Tabel 5.16.4. Query Operasi filterLaporan()
+
+<!-- ID QUERY PERLU DIGANTI -->
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-00x* | *SELECT * FROM laporan* | *Mengambil daftar laporan* |
+||||
+
+# 5.17 Kelas LaporanController
+
+**Nama Kelas:** *LaporanController*  
+**ID Kelas:** *C17*
+
+Tabel 5.17.1. Operasi Kelas LaporanController
+
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *lihatDetailLaporan(laporan: Laporan)* | *Public* | *Menampilkan detail laporan sesuai permintaan pengguna* |
+| *ambilDetailLaporan(idLaporan: String): laporan* | *Public* | *Memberikan detail laporan yang diminta, mengembalikan laporan* |
+| *validasiKelengkapanData(namaMasalah: string, kategori: string, tingkatPermasalahan: TingkatPermasalahan, statusPrivasi: StatusPrivasi, titikLokasi: Koordinat) : Boolean* | *Public* | *Memeriksa kelengkapan data laporan yang ingin dilaporkan. Mengembalikan true bila data yang diperlukan lengkap* |
+| *validasiFoto(foto: File) : Boolean* | *Public* | *Mengembalikan true jika format foto valid (JPG, JPEG, PNG)* |
+| *buatIdUnik() : String* | *Private* | *Membuat ID unik setiap kali membuat laporan* |
+| *simpanLaporan(namaMasalah: string, kategori: string, tingkatPermasalahan: TingkatPermasalahan, statusPrivasi: StatusPrivasi, foto: File, deskripsi: string, titikLokasi: Koordinat) : Boolean* | *Public* | *Menyimpan data laporan baru ke database, mengembalikan True jika berhasil tersimpan dan False jika tidak* |
+| *updateStatusLaporan(idLaporan: String, statusLaporan: StatusLaporan) : Boolean* | *Public* | *Memperbarui status laporan (BELUM_DILIHAT/DILIHAT/DIPERBAIKI/SELESAI), True jika berhasil, False jika gagal* |
+| *kirimPermintaanKonfirmasi()* | *Public* | *Mengirim permintaan konfirmasi untuk menyimpan laporan* |
+| *setBatasWaktu2Minggu()* | *Public* | *Mengeset batas waktu 2 minggu untuk laporan yang tidak valid sebelum dihapus otomatis* |
+| *cekBatasWaktu(idLaporan: String): Boolean* | *Public* | *Mengecek apabila batas waktu untuk laporan yang tidak valid sudah terlewati atau belum, mengembalikan True jika sudah lewat batas waktu* |
+| *hapusLaporanOtomatis(idLaporan: String): Boolean* | *Private* | *Menghapus laporan otomatis apabila sudah melewati batas waktu* |
+||||
+
+Tabel 5.1.2. Atribut Kelas LaporanController
+
+| Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *-* | *-* | *-* |
+||||
+
+## 5.17.1 Algoritma/Query
+
+<!-- ID ALGORITMA PERLU DIGANTI -->
+**Nama Kelas:** *LaporanController*  
+**Nama Operasi:** *validasiKelengkapanData(namaMasalah: string, kategori: string, tingkatPermasalahan: TingkatPermasalahan, statusPrivasi: StatusPrivasi, titikLokasi: Koordinat) : Boolean*  
+**ID Algoritma:** *Algo-00X*
+
+```text
+ALGORITMA validasiKelengkapanData
+
+INPUT: namaMasalah, kategori, tingkatPermasalahan, statuPrivasi, titikLokasi
+OUTPUT: Boolean
+
+1. IF namaMasalah = null THEN RETURN False
+   ELSE IF kategori = null THEN RETURN False
+   ELSE IF tingkatPermasalahan = null THEN RETURN False
+   ELSE IF statusPrivasi = null THEN RETURN False
+   ELSE IF titik lokasi = null THEN RETURN False
+   ELSE RETURN True
+```
+
+Tabel 5.16.3. Query Operasi validasiKelengkapanData()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *-* | *-* | *-* |
+||||
+
+## 5.17.1 Algoritma/Query
+
+<!-- ID ALGORITMA PERLU DIGANTI -->
+**Nama Kelas:** *LaporanController*  
+**Nama Operasi:** *validasiKelengkapanData(namaMasalah: string, kategori: string, tingkatPermasalahan: TingkatPermasalahan, statusPrivasi: StatusPrivasi, titikLokasi: Koordinat) : Boolean*  
+**ID Algoritma:** *Algo-00X*
+
+```text
+ALGORITMA validasiKelengkapanData
+
+INPUT: namaMasalah, kategori, tingkatPermasalahan, statuPrivasi, titikLokasi
+OUTPUT: Boolean
+
+1. IF namaMasalah = null THEN RETURN False
+   ELSE IF kategori = null THEN RETURN False
+   ELSE IF tingkatPermasalahan = null THEN RETURN False
+   ELSE IF statusPrivasi = null THEN RETURN False
+   ELSE IF titik lokasi = null THEN RETURN False
+   ELSE RETURN True
+```
+
+Tabel 5.16.3. Query Operasi validasiKelengkapanData()
+
+| No Query | Query | Keterangan |
 | :--- | :--- | :--- |
 | *-* | *-* | *-* |
 ||||
