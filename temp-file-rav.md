@@ -105,7 +105,7 @@ Tabel 5.3.1. Operasi Kelas Laporan
 | *getSkorPopuler(idLaporan: String) : Real* | *Private* | *Memberikan skor popularitas sebuah laporan* |
 ||||
 
-Tabel 5.3.2. Atribut Kelas [Nama Kelas 1]
+Tabel 5.3.2. Atribut Kelas Laporan
 
 | Nama Atribut | Visibility (private, public) | Tipe |
 | :--- | :--- | :--- |
@@ -123,6 +123,7 @@ Tabel 5.3.2. Atribut Kelas [Nama Kelas 1]
 | *jumlahUpvote* | *Public* | *Integer* |
 | *skorPopuler* | *Private* | *Real* |
 | *skorUrgensi* | *Private* | *Real* |
+| *batasWaktu* | *Private* | *Timestamp* |
 ||||
 <!-- | *[Nama atribut]* | *[Visibility]* | *[Tipe sesuai bahasa pemrograman yang digunakan]* | -->
 
