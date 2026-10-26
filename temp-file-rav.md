@@ -710,6 +710,7 @@ Tabel 5.16.7. Query Operasi setBatasWaktu2Minggu()
 | No Query | Query | Keterangan |
 | :--- | :--- | :--- |
 | *Q-0XX* | *UPDATE laporan SET batas_waktu = $1 WHERE id_laporan = $2* | *-* |
+||||
 
 ## 5.17.6 Algoritma/Query
 
@@ -739,6 +740,7 @@ Tabel 5.16.8. Query Operasi cekBatasWaktu()
 | No Query | Query | Keterangan |
 | :--- | :--- | :--- |
 | *Q-0XX* | *SELECT batas_waktu FROM laporan WHERE id_laporan = $1* | *Mengambil batasWaktu dari sebuah laporan* |
+||||
 
 ## 5.17.6 Algoritma/Query
 
@@ -769,12 +771,32 @@ Tabel 5.16.9. Query Operasi hapusLaporanOtomatis()
 | No Query | Query | Keterangan |
 | :--- | :--- | :--- |
 | *Q-009* | *DELETE FROM laporan WHERE idLaporan = $1* | *Menghapus data laporan berdasarkan ID* |
-
+||||
 
 ---
 
 <!-- PEMBATAS -->
 
+## 5.22 Kelas MapAPI
+
+**Nama Kelas:** *MapAPI*  
+**ID Kelas:** *C22*
+
+Tabel 5.1.1. Operasi Kelas MapAPI
+
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *getAPIKey() : String* | *Public* | *Memberikan nilai apiKey* |
+| *getBaseURL() : String* | *Public* | *Memberikan nilai baseURL* |
+||||
+
+Tabel 5.1.2. Atribut Kelas [Nama Kelas 1]
+
+| Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *apiKey* | *Private* | *String* |
+| *baseURL* | *Private* | *String* |
+||||
 
 <!--
 ## template
