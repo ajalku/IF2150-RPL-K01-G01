@@ -362,7 +362,36 @@ Tabel 5.9.1. Operasi Kelas HomepageView
 
 <!-- | *[Signature operasi, termasuk parameter dan tipe kembalian]* | *[Visibility]* | *[Tanggung jawab operasi]* | -->
 
-Tabel 5.1.2. Atribut Kelas [Nama Kelas 1]
+Tabel 5.1.2. Atribut Kelas HomepageView
+
+| Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *-* | *-* | *-* |
+||||
+
+5.10 Kelas LaporanView
+
+**Nama Kelas:** *LaporanView*  
+**ID Kelas:** *C10*
+
+Tabel 5.9.1. Operasi Kelas LaporanView
+
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *tampilkanDetailLaporan()* | *Public* | *Menampilkan detail laporan untuk pengguna* |
+| *tampilkanTanggapanTeratas()* | *Public* | *Menampilkan tanggapan teratas untuk pengguna* |
+| *tampilkanForm()* | *Public* | *Menampilkan form untuk diisi pengguna* |
+| *tampilkanErrorMsg()* | *Public* | *Menampilkan error message* |
+| *tampilkanKonfirmasi()* | *Public* | *Menampilkan konfirmasi untuk menyimpan laporan bagi pengguna* |
+| *tampilkanPesanBerhasil()* | *Public* | *Menampilkan pesan berhasil bagi pengguna* |
+| *klikPost(dataForm)* | *Public* | *Pengklikan tombol post dari pengguna* |
+| *klikYa(dataForm)* | *Public* | *Konfirmasi untuk post laporan dari pengguna* |
+| *klikTidak()* | *Public* | *Konfirmasi untuk tidak jadi menge-post laporan dari pengguna* |
+||||
+
+<!-- | *[Signature operasi, termasuk parameter dan tipe kembalian]* | *[Visibility]* | *[Tanggung jawab operasi]* | -->
+
+Tabel 5.9.2. Atribut Kelas LaporanView
 
 | Nama Atribut | Visibility (private, public) | Tipe |
 | :--- | :--- | :--- |
