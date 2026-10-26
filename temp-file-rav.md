@@ -6,6 +6,7 @@ revisi
 3. tambahin atribut laporan di Laporan
 4. perbaruiStatus() di Laporan kayaknya hapus aja(?)
 5. tambahin atribut filterBy di kelas Homepage
+6. tambahin atribut batasWaktu di Laporan
 
 ---
 
@@ -537,7 +538,7 @@ Tabel 5.17.1. Operasi Kelas LaporanController
 | *simpanLaporan(namaMasalah: string, kategori: string, tingkatPermasalahan: TingkatPermasalahan, statusPrivasi: StatusPrivasi, foto: File, deskripsi: string, titikLokasi: Koordinat) : Boolean* | *Public* | *Menyimpan data laporan baru ke database, mengembalikan True jika berhasil tersimpan dan False jika tidak* |
 | *updateStatusLaporan(idLaporan: String, statusLaporan: StatusLaporan) : Boolean* | *Public* | *Memperbarui status laporan (BELUM_DILIHAT/DILIHAT/DIPERBAIKI/SELESAI), True jika berhasil, False jika gagal* |
 | *kirimPermintaanKonfirmasi()* | *Public* | *Mengirim permintaan konfirmasi untuk menyimpan laporan* |
-| *setBatasWaktu2Minggu()* | *Public* | *Mengeset batas waktu 2 minggu untuk laporan yang tidak valid sebelum dihapus otomatis* |
+| *setBatasWaktu2Minggu(idLaporan: String)* | *Public* | *Mengeset batas waktu 2 minggu untuk laporan yang tidak valid sebelum dihapus otomatis* |
 | *cekBatasWaktu(idLaporan: String): Boolean* | *Public* | *Mengecek apabila batas waktu untuk laporan yang tidak valid sudah terlewati atau belum, mengembalikan True jika sudah lewat batas waktu* |
 | *hapusLaporanOtomatis(idLaporan: String): Boolean* | *Private* | *Menghapus laporan otomatis apabila sudah melewati batas waktu* |
 ||||
@@ -577,38 +578,203 @@ Tabel 5.16.3. Query Operasi validasiKelengkapanData()
 | *-* | *-* | *-* |
 ||||
 
-## 5.17.1 Algoritma/Query
+## 5.17.2 Algoritma/Query
 
 <!-- ID ALGORITMA PERLU DIGANTI -->
 **Nama Kelas:** *LaporanController*  
-**Nama Operasi:** *validasiKelengkapanData(namaMasalah: string, kategori: string, tingkatPermasalahan: TingkatPermasalahan, statusPrivasi: StatusPrivasi, titikLokasi: Koordinat) : Boolean*  
+**Nama Operasi:** *validasiFoto(foto: File) : Boolean*  
 **ID Algoritma:** *Algo-00X*
 
 ```text
-ALGORITMA validasiKelengkapanData
+ALGORITMA validasiFoto
 
-INPUT: namaMasalah, kategori, tingkatPermasalahan, statuPrivasi, titikLokasi
+INPUT: foto
 OUTPUT: Boolean
 
-1. IF namaMasalah = null THEN RETURN False
-   ELSE IF kategori = null THEN RETURN False
-   ELSE IF tingkatPermasalahan = null THEN RETURN False
-   ELSE IF statusPrivasi = null THEN RETURN False
-   ELSE IF titik lokasi = null THEN RETURN False
-   ELSE RETURN True
+1. IF foto memiliki format JPG/JPEG/PNG THEN
+      RETURN True
+   ELSE
+      RETURN False
 ```
 
-Tabel 5.16.3. Query Operasi validasiKelengkapanData()
+Tabel 5.16.4. Query Operasi validasiKelengkapanData()
 
 | No Query | Query | Keterangan |
 | :--- | :--- | :--- |
 | *-* | *-* | *-* |
 ||||
 
+## 5.17.3 Algoritma/Query
 
+**Nama Kelas:** *LaporanController*
+**Nama Operasi:** *simpanLaporan(namaMasalah: string, kategori: string, tingkatPermasalahan: TingkatPermasalahan, statusPrivasi: StatusPrivasi, foto: File, deskripsi: string, titikLokasi: Koordinat) : Boolean*  
+**ID Algoritma:** *Algo-010*
+
+```text
+ALGORITMA simpanLaporan
+
+INPUT: namaMasalah, kategori, tingkatPermasalahan, statusPrivasi, foto, deskripsi, titikLokasi
+OUTPUT: Boolean
+
+1. IF namaMasalah = null THEN
+     RETURN false
+   ENDIF
+
+2. IF kategori = null THEN
+     RETURN false
+   ENDIF
+
+3. IF tingkatPermasalahan = null THEN
+     RETURN false
+   ENDIF
+
+4. IF statusPrivasi = null THEN
+     RETURN false
+   ENDIF
+
+5. IF foto != null THEN
+     Tambahkan foto ke daftar pembaruan list laporan
+   ENDIF
+
+6. IF deskripsi != null THEN
+     Tambahkan deskripsi ke daftar pembaruan list laporan
+   ENDIF
+
+7. IF titikLokasi = null THEN
+     RETURN false
+   ENDIF
+
+8. Jalankan query INSERT untuk menyimpan data pengguna [Q-010]
+
+9. IF penyimpanan berhasil THEN
+     RETURN true
+   ELSE
+     RETURN false
+   ENDIF
+```
+
+Tabel 5.17.5. Query Operasi simpanLaporan()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-010* | *INSERT INTO laporan (namaMasalah, kategori, tingkatPermasalahan, statusPrivasi, titikLokasi) VALUES ($1, $2, $3, $4, $5)* | *Menyimpan data laporan baru ke database* |
+||||
+
+### 5.17.4 Algoritma/Query
+**Nama Kelas:** *LaporanController*  
+**Nama Operasi:** *updateStatusLaporan(idLaporan: String, statusLaporan: StatusLaporan) : Boolean*  
+**ID Algoritma:** *Algo-008*
+
+```text
+ALGORITMA updateStatusLaporan
+
+INPUT: idLaporan, statusLaporan
+OUTPUT: Boolean
+
+1. Jalankan query UPDATE berdasarkan statusLaporan dan idLaporan [Q-008]
+2. IF perubahan berhasil THEN
+        RETURN true
+   ELSE
+        RETURN false
+   ENDIF
+```
+
+Tabel 5.17.6. Query Operasi updateStatusLaporan()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-008* | *UPDATE laporan SET statusLaporan = $1 WHERE idLaporan = $2* | *Memperbarui statusLaporan* |
+||||
+
+## 5.17.5 Algoritma/Query
+
+<!-- ID ALGORITMA PERLU DIGANTI -->
+**Nama Kelas:** *LaporanController*  
+**Nama Operasi:** *setBatasWaktu2Minggu(idLaporan: String)*  
+**ID Algoritma:** *Algo-00X*
+
+<!-- ID QUERY PERLU DIGANTI -->
+```text
+ALGORITMA setBatasWaktu2Minggu
+
+INPUT: idLaporan
+OUTPUT: Tidak ada
+
+1. Jalankan operasi UPDATE untuk mengupdate batasWaktu di sebuah laporan [Q-0XX]
+
+```
+
+<!-- ID QUERY PERLU DIGANTI -->
+Tabel 5.16.7. Query Operasi setBatasWaktu2Minggu()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-0XX* | *UPDATE laporan SET batas_waktu = $1 WHERE id_laporan = $2* | *-* |
+
+## 5.17.6 Algoritma/Query
+
+<!-- ID ALGORITMA PERLU DIGANTI -->
+**Nama Kelas:** *LaporanController*  
+**Nama Operasi:** *cekBatasWaktu(idLaporan: String): Boolean*  
+**ID Algoritma:** *Algo-00X*
+
+<!-- ID QUERY PERLU DIGANTI -->
+```text
+ALGORITMA cekBatasWaktu
+
+INPUT: idLaporan
+OUTPUT: Boolean
+
+1. Jalankan operasi SELECT untuk mengambil batasWaktu laporan berdasarkan idLaporan
+2. IF NOW() - batasWaktu <= 0 THEN
+      RETURN True
+   ELSE
+      RETURN False
+
+```
+
+<!-- ID QUERY PERLU DIGANTI -->
+Tabel 5.16.8. Query Operasi cekBatasWaktu()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-0XX* | *SELECT batas_waktu FROM laporan WHERE id_laporan = $1* | *Mengambil batasWaktu dari sebuah laporan* |
+
+## 5.17.6 Algoritma/Query
+
+<!-- ID ALGORITMA PERLU DIGANTI -->
+**Nama Kelas:** *LaporanController*  
+**Nama Operasi:** *hapusLaporanOtomatis(idLaporan: String): Boolean*  
+**ID Algoritma:** *Algo-00X*
+
+```text
+ALGORITMA hapusLaporanOtomatis
+
+INPUT: idLaporan
+OUTPUT: Boolean
+
+1. IF cekBatasWaktu(idLaporan) THEN
+      Jalankan query DELETE untuk menghapus laporan [Q-009]
+      IF penghapusan berhasil THEN
+          RETURN True
+      ELSE
+          RETURN False
+   ELSE
+      RETURN False
+
+```
+
+Tabel 5.16.9. Query Operasi hapusLaporanOtomatis()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-009* | *DELETE FROM laporan WHERE idLaporan = $1* | *Menghapus data laporan berdasarkan ID* |
 
 
 ---
+
+<!-- PEMBATAS -->
+
 
 <!--
 ## template
