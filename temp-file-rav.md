@@ -20,7 +20,7 @@ Tabel 5.2.1. Operasi Kelas Homepage
 | Nama Operasi | Visibility (private, public) | Keterangan |
 | :--- | :--- | :--- |
 | *getDaftarLaporan() : daftarLaporan* | *Public* | *Mengambil daftar laporan untuk nantinya ditunjukkan ke pengguna, mengembalikan daftar laporan* |
-| *refreshPage()* | *Private* | *Memuat ulang homepage sesuai permintaan pengguna, berupa prosedur yang akan melakukan ulang langkah-langkah serupa seperti ketika membuka Homepage* |
+| *refreshPage()* | *Public* | *Memuat ulang homepage sesuai permintaan pengguna, berupa prosedur yang akan melakukan ulang langkah-langkah serupa seperti ketika membuka Homepage* |
 | *getSortBy(daftarLaporan: array [...] of laporan, sortBy: string) : daftarLaporan* | *Public* | *Mengurutkan laporan berdasarkan permintaan pengguna (popularitas, waktu, lokasi)* |
 <!-- | *[Signature operasi, termasuk parameter dan tipe kembalian]* | *[Visibility]* | *[Tanggung jawab operasi]* | -->
 
@@ -28,10 +28,10 @@ Tabel 5.2.2. Atribut Kelas [Nama Kelas 1]
 
 | Nama Atribut | Visibility (private, public) | Tipe |
 | :--- | :--- | :--- |
-| *sortBy* | *Public* | *string* |
-| *daftarLaporan* | *Public* | *array [...] of laporan* |
-| *sortType* | *Public* | *SortType (enum)* |
-| *filterBy* | *Public* | *string* |
+| *sortBy* | *Private* | *string* |
+| *daftarLaporan* | *Private* | *array [...] of laporan* |
+| *sortType* | *Private* | *SortType (enum)* |
+| *filterBy* | *Private* | *string* |
 | *...* | *...* | *...* |
 <!-- | *[Nama atribut]* | *[Visibility]* | *[Tipe sesuai bahasa pemrograman yang digunakan]* | -->
 
@@ -101,9 +101,9 @@ Tabel 5.3.1. Operasi Kelas Laporan
 | *hapusLaporan(idLaporan: String) : Boolean* | *Public* | *Menghapus laporan berdasarkan idLaporan, True jika berhasil, False jika gagal* |
 | *simpanLaporan(namaMasalah: string, kategori: string, tingkatPermasalahan: TingkatPermasalahan, statusPrivasi: StatusPrivasi, foto: File, deskripsi: string, titikLokasi: Koordinat) : Boolean* | *Public* | *Menyimpan data laporan baru ke database, mengembalikan True jika berhasil tersimpan dan False jika tidak* |
 | *tambahUpvote(idLaporan: String) : Boolean* | *Public* | *Menambahkan upvote yang berada dalam sebuah laporan, True jika berhasil menambahkan, False jika gagal* |
-| *hitungSkorPopularitas(idLaporan: String) : Real* | *Private* | *Menghitung skor popularitas sebuah laporan, mengembalikan skor tersebut (bilangan real)* |
+| *hitungSkorPopularitas(idLaporan: String) : Real* | *Public* | *Menghitung skor popularitas sebuah laporan, mengembalikan skor tersebut (bilangan real)* |
 | *getJumlahUpvote(idLaporan: String) : Integer* | *Public* | *Memberikan jumlah upvote sebuah laporan, berupa integer* |
-| *getSkorPopuler(idLaporan: String) : Real* | *Private* | *Memberikan skor popularitas sebuah laporan* |
+| *getSkorPopuler(idLaporan: String) : Real* | *Public* | *Memberikan skor popularitas sebuah laporan* |
 ||||
 
 Tabel 5.3.2. Atribut Kelas Laporan
@@ -112,16 +112,16 @@ Tabel 5.3.2. Atribut Kelas Laporan
 | :--- | :--- | :--- |
 | *laporan* | *Private* | *Laporan: <idLaporan: String, namaMasalah: String, kategori: String, tingkatPermasalahan: TingkatPermasalahan (enum), statusPrivasi: StatusPrivasi (enum), foto: File, deskripsi: String, statusLaporan: StatusLaporan (enum), titikLokasi: Koordinat, bobotUrgensi: Real, jumlahUpvote: Integer, skorPopuler: Real, skorUrgensi: Real>* |
 | *idLaporan* | *Private* | *String* |
-| *namaMasalah* | *Public* | *String* |
-| *kategori* | *Public* | *String* |
-| *tingkatPermasalahan* | *Public* | *TingkatPermasalahan (enum)* |
+| *namaMasalah* | *Private* | *String* |
+| *kategori* | *Private* | *String* |
+| *tingkatPermasalahan* | *Private* | *TingkatPermasalahan (enum)* |
 | *statusPrivasi* | *Private* | *StatusPrivasi (enum)* |
-| *foto* | *Public* | *File* |
-| *deskripsi* | *Public* | *String* |
-| *statusLaporan* | *Public* | *StatusLaporan (enum)* |
-| *titikLokasi* | *Public* | *Koordinat: <latitude : Real, longitude : Real>* |
+| *foto* | *Private* | *File* |
+| *deskripsi* | *Private* | *String* |
+| *statusLaporan* | *Private* | *StatusLaporan (enum)* |
+| *titikLokasi* | *Private* | *Koordinat: <latitude : Real, longitude : Real>* |
 | *bobotUrgensi* | *Private* | *Real* |
-| *jumlahUpvote* | *Public* | *Integer* |
+| *jumlahUpvote* | *Private* | *Integer* |
 | *skorPopuler* | *Private* | *Real* |
 | *skorUrgensi* | *Private* | *Real* |
 | *batasWaktu* | *Private* | *Timestamp* |
@@ -397,7 +397,7 @@ Tabel 5.10.2. Atribut Kelas LaporanView
 
 | Nama Atribut | Visibility (private, public) | Tipe |
 | :--- | :--- | :--- |
-| *-* | *-* | *-* |
+| *dataForm* | *Private* | *Laporan* |
 ||||
 
 ---
@@ -413,10 +413,10 @@ Tabel 5.16.1. Operasi Kelas HomepageController
 
 | Nama Operasi | Visibility (private, public) | Keterangan |
 | :--- | :--- | :--- |
-| *loadHomepage()* | *Private* | *Memuat homepage, prosedur tanpa parameter yang dilakukan ketika pengguna memulai sesi baru di aplikasi* |
+| *loadHomepage()* | *Public* | *Memuat homepage, prosedur tanpa parameter yang dilakukan ketika pengguna memulai sesi baru di aplikasi* |
 | *pilihLaporan()* | *Public* | *Memilih laporan berdasarkan aksi pengguna* |
-| *urutkanLaporan(daftarLaporan: array [...] of laporan, sortBy: string, sortType: SortType): Boolean* | *Private* | *Mengurutkan laporan berdasarkan pilihan pengguna dengan sortType yang dipilih (ASC/DESC)* |
-| *filterLaporan(daftarLaporan: array [...] of laporan, filterBy: string): Boolean* | *Private* | *Memfilter laporan berdasarkan pilihan pengguna* |
+| *urutkanLaporan(daftarLaporan: array [...] of laporan, sortBy: string, sortType: SortType): Boolean* | *Public* | *Mengurutkan laporan berdasarkan pilihan pengguna dengan sortType yang dipilih (ASC/DESC)* |
+| *filterLaporan(daftarLaporan: array [...] of laporan, filterBy: string): Boolean* | *Public* | *Memfilter laporan berdasarkan pilihan pengguna* |
 | *ambilListLaporan(): array [...] of laporan* | *Public* | *Mengambil daftar laporan yang tersedia* |
 ||||
 
@@ -534,13 +534,13 @@ Tabel 5.17.1. Operasi Kelas LaporanController
 | *ambilDetailLaporan(idLaporan: String): laporan* | *Public* | *Memberikan detail laporan yang diminta, mengembalikan laporan* |
 | *validasiKelengkapanData(namaMasalah: string, kategori: string, tingkatPermasalahan: TingkatPermasalahan, statusPrivasi: StatusPrivasi, titikLokasi: Koordinat) : Boolean* | *Public* | *Memeriksa kelengkapan data laporan yang ingin dilaporkan. Mengembalikan true bila data yang diperlukan lengkap* |
 | *validasiFoto(foto: File) : Boolean* | *Public* | *Mengembalikan true jika format foto valid (JPG, JPEG, PNG)* |
-| *buatIdUnik() : String* | *Private* | *Membuat ID unik setiap kali membuat laporan* |
+| *buatIdUnik() : String* | *Public* | *Membuat ID unik setiap kali membuat laporan* |
 | *simpanLaporan(namaMasalah: string, kategori: string, tingkatPermasalahan: TingkatPermasalahan, statusPrivasi: StatusPrivasi, foto: File, deskripsi: string, titikLokasi: Koordinat) : Boolean* | *Public* | *Menyimpan data laporan baru ke database, mengembalikan True jika berhasil tersimpan dan False jika tidak* |
 | *updateStatusLaporan(idLaporan: String, statusLaporan: StatusLaporan) : Boolean* | *Public* | *Memperbarui status laporan (BELUM_DILIHAT/DILIHAT/DIPERBAIKI/SELESAI), True jika berhasil, False jika gagal* |
 | *kirimPermintaanKonfirmasi()* | *Public* | *Mengirim permintaan konfirmasi untuk menyimpan laporan* |
 | *setBatasWaktu2Minggu(idLaporan: String)* | *Public* | *Mengeset batas waktu 2 minggu untuk laporan yang tidak valid sebelum dihapus otomatis* |
 | *cekBatasWaktu(idLaporan: String): Boolean* | *Public* | *Mengecek apabila batas waktu untuk laporan yang tidak valid sudah terlewati atau belum, mengembalikan True jika sudah lewat batas waktu* |
-| *hapusLaporanOtomatis(idLaporan: String): Boolean* | *Private* | *Menghapus laporan otomatis apabila sudah melewati batas waktu* |
+| *hapusLaporanOtomatis(idLaporan: String): Boolean* | *Public* | *Menghapus laporan otomatis apabila sudah melewati batas waktu* |
 ||||
 
 Tabel 5.1.2. Atribut Kelas LaporanController
