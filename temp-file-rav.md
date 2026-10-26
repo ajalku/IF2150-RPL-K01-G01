@@ -5,6 +5,7 @@ revisi
 2. tambahin atribut sortType di kelas Homepage
 3. tambahin atribut laporan di Laporan
 4. perbaruiStatus() di Laporan kayaknya hapus aja(?)
+5. tambahin atribut filterBy di kelas Homepage
 
 ---
 
@@ -29,6 +30,7 @@ Tabel 5.2.2. Atribut Kelas [Nama Kelas 1]
 | *sortBy* | *Public* | *string* |
 | *daftarLaporan* | *Public* | *array [...] of laporan* |
 | *sortType* | *Public* | *string* |
+| *filterBy* | *Public* | *string* |
 | *...* | *...* | *...* |
 <!-- | *[Nama atribut]* | *[Visibility]* | *[Tipe sesuai bahasa pemrograman yang digunakan]* | -->
 
@@ -352,38 +354,20 @@ Tabel 5.9.1. Operasi Kelas HomepageView
 
 | Nama Operasi | Visibility (private, public) | Keterangan |
 | :--- | :--- | :--- |
-| *tampilkanHomepage()* | *Public* | *Menampilkan homepage untuk pengguna* |
-| ** | ** | ** |
+| *tampilkanHomepage()* | *Public* | *Menampilkan homepage untuk pengguna, berupa prosedur tanpa parameter masukan* |
+| *pilihFilter()* | *Public* | *Memilih filter dari pengguna |
+| *tampilkanDaftarLaporan()* | *Public* | *Menampilkan daftar laporan untuk pengguna, berupa prosedur tanpa parameter masukan* |
+| *tampilkanMenuFilterLaporan()* | *Public* | *Memilih filter dari pengguna, menghasilkan keluaran filterBy* |
+||||
+
 <!-- | *[Signature operasi, termasuk parameter dan tipe kembalian]* | *[Visibility]* | *[Tanggung jawab operasi]* | -->
 
 Tabel 5.1.2. Atribut Kelas [Nama Kelas 1]
 
 | Nama Atribut | Visibility (private, public) | Tipe |
 | :--- | :--- | :--- |
-| *[Nama atribut]* | *[Visibility]* | *[Tipe sesuai bahasa pemrograman yang digunakan]* |
-| *...* | *...* | *...* |
-
-### 5.1.1 Algoritma/Query
-
-Bagian ini diisi untuk kerangka algoritma proses yang dianggap cukup penting. Algoritma dapat dituliskan sebagai *pseudocode*. Implementasi *skeleton code* juga dapat digunakan untuk kelas yang sudah terdefinisi pada bahasa pemrograman tertentu.
-
-**Nama Kelas:** *[Nama kelas]*  
-**Nama Operasi:** *[Signature operasi]*  
-**ID Algoritma:** *[Algo-001]*
-
-```text
-[Tuliskan pseudocode algoritma operasi di sini.]
-```
-
-Jika operasi mengacu pada query tertentu, lengkapi tabel berikut. 
-
-Tabel 5.1.1. Query Operasi [Nama Operasi]
-
-| No Query | Query | Keterangan |
-| :--- | :--- | :--- |
-| *[Q-001]* | *[Tuliskan query]* | *[Fungsi query]* |
-| *...* | *...* | *...* |
-
+| *-* | *-* | *-* |
+||||
 
 
 
