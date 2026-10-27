@@ -251,6 +251,9 @@ Tabel 5.1. Daftar Kelas Perancangan dan Kelas Analisis Terkait
 | 1 | *Pengguna* | *Pengguna* |
 | 2 | *PenggunaView* | *PenggunaView* |
 | 3 | *PenggunaController* | *PenggunaController* |
+| 4 | *Upvote* | *Upvote* |
+| 5 | *UpvoteView* | *UpvoteView* |
+| 6 | *UpvoteController* | *UpvoteController* |
 
 ## 5.1 Kelas [Nama Kelas 1]
 
@@ -407,7 +410,203 @@ OUTPUT: Boolean
 | :--- | :--- | :--- |
 | *Q-004* | *DELETE FROM pengguna WHERE id_pengguna = $1* | *Menghapus data akun pengguna berdasarkan ID* |
 
+## 5.5 Kelas Upvote
 
+**Nama Kelas:** *Upvote*  
+**ID Kelas:** *C05*
+
+Tabel 5.5.1. Operasi Kelas Upvote
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *upvote(idPengguna:String, idLaporan:String) : Boolean* | *Public* | *Menyimpan data upvote yang dilakukan oleh pengguna pada suatu laporan.* |
+
+
+
+
+Tabel 5.5.2. Atribut Kelas Upvote
+
+| Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *waktuUpvote* | *Private* | *Timestamp* |
+| *statusUpvote* | *Private* | *Boolean* |
+
+
+### 5.5.1 Algoritma/Query
+
+**Nama Kelas:** *Pengguna*  
+**Nama Operasi:** *simpanDataPengguna(nama : String, NIK : String, email : String, hashPassword : String, noTelp : String) : Boolean*  
+**ID Algoritma:** *Algo-00?*
+
+```text
+ALGORITMA upvote
+
+INPUT: idPengguna, idLaporan
+OUTPUT: Boolean
+
+1. Ambil waktu saat upvote dilakukan.
+2. Tetapkan statusUpvote menjadi true.
+3. Jalankan query INSERT untuk menyimpan data upvote. [Q-XXX]
+4. IF penyimpanan berhasil THEN
+      RETURN true
+   ELSE
+      RETURN false
+   ENDIF
+```
+Tabel 5.5.1. Query Operasi upvote()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-00?* | *INSERT INTO upvote (id_pengguna, id_laporan, waktu_upvote, status_upvote) VALUES ($1, $2, CURRENT_TIMESTAMP, TRUE);* | *Menyimpan data upvote pengguna pada laporan* |
+$1 diisi dengan idPengguna, sedangkan $2 diisi dengan idLaporan.
+
+
+## 5.12 Kelas UpvoteView
+
+**Nama Kelas:** *UpvoteView*  
+**ID Kelas:** *C12*
+
+Tabel 5.12.1. Operasi Kelas UpvoteView
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *klikUpvote()* | *Public* | *Menangani interaksi pengguna saat menekan tombol upvote.* |
+| *tampilkanJumlahUpvote(jumlahUpvote: Integer)* | *Public* | *Menampilkan jumlah upvote dari suatu laporan.* |
+| *tampilkanPesanError()* | *Public* | *Menampilkan pesan error jika upvote tidak berhasil diproses.* |
+| *updateUpvoteButton(statusUpvote: Boolean)* | *Public* | *Memperbarui tampilan tombol upvote berdasarkan status upvote.* |
+
+
+### 5.12.1 Algoritma/Query
+
+**Nama Kelas:** *UpvoteView*  
+**Nama Operasi:** *klikUpvote()*  
+**ID Algoritma:** *Algo-00?*
+
+```text
+ALGORITMA klikUpvote
+
+INPUT: -
+OUTPUT: Tampilan interaksi ketika pengguna mengeklik upvote
+
+1. Panggil UpvoteController.prosesUpvote() dengan idPengguna dan idLaporan.
+2. IF proses upvote berhasil THEN
+      Tampilkan jumlah upvote terbaru jika data jumlah terbaru tersedia.
+   ENDIF
+```
+
+### 5.12.2 Algoritma/Query
+
+**Nama Kelas:** *UpvoteView*  
+**Nama Operasi:** *tampilkanJumlahUpvote(jumlahUpvote : Integer)*  
+**ID Algoritma:** *Algo-00?*
+
+```text
+ALGORITMA tampilkanJumlahUpvote
+
+INPUT: jumlahUpvote
+OUTPUT: Tampilan jumlah upvote 
+
+1. Tampilkan jumlahUpvote pada halaman laporan.
+```
+
+### 5.12.3 Algoritma/Query
+
+**Nama Kelas:** *UpvoteView*  
+**Nama Operasi:** *tampilkanPesanError()*  
+**ID Algoritma:** *Algo-00?*
+
+```text
+ALGORITMA tampilkanPesanError
+
+INPUT: -
+OUTPUT: Tampilan pesan error
+
+1. Tampilkan pesan bahwa upvote tidak berhasil diproses.
+```
+
+
+### 5.12.4 Algoritma/Query
+
+**Nama Kelas:** *UpvoteView*  
+**Nama Operasi:** *updateUpvoteButton(statusUpvote : Boolean)*  
+**ID Algoritma:** *Algo-00?*
+
+```text
+ALGORITMA updateUpvoteButton
+
+INPUT: statusUpvote
+OUTPUT: Tampilan tombol terupdate
+
+1. IF statusUpvote = true THEN
+      Tampilkan tombol dalam kondisi sudah di-upvote.
+   ELSE
+      Tampilkan tombol dalam kondisi belum di-upvote.
+   ENDIF
+```
+
+
+## 5.19 Kelas UpvoteController
+
+**Nama Kelas:** *UpvoteController*  
+**ID Kelas:** *C19*
+
+Tabel 5.19.1. Operasi Kelas UpvoteController
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *prosesUpvote(idPengguna:String, idLaporan:String) : Boolean* | *Public* | *Memproses upvote dengan memeriksa apakah pengguna sudah melakukan upvote dan menyimpan data upvote jika diperbolehkan.* |
+| *sudahUpvote(idPengguna:String, idLaporan:String) : Boolean* | *Public* | *Memeriksa apakah pengguna sudah melakukan upvote pada laporan tertentu.* |
+
+
+### 5.19.1 Algoritma/Query
+
+**Nama Kelas:** *UpvoteController*  
+**Nama Operasi:** *sudahUpvote(idPengguna : String, idLaporan : String) : Boolean*  
+**ID Algoritma:** *Algo-00?*
+
+```text
+ALGORITMA sudahUpvote
+
+INPUT: idPengguna, idLaporan
+OUTPUT: Boolean
+
+1. Jalankan query SELECT untuk memeriksa apakah data upvote pengguna pada laporan tersebut sudah ada. [Q-XXX]
+2. IF data upvote ditemukan THEN
+      RETURN true
+   ELSE
+      RETURN false
+   ENDIF
+```
+Tabel 5.19.1. Query Operasi sudahUpvote()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-00?* | *SELECT 1 FROM upvote WHERE id_pengguna = $1 AND id_laporan = $2 AND status_upvote = TRUE LIMIT 1;* | *Memeriksa apakah pengguna sudah melakukan upvote pada laporan tertentu* |
+
+### 5.19.2 Algoritma/Query
+
+**Nama Kelas:** *UpvoteController*  
+**Nama Operasi:** *prosesUpvote(idPengguna : String, idLaporan : String) : Boolean*  
+**ID Algoritma:** *Algo-00?*
+
+```text
+ALGORITMA prosesUpvote
+
+INPUT: idPengguna, idLaporan
+OUTPUT: Boolean
+
+1. Panggil sudahUpvote(idPengguna, idLaporan)
+2. IF pengguna sudah melakukan upvote THEN
+      Panggil UpvoteView.tampilkanPesanError().
+      RETURN false
+   ENDIF
+3. Panggil Upvote.upvote(idPengguna, idLaporan)
+4. IF penyimpanan upvote gagal THEN
+      Panggil UpvoteView.tampilkanPesanError()
+      RETURN false
+   ENDIF
+5. Panggil UpvoteView.updateUpvoteButton(true).
+6. Ambil jumlah upvote terbaru melalui Laporan.getJumlahUpvote().
+7. Panggil UpvoteView.tampilkanJumlahUpvote(jumlahUpvote).
+8. RETURN true.
+```
 
 <!--Bagian ini diisi dengan daftar seluruh kelas dalam tabel berikut:
 
