@@ -4,41 +4,38 @@
 
 | Informasi | Keterangan |
 | --- | --- |
-| **Hari** | *\[Hari\]* |
-| **Tanggal** | *\[DD/MM/YYYY\]* |
-| **Kelas** | *\[Kelas\]* |
-| **Nomor Kelompok** | *\[Nomor Kelompok\]*  |
-| **Nama Kelompok** | *\[Nama Kelompok\]*  |
-| **Nama Perangkat Lunak** | *\[Nama P/L\]*  |
-| **Dokumen** | *\[Nama Dokumen yang diasistensikan\]*  |
+| **Hari** | *Selasa* |
+| **Tanggal** | *27/10/2006* |
+| **Kelas** | *01* |
+| **Nomor Kelompok** | *01*  |
+| **Nama Kelompok** | *berjiwa ksatria*  |
+| **Nama Perangkat Lunak** | *RAWAT (Ruang Aspirasi Warga dan Aduan Terpadu)*  |
+| **Dokumen** | *K01_G01_DPPL2*  |
 
 ### Anggota Kelompok
 
 | NIM | Nama |
 | --- | --- |
-| *\[NIM 1\]* | *\[Nama Anggota 1\]* |
-| *\[NIM 2\]* | *\[Nama Anggota 2\]* |
-| *\[NIM 3\]* | *\[Nama Anggota 3\]* |
-| *\[NIM 4\]* | *\[Nama Anggota 4\]* |
-| *\[NIM 5\]* | *\[Nama Anggota 5\]* |
+| *13525103* | *Ravinka Fathia Adinegara* |
+| *13525013* | *Samantha Michelle S Silaban* |
+| *13525055* | *Syakira Azzahra Rachmania* |
+| *13525043* | *Aufa Tatsbita Zahra* |
+| *13525046* | *Ghiffari Arya Adhitya* |
 
 ### Catatan
 
 | Catatan |
 | --- |
-| 1. *\[Berikan catatan hasil asistensi\]*  |
-| 2. ... |
-| 3. ... |
-| 4. ... |
+| 1. *Pseudocode tidak perlu diberi nomor*  |
+| 2. *Kelas view tidak perlu algoritma karena ada di UI/UX* |
+| 3. *Help tidak perlu dibuat algoritma* |
 
-**Notes for this section:**  
-*Catatan dapat dituliskan dalam bentuk paragraf atau poin-poin, disesuaikan saja.* 
 
 ## Dokumentasi
 
 <!-- ![](./assets/foto-asistensi.jpg) -->
 <p align="center">
-  <img src="./assets/foto-asistensi.jpg" width="100%">
+  <img src="./assets/asistensi.jpeg" width="100%">
 </p>
 
 <p align="center">
