@@ -1421,7 +1421,7 @@ Tabel 5.4.2. Atribut Kelas Lokasi
 ### 5.4.1. Algoritma/Query
 **Nama Kelas:** *Lokasi*  
 **Nama Operasi:** *getKoordinat()*  
-**ID Algoritma:** *Algo-013*
+**ID Algoritma:** *Algo-015*
 
 ```text
 ALGORITMA getKoordinat
@@ -1458,7 +1458,7 @@ Tabel 5.5.2. Atribut Kelas Upvote
 
 **Nama Kelas:** *Upvote*  
 **Nama Operasi:** *simpanDataPengguna(nama : String, NIK : String, email : String, hashPassword : String, noTelp : String) : Boolean*  
-**ID Algoritma:** *Algo-00?*
+**ID Algoritma:** *Algo-016*
 
 ```text
 ALGORITMA upvote
@@ -1510,7 +1510,7 @@ Tabel 5.6.2. Atribut Kelas Tanggapan
 
 **Nama Kelas:** *Tanggapan*  
 **Nama Operasi:** *simpanTanggapan(idLaporan:String, dataPopupForm:FormTanggapan): Boolean*  
-**ID Algoritma:** *Algo-00?*
+**ID Algoritma:** *Algo-017*
 
 ```text
 ALGORITMA simpanTanggapan
@@ -1563,7 +1563,7 @@ Tabel 5.7.2. Atribut Kelas Tutorial
 
 **Nama Kelas:** *Tutorial*  
 **Nama Operasi:** *getLangkahSaatIni(): Integer*  
-**ID Algoritma:** *Algo-00?*
+**ID Algoritma:** *Algo-018*
 
 ```text
 ALGORITMA getLangkahSaatIni
@@ -1579,7 +1579,7 @@ OUTPUT: Integer
 
 **Nama Kelas:** *Tutorial*  
 **Nama Operasi:** *getTotalLangkah(): Integer*  
-**ID Algoritma:** *Algo-00?*
+**ID Algoritma:** *Algo-019*
 
 ```text
 ALGORITMA getTotalLangkah
@@ -1774,7 +1774,7 @@ Tabel 5.15.2. Atribut Kelas PenggunaController
 ### 5.15.1. Algoritma/Query
 **Nama Kelas:** *PenggunaController*  
 **Nama Operasi:** *registrasi(nama, NIK, email, password, noTelp)*  
-**ID Algoritma:** *Algo-006*
+**ID Algoritma:** *Algo-020*
 ``` text
 
 ALGORITMA registrasi
@@ -1808,7 +1808,7 @@ ELSE
 ### 5.15.2. Algoritma/Query
 **Nama Kelas:** *PenggunaController*  
 **Nama Operasi:** *login(email, password)*  
-**ID Algoritma:** *Algo-007*
+**ID Algoritma:** *Algo-021*
 
 ```text
 ALGORITMA login
@@ -1836,7 +1836,7 @@ ELSE
 ### 5.15.3. Algoritma/Query
 **Nama Kelas:** *PenggunaController*  
 **Nama Operasi:** *validasiData(nama, NIK, email, password, noTelp) : String*  
-**ID Algoritma:** *Algo-008*
+**ID Algoritma:** *Algo-022*
 ```text
 ALGORITMA validasiData
 
@@ -1863,7 +1863,7 @@ RETURN ""
 ### 5.15.4. Algoritma/Query
 **Nama Kelas:** *PenggunaController*  
 **Nama Operasi:** *validasiKredensial(passwordInput, hashPassword) : Boolean*  
-**ID Algoritma:** *Algo-009*
+**ID Algoritma:** *Algo-023*
 ```text
 ALGORITMA validasiKredensial
 
@@ -1883,7 +1883,7 @@ IF hashInput = hashPassword THEN
 ### 5.15.5. Algoritma/Query
 **Nama Kelas:** *PenggunaController*  
 **Nama Operasi:** *ubahProfil(dataPengguna : Map<String, String>) : Boolean*  
-**ID Algoritma:** *Algo-010*
+**ID Algoritma:** *Algo-024*
 ```text
 ALGORITMA ubahProfil
 
@@ -1914,7 +1914,7 @@ ELSE
 ### 5.15.6. Algoritma/Query
 **Nama Kelas:** *PenggunaController*  
 **Nama Operasi:** *hapusAkun() : Boolean* 
-**ID Algoritma:** *Algo-011*
+**ID Algoritma:** *Algo-025*
 ```text
 ALGORITMA hapusAkun
 
@@ -1934,7 +1934,7 @@ ENDIF
 ### 5.15.7. Algoritma/Query
 **Nama Kelas:** *PenggunaController*  
 **Nama Operasi:** *setIzinLokasi()* 
-**ID Algoritma:** *Algo-012*
+**ID Algoritma:** *Algo-026*
 ```text
 ALGORITMA setIzinLokasi
 
@@ -1947,7 +1947,7 @@ Panggil setIzinLokasi(statusIzin) pada Entity Pengguna
 ### 5.15.8. Algoritma/Query
 **Nama Kelas:** *PenggunaController*  
 **Nama Operasi:** *cekIzinLokasi()* 
-**ID Algoritma:** *Algo-013*
+**ID Algoritma:** *Algo-027*
 ```text
 ALGORITMA cekIzinLokasi
 
@@ -1960,7 +1960,7 @@ RETURN statusIzin
 ### 5.15.9. Algoritma/Query
 **Nama Kelas:** *PenggunaController*  
 **Nama Operasi:** *cekStatusTutorial()* 
-**ID Algoritma:** *Algo-014*
+**ID Algoritma:** *Algo-028*
 ```text
 ALGORITMA cekStatusTutorial()
 
@@ -1999,10 +1999,9 @@ Tabel 5.16.2. Atribut Kelas HomepageController
 
 ### 5.16.1 Algoritma/Query
 
-<!-- ID ALGORITMA PERLU DIGANTI -->
 **Nama Kelas:** *HomepageController*  
 **Nama Operasi:** *urutkanLaporan(daftarLaporan: array [...] of laporan, sortBy: string, sortType: SortType): Boolean*  
-**ID Algoritma:** *[Algo-00X]*
+**ID Algoritma:** *Algo-029*
 
 <!-- ID QUERY PERLU DIGANTI -->
 ```text
@@ -2030,10 +2029,9 @@ Tabel 5.16.3. Query Operasi urutkanLaporan()
 
 ### 5.16.2 Algoritma/Query
 
-<!-- ID ALGORITMA PERLU DIGANTI -->
 **Nama Kelas:** *HomepageController*  
 **Nama Operasi:** *filterLaporan(daftarLaporan: array [...] of laporan, filterBy: string): Boolean*
-**ID Algoritma:** *[Algo-00X]*
+**ID Algoritma:** *Algo-030*
 
 <!-- ID QUERY PERLU DIGANTI -->
 ```text
@@ -2060,10 +2058,9 @@ Tabel 5.16.4. Query Operasi filterLaporan()
 ||||
 
 ### 5.16.3 Algoritma/Query
-<!-- ID ALGORITMA PERLU DIGANTI -->
 **Nama Kelas:** *HomepageController*  
 **Nama Operasi:** *ambilListLaporan(): array [...] of laporan* 
-**ID Algoritma:** *Algo-00X*
+**ID Algoritma:** *Algo-031*
 
 <!-- ID QUERY PERLU DIGANTI -->
 ```text
@@ -2120,10 +2117,9 @@ Tabel 5.1.2. Atribut Kelas LaporanController
 
 ## 5.17.1 Algoritma/Query
 
-<!-- ID ALGORITMA PERLU DIGANTI -->
 **Nama Kelas:** *LaporanController*  
 **Nama Operasi:** *validasiKelengkapanData(namaMasalah: string, kategori: string, tingkatPermasalahan: TingkatPermasalahan, statusPrivasi: StatusPrivasi, titikLokasi: Koordinat) : Boolean*  
-**ID Algoritma:** *Algo-00X*
+**ID Algoritma:** *Algo-032*
 
 ```text
 ALGORITMA validasiKelengkapanData
@@ -2148,10 +2144,9 @@ Tabel 5.16.3. Query Operasi validasiKelengkapanData()
 
 ## 5.17.2 Algoritma/Query
 
-<!-- ID ALGORITMA PERLU DIGANTI -->
 **Nama Kelas:** *LaporanController*  
 **Nama Operasi:** *validasiFoto(foto: File) : Boolean*  
-**ID Algoritma:** *Algo-00X*
+**ID Algoritma:** *Algo-033*
 
 ```text
 ALGORITMA validasiFoto
@@ -2176,7 +2171,7 @@ Tabel 5.16.4. Query Operasi validasiKelengkapanData()
 
 **Nama Kelas:** *LaporanController*
 **Nama Operasi:** *simpanLaporan(namaMasalah: string, kategori: string, tingkatPermasalahan: TingkatPermasalahan, statusPrivasi: StatusPrivasi, foto: File, deskripsi: string, titikLokasi: Koordinat) : Boolean*  
-**ID Algoritma:** *Algo-010*
+**ID Algoritma:** *Algo-034*
 
 ```text
 ALGORITMA simpanLaporan
@@ -2231,7 +2226,7 @@ Tabel 5.17.5. Query Operasi simpanLaporan()
 ### 5.17.4 Algoritma/Query
 **Nama Kelas:** *LaporanController*  
 **Nama Operasi:** *updateStatusLaporan(idLaporan: String, statusLaporan: StatusLaporan) : Boolean*  
-**ID Algoritma:** *Algo-008*
+**ID Algoritma:** *Algo-035*
 
 ```text
 ALGORITMA updateStatusLaporan
@@ -2256,10 +2251,9 @@ Tabel 5.17.6. Query Operasi updateStatusLaporan()
 
 ## 5.17.5 Algoritma/Query
 
-<!-- ID ALGORITMA PERLU DIGANTI -->
 **Nama Kelas:** *LaporanController*  
 **Nama Operasi:** *setBatasWaktu2Minggu(idLaporan: String)*  
-**ID Algoritma:** *Algo-00X*
+**ID Algoritma:** *Algo-036*
 
 <!-- ID QUERY PERLU DIGANTI -->
 ```text
@@ -2282,10 +2276,9 @@ Tabel 5.16.7. Query Operasi setBatasWaktu2Minggu()
 
 ## 5.17.6 Algoritma/Query
 
-<!-- ID ALGORITMA PERLU DIGANTI -->
 **Nama Kelas:** *LaporanController*  
 **Nama Operasi:** *cekBatasWaktu(idLaporan: String): Boolean*  
-**ID Algoritma:** *Algo-00X*
+**ID Algoritma:** *Algo-037*
 
 <!-- ID QUERY PERLU DIGANTI -->
 ```text
@@ -2312,10 +2305,9 @@ Tabel 5.16.8. Query Operasi cekBatasWaktu()
 
 ## 5.17.6 Algoritma/Query
 
-<!-- ID ALGORITMA PERLU DIGANTI -->
 **Nama Kelas:** *LaporanController*  
 **Nama Operasi:** *hapusLaporanOtomatis(idLaporan: String): Boolean*  
-**ID Algoritma:** *Algo-00X*
+**ID Algoritma:** *Algo-038*
 
 ```text
 ALGORITMA hapusLaporanOtomatis
@@ -2365,7 +2357,7 @@ Tabel 5.18.2. Atribut Kelas Lokasi
 ### 5.18.1. Algoritma/Query
 **Nama Kelas:** *LokasiController*  
 **Nama Operasi:** *ambilLokasiLaporan(alamat: String) : Object*  
-**ID Algoritma:** *Algo-014*
+**ID Algoritma:** *Algo-039*
 ```text
 ALGORITMA ambilLokasiLaporan
 
@@ -2388,7 +2380,7 @@ ELSE
 ### 5.18.2. Algoritma/Query
 **Nama Kelas:** *LokasiController*  
 **Nama Operasi:** *hitungJarak(lokasiPengguna : Object, lokasiLaporan : Object)*  
-**ID Algoritma:** *Algo-015*
+**ID Algoritma:** *Algo-040*
 ```text
 ALGORITMA hitungJarak
 
@@ -2416,7 +2408,7 @@ RETURN jarak
 ### 5.18.2. Algoritma/Query
 **Nama Kelas:** *LokasiController*  
 **Nama Operasi:** *cariLaporanTerdekat() : List<Laporan>*  
-**ID Algoritma:** *Algo-016*
+**ID Algoritma:** *Algo-041*
 ```text
 ALGORITMA cariLaporanTerdekat
 
@@ -2461,7 +2453,7 @@ Tabel 5.19.1. Operasi Kelas UpvoteController
 
 **Nama Kelas:** *UpvoteController*  
 **Nama Operasi:** *sudahUpvote(idPengguna : String, idLaporan : String) : Boolean*  
-**ID Algoritma:** *Algo-00?*
+**ID Algoritma:** *Algo-042*
 
 ```text
 ALGORITMA sudahUpvote
@@ -2486,7 +2478,7 @@ Tabel 5.19.2. Query Operasi sudahUpvote()
 
 **Nama Kelas:** *UpvoteController*  
 **Nama Operasi:** *prosesUpvote(idPengguna : String, idLaporan : String) : Boolean*  
-**ID Algoritma:** *Algo-00?*
+**ID Algoritma:** *Algo-043*
 
 ```text
 ALGORITMA prosesUpvote
@@ -2542,7 +2534,7 @@ Tabel 5.20.1. Operasi Kelas TanggapanController
 
 **Nama Kelas:** *TanggapanController*  
 **Nama Operasi:** *validasiTanggapan(dataPopupForm:FormTanggapan): Boolean)*  
-**ID Algoritma:** *Algo-00?*
+**ID Algoritma:** *Algo-044*
 
 ```text
 ALGORITMA validasiTanggapan
@@ -2562,7 +2554,7 @@ OUTPUT: Boolean
 
 **Nama Kelas:** *TanggapanController*  
 **Nama Operasi:** *simpanTanggapan(idLaporan:String, dataPopupForm:FormTanggapan): Boolean*  
-**ID Algoritma:** *Algo-00?*
+**ID Algoritma:** *Algo-045*
 
 ```text
 ALGORITMA simpanTanggapan
@@ -2583,7 +2575,7 @@ OUTPUT: Boolean
 
 **Nama Kelas:** *TanggapanController*  
 **Nama Operasi:** *simpanStatus(idLaporan:String, statusLaporan:StatusLaporan (enum)): Boolean*  
-**ID Algoritma:** *Algo-00?*
+**ID Algoritma:** *Algo-046*
 
 ```text
 ALGORITMA simpanStatus
@@ -2612,7 +2604,7 @@ $2 = idLaporan
 
 **Nama Kelas:** *TutorialController*  
 **Nama Operasi:** *startTutorial(): Boolean*  
-**ID Algoritma:** *Algo-00?*
+**ID Algoritma:** *Algo-047*
 
 ```text
 ALGORITMA startTutorial
@@ -2635,7 +2627,7 @@ OUTPUT: Boolean
 
 **Nama Kelas:** *TutorialController*  
 **Nama Operasi:** *nextTutorial(): Boolean*  
-**ID Algoritma:** *Algo-00?*
+**ID Algoritma:** *Algo-048*
 
 ```text
 ALGORITMA nextTutorial
@@ -2657,7 +2649,7 @@ OUTPUT: Boolean
 
 **Nama Kelas:** *TutorialController*  
 **Nama Operasi:** *skipTutorial(): Boolean*  
-**ID Algoritma:** *Algo-00?*
+**ID Algoritma:** *Algo-049*
 
 ```text
 ALGORITMA skipTutorial
@@ -2677,7 +2669,7 @@ OUTPUT: Boolean
 
 **Nama Kelas:** *TutorialController*  
 **Nama Operasi:** *finishTutorial(): Boolean*  
-**ID Algoritma:** *Algo-00?*
+**ID Algoritma:** *Algo-050*
 
 ```text
 ALGORITMA finishTutorial
@@ -2739,7 +2731,7 @@ Tabel 5.23.2. Atribut Kelas MapAPIService
 ### 5.23.1. Algoritma/Query
 **Nama Kelas:** *MapAPIService*  
 **Nama Operasi:** *kirimRequest*  
-**ID Algoritma:** *Algo-018*
+**ID Algoritma:** *Algo-051*
 ```text
 ALGORITMA kirimRequest
 
@@ -2758,7 +2750,7 @@ ELSE
 ### 5.23.2. Algoritma/Query
 **Nama Kelas:** *MapAPIView*  
 **Nama Operasi:** *prosesResponses(response: String) : String *
-**ID Algoritma:** *Algo-019*
+**ID Algoritma:** *Algo-052*
 ```text
 ALGORITMA prosesResponses
 
