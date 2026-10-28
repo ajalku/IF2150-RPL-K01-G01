@@ -2900,7 +2900,11 @@ Tabel 6.1. Spesifikasi Objek Antarmuka I-01
 | *I-01-TXT2* | *Text Box* | *Password akun* | *...* |
 | *I-01-BTN1* | *Button* | *Tombol Login* | *...* |
 | *I-01-BTN2* | *Button* | *Tombol hide/show password* | *...* |
-| *I-01-BTN3* | *Button* | *Tombol register* | *...* |
+| *I-01-BTN3* | *Button* | *Text Daftar* | *...* |
+| *I-01-BTN4* | *Button* | *Text lupa sandi* | *...* |
+| *I-02-BTN5* | *Button* | *Text Bantuan* | *...* |
+| *I-02-BTN6* | *Button* | *Text Privasi & Ketentuan* | *...* |
+| *I-01-CEK1* | *Check Box* | *Remember Login* | *...* |
 
 ## 6.2 Rancangan Antarmuka I-02
 
@@ -2918,13 +2922,16 @@ Tabel 6.2. Spesifikasi Objek Antarmuka I-02
 
 | Id_Objek | Jenis | Konten | Keterangan |
 | :--- | :--- | :--- | :--- |
-| *I-02-TXT1* | *Text Box* | *NIK* | *...* |
-| *I-02-TXT2* | *Text Box* | *Akun email* | *...* |
-| *I-02-TXT3* | *Text Box* | *Username* | *...* |
+| *I-02-TXT1* | *Text Box* | *Nama Lengkap* | *...* |
+| *I-02-TXT2* | *Text Box* | *NIK* | *...* |
+| *I-02-TXT3* | *Text Box* | *Akun email* | *...* |
 | *I-02-TXT4* | *Text Box* | *Password akun* | *...* |
-| *I-02-TXT5* | *Text Box* | *Nomor Handphone* | *...* |
 | *I-02-BTN1* | *Button* | *Tombol daftar* | *...* |
 | *I-02-BTN2* | *Button* | *Tombol hide/show password* | *...* |
+| *I-02-BTN3* | *Button* | *Text sudah punya akun* | *...* |
+| *I-02-BTN4* | *Button* | *Text Bantuan* | *...* |
+| *I-02-BTN5* | *Button* | *Text Privasi & Ketentuan* | *...* |
+| *I-02-CEK1* | *Check Box* | *Setujui ketentuan* | *...* |
 
 
 ## 6.3 Rancangan Antarmuka I-03
@@ -2943,14 +2950,22 @@ Tabel 6.3. Spesifikasi Objek Antarmuka I-03
 
 | Id_Objek | Jenis | Konten | Keterangan |
 | :--- | :--- | :--- | :--- |
-| *I-03-SB-BTN1* | *Button* | *Home Page* | *...* |
-| *I-03-SB-BTN2* | *Button* | *Profil* | *...* |
-| *I-03-SB-BTN3* | *Button* | *Menu Map* | *...* |
-| *I-03-SB-BTN4* | *Button* | *Notifikasi* | *...* |
-| *I-03-SB-BTN5* | *Button* | *Post Laporan* | *...* |]
+| *I-03-TB-IMG1* | *Picture* | *Logo* | *...* |
+| *I-03-TB-TXT1* | *Text* | *Judul* | *...* |
+| *I-03-TB-BTN1* | *Button* | *Beranda* | *...* |
+| *I-03-TB-BTN2* | *Button* | *Laporan* | *...* |
+| *I-03-TB-BTN3* | *Button* | *Peta Interaktif* | *...* |
+| *I-03-TB-BTN4* | *Button* | *Notifikasi* | *...* |
+| *I-03-TB-BTN5* | *Button* | *Buat Laporan* | *...* |
+| *I-03-TB-BTN5* | *Button* | *Informasi Akun* | *...* |
+| *I-03-BTN1* | *Button* | *Mulai Tutorial* | *...* |
+| *I-03-BTN2* | *Button* | *Buka Peta* | *...* |
 | *I-03-L-BTN1* | *Button* | *Lihat Laporan* | *...* |
-| *I-03-L-BTN2* | *Button* | *Upvote* | *...* |
-| *I-03-L-BTN3* | *Button* | *Komentar(?)* | *...* |
+| *I-03-L-BTN2* | *Button* | *Dukungan laporan* | *...* |
+| *I-03-L-BTN3* | *Button* | *Komentar Laporan* | *...* |
+| *I-03-L-BTN4* | *Button* | *Filter Status laporan* | *...* |
+| *I-03-L-BTN5* | *Button* | *Kategori laporan* | *...* |
+| *I-03-L-BTN6* | *Button* | *Lihat laporan lain* | *...* |
 
 ## 6.4 Rancangan Antarmuka I-04
 
@@ -2968,16 +2983,28 @@ Tabel 6.4. Spesifikasi Objek Antarmuka I-04
 
 | Id_Objek | Jenis | Konten | Keterangan |
 | :--- | :--- | :--- | :--- |
-| *I-04-SB-BTN1* | *Button* | *Home Page* | *...* |
-| *I-04-SB-BTN2* | *Button* | *Profil* | *...* |
-| *I-04-SB-BTN3* | *Button* | *Menu Map* | *...* |
-| *I-04-SB-BTN4* | *Button* | *Notifikasi* | *...* |
-| *I-04-SB-BTN5* | *Button* | *Post Laporan* | *...* |
+| *I-04-TB-IMG1* | *Picture* | *Logo* | *...* |
+| *I-04-TB-TXT1* | *Text* | *Judul* | *...* |
+| *I-04-TB-BTN1* | *Button* | *Beranda* | *...* |
+| *I-04-TB-BTN2* | *Button* | *Laporan* | *...* |
+| *I-04-TB-BTN3* | *Button* | *Peta Interaktif* | *...* |
+| *I-04-TB-BTN4* | *Button* | *Notifikasi* | *...* |
+| *I-04-TB-BTN5* | *Button* | *Buat Laporan* | *...* |
+| *I-04-TB-BTN5* | *Button* | *Informasi Akun* | *...* |
+| *I-04-L-INFO1* | *Info Box* | *Status Perjalanan Laporan* | *...* |
+| *I-04-L-INFO2* | *Info Box* | *Kondisi lokasi* | *...* |
+| *I-04-L-BTN1* | *Button* | *Dukung laporan* | *...* |
+| *I-04-L-BTN2* | *Button* | *Share laporan* | *...* |
+| *I-04-L-BTN3* | *Button* | *Lihat di Peta* | *...* |
+| *I-04-DP-INFO1* | *Info Box* | *Isi Diskusi* | *...* |
+| *I-04-DP-TXT1* | *Text Box* | *Isi Komentar* | *...* |
+| *I-04-DP-BTN1* | *Button* | *Kirim Komentar* | *...* |
+
 
 ## 6.5 Rancangan Antarmuka I-05
 
 **Antarmuka:** *I-05*  
-**Nama Layar:** *Post Laporan*
+**Nama Layar:** *Buat Laporan*
 
 <p align="center">
 <img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/contoh-design.png" width="50%">
@@ -2990,10 +3017,26 @@ Tabel 6.5. Spesifikasi Objek Antarmuka I-05
 
 | Id_Objek | Jenis | Konten | Keterangan |
 | :--- | :--- | :--- | :--- |
-| *I-05-TXT1* | *Text Box* | *Nama masalah* | *...* |
-| *I-05-TXT2* | *Text Box* | *...* | *...* |
-| *I-05-TXT3* | *Text Box* | *...* | *...* |
-| *I-05-BTN1* | *Button* | *Tombol post* | *...* |
+| *I-05-TB-IMG1* | *Picture* | *Logo* | *...* |
+| *I-05-TB-TXT1* | *Text* | *Judul* | *...* |
+| *I-05-TB-BTN1* | *Button* | *Beranda* | *...* |
+| *I-05-TB-BTN2* | *Button* | *Laporan* | *...* |
+| *I-05-TB-BTN3* | *Button* | *Peta Interaktif* | *...* |
+| *I-05-TB-BTN4* | *Button* | *Notifikasi* | *...* |
+| *I-05-TB-BTN5* | *Button* | *Buat Laporan* | *...* |
+| *I-05-TB-BTN5* | *Button* | *Informasi Akun* | *...* |
+| *I-05-L-TXT1* | *Text Box* | *Nama Masalah* | *...* |
+| *I-05-L-TXT2* | *Text Box* | *Kategori Lain* | *...* |
+| *I-05-L-TXT3* | *Text Box* | *Lokasi* | *...* |
+| *I-05-L-KAT1* | *Drop Box* | *Kategori Masalah* | *...* |
+| *I-05-L-KAT2* | *Option* | *Urgensi Masalah* | *...* |
+| *I-05-L-KAT3* | *Option* | *Visibilitas* | *...* |
+| *I-05-L-IMG1* | *Option* | *Foto Upload* | *...* |
+| *I-05-L-MAP1* | *Peta* | *Peta* | *...* |
+| *I-05-L-TXT4* | *Text Box* | *Deskripsi* | *...* |
+| *I-05-L-BTN1* | *Button* | *Batal* | *...* |
+| *I-05-L-BTN2* | *Button* | *Kirim* | *...* |
+
 
 ## 6.6 Rancangan Antarmuka I-06
 
@@ -3011,10 +3054,23 @@ Tabel 6.6. Spesifikasi Objek Antarmuka I-06
 
 | Id_Objek | Jenis | Konten | Keterangan |
 | :--- | :--- | :--- | :--- |
-| *I-06-TXT1* | *Text Box* | *...* | *...* |
-| *I-06-TXT2* | *Text Box* | *...* | *...* |
-| *I-06-TXT3* | *Text Box* | *...* | *...* |
-| *I-06-BTN1* | *Button* | *Tombol validasi (?)* | *...* |
+| *I-05-TB-IMG1* | *Picture* | *Logo* | *...* |
+| *I-05-TB-TXT1* | *Text* | *Judul* | *...* |
+| *I-05-TB-BTN1* | *Button* | *Beranda* | *...* |
+| *I-05-TB-BTN2* | *Button* | *Laporan* | *...* |
+| *I-05-TB-BTN3* | *Button* | *Peta Interaktif* | *...* |
+| *I-05-TB-BTN4* | *Button* | *Notifikasi* | *...* |
+| *I-05-TB-BTN5* | *Button* | *Buat Laporan* | *...* |
+| *I-05-TB-BTN5* | *Button* | *Informasi Akun* | *...* |
+| *I-05-AL-TXT1* | *Text Box* | *Pencarian Laporan* | *...* |
+| *I-05-AL-INFO1* | *Info Box* | *Informasi Laporan* | *...* |
+| *I-05-L-INFO1* | *Info Box* | *Informasi Laporan Terpilih* | *...* |
+| *I-05-HP-KAT1-1* | *Button* | *Laporan Valid* | *...* |
+| *I-05-HP-KAT1-2* | *Button* | *Laporan Tidak Valid* | *...* |
+| *I-05-HP-TXT1* | *Text Box* | *Catatan Pemeriksaan* | *...* |
+| *I-05-HP-TXT2* | *Text Box* | *Tanggapan* | *...* |
+| *I-05-HP-KAT2* | *Drop Box* | *Status* | *...* |
+| *I-05-HP-BTN1* | *Button* | *Simpan Hasil Pemeriksaan* | *...* |
 
 ## 6.2 Rancangan Antarmuka I-07
 
@@ -3032,11 +3088,14 @@ Tabel 6.7. Spesifikasi Objek Antarmuka I-07
 
 | Id_Objek | Jenis | Konten | Keterangan |
 | :--- | :--- | :--- | :--- |
-| *I-07-SB-BTN1* | *Button* | *Home Page* | *...* |
-| *I-07-SB-BTN2* | *Button* | *Profil* | *...* |
-| *I-07-SB-BTN3* | *Button* | *Menu Map* | *...* |
-| *I-07-SB-BTN4* | *Button* | *Notifikasi* | *...* |
-| *I-07-SB-BTN5* | *Button* | *Post Laporan* | *...* |
+| *I-08-TB-IMG1* | *Picture* | *Logo* | *...* |
+| *I-08-TB-TXT1* | *Text* | *Judul* | *...* |
+| *I-08-TB-BTN1* | *Button* | *Beranda* | *...* |
+| *I-08-TB-BTN2* | *Button* | *Laporan* | *...* |
+| *I-08-TB-BTN3* | *Button* | *Peta Interaktif* | *...* |
+| *I-08-TB-BTN4* | *Button* | *Notifikasi* | *...* |
+| *I-08-TB-BTN5* | *Button* | *Buat Laporan* | *...* |
+| *I-08-TB-BTN5* | *Button* | *Informasi Akun* | *...* |
 | *I-07-L-TXT1* | *Text Box* | *Cari Lokasi Laporan* | *...* |
 | *I-07-L-TXT2* | *Text Box* | *Kategori Laporan* | *...* |
 | *I-07-L-TXT3* | *Text Box* | *Tingkat Urgensi laporan* | *...* |
@@ -3066,64 +3125,23 @@ Tabel 6.8. Spesifikasi Objek Antarmuka I-08
 
 | Id_Objek | Jenis | Konten | Keterangan |
 | :--- | :--- | :--- | :--- |
-| *I-08-SB-BTN1* | *Button* | *Home Page* | *...* |
-| *I-08-SB-BTN2* | *Button* | *Profil* | *...* |
-| *I-08-SB-BTN3* | *Button* | *Menu Map* | *...* |
-| *I-08-SB-BTN4* | *Button* | *Notifikasi* | *...* |
-| *I-08-SB-BTN5* | *Button* | *Post Laporan* | *...* |
-| *I-08-P-TXT1* | *Text Box* | *NIK* | *...* |
-| *I-08-P-TXT2* | *Text Box* | *Email* | *...* |
-| *I-08-P-TXT3* | *Text Box* | *Username* | *...* |
-| *I-08-P-TXT4* | *Text Box* | *Password* | *...* |
-| *I-08-P-TXT5* | *Text Box* | *Nomor Handphone* | *...* |
-| *I-08-P-BTN1* | *Button* | *Edit Profile* | *...* |
-
-## 6.9 Rancangan Antarmuka I-09
-
-**Antarmuka:** *I-09*  
-**Nama Layar:** *Edit Profil*
-
-<p align="center">
-<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/contoh-design.png" width="50%">
-</p>
-<p align="center">
-<i>Gambar 6.8. Rancangan Antarmuka I-08 - Profil</i>
-</p>
-
-Tabel 6.8. Spesifikasi Objek Antarmuka I-08
-
-| Id_Objek | Jenis | Konten | Keterangan |
-| :--- | :--- | :--- | :--- |
-| *I-09-SB-BTN1* | *Button* | *Home Page* | *...* |
-| *I-09-SB-BTN2* | *Button* | *Profil* | *...* |
-| *I-09-SB-BTN3* | *Button* | *Menu Map* | *...* |
-| *I-09-SB-BTN4* | *Button* | *Notifikasi* | *...* |
-| *I-09-SB-BTN5* | *Button* | *Post Laporan* | *...* |
-| *I-09-P-TXT1* | *Text Box* | *Username* | *...* |
-| *I-09-P-TXT2* | *Text Box* | *Nomor Handphone* | *...* |
-| *I-09-P-BTN1* | *Button* | *Simpan Perubahan* | *...* |
-| *I-09-P-BTN2* | *Button* | *Batal Perubahan* | *...* |
-| *I-09-P-BTN3* | *Button* | *Ubah kata sandi* | *...* |
-| *I-09-P-BTN4* | *Button* | *Ajuan hapus akun* | *...* |
-| *I-09-L-BTN1* | *Button* | *Lihat Laporan* | *...* |
-| *I-09-L-INFO1* | *Info Box* | *Laporan Saya* | *...* |
-
-
-## 6.Y Rancangan Antarmuka Keseluruhan
-
-Tuliskan daftar gambar seluruh antarmuka. Berikan ID unik untuk setiap tampilan dan gunakan ID yang sama pada subbab perancangan antarmuka masing-masing.
-
-Tabel 6.Y. Rancangan Antarmuka Keseluruhan
-
-| No | Tampilan Antarmuka |
-| :--- | :--- |
-| *[I-01]* | <img src="./assets/diagram/contoh-design.png" alt="Contoh Desain" width="400"> |
-| *[I-02]* | *[Sisipkan gambar antarmuka I-02]* |
-| *[I-XX]* | *[Sisipkan gambar antarmuka berikutnya]* |
-
-<br>
-
----
+| *I-08-TB-IMG1* | *Picture* | *Logo* | *...* |
+| *I-08-TB-TXT1* | *Text* | *Judul* | *...* |
+| *I-08-TB-BTN1* | *Button* | *Beranda* | *...* |
+| *I-08-TB-BTN2* | *Button* | *Laporan* | *...* |
+| *I-08-TB-BTN3* | *Button* | *Peta Interaktif* | *...* |
+| *I-08-TB-BTN4* | *Button* | *Notifikasi* | *...* |
+| *I-08-TB-BTN5* | *Button* | *Buat Laporan* | *...* |
+| *I-08-TB-BTN5* | *Button* | *Informasi Akun* | *...* |
+| *I-08-SB-BTN1* | *Button* | *Keamanan Akun* | *...* |
+| *I-08-SB-BTN1* | *Button* | *Laporan Saya* | *...* |
+| *I-08-IP-TXT1* | *Text Box* | *NIK* | *...* |
+| *I-08-IP-TXT2* | *Text Box* | *Email* | *...* |
+| *I-08-IP-TXT3* | *Text Box* | *Username* | *...* |
+| *I-08-IP-TXT5* | *Text Box* | *Nomor Handphone* | *...* |
+| *I-08-KA-BTN1* | *Button* | *Ubah Kata Sandi* | *...* |
+| *I-08-P-BTN1* | *Button* | *Pengajuan hapus akun* | *...* |
+| *I-08-P-BTN2* | *Button* | *Keluar Akun* | *...* |
 
 # BAB 7: Matriks Kerunutan
 
