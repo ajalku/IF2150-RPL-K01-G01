@@ -2886,7 +2886,7 @@ Tabel 6.1. Spesifikasi Objek Antarmuka [ID Layar]
 **Nama Layar:** *Login Page*
 
 <p align="center">
-<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/contoh-design.png" width="50%">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/Figma/Masuk.png" width="50%">
 </p>
 <p align="center">
 <i>Gambar 6.1. Rancangan Antarmuka I-01 - Login Page</i>
@@ -2912,7 +2912,7 @@ Tabel 6.1. Spesifikasi Objek Antarmuka I-01
 **Nama Layar:** *Registration Page*
 
 <p align="center">
-<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/contoh-design.png" width="50%">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/Figma/Daftar.png" width="50%">
 </p>
 <p align="center">
 <i>Gambar 6.2. Rancangan Antarmuka I-02 - Registration Page</i>
@@ -2940,7 +2940,7 @@ Tabel 6.2. Spesifikasi Objek Antarmuka I-02
 **Nama Layar:** *Homepage*
 
 <p align="center">
-<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/contoh-design.png" width="50%">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/Figma/Beranda.png" width="50%">
 </p>
 <p align="center">
 <i>Gambar 6.3. Rancangan Antarmuka I-03 - Homepage</i>
@@ -2973,7 +2973,7 @@ Tabel 6.3. Spesifikasi Objek Antarmuka I-03
 **Nama Layar:** *Page Laporan*
 
 <p align="center">
-<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/contoh-design.png" width="50%">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/Figma/Laporan.png" width="50%">
 </p>
 <p align="center">
 <i>Gambar 6.4. Rancangan Antarmuka I-04 - Page Laporan</i>
@@ -3007,7 +3007,7 @@ Tabel 6.4. Spesifikasi Objek Antarmuka I-04
 **Nama Layar:** *Buat Laporan*
 
 <p align="center">
-<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/contoh-design.png" width="50%">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/Figma/Buat laporan.png" width="50%">
 </p>
 <p align="center">
 <i>Gambar 6.5. Rancangan Antarmuka I-05 - Post Laporan</i>
@@ -3044,7 +3044,7 @@ Tabel 6.5. Spesifikasi Objek Antarmuka I-05
 **Nama Layar:** *Periksa Laporan*
 
 <p align="center">
-<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/contoh-design.png" width="50%">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/Figma/Periksa laporan.png" width="50%">
 </p>
 <p align="center">
 <i>Gambar 6.6. Rancangan Antarmuka I-06 - Periksa Laporan</i>
@@ -3078,7 +3078,7 @@ Tabel 6.6. Spesifikasi Objek Antarmuka I-06
 **Nama Layar:** *Peta Interaktif*
 
 <p align="center">
-<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/contoh-design.png" width="50%">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/Figma/Peta interaktif.png" width="50%">
 </p>
 <p align="center">
 <i>Gambar 6.7. Rancangan Antarmuka I-07 - Peta Interaktif</i>
@@ -3115,7 +3115,7 @@ Tabel 6.7. Spesifikasi Objek Antarmuka I-07
 **Nama Layar:** *Profil*
 
 <p align="center">
-<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/contoh-design.png" width="50%">
+<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/Figma/Profil.png" width="50%">
 </p>
 <p align="center">
 <i>Gambar 6.8. Rancangan Antarmuka I-08 - Profil</i>
