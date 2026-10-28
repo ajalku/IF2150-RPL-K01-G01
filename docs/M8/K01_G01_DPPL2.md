@@ -860,7 +860,7 @@ Tabel 5.5.2. Atribut Kelas Upvote
 
 ### 5.5.1 Algoritma/Query
 
-**Nama Kelas:** *Pengguna*  
+**Nama Kelas:** *Upvote*  
 **Nama Operasi:** *simpanDataPengguna(nama : String, NIK : String, email : String, hashPassword : String, noTelp : String) : Boolean*  
 **ID Algoritma:** *Algo-00?*
 
