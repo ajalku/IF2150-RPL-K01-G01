@@ -24,7 +24,7 @@ Tabel 5.2.1. Operasi Kelas Homepage
 | *getSortBy(daftarLaporan: array [...] of laporan, sortBy: string) : daftarLaporan* | *Public* | *Mengurutkan laporan berdasarkan permintaan pengguna (popularitas, waktu, lokasi)* |
 <!-- | *[Signature operasi, termasuk parameter dan tipe kembalian]* | *[Visibility]* | *[Tanggung jawab operasi]* | -->
 
-Tabel 5.2.2. Atribut Kelas [Nama Kelas 1]
+Tabel 5.2.2. Atribut Kelas Homepage
 
 | Nama Atribut | Visibility (private, public) | Tipe |
 | :--- | :--- | :--- |
@@ -341,6 +341,29 @@ Tabel 5.3.9. Query Operasi getSkorPopuler()
 | No Query | Query | Keterangan |
 | :--- | :--- | :--- |
 | *Q-013* | *SELECT skor_populer FROM laporan WHERE id_laporan = $1* | *Mengambil skorPopuler sebuah laporan* |
+||||
+
+### 5.3.8 Algoritma/Query
+**Nama Kelas:** *Laporan*
+**Nama Operasi:** *hitungSkorPopularitas(idLaporan: String) : Real*
+**ID Algoritma:** *Algo-014*
+
+```text
+ALGORITMA hitungSkorPopularitas
+
+INPUT: idLaporan
+OUTPUT: Real
+
+1. Jalankan getSkorPopuler(idLaporan)
+2. Jalankan operasi untuk menghitung skor populer
+3. Kembalikan skor populer
+```
+
+Tabel 5.3.9. Query Operasi hitungSkorPopularitas()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *-* | *-* | *-* |
 ||||
 
 ---
