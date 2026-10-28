@@ -137,5 +137,7 @@
 | Tanggal | Nama Anggota | Deskripsi Pekerjaan | Durasi (Jam) | Status | Kendala / *Blocker* | 
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | *21-10-2026* | *Samantha Michelle S. Silaban* | *Mengerjakan BAB 5 kelas pengguna* | *2* | *Done* | *-* |
+| *28-10-2026* | *Ghiffari Arya Adhitya* | *Mengerjakan bab 7* | *0.1* | *Done* | *-* |
+
 
 <!-- Gunakan format penulisan Logbook yang sama untuk setiap Milestone dan pastikan pembuatan Daftar Isi juga sudah sesuai sebelum Logbook dikumpulkan. -->
