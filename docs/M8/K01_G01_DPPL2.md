@@ -57,10 +57,9 @@ Dipersiapkan oleh:
 Tuliskan dengan ringkas tujuan dokumen DPPL ini dibuat dan siapa saja yang akan menggunakan dokumen ini.
 
 ## 1.2 Lingkup Masalah
-Tuliskan dengan ringkas nama aplikasi dan deskripsi singkatnya. Bagian ini maksimal berisi satu paragraf, dapat diambil dari SKPL.
+Guna membangun kota yang berkelanjutan, fasilitas publik yang aman dan universal menjadi instrumen utama yang tercantum pada Indikator SDG 11.7.1. Namun, pada kenyataannya fasilitas publik justru memiliki banyak catatan yang harus diperbaiki. Mulai dari infrastruktur layanan publik yang terbengkalai, akses jalan yang tidak ramah pejalan kaki, hingga maraknya aksi vandalisme. Sudah banyak metode untuk melaporkan fasilitas publik yang rusak, namun masih berjalan satu arah. Oleh karena itu, website RAWAT (Ruang Aspirasi Warga dan Aduan Terpadu) hadir untuk memfasilitasi sistem pelaporan yang lebih modern dan interaktif. Website ini diharapkan dapat meningkatkan _awareness_ masyarakat tentang kondisi fasilitas dan berkolaborasi dalam permintaan perbaikan fasilitas publik. Melalui fitur-fitur interaktif selayaknya media sosial, warga tidak hanya dapat menyampaikan laporan tetapi juga saling memvalidasi laporan, memberikan tanggapan, dan membangun kepedulian bersama terhadap fasilitas publik.
 
 ## 1.3 Definisi, Istilah, dan Singkatan
-Semua definisi dan singkatan yang digunakan dalam dokumen ini beserta penjelasannya.
 
 Tabel 1.3. Definisi Istilah dan Singkatan
 
@@ -69,7 +68,11 @@ Tabel 1.3. Definisi Istilah dan Singkatan
 | *P/L* | *Singkatan dari Perangkat Lunak, yaitu aplikasi yang memberikan perintah kepada komputer untuk menjalankan tugas tertentu.* |
 | *DPPL* | *Singkatan dari Spesifikasi Kebutuhan Perangkat Lunak, yaitu dokumen yang merangkum kriteria-kriteria yang diperlukan untuk membangun aplikasi menjalankan tugasnya.* |
 | *UC* | *Singkatan dari Use Case.* |
-| *...* | *...* |
+| *RAWAT* | *Singkatan dari nama P/L yaitu (Ruang Aspirasi Warga dan Aduan Terpadu)* |
+| *NIK* | *Singkatan dari Nomor Induk Kependudukan* |
+| *API* | *Singkatan dari Application Programming Interface, yaitu perantara agar dua sistem dapat terhubung* |
+| *Upvote* | *Memberikan dukungan positif terhadap sesuatu (post/komentar)* |
+
 
 ## 1.4 Aturan Penomoran
 Tuliskan aturan penomoran (ID) yang digunakan dalam dokumen ini. Gunakan pola ID yang **sama** dengan yang sudah dipakai pada dokumen-dokumen sebelumnya, jangan membuat pola baru di dokumen ini.
@@ -80,7 +83,11 @@ Tabel 1.4. Aturan Penomoran
 | :--- | :--- | :--- |
 | *Uce Case* | *UCXX* | |
 | *Kelas* | *CXX* | |
-| *...* | *...* |
+| *Id Objek* | *I-XX-XXXX* | *I merupakan singkatan dari ID, XX adalah nomor urut layanan antarmuka, XXXX adalah nomor urut objek* |
+| *Use Case* | *UCXX* | *UC merupakan singkatan dari Use Case, diikuti nomor urut dua digit.* |
+| *Kelas* | *CXX* | *C merupakan singkatan dari Class/Kelas, diikuti nomor urut dua digit.* |
+| *Algoritma* | *Algo-XXX* | *Algo merupakan singkatan dari Algoritma, diikuti nomor urut tiga digit* |
+| *Query* | *Q-XXX* | *Q merupakan singkatan dari Query, diikuti nomor urut tiga digit* |
 
 ## 1.5 Referensi
 Cantumkan dokumentasi P/L yang dirujuk oleh dokumen ini, **minimal dokumen SKPL dan APL**. Tambahkan buku, panduan, atau dokumentasi lain apabila digunakan.
@@ -266,13 +273,12 @@ Tabel 5.1.1. Operasi Kelas Pengguna
 | *simpanDataPengguna(nama:String, NIK:String, email:String, hashPassword:String, noTelp : String) : Boolean* | *Public* | *Menyimpan data pengguna baru ke database, mengembalikan True jika berhasil tersimpan dan False jika gagal tersimpan.* |
 | *getPenggunaByEmail(email: String) : Pengguna* | *Public* | *Mencari pengguna berdasarkan email. Mengembalikan objek Pengguna.* |
 | *getRole() : String* | *Public* | *Memberikan informasi _role_ dari pengguna* |
-| *getIzinLokasi() : StatusIzin* | *Public* | *Memberikan informasi status izin lokasi (DITERIMA/DITOLAK/BELUM_DIMINTA* |
+| *getIzinLokasi() : StatusIzin* | *Public* | *Memberikan informasi status izin lokasi (DITERIMA/DITOLAK/BELUM_DIMINTA)* |
 | *getLokasiSaatIni() : Object* | *Public* | *Memberikan longitude dan latitude dari lokasi pengguna* |
 | *hapusDataPengguna() : Boolean* | *Public* | *Menghapus data akun pengguna dari database dan mengembalikan status keberhasilan penghapusan.* |
 | *updateDataPengguna(dataPengguna : Map<String, String>) : Boolean* | *Public* | *Menyimpan data akun pengguna terbaru ke database dan mengembalikan status keberhasilan penyimpanan.* |
 | *sudahLihatTutorial() : Boolean* | *Public* | *Memberikan informasi status melihat tutorial, True jika sudah dan False jika belum.* |
 | *getPenggunaById(idPengguna : String) : Pengguna* | *Public* | *Memberikan data Pengguna melalui ID Pengguna.* |
-
 
 
 
@@ -305,12 +311,11 @@ ALGORITMA simpanDataPengguna
 INPUT: nama, NIK, email, hashPassword, noTelp
 OUTPUT: Boolean
 
-1. Jalankan query INSERT untuk menyimpan data pengguna. [Q-001]
-2. IF penyimpanan berhasil THEN
-      RETURN true
-   ELSE
-      RETURN false
-   ENDIF
+Jalankan query INSERT untuk menyimpan data pengguna. [Q-001]
+IF penyimpanan berhasil THEN
+   RETURN true
+ELSE
+   RETURN false
 ```
 Tabel 5.1.1. Query Operasi simpanDataPengguna()
 
@@ -321,28 +326,29 @@ Tabel 5.1.1. Query Operasi simpanDataPengguna()
 ### 5.1.2 Algoritma/Query
 
 **Nama Kelas:** *Pengguna*  
-**Nama Operasi:** *getPenggunaByEmail(email: String) : Pengguna*  
+**Nama Operasi:** *getPenggunaByEmail(email: String) : Pengguna / getPenggunaById(idPengguna: String) : Pengguna*  
 **ID Algoritma:** *Algo-002*
 ```text
-ALGORITMA getPenggunaByEmail
+ALGORITMA getPenggunaByEmail/getPenggunaById
 
-INPUT: email
+INPUT: email/idPengguna
 OUTPUT: Pengguna atau null
 
-1. Cari data pengguna berdasarkan email. [Q-002]
-2. IF pengguna ditemukan THEN
-      Buat objek Pengguna dari hasil query.
-      RETURN objek Pengguna
-   ELSE
-      RETURN null
-   ENDIF
+Cari data pengguna berdasarkan email (untuk getPenggunaByEmail) atau idPengguna (untuk getPenggunaById). [Q-002] / [Q-003]
+IF pengguna ditemukan THEN
+   Buat objek Pengguna dari hasil query.
+   RETURN objek Pengguna
+ELSE
+   RETURN null
+ENDIF
 
 ```
-Tabel 5.1.2. Query Operasi getPenggunaByEmail()
+Tabel 5.1.2. Query Operasi getPenggunaByEmail() / getPenggunaByID()
 
 | No Query | Query | Keterangan |
 | :--- | :--- | :--- |
 | *Q-002* | *SELECT * FROM pengguna WHERE email = $1;* | *Mencari pengguna berdasarkan email* |
+| *Q-003* | *SELECT * FROM pengguna WHERE idPengguna = $1;* | *Mencari pengguna berdasarkan ID* |
 
 ### 5.1.3 Algoritma/Query
 
@@ -355,38 +361,33 @@ ALGORITMA updateDataPengguna
 INPUT: dataPengguna
 OUTPUT: Boolean
 
-1. Ambil idPengguna dari objek Pengguna saat ini.
+Ambil idPengguna dari objek Pengguna saat ini.
 
-2. IF dataPengguna memiliki atribut "nama" THEN
-      Tambahkan nama ke daftar perubahan.
-   ENDIF
+IF dataPengguna memiliki atribut "nama" THEN
+   Tambahkan nama ke daftar perubahan.
 
-3. IF dataPengguna memiliki atribut "noTelp" THEN
-      Tambahkan noTelp ke daftar perubahan.
-   ENDIF
+IF dataPengguna memiliki atribut "noTelp" THEN
+   Tambahkan noTelp ke daftar perubahan.
 
-4. IF dataPengguna memiliki atribut "hashPassword" THEN
-      Tambahkan password ke daftar perubahan.
-   ENDIF
+IF dataPengguna memiliki atribut "hashPassword" THEN
+   Tambahkan password ke daftar perubahan.
+  
+IF daftar perubahan kosong THEN
+   RETURN false
 
-6. IF daftar perubahan kosong THEN
-      RETURN false
-   ENDIF
+Jalankan query UPDATE berdasarkan daftar perubahan
+   dan idPengguna. [Q-004]
 
-7. Jalankan query UPDATE berdasarkan daftar perubahan
-   dan idPengguna.
-
-8. IF pembaruan berhasil THEN
-      RETURN true
-   ELSE
-      RETURN false
-   ENDIF
+IF pembaruan berhasil THEN
+   RETURN true
+ELSE
+   RETURN false
 
 ```
 Tabel 5.1.3. Query Operasi updateDataPengguna
 | No Query | Query | Keterangan |
 | :--- | :--- | :--- |
-| *Q-003* | *UPDATE pengguna SET nama = $1 WHERE id_pengguna = $2;* | *Contoh query jika hanya nama yang diperbarui* |
+| *Q-004* | *UPDATE pengguna SET nama = $1 WHERE id_pengguna = $2;* | *Contoh query jika hanya nama yang diperbarui* |
 
 ### 5.1.4 Algoritma/Query
 
@@ -399,297 +400,31 @@ ALGORITMA hapusDataPengguna
 INPUT: Tidak ada
 OUTPUT: Boolean
 
-1. Ambil idPengguna dari objek Pengguna saat ini.
-2. Jalankan query DELETE berdasarkan idPengguna.
-3. IF satu record data pengguna berhasil dihapus THEN
-      RETURN true
-   ELSE
-      RETURN false
-   ENDIF
+Ambil idPengguna dari objek Pengguna saat ini.
+Jalankan query DELETE berdasarkan idPengguna. [Q-005]
+IF satu record data pengguna berhasil dihapus THEN
+   RETURN true
+ELSE
+   RETURN false
 ```
 Tabel 5.1.4. Query Operasi hapusDataPengguna()
 | No Query | Query | Keterangan |
 | :--- | :--- | :--- |
-| *Q-004* | *DELETE FROM pengguna WHERE id_pengguna = $1* | *Menghapus data akun pengguna berdasarkan ID* |
+| *Q-005* | *DELETE FROM pengguna WHERE id_pengguna = $1* | *Menghapus data akun pengguna berdasarkan ID* |
 
-## 5.2 Kelas PenggunaView
+### 5.1.5 Algoritma/Query
 
-**Nama Kelas:** *PenggunaView*  
-**ID Kelas:** *C08*
-
-Tabel 5.2.1. Operasi Kelas PenggunaView
-| Nama Operasi | Visibility (private, public) | Keterangan |
-| :--- | :--- | :--- |
-| *tampilkanFormRegistrasi()* | *Public* | *Menampilkan formulir registrasi kepada pengguna.* |
-| *tampilkanErrorMsgs(pesan : String)* | *Public* | *Menampilkan pesan kesalahan kepada pengguna.* |
-| *tampilkanFormLogin()* | *Public* | *Menampilkan formulir login kepada pengguna.* |
-| *tampilkanPermintaanIzinLokasi()* | *Public* | *Menampilkan permintaan izin akses lokasi.* |
-| *tampilkanProfil()* | *Public* | *Menampilkan profil pengguna.* |
-| *tampilkanFormUbahProfil()* | *Public* | *Menampilkan formulir untuk mengedit profil.* |
-| *tampilkanPesanBerhasil(pesan : String)* | *Public* | *Menampilkan pesan berhasil atas aksi yang dilakukan pengguna.* |
-| *tampilkanFormKonfirmasi(pesan : String)* | *Public* | *Menampilkan pertanyaan konfirmasi untuk aksii yang dilakukan pengguna.* |
-| *tampilkanNotifAdmin(pesan : String)* | *Public* | *Menampilkan notifikasi terhadap perbaruan laporan kepada admin.* |
-| *tampilkanOpsiTutorial()* | *Public* | *Menampilkan opsi tutorial.* |
-
-
-
-Tabel 5.2.2. Atribut Kelas PenggunaView
-
-| Nama Atribut | Visibility (private, public) | Tipe |
-| :--- | :--- | :--- |
-| *-* | *-* | *-* |
-
-
-### 5.2.1 Algoritma/Query
-
-**Nama Kelas:** *PenggunaView*  
-**Nama Operasi:** *tampilkanFormKonfirmasi(pesan : String)*  
+**Nama Kelas:** *Pengguna*  
+**Nama Operasi:** *GETTER: getRole/getIzinLokasi/getLokasiSaatIni/sudahLihatTutorial*  
 **ID Algoritma:** *Algo-005*
 ``` text
-ALGORITMA tampilkanFormKonfirmasi
-
-INPUT: pesan : String
-OUTPUT: Tampilan pertanyaan konfirmasi
-
-1. Tampilkan pertanyaan konfirmasi berisi pesan.
-2. Tampilkan pilihan Ya dan Tidak.
-3. Tunggu pengguna memilih Ya atau Tidak. 
-4. IF pengguna memilih Ya THEN
-	Teruskan aksi yang dikonfirmasi ke Controller.
-    ELSE
-	Tutup pertanyaan konfirmasi.
-    ENDIF
-```
-### 5.2.2 Algoritma/Query
-**Nama Kelas:** *PenggunaView*  
-**Nama Operasi:** *tampilkanNotifAdmin*  
-**ID Algoritma:** *Algo-006*
-``` text
-
-ALGORITMA tampilkanNotifAdmin
-
-INPUT: Pesan
-OUTPUT: Tampilan notifikasi admin
-
-1. Terima pesan notifikasi.
-2. Tampilkan notifikasi berisi pesan kepada admin.
-3. Tampilkan pilihan untuk melihat laporan.
-4. IF admin memilih melihat laporan THEN
-      Arahkan admin ke halaman laporan.
-   ELSE
-      Tutup notifikasi.
-   ENDIF
-```
-
-
-## 5.3 Kelas PenggunaController
-
-**Nama Kelas:** *PenggunaController*  
-**ID Kelas:** *C15*
-
-Tabel 5.3.1. Operasi Kelas PenggunaController
-| Nama Operasi | Visibility (private, public) | Keterangan |
-| :--- | :--- | :--- |
-| *registrasi(nama : String, NIK : String, email : String, password : String, noTelp : String)* | *Public* | *Menerima data formulir data registrasi dan mengoordinasikan penyimpanan akun baru.* |
-|*hashPassword(password : String) : String*| *Private*| *Melakukan _hashing_ kepada input password*|
-|*cekAkunTerdaftar( email : String, NIK : String) : Boolean*| *Private* | *Memeriksa apakah email atau NIK sudah terdaftar dalam database. *|
-|*validasiData(nama : String, NIK : String, email : String, password : String, noTelp : String) : String*| *Private* | *Memvalidasi data seperti pengecekan password, kelengkapan data, dan format data.*|
-|*login(email : String, password : String)*| *Public* | *Menerima data formulir data login dan memprosesnya.*|
-|*validasiKredensial(passwordInput : String, hashPpassword : String) : Boolean*| *Private* | *Melakukan verifikasi terhadap password yang diinput dengan password _hash_ yang ada di database.*|
-|*setIzinLokasi(statusIzin : StatusIzin)*| *Public* | *Menerima status izin lokasi dan mengoordinasikan pembaruannya ke Entity Pengguna.*|
-|*cekIzinLokasi() : StatusIzin*| *Public* |*Memanggil getIzinLokasi() pada Entitiy Pengguna untuk mengetahui status izin lokasi.*|
-|*cekStatusTutorial() : Boolean*| *Public* | *Memanggil sudahLihatTutorial() pada Entitiy Pengguna untuk mengetahui statusTutorial.*|
-|*sudahLogin(idPengguna : String) : Boolean*| *Public* | *Memeriksa apakah pengguna dengan ID tersebut memiliki sesi login yang masih aktif.*|
-|*kirimKonfirmasiUlang()*| *Public* | *Mengirimkan permintaan konfirmasi ulang kepada admin agar laporan dapat diperiksa dan divalidasi kembali.*|
-|*ubahProfil(dataPengguna : Map<String, String>) : Boolean* | *Public* | *Mengoordinasikan validasi dan pembaruan data profil pengguna.*|
-|*validasiDataProfil (dataPengguna : Map<String, String>) : String*| *Private* | Memvalidasi format dan kesesuaian atribut profil yang ingin diperbarui*|
-|*hapusAkun() : Boolean*| *Public*| *Mengoordinasikan penghapusan akun melalui Entity Pengguna dan mengembalikan status keberhasilannya. *|
-
-Tabel 5.2.2. Atribut Kelas PenggunaController
-
-| Nama Atribut | Visibility (private, public) | Tipe |
-| :--- | :--- | :--- |
-| *-* | *-* | *-* |
-
-
-### 5.3.1. Algoritma/Query
-**Nama Kelas:** *PenggunaController*  
-**Nama Operasi:** *registrasi(nama, NIK, email, password, noTelp)*  
-**ID Algoritma:** *Algo-007*
-``` text
-
-ALGORITMA registrasi
-
-INPUT: nama, NIK, email, password, noTelp
-OUTPUT: Tidak ada
-
-1. Panggil validasiData(nama, NIK, email, password, noTelp).
-
-2. IF data tidak valid THEN
-      Panggil tampilkanErrorMsgs("Data tidak valid").
-      Hentikan proses.
-   ENDIF
-
-3. Panggil cekAkunTerdaftar(email, NIK).
-
-4. IF akun sudah terdaftar THEN
-      Panggil tampilkanErrorMsgs("Akun sudah terdaftar").
-      Hentikan proses.
-   ENDIF
-
-5. hashPassword ← hashPassword(password).
-
-6. Panggil simpanDataPengguna(nama, NIK, email,
-   hashPassword, noTelp) pada Entity Pengguna.
-
-7. IF penyimpanan berhasil THEN
-      Panggil tampilkanPesanBerhasil("Registrasi berhasil").
-   ELSE
-      Panggil tampilkanErrorMsgs("Registrasi gagal").
-   ENDIF
-
-```
-
-### 5.3.2. Algoritma/Query
-**Nama Kelas:** *PenggunaController*  
-**Nama Operasi:** *login(email, password)*  
-**ID Algoritma:** *Algo-008*
-
-```text
-ALGORITMA login
-
-INPUT: email, password
-OUTPUT: Tidak ada
-
-1. Panggil getPenggunaByEmail(email) pada Entity Pengguna.
-
-2. IF pengguna tidak ditemukan THEN
-      Panggil tampilkanErrorMsgs("Email atau password salah").
-      Hentikan proses.
-   ENDIF
-
-3. Ambil hashPassword dari data Pengguna.
-
-4. Panggil validasiKredensial(password, hashPassword).
-
-5. IF kredensial valid THEN
-      Panggil getRole() pada Entity Pengguna.
-      Buat sesi login pengguna.
-      Arahkan pengguna ke halaman sesuai role.
-   ELSE
-      Panggil tampilkanErrorMsgs("Email atau password salah").
-   ENDIF
-```
-### 5.3.3. Algoritma/Query
-**Nama Kelas:** *PenggunaController*  
-**Nama Operasi:** *validasiData(nama, NIK, email, password, noTelp) : String*  
-**ID Algoritma:** *Algo-009*
-```text
-ALGORITMA validasiData
-
-INPUT: nama, NIK, email, password, noTelp
-OUTPUT: String
-
-1. IF terdapat data wajib yang kosong THEN
-      RETURN "Data belum lengkap".
-   ENDIF
-
-2. IF format NIK tidak valid THEN
-      RETURN "NIK tidak valid".
-   ENDIF
-
-3. IF format email tidak valid THEN
-      RETURN "Email tidak valid".
-   ENDIF
-
-4. IF password tidak memenuhi ketentuan THEN
-      RETURN "Password tidak valid".
-   ENDIF
-
-5. IF format noTelp tidak valid THEN
-      RETURN "Nomor telepon tidak valid".
-   ENDIF
-
-6. RETURN ""
-
-### 5.3.4. Algoritma/Query
-**Nama Kelas:** *PenggunaController*  
-**Nama Operasi:** *validasiKredensial(passwordInput, hashPassword) : Boolean*  
-**ID Algoritma:** *Algo-010*
-```text
-ALGORITMA validasiKredensial
-
-INPUT: passwordInput, hashPassword
-OUTPUT: Boolean
-
-1. Hitung hashInput ← SHA256(passwordInput).
-
-2. Bandingkan hashInput dengan hashPassword
-   yang tersimpan dalam database.
-
-3. IF hashInput = hashPassword THEN
-      RETURN true
-   ELSE
-      RETURN false
-   ENDIF
-```
-
-### 5.3.5. Algoritma/Query
-**Nama Kelas:** *PenggunaController*  
-**Nama Operasi:** *ubahProfil(dataPengguna : Map<String, String>) : Boolean*  
-**ID Algoritma:** *Algo-011*
-```text
-ALGORITMA ubahProfil
-
-INPUT: dataPengguna
-OUTPUT: Boolean
-
-1. Panggil validasiDataProfil(dataPengguna).
-
-2. IF data tidak valid THEN
-      Panggil tampilkanErrorMsgs("Data profil tidak valid").
-      RETURN false
-   ENDIF
-
-3. IF dataPengguna memiliki atribut "password" THEN
-      hashBaru ← hashPassword(dataPengguna["password"])
-      Hapus atribut "password" dari dataPengguna.
-      Tambahkan ("hashPassword", hashBaru)
-      ke dataPengguna.
-   ENDIF
-
-4. Panggil updateDataPengguna(dataPengguna)
-   pada Entity Pengguna.
-
-5. IF pembaruan berhasil THEN
-      Panggil tampilkanPesanBerhasil("Profil berhasil diubah").
-      RETURN true
-   ELSE
-      Panggil tampilkanErrorMsgs("Gagal mengubah profil").
-      RETURN false
-   ENDIF
-```
-
-### 5.3.6. Algoritma/Query
-**Nama Kelas:** *PenggunaController*  
-**Nama Operasi:** *hapusAkun() : Boolean* 
-**ID Algoritma:** *Algo-012*
-```text
-ALGORITMA hapusAkun
+ALGORITMA GETTER
 
 INPUT: Tidak ada
-OUTPUT: Boolean
+OUTPUT: Atribut kelas
 
-1. Panggil hapusDataPengguna() pada Entity Pengguna.
-
-2. IF penghapusan berhasil THEN
-      Akhiri sesi login pengguna.
-      RETURN true
-   ELSE
-      RETURN false
-   ENDIF
+RETURN [Atribut]
 ```
-
 ## 5.4 Kelas Lokasi
 
 **Nama Kelas:** *Lokasi*  
@@ -720,18 +455,293 @@ ALGORITMA getKoordinat
 INPUT: Tidak ada
 OUTPUT: latitude: Real, longtiude: Real
 
-1. Ambil atribut latitude dan longitude
-   dari objek Lokasi saat ini.
+Ambil atribut latitude dan longitude dari objek Lokasi saat ini.
+RETURN {latitude, longitude}
+```
+## 5.8 Kelas PenggunaView
 
-2. RETURN {latitude, longitude}
+**Nama Kelas:** *PenggunaView*  
+**ID Kelas:** *C08*
+
+Tabel 5.8.1. Operasi Kelas PenggunaView
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *tampilkanFormRegistrasi()* | *Public* | *Menampilkan formulir registrasi kepada pengguna.* |
+| *tampilkanErrorMsgs(pesan : String)* | *Public* | *Menampilkan pesan kesalahan kepada pengguna.* |
+| *tampilkanFormLogin()* | *Public* | *Menampilkan formulir login kepada pengguna.* |
+| *tampilkanPermintaanIzinLokasi()* | *Public* | *Menampilkan permintaan izin akses lokasi.* |
+| *tampilkanProfil()* | *Public* | *Menampilkan profil pengguna.* |
+| *tampilkanFormUbahProfil()* | *Public* | *Menampilkan formulir untuk mengedit profil.* |
+| *tampilkanPesanBerhasil(pesan : String)* | *Public* | *Menampilkan pesan berhasil atas aksi yang dilakukan pengguna.* |
+| *tampilkanFormKonfirmasi(pesan : String)* | *Public* | *Menampilkan pertanyaan konfirmasi untuk aksii yang dilakukan pengguna.* |
+| *tampilkanNotifAdmin(pesan : String)* | *Public* | *Menampilkan notifikasi terhadap perbaruan laporan kepada admin.* |
+| *tampilkanOpsiTutorial()* | *Public* | *Menampilkan opsi tutorial.* |
+
+
+Tabel 5.8.2. Atribut Kelas PenggunaView
+
+| Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *-* | *-* | *-* |
+
+## 5.11 Kelas LokasiView
+
+**Nama Kelas:** *LokasiView*  
+**ID Kelas:** *C11*
+
+Tabel 5.11.1. Operasi Kelas LokasiView
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *tampilkanPeta()* | *Public* | *Menampilkan tampilan peta*|
+| *tampilkanLaporanSekitar()*| *Public* | *Menampilkan laporan di sekitar pengguna pada peta.*|
+| *zoomLokasi()*| *Private* | *Melakukan zoom-in atau zoom-out pada peta*|
+|*tampilkanTitikLaporan(dataPeta:Object)*| *Public* | *Menampilkan titik lokasi laporan pada peta*|
+|*tampilkanErrorMsgs(pesan : String)*| *Public* | *Menampilkan pesan kesalahan yang berhubungan dengan penampilan peta/lokasi*|
+|*pilihTitikLokasi(Real,Real)*| *Public*| *Menangani pemilihan titik laporan pada peta untuk menampilkan detail laporan yang dipilih.* |
+
+
+Tabel 5.11.2. Atribut Kelas LokasiView
+
+| Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *map* | *Private* | *Object* |
+
+## 5.15 Kelas PenggunaController
+
+**Nama Kelas:** *PenggunaController*  
+**ID Kelas:** *C15*
+
+Tabel 5.15.1. Operasi Kelas PenggunaController
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *registrasi(nama : String, NIK : String, email : String, password : String, noTelp : String)* | *Public* | *Menerima data formulir data registrasi dan mengoordinasikan penyimpanan akun baru.* |
+|*hashPassword(password : String) : String*| *Private*| *Melakukan _hashing_ kepada input password*|
+|*cekAkunTerdaftar( email : String, NIK : String) : Boolean*| *Private* | *Memeriksa apakah email atau NIK sudah terdaftar dalam database.*|
+|*validasiData(nama : String, NIK : String, email : String, password : String, noTelp : String) : String*| *Private* | *Memvalidasi data seperti pengecekan password, kelengkapan data, dan format data.*|
+|*login(email : String, password : String)*| *Public* | *Menerima data formulir data login dan memprosesnya.*|
+|*validasiKredensial(passwordInput : String, hashPpassword : String) : Boolean*| *Private* | *Melakukan verifikasi terhadap password yang diinput dengan password _hash_ yang ada di database.*|
+|*setIzinLokasi(statusIzin : StatusIzin)*| *Public* | *Menerima status izin lokasi dan mengoordinasikan pembaruannya ke Entity Pengguna.*|
+|*cekIzinLokasi() : StatusIzin*| *Public* |*Memanggil getIzinLokasi() pada Entitiy Pengguna untuk mengetahui status izin lokasi.*|
+|*cekStatusTutorial() : Boolean*| *Public* | *Memanggil sudahLihatTutorial() pada Entitiy Pengguna untuk mengetahui statusTutorial.*|
+|*sudahLogin(idPengguna : String) : Boolean*| *Public* | *Memeriksa apakah pengguna dengan ID tersebut memiliki sesi login yang masih aktif.*|
+|*kirimKonfirmasiUlang()*| *Public* | *Mengirimkan permintaan konfirmasi ulang kepada admin agar laporan dapat diperiksa dan divalidasi kembali.*|
+|*ubahProfil(dataPengguna : Map<String, String>) : Boolean* | *Public* | *Mengoordinasikan validasi dan pembaruan data profil pengguna.*|
+|*validasiDataProfil (dataPengguna : Map<String, String>) : String*| *Private* | *Memvalidasi format dan kesesuaian atribut profil yang ingin diperbarui*|
+|*hapusAkun() : Boolean*| *Public*| *Mengoordinasikan penghapusan akun melalui Entity Pengguna dan mengembalikan status keberhasilannya.*|
+
+Tabel 5.15.2. Atribut Kelas PenggunaController
+
+| Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *-* | *-* | *-* |
+
+
+### 5.15.1. Algoritma/Query
+**Nama Kelas:** *PenggunaController*  
+**Nama Operasi:** *registrasi(nama, NIK, email, password, noTelp)*  
+**ID Algoritma:** *Algo-006*
+``` text
+
+ALGORITMA registrasi
+
+INPUT: nama, NIK, email, password, noTelp
+OUTPUT: Tidak ada
+
+Panggil validasiData(nama, NIK, email, password, noTelp).
+
+IF data tidak valid THEN
+   Panggil tampilkanErrorMsgs("Data tidak valid").
+   Hentikan proses.
+
+Panggil cekAkunTerdaftar(email, NIK).
+
+IF akun sudah terdaftar THEN
+   Panggil tampilkanErrorMsgs("Akun sudah terdaftar").
+      Hentikan proses.
+
+hashPassword ← hashPassword(password).
+
+Panggil simpanDataPengguna(nama, NIK, email, hashPassword, noTelp) pada Entity Pengguna.
+
+IF penyimpanan berhasil THEN
+   Panggil tampilkanPesanBerhasil("Registrasi berhasil").
+ELSE
+   Panggil tampilkanErrorMsgs("Registrasi gagal").
+
 ```
 
-## 5.5 Kelas LokasiController
+### 5.15.2. Algoritma/Query
+**Nama Kelas:** *PenggunaController*  
+**Nama Operasi:** *login(email, password)*  
+**ID Algoritma:** *Algo-007*
+
+```text
+ALGORITMA login
+
+INPUT: email, password
+OUTPUT: Tidak ada
+
+Panggil getPenggunaByEmail(email) pada Entity Pengguna.
+
+IF pengguna tidak ditemukan THEN
+   Panggil tampilkanErrorMsgs("Email atau password salah").
+   Hentikan proses.
+
+Ambil hashPassword dari data Pengguna.
+
+Panggil validasiKredensial(password, hashPassword).
+
+IF kredensial valid THEN
+   Panggil getRole() pada Entity Pengguna.
+   Buat sesi login pengguna.
+   Arahkan pengguna ke halaman sesuai role.
+ELSE
+   Panggil tampilkanErrorMsgs("Email atau password salah").
+```
+### 5.15.3. Algoritma/Query
+**Nama Kelas:** *PenggunaController*  
+**Nama Operasi:** *validasiData(nama, NIK, email, password, noTelp) : String*  
+**ID Algoritma:** *Algo-008*
+```text
+ALGORITMA validasiData
+
+INPUT: nama, NIK, email, password, noTelp
+OUTPUT: String
+
+IF terdapat data wajib yang kosong THEN
+   RETURN "Data belum lengkap".
+
+IF format NIK tidak valid THEN
+      RETURN "NIK tidak valid".
+
+IF format email tidak valid THEN
+      RETURN "Email tidak valid".
+
+IF password tidak memenuhi ketentuan THEN
+      RETURN "Password tidak valid".
+
+IF format noTelp tidak valid THEN
+      RETURN "Nomor telepon tidak valid"
+
+RETURN ""
+```
+### 5.15.4. Algoritma/Query
+**Nama Kelas:** *PenggunaController*  
+**Nama Operasi:** *validasiKredensial(passwordInput, hashPassword) : Boolean*  
+**ID Algoritma:** *Algo-009*
+```text
+ALGORITMA validasiKredensial
+
+INPUT: passwordInput, hashPassword
+OUTPUT: Boolean
+
+Hitung hashInput ← SHA256(passwordInput).
+
+Bandingkan hashInput dengan hashPassword yang tersimpan dalam database.
+
+IF hashInput = hashPassword THEN
+      RETURN true
+   ELSE
+      RETURN false
+```
+
+### 5.15.5. Algoritma/Query
+**Nama Kelas:** *PenggunaController*  
+**Nama Operasi:** *ubahProfil(dataPengguna : Map<String, String>) : Boolean*  
+**ID Algoritma:** *Algo-010*
+```text
+ALGORITMA ubahProfil
+
+INPUT: dataPengguna
+OUTPUT: Boolean
+
+Panggil validasiDataProfil(dataPengguna).
+
+IF data tidak valid THEN
+   Panggil tampilkanErrorMsgs("Data profil tidak valid").
+   RETURN false
+  
+IF dataPengguna memiliki atribut "password" THEN
+      hashBaru ← hashPassword(dataPengguna["password"])
+      Hapus atribut "password" dari dataPengguna.
+      Tambahkan ("hashPassword", hashBaru) ke dataPengguna.
+
+Panggil updateDataPengguna(dataPengguna) pada Entity Pengguna.
+
+IF pembaruan berhasil THEN
+   Panggil tampilkanPesanBerhasil("Profil berhasil diubah").
+   RETURN true
+ELSE
+   Panggil tampilkanErrorMsgs("Gagal mengubah profil").
+   RETURN false
+```
+
+### 5.15.6. Algoritma/Query
+**Nama Kelas:** *PenggunaController*  
+**Nama Operasi:** *hapusAkun() : Boolean* 
+**ID Algoritma:** *Algo-011*
+```text
+ALGORITMA hapusAkun
+
+INPUT: Tidak ada
+OUTPUT: Boolean
+
+Panggil hapusDataPengguna() pada Entity Pengguna.
+
+IF penghapusan berhasil THEN
+   Akhiri sesi login pengguna.
+   RETURN true
+ELSE
+   RETURN false
+ENDIF
+```
+
+### 5.15.7. Algoritma/Query
+**Nama Kelas:** *PenggunaController*  
+**Nama Operasi:** *setIzinLokasi()* 
+**ID Algoritma:** *Algo-012*
+```text
+ALGORITMA setIzinLokasi
+
+INPUT: StatuIzin
+OUTPUT: Tidak Ada
+
+Panggil setIzinLokasi(statusIzin) pada Entity Pengguna
+```
+
+### 5.15.8. Algoritma/Query
+**Nama Kelas:** *PenggunaController*  
+**Nama Operasi:** *cekIzinLokasi()* 
+**ID Algoritma:** *Algo-013*
+```text
+ALGORITMA cekIzinLokasi
+
+INPUT: Tidak ada
+OUTPUT: StatusIzin
+
+statusIzin <- Pengguna.getIzinLokasi()
+RETURN statusIzin
+```
+### 5.15.9. Algoritma/Query
+**Nama Kelas:** *PenggunaController*  
+**Nama Operasi:** *cekStatusTutorial()* 
+**ID Algoritma:** *Algo-014*
+```text
+ALGORITMA cekStatusTutorial()
+
+INPUT: Tidak ada
+OUTPUT: StatusIzin
+
+statusTutorial <- Pengguna.sudahLihatTutorial()
+RETURN statusTutorial
+```
+
+## 5.18 Kelas LokasiController
 
 **Nama Kelas:** *LokasiController*  
 **ID Kelas:** *C18*
 
-Tabel 5.4.1. Operasi Kelas Lokasi
+Tabel 5.18.1. Operasi Kelas Lokasi
 | Nama Operasi | Visibility (private, public) | Keterangan |
 | :--- | :--- | :--- |
 | *cariLaporanTerdekat() : List<Laporan>* | *Private* | *Mencari laporan terdekat dari lokasi pengguna*|
@@ -741,13 +751,13 @@ Tabel 5.4.1. Operasi Kelas Lokasi
 
 
 
-Tabel 5.4.2. Atribut Kelas Lokasi
+Tabel 5.18.2. Atribut Kelas Lokasi
 
 | Nama Atribut | Visibility (private, public) | Tipe |
 | :--- | :--- | :--- |
 | *-* | *-* | *-* |
 
-### 5.5.1. Algoritma/Query
+### 5.18.1. Algoritma/Query
 **Nama Kelas:** *LokasiController*  
 **Nama Operasi:** *ambilLokasiLaporan(alamat: String) : Object*  
 **ID Algoritma:** *Algo-014*
@@ -757,22 +767,20 @@ ALGORITMA ambilLokasiLaporan
 INPUT: alamat
 OUTPUT: Object (latitude, longitude)
 
-1. IF alamat kosong THEN
-      RETURN null
-   ENDIF
+IF alamat kosong THEN
+   RETURN null
 
-2. Kirim alamat ke layanan geocoding.
+Kirim alamat ke layanan geocoding.
 
-3. Terima hasil geocoding.
+Terima hasil geocoding.
 
-4. IF lokasi ditemukan THEN
-      Ambil latitude dan longitude.
-      RETURN {latitude, longitude}
-   ELSE
-      RETURN null
-   ENDIF
-
-### 5.5.2. Algoritma/Query
+IF lokasi ditemukan THEN
+   Ambil latitude dan longitude.
+   RETURN {latitude, longitude}
+ELSE
+   RETURN null
+```
+### 5.18.2. Algoritma/Query
 **Nama Kelas:** *LokasiController*  
 **Nama Operasi:** *hitungJarak(lokasiPengguna : Object, lokasiLaporan : Object)*  
 **ID Algoritma:** *Algo-015*
@@ -782,27 +790,25 @@ ALGORITMA hitungJarak
 INPUT: lokasiPengguna, lokasiLaporan
 OUTPUT: jarak: Real (kilometer)
 
-1. Ambil latitude dan longitude dari kedua lokasi.
+Ambil latitude dan longitude dari kedua lokasi.
 
-2. Konversi seluruh koordinat dari derajat ke radian.
+Konversi seluruh koordinat dari derajat ke radian.
 
-3. Hitung:
+Hitung: 
    deltaLat ← latLaporan - latPengguna
    deltaLon ← lonLaporan - lonPengguna
 
-4. Hitung:
-   a ← sin²(deltaLat/2)
-        + cos(latPengguna) × cos(latLaporan)
-        × sin²(deltaLon/2)
+Hitung:
+   a ← sin²(deltaLat/2) + cos(latPengguna) × cos(latLaporan) × sin²(deltaLon/2)
 
-5. Hitung:
+Hitung:
    c ← 2 × atan2(√a, √(1-a))
 
-6. jarak ← 6371 × c
+jarak ← 6371 × c
 
-7. RETURN jarak
+RETURN jarak
 ```
-### 5.5.2. Algoritma/Query
+### 5.18.2. Algoritma/Query
 **Nama Kelas:** *LokasiController*  
 **Nama Operasi:** *cariLaporanTerdekat() : List<Laporan>*  
 **ID Algoritma:** *Algo-016*
@@ -812,30 +818,99 @@ ALGORITMA cariLaporanTerdekat
 INPUT: Tidak ada
 OUTPUT: List<Laporan>
 
-1. lokasiPengguna ← ambilLokasiPengguna()
+lokasiPengguna ← ambilLokasiPengguna()
 
-2. IF lokasiPengguna = null THEN
-      RETURN daftar kosong.
-   ENDIF
+IF lokasiPengguna = null THEN
+   RETURN daftar kosong.
+daftarLaporan ← Homepage.getDaftarLaporan()
 
-3. daftarLaporan ← Homepage.getDaftarLaporan()
+Inisialisasi daftarJarak ← array kosong.
 
-4. Inisialisasi daftarJarak ← array kosong.
+FOR setiap laporan dalam daftarLaporan DO
+   lokasiLaporan ← laporan.lokasi.getKoordinat()
 
-5. FOR setiap laporan dalam daftarLaporan DO
-      lokasiLaporan ← laporan.lokasi.getKoordinat()
+   jarak ← hitungJarak(lokasiPengguna, lokasiLaporan)
 
-      jarak ← hitungJarak(lokasiPengguna, lokasiLaporan)
+   Tambahkan {laporan.idLaporan, jarak} ke daftarJarak.
 
-      Tambahkan {laporan.idLaporan, jarak} ke daftarJarak.
-   ENDFOR
+Urutkan daftarJarak berdasarkan jarak ascending.
 
-6. Urutkan daftarJarak berdasarkan jarak ascending.
+Susun List<Laporan> sesuai urutan idLaporan pada daftarJarak.
 
-7. Susun List<Laporan> sesuai urutan idLaporan pada daftarJarak.
-
-8. RETURN List<Laporan>.
+RETURN List<Laporan>.
 ```
+## 5.23 Kelas MapAPIService
+
+**Nama Kelas:** *MapAPIService*  
+**ID Kelas:** *C23*
+
+Tabel 5.23.1. Operasi Kelas MapAPIView
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *kirimRequest(url : String, apiKey: String)* | *Public* | *Mengirimkan HTTP request ke layanan API peta (misal Google Maps JavaScript API) menggunakan URL dan API key dan mengembalikan respons dari API*|
+| *prosesResponses(response: String) : String* | *Private* | *Memproses hasil Google Maps JavaScript API dan memastikan layanan peta siap digunakan sistem.*|
+
+Tabel 5.23.2. Atribut Kelas MapAPIService
+
+| Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *-* | *-* | *-* |
+
+### 5.23.1. Algoritma/Query
+**Nama Kelas:** *MapAPIService*  
+**Nama Operasi:** *kirimRequest*  
+**ID Algoritma:** *Algo-018*
+```text
+ALGORITMA kirimRequest
+
+INPUT: url, apiKey
+OUTPUT: String
+Gabungkan url Google Maps JavaScript API dan apiKey untuk membentuk alamat web untuk membentuk URL permintaan ke server.
+
+Kirim permintaan HTTP GET ke server Google Maps untuk memuat library
+Google Maps JavaScript API yang diperlukan untuk menampilkan peta.
+
+IF library berhasil dimuat THEN
+   RETURN "SUCCESS"
+ELSE
+   RETURN "ERROR"
+```
+### 5.23.2. Algoritma/Query
+**Nama Kelas:** *MapAPIView*  
+**Nama Operasi:** *prosesResponses(response: String) : String *
+**ID Algoritma:** *Algo-019*
+```text
+ALGORITMA prosesResponses
+
+INPUT: response
+OUTPUT: String
+
+Periksa status pemuatan Google Maps JavaScript API berdasarkan response yang diterima.
+
+IF response = "SUCCESS" THEN
+   RETURN "API siap digunakan"
+ELSE
+   RETURN "Gagal memuat Google Maps API"
+
+```
+
+## 5.24 Kelas MapAPIView
+
+**Nama Kelas:** *MapAPIView*  
+**ID Kelas:** *C24*
+
+Tabel 5.24.1. Operasi Kelas MapAPIView
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *getAPIKey() : String* | *Public* | *Mengembalikan API key yang digunakan untuk mengakses layanan API peta*|
+| *getBaseURL() : String* | *Public* | *Mengembalikan _base url_ dari layanan API peta yang digunakan sistem*|
+
+Tabel 5.24.2. Atribut Kelas MapAPIService
+
+| Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *apiKey* | *Private* | *String* |
+| *baseURL* | *Private* | *String* |
 
 ## 5.5 Kelas Upvote
 
