@@ -136,11 +136,12 @@
 **Periode:** 21 Oktober 2026 - 24 Oktober 2026
 | Tanggal | Nama Anggota | Deskripsi Pekerjaan | Durasi (Jam) | Status | Kendala / *Blocker* | 
 | :--- | :--- | :--- | :--- | :--- | :--- |
-
+| *24-10-2026* | *Syakira Azzahra Rachmania* | *Menyusun list awal untuk antarmuka* | *0.5* | *Done* | *-* |
 | *25-10-2026* | *Samantha Michelle S. Silaban* | *Mengerjakan BAB 5 kelas pengguna* | *2* | *Done* | *-* |
 | *26-10-2026* | *Ravinka Fathia Adinegara* | *Mengerjakan bab 5 kelas laporan, homepage, dan mapAPI* | *3* | *Done* | *-* |
+| *27-10-2026* | *Syakira Azzahra Rachmania* | *Mengerjakan desain antarmuka* | *2* | *On Progress* | *-* |
 | *28-10-2026* | *Samantha Michelle S. Silaban* | *Mengerjakan BAB 5 kelas lokasi dan mapAPI* | *3* | *Done* | *-* |
 | *28-10-2026* | *Ghiffari Arya Adhitya* | *Mengerjakan bab 7* | *0.1* | *Done* | *-* |
-
+| *28-10-2026* | *Syakira Azzahra Rachmania* | *Mengerjakan desain antarmuka* | *2* | *Done* | *-* |
 
 <!-- Gunakan format penulisan Logbook yang sama untuk setiap Milestone dan pastikan pembuatan Daftar Isi juga sudah sesuai sebelum Logbook dikumpulkan. -->
