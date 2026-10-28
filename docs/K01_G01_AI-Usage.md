@@ -31,6 +31,10 @@
 
 Silakan catat penggunaan AI yang berdampak signifikan pada pengerjaan tugas (misal: *generate* fungsi algoritma yang kompleks, *generate* draf dokumen SKPL/DPPL, atau *debugging* error utama). 
 *Penggunaan sepele seperti memperbaiki *typo* atau auto-complete satu baris kode tidak perlu dicatat.*
+### Milestone 7
+| Tool AI | Tujuan Penggunaan | Contoh Prompt Utama | Modifikasi & Validasi Manusia |
+| :--- | :--- | :--- | :--- |
+|Claude | Membuat salah satu diagram kelas (dikarenakan keterbatasan waktu) | Berdasarkan informasi identifikasi kelas dan skenario use case di atas, buatkan diagram kelas ini dan jelaskan | Dilakukan pemeriksaan ulang terhadap diagram. | |
 
 ### Milestone 8
 | Tool AI | Tujuan Penggunaan | Contoh Prompt Utama | Modifikasi & Validasi Manusia |
