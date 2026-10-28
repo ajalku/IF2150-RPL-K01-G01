@@ -837,6 +837,478 @@ OUTPUT: List<Laporan>
 8. RETURN List<Laporan>.
 ```
 
+## 5.5 Kelas Upvote
+
+**Nama Kelas:** *Upvote*  
+**ID Kelas:** *C05*
+
+Tabel 5.5.1. Operasi Kelas Upvote
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *upvote(idPengguna:String, idLaporan:String) : Boolean* | *Public* | *Menyimpan data upvote yang dilakukan oleh pengguna pada suatu laporan.* |
+
+
+
+
+Tabel 5.5.2. Atribut Kelas Upvote
+
+| Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *waktuUpvote* | *Private* | *Timestamp* |
+| *statusUpvote* | *Private* | *Boolean* |
+
+
+### 5.5.1 Algoritma/Query
+
+**Nama Kelas:** *Pengguna*  
+**Nama Operasi:** *simpanDataPengguna(nama : String, NIK : String, email : String, hashPassword : String, noTelp : String) : Boolean*  
+**ID Algoritma:** *Algo-00?*
+
+```text
+ALGORITMA upvote
+
+INPUT: idPengguna, idLaporan
+OUTPUT: Boolean
+
+1. Ambil waktu saat upvote dilakukan.
+2. Tetapkan statusUpvote menjadi true.
+3. Jalankan query INSERT untuk menyimpan data upvote. [Q-XXX]
+4. IF penyimpanan berhasil THEN
+      RETURN true
+   ELSE
+      RETURN false
+   ENDIF
+```
+Tabel 5.5.3. Query Operasi upvote()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-00?* | *INSERT INTO upvote (id_pengguna, id_laporan, waktu_upvote, status_upvote) VALUES ($1, $2, CURRENT_TIMESTAMP, TRUE);* | *Menyimpan data upvote pengguna pada laporan* |
+$1 diisi dengan idPengguna, sedangkan $2 diisi dengan idLaporan.
+
+
+
+
+## 5.12 Kelas UpvoteView
+
+**Nama Kelas:** *UpvoteView*  
+**ID Kelas:** *C12*
+
+Tabel 5.12.1. Operasi Kelas UpvoteView
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *klikUpvote()* | *Public* | *Menangani interaksi pengguna saat menekan tombol upvote.* |
+| *tampilkanJumlahUpvote(jumlahUpvote: Integer)* | *Public* | *Menampilkan jumlah upvote dari suatu laporan.* |
+| *tampilkanPesanError()* | *Public* | *Menampilkan pesan error jika upvote tidak berhasil diproses.* |
+| *updateUpvoteButton(statusUpvote: Boolean)* | *Public* | *Memperbarui tampilan tombol upvote berdasarkan status upvote.* |
+
+
+
+
+
+## 5.19 Kelas UpvoteController
+
+**Nama Kelas:** *UpvoteController*  
+**ID Kelas:** *C19*
+
+Tabel 5.19.1. Operasi Kelas UpvoteController
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *prosesUpvote(idPengguna:String, idLaporan:String) : Boolean* | *Public* | *Memproses upvote dengan memeriksa apakah pengguna sudah melakukan upvote dan menyimpan data upvote jika diperbolehkan.* |
+| *sudahUpvote(idPengguna:String, idLaporan:String) : Boolean* | *Public* | *Memeriksa apakah pengguna sudah melakukan upvote pada laporan tertentu.* |
+
+
+### 5.19.1 Algoritma/Query
+
+**Nama Kelas:** *UpvoteController*  
+**Nama Operasi:** *sudahUpvote(idPengguna : String, idLaporan : String) : Boolean*  
+**ID Algoritma:** *Algo-00?*
+
+```text
+ALGORITMA sudahUpvote
+
+INPUT: idPengguna, idLaporan
+OUTPUT: Boolean
+
+1. Jalankan query SELECT untuk memeriksa apakah data upvote pengguna pada laporan tersebut sudah ada. [Q-XXX]
+2. IF data upvote ditemukan THEN
+      RETURN true
+   ELSE
+      RETURN false
+   ENDIF
+```
+Tabel 5.19.2. Query Operasi sudahUpvote()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-00?* | *SELECT 1 FROM upvote WHERE id_pengguna = $1 AND id_laporan = $2 AND status_upvote = TRUE LIMIT 1;* | *Memeriksa apakah pengguna sudah melakukan upvote pada laporan tertentu* |
+
+### 5.19.2 Algoritma/Query
+
+**Nama Kelas:** *UpvoteController*  
+**Nama Operasi:** *prosesUpvote(idPengguna : String, idLaporan : String) : Boolean*  
+**ID Algoritma:** *Algo-00?*
+
+```text
+ALGORITMA prosesUpvote
+
+INPUT: idPengguna, idLaporan
+OUTPUT: Boolean
+
+1. Panggil sudahUpvote(idPengguna, idLaporan)
+2. IF pengguna sudah melakukan upvote THEN
+      Panggil UpvoteView.tampilkanPesanError().
+      RETURN false
+   ENDIF
+3. Panggil Upvote.upvote(idPengguna, idLaporan)
+4. IF penyimpanan upvote gagal THEN
+      Panggil UpvoteView.tampilkanPesanError()
+      RETURN false
+   ENDIF
+5. Panggil UpvoteView.updateUpvoteButton(true).
+6. Ambil jumlah upvote terbaru melalui Laporan.getJumlahUpvote().
+7. Panggil UpvoteView.tampilkanJumlahUpvote(jumlahUpvote).
+8. RETURN true.
+```
+
+
+
+## 5.6 Kelas Tanggapan
+
+**Nama Kelas:** *Tanggapan*  
+**ID Kelas:** *C06*
+
+Tabel 5.6.1. Operasi Kelas Tanggapan
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *simpanTanggapan(idLaporan:String, dataPopupForm:FormTanggapan): Boolean* | *Public* | *Menyimpan data tanggapan admin atas suatu laporan.* |
+
+
+
+
+Tabel 5.6.2. Atribut Kelas Tanggapan
+
+| Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *statusTanggapan* | *Private* | *Boolean* |
+| *waktuTanggapan* | *Private* | *Timestamp* |
+| *deskripsiTanggapan* | *Private* | *String* |
+
+
+### 5.6.1 Algoritma/Query
+
+**Nama Kelas:** *Tanggapan*  
+**Nama Operasi:** *simpanTanggapan(idLaporan:String, dataPopupForm:FormTanggapan): Boolean*  
+**ID Algoritma:** *Algo-00?*
+
+```text
+ALGORITMA simpanTanggapan
+
+INPUT: idLaporan, dataPopupForm
+OUTPUT: Boolean
+
+1. Ambil statusTanggapan dan deskripsiTanggapan dari dataPopupForm.
+2. Jalankan query INSERT untuk menyimpan tanggapan. [Q-XXX]
+3. IF penyimpanan berhasil THEN
+      RETURN true
+   ELSE
+      RETURN false
+   ENDIF
+```
+Tabel 5.6.3. Query Operasi simpanTanggapan()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-00?* | *INSERT INTO tanggapan (id_laporan, status_tanggapan, waktu_tanggapan, deskripsi_tanggapan) VALUES ($1, $2, CURRENT_TIMESTAMP, $3);* | *Menyimpan hasil pemeriksaan validitas laporan, waktu tanggapan, dan deskripsi alasan jika laporan dinyatakan tidak valid.* |
+$1 = idLaporan
+$2 = statusTanggapan
+$3 = deskripsiTanggapan
+
+
+
+## 5.13 Kelas TanggapanView
+
+**Nama Kelas:** *TanggapanView*  
+**ID Kelas:** *C13*
+
+Tabel 5.13.1. Operasi Kelas TanggapanView
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *tampilkanPopup(idLaporan:String)* | *Public* | *Menampilkan formulir tanggapan admin untuk laporan yang dipilih.* |
+| *submitPopupForm(dataPopupForm:FormTanggapan): Boolean* | *Public* | *Memvalidasi data formulir dan menampilkan konfirmasi jika data valid.* |
+| *tampilkanKonfirmasi(dataPopupForm:FormTanggapan)* | *Public* | *Menampilkan ringkasan tanggapan admin dan meminta konfirmasi sebelum penyimpanan.* |
+
+Tabel 5.13.2. Atribut Kelas TanggapanView
+
+| Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *dataPopupForm* | *Private* | *FormTanggapan :<statusTanggapan : Boolean, deskripsiTanggapan : String>* |
+
+
+
+
+## 5.20 Kelas TanggapanController
+
+**Nama Kelas:** *TanggapanController*  
+**ID Kelas:** *C20*
+
+Tabel 5.20.1. Operasi Kelas TanggapanController
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *validasiTanggapan(dataPopupForm:FormTanggapan): Boolean)* | *Public* | *Melakukan validasi/memeriksa apakah laporan yang diberikan oleh pengguna valid.* |
+| *simpanTanggapan(idLaporan:String, dataPopupForm:FormTanggapan): Boolean* | *Public* | *Mengatur proses penyimpanan tanggapan admin atas valid atau tidaknya suatu laporan.* |
+| *simpanStatus(idLaporan:String, statusLaporan:StatusLaporan (enum)): Boolean* | *Public* | *Mengatur proses penyimpanan status laporan yang ditetapkan oleh admin.* |
+
+
+### 5.20.1 Algoritma/Query
+
+**Nama Kelas:** *TanggapanController*  
+**Nama Operasi:** *validasiTanggapan(dataPopupForm:FormTanggapan): Boolean)*  
+**ID Algoritma:** *Algo-00?*
+
+```text
+ALGORITMA validasiTanggapan
+
+INPUT: dataPopupForm
+OUTPUT: Boolean
+
+1. statusTanggapan ← dataPopupForm.statusTanggapan
+2. IF statusTanggapan = TRUE THEN
+      RETURN true
+   ELSE
+      RETURN false
+   ENDIF
+```
+
+### 5.20.2 Algoritma/Query
+
+**Nama Kelas:** *TanggapanController*  
+**Nama Operasi:** *simpanTanggapan(idLaporan:String, dataPopupForm:FormTanggapan): Boolean*  
+**ID Algoritma:** *Algo-00?*
+
+```text
+ALGORITMA simpanTanggapan
+
+INPUT: idLaporan, dataPopupForm
+OUTPUT: Boolean
+
+1. Panggil validasiTanggapan(dataPopupForm).
+2. IF data tidak valid THEN
+      RETURN false
+   ENDIF
+3. Panggil Tanggapan.simpanTanggapan(idLaporan, dataPopupForm).
+4. RETURN hasil operasi penyimpanan.
+```
+
+
+### 5.20.3 Algoritma/Query
+
+**Nama Kelas:** *TanggapanController*  
+**Nama Operasi:** *simpanStatus(idLaporan:String, statusLaporan:StatusLaporan (enum)): Boolean*  
+**ID Algoritma:** *Algo-00?*
+
+```text
+ALGORITMA simpanStatus
+
+INPUT: idLaporan, statusPenanganan
+OUTPUT: Boolean
+
+1. Jalankan query UPDATE untuk memperbarui status penanganan laporan [Q-00X]
+2. IF pembaruan berhasil THEN
+      RETURN true
+   ELSE
+      RETURN false
+   ENDIF
+```
+
+Tabel 5.20.2. Query Operasi simpanStatus()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-00?* | *UPDATE laporan SET status_penanganan = $1 WHERE id_laporan = $2;* | *Memperbarui status penanganan laporan berdasarkan pilihan admin.* |
+
+$1 = statusLaporan
+$2 = idLaporan
+
+
+
+## 5.7 Kelas Tutorial
+
+**Nama Kelas:** *Tutorial*  
+**ID Kelas:** *C07*
+
+Tabel 5.7.1. Operasi Kelas Tutorial
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *getLangkahSaatIni(): Integer* | *Public* | *Mengembalikan nomor langkah tutorial yang sedang ditampilkan.* |
+| *getTotalLangkah(): Integer* | *Public* | *Mengembalikan jumlah seluruh langkah tutorial.* |
+
+
+
+
+Tabel 5.7.2. Atribut Kelas Tutorial
+
+| Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *langkahSaatIni* | *Private* | *Integer* |
+| *totalLangkah* | *Private* | *Integer* |
+
+
+### 5.7.1 Algoritma/Query
+
+**Nama Kelas:** *Tutorial*  
+**Nama Operasi:** *getLangkahSaatIni(): Integer*  
+**ID Algoritma:** *Algo-00?*
+
+```text
+ALGORITMA getLangkahSaatIni
+
+INPUT: -
+OUTPUT: Integer
+
+1. Ambil nilai atribut langkahSaatIni.
+2. Kembalikan nilai langkahSaatIni.
+```
+
+### 5.7.2 Algoritma/Query
+
+**Nama Kelas:** *Tutorial*  
+**Nama Operasi:** *getTotalLangkah(): Integer*  
+**ID Algoritma:** *Algo-00?*
+
+```text
+ALGORITMA getTotalLangkah
+
+INPUT: -
+OUTPUT: Integer
+
+1. Ambil nilai atribut totalLangkah.
+2. Kembalikan nilai totalLangkah.
+```
+
+
+
+## 5.14 Kelas TutorialView
+
+**Nama Kelas:** *TutorialView*  
+**ID Kelas:** *C14*
+
+Tabel 5.14.1. Operasi Kelas TutorialView
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *tampilkanTutorial()* | *Public* | *Menampilkan antarmuka tutorial.* |
+| *tampilkanLangkah(langkahSaatIni: Integer)* | *Public* | *Menampilkan langkah tutorial sesuai nomor langkah yang diberikan.* |
+| *tampilkanPesanError()* | *Public* | *Menampilkan pesan kesalahan jika tutorial gagal ditampilkan atau diproses.* |
+| *tutupTutorial()* | *Public* | *Menutup antarmuka tutorial.* |
+
+
+
+
+## 5.21 Kelas TutorialController
+
+**Nama Kelas:** *TutorialController*  
+**ID Kelas:** *C21*
+
+Tabel 5.21.1. Operasi Kelas TutorialController
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *startTutorial(): Boolean* | *Public* | *Menangani proses start tutorial.* |
+| *nextTutorial(): Boolean* | *Public* | *Menangani proses next tutorial.* |
+| *skipTutorial(): Boolean* | *Public* | *Menangani proses skip tutorial.* |
+| *finishTutorial(): Boolean* | *Public* | *Menangani proses finish tutorial.* |
+
+
+### 5.21.1 Algoritma/Query
+
+**Nama Kelas:** *TutorialController*  
+**Nama Operasi:** *startTutorial(): Boolean*  
+**ID Algoritma:** *Algo-00?*
+
+```text
+ALGORITMA startTutorial
+
+INPUT: -
+OUTPUT: Boolean
+
+1. langkahSaatIni = 1
+2. Tetapkan totalLangkah sesuai jumlah langkah tutorial.
+3. Panggil operasi tampilkanTutorial() pada TutorialView.
+4. Panggil operasi tampilkanLangkah(langkahSaatIni) pada TutorialView.
+5. IF tutorial berhasil diinisialisasi THEN
+      RETURN true
+   ELSE
+      RETURN false
+   ENDIF
+```
+
+### 5.21.2 Algoritma/Query
+
+**Nama Kelas:** *TutorialController*  
+**Nama Operasi:** *nextTutorial(): Boolean*  
+**ID Algoritma:** *Algo-00?*
+
+```text
+ALGORITMA nextTutorial
+
+INPUT: -
+OUTPUT: Boolean
+
+1. Ambil nilai langkahSaatIni dan totalLangkah dari objek Tutorial.
+2. IF langkahSaatIni < totalLangkah THEN
+      langkahSaatIni = langkahSaatIni + 1
+      Panggil operasi tampilkanLangkah(langkahSaatIni) pada TutorialView
+      RETURN true
+   ELSE
+      RETURN false
+   ENDIF
+```
+
+### 5.21.3 Algoritma/Query
+
+**Nama Kelas:** *TutorialController*  
+**Nama Operasi:** *skipTutorial(): Boolean*  
+**ID Algoritma:** *Algo-00?*
+
+```text
+ALGORITMA skipTutorial
+
+INPUT: -
+OUTPUT: Boolean
+
+1. Panggil TutorialView.tutupTutorial()
+2. IF tutorial berhasil ditutup THEN
+      RETURN true
+   ELSE
+      RETURN false
+   ENDIF
+```
+
+### 5.21.4 Algoritma/Query
+
+**Nama Kelas:** *TutorialController*  
+**Nama Operasi:** *finishTutorial(): Boolean*  
+**ID Algoritma:** *Algo-00?*
+
+```text
+ALGORITMA finishTutorial
+
+INPUT: -
+OUTPUT: Boolean
+
+1. IF langkahSaatIni != totalLangkah THEN
+      RETURN false
+   ENDIF
+2. statusTutorial = true
+3. Simpan perubahan statusTutorial ke database.
+4. IF penyimpanan berhasil THEN
+      Panggil TutorialView.tutupTutorial().
+      RETURN true
+   ELSE
+      RETURN false
+   ENDIF
+```
+
+
 
 <!--Bagian ini diisi dengan daftar seluruh kelas dalam tabel berikut:
 
