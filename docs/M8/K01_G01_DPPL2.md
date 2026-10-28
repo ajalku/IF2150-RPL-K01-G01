@@ -884,6 +884,7 @@ Tabel 5.5.3. Query Operasi upvote()
 | No Query | Query | Keterangan |
 | :--- | :--- | :--- |
 | *Q-00?* | *INSERT INTO upvote (id_pengguna, id_laporan, waktu_upvote, status_upvote) VALUES ($1, $2, CURRENT_TIMESTAMP, TRUE);* | *Menyimpan data upvote pengguna pada laporan* |
+
 $1 diisi dengan idPengguna, sedangkan $2 diisi dengan idLaporan.
 
 
@@ -1020,6 +1021,7 @@ Tabel 5.6.3. Query Operasi simpanTanggapan()
 | No Query | Query | Keterangan |
 | :--- | :--- | :--- |
 | *Q-00?* | *INSERT INTO tanggapan (id_laporan, status_tanggapan, waktu_tanggapan, deskripsi_tanggapan) VALUES ($1, $2, CURRENT_TIMESTAMP, $3);* | *Menyimpan hasil pemeriksaan validitas laporan, waktu tanggapan, dan deskripsi alasan jika laporan dinyatakan tidak valid.* |
+
 $1 = idLaporan
 $2 = statusTanggapan
 $3 = deskripsiTanggapan
