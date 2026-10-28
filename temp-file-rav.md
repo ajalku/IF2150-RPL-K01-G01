@@ -789,7 +789,7 @@ OUTPUT: Boolean
 
 ```
 
-Tabel 5.16.9. Query Operasi hapusLaporanOtomatis()
+Tabel 5.17.9. Query Operasi hapusLaporanOtomatis()
 
 | No Query | Query | Keterangan |
 | :--- | :--- | :--- |

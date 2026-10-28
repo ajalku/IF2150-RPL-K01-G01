@@ -54,7 +54,7 @@ Dipersiapkan oleh:
 # BAB 1: Pendahuluan
 
 ## 1.1 Tujuan Penulisan Dokumen
-Tuliskan dengan ringkas tujuan dokumen DPPL ini dibuat dan siapa saja yang akan menggunakan dokumen ini.
+Dokumen Deskripsi Perancangan Perangkat Lunak (DPPL) ini merupakan sebuah dokumen yang ditulis dengan tujuan memperoleh kejelasan untuk alur penggunaan dokumen agar perangkat lunak dapat dikembangkan sesuai alur pengguna seharusnya. Selain itu, dokumen ini juga ditulis untuk memperjelas spesifikasi teknis dan lingkungan (environment) perangkat lunak. Dokumen ini dapat digunakan oleh pengembang sebagai pemandu bagaimana perangkat lunak harus dibuat, dipertahankan, dan diuji. Bagi pengguna, dokumen ini dapat digunakan untuk memahami alur semestinya atau alternatif (terkaan) dari perangkat lunak.
 
 ## 1.2 Lingkup Masalah
 Guna membangun kota yang berkelanjutan, fasilitas publik yang aman dan universal menjadi instrumen utama yang tercantum pada Indikator SDG 11.7.1. Namun, pada kenyataannya fasilitas publik justru memiliki banyak catatan yang harus diperbaiki. Mulai dari infrastruktur layanan publik yang terbengkalai, akses jalan yang tidak ramah pejalan kaki, hingga maraknya aksi vandalisme. Sudah banyak metode untuk melaporkan fasilitas publik yang rusak, namun masih berjalan satu arah. Oleh karena itu, website RAWAT (Ruang Aspirasi Warga dan Aduan Terpadu) hadir untuk memfasilitasi sistem pelaporan yang lebih modern dan interaktif. Website ini diharapkan dapat meningkatkan _awareness_ masyarakat tentang kondisi fasilitas dan berkolaborasi dalam permintaan perbaikan fasilitas publik. Melalui fitur-fitur interaktif selayaknya media sosial, warga tidak hanya dapat menyampaikan laporan tetapi juga saling memvalidasi laporan, memberikan tanggapan, dan membangun kepedulian bersama terhadap fasilitas publik.
@@ -75,7 +75,7 @@ Tabel 1.3. Definisi Istilah dan Singkatan
 
 
 ## 1.4 Aturan Penomoran
-Tuliskan aturan penomoran (ID) yang digunakan dalam dokumen ini. Gunakan pola ID yang **sama** dengan yang sudah dipakai pada dokumen-dokumen sebelumnya, jangan membuat pola baru di dokumen ini.
+<!-- Tuliskan aturan penomoran (ID) yang digunakan dalam dokumen ini. Gunakan pola ID yang **sama** dengan yang sudah dipakai pada dokumen-dokumen sebelumnya, jangan membuat pola baru di dokumen ini. -->
 
 Tabel 1.4. Aturan Penomoran
 
@@ -425,6 +425,365 @@ OUTPUT: Atribut kelas
 
 RETURN [Atribut]
 ```
+
+
+## 5.2 Kelas Homepage
+
+**Nama Kelas:** *Homepage*  
+**ID Kelas:** *C02*
+
+Tabel 5.2.1. Operasi Kelas Homepage
+
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *getDaftarLaporan() : daftarLaporan* | *Public* | *Mengambil daftar laporan untuk nantinya ditunjukkan ke pengguna, mengembalikan daftar laporan* |
+| *refreshPage()* | *Public* | *Memuat ulang homepage sesuai permintaan pengguna, berupa prosedur yang akan melakukan ulang langkah-langkah serupa seperti ketika membuka Homepage* |
+| *getSortBy(daftarLaporan: array [...] of laporan, sortBy: string) : daftarLaporan* | *Public* | *Mengurutkan laporan berdasarkan permintaan pengguna (popularitas, waktu, lokasi)* |
+<!-- | *[Signature operasi, termasuk parameter dan tipe kembalian]* | *[Visibility]* | *[Tanggung jawab operasi]* | -->
+
+Tabel 5.2.2. Atribut Kelas Homepage
+
+| Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *sortBy* | *Private* | *string* |
+| *daftarLaporan* | *Private* | *array [...] of laporan* |
+| *sortType* | *Private* | *SortType (enum)* |
+| *filterBy* | *Private* | *string* |
+| *...* | *...* | *...* |
+<!-- | *[Nama atribut]* | *[Visibility]* | *[Tipe sesuai bahasa pemrograman yang digunakan]* | -->
+
+### 5.2.1 Algoritma/Query
+
+**Nama Kelas:** *Homepage*  
+**Nama Operasi:** *getDaftarLaporan()*  
+**ID Algoritma:** *Algo-005*
+
+```text
+ALGORITMA getDaftarLaporan
+
+INPUT: Tidak ada
+OUTPUT: daftarLaporan atau null
+
+1. Jalankan query SELECT untuk mengambil seluruh data laporan [Q-005]
+2. IF ada 1 atau lebih laporan THEN
+        RETURN daftarLaporan
+   ELSE
+        RETURN null
+   ENDIF
+```
+
+Tabel 5.2.1. Query Operasi getDaftarLaporan()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-005* | *SELECT * FROM daftarLaporan* | *Mengambil seluruh laporan yang ada* |
+| *...* | *...* | *...* |
+
+### 5.2.2 Algoritma/Query
+
+<!-- *[Ulangi pola 5.1.1 untuk operasi penting berikutnya pada kelas yang sama, jika ada.]* -->
+
+**Nama Kelas:** *Homepage*
+**Nama Operasi:** getSortBy(daftarLaporan, sortBy)
+**ID Algoritma:** *Algo-006*
+
+```text
+ALGORITMA getSortBy
+
+INPUT: daftarLaporan, sortBy
+OUTPUT: daftarLaporan atau null
+
+1. Ambil daftar laporan yang terdapat di homepage
+2. Jalankan query SELECT dan ORDER BY untuk mengurutkan laporan [Q-006]
+3. RETURN daftarLaporan
+```
+Tabel 5.2.1. Query Operasi getDaftarLaporan()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-006* | *SELECT * FROM laporan ORDER BY waktuLapor ASC* | *Contoh query jika ingin mengurutkan daftar laporan menaik berdasarkan waktuLapor* |
+| *...* | *...* | *...* |
+
+
+## 5.3 Kelas Laporan
+
+**Nama Kelas:** *Laporan*  
+**ID Kelas:** *C03*
+
+Tabel 5.3.1. Operasi Kelas Laporan
+
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *getDetailLaporan(idLaporan: String) : laporan* | *Public* | *Memberikan detail laporan berdasarkan lapo_ran yang diberikan* |
+| *updateStatusLaporan(idLaporan: String, statusLaporan: StatusLaporan) : Boolean* | *Public* | *Memperbarui status laporan (BELUM_DILIHAT/DILIHAT/DIPERBAIKI/SELESAI), True jika berhasil, False jika gagal* |
+| *hapusLaporan(idLaporan: String) : Boolean* | *Public* | *Menghapus laporan berdasarkan idLaporan, True jika berhasil, False jika gagal* |
+| *simpanLaporan(namaMasalah: string, kategori: string, tingkatPermasalahan: TingkatPermasalahan, statusPrivasi: StatusPrivasi, foto: File, deskripsi: string, titikLokasi: Koordinat) : Boolean* | *Public* | *Menyimpan data laporan baru ke database, mengembalikan True jika berhasil tersimpan dan False jika tidak* |
+| *tambahUpvote(idLaporan: String) : Boolean* | *Public* | *Menambahkan upvote yang berada dalam sebuah laporan, True jika berhasil menambahkan, False jika gagal* |
+| *hitungSkorPopularitas(idLaporan: String) : Real* | *Public* | *Menghitung skor popularitas sebuah laporan, mengembalikan skor tersebut (bilangan real)* |
+| *getJumlahUpvote(idLaporan: String) : Integer* | *Public* | *Memberikan jumlah upvote sebuah laporan, berupa integer* |
+| *getSkorPopuler(idLaporan: String) : Real* | *Public* | *Memberikan skor popularitas sebuah laporan* |
+||||
+
+Tabel 5.3.2. Atribut Kelas Laporan
+
+| Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *laporan* | *Private* | *Laporan: <idLaporan: String, namaMasalah: String, kategori: String, tingkatPermasalahan: TingkatPermasalahan (enum), statusPrivasi: StatusPrivasi (enum), foto: File, deskripsi: String, statusLaporan: StatusLaporan (enum), titikLokasi: Koordinat, bobotUrgensi: Real, jumlahUpvote: Integer, skorPopuler: Real, skorUrgensi: Real>* |
+| *idLaporan* | *Private* | *String* |
+| *namaMasalah* | *Private* | *String* |
+| *kategori* | *Private* | *String* |
+| *tingkatPermasalahan* | *Private* | *TingkatPermasalahan (enum)* |
+| *statusPrivasi* | *Private* | *StatusPrivasi (enum)* |
+| *foto* | *Private* | *File* |
+| *deskripsi* | *Private* | *String* |
+| *statusLaporan* | *Private* | *StatusLaporan (enum)* |
+| *titikLokasi* | *Private* | *Koordinat: <latitude : Real, longitude : Real>* |
+| *bobotUrgensi* | *Private* | *Real* |
+| *jumlahUpvote* | *Private* | *Integer* |
+| *skorPopuler* | *Private* | *Real* |
+| *skorUrgensi* | *Private* | *Real* |
+| *batasWaktu* | *Private* | *Timestamp* |
+||||
+<!-- | *[Nama atribut]* | *[Visibility]* | *[Tipe sesuai bahasa pemrograman yang digunakan]* | -->
+
+### 5.3.1 Algoritma/Query
+
+**Nama Kelas:** *Laporan*  
+**Nama Operasi:** *getDetailLaporan(idLaporan: String) : laporan*  
+**ID Algoritma:** *Algo-007*
+
+```text
+ALGORITMA getDetailLaporan
+
+INPUT: idLaporan
+OUTPUT: laporan
+
+1. Jalankan query SELECT untuk mengambil detail laporan berdasarkan ID [Q-007]
+2. IF laporan ditemukan THEN
+        RETURN laporan
+   ELSE
+        RETURN null
+   ENDIF
+```
+
+Tabel 5.3.3. Query Operasi getDetailLaporan()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-007* | *SELECT * FROM daftarLaporan WHERE idLaporan = $1* | *Mencari laporan berdasarkan idLaporan* |
+||||
+
+### 5.3.2 Algoritma/Query
+**Nama Kelas:** *Laporan*  
+**Nama Operasi:** *updateStatusLaporan(idLaporan: String, statusLaporan: StatusLaporan) : Boolean*  
+**ID Algoritma:** *Algo-008*
+
+```text
+ALGORITMA updateStatusLaporan
+
+INPUT: idLaporan, statusLaporan
+OUTPUT: Boolean
+
+1. Jalankan query UPDATE berdasarkan statusLaporan dan idLaporan [Q-008]
+2. IF perubahan berhasil THEN
+        RETURN true
+   ELSE
+        RETURN false
+   ENDIF
+```
+
+Tabel 5.3.4. Query Operasi updateStatusLaporan()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-008* | *UPDATE laporan SET statusLaporan = $1 WHERE idLaporan = $2* | *Memperbarui statusLaporan* |
+||||
+
+### 5.3.3 Algoritma/Query
+**Nama Kelas:** *Laporan*  
+**Nama Operasi:** *hapusLaporan(idLaporan: String) : Boolean*  
+**ID Algoritma:** *Algo-009*
+
+```text
+ALGORITMA hapusLaporan
+
+INPUT: idLaporan
+OUTPUT: Boolean
+
+1. Jalankan query DELETE berdasarkan idLaporan [Q-009]
+2. IF satu record laporan berhasil dihapus THEN
+        RETURN true
+   ELSE
+        RETURN false
+   ENDIF
+```
+
+Tabel 5.3.5. Query Operasi hapusLaporan()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-009* | *DELETE FROM laporan WHERE idLaporan = $1* | *Menghapus data laporan berdasarkan ID* |
+||||
+
+### 5.3.4 Algoritma/Query
+**Nama Kelas:** *Laporan*  
+**Nama Operasi:** *simpanLaporan(namaMasalah: string, kategori: string, tingkatPermasalahan: TingkatPermasalahan, statusPrivasi: StatusPrivasi, foto: File, deskripsi: string, titikLokasi: Koordinat) : Boolean*  
+**ID Algoritma:** *Algo-010*
+
+```text
+ALGORITMA simpanLaporan
+
+INPUT: namaMasalah, kategori, tingkatPermasalahan, statusPrivasi, foto, deskripsi, titikLokasi
+OUTPUT: Boolean
+
+1. IF namaMasalah = null THEN
+     RETURN false
+   ENDIF
+
+2. IF kategori = null THEN
+     RETURN false
+   ENDIF
+
+3. IF tingkatPermasalahan = null THEN
+     RETURN false
+   ENDIF
+
+4. IF statusPrivasi = null THEN
+     RETURN false
+   ENDIF
+
+5. IF foto != null THEN
+     Tambahkan foto ke daftar pembaruan list laporan
+   ENDIF
+
+6. IF deskripsi != null THEN
+     Tambahkan deskripsi ke daftar pembaruan list laporan
+   ENDIF
+
+7. IF titikLokasi = null THEN
+     RETURN false
+   ENDIF
+
+8. Jalankan query INSERT untuk menyimpan data pengguna [Q-010]
+
+9. IF penyimpanan berhasil THEN
+     RETURN true
+   ELSE
+     RETURN false
+   ENDIF
+```
+
+Tabel 5.3.6. Query Operasi simpanLaporan()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-010* | *INSERT INTO laporan (namaMasalah, kategori, tingkatPermasalahan, statusPrivasi, titikLokasi) VALUES ($1, $2, $3, $4, $5)* | *Menyimpan data laporan baru ke database* |
+||||
+
+### 5.3.5 Algoritma/Query
+**Nama Kelas:** *Laporan*  
+**Nama Operasi:** *tambahUpvote(idLaporan: String) : Boolean*  
+**ID Algoritma:** *Algo-011*
+
+```text
+ALGORITMA simpanLaporan
+
+INPUT: idLaporan
+OUTPUT: Boolean
+
+1. Jalankan query UPDATE untuk menambahkan upvote [Q-011]
+2. IF penambahan berhasil THEN
+     RETURN true
+   ELSE
+     RETURN false
+   ENDIF
+
+```
+
+Tabel 5.3.7. Query Operasi tambahUpvote()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-011* | *UPDATE laporan SET jumlah_upvote = jumlah_upvote + 1 WHERE idLaporan = $1* | *Menambahkan jumlahUpvote sebuah laporan* |
+||||
+
+### 5.3.6 Algoritma/Query
+**Nama Kelas:** *Laporan*  
+**Nama Operasi:** *getJumlahUpvote(idLaporan: String) : Integer*  
+**ID Algoritma:** *Algo-012*
+
+```text
+ALGORITMA getJumlahUpvote
+
+INPUT: idLaporan
+OUTPUT: Integer
+
+1. Jalankan query SELECT untuk mendapatkan jumlah upvote [Q-012]
+2. IF pengambilan berhasil THEN
+     RETURN jumlahUpvote
+   ELSE
+     RETURN null
+   ENDIF
+
+```
+
+Tabel 5.3.8. Query Operasi getJumlahUpvote()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-012* | *SELECT jumlah_upvote FROM laporan WHERE id_laporan = $1* | *Mengambil jumlahUpvote sebuah laporan* |
+||||
+
+### 5.3.7 Algoritma/Query
+**Nama Kelas:** *Laporan*  
+**Nama Operasi:** *getSkorPopuler(idLaporan: String) : Real*  
+**ID Algoritma:** *Algo-013*
+
+```text
+ALGORITMA getSkorPopuler
+
+INPUT: idLaporan
+OUTPUT: Real
+
+1. Jalankan query SELECT untuk mendapatkan skor populer [Q-013]
+2. IF pengambilan berhasil THEN
+     RETURN skorPopuler
+   ELSE
+     RETURN null
+   ENDIF
+
+```
+
+Tabel 5.3.9. Query Operasi getSkorPopuler()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-013* | *SELECT skor_populer FROM laporan WHERE id_laporan = $1* | *Mengambil skorPopuler sebuah laporan* |
+||||
+
+### 5.3.8 Algoritma/Query
+**Nama Kelas:** *Laporan*
+**Nama Operasi:** *hitungSkorPopularitas(idLaporan: String) : Real*
+**ID Algoritma:** *Algo-014*
+
+```text
+ALGORITMA hitungSkorPopularitas
+
+INPUT: idLaporan
+OUTPUT: Real
+
+1. Jalankan getSkorPopuler(idLaporan)
+2. Jalankan operasi untuk menghitung skor populer
+3. Kembalikan skor populer
+```
+
+Tabel 5.3.9. Query Operasi hitungSkorPopularitas()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *-* | *-* | *-* |
+||||
+
 ## 5.4 Kelas Lokasi
 
 **Nama Kelas:** *Lokasi*  
@@ -458,6 +817,165 @@ OUTPUT: latitude: Real, longtiude: Real
 Ambil atribut latitude dan longitude dari objek Lokasi saat ini.
 RETURN {latitude, longitude}
 ```
+
+## 5.5 Kelas Upvote
+
+**Nama Kelas:** *Upvote*  
+**ID Kelas:** *C05*
+
+Tabel 5.5.1. Operasi Kelas Upvote
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *upvote(idPengguna:String, idLaporan:String) : Boolean* | *Public* | *Menyimpan data upvote yang dilakukan oleh pengguna pada suatu laporan.* |
+
+
+
+
+Tabel 5.5.2. Atribut Kelas Upvote
+
+| Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *waktuUpvote* | *Private* | *Timestamp* |
+| *statusUpvote* | *Private* | *Boolean* |
+
+
+### 5.5.1 Algoritma/Query
+
+**Nama Kelas:** *Upvote*  
+**Nama Operasi:** *simpanDataPengguna(nama : String, NIK : String, email : String, hashPassword : String, noTelp : String) : Boolean*  
+**ID Algoritma:** *Algo-00?*
+
+```text
+ALGORITMA upvote
+
+INPUT: idPengguna, idLaporan
+OUTPUT: Boolean
+
+1. Ambil waktu saat upvote dilakukan.
+2. Tetapkan statusUpvote menjadi true.
+3. Jalankan query INSERT untuk menyimpan data upvote. [Q-XXX]
+4. IF penyimpanan berhasil THEN
+      RETURN true
+   ELSE
+      RETURN false
+   ENDIF
+```
+Tabel 5.5.3. Query Operasi upvote()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-00?* | *INSERT INTO upvote (id_pengguna, id_laporan, waktu_upvote, status_upvote) VALUES ($1, $2, CURRENT_TIMESTAMP, TRUE);* | *Menyimpan data upvote pengguna pada laporan* |
+
+$1 diisi dengan idPengguna, sedangkan $2 diisi dengan idLaporan.
+
+
+## 5.6 Kelas Tanggapan
+
+**Nama Kelas:** *Tanggapan*  
+**ID Kelas:** *C06*
+
+Tabel 5.6.1. Operasi Kelas Tanggapan
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *simpanTanggapan(idLaporan:String, dataPopupForm:FormTanggapan): Boolean* | *Public* | *Menyimpan data tanggapan admin atas suatu laporan.* |
+
+
+
+
+Tabel 5.6.2. Atribut Kelas Tanggapan
+
+| Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *statusTanggapan* | *Private* | *Boolean* |
+| *waktuTanggapan* | *Private* | *Timestamp* |
+| *deskripsiTanggapan* | *Private* | *String* |
+
+
+### 5.6.1 Algoritma/Query
+
+**Nama Kelas:** *Tanggapan*  
+**Nama Operasi:** *simpanTanggapan(idLaporan:String, dataPopupForm:FormTanggapan): Boolean*  
+**ID Algoritma:** *Algo-00?*
+
+```text
+ALGORITMA simpanTanggapan
+
+INPUT: idLaporan, dataPopupForm
+OUTPUT: Boolean
+
+1. Ambil statusTanggapan dan deskripsiTanggapan dari dataPopupForm.
+2. Jalankan query INSERT untuk menyimpan tanggapan. [Q-XXX]
+3. IF penyimpanan berhasil THEN
+      RETURN true
+   ELSE
+      RETURN false
+   ENDIF
+```
+Tabel 5.6.3. Query Operasi simpanTanggapan()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-00?* | *INSERT INTO tanggapan (id_laporan, status_tanggapan, waktu_tanggapan, deskripsi_tanggapan) VALUES ($1, $2, CURRENT_TIMESTAMP, $3);* | *Menyimpan hasil pemeriksaan validitas laporan, waktu tanggapan, dan deskripsi alasan jika laporan dinyatakan tidak valid.* |
+
+$1 = idLaporan
+$2 = statusTanggapan
+$3 = deskripsiTanggapan
+
+
+## 5.7 Kelas Tutorial
+
+**Nama Kelas:** *Tutorial*  
+**ID Kelas:** *C07*
+
+Tabel 5.7.1. Operasi Kelas Tutorial
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *getLangkahSaatIni(): Integer* | *Public* | *Mengembalikan nomor langkah tutorial yang sedang ditampilkan.* |
+| *getTotalLangkah(): Integer* | *Public* | *Mengembalikan jumlah seluruh langkah tutorial.* |
+
+
+
+
+Tabel 5.7.2. Atribut Kelas Tutorial
+
+| Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *langkahSaatIni* | *Private* | *Integer* |
+| *totalLangkah* | *Private* | *Integer* |
+
+
+### 5.7.1 Algoritma/Query
+
+**Nama Kelas:** *Tutorial*  
+**Nama Operasi:** *getLangkahSaatIni(): Integer*  
+**ID Algoritma:** *Algo-00?*
+
+```text
+ALGORITMA getLangkahSaatIni
+
+INPUT: -
+OUTPUT: Integer
+
+1. Ambil nilai atribut langkahSaatIni.
+2. Kembalikan nilai langkahSaatIni.
+```
+
+### 5.7.2 Algoritma/Query
+
+**Nama Kelas:** *Tutorial*  
+**Nama Operasi:** *getTotalLangkah(): Integer*  
+**ID Algoritma:** *Algo-00?*
+
+```text
+ALGORITMA getTotalLangkah
+
+INPUT: -
+OUTPUT: Integer
+
+1. Ambil nilai atribut totalLangkah.
+2. Kembalikan nilai totalLangkah.
+```
+
 ## 5.8 Kelas PenggunaView
 
 **Nama Kelas:** *PenggunaView*  
@@ -484,6 +1002,61 @@ Tabel 5.8.2. Atribut Kelas PenggunaView
 | :--- | :--- | :--- |
 | *-* | *-* | *-* |
 
+## 5.9 Kelas HomepageView
+
+**Nama Kelas:** *HomepageView*  
+**ID Kelas:** *C09*
+
+Tabel 5.9.1. Operasi Kelas HomepageView
+
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *tampilkanHomepage()* | *Public* | *Menampilkan homepage untuk pengguna, berupa prosedur tanpa parameter masukan* |
+| *pilihFilter()* | *Public* | *Memilih filter dari pengguna |
+| *tampilkanDaftarLaporan()* | *Public* | *Menampilkan daftar laporan untuk pengguna, berupa prosedur tanpa parameter masukan* |
+| *tampilkanMenuFilterLaporan()* | *Public* | *Memilih filter dari pengguna, menghasilkan keluaran filterBy* |
+||||
+
+<!-- | *[Signature operasi, termasuk parameter dan tipe kembalian]* | *[Visibility]* | *[Tanggung jawab operasi]* | -->
+
+Tabel 5.9.2. Atribut Kelas HomepageView
+
+| Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *-* | *-* | *-* |
+||||
+
+
+## 5.10 Kelas LaporanView
+
+**Nama Kelas:** *LaporanView*  
+**ID Kelas:** *C10*
+
+Tabel 5.10.1. Operasi Kelas LaporanView
+
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *tampilkanDetailLaporan()* | *Public* | *Menampilkan detail laporan untuk pengguna* |
+| *tampilkanTanggapanTeratas()* | *Public* | *Menampilkan tanggapan teratas untuk pengguna* |
+| *tampilkanForm()* | *Public* | *Menampilkan form untuk diisi pengguna* |
+| *tampilkanErrorMsg()* | *Public* | *Menampilkan error message* |
+| *tampilkanKonfirmasi()* | *Public* | *Menampilkan konfirmasi untuk menyimpan laporan bagi pengguna* |
+| *tampilkanPesanBerhasil()* | *Public* | *Menampilkan pesan berhasil bagi pengguna* |
+| *klikPost(dataForm)* | *Public* | *Pengklikan tombol post dari pengguna* |
+| *klikYa(dataForm)* | *Public* | *Konfirmasi untuk post laporan dari pengguna* |
+| *klikTidak()* | *Public* | *Konfirmasi untuk tidak jadi menge-post laporan dari pengguna* |
+||||
+
+<!-- | *[Signature operasi, termasuk parameter dan tipe kembalian]* | *[Visibility]* | *[Tanggung jawab operasi]* | -->
+
+Tabel 5.10.2. Atribut Kelas LaporanView
+
+| Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *dataForm* | *Private* | *Laporan* |
+||||
+
+
 ## 5.11 Kelas LokasiView
 
 **Nama Kelas:** *LokasiView*  
@@ -505,6 +1078,53 @@ Tabel 5.11.2. Atribut Kelas LokasiView
 | Nama Atribut | Visibility (private, public) | Tipe |
 | :--- | :--- | :--- |
 | *map* | *Private* | *Object* |
+
+## 5.12 Kelas UpvoteView
+
+**Nama Kelas:** *UpvoteView*  
+**ID Kelas:** *C12*
+
+Tabel 5.12.1. Operasi Kelas UpvoteView
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *klikUpvote()* | *Public* | *Menangani interaksi pengguna saat menekan tombol upvote.* |
+| *tampilkanJumlahUpvote(jumlahUpvote: Integer)* | *Public* | *Menampilkan jumlah upvote dari suatu laporan.* |
+| *tampilkanPesanError()* | *Public* | *Menampilkan pesan error jika upvote tidak berhasil diproses.* |
+| *updateUpvoteButton(statusUpvote: Boolean)* | *Public* | *Memperbarui tampilan tombol upvote berdasarkan status upvote.* |
+
+
+## 5.13 Kelas TanggapanView
+
+**Nama Kelas:** *TanggapanView*  
+**ID Kelas:** *C13*
+
+Tabel 5.13.1. Operasi Kelas TanggapanView
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *tampilkanPopup(idLaporan:String)* | *Public* | *Menampilkan formulir tanggapan admin untuk laporan yang dipilih.* |
+| *submitPopupForm(dataPopupForm:FormTanggapan): Boolean* | *Public* | *Memvalidasi data formulir dan menampilkan konfirmasi jika data valid.* |
+| *tampilkanKonfirmasi(dataPopupForm:FormTanggapan)* | *Public* | *Menampilkan ringkasan tanggapan admin dan meminta konfirmasi sebelum penyimpanan.* |
+
+Tabel 5.13.2. Atribut Kelas TanggapanView
+
+| Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *dataPopupForm* | *Private* | *FormTanggapan :<statusTanggapan : Boolean, deskripsiTanggapan : String>* |
+
+
+## 5.14 Kelas TutorialView
+
+**Nama Kelas:** *TutorialView*  
+**ID Kelas:** *C14*
+
+Tabel 5.14.1. Operasi Kelas TutorialView
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *tampilkanTutorial()* | *Public* | *Menampilkan antarmuka tutorial.* |
+| *tampilkanLangkah(langkahSaatIni: Integer)* | *Public* | *Menampilkan langkah tutorial sesuai nomor langkah yang diberikan.* |
+| *tampilkanPesanError()* | *Public* | *Menampilkan pesan kesalahan jika tutorial gagal ditampilkan atau diproses.* |
+| *tutupTutorial()* | *Public* | *Menutup antarmuka tutorial.* |
+
 
 ## 5.15 Kelas PenggunaController
 
@@ -736,6 +1356,376 @@ statusTutorial <- Pengguna.sudahLihatTutorial()
 RETURN statusTutorial
 ```
 
+
+## 5.16 Kelas HomepageController
+
+**Nama Kelas:** *HomepageController*  
+**ID Kelas:** *C16*
+
+Tabel 5.16.1. Operasi Kelas HomepageController
+
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *loadHomepage()* | *Public* | *Memuat homepage, prosedur tanpa parameter yang dilakukan ketika pengguna memulai sesi baru di aplikasi* |
+| *pilihLaporan()* | *Public* | *Memilih laporan berdasarkan aksi pengguna* |
+| *urutkanLaporan(daftarLaporan: array [...] of laporan, sortBy: string, sortType: SortType): Boolean* | *Public* | *Mengurutkan laporan berdasarkan pilihan pengguna dengan sortType yang dipilih (ASC/DESC)* |
+| *filterLaporan(daftarLaporan: array [...] of laporan, filterBy: string): Boolean* | *Public* | *Memfilter laporan berdasarkan pilihan pengguna* |
+| *ambilListLaporan(): array [...] of laporan* | *Public* | *Mengambil daftar laporan yang tersedia* |
+||||
+
+<!-- | *[Signature operasi, termasuk parameter dan tipe kembalian]* | *[Visibility]* | *[Tanggung jawab operasi]* | -->
+
+Tabel 5.16.2. Atribut Kelas HomepageController
+
+| Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *-* | *-* | *-* |
+||||
+
+### 5.16.1 Algoritma/Query
+
+<!-- ID ALGORITMA PERLU DIGANTI -->
+**Nama Kelas:** *HomepageController*  
+**Nama Operasi:** *urutkanLaporan(daftarLaporan: array [...] of laporan, sortBy: string, sortType: SortType): Boolean*  
+**ID Algoritma:** *[Algo-00X]*
+
+<!-- ID QUERY PERLU DIGANTI -->
+```text
+ALGORITMA urutkanLaporan
+
+INPUT: daftarLaporan, sortBy, sortType
+OUTPUT: Boolean
+
+1. Jalankan query SELECT dan ORDER BY untuk melakukan sorting pada daftar laporan [Q-00X]
+2. IF sorting berhasil THEN
+     RETURN true
+   ELSE
+     RETURN false
+   ENDIF
+
+```
+
+Tabel 5.16.3. Query Operasi urutkanLaporan()
+
+<!-- ID QUERY PERLU DIGANTI -->
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-00x* | *SELECT * FROM laporan ORDER BY waktuLapor ASC* | *Contoh query jika ingin mengurutkan daftar laporan menaik berdasarkan waktuLapor* |
+||||
+
+### 5.16.2 Algoritma/Query
+
+<!-- ID ALGORITMA PERLU DIGANTI -->
+**Nama Kelas:** *HomepageController*  
+**Nama Operasi:** *filterLaporan(daftarLaporan: array [...] of laporan, filterBy: string): Boolean*
+**ID Algoritma:** *[Algo-00X]*
+
+<!-- ID QUERY PERLU DIGANTI -->
+```text
+ALGORITMA filterLaporan
+
+INPUT: daftarLaporan, filterBy
+OUTPUT: Boolean
+
+1. Jalankan query SELECT untuk melakukan filtering pada daftar laporan [Q-00X]
+2. IF filtering berhasil THEN
+     RETURN true
+   ELSE
+     RETURN false
+   ENDIF
+
+```
+
+Tabel 5.16.4. Query Operasi filterLaporan()
+
+<!-- ID QUERY PERLU DIGANTI -->
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-00x* | *SELECT * FROM laporan WHERE kategori = $1* | *Contoh query jika ingin memfilter laporan berdasarkan kategori* |
+||||
+
+### 5.16.3 Algoritma/Query
+<!-- ID ALGORITMA PERLU DIGANTI -->
+**Nama Kelas:** *HomepageController*  
+**Nama Operasi:** *ambilListLaporan(): array [...] of laporan* 
+**ID Algoritma:** *Algo-00X*
+
+<!-- ID QUERY PERLU DIGANTI -->
+```text
+ALGORITMA filterLaporan
+
+INPUT: daftarLaporan, filterBy
+OUTPUT: Boolean
+
+1. Jalankan query SELECT untuk mengambil daftarLaporan [Q-00X]
+2. IF laporan >= 1 THEN
+     RETURN daftarLaporan
+   ELSE
+     RETURN []
+   ENDIF
+
+```
+
+Tabel 5.16.4. Query Operasi filterLaporan()
+
+<!-- ID QUERY PERLU DIGANTI -->
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-00x* | *SELECT * FROM laporan* | *Mengambil daftar laporan* |
+||||
+
+# 5.17 Kelas LaporanController
+
+**Nama Kelas:** *LaporanController*  
+**ID Kelas:** *C17*
+
+Tabel 5.17.1. Operasi Kelas LaporanController
+
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *lihatDetailLaporan(laporan: Laporan)* | *Public* | *Menampilkan detail laporan sesuai permintaan pengguna* |
+| *ambilDetailLaporan(idLaporan: String): laporan* | *Public* | *Memberikan detail laporan yang diminta, mengembalikan laporan* |
+| *validasiKelengkapanData(namaMasalah: string, kategori: string, tingkatPermasalahan: TingkatPermasalahan, statusPrivasi: StatusPrivasi, titikLokasi: Koordinat) : Boolean* | *Public* | *Memeriksa kelengkapan data laporan yang ingin dilaporkan. Mengembalikan true bila data yang diperlukan lengkap* |
+| *validasiFoto(foto: File) : Boolean* | *Public* | *Mengembalikan true jika format foto valid (JPG, JPEG, PNG)* |
+| *buatIdUnik() : String* | *Public* | *Membuat ID unik setiap kali membuat laporan* |
+| *simpanLaporan(namaMasalah: string, kategori: string, tingkatPermasalahan: TingkatPermasalahan, statusPrivasi: StatusPrivasi, foto: File, deskripsi: string, titikLokasi: Koordinat) : Boolean* | *Public* | *Menyimpan data laporan baru ke database, mengembalikan True jika berhasil tersimpan dan False jika tidak* |
+| *updateStatusLaporan(idLaporan: String, statusLaporan: StatusLaporan) : Boolean* | *Public* | *Memperbarui status laporan (BELUM_DILIHAT/DILIHAT/DIPERBAIKI/SELESAI), True jika berhasil, False jika gagal* |
+| *kirimPermintaanKonfirmasi()* | *Public* | *Mengirim permintaan konfirmasi untuk menyimpan laporan* |
+| *setBatasWaktu2Minggu(idLaporan: String)* | *Public* | *Mengeset batas waktu 2 minggu untuk laporan yang tidak valid sebelum dihapus otomatis* |
+| *cekBatasWaktu(idLaporan: String): Boolean* | *Public* | *Mengecek apabila batas waktu untuk laporan yang tidak valid sudah terlewati atau belum, mengembalikan True jika sudah lewat batas waktu* |
+| *hapusLaporanOtomatis(idLaporan: String): Boolean* | *Public* | *Menghapus laporan otomatis apabila sudah melewati batas waktu* |
+||||
+
+Tabel 5.1.2. Atribut Kelas LaporanController
+
+| Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *-* | *-* | *-* |
+||||
+
+## 5.17.1 Algoritma/Query
+
+<!-- ID ALGORITMA PERLU DIGANTI -->
+**Nama Kelas:** *LaporanController*  
+**Nama Operasi:** *validasiKelengkapanData(namaMasalah: string, kategori: string, tingkatPermasalahan: TingkatPermasalahan, statusPrivasi: StatusPrivasi, titikLokasi: Koordinat) : Boolean*  
+**ID Algoritma:** *Algo-00X*
+
+```text
+ALGORITMA validasiKelengkapanData
+
+INPUT: namaMasalah, kategori, tingkatPermasalahan, statuPrivasi, titikLokasi
+OUTPUT: Boolean
+
+1. IF namaMasalah = null THEN RETURN False
+   ELSE IF kategori = null THEN RETURN False
+   ELSE IF tingkatPermasalahan = null THEN RETURN False
+   ELSE IF statusPrivasi = null THEN RETURN False
+   ELSE IF titik lokasi = null THEN RETURN False
+   ELSE RETURN True
+```
+
+Tabel 5.16.3. Query Operasi validasiKelengkapanData()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *-* | *-* | *-* |
+||||
+
+## 5.17.2 Algoritma/Query
+
+<!-- ID ALGORITMA PERLU DIGANTI -->
+**Nama Kelas:** *LaporanController*  
+**Nama Operasi:** *validasiFoto(foto: File) : Boolean*  
+**ID Algoritma:** *Algo-00X*
+
+```text
+ALGORITMA validasiFoto
+
+INPUT: foto
+OUTPUT: Boolean
+
+1. IF foto memiliki format JPG/JPEG/PNG THEN
+      RETURN True
+   ELSE
+      RETURN False
+```
+
+Tabel 5.16.4. Query Operasi validasiKelengkapanData()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *-* | *-* | *-* |
+||||
+
+## 5.17.3 Algoritma/Query
+
+**Nama Kelas:** *LaporanController*
+**Nama Operasi:** *simpanLaporan(namaMasalah: string, kategori: string, tingkatPermasalahan: TingkatPermasalahan, statusPrivasi: StatusPrivasi, foto: File, deskripsi: string, titikLokasi: Koordinat) : Boolean*  
+**ID Algoritma:** *Algo-010*
+
+```text
+ALGORITMA simpanLaporan
+
+INPUT: namaMasalah, kategori, tingkatPermasalahan, statusPrivasi, foto, deskripsi, titikLokasi
+OUTPUT: Boolean
+
+1. IF namaMasalah = null THEN
+     RETURN false
+   ENDIF
+
+2. IF kategori = null THEN
+     RETURN false
+   ENDIF
+
+3. IF tingkatPermasalahan = null THEN
+     RETURN false
+   ENDIF
+
+4. IF statusPrivasi = null THEN
+     RETURN false
+   ENDIF
+
+5. IF foto != null THEN
+     Tambahkan foto ke daftar pembaruan list laporan
+   ENDIF
+
+6. IF deskripsi != null THEN
+     Tambahkan deskripsi ke daftar pembaruan list laporan
+   ENDIF
+
+7. IF titikLokasi = null THEN
+     RETURN false
+   ENDIF
+
+8. Jalankan query INSERT untuk menyimpan data pengguna [Q-010]
+
+9. IF penyimpanan berhasil THEN
+     RETURN true
+   ELSE
+     RETURN false
+   ENDIF
+```
+
+Tabel 5.17.5. Query Operasi simpanLaporan()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-010* | *INSERT INTO laporan (namaMasalah, kategori, tingkatPermasalahan, statusPrivasi, titikLokasi) VALUES ($1, $2, $3, $4, $5)* | *Menyimpan data laporan baru ke database* |
+||||
+
+### 5.17.4 Algoritma/Query
+**Nama Kelas:** *LaporanController*  
+**Nama Operasi:** *updateStatusLaporan(idLaporan: String, statusLaporan: StatusLaporan) : Boolean*  
+**ID Algoritma:** *Algo-008*
+
+```text
+ALGORITMA updateStatusLaporan
+
+INPUT: idLaporan, statusLaporan
+OUTPUT: Boolean
+
+1. Jalankan query UPDATE berdasarkan statusLaporan dan idLaporan [Q-008]
+2. IF perubahan berhasil THEN
+        RETURN true
+   ELSE
+        RETURN false
+   ENDIF
+```
+
+Tabel 5.17.6. Query Operasi updateStatusLaporan()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-008* | *UPDATE laporan SET statusLaporan = $1 WHERE idLaporan = $2* | *Memperbarui statusLaporan* |
+||||
+
+## 5.17.5 Algoritma/Query
+
+<!-- ID ALGORITMA PERLU DIGANTI -->
+**Nama Kelas:** *LaporanController*  
+**Nama Operasi:** *setBatasWaktu2Minggu(idLaporan: String)*  
+**ID Algoritma:** *Algo-00X*
+
+<!-- ID QUERY PERLU DIGANTI -->
+```text
+ALGORITMA setBatasWaktu2Minggu
+
+INPUT: idLaporan
+OUTPUT: Tidak ada
+
+1. Jalankan operasi UPDATE untuk mengupdate batasWaktu di sebuah laporan [Q-0XX]
+
+```
+
+<!-- ID QUERY PERLU DIGANTI -->
+Tabel 5.16.7. Query Operasi setBatasWaktu2Minggu()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-0XX* | *UPDATE laporan SET batas_waktu = $1 WHERE id_laporan = $2* | *-* |
+||||
+
+## 5.17.6 Algoritma/Query
+
+<!-- ID ALGORITMA PERLU DIGANTI -->
+**Nama Kelas:** *LaporanController*  
+**Nama Operasi:** *cekBatasWaktu(idLaporan: String): Boolean*  
+**ID Algoritma:** *Algo-00X*
+
+<!-- ID QUERY PERLU DIGANTI -->
+```text
+ALGORITMA cekBatasWaktu
+
+INPUT: idLaporan
+OUTPUT: Boolean
+
+1. Jalankan operasi SELECT untuk mengambil batasWaktu laporan berdasarkan idLaporan
+2. IF NOW() - batasWaktu <= 0 THEN
+      RETURN True
+   ELSE
+      RETURN False
+
+```
+
+<!-- ID QUERY PERLU DIGANTI -->
+Tabel 5.16.8. Query Operasi cekBatasWaktu()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-0XX* | *SELECT batas_waktu FROM laporan WHERE id_laporan = $1* | *Mengambil batasWaktu dari sebuah laporan* |
+||||
+
+## 5.17.6 Algoritma/Query
+
+<!-- ID ALGORITMA PERLU DIGANTI -->
+**Nama Kelas:** *LaporanController*  
+**Nama Operasi:** *hapusLaporanOtomatis(idLaporan: String): Boolean*  
+**ID Algoritma:** *Algo-00X*
+
+```text
+ALGORITMA hapusLaporanOtomatis
+
+INPUT: idLaporan
+OUTPUT: Boolean
+
+1. IF cekBatasWaktu(idLaporan) THEN
+      Jalankan query DELETE untuk menghapus laporan [Q-009]
+      IF penghapusan berhasil THEN
+          RETURN True
+      ELSE
+          RETURN False
+   ELSE
+      RETURN False
+
+```
+
+Tabel 5.17.9. Query Operasi hapusLaporanOtomatis()
+
+| No Query | Query | Keterangan |
+| :--- | :--- | :--- |
+| *Q-009* | *DELETE FROM laporan WHERE idLaporan = $1* | *Menghapus data laporan berdasarkan ID* |
+||||
+
 ## 5.18 Kelas LokasiController
 
 **Nama Kelas:** *LokasiController*  
@@ -839,148 +1829,6 @@ Susun List<Laporan> sesuai urutan idLaporan pada daftarJarak.
 
 RETURN List<Laporan>.
 ```
-## 5.23 Kelas MapAPIService
-
-**Nama Kelas:** *MapAPIService*  
-**ID Kelas:** *C23*
-
-Tabel 5.23.1. Operasi Kelas MapAPIView
-| Nama Operasi | Visibility (private, public) | Keterangan |
-| :--- | :--- | :--- |
-| *kirimRequest(url : String, apiKey: String)* | *Public* | *Mengirimkan HTTP request ke layanan API peta (misal Google Maps JavaScript API) menggunakan URL dan API key dan mengembalikan respons dari API*|
-| *prosesResponses(response: String) : String* | *Private* | *Memproses hasil Google Maps JavaScript API dan memastikan layanan peta siap digunakan sistem.*|
-
-Tabel 5.23.2. Atribut Kelas MapAPIService
-
-| Nama Atribut | Visibility (private, public) | Tipe |
-| :--- | :--- | :--- |
-| *-* | *-* | *-* |
-
-### 5.23.1. Algoritma/Query
-**Nama Kelas:** *MapAPIService*  
-**Nama Operasi:** *kirimRequest*  
-**ID Algoritma:** *Algo-018*
-```text
-ALGORITMA kirimRequest
-
-INPUT: url, apiKey
-OUTPUT: String
-Gabungkan url Google Maps JavaScript API dan apiKey untuk membentuk alamat web untuk membentuk URL permintaan ke server.
-
-Kirim permintaan HTTP GET ke server Google Maps untuk memuat library
-Google Maps JavaScript API yang diperlukan untuk menampilkan peta.
-
-IF library berhasil dimuat THEN
-   RETURN "SUCCESS"
-ELSE
-   RETURN "ERROR"
-```
-### 5.23.2. Algoritma/Query
-**Nama Kelas:** *MapAPIView*  
-**Nama Operasi:** *prosesResponses(response: String) : String *
-**ID Algoritma:** *Algo-019*
-```text
-ALGORITMA prosesResponses
-
-INPUT: response
-OUTPUT: String
-
-Periksa status pemuatan Google Maps JavaScript API berdasarkan response yang diterima.
-
-IF response = "SUCCESS" THEN
-   RETURN "API siap digunakan"
-ELSE
-   RETURN "Gagal memuat Google Maps API"
-
-```
-
-## 5.24 Kelas MapAPIView
-
-**Nama Kelas:** *MapAPIView*  
-**ID Kelas:** *C24*
-
-Tabel 5.24.1. Operasi Kelas MapAPIView
-| Nama Operasi | Visibility (private, public) | Keterangan |
-| :--- | :--- | :--- |
-| *getAPIKey() : String* | *Public* | *Mengembalikan API key yang digunakan untuk mengakses layanan API peta*|
-| *getBaseURL() : String* | *Public* | *Mengembalikan _base url_ dari layanan API peta yang digunakan sistem*|
-
-Tabel 5.24.2. Atribut Kelas MapAPIService
-
-| Nama Atribut | Visibility (private, public) | Tipe |
-| :--- | :--- | :--- |
-| *apiKey* | *Private* | *String* |
-| *baseURL* | *Private* | *String* |
-
-## 5.5 Kelas Upvote
-
-**Nama Kelas:** *Upvote*  
-**ID Kelas:** *C05*
-
-Tabel 5.5.1. Operasi Kelas Upvote
-| Nama Operasi | Visibility (private, public) | Keterangan |
-| :--- | :--- | :--- |
-| *upvote(idPengguna:String, idLaporan:String) : Boolean* | *Public* | *Menyimpan data upvote yang dilakukan oleh pengguna pada suatu laporan.* |
-
-
-
-
-Tabel 5.5.2. Atribut Kelas Upvote
-
-| Nama Atribut | Visibility (private, public) | Tipe |
-| :--- | :--- | :--- |
-| *waktuUpvote* | *Private* | *Timestamp* |
-| *statusUpvote* | *Private* | *Boolean* |
-
-
-### 5.5.1 Algoritma/Query
-
-**Nama Kelas:** *Upvote*  
-**Nama Operasi:** *simpanDataPengguna(nama : String, NIK : String, email : String, hashPassword : String, noTelp : String) : Boolean*  
-**ID Algoritma:** *Algo-00?*
-
-```text
-ALGORITMA upvote
-
-INPUT: idPengguna, idLaporan
-OUTPUT: Boolean
-
-1. Ambil waktu saat upvote dilakukan.
-2. Tetapkan statusUpvote menjadi true.
-3. Jalankan query INSERT untuk menyimpan data upvote. [Q-XXX]
-4. IF penyimpanan berhasil THEN
-      RETURN true
-   ELSE
-      RETURN false
-   ENDIF
-```
-Tabel 5.5.3. Query Operasi upvote()
-
-| No Query | Query | Keterangan |
-| :--- | :--- | :--- |
-| *Q-00?* | *INSERT INTO upvote (id_pengguna, id_laporan, waktu_upvote, status_upvote) VALUES ($1, $2, CURRENT_TIMESTAMP, TRUE);* | *Menyimpan data upvote pengguna pada laporan* |
-
-$1 diisi dengan idPengguna, sedangkan $2 diisi dengan idLaporan.
-
-
-
-
-## 5.12 Kelas UpvoteView
-
-**Nama Kelas:** *UpvoteView*  
-**ID Kelas:** *C12*
-
-Tabel 5.12.1. Operasi Kelas UpvoteView
-| Nama Operasi | Visibility (private, public) | Keterangan |
-| :--- | :--- | :--- |
-| *klikUpvote()* | *Public* | *Menangani interaksi pengguna saat menekan tombol upvote.* |
-| *tampilkanJumlahUpvote(jumlahUpvote: Integer)* | *Public* | *Menampilkan jumlah upvote dari suatu laporan.* |
-| *tampilkanPesanError()* | *Public* | *Menampilkan pesan error jika upvote tidak berhasil diproses.* |
-| *updateUpvoteButton(statusUpvote: Boolean)* | *Public* | *Memperbarui tampilan tombol upvote berdasarkan status upvote.* |
-
-
-
-
 
 ## 5.19 Kelas UpvoteController
 
@@ -1048,80 +1896,18 @@ OUTPUT: Boolean
 ```
 
 
+## 5.21 Kelas TutorialController
 
-## 5.6 Kelas Tanggapan
+**Nama Kelas:** *TutorialController*  
+**ID Kelas:** *C21*
 
-**Nama Kelas:** *Tanggapan*  
-**ID Kelas:** *C06*
-
-Tabel 5.6.1. Operasi Kelas Tanggapan
+Tabel 5.21.1. Operasi Kelas TutorialController
 | Nama Operasi | Visibility (private, public) | Keterangan |
 | :--- | :--- | :--- |
-| *simpanTanggapan(idLaporan:String, dataPopupForm:FormTanggapan): Boolean* | *Public* | *Menyimpan data tanggapan admin atas suatu laporan.* |
-
-
-
-
-Tabel 5.6.2. Atribut Kelas Tanggapan
-
-| Nama Atribut | Visibility (private, public) | Tipe |
-| :--- | :--- | :--- |
-| *statusTanggapan* | *Private* | *Boolean* |
-| *waktuTanggapan* | *Private* | *Timestamp* |
-| *deskripsiTanggapan* | *Private* | *String* |
-
-
-### 5.6.1 Algoritma/Query
-
-**Nama Kelas:** *Tanggapan*  
-**Nama Operasi:** *simpanTanggapan(idLaporan:String, dataPopupForm:FormTanggapan): Boolean*  
-**ID Algoritma:** *Algo-00?*
-
-```text
-ALGORITMA simpanTanggapan
-
-INPUT: idLaporan, dataPopupForm
-OUTPUT: Boolean
-
-1. Ambil statusTanggapan dan deskripsiTanggapan dari dataPopupForm.
-2. Jalankan query INSERT untuk menyimpan tanggapan. [Q-XXX]
-3. IF penyimpanan berhasil THEN
-      RETURN true
-   ELSE
-      RETURN false
-   ENDIF
-```
-Tabel 5.6.3. Query Operasi simpanTanggapan()
-
-| No Query | Query | Keterangan |
-| :--- | :--- | :--- |
-| *Q-00?* | *INSERT INTO tanggapan (id_laporan, status_tanggapan, waktu_tanggapan, deskripsi_tanggapan) VALUES ($1, $2, CURRENT_TIMESTAMP, $3);* | *Menyimpan hasil pemeriksaan validitas laporan, waktu tanggapan, dan deskripsi alasan jika laporan dinyatakan tidak valid.* |
-
-$1 = idLaporan
-$2 = statusTanggapan
-$3 = deskripsiTanggapan
-
-
-
-## 5.13 Kelas TanggapanView
-
-**Nama Kelas:** *TanggapanView*  
-**ID Kelas:** *C13*
-
-Tabel 5.13.1. Operasi Kelas TanggapanView
-| Nama Operasi | Visibility (private, public) | Keterangan |
-| :--- | :--- | :--- |
-| *tampilkanPopup(idLaporan:String)* | *Public* | *Menampilkan formulir tanggapan admin untuk laporan yang dipilih.* |
-| *submitPopupForm(dataPopupForm:FormTanggapan): Boolean* | *Public* | *Memvalidasi data formulir dan menampilkan konfirmasi jika data valid.* |
-| *tampilkanKonfirmasi(dataPopupForm:FormTanggapan)* | *Public* | *Menampilkan ringkasan tanggapan admin dan meminta konfirmasi sebelum penyimpanan.* |
-
-Tabel 5.13.2. Atribut Kelas TanggapanView
-
-| Nama Atribut | Visibility (private, public) | Tipe |
-| :--- | :--- | :--- |
-| *dataPopupForm* | *Private* | *FormTanggapan :<statusTanggapan : Boolean, deskripsiTanggapan : String>* |
-
-
+| *startTutorial(): Boolean* | *Public* | *Menangani proses start tutorial.* |
+| *nextTutorial(): Boolean* | *Public* | *Menangani proses next tutorial.* |
+| *skipTutorial(): Boolean* | *Public* | *Menangani proses skip tutorial.* |
+| *finishTutorial(): Boolean* | *Public* | *Menangani proses finish tutorial.* |
 
 
 ## 5.20 Kelas TanggapanController
@@ -1206,94 +1992,6 @@ Tabel 5.20.2. Query Operasi simpanStatus()
 
 $1 = statusLaporan
 $2 = idLaporan
-
-
-
-## 5.7 Kelas Tutorial
-
-**Nama Kelas:** *Tutorial*  
-**ID Kelas:** *C07*
-
-Tabel 5.7.1. Operasi Kelas Tutorial
-| Nama Operasi | Visibility (private, public) | Keterangan |
-| :--- | :--- | :--- |
-| *getLangkahSaatIni(): Integer* | *Public* | *Mengembalikan nomor langkah tutorial yang sedang ditampilkan.* |
-| *getTotalLangkah(): Integer* | *Public* | *Mengembalikan jumlah seluruh langkah tutorial.* |
-
-
-
-
-Tabel 5.7.2. Atribut Kelas Tutorial
-
-| Nama Atribut | Visibility (private, public) | Tipe |
-| :--- | :--- | :--- |
-| *langkahSaatIni* | *Private* | *Integer* |
-| *totalLangkah* | *Private* | *Integer* |
-
-
-### 5.7.1 Algoritma/Query
-
-**Nama Kelas:** *Tutorial*  
-**Nama Operasi:** *getLangkahSaatIni(): Integer*  
-**ID Algoritma:** *Algo-00?*
-
-```text
-ALGORITMA getLangkahSaatIni
-
-INPUT: -
-OUTPUT: Integer
-
-1. Ambil nilai atribut langkahSaatIni.
-2. Kembalikan nilai langkahSaatIni.
-```
-
-### 5.7.2 Algoritma/Query
-
-**Nama Kelas:** *Tutorial*  
-**Nama Operasi:** *getTotalLangkah(): Integer*  
-**ID Algoritma:** *Algo-00?*
-
-```text
-ALGORITMA getTotalLangkah
-
-INPUT: -
-OUTPUT: Integer
-
-1. Ambil nilai atribut totalLangkah.
-2. Kembalikan nilai totalLangkah.
-```
-
-
-
-## 5.14 Kelas TutorialView
-
-**Nama Kelas:** *TutorialView*  
-**ID Kelas:** *C14*
-
-Tabel 5.14.1. Operasi Kelas TutorialView
-| Nama Operasi | Visibility (private, public) | Keterangan |
-| :--- | :--- | :--- |
-| *tampilkanTutorial()* | *Public* | *Menampilkan antarmuka tutorial.* |
-| *tampilkanLangkah(langkahSaatIni: Integer)* | *Public* | *Menampilkan langkah tutorial sesuai nomor langkah yang diberikan.* |
-| *tampilkanPesanError()* | *Public* | *Menampilkan pesan kesalahan jika tutorial gagal ditampilkan atau diproses.* |
-| *tutupTutorial()* | *Public* | *Menutup antarmuka tutorial.* |
-
-
-
-
-## 5.21 Kelas TutorialController
-
-**Nama Kelas:** *TutorialController*  
-**ID Kelas:** *C21*
-
-Tabel 5.21.1. Operasi Kelas TutorialController
-| Nama Operasi | Visibility (private, public) | Keterangan |
-| :--- | :--- | :--- |
-| *startTutorial(): Boolean* | *Public* | *Menangani proses start tutorial.* |
-| *nextTutorial(): Boolean* | *Public* | *Menangani proses next tutorial.* |
-| *skipTutorial(): Boolean* | *Public* | *Menangani proses skip tutorial.* |
-| *finishTutorial(): Boolean* | *Public* | *Menangani proses finish tutorial.* |
-
 
 ### 5.21.1 Algoritma/Query
 
@@ -1385,7 +2083,99 @@ OUTPUT: Boolean
    ENDIF
 ```
 
+## 5.22 Kelas MapAPI
 
+**Nama Kelas:** *MapAPI*  
+**ID Kelas:** *C22*
+
+Tabel 5.1.1. Operasi Kelas MapAPI
+
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *getAPIKey() : String* | *Public* | *Memberikan nilai apiKey* |
+| *getBaseURL() : String* | *Public* | *Memberikan nilai baseURL* |
+||||
+
+Tabel 5.1.2. Atribut Kelas [Nama Kelas 1]
+
+| Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *apiKey* | *Private* | *String* |
+| *baseURL* | *Private* | *String* |
+||||
+
+## 5.23 Kelas MapAPIService
+
+**Nama Kelas:** *MapAPIService*  
+**ID Kelas:** *C23*
+
+Tabel 5.23.1. Operasi Kelas MapAPIView
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *kirimRequest(url : String, apiKey: String)* | *Public* | *Mengirimkan HTTP request ke layanan API peta (misal Google Maps JavaScript API) menggunakan URL dan API key dan mengembalikan respons dari API*|
+| *prosesResponses(response: String) : String* | *Private* | *Memproses hasil Google Maps JavaScript API dan memastikan layanan peta siap digunakan sistem.*|
+
+Tabel 5.23.2. Atribut Kelas MapAPIService
+
+| Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *-* | *-* | *-* |
+
+### 5.23.1. Algoritma/Query
+**Nama Kelas:** *MapAPIService*  
+**Nama Operasi:** *kirimRequest*  
+**ID Algoritma:** *Algo-018*
+```text
+ALGORITMA kirimRequest
+
+INPUT: url, apiKey
+OUTPUT: String
+Gabungkan url Google Maps JavaScript API dan apiKey untuk membentuk alamat web untuk membentuk URL permintaan ke server.
+
+Kirim permintaan HTTP GET ke server Google Maps untuk memuat library
+Google Maps JavaScript API yang diperlukan untuk menampilkan peta.
+
+IF library berhasil dimuat THEN
+   RETURN "SUCCESS"
+ELSE
+   RETURN "ERROR"
+```
+### 5.23.2. Algoritma/Query
+**Nama Kelas:** *MapAPIView*  
+**Nama Operasi:** *prosesResponses(response: String) : String *
+**ID Algoritma:** *Algo-019*
+```text
+ALGORITMA prosesResponses
+
+INPUT: response
+OUTPUT: String
+
+Periksa status pemuatan Google Maps JavaScript API berdasarkan response yang diterima.
+
+IF response = "SUCCESS" THEN
+   RETURN "API siap digunakan"
+ELSE
+   RETURN "Gagal memuat Google Maps API"
+
+```
+
+## 5.24 Kelas MapAPIView
+
+**Nama Kelas:** *MapAPIView*  
+**ID Kelas:** *C24*
+
+Tabel 5.24.1. Operasi Kelas MapAPIView
+| Nama Operasi | Visibility (private, public) | Keterangan |
+| :--- | :--- | :--- |
+| *getAPIKey() : String* | *Public* | *Mengembalikan API key yang digunakan untuk mengakses layanan API peta*|
+| *getBaseURL() : String* | *Public* | *Mengembalikan _base url_ dari layanan API peta yang digunakan sistem*|
+
+Tabel 5.24.2. Atribut Kelas MapAPIService
+
+| Nama Atribut | Visibility (private, public) | Tipe |
+| :--- | :--- | :--- |
+| *apiKey* | *Private* | *String* |
+| *baseURL* | *Private* | *String* |
 
 <!--Bagian ini diisi dengan daftar seluruh kelas dalam tabel berikut:
 
