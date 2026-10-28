@@ -2772,15 +2772,16 @@ ELSE
 Tabel 5.24.1. Operasi Kelas MapAPIView
 | Nama Operasi | Visibility (private, public) | Keterangan |
 | :--- | :--- | :--- |
-| *getAPIKey() : String* | *Public* | *Mengembalikan API key yang digunakan untuk mengakses layanan API peta*|
-| *getBaseURL() : String* | *Public* | *Mengembalikan _base url_ dari layanan API peta yang digunakan sistem*|
+| *renderMap()* | *Public* | *Menampilkan peta yang didapat dari API*|
+| *renderMarker()* | *Public* | *Menampilkan titik-titik lokasi pada peta*|
+| *setCenter(latitude : double, longitude : double)* | *Public* | *Melakukan _centering_ pada peta berdasarkan korrdinat*|
 
 Tabel 5.24.2. Atribut Kelas MapAPIService
 
 | Nama Atribut | Visibility (private, public) | Tipe |
 | :--- | :--- | :--- |
-| *apiKey* | *Private* | *String* |
-| *baseURL* | *Private* | *String* |
+| *-* | *-* | *-* |
+
 
 <!--Bagian ini diisi dengan daftar seluruh kelas dalam tabel berikut:
 
