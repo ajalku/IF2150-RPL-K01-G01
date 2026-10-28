@@ -822,24 +822,46 @@ Tabel 3.9. Identifikasi Kelas Use Case UC09
 
 ## 4.1 Diagram Kelas
 
-**Bagian ini diisi dengan diagram kelas keseluruhan.**
+<!-- **Bagian ini diisi dengan diagram kelas keseluruhan.** -->
 
 <p align="center">
-<img alt="Contoh Logical View pada P/L E-Commerce" src="./assets/diagram/contoh-class_diargam.png" width="35%">
+<img alt="diagram kelas keseluruhan" src="./assets/diagram/CD-FULL.png" width="35%">
 </p>
 <p align="center">
-<i>Gambar 4.1. Diagram Kelas Perancangan Keseluruhan [Nama P/L]</i>
+<i>Gambar 4.1 Diagram Kelas Perancangan Keseluruhan RAWAT</i>
 </p>
 
-Tabel 4.1. Daftar Kelas Perancangan Keseluruhan
+Tabel 4.1 Daftar Kelas Perancangan Keseluruhan
 
 | ID Kelas | Nama Kelas | Atribut | Metode/Operasi |
 | :--- | :--- | :--- | :--- |
-| *[C01]* | *[Nama kelas]* | *[Daftar atribut]* | *[Daftar metode/operasi]* |
-| *[C02]* | *[Nama kelas]* | *[Daftar atribut]* | *[Daftar metode/operasi]* |
-| *[C03]* | *[Nama kelas]* | *[Daftar atribut]* | *[Daftar metode/operasi]* |
+| *C01* | *Pengguna* | *-idPengguna, -nama, -role, -NIK, -email, -password, -NoTelp, -lokasiSaatIni, -izinLokasi, -statusTutorial* | *+getRole(), +simpanDataPengguna(), +getPenggunaByEmail(), +getPenggunaByNIK(), +getIzinLokasi(), +sudahLihatTutorial(), +getPenggunaById(), +hapusAkun(), +updateDataPengguna()* |
+| *C02* | *HomePage* | *-sortBy, -daftarLaporan* | *+getDaftarLaporan(), +refreshPage(), +getSortBy()* |
+| *C03* | *Laporan* | *-idLaporan, -namaMasalah, -kategori, -tingkatPermasalahan, -statusPrivasi, -foto, -deskripsi, -statusLaporan, -titikLokasi, -bobotUrgensi, -jumlahUpvote, -skorPopuler, -skorUrgensi* | *+getDetailLaporan(), +perbaruiStatus(), +updateStatusLaporan(), +hapusLaporan(), +simpanLaporan(), +tambahUpvote(), +hitungSkorPopularitas, +getJumlahUpvote(), +getSkorPopuler()* |
+| *C04* | *Lokasi* | *-latitude, -longitude, -alamat* | *+getKoordinat(), +getAlamat()* |
+| *C05* | *Upvote* | *-waktuUpvote, -statusUpvote* | *+upvote()* |
+| *C06* | *Tanggapan* | *-statusTanggapan, -waktuTanggapan, -deskripsiTanggapan* | *+simpanTanggapan()* |
+| *C07* | *Tutorial* | *-langkahSaatIni, -totalLangkah* | *+getLangkahSaatIni(), +getTotalLangkah()* |
+| *C08* | *PenggunaView* | *-* | *+tampilkanFormRegistrasi(), +tampilkanErrorMsgs(), +tampilkanFormLogin(), +taampilkanPermintaanIzinLokasi(), +tampilkanOpsiTutorial(), +tampilkanFormKonfirmasi(), +tampilkanNotifAdmin(), +klikKonfirmasi()* |
+| *C09* | *HomepageView* | *-* | *+tampilkanHomepage(), +pilihFilter(), +tampilkanDaftarLaporan(), +tampilkanMenuFilterLaporan()* |
+| *C10* | *LaporanView* | *-dataForm* | *+tampilkanDetailLaporan(), +tampilkanTanggapanTeratas(), +tampilkanForm(), +tampilkanErrorMsg(), +tampilkanKonfirmasi(), +tampilkanPesanBerhasil(), +klikPost(), +klikYa(), +klikTidak()* |
+| *C11* | *LokasiView* | *-map* | *+tampilkanMap(), +pilihTitikLokasi(), +tampilkanPeta(), +tampilkanErrorMsgs(), +tampilkanTitikLaporan()* |
+| *C12* | *UpvoteView* | *-* | *+klikUpvote(), +tampilkanJumlahUpvote(), +tampilkanPesanError(), +updateUpvoteButton()* |
+| *C13* | *TanggapanView* | *-dataPopupForm* | *+tampilkanPopup(), +submitPopupForm(), +tampilkanKonfirmasi()* |
+| *C14* | *TutorialView* | *-* | *+tampilkanTutorial(), +tampilkanLangkah(), +tutupTutorial*|
+| *C15* | *PenggunaController* | *-* | *+regitrasi, -hashPassword(), -cekAkunTerdaftar(), -validasiData(), +login(), -validasiKredensial(), +setIzinLokasi(), +cekIzinLokasi(), +cekStatusTutorial(), +sudahLogin(), +kirimKonfimasiUlang(), +ubahProfil(), -validasiDataProfil()* |
+| *C16* | *HomepageController* | *-* | *+loadHomepage(), +pilihLaporan, +urutkanLaporan(), +filterLaporan(), +ambilListLaporan()* |
+| *C17* | *LaporanController* | *-* | *+lihatDetailLaporan(), +ambilDetailLaporan(), +validasiKelengkapanData(), +validasiFoto(), +buatIdUnik(), +simpanLaporan(), +updateStatusLaporan, +kirimPermintaanKonfirmasi(), +setBatasWaktu2Minggu(), +cekBatasWaktu(), +hapusLaporanOtomatis()* |
+| *C18* | *LokasiController* | *-* | *getDataLokasi(), cariLokasi(), +cariLaporanTerdekat(), -ambilLokasiPengguna(), -mintaIzinLokasi(), +ambilLokasiLaporan(), -hitungJarak()* |
+| *C19* | *UpvoteController* | *-* | *+prosesUpvote(), +sudahUpvote()* |
+| *C20* | *TanggapanController* | *-* | *+validasiTanggapan(), +simpanTanggapan(), +simpanStatus()* |
+| *C21* | *TutorialController* | *-* | *+skipTutorial(), +nextTutorial(), +finishTutorial(), +startTutorial()* |
+| *C22* | *MapAPI* | *-apiKey, -baseURL* | *+getAPIKey(), +getBaseURL()* |
+| *C23* | *MapAPIService* | *-* | *+geocode(), -kirimRequest(), -prosesResponse()* |
+| *C24* | *MapAPIView* | *-* | *+renderMap(), +renderMarker(), +setCenter()* |
 | *...* | *...* | *...* | *...* |
 
+<br> 
 ---
 
 # BAB 5: Perancangan Rinci Kelas
