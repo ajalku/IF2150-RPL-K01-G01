@@ -1079,12 +1079,12 @@ ALGORITMA getDaftarLaporan
 INPUT: Tidak ada
 OUTPUT: daftarLaporan atau null
 
-1. Jalankan query SELECT untuk mengambil seluruh data laporan [Q-006]
-2. IF ada 1 atau lebih laporan THEN
-        RETURN daftarLaporan
-   ELSE
-        RETURN null
-   ENDIF
+Jalankan query SELECT untuk mengambil seluruh data laporan [Q-006]
+IF ada 1 atau lebih laporan THEN
+   RETURN daftarLaporan
+ELSE
+   RETURN null
+ENDIF
 ```
 
 Tabel 5.2.1. Query Operasi getDaftarLaporan()
@@ -1108,9 +1108,9 @@ ALGORITMA getSortBy
 INPUT: daftarLaporan, sortBy
 OUTPUT: daftarLaporan atau null
 
-1. Ambil daftar laporan yang terdapat di homepage
-2. Jalankan query SELECT dan ORDER BY untuk mengurutkan laporan [Q-007]
-3. RETURN daftarLaporan
+Ambil daftar laporan yang terdapat di homepage
+Jalankan query SELECT dan ORDER BY untuk mengurutkan laporan [Q-007]
+RETURN daftarLaporan
 ```
 Tabel 5.2.1. Query Operasi getDaftarLaporan()
 
@@ -1173,12 +1173,12 @@ ALGORITMA getDetailLaporan
 INPUT: idLaporan
 OUTPUT: laporan
 
-1. Jalankan query SELECT untuk mengambil detail laporan berdasarkan ID [Q-008]
-2. IF laporan ditemukan THEN
-        RETURN laporan
-   ELSE
-        RETURN null
-   ENDIF
+Jalankan query SELECT untuk mengambil detail laporan berdasarkan ID [Q-008]
+IF laporan ditemukan THEN
+   RETURN laporan
+ELSE
+   RETURN null
+ENDIF
 ```
 
 Tabel 5.3.3. Query Operasi getDetailLaporan()
@@ -1199,12 +1199,12 @@ ALGORITMA updateStatusLaporan
 INPUT: idLaporan, statusLaporan
 OUTPUT: Boolean
 
-1. Jalankan query UPDATE berdasarkan statusLaporan dan idLaporan [Q-009]
-2. IF perubahan berhasil THEN
-        RETURN true
-   ELSE
-        RETURN false
-   ENDIF
+Jalankan query UPDATE berdasarkan statusLaporan dan idLaporan [Q-009]
+IF perubahan berhasil THEN
+   RETURN true
+ELSE
+   RETURN false
+ENDIF
 ```
 
 Tabel 5.3.4. Query Operasi updateStatusLaporan()
@@ -1225,12 +1225,12 @@ ALGORITMA hapusLaporan
 INPUT: idLaporan
 OUTPUT: Boolean
 
-1. Jalankan query DELETE berdasarkan idLaporan [Q-010]
-2. IF satu record laporan berhasil dihapus THEN
-        RETURN true
-   ELSE
-        RETURN false
-   ENDIF
+Jalankan query DELETE berdasarkan idLaporan [Q-010]
+IF satu record laporan berhasil dihapus THEN
+   RETURN true
+ELSE
+   RETURN false
+ENDIF
 ```
 
 Tabel 5.3.5. Query Operasi hapusLaporan()
@@ -1251,41 +1251,41 @@ ALGORITMA simpanLaporan
 INPUT: namaMasalah, kategori, tingkatPermasalahan, statusPrivasi, foto, deskripsi, titikLokasi
 OUTPUT: Boolean
 
-1. IF namaMasalah = null THEN
-     RETURN false
-   ENDIF
+IF namaMasalah = null THEN
+   RETURN false
+ENDIF
 
-2. IF kategori = null THEN
-     RETURN false
-   ENDIF
+IF kategori = null THEN
+   RETURN false
+ENDIF
 
-3. IF tingkatPermasalahan = null THEN
-     RETURN false
-   ENDIF
+IF tingkatPermasalahan = null THEN
+   RETURN false
+ENDIF
 
-4. IF statusPrivasi = null THEN
-     RETURN false
-   ENDIF
+IF statusPrivasi = null THEN
+   RETURN false
+ENDIF
 
-5. IF foto != null THEN
-     Tambahkan foto ke daftar pembaruan list laporan
-   ENDIF
+IF foto != null THEN
+   Tambahkan foto ke daftar pembaruan list laporan
+ENDIF
 
-6. IF deskripsi != null THEN
-     Tambahkan deskripsi ke daftar pembaruan list laporan
-   ENDIF
+IF deskripsi != null THEN
+   Tambahkan deskripsi ke daftar pembaruan list laporan
+ENDIF
 
-7. IF titikLokasi = null THEN
-     RETURN false
-   ENDIF
+IF titikLokasi = null THEN
+   RETURN false
+ENDIF
 
-8. Jalankan query INSERT untuk menyimpan data pengguna [Q-011]
+Jalankan query INSERT untuk menyimpan data pengguna [Q-011]
 
-9. IF penyimpanan berhasil THEN
-     RETURN true
-   ELSE
-     RETURN false
-   ENDIF
+IF penyimpanan berhasil THEN
+   RETURN true
+ELSE
+   RETURN false
+ENDIF
 ```
 
 Tabel 5.3.6. Query Operasi simpanLaporan()
@@ -1306,12 +1306,12 @@ ALGORITMA simpanLaporan
 INPUT: idLaporan
 OUTPUT: Boolean
 
-1. Jalankan query UPDATE untuk menambahkan upvote [Q-012]
-2. IF penambahan berhasil THEN
-     RETURN true
-   ELSE
-     RETURN false
-   ENDIF
+Jalankan query UPDATE untuk menambahkan upvote [Q-012]
+IF penambahan berhasil THEN
+   RETURN true
+ELSE
+   RETURN false
+ENDIF
 
 ```
 
@@ -1333,11 +1333,11 @@ ALGORITMA getJumlahUpvote
 INPUT: idLaporan
 OUTPUT: Integer
 
-1. Jalankan query SELECT untuk mendapatkan jumlah upvote [Q-013]
-2. IF pengambilan berhasil THEN
-     RETURN jumlahUpvote
-   ELSE
-     RETURN null
+Jalankan query SELECT untuk mendapatkan jumlah upvote [Q-013]
+IF pengambilan berhasil THEN
+   RETURN jumlahUpvote
+ELSE
+   RETURN null
    ENDIF
 
 ```
@@ -1360,12 +1360,12 @@ ALGORITMA getSkorPopuler
 INPUT: idLaporan
 OUTPUT: Real
 
-1. Jalankan query SELECT untuk mendapatkan skor populer [Q-014]
-2. IF pengambilan berhasil THEN
-     RETURN skorPopuler
-   ELSE
-     RETURN null
-   ENDIF
+Jalankan query SELECT untuk mendapatkan skor populer [Q-014]
+IF pengambilan berhasil THEN
+   RETURN skorPopuler
+ELSE
+   RETURN null
+ENDIF
 
 ```
 
@@ -1387,9 +1387,9 @@ ALGORITMA hitungSkorPopularitas
 INPUT: idLaporan
 OUTPUT: Real
 
-1. Jalankan getSkorPopuler(idLaporan)
-2. Jalankan operasi untuk menghitung skor populer
-3. Kembalikan skor populer
+Jalankan getSkorPopuler(idLaporan)
+Jalankan operasi untuk menghitung skor populer
+Kembalikan skor populer
 ```
 
 Tabel 5.3.9. Query Operasi hitungSkorPopularitas()
@@ -1466,14 +1466,14 @@ ALGORITMA upvote
 INPUT: idPengguna, idLaporan
 OUTPUT: Boolean
 
-1. Ambil waktu saat upvote dilakukan.
-2. Tetapkan statusUpvote menjadi true.
-3. Jalankan query INSERT untuk menyimpan data upvote. [Q-015]
-4. IF penyimpanan berhasil THEN
-      RETURN true
-   ELSE
-      RETURN false
-   ENDIF
+Ambil waktu saat upvote dilakukan.
+Tetapkan statusUpvote menjadi true.
+Jalankan query INSERT untuk menyimpan data upvote. [Q-015]
+IF penyimpanan berhasil THEN
+   RETURN true
+ELSE
+   RETURN false
+ENDIF
 ```
 Tabel 5.5.3. Query Operasi upvote()
 
@@ -1518,13 +1518,13 @@ ALGORITMA simpanTanggapan
 INPUT: idLaporan, dataPopupForm
 OUTPUT: Boolean
 
-1. Ambil statusTanggapan dan deskripsiTanggapan dari dataPopupForm.
-2. Jalankan query INSERT untuk menyimpan tanggapan. [Q-016]
-3. IF penyimpanan berhasil THEN
-      RETURN true
-   ELSE
-      RETURN false
-   ENDIF
+Ambil statusTanggapan dan deskripsiTanggapan dari dataPopupForm.
+Jalankan query INSERT untuk menyimpan tanggapan. [Q-016]
+IF penyimpanan berhasil THEN
+   RETURN true
+ELSE
+   RETURN false
+ENDIF
 ```
 Tabel 5.6.3. Query Operasi simpanTanggapan()
 
@@ -2010,12 +2010,12 @@ ALGORITMA urutkanLaporan
 INPUT: daftarLaporan, sortBy, sortType
 OUTPUT: Boolean
 
-1. Jalankan query SELECT dan ORDER BY untuk melakukan sorting pada daftar laporan [Q-017]
-2. IF sorting berhasil THEN
-     RETURN true
-   ELSE
-     RETURN false
-   ENDIF
+Jalankan query SELECT dan ORDER BY untuk melakukan sorting pada daftar laporan [Q-017]
+IF sorting berhasil THEN
+   RETURN true
+ELSE
+   RETURN false
+ENDIF
 
 ```
 
@@ -2040,12 +2040,12 @@ ALGORITMA filterLaporan
 INPUT: daftarLaporan, filterBy
 OUTPUT: Boolean
 
-1. Jalankan query SELECT untuk melakukan filtering pada daftar laporan [Q-018]
-2. IF filtering berhasil THEN
-     RETURN true
-   ELSE
-     RETURN false
-   ENDIF
+Jalankan query SELECT untuk melakukan filtering pada daftar laporan [Q-018]
+IF filtering berhasil THEN
+   RETURN true
+ELSE
+   RETURN false
+ENDIF
 
 ```
 
@@ -2068,12 +2068,12 @@ ALGORITMA filterLaporan
 INPUT: daftarLaporan, filterBy
 OUTPUT: Boolean
 
-1. Jalankan query SELECT untuk mengambil daftarLaporan [Q-019]
-2. IF laporan >= 1 THEN
-     RETURN daftarLaporan
-   ELSE
-     RETURN []
-   ENDIF
+Jalankan query SELECT untuk mengambil daftarLaporan [Q-019]
+IF laporan >= 1 THEN
+  RETURN daftarLaporan
+ELSE
+   RETURN []
+ENDIF
 
 ```
 
@@ -2125,12 +2125,12 @@ ALGORITMA validasiKelengkapanData
 INPUT: namaMasalah, kategori, tingkatPermasalahan, statuPrivasi, titikLokasi
 OUTPUT: Boolean
 
-1. IF namaMasalah = null THEN RETURN False
-   ELSE IF kategori = null THEN RETURN False
-   ELSE IF tingkatPermasalahan = null THEN RETURN False
-   ELSE IF statusPrivasi = null THEN RETURN False
-   ELSE IF titik lokasi = null THEN RETURN False
-   ELSE RETURN True
+IF namaMasalah = null THEN RETURN False
+ELSE IF kategori = null THEN RETURN False
+ELSE IF tingkatPermasalahan = null THEN RETURN False
+ELSE IF statusPrivasi = null THEN RETURN False
+ELSE IF titik lokasi = null THEN RETURN False
+ELSE RETURN True
 ```
 
 Tabel 5.16.3. Query Operasi validasiKelengkapanData()
@@ -2177,41 +2177,41 @@ ALGORITMA simpanLaporan
 INPUT: namaMasalah, kategori, tingkatPermasalahan, statusPrivasi, foto, deskripsi, titikLokasi
 OUTPUT: Boolean
 
-1. IF namaMasalah = null THEN
-     RETURN false
-   ENDIF
+IF namaMasalah = null THEN
+   RETURN false
+ENDIF
 
-2. IF kategori = null THEN
-     RETURN false
-   ENDIF
+IF kategori = null THEN
+   RETURN false
+ENDIF
 
-3. IF tingkatPermasalahan = null THEN
-     RETURN false
-   ENDIF
+IF tingkatPermasalahan = null THEN
+   RETURN false
+ENDIF
 
-4. IF statusPrivasi = null THEN
-     RETURN false
-   ENDIF
+IF statusPrivasi = null THEN
+   RETURN false
+ENDIF
 
-5. IF foto != null THEN
-     Tambahkan foto ke daftar pembaruan list laporan
-   ENDIF
+IF foto != null THEN
+   Tambahkan foto ke daftar pembaruan list laporan
+ENDIF
 
-6. IF deskripsi != null THEN
-     Tambahkan deskripsi ke daftar pembaruan list laporan
-   ENDIF
+IF deskripsi != null THEN
+   Tambahkan deskripsi ke daftar pembaruan list laporan
+ENDIF
 
-7. IF titikLokasi = null THEN
-     RETURN false
-   ENDIF
+IF titikLokasi = null THEN
+   RETURN false
+ENDIF
 
-8. Jalankan query INSERT untuk menyimpan data pengguna [Q-020]
+Jalankan query INSERT untuk menyimpan data pengguna [Q-020]
 
-9. IF penyimpanan berhasil THEN
-     RETURN true
-   ELSE
-     RETURN false
-   ENDIF
+IF penyimpanan berhasil THEN
+   RETURN true
+ELSE
+   RETURN false
+ENDIF
 ```
 
 Tabel 5.17.5. Query Operasi simpanLaporan()
@@ -2232,12 +2232,12 @@ ALGORITMA updateStatusLaporan
 INPUT: idLaporan, statusLaporan
 OUTPUT: Boolean
 
-1. Jalankan query UPDATE berdasarkan statusLaporan dan idLaporan [Q-021]
-2. IF perubahan berhasil THEN
-        RETURN true
-   ELSE
-        RETURN false
-   ENDIF
+Jalankan query UPDATE berdasarkan statusLaporan dan idLaporan [Q-021]
+IF perubahan berhasil THEN
+   RETURN true
+ELSE
+   RETURN false
+ENDIF
 ```
 
 Tabel 5.17.6. Query Operasi updateStatusLaporan()
@@ -2264,7 +2264,6 @@ OUTPUT: Tidak ada
 
 ```
 
-<!-- ID QUERY PERLU DIGANTI -->
 Tabel 5.16.7. Query Operasi setBatasWaktu2Minggu()
 
 | No Query | Query | Keterangan |
@@ -2278,18 +2277,17 @@ Tabel 5.16.7. Query Operasi setBatasWaktu2Minggu()
 **Nama Operasi:** *cekBatasWaktu(idLaporan: String): Boolean*  
 **ID Algoritma:** *Algo-037*
 
-<!-- ID QUERY PERLU DIGANTI -->
 ```text
 ALGORITMA cekBatasWaktu
 
 INPUT: idLaporan
 OUTPUT: Boolean
 
-1. Jalankan operasi SELECT untuk mengambil batasWaktu laporan berdasarkan idLaporan [Q-023]
-2. IF NOW() - batasWaktu <= 0 THEN
-      RETURN True
-   ELSE
-      RETURN False
+Jalankan operasi SELECT untuk mengambil batasWaktu laporan berdasarkan idLaporan [Q-023]
+IF NOW() - batasWaktu <= 0 THEN
+   RETURN True
+ELSE
+   RETURN False
 
 ```
 
@@ -2313,14 +2311,14 @@ ALGORITMA hapusLaporanOtomatis
 INPUT: idLaporan
 OUTPUT: Boolean
 
-1. IF cekBatasWaktu(idLaporan) THEN
-      Jalankan query DELETE untuk menghapus laporan [Q-024]
-      IF penghapusan berhasil THEN
-          RETURN True
-      ELSE
-          RETURN False
+IF cekBatasWaktu(idLaporan) THEN
+   Jalankan query DELETE untuk menghapus laporan [Q-024]
+   IF penghapusan berhasil THEN
+      RETURN True
    ELSE
       RETURN False
+ELSE
+   RETURN False
 
 ```
 
@@ -2459,12 +2457,12 @@ ALGORITMA sudahUpvote
 INPUT: idPengguna, idLaporan
 OUTPUT: Boolean
 
-1. Jalankan query SELECT untuk memeriksa apakah data upvote pengguna pada laporan tersebut sudah ada. [Q-025]
-2. IF data upvote ditemukan THEN
-      RETURN true
-   ELSE
-      RETURN false
-   ENDIF
+Jalankan query SELECT untuk memeriksa apakah data upvote pengguna pada laporan tersebut sudah ada. [Q-025]
+IF data upvote ditemukan THEN
+   RETURN true
+ELSE
+   RETURN false
+ENDIF
 ```
 Tabel 5.19.2. Query Operasi sudahUpvote()
 
@@ -2484,20 +2482,20 @@ ALGORITMA prosesUpvote
 INPUT: idPengguna, idLaporan
 OUTPUT: Boolean
 
-1. Panggil sudahUpvote(idPengguna, idLaporan)
-2. IF pengguna sudah melakukan upvote THEN
-      Panggil UpvoteView.tampilkanPesanError().
-      RETURN false
-   ENDIF
-3. Panggil Upvote.upvote(idPengguna, idLaporan)
-4. IF penyimpanan upvote gagal THEN
-      Panggil UpvoteView.tampilkanPesanError()
-      RETURN false
-   ENDIF
-5. Panggil UpvoteView.updateUpvoteButton(true).
-6. Ambil jumlah upvote terbaru melalui Laporan.getJumlahUpvote().
-7. Panggil UpvoteView.tampilkanJumlahUpvote(jumlahUpvote).
-8. RETURN true.
+Panggil sudahUpvote(idPengguna, idLaporan)
+IF pengguna sudah melakukan upvote THEN
+   Panggil UpvoteView.tampilkanPesanError().
+   RETURN false
+ENDIF
+Panggil Upvote.upvote(idPengguna, idLaporan)
+IF penyimpanan upvote gagal THEN
+   Panggil UpvoteView.tampilkanPesanError()
+   RETURN false
+ENDIF
+Panggil UpvoteView.updateUpvoteButton(true).
+Ambil jumlah upvote terbaru melalui Laporan.getJumlahUpvote().
+Panggil UpvoteView.tampilkanJumlahUpvote(jumlahUpvote).
+RETURN true.
 ```
 
 
@@ -2540,12 +2538,12 @@ ALGORITMA validasiTanggapan
 INPUT: dataPopupForm
 OUTPUT: Boolean
 
-1. statusTanggapan ← dataPopupForm.statusTanggapan
-2. IF statusTanggapan = TRUE THEN
-      RETURN true
-   ELSE
-      RETURN false
-   ENDIF
+statusTanggapan ← dataPopupForm.statusTanggapan
+IF statusTanggapan = TRUE THEN
+   RETURN true
+ELSE
+   RETURN false
+ENDIF
 ```
 
 ### 5.20.2 Algoritma/Query
@@ -2560,12 +2558,12 @@ ALGORITMA simpanTanggapan
 INPUT: idLaporan, dataPopupForm
 OUTPUT: Boolean
 
-1. Panggil validasiTanggapan(dataPopupForm).
-2. IF data tidak valid THEN
-      RETURN false
-   ENDIF
-3. Panggil Tanggapan.simpanTanggapan(idLaporan, dataPopupForm).
-4. RETURN hasil operasi penyimpanan.
+Panggil validasiTanggapan(dataPopupForm).
+IF data tidak valid THEN
+   RETURN false
+ENDIF
+Panggil Tanggapan.simpanTanggapan(idLaporan, dataPopupForm).
+RETURN hasil operasi penyimpanan.
 ```
 
 
@@ -2581,12 +2579,12 @@ ALGORITMA simpanStatus
 INPUT: idLaporan, statusPenanganan
 OUTPUT: Boolean
 
-1. Jalankan query UPDATE untuk memperbarui status penanganan laporan [Q-026]
-2. IF pembaruan berhasil THEN
-      RETURN true
-   ELSE
-      RETURN false
-   ENDIF
+Jalankan query UPDATE untuk memperbarui status penanganan laporan [Q-026]
+IF pembaruan berhasil THEN
+   RETURN true
+ELSE
+   RETURN false
+ENDIF
 ```
 
 Tabel 5.20.2. Query Operasi simpanStatus()
@@ -2610,15 +2608,15 @@ ALGORITMA startTutorial
 INPUT: -
 OUTPUT: Boolean
 
-1. langkahSaatIni = 1
-2. Tetapkan totalLangkah sesuai jumlah langkah tutorial.
-3. Panggil operasi tampilkanTutorial() pada TutorialView.
-4. Panggil operasi tampilkanLangkah(langkahSaatIni) pada TutorialView.
-5. IF tutorial berhasil diinisialisasi THEN
-      RETURN true
-   ELSE
-      RETURN false
-   ENDIF
+langkahSaatIni = 1
+Tetapkan totalLangkah sesuai jumlah langkah tutorial.
+Panggil operasi tampilkanTutorial() pada TutorialView.
+Panggil operasi tampilkanLangkah(langkahSaatIni) pada TutorialView.
+IF tutorial berhasil diinisialisasi THEN
+   RETURN true
+ELSE
+   RETURN false
+ENDIF
 ```
 
 ### 5.21.2 Algoritma/Query
@@ -2633,14 +2631,14 @@ ALGORITMA nextTutorial
 INPUT: -
 OUTPUT: Boolean
 
-1. Ambil nilai langkahSaatIni dan totalLangkah dari objek Tutorial.
-2. IF langkahSaatIni < totalLangkah THEN
-      langkahSaatIni = langkahSaatIni + 1
-      Panggil operasi tampilkanLangkah(langkahSaatIni) pada TutorialView
-      RETURN true
-   ELSE
-      RETURN false
-   ENDIF
+Ambil nilai langkahSaatIni dan totalLangkah dari objek Tutorial.
+IF langkahSaatIni < totalLangkah THEN
+   langkahSaatIni = langkahSaatIni + 1
+   Panggil operasi tampilkanLangkah(langkahSaatIni) pada TutorialView
+   RETURN true
+ELSE
+   RETURN false
+ENDIF
 ```
 
 ### 5.21.3 Algoritma/Query
@@ -2655,12 +2653,12 @@ ALGORITMA skipTutorial
 INPUT: -
 OUTPUT: Boolean
 
-1. Panggil TutorialView.tutupTutorial()
-2. IF tutorial berhasil ditutup THEN
-      RETURN true
-   ELSE
-      RETURN false
-   ENDIF
+Panggil TutorialView.tutupTutorial()
+IF tutorial berhasil ditutup THEN
+   RETURN true
+ELSE
+   RETURN false
+ENDIF
 ```
 
 ### 5.21.4 Algoritma/Query
@@ -2675,17 +2673,17 @@ ALGORITMA finishTutorial
 INPUT: -
 OUTPUT: Boolean
 
-1. IF langkahSaatIni != totalLangkah THEN
-      RETURN false
-   ENDIF
-2. statusTutorial = true
-3. Simpan perubahan statusTutorial ke database.
-4. IF penyimpanan berhasil THEN
-      Panggil TutorialView.tutupTutorial().
-      RETURN true
-   ELSE
-      RETURN false
-   ENDIF
+IF langkahSaatIni != totalLangkah THEN
+   RETURN false
+ENDIF
+statusTutorial = true
+Simpan perubahan statusTutorial ke database.
+IF penyimpanan berhasil THEN
+   Panggil TutorialView.tutupTutorial().
+   RETURN true
+ELSE
+   RETURN false
+ENDIF
 ```
 
 ## 5.22 Kelas MapAPI
