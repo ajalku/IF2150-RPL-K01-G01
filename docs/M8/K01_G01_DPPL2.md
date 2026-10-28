@@ -39,7 +39,7 @@ Dipersiapkan oleh:
 | ... |  |
 
 ---
-
+<!-- 
 <br>
 
 > **Petunjuk pengerjaan:** *[Silahkan hapus bagian ini setelah selesai mengerjakan]*
@@ -48,7 +48,7 @@ Dipersiapkan oleh:
 
 <br>
 
----
+--- -->
 
 
 # BAB 1: Pendahuluan
