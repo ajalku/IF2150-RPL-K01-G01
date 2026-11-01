@@ -7,34 +7,36 @@ IMPLEMENTASI PERANGKAT LUNAK
 </h1>
 <br>
 
-## *Nama Perangkat Lunak*
-### *[Logo Perangkat Lunak]*
+## *RAWAT (Ruang Aspirasi Warga dan Aduan Terpadu)*
+<p align="left">
+  <img src="././assets/logo_placeholder.png" width="20%">
+</p>
 
-### Untuk: *[Nama Asisten]*
+### Untuk: *Agatha Tatianingseto*
 
 Dipersiapkan oleh:
 | Informasi | Keterangan |
 | --- | --- |
-| Kelas | *\[Kelas\]* |
-| Kelompok | *\[Nomor Kelompok\]*  |
+| Kelas | *K01* |
+| Kelompok | *G01*  |
 
 | NIM | Nama |
-|---|---|
-| *[NIM 1]* | *[Nama Anggota 1]* |
-| *[NIM 2]* | *[Nama Anggota 2]* |
-| *[NIM 3]* | *[Nama Anggota 3]* |
-| *[NIM 4]* | *[Nama Anggota 4]* |
-| *[NIM 5]* | *[Nama Anggota 5]* |
+| --- | --- |
+| *13525103* | *Ravinka Fathia Adinegara* |
+| *13525013* | *Samantha Michelle S Silaban* |
+| *13525055* | *Syakira Azzahra Rachmania* |
+| *13525043* | *Aufa Tatsbita Zahra* |
+| *13525046* | *Ghiffari Arya Adhitya* |
 ---
 
-> **Petunjuk pengerjaan:** *[Silahkan hapus bagian ini setelah selesai mengerjakan]*
+<!-- > **Petunjuk pengerjaan:** *[Silahkan hapus bagian ini setelah selesai mengerjakan]*
 >
-> Dokumen ini adalah **spesifikasi sekaligus template laporan singkat** Tugas 9. Bagian **Ketentuan Implementasi** (Bagian A) adalah aturan yang harus kalian ikuti, boleh dihapus dari laporan akhir. Bagian **Laporan Implementasi** (Bagian B) adalah yang **wajib kalian isi**. Gunakan nama, ID, kebutuhan, use case, dan kelas yang konsisten dengan SKPL, APL, dan DPPL.
+> Dokumen ini adalah **spesifikasi sekaligus template laporan singkat** Tugas 9. Bagian **Ketentuan Implementasi** (Bagian A) adalah aturan yang harus kalian ikuti, boleh dihapus dari laporan akhir. Bagian **Laporan Implementasi** (Bagian B) adalah yang **wajib kalian isi**. Gunakan nama, ID, kebutuhan, use case, dan kelas yang konsisten dengan SKPL, APL, dan DPPL. -->
 
 ---
 
 **Deadline:** Rabu, 11 November 2026, 21.50 WIB
-**Asistensi akbar:** *[Hari, DD Bulan YYYY, HH.MM WIB, lokasi/link]*
+**Asistensi akbar:** *Senin, 2 November 2026, 19.00 WIB, [link]*
 
 ---
 
