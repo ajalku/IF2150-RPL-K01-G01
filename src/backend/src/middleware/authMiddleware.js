@@ -1,6 +1,6 @@
 //pakai ini di tiap page supaya user yg ke suatu page pasti sudah login 
 function requireAuth(req, res, next) {
-    if (req.session?.user) {
+    if (req.session?.idPengguna) {
         return next();
     }
 
