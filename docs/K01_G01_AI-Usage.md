@@ -35,12 +35,12 @@ Silakan catat penggunaan AI yang berdampak signifikan pada pengerjaan tugas (mis
 ### Milestone 7
 | Tool AI | Tujuan Penggunaan | Contoh Prompt Utama | Modifikasi & Validasi Manusia |
 | :--- | :--- | :--- | :--- |
-|Claude | Membuat salah satu diagram kelas (dikarenakan keterbatasan waktu) | Berdasarkan informasi identifikasi kelas dan skenario use case di atas, buatkan diagram kelas ini dan jelaskan | Dilakukan pemeriksaan ulang terhadap diagram. | |
+| Claude | Membuat salah satu diagram kelas (dikarenakan keterbatasan waktu) | Berdasarkan informasi identifikasi kelas dan skenario use case di atas, buatkan diagram kelas ini dan jelaskan | Dilakukan pemeriksaan ulang terhadap diagram. | |
 
 ### Milestone 8
 | Tool AI | Tujuan Penggunaan | Contoh Prompt Utama | Modifikasi & Validasi Manusia |
 | :--- | :--- | :--- | :--- |
-|ChatGPT | Membuat query dan gambaran pseudocode | Buatkan contoh gambaran pseudocode untuk method ini dan berikan & jelaskan implementasi query  | Terdapat beberapa alur yang tidak sesuai diharapkan, seperti pengecekan daftar perubahan. | |
+| ChatGPT | Membuat query dan gambaran pseudocode | Buatkan contoh gambaran pseudocode untuk method ini dan berikan & jelaskan implementasi query  | Terdapat beberapa alur yang tidak sesuai diharapkan, seperti pengecekan daftar perubahan. | |
 | Figma AI | Membuat rancangan antarmuka website | Buat UI berdasarkan [isi SKPL] dan [isi DPPL] | Hasil akhir UI dimodifikasi agar bisa sesuai dengan tujuan aplikasi dibuat, terdapat beberapa penyesuaian style. |
 
 
