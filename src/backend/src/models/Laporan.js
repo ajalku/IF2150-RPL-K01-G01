@@ -2,7 +2,7 @@ const { pool } = require("../config/database");
 const Lokasi = require("./Lokasi");
 
 // ---- Konstanta domain ------------------------------------------------------
-const BOBOT_URGENSI = { RENDAH: 1, SEDANG: 2, TINGGI: 3 };
+const BOBOT_URGENSI = { SANGAT_RENDAH: 1, RENDAH: 2, SEDANG: 3, TINGGI: 4, SANGAT_TINGGI: 5 };
 const STATUS_LAPORAN = ["BELUM_DILIHAT", "DILIHAT", "DIPERBAIKI", "SELESAI"];
 const STATUS_PRIVASI = ["PUBLIK", "ANONIM"];
 const BATAS_WAKTU_HARI = 14; // laporan tidak valid dihapus otomatis setelah 2 minggu

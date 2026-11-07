@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS laporan (
     nama_masalah          VARCHAR(150) NOT NULL,
     kategori              VARCHAR(50)  NOT NULL,
     tingkat_permasalahan  VARCHAR(10)  NOT NULL
-                              CHECK (tingkat_permasalahan IN ('RENDAH', 'SEDANG', 'TINGGI')),
+                              CHECK (tingkat_permasalahan IN ('SANGAT_RENDAH', 'RENDAH', 'SEDANG', 'TINGGI', 'SANGAT_TINGGI')),
     status_privasi        VARCHAR(10)  NOT NULL
                               CHECK (status_privasi IN ('PUBLIK', 'ANONIM')),
     foto                  VARCHAR(100),               -- nama file di uploads/laporan/

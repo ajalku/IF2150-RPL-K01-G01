@@ -1,0 +1,7 @@
+1. Backend belum punya GET /api/auth/me dan POST /api/auth/logout. Tanpa /me, frontend tidak tahu apakah pengguna masih login setelah halaman di-refresh. Tanpa /logout, tombol “Keluar Akun” di I-08 tidak punya tujuan. Keduanya kecil dan perlu ditambahkan di backend.
+2. Form registrasi harus punya kolom nomor telepon. Rancangan I-02 tidak mencantumkannya, padahal backend mewajibkan noTelp.
+3. Penjaga halaman. Bungkus route dengan komponen yang mengalihkan ke /login jika belum login, dan halaman admin (I-06) hanya untuk role === "admin". Ini hanya untuk tampilan. Keamanan sebenarnya tetap di backend, yang sudah menolak dengan 401 dan 403.
+4. Geolocation hanya jalan di HTTPS atau localhost. Saat deploy, pakai HTTPS. Itu juga diperlukan karena cookie session diset secure di mode produksi.
+5. Ikon marker Leaflet sering tidak muncul di Vite. Itu bug yang diketahui, bukan salah kode Anda. Solusinya mengimpor gambar ikon secara manual dan memasangnya ke L.Icon.Default.
+6. Deploy. Jalankan npm run build di frontend, lalu sajikan folder dist/ dari Express. Karena Express 5, rute fallback-nya memakai sintaks app.get("/{*splat}", ...). Dengan begitu frontend dan API satu alamat, sama seperti saat development.
+7. Belum tersedia di backend: tombol upvote, komentar, tutorial, dan edit profil di rancangan layar. Tombol-tombol itu baru bisa berfungsi setelah modul Upvote, Tanggapan, Tutorial, dan Profil dibuat.
