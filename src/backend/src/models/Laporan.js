@@ -5,6 +5,7 @@ const Lokasi = require("./Lokasi");
 const BOBOT_URGENSI = { SANGAT_RENDAH: 1, RENDAH: 2, SEDANG: 3, TINGGI: 4, SANGAT_TINGGI: 5 };
 const STATUS_LAPORAN = ["BELUM_DILIHAT", "DILIHAT", "DIPERBAIKI", "SELESAI"];
 const STATUS_PRIVASI = ["PUBLIK", "ANONIM"];
+const STATUS_VALIDASI = ["BELUM_DIPERIKSA", "VALID", "TIDAK_VALID"];
 const BATAS_WAKTU_HARI = 14; // laporan tidak valid dihapus otomatis setelah 2 minggu
 
 // Rumus skor populer (DPPL belum menetapkan rumus -> silakan ubah di sini saja)
@@ -33,6 +34,7 @@ class Laporan {
     static BOBOT_URGENSI = BOBOT_URGENSI;
     static STATUS_LAPORAN = STATUS_LAPORAN;
     static STATUS_PRIVASI = STATUS_PRIVASI;
+    static STATUS_VALIDASI = STATUS_VALIDASI;
 
     // Mengubah baris database menjadi objek respons, sambil menerapkan
     // aturan privasi sesuai siapa yang melihat (viewer).
@@ -47,7 +49,7 @@ class Laporan {
             kategori: row.kategori,
             tingkatPermasalahan: row.tingkat_permasalahan,
             statusPrivasi: row.status_privasi,
-            foto: row.foto ? `/uploads/laporan/${row.foto}` : null,
+            foto: row.foto ? `/api/laporan/${row.id_laporan}/foto` : null,
             deskripsi: row.deskripsi,
             statusLaporan: row.status_laporan,
             statusValidasi: row.status_validasi,
@@ -115,7 +117,7 @@ class Laporan {
     // Daftar laporan untuk homepage / peta. limit = null berarti tanpa batas.
     static async getDaftarLaporan(viewer, opsi = {}) {
         const {
-            kategori, statusLaporan, tingkatPermasalahan, idPengguna, bbox,
+            kategori, statusLaporan, statusValidasi, tingkatPermasalahan, idPengguna, bbox,
             sortBy = "waktu", sortType = "desc", limit = 20, offset = 0,
         } = opsi;
 
@@ -132,6 +134,7 @@ class Laporan {
         if (idPengguna !== undefined) tambah("l.id_pengguna = ?", idPengguna);
         if (kategori) tambah("l.kategori = ?", kategori);
         if (statusLaporan) tambah("l.status_laporan = ?", statusLaporan);
+        if (statusValidasi) tambah("l.status_validasi = ?", statusValidasi);
         if (tingkatPermasalahan) tambah("l.tingkat_permasalahan = ?", tingkatPermasalahan);
         if (bbox) {
             tambah("lo.latitude  >= ?", bbox.minLat);
@@ -153,6 +156,18 @@ class Laporan {
 
         const result = await pool.query(sql, params);
         return result.rows.map(row => Laporan.#format(row, viewer));
+    }
+
+    // Nama file foto, hanya jika viewer berhak melihat laporannya (aturan sama dengan detail laporan)
+    static async getFoto(idLaporan, viewer) {
+        const result = await pool.query(
+            `SELECT foto, id_pengguna, status_validasi FROM laporan WHERE id_laporan = $1`,
+            [idLaporan]
+        );
+        if (result.rows.length === 0) return null;
+        const row = result.rows[0];
+        if (!row.foto || !Laporan.#bolehDilihat(row, viewer)) return null;
+        return row.foto;
     }
 
     // Data minimal untuk pengecekan hak akses & status (tanpa filter privasi)

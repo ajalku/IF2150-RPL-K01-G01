@@ -5,7 +5,6 @@ const sessionMiddleware = require("./config/session");
 const authRoutes = require("./routes/authRoutes");
 const laporanRoutes = require("./routes/laporanRoutes");
 const lokasiRoutes = require("./routes/lokasiRoutes");
-const { UPLOAD_ROOT } = require("./middleware/uploadMiddleware");
 const { mulaiPembersihLaporan } = require("./jobs/pembersihLaporan");
 
 const app = express();
@@ -15,8 +14,7 @@ const PORT = process.env.PORT || 7002;
 app.use(express.json());
 app.use(sessionMiddleware);
 
-// Foto laporan dapat diakses di /uploads/laporan/<namafile>
-app.use("/uploads", express.static(UPLOAD_ROOT));
+// Foto laporan TIDAK disajikan statis. Aksesnya lewat GET /api/laporan/:id/foto (wajib login).
 
 //Routes
 app.use("/api/auth", authRoutes);

@@ -13,6 +13,7 @@ router.post("/", uploadFoto, LaporanController.buat);
 router.get("/", LaporanController.daftar);
 router.get("/saya", LaporanController.saya);              // harus di atas "/:idLaporan"
 router.get("/:idLaporan", LaporanController.detail);
+router.get("/:idLaporan/foto", LaporanController.foto);
 
 router.patch("/:idLaporan/status", authorizeRoles("admin"), LaporanController.updateStatus);
 router.patch("/:idLaporan/pemeriksaan", authorizeRoles("admin"), LaporanController.periksa);

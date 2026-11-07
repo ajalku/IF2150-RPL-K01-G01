@@ -1,9 +1,10 @@
 const crypto = require("crypto");
 const fs = require("fs");
+const path = require("path");
 const Laporan = require("../models/Laporan");
 const Lokasi = require("../models/Lokasi");
 const MapAPIService = require("../services/MapAPIService");
-const { hapusFileFoto } = require("../middleware/uploadMiddleware");
+const { hapusFileFoto, UPLOAD_DIR } = require("../middleware/uploadMiddleware");
 
 const REGEX_UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
@@ -139,6 +140,9 @@ class LaporanController {
             if (q.statusLaporan && !Laporan.STATUS_LAPORAN.includes(q.statusLaporan)) {
                 return res.status(400).json({ message: "Status laporan tidak valid" });
             }
+            if (q.statusValidasi && !Laporan.STATUS_VALIDASI.includes(q.statusValidasi)) {
+                return res.status(400).json({ message: "Status validasi tidak valid" });
+            }
             if (q.tingkatPermasalahan && !(q.tingkatPermasalahan in Laporan.BOBOT_URGENSI)) {
                 return res.status(400).json({ message: "Tingkat permasalahan tidak valid" });
             }
@@ -146,6 +150,7 @@ class LaporanController {
             const laporan = await Laporan.getDaftarLaporan(LaporanController.#viewer(req), {
                 kategori: LaporanController.#teks(q.kategori) || undefined,
                 statusLaporan: q.statusLaporan || undefined,
+                statusValidasi: q.statusValidasi || undefined,
                 tingkatPermasalahan: q.tingkatPermasalahan || undefined,
                 sortBy: q.sortBy,
                 sortType: q.sortType,
@@ -187,6 +192,36 @@ class LaporanController {
             return res.status(200).json({ laporan });
         } catch (err) {
             console.error("Detail laporan error:", err);
+            return res.status(500).json({ message: "Something went wrong" });
+        }
+    }
+
+    // GET /api/laporan/:idLaporan/foto  -- foto hanya untuk pengguna login yang berhak melihat laporan
+    static async foto(req, res) {
+        try {
+            const { idLaporan } = req.params;
+            if (!LaporanController.#idValid(idLaporan)) {
+                return res.status(404).json({ message: "Foto tidak ditemukan" });
+            }
+            const namaFile = await Laporan.getFoto(idLaporan, LaporanController.#viewer(req));
+            if (namaFile === null) {
+                return res.status(404).json({ message: "Foto tidak ditemukan" });
+            }
+            return res.sendFile(path.basename(namaFile), {
+                root: UPLOAD_DIR,
+                dotfiles: "deny",
+                headers: {
+                    // private: tidak boleh disimpan cache bersama; no-cache: cek hak akses lagi tiap dipakai
+                    "Cache-Control": "private, no-cache",
+                    "X-Content-Type-Options": "nosniff",
+                },
+            }, err => {
+                if (err && !res.headersSent) {
+                    res.status(err.statusCode === 404 ? 404 : 500).json({ message: "Foto tidak ditemukan" });
+                }
+            });
+        } catch (err) {
+            console.error("Foto laporan error:", err);
             return res.status(500).json({ message: "Something went wrong" });
         }
     }

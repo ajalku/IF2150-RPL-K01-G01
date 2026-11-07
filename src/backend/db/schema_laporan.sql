@@ -9,7 +9,7 @@
 
 CREATE TABLE IF NOT EXISTS laporan (
     id_laporan            UUID PRIMARY KEY,
-    id_pengguna           INTEGER NOT NULL
+    id_pengguna           UUID NOT NULL
                               REFERENCES pengguna(id_pengguna) ON DELETE CASCADE,
     nama_masalah          VARCHAR(150) NOT NULL,
     kategori              VARCHAR(50)  NOT NULL,
