@@ -12,6 +12,11 @@ export default defineConfig({
         target: "http://localhost:7001",
         changeOrigin: true,
       },
+      // foto laporan yang disajikan backend
+      "/uploads": {
+        target: "http://localhost:7001",
+        changeOrigin: true,
+      },
     },
   },
 });
