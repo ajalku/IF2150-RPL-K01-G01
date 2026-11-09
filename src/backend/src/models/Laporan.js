@@ -49,7 +49,7 @@ class Laporan {
             kategori: row.kategori,
             tingkatPermasalahan: row.tingkat_permasalahan,
             statusPrivasi: row.status_privasi,
-            foto: row.foto ? `/api/laporan/${row.id_laporan}/foto` : null,
+            foto: row.foto ? `/uploads/laporan/${row.foto}` : null,
             deskripsi: row.deskripsi,
             statusLaporan: row.status_laporan,
             statusValidasi: row.status_validasi,
@@ -156,18 +156,6 @@ class Laporan {
 
         const result = await pool.query(sql, params);
         return result.rows.map(row => Laporan.#format(row, viewer));
-    }
-
-    // Nama file foto, hanya jika viewer berhak melihat laporannya (aturan sama dengan detail laporan)
-    static async getFoto(idLaporan, viewer) {
-        const result = await pool.query(
-            `SELECT foto, id_pengguna, status_validasi FROM laporan WHERE id_laporan = $1`,
-            [idLaporan]
-        );
-        if (result.rows.length === 0) return null;
-        const row = result.rows[0];
-        if (!row.foto || !Laporan.#bolehDilihat(row, viewer)) return null;
-        return row.foto;
     }
 
     // Data minimal untuk pengecekan hak akses & status (tanpa filter privasi)

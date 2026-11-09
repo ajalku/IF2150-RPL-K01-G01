@@ -56,6 +56,20 @@ class Pengguna {
 
         return new Pengguna(result.rows[0]);
     }
+    static async getPenggunaById(idPengguna) {
+        const query = `
+            SELECT * FROM pengguna
+            WHERE id_pengguna = $1
+        `;
+
+        const result = await pool.query(query, [idPengguna]);
+
+        if (result.rows.length === 0) {
+            return null;
+        }
+
+        return new Pengguna(result.rows[0]);
+    }
     static async getPenggunaByNIK(nik) {
         const query = `
             SELECT * FROM pengguna
@@ -69,6 +83,18 @@ class Pengguna {
         }
 
         return new Pengguna(result.rows[0]);
+    }
+
+    getNama(){
+        return this.#nama;
+    }
+
+    getEmail(){
+        return this.#email;
+    }
+
+    getNoTelp(){
+        return this.#noTelp;
     }
 
     getRole(){

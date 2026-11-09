@@ -109,6 +109,42 @@ class PenggunaController {
             return res.status(500).json({message: "Something went wrong"});
         }
     }
-    
+
+    // GET /api/auth/me  -> data pengguna yang sedang login (dipakai front-end saat halaman dimuat)
+    static async me(req, res) {
+        try {
+            const pengguna = await Pengguna.getPenggunaById(req.session.idPengguna);
+            if (pengguna == null) {
+                // akun sudah dihapus tetapi sesi masih ada
+                return req.session.destroy(() =>
+                    res.status(401).json({message: "Please log in to continue."}));
+            }
+            return res.status(200).json({
+                pengguna: {
+                    idPengguna: pengguna.getIdPengguna(),
+                    nama: pengguna.getNama(),
+                    email: pengguna.getEmail(),
+                    noTelp: pengguna.getNoTelp(),
+                    role: req.session.role
+                }
+            });
+        } catch (err) {
+            console.error("Me error:", err);
+            return res.status(500).json({message: "Something went wrong"});
+        }
+    }
+
+    // POST /api/auth/logout
+    static logout(req, res) {
+        req.session.destroy(err => {
+            if (err) {
+                console.error("Logout error:", err);
+                return res.status(500).json({message: "Something went wrong"});
+            }
+            res.clearCookie("rawat.sid");
+            return res.status(200).json({message: "Logout succeeded."});
+        });
+    }
+
 }
 module.exports = PenggunaController;
