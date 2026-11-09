@@ -93,3 +93,50 @@ Tag inilah yang jadi bukti resmi apa yang kelompok kumpulkan untuk milestone ter
 	<br>
 	<text>Tim Asisten RPL 2024</text>
 </p>
+
+## 7. Fitur Tanggapan (Milestone 9)
+
+### Skema dan migrasi
+
+Tabel `tanggapan` menyimpan hasil pemeriksaan boolean, waktu tanggapan, dan deskripsinya. Setiap tanggapan terhubung ke `laporan(id_laporan)` dengan `ON DELETE CASCADE`.
+
+Pastikan koneksi PostgreSQL yang dipakai sesuai variabel `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, dan `DB_NAME` di `src/backend/.env`. Jalankan skema laporan terlebih dahulu jika belum ada, kemudian migrasi:
+
+```powershell
+psql -h <DB_HOST> -p <DB_PORT> -U <DB_USER> -d <DB_NAME> -f src/backend/db/schema_laporan.sql
+psql -h <DB_HOST> -p <DB_PORT> -U <DB_USER> -d <DB_NAME> -f src/backend/db/migration_tanggapan.sql
+```
+
+`schema_laporan.sql` mengasumsikan tabel `pengguna` sudah tersedia.
+
+### Endpoint
+
+| Method | Endpoint | Akses | Keterangan |
+|---|---|---|---|
+| `POST` | `/api/laporan/:idLaporan/tanggapan` | Admin | Menyimpan pemeriksaan, tanggapan, dan status penanganan dalam satu transaksi. |
+| `PATCH` | `/api/laporan/:idLaporan/status` | Admin | Memperbarui status penanganan saja. |
+
+Contoh body untuk endpoint tanggapan:
+
+```json
+{
+  "statusTanggapan": false,
+  "deskripsiTanggapan": "Alasan laporan tidak valid.",
+  "catatanPemeriksaan": "Catatan pemeriksaan admin.",
+  "statusLaporan": "DILIHAT"
+}
+```
+
+`statusTanggapan` harus boolean. Deskripsi wajib jika nilainya `false`; jika `true`, deskripsi boleh kosong. `statusLaporan` menerima `BELUM_DILIHAT`, `DILIHAT`, `DIPERBAIKI`, atau `SELESAI`.
+
+### Menyiapkan akun admin uji
+
+Belum ada kredensial admin uji yang disediakan di repository. Buat akun uji melalui halaman registrasi, lalu ubah rolenya langsung di PostgreSQL (ganti alamat email dengan email akun tersebut):
+
+```sql
+UPDATE pengguna SET role = 'admin' WHERE email = 'admin-uji@example.test';
+```
+
+Login menggunakan akun itu untuk membuka halaman **Periksa Laporan**. Jangan gunakan akun admin produksi sebagai akun uji.
+
+Jalankan unit test backend dari direktori `src/backend` dengan `npm test`.
