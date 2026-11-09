@@ -1,9 +1,10 @@
 const crypto = require("crypto");
 const fs = require("fs");
+const path = require("path");
 const Laporan = require("../models/Laporan");
 const Lokasi = require("../models/Lokasi");
 const MapAPIService = require("../services/MapAPIService");
-const { hapusFileFoto } = require("../middleware/uploadMiddleware");
+const { hapusFileFoto, UPLOAD_DIR } = require("../middleware/uploadMiddleware");
 
 const REGEX_UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
@@ -191,6 +192,36 @@ class LaporanController {
             return res.status(200).json({ laporan });
         } catch (err) {
             console.error("Detail laporan error:", err);
+            return res.status(500).json({ message: "Something went wrong" });
+        }
+    }
+
+    // GET /api/laporan/:idLaporan/foto  -- foto hanya untuk pengguna login yang berhak melihat laporan
+    static async foto(req, res) {
+        try {
+            const { idLaporan } = req.params;
+            if (!LaporanController.#idValid(idLaporan)) {
+                return res.status(404).json({ message: "Foto tidak ditemukan" });
+            }
+            const namaFile = await Laporan.getFoto(idLaporan, LaporanController.#viewer(req));
+            if (namaFile === null) {
+                return res.status(404).json({ message: "Foto tidak ditemukan" });
+            }
+            return res.sendFile(path.basename(namaFile), {
+                root: UPLOAD_DIR,
+                dotfiles: "deny",
+                headers: {
+                    // private: tidak boleh disimpan cache bersama; no-cache: cek hak akses lagi tiap dipakai
+                    "Cache-Control": "private, no-cache",
+                    "X-Content-Type-Options": "nosniff",
+                },
+            }, err => {
+                if (err && !res.headersSent) {
+                    res.status(err.statusCode === 404 ? 404 : 500).json({ message: "Foto tidak ditemukan" });
+                }
+            });
+        } catch (err) {
+            console.error("Foto laporan error:", err);
             return res.status(500).json({ message: "Something went wrong" });
         }
     }
