@@ -2,6 +2,7 @@ const crypto = require("crypto");
 const fs = require("fs");
 const Laporan = require("../models/Laporan");
 const Lokasi = require("../models/Lokasi");
+const Tanggapan = require("../models/Tanggapan");
 const MapAPIService = require("../services/MapAPIService");
 const { hapusFileFoto } = require("../middleware/uploadMiddleware");
 
@@ -188,6 +189,7 @@ class LaporanController {
             if (laporan === null) {
                 return res.status(404).json({ message: "Laporan tidak ditemukan" });
             }
+            laporan.tanggapanTeratas = await Tanggapan.getTanggapanByLaporan(idLaporan);
             return res.status(200).json({ laporan });
         } catch (err) {
             console.error("Detail laporan error:", err);

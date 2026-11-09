@@ -1,5 +1,6 @@
 const express = require("express");
 const LaporanController = require("../controllers/LaporanController");
+const TanggapanController = require("../controllers/TanggapanController");
 const { requireAuth } = require("../middleware/authMiddleware");
 const { authorizeRoles } = require("../middleware/roleMiddleware");
 const { uploadFoto } = require("../middleware/uploadMiddleware");
@@ -15,6 +16,7 @@ router.get("/saya", LaporanController.saya);              // harus di atas "/:id
 router.get("/:idLaporan", LaporanController.detail);
 router.get("/:idLaporan/foto", LaporanController.foto);
 
+router.post("/:idLaporan/tanggapan", authorizeRoles("admin"), TanggapanController.simpan);
 router.patch("/:idLaporan/status", authorizeRoles("admin"), LaporanController.updateStatus);
 router.patch("/:idLaporan/pemeriksaan", authorizeRoles("admin"), LaporanController.periksa);
 router.post("/:idLaporan/konfirmasi-ulang", LaporanController.konfirmasiUlang);
