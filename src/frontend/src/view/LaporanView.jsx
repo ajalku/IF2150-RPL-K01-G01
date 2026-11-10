@@ -26,6 +26,7 @@ export default function LaporanView({ id, sesi }) {
   const [dialogHapus, setDialogHapus] = useState(false);
   const [sibuk, setSibuk] = useState(false);
   const [pesan, setPesan] = useState({ jenis: "", teks: "" });
+  const [error, setError] = useState(false);
 
   const laporan = data?.laporan;
 
@@ -37,6 +38,7 @@ export default function LaporanView({ id, sesi }) {
       muatUlang();
     } catch (err) {
       setPesan({ jenis: "error", teks: err.message });
+      setError("konfirmasi")
     } finally {
       setSibuk(false);
     }
@@ -49,6 +51,7 @@ export default function LaporanView({ id, sesi }) {
       window.location.hash = "#/profil";
     } catch (err) {
       setPesan({ jenis: "error", teks: err.message });
+      setError("hapus")
       setDialogHapus(false);
       setSibuk(false);
     }
@@ -83,30 +86,32 @@ export default function LaporanView({ id, sesi }) {
               {sibuk ? "Mengirim..." : "Kirim konfirmasi ulang"}
             </button>
           )}
+          {pesan.teks && error == "konfirmasi" && <p className={`form-message ${pesan.jenis}`} role="status">{pesan.teks}</p>}
         </div>
       )}
-      {pesan.teks && <p className={`form-message ${pesan.jenis}`} role="status">{pesan.teks}</p>}
 
       <div className="rw-detail">
         <article className="rw-panel">
-          {laporan.foto && <img className="rw-detail-foto" src={laporan.foto} alt={`Foto: ${laporan.namaMasalah}`} />}
-          <h1>{laporan.namaMasalah}</h1>
           <div className="rw-baris-lencana">
             <span className="rw-kategori">{laporan.kategori}</span>
             <LencanaStatus status={laporan.statusLaporan} />
             <LencanaTingkat tingkat={laporan.tingkatPermasalahan} />
             {laporan.statusValidasi !== "TIDAK_VALID" && <LencanaValidasi status={laporan.statusValidasi} />}
           </div>
-          <p className="rw-deskripsi">{laporan.deskripsi || "Pelapor tidak menambahkan deskripsi."}</p>
+          <h1>{laporan.namaMasalah}</h1>
           <p className="rw-meta">
-            <User size={13} aria-hidden="true" /> {laporan.pelapor ?? "Anonim"} · {tanggal(laporan.waktuLapor)} ({waktuRelatif(laporan.waktuLapor)})
-            <ThumbsUp size={13} aria-hidden="true" className="rw-ikon-geser" /> {laporan.jumlahUpvote} dukungan
+            <User size={13} aria-hidden="true" /> {laporan.pelapor ?? "Anonim"}
           </p>
+          <p className="rw-meta-misc">
+            {tanggal(laporan.waktuLapor)} ({waktuRelatif(laporan.waktuLapor)}) 
+            <ThumbsUp size={13} aria-hidden="true" className="rw-ikon-geser" /> {laporan.jumlahUpvote} dukungan
+            <p className="rw-meta-id">{laporan.idLaporan}</p>
+          </p>
+          {laporan.foto && <img className="rw-detail-foto" src={laporan.foto} alt={`Foto: ${laporan.namaMasalah}`} />}
+          <p className="rw-meta-misc2">{alamat || `${latitude.toFixed(5)}, ${longitude.toFixed(5)}`}</p>
+          <hr />
+          <p className="rw-deskripsi">{laporan.deskripsi || "Pelapor tidak menambahkan deskripsi."}</p>
           <div className="rw-aksi">
-            <a className="rw-btn rw-btn-garis"
-              href={`#/peta?lat=${latitude}&lon=${longitude}&fokus=${laporan.idLaporan}`}>
-              <IkonPeta size={15} /> Lihat di peta
-            </a>
             {sesi.role === "admin" && (
               <a className="rw-btn rw-btn-garis" href={`#/periksa/${laporan.idLaporan}`}>
                 <ClipboardCheck size={15} /> Periksa
@@ -118,6 +123,7 @@ export default function LaporanView({ id, sesi }) {
               </button>
             )}
           </div>
+            {pesan.teks && error == "hapus" && <p className={`form-message ${pesan.jenis}`} role="status">{pesan.teks}</p>}
         </article>
 
         <aside className="rw-sisi">
@@ -126,9 +132,13 @@ export default function LaporanView({ id, sesi }) {
             <PerjalananStatus status={laporan.statusLaporan} />
           </section>
           <section className="rw-panel">
-            <h2>Kondisi lokasi</h2>
-            <p className="rw-meta">{alamat || `${latitude.toFixed(5)}, ${longitude.toFixed(5)}`}</p>
+            <h2>Titik Lokasi</h2>
             <PetaLaporan tengah={{ latitude, longitude }} zoom={16} laporan={[laporan]} tinggi={240} />
+            <p className="rw-meta-misc">{alamat || `${latitude.toFixed(5)}, ${longitude.toFixed(5)}`}</p>
+            <a className="rw-btn rw-btn-garis rw-btn-peta"
+              href={`#/peta?lat=${latitude}&lon=${longitude}&fokus=${laporan.idLaporan}`}>
+              <IkonPeta size={15} /> Lihat di peta
+            </a>
           </section>
         </aside>
       </div>
