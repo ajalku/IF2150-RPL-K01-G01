@@ -1,10 +1,11 @@
 const crypto = require("crypto");
 const fs = require("fs");
+const path = require("path");
 const Laporan = require("../models/Laporan");
 const Lokasi = require("../models/Lokasi");
 const Tanggapan = require("../models/Tanggapan");
 const MapAPIService = require("../services/MapAPIService");
-const { hapusFileFoto } = require("../middleware/uploadMiddleware");
+const { hapusFileFoto, UPLOAD_DIR } = require("../middleware/uploadMiddleware");
 
 const REGEX_UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
@@ -185,11 +186,19 @@ class LaporanController {
             if (!LaporanController.#idValid(idLaporan)) {
                 return res.status(404).json({ message: "Laporan tidak ditemukan" });
             }
-            const laporan = await Laporan.getDetailLaporan(idLaporan, LaporanController.#viewer(req));
+    
+            const laporan = await Laporan.getDetailLaporan(
+                idLaporan,
+                LaporanController.#viewer(req)
+            );
+    
             if (laporan === null) {
                 return res.status(404).json({ message: "Laporan tidak ditemukan" });
             }
-            laporan.tanggapanTeratas = await Tanggapan.getTanggapanByLaporan(idLaporan);
+    
+            laporan.tanggapanTeratas =
+                await Tanggapan.getTanggapanByLaporan(idLaporan);
+    
             return res.status(200).json({ laporan });
         } catch (err) {
             console.error("Detail laporan error:", err);
