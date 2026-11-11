@@ -12,7 +12,7 @@ import { getSesi, logout } from "./services/authService.js";
 import { useRute } from "./hooks/useRute.js";
 import "./view/RawatApp.css";
 
-function Halaman({ rute, sesi, onLogout }) {
+function Halaman({ rute, sesi, onLogout, onProfileUpdated }) {
   switch (rute.nama) {
     case "laporan":
       return <LaporanView key={rute.id} id={rute.id} sesi={sesi} />;
@@ -21,7 +21,7 @@ function Halaman({ rute, sesi, onLogout }) {
     case "peta":
       return <LokasiView key={rute.query.toString()} query={rute.query} />;
     case "profil":
-      return <ProfilView sesi={sesi} onLogout={onLogout} />;
+      return <ProfilView sesi={sesi} onLogout={onLogout} onProfileUpdated={onProfileUpdated} />;
     case "periksa":
       return sesi.role === "admin"
         ? <PeriksaLaporanView key={rute.id ?? "daftar"} idAwal={rute.id} />
@@ -35,6 +35,7 @@ function App() {
   // undefined = sedang memeriksa sesi, null = belum login, objek = sudah login
   const [sesi, setSesi] = useState(undefined);
   const [galat, setGalat] = useState("");
+  const [galatLogout, setGalatLogout] = useState("");
   const rute = useRute();
 
   useEffect(() => {
@@ -63,11 +64,16 @@ function App() {
   const keluar = async () => {
     try {
       await logout();
-    } catch {
-      /* sesi tetap dibersihkan di sisi tampilan */
+      setGalatLogout("");
+      setSesi(null);
+      window.location.hash = "";
+    } catch (err) {
+      setGalatLogout(err.message || "Gagal keluar dari akun. Coba lagi.");
     }
-    setSesi(null);
-    window.location.hash = "";
+  };
+
+  const perbaruiSesi = (pengguna) => {
+    setSesi((saatIni) => saatIni ? { ...saatIni, ...pengguna } : saatIni);
   };
 
   if (galat) {
@@ -77,8 +83,8 @@ function App() {
   if (sesi === null) return <PenggunaView onLoginSuccess={saatLoginBerhasil} />;
 
   return (
-    <AppShell sesi={sesi} rute={rute} onLogout={keluar}>
-      <Halaman rute={rute} sesi={sesi} onLogout={keluar} />
+    <AppShell sesi={sesi} rute={rute} onLogout={keluar} logoutError={galatLogout}>
+      <Halaman rute={rute} sesi={sesi} onLogout={keluar} onProfileUpdated={perbaruiSesi} />
     </AppShell>
   );
 }

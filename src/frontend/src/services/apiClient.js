@@ -11,7 +11,9 @@ export async function request(url, options = {}) {
 
   const body = await response.json().catch(() => ({}));
   if (!response.ok) {
-    if (response.status === 401) window.dispatchEvent(new Event("rawat:sesi-habis"));
+    if (response.status === 401 && body.message === "Please log in to continue.") {
+      window.dispatchEvent(new Event("rawat:sesi-habis"));
+    }
     const error = new Error(body.message || body.error || "Terjadi kesalahan. Coba lagi.");
     error.status = response.status;
     throw error;

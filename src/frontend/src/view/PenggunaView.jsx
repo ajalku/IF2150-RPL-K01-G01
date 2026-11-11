@@ -104,7 +104,7 @@ class PenggunaView extends Component {
 
     if (password.length < 8 || passwordBytes > 72) {
       this.tampilkanErrorMsgs(
-        "Kata sandi harus minimal 8 karakter dan maksimal 72 byte."
+        "Kata sandi harus minimal 8 karakter."
       );
       return;
     }

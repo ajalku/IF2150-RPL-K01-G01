@@ -70,6 +70,65 @@ class Pengguna {
 
         return new Pengguna(result.rows[0]);
     }
+
+    static async getProfilPenggunaById(idPengguna) {
+        const query = `
+            SELECT id_pengguna, nama, email, no_telp, role
+            FROM pengguna
+            WHERE id_pengguna = $1
+        `;
+
+        const result = await pool.query(query, [idPengguna]);
+
+        if (result.rows.length === 0) {
+            return null;
+        }
+
+        const pengguna = result.rows[0];
+        return {
+            idPengguna: pengguna.id_pengguna,
+            nama: pengguna.nama,
+            email: pengguna.email,
+            noTelp: pengguna.no_telp,
+            role: pengguna.role
+        };
+    }
+
+    static async updateDataPengguna(idPengguna, dataPengguna) {
+        if ( !dataPengguna || typeof dataPengguna !== "object" || Array.isArray(dataPengguna)) {
+            return false;
+        }
+
+        const kolomDiizinkan = [
+            ["nama", "nama"],
+            ["noTelp", "no_telp"],
+            ["hashPassword", "hash_password"]
+        ];
+        const perubahan = kolomDiizinkan.filter(([atribut]) =>
+            Object.prototype.hasOwnProperty.call(dataPengguna, atribut)
+        );
+
+        if (perubahan.length === 0) {
+            return false;
+        }
+
+        const nilai = perubahan.map(([atribut]) => dataPengguna[atribut]);
+        const setClause = perubahan.map(([, kolom], indeks) =>
+            `${kolom} = $${indeks + 1}`
+        );
+        nilai.push(idPengguna);
+
+        const query = `
+            UPDATE pengguna
+            SET ${setClause.join(", ")}
+            WHERE id_pengguna = $${nilai.length}
+            RETURNING id_pengguna
+        `;
+        const result = await pool.query(query, nilai);
+
+        return result.rowCount === 1;
+    }
+
     static async getPenggunaByNIK(nik) {
         const query = `
             SELECT * FROM pengguna

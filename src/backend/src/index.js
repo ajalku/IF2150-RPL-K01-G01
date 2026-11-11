@@ -5,6 +5,7 @@ const sessionMiddleware = require("./config/session");
 const authRoutes = require("./routes/authRoutes");
 const laporanRoutes = require("./routes/laporanRoutes");
 const lokasiRoutes = require("./routes/lokasiRoutes");
+const profileRoutes = require("./routes/profileRoutes");
 const { mulaiPembersihLaporan } = require("./jobs/pembersihLaporan");
 
 const app = express();
@@ -18,6 +19,7 @@ app.use(sessionMiddleware);
 
 //Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/profile", profileRoutes);
 app.use("/api/laporan", laporanRoutes);
 app.use("/api/lokasi", lokasiRoutes);
 
