@@ -195,10 +195,11 @@ class LaporanController {
             if (laporan === null) {
                 return res.status(404).json({ message: "Laporan tidak ditemukan" });
             }
-    
-            laporan.tanggapanTeratas =
-                await Tanggapan.getTanggapanByLaporan(idLaporan);
-    
+            // C20 - Identitas admin pada tanggapan difilter berdasarkan sesi viewer.
+            laporan.tanggapanTeratas = await Tanggapan.getTanggapanByLaporan(
+                idLaporan,
+                LaporanController.#viewer(req)
+            );
             return res.status(200).json({ laporan });
         } catch (err) {
             console.error("Detail laporan error:", err);

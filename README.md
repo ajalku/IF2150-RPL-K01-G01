@@ -98,16 +98,17 @@ Tag inilah yang jadi bukti resmi apa yang kelompok kumpulkan untuk milestone ter
 
 ### Skema dan migrasi
 
-Tabel `tanggapan` menyimpan hasil pemeriksaan boolean, waktu tanggapan, dan deskripsinya. Setiap tanggapan terhubung ke `laporan(id_laporan)` dengan `ON DELETE CASCADE`.
+Tabel `tanggapan` menyimpan hasil pemeriksaan boolean, waktu tanggapan, deskripsi, serta `id_admin UUID` yang nullable dan merujuk ke `pengguna(id_pengguna)` dengan `ON DELETE SET NULL`. Relasi laporan tetap menggunakan `ON DELETE CASCADE`.
 
 Pastikan koneksi PostgreSQL yang dipakai sesuai variabel `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, dan `DB_NAME` di `src/backend/.env`. Jalankan skema laporan terlebih dahulu jika belum ada, kemudian migrasi:
 
 ```powershell
 psql -h <DB_HOST> -p <DB_PORT> -U <DB_USER> -d <DB_NAME> -f src/backend/db/schema_laporan.sql
 psql -h <DB_HOST> -p <DB_PORT> -U <DB_USER> -d <DB_NAME> -f src/backend/db/migration_tanggapan.sql
+psql -h <DB_HOST> -p <DB_PORT> -U <DB_USER> -d <DB_NAME> -f src/backend/db/migration_tanggapan_id_admin.sql
 ```
 
-`schema_laporan.sql` mengasumsikan tabel `pengguna` sudah tersedia.
+`schema_laporan.sql` mengasumsikan tabel `pengguna` sudah tersedia. Migrasi `migration_tanggapan_id_admin.sql` idempoten dan harus dijalankan setelah `migration_tanggapan.sql`; tanggapan lama tetap tersimpan dengan `id_admin = NULL`.
 
 ### Endpoint
 
@@ -128,6 +129,9 @@ Contoh body untuk endpoint tanggapan:
 ```
 
 `statusTanggapan` harus boolean. Deskripsi wajib jika nilainya `false`; jika `true`, deskripsi boleh kosong. `statusLaporan` menerima `BELUM_DILIHAT`, `DILIHAT`, `DIPERBAIKI`, atau `SELESAI`.
+Identitas admin tidak dikirim pada body: server mengambil `idAdmin` dari `req.session.idPengguna` dan mengabaikan `idAdmin` dari klien.
+
+Detail laporan (`GET /api/laporan/:idLaporan`) menyertakan tanggapan terbaru dan waktunya untuk semua pengguna. Hanya respons untuk role `admin` yang juga memuat `idAdmin` dan `namaAdmin`; respons non-admin tidak memuat kedua properti tersebut.
 
 ### Menyiapkan akun admin uji
 

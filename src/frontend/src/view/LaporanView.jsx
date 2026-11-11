@@ -108,6 +108,11 @@ export default function LaporanView({ id, sesi }) {
                 Laporan {laporan.tanggapanTeratas.statusTanggapan ? "valid" : "tidak valid"}
                 {" · "}{tanggal(laporan.tanggapanTeratas.waktuTanggapan)}
               </p>
+              {sesi.role === "admin" && (
+                <p className="rw-meta">
+                  Ditanggapi oleh {laporan.tanggapanTeratas.namaAdmin || "Admin tidak tercatat"}
+                </p>
+              )}
             </section>
           )}
           <p className="rw-meta">
