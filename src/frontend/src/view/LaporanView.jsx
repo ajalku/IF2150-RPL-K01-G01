@@ -98,9 +98,7 @@ export default function LaporanView({ id, sesi }) {
             <LencanaTingkat tingkat={laporan.tingkatPermasalahan} />
             {laporan.statusValidasi !== "TIDAK_VALID" && <LencanaValidasi status={laporan.statusValidasi} />}
           </div>
-<<<<<<< HEAD
           <h1>{laporan.namaMasalah}</h1>
-=======
           <p className="rw-deskripsi">{laporan.deskripsi || "Pelapor tidak menambahkan deskripsi."}</p>
           {laporan.tanggapanTeratas && (
             <section className="rw-tanggapan-teratas" aria-label="Tanggapan terbaru admin">
@@ -112,19 +110,16 @@ export default function LaporanView({ id, sesi }) {
               </p>
             </section>
           )}
->>>>>>> origin/develop
           <p className="rw-meta">
             <User size={13} aria-hidden="true" /> {laporan.pelapor ?? "Anonim"}
           </p>
-          <p className="rw-meta-misc">
+          <div className="rw-meta-misc">
             {tanggal(laporan.waktuLapor)} ({waktuRelatif(laporan.waktuLapor)}) 
             <ThumbsUp size={13} aria-hidden="true" className="rw-ikon-geser" /> {laporan.jumlahUpvote} dukungan
             <p className="rw-meta-id">{laporan.idLaporan}</p>
-          </p>
+          </div>
           {laporan.foto && <img className="rw-detail-foto" src={laporan.foto} alt={`Foto: ${laporan.namaMasalah}`} />}
           <p className="rw-meta-misc2">{alamat || `${latitude.toFixed(5)}, ${longitude.toFixed(5)}`}</p>
-          <hr />
-          <p className="rw-deskripsi">{laporan.deskripsi || "Pelapor tidak menambahkan deskripsi."}</p>
           <div className="rw-aksi">
             {sesi.role === "admin" && (
               <a className="rw-btn rw-btn-garis" href={`#/periksa/${laporan.idLaporan}`}>
