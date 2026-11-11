@@ -192,8 +192,9 @@ Tabel B.1. Perubahan dari DPPL
 
 | No | Bagian DPPL | Rancangan Awal | Implementasi Akhir | Alasan |
 | :--- | :--- | :--- | :--- | :--- |
-| 1 | *[mis. Kelas C05, layar I-03, tabel `orders`]* | *[Yang direncanakan]* | *[Yang dibuat]* | *[Alasan perubahan]* |
-| *...* | *...* | *...* | *...* | *...* |
+| 1 | *C06 - Tanggapan, atribut dan skema basis data* | *Atribut hanya `statusTanggapan`, `waktuTanggapan`, dan `deskripsiTanggapan`; tidak ada kolom admin pada tanggapan.* | *Model menambahkan atribut private `idAdmin` dan getter; tabel menambahkan `id_admin UUID` nullable dengan FK `ON DELETE SET NULL`.* | *Penambahan kebutuhan penelusuran admin penanggap, sekaligus menjaga tanggapan lama dan tanggapan saat akun admin dihapus.* |
+| 2 | *C06 - Query Q-016* | *INSERT menyimpan `id_laporan`, `status_tanggapan`, `waktu_tanggapan`, dan `deskripsi_tanggapan`; parameter hanya `$1` sampai `$3`.* | *INSERT juga menyimpan `id_admin` dari sesi server dengan parameterized query.* | *Setiap tanggapan baru harus dapat ditelusuri ke admin yang sedang login; `id_admin` dari klien tidak dipercaya.* |
+| 3 | *C13 - TanggapanView / tampilan tanggapan* | *DPPL tidak merinci tampilan identitas admin penanggap.* | *Admin melihat `Ditanggapi oleh <nama admin>` di detail laporan; warga/pelapor hanya menerima tanggapan dan waktunya.* | *Menerapkan kebutuhan visibilitas identitas admin hanya untuk role admin.* |
 
 ## B.2 Bukti Penerapan Best Practices
 
@@ -242,6 +243,9 @@ Tabel B.5. Traceability Kelas Perancangan ke Implementasi
 
 | ID Kelas | Nama Kelas Perancangan | Bentuk Implementasi | Lokasi (File dan Nama) | Keterangan |
 | :--- | :--- | :--- | :--- | :--- |
+| C06 | Tanggapan | Model, migrasi SQL | `src/backend/src/models/Tanggapan.js` - `Tanggapan`; `src/backend/db/migration_tanggapan_id_admin.sql` | Menyimpan id admin sesi pada INSERT; membaca tanggapan terbaru dengan JOIN pengguna dan hanya menambahkan `idAdmin`/`namaAdmin` untuk viewer admin. |
+| C13 | TanggapanView | Komponen React dan layanan API | `src/frontend/src/view/TanggapanView.jsx` - `TanggapanView`; `src/frontend/src/view/LaporanView.jsx` - `LaporanView`; `src/frontend/src/services/tanggapanService.js` - `simpanHasilTanggapan` | Form tidak mengirim id admin; halaman detail menampilkan nama admin hanya untuk admin dan menyediakan fallback jika admin tidak tercatat. |
+| C20 | TanggapanController | Controller dan route Express | `src/backend/src/controllers/TanggapanController.js` - `simpan`; `src/backend/src/controllers/LaporanController.js` - `detail`; `src/backend/src/routes/laporanRoutes.js` - `POST /:idLaporan/tanggapan` | Memvalidasi sesi/role admin, mengambil id penanggap hanya dari sesi, dan menjaga penyimpanan tanggapan serta status dalam satu transaksi. |
 | *[C01]* | *[Nama kelas pada DPPL]* | *[mis. Kelas / Fungsi / Komponen / Route / Tabel]* | *[mis. `src/models/user.py` - `User`]* | *[Cara atribut dan operasi kelas diwujudkan; "-" jika tidak ada penjelasan tambahan]* |
 | *[C02]* | *[Nama kelas pada DPPL]* | *[Bentuk implementasi]* | *[mis. `src/components/LoginForm.tsx` - `LoginForm`]* | *[mis. atribut menjadi *state*, operasi menjadi *handler*]* |
 | *[C03]* | *[Nama kelas pada DPPL]* | *[Bentuk implementasi]* | *[mis. `src/routes/auth.js` - `POST /login`]* | *[Keterangan]* |
