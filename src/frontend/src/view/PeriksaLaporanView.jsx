@@ -4,73 +4,13 @@ import { Galat, Memuat } from "../components/Keadaan.jsx";
 import { LencanaStatus, LencanaTingkat, LencanaValidasi } from "../components/Lencana.jsx";
 import PetaLaporan from "../components/PetaLaporan.jsx";
 import { useData } from "../hooks/useData.js";
-import { daftarLaporan, periksaLaporan, ubahStatusLaporan } from "../services/laporanService.js";
-import { LABEL_STATUS, STATUS_LAPORAN, tanggal } from "../utils/format.js";
+import { daftarLaporan } from "../services/laporanService.js";
+import TanggapanView from "./TanggapanView.jsx";
+import { tanggal } from "../utils/format.js";
 
 const FILTER_VALIDASI = [
   ["BELUM_DIPERIKSA", "Belum diperiksa"], ["VALID", "Valid"], ["TIDAK_VALID", "Tidak valid"], ["", "Semua"],
 ];
-
-function FormPemeriksaan({ laporan, onSelesai }) {
-  const validAwal = laporan.statusValidasi === "VALID" ? "valid" : laporan.statusValidasi === "TIDAK_VALID" ? "tidak" : "";
-  const [hasil, setHasil] = useState(validAwal);
-  const [catatan, setCatatan] = useState(laporan.catatanPemeriksaan ?? "");
-  const [status, setStatus] = useState(laporan.statusLaporan);
-  const [sibuk, setSibuk] = useState(false);
-  const [galat, setGalat] = useState("");
-
-  const simpan = async () => {
-    const validitasBerubah = hasil !== "" && (hasil !== validAwal || catatan.trim() !== (laporan.catatanPemeriksaan ?? ""));
-    const statusBerubah = status !== laporan.statusLaporan;
-    if (!validitasBerubah && !statusBerubah) {
-      setGalat("Belum ada perubahan untuk disimpan.");
-      return;
-    }
-    setSibuk(true);
-    setGalat("");
-    try {
-      if (validitasBerubah) await periksaLaporan(laporan.idLaporan, hasil === "valid", catatan.trim());
-      if (statusBerubah) await ubahStatusLaporan(laporan.idLaporan, status);
-      onSelesai("Hasil pemeriksaan disimpan.");
-    } catch (err) {
-      setGalat(err.message);
-    } finally {
-      setSibuk(false);
-    }
-  };
-
-  return (
-    <div className="rw-form">
-      <fieldset className="rw-pilihan">
-        <legend>Hasil pemeriksaan</legend>
-        <label className={hasil === "valid" ? "dipilih" : ""}>
-          <input type="radio" name="hasil" checked={hasil === "valid"} onChange={() => setHasil("valid")} /> Laporan valid
-        </label>
-        <label className={hasil === "tidak" ? "dipilih" : ""}>
-          <input type="radio" name="hasil" checked={hasil === "tidak"} onChange={() => setHasil("tidak")} /> Laporan tidak valid
-        </label>
-      </fieldset>
-      {hasil === "tidak" && (
-        <p className="rw-bantu">Pelapor punya waktu 2 minggu untuk konfirmasi ulang sebelum laporan dihapus otomatis.</p>
-      )}
-      <div className="rw-field">
-        <label htmlFor="catatan">Catatan pemeriksaan</label>
-        <textarea id="catatan" rows={3} maxLength={1000} value={catatan} onChange={(e) => setCatatan(e.target.value)}
-          placeholder="Alasan atau temuan pemeriksaan (terlihat oleh pelapor)" />
-      </div>
-      <div className="rw-field">
-        <label htmlFor="status">Status penanganan</label>
-        <select id="status" value={status} onChange={(e) => setStatus(e.target.value)}>
-          {STATUS_LAPORAN.map((s) => <option key={s} value={s}>{LABEL_STATUS[s]}</option>)}
-        </select>
-      </div>
-      {galat && <p className="form-message error" role="alert">{galat}</p>}
-      <button type="button" className="rw-btn rw-btn-utama" onClick={simpan} disabled={sibuk}>
-        {sibuk ? "Menyimpan..." : "Simpan hasil pemeriksaan"}
-      </button>
-    </div>
-  );
-}
 
 export default function PeriksaLaporanView({ idAwal }) {
   const [filter, setFilter] = useState(idAwal ? "" : "BELUM_DIPERIKSA");
@@ -141,7 +81,7 @@ export default function PeriksaLaporanView({ idAwal }) {
               )}
               <PetaLaporan tengah={terpilih.lokasi} zoom={16} laporan={[terpilih]} tinggi={200} />
               <hr />
-              <FormPemeriksaan key={terpilih.idLaporan} laporan={terpilih}
+              <TanggapanView key={terpilih.idLaporan} laporan={terpilih}
                 onSelesai={(teks) => { setPesan(teks); muatUlang(); }} />
             </>
           )}

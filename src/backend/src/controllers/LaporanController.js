@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const Laporan = require("../models/Laporan");
 const Lokasi = require("../models/Lokasi");
+const Tanggapan = require("../models/Tanggapan");
 const MapAPIService = require("../services/MapAPIService");
 const { hapusFileFoto, UPLOAD_DIR } = require("../middleware/uploadMiddleware");
 
@@ -185,10 +186,19 @@ class LaporanController {
             if (!LaporanController.#idValid(idLaporan)) {
                 return res.status(404).json({ message: "Laporan tidak ditemukan" });
             }
-            const laporan = await Laporan.getDetailLaporan(idLaporan, LaporanController.#viewer(req));
+    
+            const laporan = await Laporan.getDetailLaporan(
+                idLaporan,
+                LaporanController.#viewer(req)
+            );
+    
             if (laporan === null) {
                 return res.status(404).json({ message: "Laporan tidak ditemukan" });
             }
+    
+            laporan.tanggapanTeratas =
+                await Tanggapan.getTanggapanByLaporan(idLaporan);
+    
             return res.status(200).json({ laporan });
         } catch (err) {
             console.error("Detail laporan error:", err);

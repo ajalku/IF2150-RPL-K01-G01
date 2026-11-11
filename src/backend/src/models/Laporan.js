@@ -186,8 +186,8 @@ class Laporan {
         };
     }
 
-    static async updateStatusLaporan(idLaporan, statusLaporan) {
-        const result = await pool.query(
+    static async updateStatusLaporan(idLaporan, statusLaporan, client = pool) {
+        const result = await client.query(
             `UPDATE laporan SET status_laporan = $1, waktu_diperbarui = NOW()
              WHERE id_laporan = $2`,
             [statusLaporan, idLaporan]
@@ -196,8 +196,8 @@ class Laporan {
     }
 
     // Hasil pemeriksaan admin. Jika TIDAK_VALID, batas waktu 2 minggu langsung dipasang.
-    static async simpanHasilPemeriksaan(idLaporan, valid, catatan) {
-        const result = await pool.query(
+    static async simpanHasilPemeriksaan(idLaporan, valid, catatan, client = pool) {
+        const result = await client.query(
             `UPDATE laporan
              SET status_validasi     = $1::varchar,
                  catatan_pemeriksaan = $2,

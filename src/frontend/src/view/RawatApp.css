@@ -114,6 +114,9 @@
 .rw-sisi p { margin: 8px 0 8px; overflow-wrap: anywhere;}
 .rw-detail-foto { width: 100%; max-height: 420px; object-fit: cover; border-radius: 10px; display: block; }
 .rw-deskripsi { font-size: 14px; line-height: 1.65; margin: 12px 0; white-space: pre-line; overflow-wrap: anywhere; }
+.rw-tanggapan-teratas { margin: 16px 0; padding: 14px; border-left: 3px solid var(--rw-teal); border-radius: 8px; background: #edf7f8; }
+.rw-tanggapan-teratas h2 { margin: 0 0 6px; font-size: 14px; color: var(--rw-teal-gelap); }
+.rw-tanggapan-teratas p { margin: 0; font-size: 13px; line-height: 1.5; white-space: pre-wrap; }
 .rw-aksi { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
 .rw-aksi-kananest {display: flex; gap: 8px; margin-left: auto;}
 .rw-aksi-kanan { justify-content: flex-end; }
@@ -176,8 +179,12 @@
 /* ---------- Dialog ---------- */
 .rw-overlay { position: fixed; inset: 0; z-index: 2000; background: #0b252bb3; display: grid; place-items: center; padding: 20px; }
 .rw-dialog { background: #fff; border-radius: 14px; padding: 24px; width: 100%; max-width: 400px; box-shadow: 0 12px 40px #0004; }
+.rw-dialog-form { max-width: 620px; max-height: 90vh; overflow-y: auto; }
+.rw-dialog-form .rw-form { max-width: none; }
 .rw-dialog h3 { margin: 0 0 8px; font-size: 18px; color: var(--rw-teal-gelap); }
+.rw-dialog-form h2 { margin: 0 0 8px; color: var(--rw-teal-gelap); font-size: 20px; }
 .rw-dialog p { margin: 0 0 20px; font-size: 13px; line-height: 1.55; color: var(--rw-muted); }
+.rw-dialog-form .rw-dialog-aksi { margin-top: 4px; }
 .rw-dialog-aksi { display: flex; justify-content: flex-end; gap: 10px; }
 
 /* ---------- Responsif ---------- */

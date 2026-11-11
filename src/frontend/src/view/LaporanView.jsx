@@ -98,7 +98,21 @@ export default function LaporanView({ id, sesi }) {
             <LencanaTingkat tingkat={laporan.tingkatPermasalahan} />
             {laporan.statusValidasi !== "TIDAK_VALID" && <LencanaValidasi status={laporan.statusValidasi} />}
           </div>
+<<<<<<< HEAD
           <h1>{laporan.namaMasalah}</h1>
+=======
+          <p className="rw-deskripsi">{laporan.deskripsi || "Pelapor tidak menambahkan deskripsi."}</p>
+          {laporan.tanggapanTeratas && (
+            <section className="rw-tanggapan-teratas" aria-label="Tanggapan terbaru admin">
+              <h2>Tanggapan admin</h2>
+              <p>{laporan.tanggapanTeratas.deskripsiTanggapan || "Admin menyatakan laporan valid."}</p>
+              <p className="rw-meta">
+                Laporan {laporan.tanggapanTeratas.statusTanggapan ? "valid" : "tidak valid"}
+                {" · "}{tanggal(laporan.tanggapanTeratas.waktuTanggapan)}
+              </p>
+            </section>
+          )}
+>>>>>>> origin/develop
           <p className="rw-meta">
             <User size={13} aria-hidden="true" /> {laporan.pelapor ?? "Anonim"}
           </p>
