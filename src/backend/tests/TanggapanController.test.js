@@ -4,6 +4,7 @@ const { pool } = require("../src/config/database");
 const Laporan = require("../src/models/Laporan");
 const Tanggapan = require("../src/models/Tanggapan");
 const TanggapanController = require("../src/controllers/TanggapanController");
+const LaporanController = require("../src/controllers/LaporanController");
 const { authorizeRoles } = require("../src/middleware/roleMiddleware");
 
 const clientBerhasil = {
@@ -38,7 +39,7 @@ test("validasiTanggapan menolak hasil tidak valid tanpa alasan", () => {
 test("simpanTanggapan berhasil dan gagal mengikuti hasil query", async () => {
     const data = { statusTanggapan: false, deskripsiTanggapan: "Tidak valid." };
     assert.equal(await TanggapanController.simpanTanggapan(
-        "laporan-id", data, clientBerhasil
+        "laporan-id", "admin-id", data, clientBerhasil
     ), true);
 
     const clientGagal = {
@@ -50,14 +51,14 @@ test("simpanTanggapan berhasil dan gagal mengikuti hasil query", async () => {
     console.error = () => {};
     try {
         assert.equal(await TanggapanController.simpanTanggapan(
-            "laporan-id", data, clientGagal
+            "laporan-id", "admin-id", data, clientGagal
         ), false);
     } finally {
         console.error = logSebelumnya;
     }
 });
 
-test("Model Tanggapan menggunakan placeholder query berparameter", async () => {
+test("Model Tanggapan menyimpan id admin dengan query berparameter", async () => {
     let panggilan;
     const client = {
         async query(sql, values) {
@@ -66,13 +67,43 @@ test("Model Tanggapan menggunakan placeholder query berparameter", async () => {
         },
     };
     const model = new Tanggapan();
-    await model.simpanTanggapan("laporan-id", {
+    await model.simpanTanggapan("laporan-id", "admin-id", {
         statusTanggapan: true,
         deskripsiTanggapan: "Ditinjau.",
     }, client);
 
-    assert.match(panggilan.sql, /VALUES \(\$1, \$2, CURRENT_TIMESTAMP, \$3\)/);
-    assert.deepEqual(panggilan.values, ["laporan-id", true, "Ditinjau."]);
+    assert.match(panggilan.sql, /VALUES \(\$1, \$2, \$3, CURRENT_TIMESTAMP, \$4\)/);
+    assert.match(panggilan.sql, /id_admin/);
+    assert.deepEqual(panggilan.values, ["laporan-id", "admin-id", true, "Ditinjau."]);
+    assert.equal(model.getIdAdmin(), "admin-id");
+});
+
+test("pembacaan tanggapan terbaru hanya menyertakan identitas admin untuk admin", async () => {
+    const client = {
+        async query() {
+            return {
+                rows: [{
+                    status_tanggapan: true,
+                    waktu_tanggapan: "2026-11-11T00:00:00.000Z",
+                    deskripsi_tanggapan: "Ditinjau.",
+                    id_admin: "admin-id",
+                    nama_admin: "Admin RAWAT",
+                }],
+            };
+        },
+    };
+
+    const tanggapanWarga = await Tanggapan.getTanggapanByLaporan(
+        "laporan-id", { role: "warga" }, client
+    );
+    assert.equal(Object.hasOwn(tanggapanWarga, "idAdmin"), false);
+    assert.equal(Object.hasOwn(tanggapanWarga, "namaAdmin"), false);
+
+    const tanggapanAdmin = await Tanggapan.getTanggapanByLaporan(
+        "laporan-id", { role: "admin" }, client
+    );
+    assert.equal(tanggapanAdmin.idAdmin, "admin-id");
+    assert.equal(tanggapanAdmin.namaAdmin, "Admin RAWAT");
 });
 
 // Algo-046 - Memastikan pembaruan status mengikuti keberhasilan model laporan.
@@ -117,6 +148,7 @@ test("simpan menggulung balik transaksi jika pembaruan status gagal", async () =
 
         await TanggapanController.simpan({
             params: { idLaporan: "00000000-0000-0000-0000-000000000001" },
+            session: { idPengguna: "admin-sesi", role: "admin" },
             body: {
                 statusTanggapan: true,
                 deskripsiTanggapan: "",
@@ -142,6 +174,132 @@ test("simpan menggulung balik transaksi jika pembaruan status gagal", async () =
         TanggapanController.simpanTanggapan = simpanTanggapanSebelumnya;
         TanggapanController.simpanStatus = simpanStatusSebelumnya;
         Laporan.simpanHasilPemeriksaan = simpanPemeriksaanSebelumnya;
+    }
+});
+
+test("simpan mengabaikan idAdmin klien dan menggunakan id dari sesi", async () => {
+    const connectSebelumnya = pool.connect;
+    const simpanTanggapanSebelumnya = TanggapanController.simpanTanggapan;
+    const simpanStatusSebelumnya = TanggapanController.simpanStatus;
+    const simpanPemeriksaanSebelumnya = Laporan.simpanHasilPemeriksaan;
+    const query = [];
+    let argumenTanggapan;
+    let responseStatus;
+    const client = {
+        async query(sql) {
+            query.push(sql);
+            return { rowCount: 1 };
+        },
+        release() {},
+    };
+    const req = {
+        params: { idLaporan: "00000000-0000-0000-0000-000000000001" },
+        session: { idPengguna: "admin-sesi", role: "admin" },
+        body: {
+            statusTanggapan: true,
+            deskripsiTanggapan: "",
+            statusLaporan: "SELESAI",
+            idAdmin: "admin-palsu",
+        },
+    };
+    const res = {
+        status(code) {
+            responseStatus = code;
+            return this;
+        },
+        json() {
+            return this;
+        },
+    };
+
+    try {
+        pool.connect = async () => client;
+        Laporan.simpanHasilPemeriksaan = async () => true;
+        TanggapanController.simpanTanggapan = async (...args) => {
+            argumenTanggapan = args;
+            return true;
+        };
+        TanggapanController.simpanStatus = async () => true;
+
+        await TanggapanController.simpan(req, res);
+
+        assert.equal(responseStatus, 200);
+        assert.equal(argumenTanggapan[1], "admin-sesi");
+        assert.equal(Object.hasOwn(argumenTanggapan[2], "idAdmin"), false);
+        assert.deepEqual(query, ["BEGIN", "COMMIT"]);
+    } finally {
+        pool.connect = connectSebelumnya;
+        TanggapanController.simpanTanggapan = simpanTanggapanSebelumnya;
+        TanggapanController.simpanStatus = simpanStatusSebelumnya;
+        Laporan.simpanHasilPemeriksaan = simpanPemeriksaanSebelumnya;
+    }
+});
+
+test("detail laporan hanya mengirim id dan nama admin dalam respons admin", async () => {
+    const querySebelumnya = pool.query;
+    const getDetailSebelumnya = Laporan.getDetailLaporan;
+    pool.query = async () => ({
+        rows: [{
+            status_tanggapan: true,
+            waktu_tanggapan: "2026-11-11T00:00:00.000Z",
+            deskripsi_tanggapan: "Ditinjau.",
+            id_admin: "admin-id",
+            nama_admin: "Admin RAWAT",
+        }],
+    });
+    Laporan.getDetailLaporan = async () => ({ idLaporan: "laporan-id" });
+
+    const panggilDetail = async (session) => {
+        let body;
+        await LaporanController.detail({
+            params: { idLaporan: "00000000-0000-0000-0000-000000000001" },
+            session,
+        }, {
+            status() {
+                return this;
+            },
+            json(value) {
+                body = value;
+                return this;
+            },
+        });
+        return body.laporan.tanggapanTeratas;
+    };
+
+    try {
+        const responsWarga = await panggilDetail({ idPengguna: "warga-id", role: "warga" });
+        assert.equal(Object.hasOwn(responsWarga, "idAdmin"), false);
+        assert.equal(Object.hasOwn(responsWarga, "namaAdmin"), false);
+
+        const responsAdmin = await panggilDetail({ idPengguna: "admin-id", role: "admin" });
+        assert.equal(responsAdmin.idAdmin, "admin-id");
+        assert.equal(responsAdmin.namaAdmin, "Admin RAWAT");
+    } finally {
+        pool.query = querySebelumnya;
+        Laporan.getDetailLaporan = getDetailSebelumnya;
+    }
+});
+
+test("handler menolak sesi tanpa pengguna dan role non-admin", async () => {
+    for (const [session, statusDiharapkan] of [
+        [null, 401],
+        [{ idPengguna: "warga-id", role: "warga" }, 403],
+    ]) {
+        let responseStatus;
+        await TanggapanController.simpan({
+            params: { idLaporan: "00000000-0000-0000-0000-000000000001" },
+            session,
+            body: {},
+        }, {
+            status(code) {
+                responseStatus = code;
+                return this;
+            },
+            json() {
+                return this;
+            },
+        });
+        assert.equal(responseStatus, statusDiharapkan);
     }
 });
 
