@@ -16,7 +16,7 @@ import {
 import KartuLaporan from "../components/KartuLaporan.jsx";
 import { Galat, Kosong, Memuat } from "../components/Keadaan.jsx";
 import { useData } from "../hooks/useData.js";
-import { laporanSaya } from "../services/laporanService.js";
+import { laporanDitangani, laporanSaya } from "../services/laporanService.js";
 import { getProfil, perbaruiProfil, ubahKataSandi } from "../services/profileService.js";
 import "./ProfilView.css";
 
@@ -83,7 +83,15 @@ function FieldKataSandi({ id, label, value, onChange, terlihat, onToggle, autoCo
   );
 }
 
-export default function ProfilView({ sesi, onLogout, onProfileUpdated }) {
+export default function ProfilView({
+  sesi,
+  onLogout,
+  onProfileUpdated,
+  modeProfil = "profil",
+  onUbahProfil,
+  onBatalUbahProfil,
+  onHapusAkun,
+}) {
   const [profil, setProfil] = useState(null);
   const [memuatProfil, setMemuatProfil] = useState(true);
   const [galatProfil, setGalatProfil] = useState("");
@@ -102,8 +110,13 @@ export default function ProfilView({ sesi, onLogout, onProfileUpdated }) {
   const [passwordTerlihat, setPasswordTerlihat] = useState({});
   const [tampilkanSemuaLaporan, setTampilkanSemuaLaporan] = useState(false);
   const [bagianAktif, setBagianAktif] = useState("informasi");
+  const isAdmin = (profil?.role ?? sesi?.role) === "admin";
+  const isWarga = (profil?.role ?? sesi?.role) === "warga";
   const { data: dataLaporan, galat: galatLaporan, memuat: memuatLaporan, muatUlang } =
-    useData(laporanSaya, "laporan-saya");
+    useData(
+      isAdmin ? laporanDitangani : laporanSaya,
+      isAdmin ? "laporan-ditangani" : "laporan-saya",
+    );
 
   useEffect(() => {
     let batal = false;
@@ -136,6 +149,7 @@ export default function ProfilView({ sesi, onLogout, onProfileUpdated }) {
   const profilBerubah = profil !== null && (
     nama !== (profil.nama ?? "") || noTelp !== (profil.noTelp ?? "")
   );
+  const sedangMengubahProfil = modeProfil === "ubah";
 
   const bukaBagian = (id) => {
     setBagianAktif(id);
@@ -256,9 +270,13 @@ export default function ProfilView({ sesi, onLogout, onProfileUpdated }) {
     <div className="rw-profile-page">
       <header className="rw-profile-heading">
         <div>
-          <p className="rw-profile-eyebrow">AKUN WARGA</p>
+          <p className="rw-profile-eyebrow">{isAdmin ? "AKUN ADMIN" : "AKUN WARGA"}</p>
           <h1>Profil saya</h1>
-          <p>Kelola informasi pribadi dan lihat kontribusi Anda untuk lingkungan.</p>
+          <p>
+            {isAdmin
+              ? "Kelola informasi akun dan pantau laporan yang telah Anda tangani."
+              : "Kelola informasi pribadi dan lihat kontribusi Anda untuk lingkungan."}
+          </p>
         </div>
       </header>
 
@@ -316,7 +334,8 @@ export default function ProfilView({ sesi, onLogout, onProfileUpdated }) {
                 className={bagianAktif === "laporan" ? "aktif" : ""}
                 onClick={() => bukaBagian("laporan")}
               >
-                <ClipboardList size={16} aria-hidden="true" /> Laporan saya
+                <ClipboardList size={16} aria-hidden="true" />
+                {isAdmin ? "Laporan ditangani" : "Laporan saya"}
               </button>
             </nav>
 
@@ -326,19 +345,22 @@ export default function ProfilView({ sesi, onLogout, onProfileUpdated }) {
           </aside>
 
           <div className="rw-profile-content">
-            <section className="rw-profile-stats" aria-label="Ringkasan laporan">
+            <section
+              className="rw-profile-stats"
+              aria-label={isAdmin ? "Ringkasan laporan ditangani" : "Ringkasan laporan"}
+            >
               <article className="rw-profile-card rw-profile-stat">
                 <ClipboardList size={18} aria-hidden="true" />
                 <div>
                   <strong>{memuatLaporan ? "—" : galatLaporan ? "—" : statistik.total}</strong>
-                  <span>Laporan saya</span>
+                  <span>{isAdmin ? "Laporan ditangani" : "Laporan saya"}</span>
                 </div>
               </article>
               <article className="rw-profile-card rw-profile-stat">
                 <CircleUserRound size={18} aria-hidden="true" />
                 <div>
                   <strong>{memuatLaporan ? "—" : galatLaporan ? "—" : statistik.aktif}</strong>
-                  <span>Masih aktif</span>
+                  <span>{isAdmin ? "Masih diproses" : "Masih aktif"}</span>
                 </div>
               </article>
               <article className="rw-profile-card rw-profile-stat">
@@ -356,66 +378,123 @@ export default function ProfilView({ sesi, onLogout, onProfileUpdated }) {
                   <div className="rw-profile-panel-heading">
                     <div>
                       <h2>Informasi pribadi</h2>
-                      <p>Data kontak membantu petugas menghubungi Anda terkait laporan.</p>
+                      <p>
+                        {isAdmin
+                          ? "Kelola informasi kontak yang digunakan untuk akun administrator."
+                          : "Data kontak membantu petugas menghubungi Anda terkait laporan."}
+                      </p>
                     </div>
-                  </div>
-                  <form onSubmit={simpanProfil} noValidate>
-                    <div className="rw-profile-field">
-                      <label htmlFor="profil-nama">Nama lengkap</label>
-                      <input
-                        id="profil-nama"
-                        name="nama"
-                        value={nama}
-                        onChange={(event) => setNama(event.target.value)}
-                        maxLength={100}
-                        autoComplete="name"
-                        aria-invalid={Boolean(pesanProfil.jenis === "error" && !nama.trim())}
-                      />
-                    </div>
-                    <div className="rw-profile-field">
-                      <label htmlFor="profil-email">Email</label>
-                      <div className="rw-profile-readonly">
-                        <input id="profil-email" value={profil?.email ?? ""} readOnly aria-readonly="true" />
-                        <Mail size={15} aria-hidden="true" />
-                      </div>
-                      <small>Email tidak dapat diubah dari halaman ini.</small>
-                    </div>
-                    <div className="rw-profile-field">
-                      <label htmlFor="profil-no-telp">Nomor telepon</label>
-                      <div className="rw-profile-readonly rw-profile-editable-icon">
-                        <input
-                          id="profil-no-telp"
-                          name="noTelp"
-                          value={noTelp}
-                          onChange={(event) => setNoTelp(event.target.value)}
-                          autoComplete="tel"
-                          inputMode="tel"
-                          placeholder="08xxxxxxxxxx"
-                          aria-invalid={Boolean(pesanProfil.jenis === "error" && noTelp && !FORMAT_TELP.test(noTelp))}
-                        />
-                        <Phone size={15} aria-hidden="true" />
-                      </div>
-                      <small>Gunakan format nomor Indonesia, contoh: 081234567890.</small>
-                    </div>
-                    <PesanForm pesan={pesanProfil} />
-                    <div className="rw-profile-actions">
+                    {!sedangMengubahProfil && (
                       <button
                         type="button"
-                        className="rw-btn rw-btn-garis"
-                        onClick={batalPerubahan}
-                        disabled={!profilBerubah || menyimpanProfil}
-                      >
-                        Batal
-                      </button>
-                      <button
-                        type="submit"
                         className="rw-btn rw-btn-utama"
-                        disabled={!profilBerubah || menyimpanProfil}
+                        onClick={onUbahProfil}
                       >
-                        {menyimpanProfil ? "Menyimpan..." : "Simpan perubahan"}
+                        Ubah profil
                       </button>
+                    )}
+                  </div>
+                  {sedangMengubahProfil ? (
+                    <form onSubmit={simpanProfil} noValidate>
+                      <div className="rw-profile-field">
+                        <label htmlFor="profil-nama">Nama lengkap</label>
+                        <input
+                          id="profil-nama"
+                          name="nama"
+                          value={nama}
+                          onChange={(event) => setNama(event.target.value)}
+                          maxLength={100}
+                          autoComplete="name"
+                          aria-invalid={Boolean(pesanProfil.jenis === "error" && !nama.trim())}
+                        />
+                      </div>
+                      <div className="rw-profile-field">
+                        <label htmlFor="profil-email">Email</label>
+                        <div className="rw-profile-readonly">
+                          <input id="profil-email" value={profil?.email ?? ""} readOnly aria-readonly="true" />
+                          <Mail size={15} aria-hidden="true" />
+                        </div>
+                        <small>Email tidak dapat diubah dari halaman ini.</small>
+                      </div>
+                      <div className="rw-profile-field">
+                        <label htmlFor="profil-no-telp">Nomor telepon</label>
+                        <div className="rw-profile-readonly rw-profile-editable-icon">
+                          <input
+                            id="profil-no-telp"
+                            name="noTelp"
+                            value={noTelp}
+                            onChange={(event) => setNoTelp(event.target.value)}
+                            autoComplete="tel"
+                            inputMode="tel"
+                            placeholder="08xxxxxxxxxx"
+                            aria-invalid={Boolean(pesanProfil.jenis === "error" && noTelp && !FORMAT_TELP.test(noTelp))}
+                          />
+                          <Phone size={15} aria-hidden="true" />
+                        </div>
+                        <small>Gunakan format nomor Indonesia, contoh: 081234567890.</small>
+                      </div>
+                      <div className="rw-profile-actions">
+                        <button
+                          type="button"
+                          className="rw-btn rw-btn-garis"
+                          onClick={() => {
+                            batalPerubahan();
+                            onBatalUbahProfil?.();
+                          }}
+                          disabled={menyimpanProfil}
+                        >
+                          Batal
+                        </button>
+                        <button
+                          type="submit"
+                          className="rw-btn rw-btn-utama"
+                          disabled={!profilBerubah || menyimpanProfil}
+                        >
+                          {menyimpanProfil ? "Menyimpan..." : "Simpan perubahan"}
+                        </button>
+                      </div>
+                    </form>
+                  ) : (
+                    <div>
+                      <div className="rw-profile-field">
+                        <label htmlFor="profil-nama">Nama lengkap</label>
+                        <div className="rw-profile-readonly">
+                          <input
+                            id="profil-nama"
+                            value={profil?.nama ?? ""}
+                            readOnly
+                            aria-readonly="true"
+                          />
+                        </div>
+                      </div>
+                      <div className="rw-profile-field">
+                        <label htmlFor="profil-email">Email</label>
+                        <div className="rw-profile-readonly">
+                          <input
+                            id="profil-email"
+                            value={profil?.email ?? ""}
+                            readOnly
+                            aria-readonly="true"
+                          />
+                          <Mail size={15} aria-hidden="true" />
+                        </div>
+                        <small>Email tidak dapat diubah dari halaman ini.</small>
+                      </div>
+                      <div className="rw-profile-field">
+                        <label htmlFor="profil-no-telp">Nomor telepon</label>
+                        <div className="rw-profile-readonly">
+                          <input
+                            id="profil-no-telp"
+                            value={profil?.noTelp ?? ""}
+                            readOnly
+                            aria-readonly="true"
+                          />
+                          <Phone size={15} aria-hidden="true" />
+                        </div>
+                      </div>
                     </div>
-                  </form>
+                  )}
+                  <PesanForm pesan={pesanProfil} />
                 </section>
 
                 <section className="rw-profile-card rw-profile-panel" id="profil-keamanan">
@@ -499,23 +578,51 @@ export default function ProfilView({ sesi, onLogout, onProfileUpdated }) {
                     </form>
                   )}
                 </section>
+
+                {isWarga && (
+                  <section
+                    className="rw-profile-card rw-profile-panel rw-profile-delete"
+                    aria-labelledby="profil-hapus-akun"
+                  >
+                    <h2 id="profil-hapus-akun">Hapus Akun</h2>
+                    <p>
+                      Penghapusan akun juga menghapus laporan yang Anda buat,
+                      lokasi, dan tanggapan terkait secara permanen.
+                    </p>
+                    <button
+                      type="button"
+                      className="rw-btn rw-btn-bahaya-garis"
+                      onClick={onHapusAkun}
+                    >
+                      Hapus Akun
+                    </button>
+                  </section>
+                )}
               </div>
 
               <aside className="rw-profile-secondary">
                 <section className="rw-profile-card rw-profile-panel" id="profil-laporan">
                   <div className="rw-profile-panel-heading">
                     <div>
-                      <h2>Laporan saya</h2>
-                      <p>Laporan yang telah Anda sampaikan.</p>
+                      <h2>{isAdmin ? "Laporan ditangani" : "Laporan saya"}</h2>
+                      <p>
+                        {isAdmin
+                          ? "Laporan yang pernah Anda tangani."
+                          : "Laporan yang telah Anda sampaikan."}
+                      </p>
                     </div>
                   </div>
-                  {memuatLaporan && <Memuat teks="Memuat laporan Anda..." />}
+                  {memuatLaporan && (
+                    <Memuat teks={isAdmin ? "Memuat laporan yang ditangani..." : "Memuat laporan Anda..."} />
+                  )}
                   {!memuatLaporan && galatLaporan && (
                     <Galat pesan={galatLaporan} onUlang={muatUlang} />
                   )}
                   {!memuatLaporan && !galatLaporan && laporan.length === 0 && (
                     <Kosong>
-                      Anda belum membuat laporan. <a href="#/buat">Buat laporan pertama</a>
+                      {isAdmin
+                        ? "Anda belum pernah menangani laporan."
+                        : <>Anda belum membuat laporan. <a href="#/buat">Buat laporan pertama</a></>}
                     </Kosong>
                   )}
                   {!memuatLaporan && !galatLaporan && laporan.length > 0 && (
@@ -536,7 +643,7 @@ export default function ProfilView({ sesi, onLogout, onProfileUpdated }) {
                   )}
                 </section>
 
-                {!memuatLaporan && !galatLaporan && laporan.length > 0 && (
+                {!isAdmin && !memuatLaporan && !galatLaporan && laporan.length > 0 && (
                   <section className="rw-profile-card rw-profile-panel rw-profile-activity">
                     <h2>Jejak kepedulian</h2>
                     <p className="rw-profile-activity-row">

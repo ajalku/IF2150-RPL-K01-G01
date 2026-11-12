@@ -4,7 +4,6 @@ import HomepageView from "./view/HomepageView.jsx";
 import LaporanView from "./view/LaporanView.jsx";
 import BuatLaporanView from "./view/BuatLaporanView.jsx";
 import LokasiView from "./view/LokasiView.jsx";
-import ProfilView from "./view/ProfilView.jsx";
 import PeriksaLaporanView from "./view/PeriksaLaporanView.jsx";
 import AppShell from "./components/AppShell.jsx";
 import { Galat, Kosong, Memuat } from "./components/Keadaan.jsx";
@@ -12,7 +11,7 @@ import { getSesi, logout } from "./services/authService.js";
 import { useRute } from "./hooks/useRute.js";
 import "./view/RawatApp.css";
 
-function Halaman({ rute, sesi, onLogout, onProfileUpdated }) {
+function Halaman({ rute, sesi, onLogout, onProfileUpdated, onAkunDihapus }) {
   switch (rute.nama) {
     case "laporan":
       return <LaporanView key={rute.id} id={rute.id} sesi={sesi} />;
@@ -21,7 +20,15 @@ function Halaman({ rute, sesi, onLogout, onProfileUpdated }) {
     case "peta":
       return <LokasiView key={rute.query.toString()} query={rute.query} />;
     case "profil":
-      return <ProfilView sesi={sesi} onLogout={onLogout} onProfileUpdated={onProfileUpdated} />;
+      return (
+        <PenggunaView
+          mode="profil"
+          sesi={sesi}
+          onLogout={onLogout}
+          onProfileUpdated={onProfileUpdated}
+          onAkunDihapus={onAkunDihapus}
+        />
+      );
     case "periksa":
       return sesi.role === "admin"
         ? <PeriksaLaporanView key={rute.id ?? "daftar"} idAwal={rute.id} />
@@ -36,6 +43,7 @@ function App() {
   const [sesi, setSesi] = useState(undefined);
   const [galat, setGalat] = useState("");
   const [galatLogout, setGalatLogout] = useState("");
+  const [pesanAutentikasi, setPesanAutentikasi] = useState(null);
   const rute = useRute();
 
   useEffect(() => {
@@ -55,6 +63,7 @@ function App() {
   const saatLoginBerhasil = async () => {
     try {
       setSesi(await getSesi());
+      setPesanAutentikasi(null);
       if (!window.location.hash) window.location.hash = "#/beranda";
     } catch {
       /* PenggunaView sudah menampilkan pesan login */
@@ -66,6 +75,7 @@ function App() {
       await logout();
       setGalatLogout("");
       setSesi(null);
+      setPesanAutentikasi(null);
       window.location.hash = "";
     } catch (err) {
       setGalatLogout(err.message || "Gagal keluar dari akun. Coba lagi.");
@@ -76,15 +86,35 @@ function App() {
     setSesi((saatIni) => saatIni ? { ...saatIni, ...pengguna } : saatIni);
   };
 
+  const setelahAkunDihapus = (pesan, jenis = "success") => {
+    setSesi(null);
+    setGalatLogout("");
+    setPesanAutentikasi({ pesan, jenis });
+    window.location.hash = "";
+  };
+
   if (galat) {
     return <div className="rw-layar-tengah"><Galat pesan={galat} onUlang={() => window.location.reload()} /></div>;
   }
   if (sesi === undefined) return <div className="rw-layar-tengah"><Memuat teks="Memuat RAWAT..." /></div>;
-  if (sesi === null) return <PenggunaView onLoginSuccess={saatLoginBerhasil} />;
+  if (sesi === null) {
+    return (
+      <PenggunaView
+        onLoginSuccess={saatLoginBerhasil}
+        pesanAutentikasi={pesanAutentikasi}
+      />
+    );
+  }
 
   return (
     <AppShell sesi={sesi} rute={rute} onLogout={keluar} logoutError={galatLogout}>
-      <Halaman rute={rute} sesi={sesi} onLogout={keluar} onProfileUpdated={perbaruiSesi} />
+      <Halaman
+        rute={rute}
+        sesi={sesi}
+        onLogout={keluar}
+        onProfileUpdated={perbaruiSesi}
+        onAkunDihapus={setelahAkunDihapus}
+      />
     </AppShell>
   );
 }

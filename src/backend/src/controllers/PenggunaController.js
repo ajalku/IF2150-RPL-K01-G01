@@ -3,7 +3,54 @@ const Pengguna = require("../models/Pengguna");
 
 class PenggunaController {
     static #getSessionUserId(req) {
-        return req.session?.userId ?? req.session?.idPengguna;
+        return req.session?.idPengguna;
+    }
+
+    static #validasiDataProfil(dataProfil) {
+        if (
+            dataProfil === null ||
+            typeof dataProfil !== "object" ||
+            Array.isArray(dataProfil)
+        ) {
+            return "Invalid profile data.";
+        }
+
+        const fields = Object.keys(dataProfil);
+        const protectedFields = [
+            "id", "idPengguna", "userId", "role", "status", "statusIzin",
+            "status_izin", "email", "nik", "password", "hashPassword",
+            "hash_password"
+        ];
+        if (fields.some(field => protectedFields.includes(field))) {
+            return "Protected profile fields cannot be changed.";
+        }
+        if (fields.some(field => !["nama", "noTelp"].includes(field))) {
+            return "Unsupported profile field.";
+        }
+        if (fields.length === 0) {
+            return "No profile fields to update.";
+        }
+        if (
+            Object.prototype.hasOwnProperty.call(dataProfil, "nama") &&
+            (
+                typeof dataProfil.nama !== "string" ||
+                dataProfil.nama.trim() === "" ||
+                [...dataProfil.nama.trim()].length > 100
+            )
+        ) {
+            return "Nama wajib diisi dan maksimal 100 karakter.";
+        }
+        if (
+            Object.prototype.hasOwnProperty.call(dataProfil, "noTelp") &&
+            (
+                typeof dataProfil.noTelp !== "string" ||
+                !/^08\d{8,13}$/.test(dataProfil.noTelp)
+            )
+        ) {
+            return "Nomor telepon tidak valid.";
+        }
+
+        return "";
     }
 
     static #validasiPassword(password) {
@@ -117,7 +164,6 @@ class PenggunaController {
                     resolve();
                 });
             });
-            req.session.userId = pengguna.getIdPengguna();
             req.session.idPengguna = pengguna.getIdPengguna();
             req.session.role = pengguna.getRole();
             await new Promise((resolve, reject) => {
@@ -150,55 +196,17 @@ class PenggunaController {
         }
     }
 
-    static async updateProfile(req, res) {
+    static async ubahProfil(req, res) {
         try {
             const dataProfil = req.body;
-            if (
-                dataProfil === null ||
-                typeof dataProfil !== "object" ||
-                Array.isArray(dataProfil)
-            ) {
-                return res.status(400).json({message: "Invalid profile data."});
-            }
-
-            const fields = Object.keys(dataProfil);
-            const protectedFields = [
-                "id", "idPengguna", "userId", "role", "status", "statusIzin",
-                "status_izin", "email", "nik", "password", "hashPassword",
-                "hash_password"
-            ];
-            if (fields.some(field => protectedFields.includes(field))) {
-                return res.status(400).json({
-                    message: "Protected profile fields cannot be changed."
-                });
-            }
-            if (fields.some(field => !["nama", "noTelp"].includes(field))) {
-                return res.status(400).json({message: "Unsupported profile field."});
-            }
-            if (fields.length === 0) {
-                return res.status(400).json({message: "No profile fields to update."});
-            }
+            const error = PenggunaController.#validasiDataProfil(dataProfil);
+            if (error !== "") return res.status(400).json({ message: error });
 
             const perubahan = {};
             if (Object.prototype.hasOwnProperty.call(dataProfil, "nama")) {
-                if (
-                    typeof dataProfil.nama !== "string" ||
-                    dataProfil.nama.trim() === "" ||
-                    [...dataProfil.nama.trim()].length > 100
-                ) {
-                    return res.status(400).json({
-                        message: "Nama wajib diisi dan maksimal 100 karakter."
-                    });
-                }
                 perubahan.nama = dataProfil.nama.trim();
             }
             if (Object.prototype.hasOwnProperty.call(dataProfil, "noTelp")) {
-                if (
-                    typeof dataProfil.noTelp !== "string" ||
-                    !/^08\d{8,13}$/.test(dataProfil.noTelp)
-                ) {
-                    return res.status(400).json({message: "Nomor telepon tidak valid."});
-                }
                 perubahan.noTelp = dataProfil.noTelp;
             }
 
@@ -277,10 +285,55 @@ class PenggunaController {
         }
     }
 
+    static async hapusAkun(req, res) {
+        const idPengguna = PenggunaController.#getSessionUserId(req);
+        if (idPengguna == null) {
+            return res.status(401).json({ message: "Please log in to continue." });
+        }
+        try {
+            const pengguna = await Pengguna.getPenggunaById(idPengguna);
+            if (!pengguna) {
+                return res.status(404).json({ message: "Akun tidak ditemukan." });
+            }
+            if (pengguna.getRole() !== "warga") {
+                return res.status(403).json({ message: "Hanya warga yang dapat menghapus akun." });
+            }
+
+            const berhasilDihapus = await pengguna.hapusDataPengguna();
+            if (!berhasilDihapus) {
+                return res.status(404).json({ message: "Akun tidak ditemukan." });
+            }
+
+            try {
+                await new Promise((resolve, reject) => {
+                    req.session.destroy(err => {
+                        if (err) return reject(err);
+                        resolve();
+                    });
+                });
+            } catch (err) {
+                console.error("Account deletion session error:", err);
+                res.clearCookie("rawat.sid");
+                return res.status(500).json({
+                    message: "Akun telah dihapus, tetapi sesi server gagal diakhiri. Cookie sesi telah dihapus.",
+                    accountDeleted: true,
+                });
+            }
+
+            res.clearCookie("rawat.sid");
+            return res.status(200).json({ message: "Akun berhasil dihapus." });
+        } catch (err) {
+            console.error("Account deletion error:", err);
+            return res.status(500).json({ message: "Gagal menghapus akun." });
+        }
+    }
+
     // GET /api/auth/me  -> data pengguna yang sedang login (dipakai front-end saat halaman dimuat)
     static async me(req, res) {
         try {
-            const pengguna = await Pengguna.getPenggunaById(req.session.idPengguna);
+            const pengguna = await Pengguna.getPenggunaById(
+                PenggunaController.#getSessionUserId(req)
+            );
             if (pengguna == null) {
                 // akun sudah dihapus tetapi sesi masih ada
                 return req.session.destroy(() =>

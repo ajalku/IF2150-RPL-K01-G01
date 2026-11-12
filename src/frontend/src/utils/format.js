@@ -2,8 +2,8 @@ export const STATUS_LAPORAN = ["BELUM_DILIHAT", "DILIHAT", "DIPERBAIKI", "SELESA
 
 export const LABEL_STATUS = {
   BELUM_DILIHAT: "Belum dilihat",
-  DILIHAT: "Dilihat",
-  DIPERBAIKI: "Diperbaiki",
+  DILIHAT: "Sedang ditinjau",
+  DIPERBAIKI: "Sedang diperbaiki",
   SELESAI: "Selesai",
 };
 export const WARNA_STATUS = {

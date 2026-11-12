@@ -386,6 +386,17 @@
   color: var(--profile-teal);
 }
 
+.rw-profile-delete {
+  border-color: #efc7c7;
+}
+
+.rw-profile-delete p {
+  margin: 0 0 12px;
+  color: var(--profile-muted);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
 .rw-profile-report-list {
   display: flex;
   flex-direction: column;

@@ -16,6 +16,7 @@ export async function request(url, options = {}) {
     }
     const error = new Error(body.message || body.error || "Terjadi kesalahan. Coba lagi.");
     error.status = response.status;
+    error.accountDeleted = body.accountDeleted === true;
     throw error;
   }
   return body;

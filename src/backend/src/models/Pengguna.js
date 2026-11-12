@@ -129,6 +129,20 @@ class Pengguna {
         return result.rowCount === 1;
     }
 
+    async hapusDataPengguna() {
+        const query = `
+            DELETE FROM pengguna
+            WHERE id_pengguna = $1
+        `;
+        const result = await pool.query(query, [this.#idPengguna]);
+
+        return result.rowCount === 1;
+    }
+
+    async hapusAkun() {
+        return this.hapusDataPengguna();
+    }
+
     static async getPenggunaByNIK(nik) {
         const query = `
             SELECT * FROM pengguna

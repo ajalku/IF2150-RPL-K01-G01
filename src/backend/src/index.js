@@ -9,7 +9,7 @@ const profileRoutes = require("./routes/profileRoutes");
 const { mulaiPembersihLaporan } = require("./jobs/pembersihLaporan");
 
 const app = express();
-const PORT = process.env.PORT || 7002;
+const PORT = process.env.PORT || 7001;
 
 //Middleware
 app.use(express.json());

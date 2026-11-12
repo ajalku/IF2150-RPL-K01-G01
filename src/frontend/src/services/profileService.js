@@ -7,3 +7,6 @@ export const perbaruiProfil = (data) =>
 
 export const ubahKataSandi = (data) =>
   request("/api/profile/password", jsonBody("PUT", data));
+
+export const hapusAkun = () =>
+  request("/api/profile", { method: "DELETE" });

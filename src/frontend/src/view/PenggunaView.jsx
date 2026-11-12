@@ -2,6 +2,9 @@ import { Component } from "react";
 import { Eye, EyeOff, Mail, ArrowRight, HandHeart, Users} from "lucide-react";
 import { login as requestLogin } from "../services/authService.js";
 import { register as requestRegister } from "../services/authService.js";
+import DialogKonfirmasi from "../components/DialogKonfirmasi.jsx";
+import { hapusAkun as requestHapusAkun } from "../services/profileService.js";
+import ProfilView from "./ProfilView.jsx";
 import "./PenggunaView.css";
 import logoRawat from "../assets/brand-icon.svg";
 
@@ -9,17 +12,21 @@ class PenggunaView extends Component {
   constructor(props) {
     super(props);
     const rememberedEmail = localStorage.getItem("rawat_remembered_email") || "";
+    this.menghapusAkun = false;
 
     this.state = {
       halaman: "login",
+      modeProfil: "profil",
       email: rememberedEmail,
       passwordInput: "",
       rememberEmail: Boolean(rememberedEmail),
-    
+      konfirmasiHapusTerbuka: false,
+      sedangMenghapusAkun: false,
+      pesanHapusAkun: "",
       showPassword: false,
       loading: false,
-      pesan: "",
-      tipePesan: "",
+      pesan: props.pesanAutentikasi?.pesan ?? "",
+      tipePesan: props.pesanAutentikasi?.jenis ?? "",
 
       registrasi: {
       nama: "",
@@ -39,6 +46,96 @@ class PenggunaView extends Component {
   tampilkanPesanBerhasil(pesan) {
     this.setState({ pesan, tipePesan: "success" });
   }
+
+  tampilkanProfil() {
+    const { sesi, onLogout } = this.props;
+    return (
+      <ProfilView
+        sesi={sesi}
+        onLogout={onLogout}
+        modeProfil="profil"
+        onUbahProfil={() => this.setState({ modeProfil: "ubah" })}
+        onHapusAkun={this.bukaKonfirmasiHapusAkun}
+      />
+    );
+  }
+
+  tampilkanFormUbahProfil() {
+    const { sesi, onLogout, onProfileUpdated } = this.props;
+    return (
+      <ProfilView
+        sesi={sesi}
+        onLogout={onLogout}
+        modeProfil="ubah"
+        onBatalUbahProfil={() => this.setState({ modeProfil: "profil" })}
+        onProfileUpdated={(pengguna) => {
+          onProfileUpdated?.(pengguna);
+          this.setState({ modeProfil: "profil" });
+        }}
+        onHapusAkun={this.bukaKonfirmasiHapusAkun}
+      />
+    );
+  }
+
+  tampilkanFormKonfirmasi(pesan) {
+    return (
+      <DialogKonfirmasi
+        judul="Konfirmasi Hapus Akun"
+        pesan={pesan}
+        pesanError={this.state.pesanHapusAkun}
+        labelYa="Ya, Hapus Akun"
+        bahaya
+        sibuk={this.state.sedangMenghapusAkun}
+        onYa={() => this.konfirmasiHapusAkun()}
+        onBatal={() => this.batalHapusAkun()}
+      />
+    );
+  }
+
+  bukaKonfirmasiHapusAkun = () => {
+    this.setState({
+      konfirmasiHapusTerbuka: true,
+      pesanHapusAkun: "",
+    });
+  };
+
+  batalHapusAkun = () => {
+    if (this.menghapusAkun) return;
+    this.setState({
+      konfirmasiHapusTerbuka: false,
+      pesanHapusAkun: "",
+    });
+  };
+
+  konfirmasiHapusAkun = async () => {
+    if (this.menghapusAkun) return;
+    this.menghapusAkun = true;
+    this.setState({ sedangMenghapusAkun: true, pesanHapusAkun: "" });
+
+    try {
+      const hasil = await requestHapusAkun();
+      this.setState({
+        konfirmasiHapusTerbuka: false,
+        sedangMenghapusAkun: false,
+      });
+      this.props.onAkunDihapus?.(hasil.message || "Akun berhasil dihapus.", "success");
+    } catch (err) {
+      if (err.accountDeleted) {
+        this.setState({
+          konfirmasiHapusTerbuka: false,
+          sedangMenghapusAkun: false,
+        });
+        this.props.onAkunDihapus?.(err.message, "error");
+      } else {
+        this.setState({
+          sedangMenghapusAkun: false,
+          pesanHapusAkun: err.message,
+        });
+      }
+    } finally {
+      this.menghapusAkun = false;
+    }
+  };
 
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -102,9 +199,23 @@ class PenggunaView extends Component {
 
     const passwordBytes = new TextEncoder().encode(password).length;
 
-    if (password.length < 8 || passwordBytes > 72) {
+    if (password.length < 8) {
+      this.tampilkanErrorMsgs("Kata sandi harus minimal 8 karakter.");
+      return;
+    }
+
+    if (passwordBytes > 72) {
+      this.tampilkanErrorMsgs("Kata sandi terlalu panjang.");
+      return;
+    }
+
+    if (
+      !/[A-Z]/.test(password) ||
+      !/[0-9]/.test(password) ||
+      !/[^A-Za-z0-9]/.test(password)
+    ) {
       this.tampilkanErrorMsgs(
-        "Kata sandi harus minimal 8 karakter."
+        "Kata sandi harus mengandung huruf kapital, angka, dan simbol."
       );
       return;
     }
@@ -257,7 +368,7 @@ class PenggunaView extends Component {
                 type={showPassword ? "text" : "password"}
                 minLength={8}
                 autoComplete="new-password"
-                placeholder="Minimal 8 karakter"
+                placeholder="Min. 8 karakter, kapital, angka, simbol"
                 value={registrasi.password}
                 onChange={this.handleRegisterChange}
                 required
@@ -398,6 +509,19 @@ class PenggunaView extends Component {
 
   
   render() {
+    if (this.props.mode === "profil") {
+      return (
+        <>
+          {this.state.modeProfil === "ubah"
+            ? this.tampilkanFormUbahProfil()
+            : this.tampilkanProfil()}
+          {this.state.konfirmasiHapusTerbuka && this.tampilkanFormKonfirmasi(
+            "Apakah Anda yakin ingin menghapus akun ini? Tindakan ini tidak dapat dibatalkan. Semua laporan yang Anda buat beserta lokasi dan tanggapan terkait akan dihapus permanen. Tanggapan admin pada laporan pengguna lain tetap tersimpan, tetapi identitas admin akan dilepas. Berkas foto laporan tidak dihapus dari penyimpanan otomatis."
+          )}
+        </>
+      );
+    }
+
     return (
       <div className="app">
 
