@@ -158,6 +158,22 @@ class Laporan {
         return result.rows.map(row => Laporan.#format(row, viewer));
     }
 
+    // EXISTS keeps each report unique even when the admin responded more than once.
+    static async getLaporanDitanganiByAdmin(viewer) {
+        const result = await pool.query(
+            `${SELECT_LAPORAN}
+             WHERE EXISTS (
+                 SELECT 1
+                 FROM tanggapan t
+                 WHERE t.id_laporan = l.id_laporan
+                   AND t.id_admin = $1
+             )
+             ORDER BY l.waktu_lapor DESC, l.id_laporan`,
+            [viewer.idPengguna]
+        );
+        return result.rows.map(row => Laporan.#format(row, viewer));
+    }
+
     // Nama file foto, hanya jika viewer berhak melihat laporannya (aturan sama dengan detail laporan)
     static async getFoto(idLaporan, viewer) {
         const result = await pool.query(

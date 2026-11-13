@@ -195,6 +195,9 @@ Tabel B.1. Perubahan dari DPPL
 | 1 | *C06 - Tanggapan, atribut dan skema basis data* | *Atribut hanya `statusTanggapan`, `waktuTanggapan`, dan `deskripsiTanggapan`; tidak ada kolom admin pada tanggapan.* | *Model menambahkan atribut private `idAdmin` dan getter; tabel menambahkan `id_admin UUID` nullable dengan FK `ON DELETE SET NULL`.* | *Penambahan kebutuhan penelusuran admin penanggap, sekaligus menjaga tanggapan lama dan tanggapan saat akun admin dihapus.* |
 | 2 | *C06 - Query Q-016* | *INSERT menyimpan `id_laporan`, `status_tanggapan`, `waktu_tanggapan`, dan `deskripsi_tanggapan`; parameter hanya `$1` sampai `$3`.* | *INSERT juga menyimpan `id_admin` dari sesi server dengan parameterized query.* | *Setiap tanggapan baru harus dapat ditelusuri ke admin yang sedang login; `id_admin` dari klien tidak dipercaya.* |
 | 3 | *C13 - TanggapanView / tampilan tanggapan* | *DPPL tidak merinci tampilan identitas admin penanggap.* | *Admin melihat `Ditanggapi oleh <nama admin>` di detail laporan; warga/pelapor hanya menerima tanggapan dan waktunya.* | *Menerapkan kebutuhan visibilitas identitas admin hanya untuk role admin.* |
+| 4 | *C15 - PenggunaController - Algo-025* | *Operasi hapusAkun() tidak menetapkan pembatasan role secara eksplisit* | *Menambahkan validasi agar penghapusan akun mandiri hanya dapat dilakukan warga.* | *Agar riwayat penanganan laporan yang sudah dibuat dapat dilacak dan mencegah admin menghapus akun sendiri*|
+
+
 
 ## B.2 Bukti Penerapan Best Practices
 
@@ -202,9 +205,9 @@ Tabel B.2. Bukti Best Practices
 
 | Praktik | Bukti | Keterangan |
 | :--- | :--- | :--- |
-| Branching | *[Tautan ke daftar branch / graph commit]* | *[Skema yang dipakai]* |
-| Semantic commit | *[Tautan ke riwayat commit]* | *[Ringkasan]* |
-| Track tasks | *[Tautan ke Issues/Projects]* | *[Jumlah issue, pembagian]* |
+| Branching | *[Tautan Branches](https://github.com/ajalku/IF2150-RPL-K01-G01/branches)* | *Menggunakan main sebagai branch utama, develop untuk integrasi, feat/ untuk pengembangan fitur, integration/ jika ada conflict, dan fix/ untuk perbaikan* |
+| Semantic commit | *[Tautan Commit](https://github.com/ajalku/IF2150-RPL-K01-G01/commits)* | *[Ringkasan]* |
+| Track tasks | *[Tautan Issues](https://github.com/ajalku/IF2150-RPL-K01-G01/issues)* | *[Jumlah issue, pembagian]* |
 | Pull request dan review | *[Tautan ke 2-3 PR representatif]* | *[Siapa me-review siapa]* |
 | Pengujian | *[Tautan ke `src/tests/` dan hasil test]* | *[Apa yang diuji, cara menjalankan]* |
 
@@ -224,6 +227,15 @@ Jika tidak ada perbaikan yang perlu dilakukan, jelaskan hasil profiling dan alas
 
 ## B.3 Kendala dan Catatan Penting
 
+### Batasan : 
+1. Menggunakan PostgreSQL lokal sehingga data antaranggota tidak tersinkronisasi secara otomatis.
+
+### Catatan Pengujian 
+1. Database: Pastikan tabel yang diperlukan (ada di backend/db) sudah dijalankan di PostgreSQL.
+2. Autentikasi: Pengujian fitur yang memerlukan login harus menggunakan akun sesuai role warga atau admin. 
+3. Akun uji: Untuk akun warga, bisa melakukan registrasi. Untuk akun admin, gunakan kredensial email : admin.rawat@gmail.com | password : iniAdmin1! . Role admin didapatkan melalui registrasi manual dan pengubahan role pada database.
+
+
 Tuliskan kendala yang ditemui, fitur yang belum sempurna (*known issues*), serta hal yang perlu diketahui asisten saat menjalankan atau menilai aplikasi (misalnya akun uji khusus, urutan menjalankan, atau batasan).
 
 ## B.4 Kontribusi Anggota
@@ -232,7 +244,7 @@ Tabel B.4. Kontribusi Anggota
 
 | NIM | Nama | Modul / Fitur yang Dikerjakan | Persentase Kontribusi |
 | :--- | :--- | :--- | :--- |
-| *[NIM 1]* | *[Nama]* | *[Modul/fitur]* | *[%]* |
+| *13525013* | *Samanth Michelle S. Silaban* | *Login, Registrasi, Profil* | *[%]* |
 | *...* | *...* | *...* | *...* |
 
 ## B.5 Traceability Kelas Perancangan ke Implementasi
@@ -246,9 +258,9 @@ Tabel B.5. Traceability Kelas Perancangan ke Implementasi
 | C06 | Tanggapan | Model, migrasi SQL | `src/backend/src/models/Tanggapan.js` - `Tanggapan`; `src/backend/db/migration_tanggapan_id_admin.sql` | Menyimpan id admin sesi pada INSERT; membaca tanggapan terbaru dengan JOIN pengguna dan hanya menambahkan `idAdmin`/`namaAdmin` untuk viewer admin. |
 | C13 | TanggapanView | Komponen React dan layanan API | `src/frontend/src/view/TanggapanView.jsx` - `TanggapanView`; `src/frontend/src/view/LaporanView.jsx` - `LaporanView`; `src/frontend/src/services/tanggapanService.js` - `simpanHasilTanggapan` | Form tidak mengirim id admin; halaman detail menampilkan nama admin hanya untuk admin dan menyediakan fallback jika admin tidak tercatat. |
 | C20 | TanggapanController | Controller dan route Express | `src/backend/src/controllers/TanggapanController.js` - `simpan`; `src/backend/src/controllers/LaporanController.js` - `detail`; `src/backend/src/routes/laporanRoutes.js` - `POST /:idLaporan/tanggapan` | Memvalidasi sesi/role admin, mengambil id penanggap hanya dari sesi, dan menjaga penyimpanan tanggapan serta status dalam satu transaksi. |
-| *[C01]* | *[Nama kelas pada DPPL]* | *[mis. Kelas / Fungsi / Komponen / Route / Tabel]* | *[mis. `src/models/user.py` - `User`]* | *[Cara atribut dan operasi kelas diwujudkan; "-" jika tidak ada penjelasan tambahan]* |
-| *[C02]* | *[Nama kelas pada DPPL]* | *[Bentuk implementasi]* | *[mis. `src/components/LoginForm.tsx` - `LoginForm`]* | *[mis. atribut menjadi *state*, operasi menjadi *handler*]* |
-| *[C03]* | *[Nama kelas pada DPPL]* | *[Bentuk implementasi]* | *[mis. `src/routes/auth.js` - `POST /login`]* | *[Keterangan]* |
+| C01 | Pengguna | Kelas | `backend/src/models/Pengguna.js`  — `Pengguna` | Atribut diwujudkan sebagai private fields dan operasi diwujudkan sebagai method.|
+| C08 | PenggunaView | Kelas, Komponen, service | `frontend/src/view/PenggunaView.jsx — PenggunaView`; `frontend/src/view/ProfilView.jsx — ProfilView`; `backend/src/services/authService.js`; `backend/src/services/profileService.js` | Operasi tampilan diwujudkan melalui method dan komponen React, sedangkan service menangani komunikasi dengan API. |
+| C15 | PenggunaController | Kelas, route, middleware | `controllers/PenggunaController.js`; `routes/authRoutes.js`; `routes/profileRoutes.js`; `middleware/authMiddleware.js`; `middleware/roleMiddleware.js` | Operasi diwujudkan sebagai method controller, dengan routing API dan middleware autentikasi serta otorisasi. |
 | *...* | *...* | *...* | *...* | *...* |
 
 Catatan:

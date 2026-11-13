@@ -12,7 +12,7 @@ const sessionMiddleware = session({
     store: new PgSession({
         pool: pool,
         tableName: "user_sessions",
-        createTableIfMissing: true
+        createTableIfMissing: false
     }),
 
     cookie: {

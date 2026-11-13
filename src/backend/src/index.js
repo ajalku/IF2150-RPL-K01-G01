@@ -5,10 +5,12 @@ const sessionMiddleware = require("./config/session");
 const authRoutes = require("./routes/authRoutes");
 const laporanRoutes = require("./routes/laporanRoutes");
 const lokasiRoutes = require("./routes/lokasiRoutes");
+const tutorialRoutes = require("./routes/tutorialRoutes");
+const profileRoutes = require("./routes/profileRoutes");
 const { mulaiPembersihLaporan } = require("./jobs/pembersihLaporan");
 
 const app = express();
-const PORT = process.env.PORT || 7002;
+const PORT = process.env.PORT || 7001;
 
 //Middleware
 app.use(express.json());
@@ -18,8 +20,10 @@ app.use(sessionMiddleware);
 
 //Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/profile", profileRoutes);
 app.use("/api/laporan", laporanRoutes);
 app.use("/api/lokasi", lokasiRoutes);
+app.use("/api/tutorial", tutorialRoutes);
 
 //Mulai server
 async function startServer() {
