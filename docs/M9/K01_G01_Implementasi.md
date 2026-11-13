@@ -219,13 +219,11 @@ Pilih minimal satu fitur yang diprofil.
 
 | Informasi | Keterangan |
 | :--- | :--- |
-| Fitur / proses yang diprofil | Homepage |
+| Fitur / proses yang diprofil | Homepage (pengambilan dan pengurutan laporan berdasarkan urgensi)|
 | Alat | Chrome DevTools Network dan PostgreSQL EXPLAIN(ANALYZE, BUFFERS) |
-| Temuan (sebelum) | *[Bottleneck yang ditemukan, sertakan angka/tangkapan layar]* |
-| Perbaikan | *[Yang diubah]* |
-| Hasil (sesudah) | *[Perbandingan dengan sebelumnya]* |
-
-Jika tidak ada perbaikan yang perlu dilakukan, jelaskan hasil profiling dan alasan kenapa fitur tersebut sudah memadai.
+| Temuan (sebelum) | Pengukuran HTTP request melalui Chrome DevTools menghasilkan rata-rata durasi 45,53 ms dari 6 percobaan. Pengujian SQL dengan 5.000 laporan dummy menghasilkan Execution Time 7,318 ms. |
+| Perbaikan | Menambahkan indeks gabungan idx_laporan_urgensi_waktu pada kolom bobot_urgensi DESC, waktu_lapor DESC, dan id_laporan melalui file migration_index_urgensi.sql untuk mendukung pengurutan berdasarkan urgensi. |
+| Hasil (sesudah) | PostgreSQL menggunakan Index Scan pada tabel laporan. Execution Time menurun dari 7,318 ms menjadi 5,265 ms, atau sekitar 28,1% lebih rendah pada pengukuran awal. Hasil ini menunjukkan peningkatan performa query SQL. |
 
 ## B.3 Kendala dan Catatan Penting
 
@@ -233,7 +231,7 @@ Jika tidak ada perbaikan yang perlu dilakukan, jelaskan hasil profiling dan alas
 1. Menggunakan PostgreSQL lokal sehingga data antaranggota tidak tersinkronisasi secara otomatis.
 
 ### Catatan Pengujian 
-1. Database: Pastikan tabel yang diperlukan (ada di backend/db) sudah dijalankan di PostgreSQL. Urutannya: schema.sql -> scehma_laporan.sql -> migration_tanggapan.sql -> migraiton_tanggapan_id_admin.sql -> migration_upvote.sql -> migration_tutorial.sql -> schema_sessions.sql
+1. Database: Pastikan tabel yang diperlukan (ada di backend/db) sudah dijalankan di PostgreSQL. Urutannya: schema.sql -> scehma_laporan.sql -> migration_tanggapan.sql -> migraiton_tanggapan_id_admin.sql -> migration_upvote.sql -> migration_tutorial.sql -> schema_sessions.sql -> migration_index_urgensi.sql
 2. Autentikasi: Pengujian fitur yang memerlukan login harus menggunakan akun sesuai role warga atau admin. 
 3. Akun uji: Untuk akun warga, bisa melakukan registrasi. Role admin didapatkan dengan menjalankan `node scripts/seedAdmin.js` pada terminal. Pastikan juga sudah ada file .env yang berisi kredensial admin yang dibuat. Contoh: 
 ADMIN_NAME=Admin RAWAT
