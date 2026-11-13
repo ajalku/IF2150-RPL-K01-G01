@@ -192,8 +192,12 @@ Tabel B.1. Perubahan dari DPPL
 
 | No | Bagian DPPL | Rancangan Awal | Implementasi Akhir | Alasan |
 | :--- | :--- | :--- | :--- | :--- |
-| 1 | *[mis. Kelas C05, layar I-03, tabel `orders`]* | *[Yang direncanakan]* | *[Yang dibuat]* | *[Alasan perubahan]* |
-| *...* | *...* | *...* | *...* | *...* |
+| 1 | *C06 - Tanggapan, atribut dan skema basis data* | *Atribut hanya `statusTanggapan`, `waktuTanggapan`, dan `deskripsiTanggapan`; tidak ada kolom admin pada tanggapan.* | *Model menambahkan atribut private `idAdmin` dan getter; tabel menambahkan `id_admin UUID` nullable dengan FK `ON DELETE SET NULL`.* | *Penambahan kebutuhan penelusuran admin penanggap, sekaligus menjaga tanggapan lama dan tanggapan saat akun admin dihapus.* |
+| 2 | *C06 - Query Q-016* | *INSERT menyimpan `id_laporan`, `status_tanggapan`, `waktu_tanggapan`, dan `deskripsi_tanggapan`; parameter hanya `$1` sampai `$3`.* | *INSERT juga menyimpan `id_admin` dari sesi server dengan parameterized query.* | *Setiap tanggapan baru harus dapat ditelusuri ke admin yang sedang login; `id_admin` dari klien tidak dipercaya.* |
+| 3 | *C13 - TanggapanView / tampilan tanggapan* | *DPPL tidak merinci tampilan identitas admin penanggap.* | *Admin melihat `Ditanggapi oleh <nama admin>` di detail laporan; warga/pelapor hanya menerima tanggapan dan waktunya.* | *Menerapkan kebutuhan visibilitas identitas admin hanya untuk role admin.* |
+| 4 | *C15 - PenggunaController - Algo-025* | *Operasi hapusAkun() tidak menetapkan pembatasan role secara eksplisit* | *Menambahkan validasi agar penghapusan akun mandiri hanya dapat dilakukan warga.* | *Agar riwayat penanganan laporan yang sudah dibuat dapat dilacak dan mencegah admin menghapus akun sendiri*|
+
+
 
 ## B.2 Bukti Penerapan Best Practices
 
@@ -201,11 +205,13 @@ Tabel B.2. Bukti Best Practices
 
 | Praktik | Bukti | Keterangan |
 | :--- | :--- | :--- |
-| Branching | *[Tautan ke daftar branch / graph commit]* | *[Skema yang dipakai]* |
-| Semantic commit | *[Tautan ke riwayat commit]* | *[Ringkasan]* |
-| Track tasks | *[Tautan ke Issues/Projects]* | *[Jumlah issue, pembagian]* |
-| Pull request dan review | *[Tautan ke 2-3 PR representatif]* | *[Siapa me-review siapa]* |
-| Pengujian | *[Tautan ke `src/tests/` dan hasil test]* | *[Apa yang diuji, cara menjalankan]* |
+| Branching | *[Tautan Branches](https://github.com/ajalku/IF2150-RPL-K01-G01/branches)* | *Menggunakan main sebagai branch utama, develop untuk integrasi, feat/ untuk pengembangan fitur, integration/ jika ada conflict, dan fix/ untuk perbaikan* |
+| Semantic commit | *[Tautan Commit](https://github.com/ajalku/IF2150-RPL-K01-G01/commits)* | *[Ringkasan]* |
+| Track tasks | *[Tautan Issues](https://github.com/ajalku/IF2150-RPL-K01-G01/issues)* | *[Jumlah issue, pembagian]* |
+| Pull request dan review | *[PR 1](https://github.com/ajalku/IF2150-RPL-K01-G01/pull/2)* | *michrousb (Samantha) direview Ajalku (Ravinka)* |
+| Pull request dan review | *[PR 2](https://github.com/ajalku/IF2150-RPL-K01-G01/pull/19)* | *michrousb (Samantha) mereview araended(Syakirra)* |
+| Pull request dan review | *[PR 3](https://github.com/ajalku/IF2150-RPL-K01-G01/pull/15)* | *ufaufaufa (Aufa) mereview Accashiya (Arya)* |
+| Pengujian | *[Test dan Hasil Test](https://github.com/ajalku/IF2150-RPL-K01-G01/tree/develop/src/test)* | *Unit Test per module, cara menjalankan dijelaskan pada file masing-masing.* |
 
 ### B.2.1 Profiling dan Optimasi
 
@@ -213,15 +219,26 @@ Pilih minimal satu fitur yang diprofil.
 
 | Informasi | Keterangan |
 | :--- | :--- |
-| Fitur / proses yang diprofil | *[Nama fitur]* |
-| Alat | *[mis. Chrome DevTools, cProfile, EXPLAIN]* |
-| Temuan (sebelum) | *[Bottleneck yang ditemukan, sertakan angka/tangkapan layar]* |
-| Perbaikan | *[Yang diubah]* |
-| Hasil (sesudah) | *[Perbandingan dengan sebelumnya]* |
-
-Jika tidak ada perbaikan yang perlu dilakukan, jelaskan hasil profiling dan alasan kenapa fitur tersebut sudah memadai.
+| Fitur / proses yang diprofil | Homepage (pengambilan dan pengurutan laporan berdasarkan urgensi)|
+| Alat | Chrome DevTools Network dan PostgreSQL EXPLAIN(ANALYZE, BUFFERS) |
+| Temuan (sebelum) | Pengukuran HTTP request melalui Chrome DevTools menghasilkan rata-rata durasi 45,53 ms dari 6 percobaan. Pengujian SQL dengan 5.000 laporan dummy menghasilkan Execution Time 7,318 ms. |
+| Perbaikan | Menambahkan indeks gabungan idx_laporan_urgensi_waktu pada kolom bobot_urgensi DESC, waktu_lapor DESC, dan id_laporan melalui file migration_index_urgensi.sql untuk mendukung pengurutan berdasarkan urgensi. |
+| Hasil (sesudah) | PostgreSQL menggunakan Index Scan pada tabel laporan. Execution Time menurun dari 7,318 ms menjadi 5,265 ms, atau sekitar 28,1% lebih rendah pada pengukuran awal. Hasil ini menunjukkan peningkatan performa query SQL. |
 
 ## B.3 Kendala dan Catatan Penting
+
+### Batasan : 
+1. Menggunakan PostgreSQL lokal sehingga data antaranggota tidak tersinkronisasi secara otomatis.
+
+### Catatan Pengujian 
+1. Database: Pastikan tabel yang diperlukan (ada di backend/db) sudah dijalankan di PostgreSQL. Urutannya: schema.sql -> scehma_laporan.sql -> migration_tanggapan.sql -> migraiton_tanggapan_id_admin.sql -> migration_upvote.sql -> migration_tutorial.sql -> schema_sessions.sql -> migration_index_urgensi.sql
+2. Autentikasi: Pengujian fitur yang memerlukan login harus menggunakan akun sesuai role warga atau admin. 
+3. Akun uji: Untuk akun warga, bisa melakukan registrasi. Role admin didapatkan dengan menjalankan `node scripts/seedAdmin.js` pada terminal. Pastikan juga sudah ada file .env yang berisi kredensial admin yang dibuat. Contoh: 
+ADMIN_NAME=Admin RAWAT
+ADMIN_NIK=3273010101010001
+ADMIN_EMAIL=admin@example.test
+ADMIN_PASSWORD=AdminRawat123!
+ADMIN_PHONE=081234567890
 
 Tuliskan kendala yang ditemui, fitur yang belum sempurna (*known issues*), serta hal yang perlu diketahui asisten saat menjalankan atau menilai aplikasi (misalnya akun uji khusus, urutan menjalankan, atau batasan).
 
@@ -231,7 +248,11 @@ Tabel B.4. Kontribusi Anggota
 
 | NIM | Nama | Modul / Fitur yang Dikerjakan | Persentase Kontribusi |
 | :--- | :--- | :--- | :--- |
-| *[NIM 1]* | *[Nama]* | *[Modul/fitur]* | *[%]* |
+| *13525013* | *Samanth Michelle S. Silaban* | *Login, Registrasi, Profil* | *20%* |
+| *13525103* | *Ravinka Fathia Adinegara* | *Lokasi, Laporan* | *20%* |
+| *13525043* | *Aufa Tatsbita Zahra* | *Homepage, upvote* | *20%* |
+| *13525055* | *Syakira Azzahra Rachmania* | *Tanggapan* | *20%* |
+| *13525046* | *Ghiffari Arya Adhitya* | *Lokasi, Laporan (Polishing)* | *20%* |
 | *...* | *...* | *...* | *...* |
 
 ## B.5 Traceability Kelas Perancangan ke Implementasi
@@ -242,9 +263,21 @@ Tabel B.5. Traceability Kelas Perancangan ke Implementasi
 
 | ID Kelas | Nama Kelas Perancangan | Bentuk Implementasi | Lokasi (File dan Nama) | Keterangan |
 | :--- | :--- | :--- | :--- | :--- |
-| *[C01]* | *[Nama kelas pada DPPL]* | *[mis. Kelas / Fungsi / Komponen / Route / Tabel]* | *[mis. `src/models/user.py` - `User`]* | *[Cara atribut dan operasi kelas diwujudkan; "-" jika tidak ada penjelasan tambahan]* |
-| *[C02]* | *[Nama kelas pada DPPL]* | *[Bentuk implementasi]* | *[mis. `src/components/LoginForm.tsx` - `LoginForm`]* | *[mis. atribut menjadi *state*, operasi menjadi *handler*]* |
-| *[C03]* | *[Nama kelas pada DPPL]* | *[Bentuk implementasi]* | *[mis. `src/routes/auth.js` - `POST /login`]* | *[Keterangan]* |
+| C01 | Pengguna | Kelas | `backend/src/models/Pengguna.js`  — `Pengguna` | Atribut diwujudkan sebagai private fields dan operasi diwujudkan sebagai method.|
+| C03 | Laporan | Model dan skema basis data | `src/backend/src/models/Laporan.js` - `Laporan`; `src/backend/db/schema_laporan.sql` - tabel `laporan` | Menyimpan dan mengambil data laporan, termasuk detail, daftar, status, validasi, serta lokasi yang terkait. |
+| C04 | Lokasi | Model dan skema basis data | `src/backend/src/models/Lokasi.js` - `Lokasi`; `src/backend/db/schema_laporan.sql` - tabel `lokasi` | Memvalidasi koordinat, menyediakan koordinat dan alamat, serta menyimpan lokasi laporan. |
+| C06 | Tanggapan | Model, migrasi SQL | `src/backend/src/models/Tanggapan.js` - `Tanggapan`; `src/backend/db/migration_tanggapan_id_admin.sql` | Menyimpan id admin sesi pada INSERT; membaca tanggapan terbaru dengan JOIN pengguna dan hanya menambahkan `idAdmin`/`namaAdmin` untuk viewer admin. |
+| C13 | TanggapanView | Komponen React dan layanan API | `src/frontend/src/view/TanggapanView.jsx` - `TanggapanView`; `src/frontend/src/view/LaporanView.jsx` - `LaporanView`; `src/frontend/src/services/tanggapanService.js` - `simpanHasilTanggapan` | Form tidak mengirim id admin; halaman detail menampilkan nama admin hanya untuk admin dan menyediakan fallback jika admin tidak tercatat. |
+| C20 | TanggapanController | Controller dan route Express | `src/backend/src/controllers/TanggapanController.js` - `simpan`; `src/backend/src/controllers/LaporanController.js` - `detail`; `src/backend/src/routes/laporanRoutes.js` - `POST /:idLaporan/tanggapan` | Memvalidasi sesi/role admin, mengambil id penanggap hanya dari sesi, dan menjaga penyimpanan tanggapan serta status dalam satu transaksi. |
+| C08 | PenggunaView | Kelas, Komponen, service | `frontend/src/view/PenggunaView.jsx — PenggunaView`; `frontend/src/view/ProfilView.jsx — ProfilView`; `backend/src/services/authService.js`; `backend/src/services/profileService.js` | Operasi tampilan diwujudkan melalui method dan komponen React, sedangkan service menangani komunikasi dengan API. |
+| C10 | LaporanView | Komponen React dan layanan API | `src/frontend/src/view/LaporanView.jsx` - `LaporanView`; `src/frontend/src/view/BuatLaporanView.jsx` - `BuatLaporanView`; `src/frontend/src/view/PeriksaLaporanView.jsx` - `PeriksaLaporanView`; `src/frontend/src/services/laporanService.js` | Menampilkan detail, membuat, dan memeriksa laporan; layanan API menghubungkan tampilan dengan endpoint laporan. |
+| C11 | LokasiView | Komponen React dan layanan API | `src/frontend/src/view/LokasiView.jsx` - `LokasiView`; `src/frontend/src/view/BuatLaporanView.jsx` - `BuatLaporanView`; `src/frontend/src/components/PetaLaporan.jsx` - `PetaLaporan`; `src/frontend/src/services/lokasiService.js` | Menampilkan peta dan laporan berdasarkan lokasi, mencari alamat, mengambil lokasi pengguna, serta memilih titik lokasi laporan. |
+| C15 | PenggunaController | Kelas, route, middleware | `controllers/PenggunaController.js`; `routes/authRoutes.js`; `routes/profileRoutes.js`; `middleware/authMiddleware.js`; `middleware/roleMiddleware.js` | Operasi diwujudkan sebagai method controller, dengan routing API dan middleware autentikasi serta otorisasi. |
+| C17 | LaporanController | Controller dan route Express | `src/backend/src/controllers/LaporanController.js` - `LaporanController`; `src/backend/src/routes/laporanRoutes.js` | Menangani pembuatan, daftar, detail, pemeriksaan, pembaruan status, konfirmasi ulang, dan penghapusan laporan melalui endpoint API. |
+| C18 | LokasiController | Controller dan route Express | `src/backend/src/controllers/LokasiController.js` - `LokasiController`; `src/backend/src/routes/lokasiRoutes.js` | Menangani geocoding alamat dan pencarian laporan terdekat berdasarkan koordinat serta radius. |
+| C22 | MapAPI | Konfigurasi layanan peta | `src/backend/src/config/mapApi.js` - konfigurasi `MapAPI` | Menyediakan konfigurasi URL, API key opsional, identitas aplikasi, negara, dan batas waktu untuk layanan geocoding. |
+| C23 | MapAPIService | Service | `src/backend/src/services/MapAPIService.js` - `MapAPIService` | Mengirim permintaan geocoding ke layanan peta dan mengubah hasilnya menjadi alamat serta koordinat. |
+| C24 | MapAPIView | Komponen peta React | `src/frontend/src/components/PetaLaporan.jsx` - `PetaLaporan` | Menampilkan peta, penanda laporan dan lokasi pengguna, serta mendukung pemilihan titik pada peta. |
 | *...* | *...* | *...* | *...* | *...* |
 
 Catatan:

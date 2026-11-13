@@ -1,0 +1,71 @@
+:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Arial,sans-serif;color:#173540;background:#fff;font-synthesis:none}*{box-sizing:border-box}body{margin:0}button,input{font:inherit}.app{display:grid;grid-template-columns:43.5% 56.5%;min-height:100vh}.brand-panel{background:#113f49;color:#fff;padding:clamp(27px,3.3vw,56px) clamp(28px,3.3vw,56px);display:flex;flex-direction:column}.brand-logo{background:#fff;color:#153846;border-radius:7px;display:flex;align-items:center;gap:10px;width:max-content;padding:8px 12px;box-shadow:0 2px 5px #0000000c}.brand-logo img{width:44px;height:34px;object-fit:contain}.brand-logo strong{display:block;font-size:22px;line-height:1.1;letter-spacing:.1px}.brand-logo span{display:block;font-size:8px;color:#77909a;white-space:nowrap}.brand-content{margin-top:clamp(32px,5.3vh,70px);max-width:550px}.eyebrow{color:#f9d64f;font-size:11px;font-weight:700;letter-spacing:.025em;margin:0 0 17px}.brand-content h1{font-size:clamp(32px,3.5vw,54px);line-height:1.08;letter-spacing:-.045em;margin:0 0 17px;font-weight:750}.brand-desc{color:#bdd1d6;font-size:clamp(12px,1vw,15px);line-height:1.6;margin:0 0 24px;max-width:520px}.town-image{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:1.53;background:#24525a}.town-image>img{width:100%;height:100%;object-fit:cover;display:block}.town-sticker{position:absolute;bottom:16px;left:16px;display:flex;align-items:center;gap:6px;padding:10px 11px;border-radius:7px;background:#fff;color:#24424b;font-size:10px;font-weight:600;box-shadow:0 3px 12px #0003}.town-sticker svg{color:#087482}.brand-highlights{display:flex;flex-wrap:wrap;gap:24px;margin-top:29px;font-size:11px;color:#d5e5e4}.brand-highlights span{display:flex;gap:9px;align-items:center}.brand-highlights svg{color:#d8d157}.brand-foot{display:block;margin-top:26px;color:#86a8b0;font-size:10px}.main-panel{position:relative;display:flex;flex-direction:column;min-width:0;padding:clamp(30px,3.4vw,56px) clamp(35px,7.8vw,135px) 29px}.main-header,.main-footer{display:flex;justify-content:space-between;align-items:center;gap:15px;font-size:11px;color:#8195a0}.main-header .header-help{color:#006879;font-weight:600}.auth-inner{width:100%;max-width:600px;margin:auto 0;align-self:center;padding:55px 0 65px}.header-icon{width:48px;height:48px;border-radius:11px;background:#fff6d8;display:grid;place-items:center;color:#087d84;margin-bottom:22px}.auth-inner h2{font-size:clamp(27px,2.55vw,38px);letter-spacing:-.03em;line-height:1.14;margin:0 0 13px;color:#173944}.subtitle{color:#7d959e;font-size:14px;line-height:1.55;margin:0 0 30px}.field{margin-bottom:21px}.field>label{display:block;font-weight:600;color:#203f4c;font-size:12px;margin-bottom:9px}.input-wrap{position:relative}.input-wrap input{width:100%;height:48px;border-radius:9px;border:1px solid #dde6e9;padding:0 44px 0 14px;color:#193b44;outline:none;background:#fff;transition:border-color .15s,box-shadow .15s;font-size:13px}.input-wrap input:focus{border-color:#0b7d86;box-shadow:0 0 0 3px #0b7d8617}.input-wrap input::placeholder{color:#8da1a9}.input-wrap>svg,.visibility{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:#8da2ab}.visibility{border:0;background:none;cursor:pointer;display:grid;place-items:center;padding:2px}.form-options{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:2px 0 23px;font-size:11px;color:#80939e}.remember{display:flex;align-items:center;gap:8px;cursor:pointer}.remember input{accent-color:#087481;margin:0}.muted-link{color:#00677a;font-weight:600}.submit{border:none;border-radius:9px;background:#087584;color:#fff;width:100%;height:45px;display:flex;align-items:center;justify-content:center;gap:10px;font-size:13px;font-weight:600;cursor:pointer}.submit:hover{background:#086775}.submit:disabled{opacity:.6;cursor:wait}.switch-page{text-align:center;font-size:12px;color:#82949e;margin:29px 0 29px}.switch-page button{border:0;background:none;color:#087485;font-weight:700;padding:0;cursor:pointer}.info-strip{display:flex;gap:14px;align-items:center;background:#f3f6f7;padding:16px;border-radius:9px;color:#8197a1}.info-strip svg{flex:none;color:#0d7a88}.info-strip p{margin:0;font-size:11px;line-height:1.4}.main-footer{margin-top:auto;padding-top:18px;font-size:10px}.form-message{font-size:12px;margin:12px 0 0}.form-message.success{color:#16744d}.form-message.error{color:#b33737}.register-inner{padding-top:30px;padding-bottom:25px}.register-inner .field{margin-bottom:14px}.register-inner .subtitle{margin-bottom:20px}.register-inner .header-icon{margin-bottom:16px}.register-inner .switch-page{margin:22px 0}.register-inner .info-strip{padding:12px 16px}@media(max-width:900px){.main-panel{padding-left:6vw;padding-right:6vw}.brand-panel{padding:30px}.brand-content h1{font-size:33px}.brand-highlights{gap:12px}}@media(max-width:680px){.app{grid-template-columns:1fr}.brand-panel{padding:20px 24px}.brand-logo img{width:37px;height:29px}.brand-logo strong{font-size:20px}.brand-content{margin-top:20px}.brand-content h1{font-size:27px}.brand-desc{font-size:12px;margin-bottom:0}.eyebrow{margin-bottom:9px}.town-image,.brand-highlights,.brand-foot{display:none}.main-panel{padding:22px 24px;min-height:calc(100vh - 230px)}.auth-inner{max-width:500px;padding:55px 0}.main-header,.main-footer{font-size:10px}.register-inner{padding:25px 0}}
+
+/* Link registrasi ditampilkan untuk kesesuaian desain; UC01 belum dibuat. */
+.register-future { color: #087485; font-weight: 700; cursor: default; }
+
+
+/* ===== REGISTRASI RAWAT ===== */
+
+.register-inner {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.register-inner .header-icon {
+  margin-bottom: 15px;
+}
+
+.register-inner h2 {
+  font-size: clamp(26px, 2.4vw, 34px);
+}
+
+.register-inner .subtitle {
+  margin-bottom: 22px;
+}
+
+.register-inner .field {
+  margin-bottom: 14px;
+}
+
+.register-inner .input-wrap input {
+  height: 44px;
+  padding-right: 14px;
+}
+
+.register-inner .switch-page {
+  margin: 22px 0;
+}
+
+.register-visibility {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 18px;
+  font-size: 12px;
+  color: #8197a1;
+  cursor: pointer;
+}
+
+.register-visibility input {
+  accent-color: #087584;
+}
+
+/* Mengikuti styling link Login RAWAT */
+.switch-page button {
+  border: 0;
+  background: none;
+  color: #087485;
+  font-weight: 700;
+  padding: 0;
+  cursor: pointer;
+}
+
+.switch-page button:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 680px) {
+  .register-inner {
+    padding: 25px 0;
+  }
+}
