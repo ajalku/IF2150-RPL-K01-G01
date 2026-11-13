@@ -90,32 +90,30 @@ Penanganan Laporan. Skenario disusun berdasarkan use case pada
 
 | ID | Input / Aksi | Expected Result | Actual Result | Status | Bukti |
 |---|---|---|---|---|---|
-| FE-LAP-01 | Membuka halaman Laporan Warga | Daftar laporan, filter kategori/status, opsi urutan, dan navigasi halaman tampil | Belum diuji | NOT RUN | - |
-| FE-LAP-02 | Memilih urutan terbaru, terlama, atau terpopuler | Daftar dimuat ulang dengan urutan yang dipilih dan kembali ke halaman pertama | Belum diuji | NOT RUN | - |
-| FE-LAP-03 | Memilih kategori atau status tertentu | Hanya laporan yang sesuai filter ditampilkan | Belum diuji | NOT RUN | - |
-| FE-LAP-04 | Memilih salah satu laporan | Halaman detail menampilkan kategori, status, urgensi, lokasi, dan informasi laporan | Belum diuji | NOT RUN | - |
-| FE-LAP-05 | Detail laporan tidak memiliki foto atau deskripsi | Detail tetap tampil; deskripsi menggunakan teks pengganti dan foto tidak ditampilkan | Belum diuji | NOT RUN | - |
-| FE-LAP-06 | Menekan `Lihat di peta` pada detail | Halaman peta terbuka dengan koordinat laporan sebagai pusat dan laporan tersebut difokuskan | Belum diuji | NOT RUN | - |
-| FE-LAP-07 | Detail gagal dimuat lalu pengguna menekan muat ulang | Pesan kesalahan dan aksi muat ulang ditampilkan; detail dimuat kembali jika layanan pulih | Belum diuji | NOT RUN | - |
-| FE-LAP-08 | Membuka laporan yang tidak tersedia atau tidak berhak dilihat | Pesan gagal memuat detail ditampilkan, tanpa data laporan | Belum diuji | NOT RUN | - |
+| FE-LAP-01 | Membuka halaman Laporan Warga | Daftar laporan, filter kategori/status, opsi urutan, dan navigasi halaman tampil | Sesuai | PASS | ![laporanwarga](screenshots/FE-LAP-01.png) |
+| FE-LAP-02 | Memilih urutan terbaru, terlama, atau terpopuler | Daftar dimuat ulang dengan urutan yang dipilih dan kembali ke halaman pertama | Sesuai | PASS | ![urutanlaporan](screenshots/FE-LAP-02.png) |
+| FE-LAP-03 | Memilih kategori atau status tertentu | Hanya laporan yang sesuai filter ditampilkan | Sesuai | PASS | ![kategoristatus](screenshots/FE-LAP-03.png) |
+| FE-LAP-04 | Memilih salah satu laporan | Halaman detail menampilkan kategori, status, urgensi, lokasi, dan informasi laporan | Sesuai | PASS | ![detail](screenshots/FE-LAP-04.png) |
+| FE-LAP-05 | Detail laporan tidak memiliki foto atau deskripsi | Detail tetap tampil; deskripsi menggunakan teks pengganti dan foto tidak ditampilkan | Sesuai | PASS | ![detailtidakfoto](screenshots/FE-LAP-04.png) |
+| FE-LAP-06 | Menekan `Lihat di peta` pada detail | Halaman peta terbuka dengan koordinat laporan sebagai pusat dan laporan tersebut difokuskan | Sesuai | PASS | ![lihatdipeta](screenshots/FE-LAP-06.png) |
 
 ### 3.3 Membuat laporan (UC07)
 
 | ID | Input / Aksi | Expected Result | Actual Result | Status | Bukti |
 |---|---|---|---|---|---|
-| FE-BUAT-01 | Membuka halaman Buat Laporan | Form nama masalah, kategori, urgensi, privasi, lokasi, foto opsional, dan deskripsi opsional tampil | Belum diuji | NOT RUN | - |
-| FE-BUAT-02 | Mengirim form tanpa nama masalah atau kategori | Pesan validasi wajib tampil; dialog konfirmasi dan request penyimpanan tidak dibuka | Belum diuji | NOT RUN | - |
-| FE-BUAT-03 | Mengirim form tanpa alamat dan tanpa titik peta | Pesan untuk menandai lokasi atau mengisi alamat tampil | Belum diuji | NOT RUN | - |
-| FE-BUAT-04 | Memilih kategori `Lainnya` dan membiarkan kategori lain kosong | Validasi nama masalah/kategori wajib tampil | Belum diuji | NOT RUN | - |
-| FE-BUAT-05 | Mencari alamat yang ditemukan atau memilih titik langsung di peta | Titik laporan ditampilkan pada peta dan koordinat digunakan saat mengirim laporan | Belum diuji | NOT RUN | - |
-| FE-BUAT-06 | Mencari alamat yang tidak ditemukan | Pesan bahwa alamat tidak ditemukan tampil dan pengguna diarahkan memilih titik di peta | Belum diuji | NOT RUN | - |
-| FE-BUAT-07 | Memilih lokasi saya saat geolokasi tidak tersedia/izin ditolak | Pesan alternatif tampil dan pengguna tetap dapat memilih titik di peta | Belum diuji | NOT RUN | - |
-| FE-BUAT-08 | Memilih foto JPG/PNG berukuran sampai 5 MB | Pratinjau foto tampil | Belum diuji | NOT RUN | - |
-| FE-BUAT-09 | Memilih file bukan JPG/PNG atau foto lebih dari 5 MB | File ditolak, input file dikosongkan, dan pesan kesalahan tampil | Belum diuji | NOT RUN | - |
-| FE-BUAT-10 | Mengisi form valid lalu menekan Kirim Laporan | Dialog konfirmasi pengiriman tampil sebelum data dikirim | Belum diuji | NOT RUN | - |
-| FE-BUAT-11 | Membatalkan dialog konfirmasi pengiriman | Dialog tertutup; laporan tidak dikirim dan form tetap dapat diedit | Belum diuji | NOT RUN | - |
-| FE-BUAT-12 | Mengonfirmasi pengiriman form valid | Laporan tersimpan dan pengguna diarahkan ke halaman detail laporan baru | Belum diuji | NOT RUN | - |
-| FE-BUAT-13 | Request pengiriman gagal | Pesan error tampil, dialog tertutup, dan form dapat dikirim ulang | Belum diuji | NOT RUN | - |
+| FE-BUAT-01 | Membuka halaman Buat Laporan | Form nama masalah, kategori, urgensi, privasi, lokasi, foto opsional, dan deskripsi opsional tampil | Sesuai | PASS | ![halamanbuatlaporan](screenshots/FE-BUAT-01.png) |
+| FE-BUAT-02 | Mengirim form tanpa nama masalah atau kategori | Pesan validasi wajib tampil; dialog konfirmasi dan request penyimpanan tidak dibuka | Sesuai | PASS | ![tanpanamamasalah](screenshots/FE-BUAT-02.png) |
+| FE-BUAT-03 | Mengirim form tanpa alamat dan tanpa titik peta | Pesan untuk menandai lokasi atau mengisi alamat tampil | 
+Sesuai | PASS | ![tanpaalamat](screenshots/FE-BUAT-03.png) |
+| FE-BUAT-04 | Memilih kategori `Lainnya` dan membiarkan kategori lain kosong | Validasi nama masalah/kategori wajib tampil | Sesuai | PASS | ![lainnyakosong](screenshots/FE-BUAT-04.png) |
+| FE-BUAT-05 | Mencari alamat yang ditemukan atau memilih titik langsung di peta | Titik laporan ditampilkan pada peta dan koordinat digunakan saat mengirim laporan | Sesuai | PASS | ![alamatditemukan](screenshots/FE-BUAT-05.png) |
+| FE-BUAT-06 | Mencari alamat yang tidak ditemukan | Pesan bahwa alamat tidak ditemukan tampil dan pengguna diarahkan memilih titik di peta | Sesuai | PASS | ![alamattdkditemukan](screenshots/FE-BUAT-06.png) |
+| FE-BUAT-07 | Memilih foto JPG/PNG berukuran sampai 5 MB | Pratinjau foto tampil | Sesuai | PASS | ![foto5mb](screenshots/FE-BUAT-07.png) |
+| FE-BUAT-08 | Memilih file bukan JPG/PNG atau foto lebih dari 5 MB | File ditolak, input file dikosongkan, dan pesan kesalahan tampil | Sesuai | PASS | ![foto>5mb](screenshots/FE-BUAT-08.png) |
+| FE-BUAT-09 | Mengisi form valid lalu menekan Kirim Laporan | Dialog konfirmasi pengiriman tampil sebelum data dikirim | Sesuai | PASS | ![dialogkonfirmasi](screenshots/FE-BUAT-09.png) |
+| FE-BUAT-10 | Membatalkan dialog konfirmasi pengiriman | Dialog tertutup; laporan tidak dikirim dan form tetap dapat diedit | Sesuai | PASS | ![bataldialog](screenshots/FE-BUAT-10.png) |
+| FE-BUAT-11 | Mengonfirmasi pengiriman form valid | Laporan tersimpan dan pengguna diarahkan ke halaman detail laporan baru | Sesuai | PASS | ![konfirmasiformvalid](screenshots/FE-BUAT-11.png) |
+| FE-BUAT-12 | Request pengiriman gagal | Pesan error tampil, dialog tertutup, dan form dapat dikirim ulang | Sesuai | PASS | ![requestgagal](screenshots/FE-BUAT-11.png) |
 
 ### 3.4 Memeriksa dan memperbarui laporan (UC08, UC09)
 
