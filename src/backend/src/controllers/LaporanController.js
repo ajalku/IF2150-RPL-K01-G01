@@ -165,6 +165,16 @@ class LaporanController {
         }
     }
 
+    // GET /api/laporan/ringkasan -- angka untuk kartu ringkasan di beranda
+    static async ringkasan(req, res) {
+        try {
+            return res.status(200).json(await Laporan.getRingkasan());
+        } catch (err) {
+            console.error("Ringkasan laporan error:", err);
+            return res.status(500).json({ message: "Something went wrong" });
+        }
+    }
+    
     // GET /api/laporan/saya  -- "Laporan Saya" di halaman profil
     static async saya(req, res) {
         try {

@@ -1,156 +1,288 @@
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, Plus, Sparkles } from "lucide-react";
-import KartuLaporan from "../components/KartuLaporan.jsx";
-import UpvoteView from "../components/UpvoteView.jsx";
-import TutorialView from "../components/TutorialView.jsx";
+import {
+  ArrowRight, BadgeCheck, Clock, Construction, HeartHandshake, Layers, MapPin, MapPinned, Sparkles,
+} from "lucide-react";
+import KartuBeranda from "../components/KartuBeranda.jsx";
+import PetaLaporan from "../components/PetaLaporan.jsx";
+import TutorialView from "./TutorialView.jsx";
 import { Galat, Kosong, Memuat } from "../components/Keadaan.jsx";
 import { useData } from "../hooks/useData.js";
-import { muatHomepage } from "../services/homepageService.js";
+import { daftarLaporan, ringkasanLaporan } from "../services/laporanService.js";
 import { ambilTutorial, lewatiTutorial, selesaiTutorial } from "../services/tutorialService.js";
-import { KATEGORI, LABEL_STATUS, STATUS_LAPORAN } from "../utils/format.js";
+import { KATEGORI } from "../utils/format.js";
+import { hitungJarakKm } from "../utils/jarak.js";
+import "./Beranda.css";
 
-const PER_HALAMAN = 12;
+const WILAYAH = "Bandung, Jawa Barat";
+const LANGKAH_MUAT = 3; // jumlah kartu awal, dan tambahan tiap "Lihat laporan lainnya"
+const RADIUS_SEKITAR_KM = 5;
+
 const URUTAN = {
   urgensi: { sortBy: "urgensi", sortType: "desc" },
   populer: { sortBy: "populer", sortType: "desc" },
   terbaru: { sortBy: "waktu", sortType: "desc" },
-  terlama: { sortBy: "waktu", sortType: "asc" },
+  urgensi: { sortBy: "urgensi", sortType: "desc" },
+  populer: { sortBy: "populer", sortType: "desc" },
 };
+const LABEL_URUTAN = { terbaru: "Terbaru", urgensi: "Urgensi", populer: "Populer" };
 
-// C09 - HomepageView: daftar laporan, urutan, filter, tombol dukungan, dan ajakan tutorial.
-export default function HomepageView() {
-  const [filter, setFilter] = useState({ kategori: "", statusLaporan: "", urut: "urgensi" });
-  const [halaman, setHalaman] = useState(1);
-  const [tutorialBuka, setTutorialBuka] = useState(false);
-  const [undanganTutup, setUndanganTutup] = useState(false);
+const STATISTIK = [
+  { kunci: "aktif", ikon: Layers, label: "Laporan aktif", ket: "di semua wilayah" },
+  { kunci: "menungguVerifikasi", ikon: Clock, label: "Menunggu verifikasi", ket: "sedang ditinjau petugas" },
+  { kunci: "terverifikasi", ikon: BadgeCheck, label: "Terverifikasi", ket: "siap ditindaklanjuti" },
+  { kunci: "dalamPenanganan", ikon: Construction, label: "Dalam penanganan", ket: "perbaikan sedang berjalan" },
+];
 
-  // pilihFilter() pada DPPL
-  const ubahFilter = (e) => {
-    setFilter((f) => ({ ...f, [e.target.name]: e.target.value }));
-    setHalaman(1);
+function sapaan() {
+  const jam = new Date().getHours();
+  if (jam < 11) return "Selamat pagi";
+  if (jam < 15) return "Selamat siang";
+  if (jam < 18) return "Selamat sore";
+  return "Selamat malam";
+}
+
+export default function HomepageView({ sesi }) {
+  const [salam] = useState(sapaan);
+  const namaDepan = sesi?.nama?.trim().split(/\s+/)[0] ?? "";
+
+  // ---- Lokasi pengguna (opsional, hanya setelah chip lokasi diklik) ----
+  const [lokasiPengguna, setLokasiPengguna] = useState(null);
+  const [statusLokasi, setStatusLokasi] = useState(""); // "" | "mencari" | "aktif" | "ditolak"
+
+  const pakaiLokasi = () => {
+    if (!navigator.geolocation) {
+      setStatusLokasi("ditolak");
+      return;
+    }
+    setStatusLokasi("mencari");
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        setLokasiPengguna({ latitude: pos.coords.latitude, longitude: pos.coords.longitude });
+        setStatusLokasi("aktif");
+      },
+      () => setStatusLokasi("ditolak"),
+      { timeout: 10000 },
+    );
+  };
+
+  const labelLokasi = {
+    mencari: "Mencari lokasi...",
+    ditolak: "Izin lokasi ditolak",
+  }[statusLokasi] ?? WILAYAH;
+
+  // ---- Ringkasan angka (gagal = tampil "-", tidak mengganggu halaman) ----
+  const ringkasan = useData(ringkasanLaporan, "ringkasan");
+
+  // ---- Kabar lingkungan ----
+  const [filter, setFilter] = useState({ kategori: "", urut: "terbaru" });
+  const [tampil, setTampil] = useState(LANGKAH_MUAT);
+
+  const ubahFilter = (perubahan) => {
+    setFilter((f) => ({ ...f, ...perubahan }));
+    setTampil(LANGKAH_MUAT);
   };
 
   const { data, galat, memuat, muatUlang } = useData(
     () => muatHomepage({
       kategori: filter.kategori,
-      statusLaporan: filter.statusLaporan,
       ...URUTAN[filter.urut],
-      limit: PER_HALAMAN,
-      offset: (halaman - 1) * PER_HALAMAN,
+      page: 1,
+      limit: tampil,
     }),
-    JSON.stringify({ filter, halaman }),
+    JSON.stringify({ filter, tampil }),
   );
   // Tutorial hanyalah pelengkap: jika gagal dimuat, Beranda tetap berjalan tanpa kartu undangan.
   const { data: tutorial } = useData(ambilTutorial, "tutorial");
 
-  const laporan = data?.daftarLaporan ?? [];
-  const tampilUndangan = tutorial && !tutorial.sudahLihat && !undanganTutup;
+  // Simpan hasil terakhir supaya daftar tidak hilang saat memuat tambahan / berganti filter.
+  const [terakhir, setTerakhir] = useState(null);
+  if (data && data !== terakhir) setTerakhir(data);
+  const laporan = terakhir?.laporan ?? [];
+  const adaLagi = laporan.length >= tampil;
 
-  // Urutan "populer" bergantung pada jumlah dukungan -> muat ulang agar urutannya langsung diperbarui
-  const saatUpvoteBerhasil = () => {
-    if (filter.urut === "populer") muatUlang();
+  // ---- Peta ringkas ----
+  const peta = useData(() => daftarLaporan({ limit: 30 }), "peta");
+  const semuaTitik = peta.data?.laporan ?? [];
+  const titikPeta = lokasiPengguna
+    ? semuaTitik.filter((l) => hitungJarakKm(lokasiPengguna, l.lokasi) <= RADIUS_SEKITAR_KM)
+    : semuaTitik;
+
+  // ---- Tutorial ----
+  const tutorial = useData(ambilTutorial, "tutorial");
+  const [tutorialTutup, setTutorialTutup] = useState(false);
+  const [panelTerbuka, setPanelTerbuka] = useState(false);
+  const [galatTutorial, setGalatTutorial] = useState("");
+  const infoTutorial = tutorial.data;
+  const tampilKartuTutorial = Boolean(infoTutorial) && !infoTutorial.sudahLihat && !tutorialTutup;
+
+  const lewatiDariKartu = async () => {
+    setGalatTutorial("");
+    try {
+      await lewatiTutorial();
+      setTutorialTutup(true);
+    } catch (err) {
+      setGalatTutorial(err.message || "Tutorial gagal ditutup. Coba lagi.");
+    }
   };
 
-  const akhiriTutorial = () => {
-    setTutorialBuka(false);
-    setUndanganTutup(true);
-  };
-  const lewatiUndangan = async () => {
-    try { await lewatiTutorial(); } catch { /* status akan disimpan lagi saat tutorial dibuka berikutnya */ }
-    setUndanganTutup(true);
+  const tutupPanel = () => {
+    setPanelTerbuka(false);
+    setTutorialTutup(true);
   };
 
   return (
     <>
-      <section className="rw-judul">
+      {/* ---------- Sapaan ---------- */}
+      <section className="br-sapaan">
         <div>
-          <h1>Laporan Warga</h1>
-          <p>Pantau masalah fasilitas dan ruang publik di sekitar Anda, dan kawal sampai tuntas.</p>
+          <h1>{salam}, {namaDepan}.</h1>
+          <p>Mari rawat ruang bersama, mulai dari lingkungan terdekat.</p>
         </div>
-        <div className="rw-undangan-aksi">
-          {tutorial && (tutorial.sudahLihat || undanganTutup) && (
-            <button type="button" className="rw-btn rw-btn-garis" onClick={() => setTutorialBuka(true)}>Lihat tutorial</button>
-          )}
-          <a className="rw-btn rw-btn-utama" href="#/buat"><Plus size={15} aria-hidden="true" /> Buat Laporan</a>
+        <button
+          type="button"
+          className={`br-lokasi${statusLokasi === "aktif" ? " aktif" : ""}`}
+          onClick={pakaiLokasi}
+          disabled={statusLokasi === "mencari"}
+          title="Gunakan lokasi saya untuk menghitung jarak laporan"
+        >
+          <MapPin size={16} aria-hidden="true" /> {labelLokasi}
+        </button>
+      </section>
+
+      {/* ---------- Banner ---------- */}
+      <section className="br-hero">
+        <div>
+          <span className="br-hero-eyebrow">Suara kecil, dampak nyata</span>
+          <h2>Lihat masalahnya. Sampaikan. Kawal bersama.</h2>
+          <p>Laporan Anda membantu fasilitas publik kembali aman dan nyaman.</p>
+        </div>
+        <div className="br-hero-ikon" aria-hidden="true">
+          <MapPinned size={46} strokeWidth={1.4} />
         </div>
       </section>
 
-      {tampilUndangan && (
-        <section className="rw-undangan" aria-label="Ajakan tutorial">
-          <div>
-            <h2><Sparkles size={16} aria-hidden="true" /> Baru di RAWAT?</h2>
-            <p>Kenali cara melapor dan memantau tindak lanjutnya dalam {tutorial.totalLangkah} langkah sederhana.</p>
+      {/* ---------- Ringkasan ---------- */}
+      <section className="br-statistik" aria-label="Ringkasan laporan">
+        {STATISTIK.map(({ kunci, ikon: Ikon, label, ket }) => (
+          <div className="br-stat" key={kunci}>
+            <Ikon size={22} strokeWidth={1.6} aria-hidden="true" />
+            <div>
+              <p className="br-stat-baris">
+                <strong>{ringkasan.data ? ringkasan.data[kunci] : "-"}</strong>
+                <span>{label}</span>
+              </p>
+              <p className="br-stat-ket">{ket}</p>
+            </div>
           </div>
-          <div className="rw-undangan-aksi">
-            <button type="button" className="rw-btn rw-btn-utama" onClick={() => setTutorialBuka(true)}>Mulai tutorial</button>
-            <button type="button" className="rw-btn rw-btn-garis" onClick={lewatiUndangan}>Lewati</button>
-          </div>
-        </section>
-      )}
-
-      <section className="rw-filter" aria-label="Filter laporan">
-        <label>Urutkan
-          <select name="urut" value={filter.urut} onChange={ubahFilter}>
-            <option value="urgensi">Urgensi tertinggi</option>
-            <option value="populer">Terpopuler</option>
-            <option value="terbaru">Terbaru</option>
-            <option value="terlama">Terlama</option>
-          </select>
-        </label>
-        <label>Kategori
-          <select name="kategori" value={filter.kategori} onChange={ubahFilter}>
-            <option value="">Semua kategori</option>
-            {KATEGORI.map((k) => <option key={k} value={k}>{k}</option>)}
-          </select>
-        </label>
-        <label>Status
-          <select name="statusLaporan" value={filter.statusLaporan} onChange={ubahFilter}>
-            <option value="">Semua status</option>
-            {STATUS_LAPORAN.map((s) => <option key={s} value={s}>{LABEL_STATUS[s]}</option>)}
-          </select>
-        </label>
+        ))}
       </section>
 
-      {memuat && <Memuat teks="Memuat laporan..." />}
-      {!memuat && galat && <Galat pesan={galat} onUlang={muatUlang} />}
-      {!memuat && !galat && laporan.length === 0 && (
-        <Kosong>Belum ada laporan{filter.kategori || filter.statusLaporan ? " dengan filter ini" : ""}.</Kosong>
-      )}
+      <div className="br-grid">
+        {/* ---------- Kolom kiri: Kabar lingkungan ---------- */}
+        <section aria-labelledby="br-judul-kabar">
+          <div className="br-kabar-kepala">
+            <h2 id="br-judul-kabar">Kabar lingkungan</h2>
+            <div className="br-tab" role="group" aria-label="Urutkan laporan">
+              {Object.keys(URUTAN).map((u) => (
+                <button key={u} type="button" aria-pressed={filter.urut === u}
+                  className={filter.urut === u ? "aktif" : ""} onClick={() => ubahFilter({ urut: u })}>
+                  {LABEL_URUTAN[u]}
+                </button>
+              ))}
+            </div>
+          </div>
 
-      {!memuat && !galat && laporan.length > 0 && (
-        <>
-          <div className="rw-grid">
-            {laporan.map((l) => (
-              <KartuLaporan key={l.idLaporan} laporan={l}>
-                <UpvoteView
-                  key={`${l.jumlahUpvote}-${l.sudahUpvote}`}
-                  idLaporan={l.idLaporan}
-                  jumlahUpvote={l.jumlahUpvote}
-                  sudahUpvote={l.sudahUpvote}
-                  bisaUpvote={l.bisaUpvote}
-                  onBerhasil={saatUpvoteBerhasil}
-                />
-              </KartuLaporan>
+          <div className="br-chip-baris" role="group" aria-label="Filter kategori">
+            {["", ...KATEGORI].map((k) => (
+              <button key={k || "semua"} type="button" aria-pressed={filter.kategori === k}
+                className={filter.kategori === k ? "aktif" : ""} onClick={() => ubahFilter({ kategori: k })}>
+                {k || "Semua kategori"}
+              </button>
             ))}
           </div>
-          <div className="rw-pager">
-            <button type="button" className="rw-btn rw-btn-garis" disabled={halaman === 1}
-              onClick={() => setHalaman((h) => h - 1)}><ChevronLeft size={15} /> Sebelumnya</button>
-            <span>Halaman {halaman}</span>
-            <button type="button" className="rw-btn rw-btn-garis" disabled={!data?.adaLagi}
-              onClick={() => setHalaman((h) => h + 1)}>Berikutnya <ChevronRight size={15} /></button>
-          </div>
-        </>
-      )}
 
-      {tutorialBuka && tutorial && (
+          {!terakhir && memuat && <Memuat teks="Memuat laporan..." />}
+          {!memuat && galat && <Galat pesan={galat} onUlang={muatUlang} />}
+          {!memuat && !galat && terakhir && laporan.length === 0 && (
+            <Kosong>Belum ada laporan{filter.kategori ? ` untuk kategori ${filter.kategori}` : ""}.</Kosong>
+          )}
+
+          {!galat && laporan.length > 0 && (
+            <div className={`br-daftar${memuat ? " memuat" : ""}`} aria-busy={memuat}>
+              {laporan.map((l) => (
+                <KartuBeranda
+                  key={l.idLaporan}
+                  laporan={l}
+                  jarakKm={lokasiPengguna ? hitungJarakKm(lokasiPengguna, l.lokasi) : undefined}
+                />
+              ))}
+            </div>
+          )}
+
+          {!galat && laporan.length > 0 && adaLagi && (
+            <div className="br-lebih-wadah">
+              <button type="button" className="br-lebih" disabled={memuat}
+                onClick={() => setTampil((t) => t + LANGKAH_MUAT)}>
+                {memuat ? "Memuat..." : "Lihat laporan lainnya"}
+              </button>
+            </div>
+          )}
+        </section>
+
+        {/* ---------- Kolom kanan ---------- */}
+        <aside className="br-sisi">
+          <section className="br-panel">
+            <h2>Ada apa di sekitar Anda?</h2>
+            <p className="br-panel-sub">Temukan laporan terdekat di peta.</p>
+            <div className="br-peta">
+              <PetaLaporan
+                tengah={lokasiPengguna ?? undefined}
+                zoom={14}
+                laporan={titikPeta}
+                lokasiPengguna={lokasiPengguna}
+                tinggi={225}
+              />
+              <a className="br-peta-tautan" href="#/peta" aria-label="Buka peta interaktif" />
+            </div>
+            <div className="br-peta-kaki">
+              <span>
+                {lokasiPengguna
+                  ? `${titikPeta.length} laporan dalam ${RADIUS_SEKITAR_KM} km`
+                  : `${titikPeta.length} laporan terbaru`}
+              </span>
+              <a href="#/peta">Buka peta <ArrowRight size={14} aria-hidden="true" /></a>
+            </div>
+          </section>
+
+          {tampilKartuTutorial && (
+            <section className="br-tutorial" aria-labelledby="br-judul-tutorial">
+              <Sparkles size={26} strokeWidth={1.5} aria-hidden="true" />
+              <h2 id="br-judul-tutorial">Baru di RAWAT?</h2>
+              <p>Kenali cara melapor dan pantau tindak lanjutnya dalam {infoTutorial.totalLangkah} langkah sederhana.</p>
+              {galatTutorial && <p className="br-tutorial-galat" role="alert">{galatTutorial}</p>}
+              <div className="br-tutorial-aksi">
+                <button type="button" className="rw-btn rw-btn-utama" onClick={() => setPanelTerbuka(true)}>Mulai tutorial</button>
+                <button type="button" className="br-teks-btn" onClick={lewatiDariKartu}>Lewati</button>
+              </div>
+            </section>
+          )}
+
+          <p className="br-catatan">
+            <HeartHandshake size={20} strokeWidth={1.5} aria-hidden="true" />
+            <span>Sampaikan fakta, jaga tutur kata. Setiap dukungan membantu masalah lebih terlihat.</span>
+          </p>
+        </aside>
+      </div>
+
+      {panelTerbuka && infoTutorial && (
         <TutorialView
-          langkah={tutorial.langkah}
+          langkah={infoTutorial.langkah}
           onSkip={lewatiTutorial}
           onSelesai={selesaiTutorial}
-          onTutup={akhiriTutorial}
+          onTutup={tutupPanel}
         />
       )}
+
     </>
   );
 }

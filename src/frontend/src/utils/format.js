@@ -1,4 +1,4 @@
-export const STATUS_LAPORAN = ["DITERIMA", "TERVERIFIKASI", "DIPROSES", "SELESAI"];
+export const STATUS_LAPORAN = ["BELUM_DILIHAT", "DILIHAT", "DIPERBAIKI", "SELESAI"];
 
 export const LABEL_STATUS = {
   BELUM_DILIHAT: "Belum dilihat",
@@ -7,9 +7,9 @@ export const LABEL_STATUS = {
   SELESAI: "Selesai",
 };
 export const WARNA_STATUS = {
-  DITERIMA: "#6b7f89",
-  TERVERIFIKASI: "#1d6fa5",
-  DIPROSES: "#d99a1b",
+  BELUM_DILIHAT: "#6b7f89",
+  DILIHAT: "#1d6fa5",
+  DIPERBAIKI: "#d99a1b",
   SELESAI: "#1f9d63",
 };
 export const LABEL_TINGKAT = { RENDAH: "Urgensi rendah", SEDANG: "Urgensi sedang", TINGGI: "Urgensi tinggi" };

@@ -12,6 +12,7 @@ router.use(requireAuth);
 
 router.post("/", uploadFoto, LaporanController.buat);
 router.get("/", LaporanController.daftar);
+router.get("/ringkasan", LaporanController.ringkasan);
 router.get("/saya", LaporanController.saya);              // harus di atas "/:idLaporan"
 router.get("/ditangani", authorizeRoles("admin"), LaporanController.ditangani);
 router.get("/:idLaporan", LaporanController.detail);

@@ -14,6 +14,9 @@ const { mulaiPembersihLaporan } = require("./jobs/pembersihLaporan");
 const app = express();
 const PORT = process.env.PORT || 7001;
 
+// Di balik reverse proxy (Nginx, dsb.) cookie "secure" hanya dikirim jika Express percaya header X-Forwarded-*
+if (process.env.NODE_ENV === "production") app.set("trust proxy", 1);
+
 //Middleware
 app.use(express.json());
 app.use(sessionMiddleware);
