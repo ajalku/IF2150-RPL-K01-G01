@@ -30,7 +30,10 @@ export default function KartuLaporan({ laporan, aktif = false, onKlik, children 
         </p>
         <p className="rw-meta">
           <Clock size={13} aria-hidden="true" /> {waktuRelatif(laporan.waktuLapor)}
-          <ThumbsUp size={13} aria-hidden="true" className="rw-ikon-geser" /> {laporan.jumlahUpvote}
+          {/* Beranda menampilkan jumlah dukungan lewat tombol UpvoteView, jadi angka statis disembunyikan */}
+          {laporan.bisaUpvote === undefined && (
+            <><ThumbsUp size={13} aria-hidden="true" className="rw-ikon-geser" /> {laporan.jumlahUpvote}</>
+          )}
           {laporan.jarakKm !== undefined && <strong className="rw-jarak">{formatJarak(laporan.jarakKm)}</strong>}
         </p>
         {children}
