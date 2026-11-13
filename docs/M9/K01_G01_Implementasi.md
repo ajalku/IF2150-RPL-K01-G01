@@ -219,8 +219,8 @@ Pilih minimal satu fitur yang diprofil.
 
 | Informasi | Keterangan |
 | :--- | :--- |
-| Fitur / proses yang diprofil | *[Nama fitur]* |
-| Alat | *[mis. Chrome DevTools, cProfile, EXPLAIN]* |
+| Fitur / proses yang diprofil | Homepage |
+| Alat | Chrome DevTools Network dan PostgreSQL EXPLAIN(ANALYZE, BUFFERS) |
 | Temuan (sebelum) | *[Bottleneck yang ditemukan, sertakan angka/tangkapan layar]* |
 | Perbaikan | *[Yang diubah]* |
 | Hasil (sesudah) | *[Perbandingan dengan sebelumnya]* |
