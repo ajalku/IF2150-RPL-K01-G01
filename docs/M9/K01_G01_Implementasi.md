@@ -252,6 +252,9 @@ Tabel B.4. Kontribusi Anggota
 | :--- | :--- | :--- | :--- |
 | *13525013* | *Samanth Michelle S. Silaban* | *Login, Registrasi, Profil* | *20%* |
 | *13525103* | *Ravinka Fathia Adinegara* | *Lokasi, Laporan* | *20%* |
+| *13525043* | *Aufa Tatsbita Zahra* | *Homepage, upvote* | *20%* |
+| *13525055* | *Syakira Azzahra Rachmania* | *Tanggapan* | *20%* |
+| *13525046* | *Ghiffari Arya Adhitya* | *Lokasi, Laporan (Polishing)* | *20%* |
 | *...* | *...* | *...* | *...* |
 
 ## B.5 Traceability Kelas Perancangan ke Implementasi
