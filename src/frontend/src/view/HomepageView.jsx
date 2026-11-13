@@ -8,6 +8,7 @@ import TutorialView from "./TutorialView.jsx";
 import { Galat, Kosong, Memuat } from "../components/Keadaan.jsx";
 import { useData } from "../hooks/useData.js";
 import { daftarLaporan, ringkasanLaporan } from "../services/laporanService.js";
+import { muatHomepage } from "../services/homepageService.js";
 import { ambilTutorial, lewatiTutorial, selesaiTutorial } from "../services/tutorialService.js";
 import { KATEGORI } from "../utils/format.js";
 import { hitungJarakKm } from "../utils/jarak.js";
@@ -17,9 +18,8 @@ const WILAYAH = "Bandung, Jawa Barat";
 const LANGKAH_MUAT = 3; // jumlah kartu awal, dan tambahan tiap "Lihat laporan lainnya"
 const RADIUS_SEKITAR_KM = 5;
 
+// Urutan kunci = urutan tab di layar (Terbaru, Urgensi, Populer)
 const URUTAN = {
-  urgensi: { sortBy: "urgensi", sortType: "desc" },
-  populer: { sortBy: "populer", sortType: "desc" },
   terbaru: { sortBy: "waktu", sortType: "desc" },
   urgensi: { sortBy: "urgensi", sortType: "desc" },
   populer: { sortBy: "populer", sortType: "desc" },
@@ -74,7 +74,7 @@ export default function HomepageView({ sesi }) {
   const ringkasan = useData(ringkasanLaporan, "ringkasan");
 
   // ---- Kabar lingkungan ----
-  const [filter, setFilter] = useState({ kategori: "", urut: "terbaru" });
+  const [filter, setFilter] = useState({ kategori: "", urut: "urgensi" });
   const [tampil, setTampil] = useState(LANGKAH_MUAT);
 
   const ubahFilter = (perubahan) => {
@@ -86,19 +86,22 @@ export default function HomepageView({ sesi }) {
     () => muatHomepage({
       kategori: filter.kategori,
       ...URUTAN[filter.urut],
-      page: 1,
       limit: tampil,
     }),
     JSON.stringify({ filter, tampil }),
   );
-  // Tutorial hanyalah pelengkap: jika gagal dimuat, Beranda tetap berjalan tanpa kartu undangan.
-  const { data: tutorial } = useData(ambilTutorial, "tutorial");
 
   // Simpan hasil terakhir supaya daftar tidak hilang saat memuat tambahan / berganti filter.
   const [terakhir, setTerakhir] = useState(null);
   if (data && data !== terakhir) setTerakhir(data);
-  const laporan = terakhir?.laporan ?? [];
-  const adaLagi = laporan.length >= tampil;
+  // /api/homepage mengembalikan { daftarLaporan, adaLagi } dan menyertakan sudahUpvote/bisaUpvote
+  const laporan = terakhir?.daftarLaporan ?? [];
+  const adaLagi = terakhir?.adaLagi ?? false;
+
+  // Urutan "populer" bergantung pada jumlah dukungan -> muat ulang agar urutannya langsung diperbarui
+  const saatUpvoteBerhasil = () => {
+    if (filter.urut === "populer") muatUlang();
+  };
 
   // ---- Peta ringkas ----
   const peta = useData(() => daftarLaporan({ limit: 30 }), "peta");
@@ -107,7 +110,7 @@ export default function HomepageView({ sesi }) {
     ? semuaTitik.filter((l) => hitungJarakKm(lokasiPengguna, l.lokasi) <= RADIUS_SEKITAR_KM)
     : semuaTitik;
 
-  // ---- Tutorial ----
+  // ---- Tutorial ---- (pelengkap: jika gagal dimuat, Beranda tetap berjalan tanpa kartu undangan)
   const tutorial = useData(ambilTutorial, "tutorial");
   const [tutorialTutup, setTutorialTutup] = useState(false);
   const [panelTerbuka, setPanelTerbuka] = useState(false);
@@ -214,6 +217,7 @@ export default function HomepageView({ sesi }) {
                   key={l.idLaporan}
                   laporan={l}
                   jarakKm={lokasiPengguna ? hitungJarakKm(lokasiPengguna, l.lokasi) : undefined}
+                  onUpvoteBerhasil={saatUpvoteBerhasil}
                 />
               ))}
             </div>

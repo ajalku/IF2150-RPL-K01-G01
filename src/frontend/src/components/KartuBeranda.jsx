@@ -1,4 +1,5 @@
-import { ArrowRight, ArrowUp, ImageOff, MapPin } from "lucide-react";
+import { ArrowRight, ImageOff, MapPin } from "lucide-react";
+import UpvoteView from "../view/UpvoteView.jsx";
 import { LencanaTingkat } from "./Lencana.jsx";
 import { formatJarak } from "../utils/format.js";
 
@@ -16,7 +17,7 @@ const formatTanggal = (iso) =>
 
 // Kartu "Kabar lingkungan" di beranda. Kartu ringkas untuk daftar peta / halaman periksa
 // tetap memakai KartuLaporan.jsx.
-export default function KartuBeranda({ laporan, jarakKm }) {
+export default function KartuBeranda({ laporan, jarakKm, onUpvoteBerhasil }) {
   const { idLaporan, namaMasalah, kategori, foto, lokasi, deskripsi, jumlahUpvote, pelapor, waktuLapor } = laporan;
 
   return (
@@ -49,7 +50,14 @@ export default function KartuBeranda({ laporan, jarakKm }) {
         {deskripsi && <p className="br-kartu-deskripsi">{deskripsi}</p>}
 
         <div className="br-kartu-bawah">
-          <span className="br-kartu-dukungan"><ArrowUp size={14} aria-hidden="true" /> {jumlahUpvote} dukungan</span>
+          <UpvoteView
+            key={`${jumlahUpvote}-${laporan.sudahUpvote}`}
+            idLaporan={idLaporan}
+            jumlahUpvote={jumlahUpvote}
+            sudahUpvote={laporan.sudahUpvote}
+            bisaUpvote={laporan.bisaUpvote}
+            onBerhasil={onUpvoteBerhasil}
+          />
           <a className="br-kartu-lihat" href={`#/laporan/${idLaporan}`}>Lihat laporan <ArrowRight size={14} aria-hidden="true" /></a>
         </div>
       </div>

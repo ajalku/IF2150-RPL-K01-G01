@@ -38,3 +38,6 @@ Thumbs.db
 
 # Testing
 coverage/
+
+# Foto laporan yang diunggah saat pengujian
+backend/uploads/
