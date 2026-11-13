@@ -49,6 +49,7 @@ Silakan catat penggunaan AI yang berdampak signifikan pada pengerjaan tugas (mis
 | :--- | :--- | :--- | :--- |
 | Claude | Membuat bagian laporan dan lokasi untuk website | Buatkan bagian laporan dan lokasi berdasarkan DPPL, kemudian jelaskan | Terdapat banyak bug sehingga banyak yang harus diperbaiki seperti label-label |
 | Copilot (Model GPT-6 Luna) | Membuat testcase untuk frontend dan backend untuk usecase laporan dan lokasi | Buatkan testcase untuk frontend dan backend aplikasi ini untuk usecase-usecase terkait laporan dan lokasi. | Beberapa testcase yang tidak relevan dihapus serta testcase dicoba sendiri |
+| Copilot (Model GPT-6 Luna) | Membuat bagian traceability | Di bagian Tabel B.5. Traceability Kelas Perancangan ke Implementasi, tuliskan kelas-kelas terkait lokasi dan laporan | Beberapa urutan kelas tidak sesuai sehingga harus ditulis ulang |
 
 ---
 ### Pernyataan Integritas dan Persetujuan
