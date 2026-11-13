@@ -5,6 +5,7 @@ const sessionMiddleware = require("./config/session");
 const authRoutes = require("./routes/authRoutes");
 const laporanRoutes = require("./routes/laporanRoutes");
 const lokasiRoutes = require("./routes/lokasiRoutes");
+const tutorialRoutes = require("./routes/tutorialRoutes");
 const profileRoutes = require("./routes/profileRoutes");
 const { mulaiPembersihLaporan } = require("./jobs/pembersihLaporan");
 
@@ -22,6 +23,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/profile", profileRoutes);
 app.use("/api/laporan", laporanRoutes);
 app.use("/api/lokasi", lokasiRoutes);
+app.use("/api/tutorial", tutorialRoutes);
 
 //Mulai server
 async function startServer() {
