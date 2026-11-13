@@ -179,6 +179,19 @@ class LaporanController {
         }
     }
 
+    // GET /api/laporan/ditangani -- laporan yang pernah ditanggapi admin login
+    static async ditangani(req, res) {
+        try {
+            const laporan = await Laporan.getLaporanDitanganiByAdmin(
+                LaporanController.#viewer(req)
+            );
+            return res.status(200).json({ laporan });
+        } catch (err) {
+            console.error("Laporan ditangani error:", err);
+            return res.status(500).json({ message: "Something went wrong" });
+        }
+    }
+
     // GET /api/laporan/:idLaporan  -- UC04 Melihat Laporan
     static async detail(req, res) {
         try {
@@ -195,10 +208,11 @@ class LaporanController {
             if (laporan === null) {
                 return res.status(404).json({ message: "Laporan tidak ditemukan" });
             }
-    
-            laporan.tanggapanTeratas =
-                await Tanggapan.getTanggapanByLaporan(idLaporan);
-    
+            // C20 - Identitas admin pada tanggapan difilter berdasarkan sesi viewer.
+            laporan.tanggapanTeratas = await Tanggapan.getTanggapanByLaporan(
+                idLaporan,
+                LaporanController.#viewer(req)
+            );
             return res.status(200).json({ laporan });
         } catch (err) {
             console.error("Detail laporan error:", err);

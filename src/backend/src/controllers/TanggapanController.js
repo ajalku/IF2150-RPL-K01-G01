@@ -17,10 +17,10 @@ class TanggapanController {
     }
 
     // Algo-045 - Menyimpan tanggapan; client opsional dipakai agar bagian transaksi tetap atomik.
-    static async simpanTanggapan(idLaporan, dataPopupForm, client = pool) {
+    static async simpanTanggapan(idLaporan, idAdmin, dataPopupForm, client = pool) {
         if (!TanggapanController.validasiTanggapan(dataPopupForm)) return false;
         const tanggapan = new Tanggapan(dataPopupForm);
-        return tanggapan.simpanTanggapan(idLaporan, dataPopupForm, client);
+        return tanggapan.simpanTanggapan(idLaporan, idAdmin, dataPopupForm, client);
     }
 
     // Algo-046 - Memperbarui status dengan enum yang dipakai Model Laporan.
@@ -31,6 +31,14 @@ class TanggapanController {
 
     // POST /api/laporan/:idLaporan/tanggapan - menyimpan pemeriksaan, tanggapan, dan status atomik.
     static async simpan(req, res) {
+        // C20 - Identitas penanggap hanya berasal dari sesi server.
+        if (!req.session?.idPengguna) {
+            return res.status(401).json({ message: "Please log in to continue." });
+        }
+        if (req.session.role !== "admin") {
+            return res.status(403).json({ message: "Access denied." });
+        }
+
         const { idLaporan } = req.params;
         if (typeof idLaporan !== "string" || !REGEX_UUID.test(idLaporan)) {
             return res.status(404).json({ message: "Laporan tidak ditemukan" });
@@ -92,6 +100,7 @@ class TanggapanController {
 
             const tanggapanTersimpan = await TanggapanController.simpanTanggapan(
                 idLaporan,
+                req.session.idPengguna,
                 dataPopupForm,
                 client
             );

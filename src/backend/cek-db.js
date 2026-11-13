@@ -1,23 +1,32 @@
 require("dotenv").config();
-const { Pool } = require("pg");
+const { pool, dbConnect } = require("./src/config/database");
 
-const { DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
-console.log("HOST     :", JSON.stringify(DB_HOST));
-console.log("PORT     :", JSON.stringify(DB_PORT));
-console.log("USER     :", JSON.stringify(DB_USER));
-console.log("DATABASE :", JSON.stringify(DB_NAME));
-console.log("PASSWORD :", DB_PASSWORD ? `terisi (${DB_PASSWORD.length} karakter)` : "KOSONG");
+const requiredTables = ["pengguna", "laporan", "lokasi", "tanggapan", "user_sessions"];
 
-const pool = new Pool({
-  host: DB_HOST, port: Number(DB_PORT), user: DB_USER,
-  password: DB_PASSWORD, database: DB_NAME,
-});
+async function checkDatabase() {
+  try {
+    await dbConnect();
+    const result = await pool.query(
+      `SELECT table_name
+       FROM information_schema.tables
+       WHERE table_schema = 'public'
+         AND table_name = ANY($1::text[])`,
+      [requiredTables]
+    );
+    const availableTables = new Set(result.rows.map((row) => row.table_name));
+    const missingTables = requiredTables.filter((table) => !availableTables.has(table));
 
-pool.query("SELECT current_database() AS db")
-  .then((r) => console.log("\nKONEKSI OK -> database:", r.rows[0].db))
-  .catch((e) => {
-    console.log("\nKODE  :", e.code);
-    console.log("PESAN :", e.message);
-    (e.errors || []).forEach((x) => console.log("DETAIL:", x.code, `${x.address}:${x.port}`));
-  })
-  .finally(() => pool.end());
+    if (missingTables.length > 0) {
+      throw new Error(`Required tables are missing: ${missingTables.join(", ")}.`);
+    }
+
+    console.log("Database connection and required RAWAT tables are ready.");
+  } catch (err) {
+    console.error("Database check failed:", err.message);
+    process.exitCode = 1;
+  } finally {
+    await pool.end();
+  }
+}
+
+checkDatabase();
