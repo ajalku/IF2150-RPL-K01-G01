@@ -1,0 +1,35 @@
+/* Gaya UpvoteView, TutorialView, dan kartu undangan tutorial. Memakai token --rw-* milik RawatApp.css. */
+
+.uv-wadah { margin-top: 10px; }
+.uv-tombol { display: inline-flex; align-items: center; gap: 7px; height: 32px; padding: 0 12px; border-radius: 99px; border: 1px solid var(--rw-garis); background: #fff; color: var(--rw-teal); font-size: 12px; font-weight: 600; cursor: pointer; }
+.uv-tombol:hover:not(:disabled) { border-color: var(--rw-teal); background: #eaf4f5; }
+.uv-sudah { background: var(--rw-teal); border-color: var(--rw-teal); color: #fff; }
+.uv-terkunci { color: var(--rw-muted); background: #f7f9fa; }
+.uv-tombol:disabled { cursor: default; }
+.uv-tombol:focus-visible, .tt-tutup:focus-visible { outline: 2px solid var(--rw-teal); outline-offset: 2px; }
+.uv-pesan { margin: 6px 0 0; font-size: 12px; line-height: 1.4; }
+.uv-pesan.sukses { color: #16744d; }
+.uv-pesan.galat { color: #b33737; }
+
+/* Kartu undangan */
+.rw-undangan { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; background: #fff8dc; border: 1px solid #ede2b7; border-radius: 12px; padding: 16px 20px; margin-bottom: 20px; }
+.rw-undangan h2 { margin: 0 0 4px; font-size: 16px; color: var(--rw-teal-gelap); }
+.rw-undangan p { margin: 0; font-size: 13px; color: #5d5a45; max-width: 560px; line-height: 1.5; }
+.rw-undangan-aksi { display: flex; gap: 8px; }
+
+/* Panel tutorial */
+.tt-panel { position: fixed; right: 24px; bottom: 24px; width: 340px; max-width: calc(100vw - 32px); background: #fff; border: 1px solid var(--rw-garis); border-top: 4px solid var(--rw-kuning); border-radius: 12px; padding: 16px 18px 18px; box-shadow: 0 10px 30px #113f4933; z-index: 1200; outline: none; color: var(--rw-ink); }
+.tt-kepala { display: flex; align-items: center; justify-content: space-between; font-size: 12px; font-weight: 600; color: var(--rw-muted); margin-bottom: 10px; }
+.tt-tutup { border: 0; background: none; color: var(--rw-muted); padding: 4px; border-radius: 6px; cursor: pointer; display: grid; place-items: center; }
+.tt-tutup:hover { background: var(--rw-bg); color: var(--rw-ink); }
+.tt-progres { display: flex; gap: 4px; margin-bottom: 14px; }
+.tt-progres span { flex: 1; height: 4px; border-radius: 2px; background: #e3ebee; }
+.tt-progres span.terisi { background: var(--rw-teal); }
+.tt-panel h2 { margin: 0 0 6px; font-size: 17px; line-height: 1.25; color: var(--rw-teal-gelap); }
+.tt-panel p { margin: 0 0 16px; font-size: 13px; line-height: 1.55; color: #4d6670; }
+.tt-panel p.tt-galat { color: #b33737; font-size: 12px; margin-bottom: 12px; }
+.tt-aksi { display: flex; justify-content: flex-end; gap: 8px; }
+
+@media (max-width: 640px) {
+  .tt-panel { left: 12px; right: 12px; bottom: 12px; width: auto; max-width: none; }
+}
