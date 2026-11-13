@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "node --watch src/index.js",
+    "check:db": "node cek-db.js",
     "test": "node --test"
   },
   "keywords": [],

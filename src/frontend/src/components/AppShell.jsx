@@ -7,7 +7,7 @@ const TAUTAN = [
   { nama: "periksa", href: "#/periksa", label: "Periksa Laporan", ikon: ClipboardCheck, khususAdmin: true },
 ];
 
-export default function AppShell({ sesi, rute, onLogout, children }) {
+export default function AppShell({ sesi, rute, onLogout, logoutError = "", children }) {
   const aktif = rute.nama === "laporan" ? "beranda" : rute.nama;
   const tautan = TAUTAN.filter((t) => !t.khususAdmin || sesi.role === "admin");
 
@@ -36,7 +36,10 @@ export default function AppShell({ sesi, rute, onLogout, children }) {
           </button>
         </div>
       </header>
-      <main className="rw-main">{children}</main>
+      <main className="rw-main">
+        {logoutError && <p className="rw-profile-message error" role="alert">{logoutError}</p>}
+        {children}
+      </main>
       <footer className="rw-footer">© 2026 RAWAT • Ruang Aspirasi Warga dan Aduan Terpadu</footer>
     </div>
   );

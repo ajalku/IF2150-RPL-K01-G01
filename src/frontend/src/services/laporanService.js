@@ -9,6 +9,7 @@ export function daftarLaporan(params = {}) {
 }
 
 export const laporanSaya = () => request("/api/laporan/saya");
+export const laporanDitangani = () => request("/api/laporan/ditangani");
 export const detailLaporan = (id) => request(`/api/laporan/${id}`);
 
 // FormData: jangan set Content-Type manual, browser mengisi boundary-nya sendiri
