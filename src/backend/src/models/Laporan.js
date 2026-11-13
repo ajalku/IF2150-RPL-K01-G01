@@ -261,9 +261,10 @@ class Laporan {
         return result.rows.map(row => row.foto).filter(Boolean);
     }
 
-    // Disiapkan untuk modul Upvote: tambah 1 upvote + hitung ulang skor secara atomik
-    static async tambahUpvote(idLaporan) {
-        const result = await pool.query(
+    // Dipakai modul Upvote: tambah 1 upvote + hitung ulang skor secara atomik.
+    // `db` boleh diisi client transaksi agar ikut dalam transaksi pemanggil (default: pool).
+    static async tambahUpvote(idLaporan, db = pool) {
+        const result = await db.query(
             `UPDATE laporan
              SET jumlah_upvote = jumlah_upvote + 1,
                  skor_populer  = (jumlah_upvote + 1) * $1 + bobot_urgensi * $2
@@ -272,6 +273,22 @@ class Laporan {
             [BOBOT_UPVOTE_PADA_SKOR, BOBOT_URGENSI_PADA_SKOR, idLaporan]
         );
         return result.rowCount === 1;
+    }
+
+    static async getJumlahUpvote(idLaporan) {
+        const result = await pool.query(
+            `SELECT jumlah_upvote FROM laporan WHERE id_laporan = $1`,
+            [idLaporan]
+        );
+        return result.rowCount === 1 ? result.rows[0].jumlah_upvote : null;
+    }
+
+    static async getSkorPopuler(idLaporan) {
+        const result = await pool.query(
+            `SELECT skor_populer FROM laporan WHERE id_laporan = $1`,
+            [idLaporan]
+        );
+        return result.rowCount === 1 ? result.rows[0].skor_populer : null;
     }
 
     static async hitungSkorPopularitas(idLaporan) {
