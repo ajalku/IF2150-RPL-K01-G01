@@ -479,7 +479,6 @@ class PenggunaView extends Component {
                 onChange={e => this.setState({ rememberEmail: e.target.checked })}/>
               Ingat email saya
             </label>
-            <span className="muted-link" title="Fitur reset password belum disediakan backend">Lupa kata sandi?</span>
           </div>
           <button className="submit" type="submit" disabled={loading}>
             {loading ? "Memproses..." : <><ArrowRight size={15}/> Masuk</>}
@@ -560,10 +559,6 @@ class PenggunaView extends Component {
                 src="/kota-preview.jpg"
                 alt="Suasana jalan perkotaan"
               />
-
-              <div className="town-sticker">
-                Ruang bersama, tanggung jawab bersama.
-              </div>
             </div>
 
             
