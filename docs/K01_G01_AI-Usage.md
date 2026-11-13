@@ -50,6 +50,12 @@ Silakan catat penggunaan AI yang berdampak signifikan pada pengerjaan tugas (mis
 | Claude | Membuat bagian laporan dan lokasi untuk website | Buatkan bagian laporan dan lokasi berdasarkan DPPL, kemudian jelaskan | Terdapat banyak bug sehingga banyak yang harus diperbaiki seperti label-label |
 | Copilot (Model GPT-6 Luna) | Membuat testcase untuk frontend dan backend untuk usecase laporan dan lokasi | Buatkan testcase untuk frontend dan backend aplikasi ini untuk usecase-usecase terkait laporan dan lokasi. | Beberapa testcase yang tidak relevan dihapus serta testcase dicoba sendiri |
 | Copilot (Model GPT-6 Luna) | Membuat bagian traceability | Di bagian Tabel B.5. Traceability Kelas Perancangan ke Implementasi, tuliskan kelas-kelas terkait lokasi dan laporan | Beberapa urutan kelas tidak sesuai sehingga harus ditulis ulang |
+| Copilot | Membuat frontend, backend, dan testcase untuk akun dan profil | Buatkan frontend, backend, dan testcase untuk akun dan profil berdasarkan DPPL | Ada beberapa bug yang perlu diperbaiki, misalnya admin seharusnya tidak bisa hapus akun. |
+| GPT | Mengecek kesesuaian dengan DPPL | Apakah kode berikut sudah sesuai dengan DPPL | Menambahkan konteks yang lebih jelas |
+| Copilot | Membuat bagian tanggapan untuk website | Buatkan bagian tanggapan berdasarkan DPPL, tuliskan tracebility, buatkan test, beri keterangan PR dan commit serta tampilkan traceability dari fungsi yang dibuat. | Test langung, namun terdapat beberapa bug yang perlu diperbaiki. |
+| Copilot | Membantu troubleshooting PostgreSQL, startup backend, koneksi frontend, dan autentikasi akun uji | Bantu jelaskan error, cara menjalankan aplikasi, serta apakah password dapat dilihat dari SQL | Saran dibandingkan dengan konfigurasi dan kode RAWAT; langkah koneksi dan database dijalankan serta diverifikasi oleh anggota kelompok tanpa membagikan kredensial |
+| Copilot | Menjalankan test TanggapanController dan menyusun dokumentasi hasil pengujian UC08/UC09 beserta bukti screenshot | Jalankan test TanggapanController, buat dokumentasi seperti AuthController.test.md, dan tautkan screenshot berdasarkan ID test case | Automated test dijalankan: 14 lulus, 0 gagal; screenshot ditautkan sesuai nama file. FE-TGP-03 ditandai perlu dicek karena bukti menampilkan status penanganan `undefined` |
+
 
 
 ---
