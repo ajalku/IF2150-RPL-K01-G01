@@ -76,15 +76,15 @@ Penanganan Laporan. Skenario disusun berdasarkan use case pada
 
 | ID | Input / Aksi | Expected Result | Actual Result | Status | Bukti |
 |---|---|---|---|---|---|
-| FE-LOC-01 | Membuka halaman Peta Interaktif | Peta, penanda laporan, legenda status, dan daftar laporan tampil | Belum diuji | NOT RUN | - |
-| FE-LOC-02 | Izin lokasi browser diberikan | Peta berpusat di lokasi pengguna dan daftar menampilkan laporan dalam radius awal 5 km | Belum diuji | NOT RUN | - |
-| FE-LOC-03 | Izin lokasi ditolak atau browser tidak mendukung geolokasi | Banner menjelaskan lokasi tidak tersedia; halaman tetap menampilkan semua laporan dan pencarian manual | Belum diuji | NOT RUN | - |
-| FE-LOC-04 | Menekan tombol coba lagi setelah izin ditolak | Browser meminta izin lokasi kembali; jika diberikan, peta dan daftar beralih ke area pengguna | Belum diuji | NOT RUN | - |
-| FE-LOC-05 | Mencari alamat/lokasi yang ditemukan | Peta berpusat ke hasil pencarian dan daftar laporan sekitar lokasi tampil | Belum diuji | NOT RUN | - |
-| FE-LOC-06 | Mencari alamat yang tidak ditemukan | Pesan `Lokasi tidak ditemukan.` tampil dan lokasi pusat tidak berubah | Belum diuji | NOT RUN | - |
-| FE-LOC-07 | Mengubah radius, kategori, urgensi, atau status | Daftar laporan diperbarui sesuai pilihan filter | Belum diuji | NOT RUN | - |
-| FE-LOC-08 | Tidak ada laporan yang cocok di area/filter terpilih | Pesan keadaan kosong yang sesuai ditampilkan | Belum diuji | NOT RUN | - |
-| FE-LOC-09 | Memilih marker laporan pada peta | Popup menampilkan nama, kategori, status, dan tautan ke detail laporan | Belum diuji | NOT RUN | - |
+| FE-LOC-01 | Membuka halaman Peta Interaktif | Peta, penanda laporan, legenda status, dan daftar laporan tampil | Sesuai | PASS | ![halamanpeta](screenshots/FE-LOC-01.png) |
+| FE-LOC-02 | Izin lokasi browser diberikan | Peta berpusat di lokasi pengguna dan daftar menampilkan laporan dalam radius awal 5 km | Sesuai | PASS | [lokasibrowser](screenshots/FE-LOC-02.png) |
+| FE-LOC-03 | Izin lokasi ditolak atau browser tidak mendukung geolokasi | Banner menjelaskan lokasi tidak tersedia; halaman tetap menampilkan semua laporan dan pencarian manual | Sesuai | PASS | ![lokasiditolak](screenshots/FE-LOC-03.png) |
+| FE-LOC-04 | Menekan tombol coba lagi setelah izin ditolak | Browser meminta izin lokasi kembali; jika diberikan, peta dan daftar beralih ke area pengguna | Sesuai | PASS | ![cobalagi](screenshots/FE-LOC-04.png) |
+| FE-LOC-05 | Mencari alamat/lokasi yang ditemukan | Peta berpusat ke hasil pencarian dan daftar laporan sekitar lokasi tampil | Sesuai | PASS | ![carilokasi](screenshots/FE-LOC-05.png) |
+| FE-LOC-06 | Mencari alamat yang tidak ditemukan | Pesan `Lokasi tidak ditemukan.` tampil dan lokasi pusat tidak berubah | Sesuai | PASS | ![carilokasitidakditemukan](screenshots/FE-LOC-06.png) |
+| FE-LOC-07 | Mengubah radius, kategori, urgensi, atau status | Daftar laporan diperbarui sesuai pilihan filter | Sesuai | PASS | ![ubahradius](screenshots/FE-LOC-07.png) |
+| FE-LOC-08 | Tidak ada laporan yang cocok di area/filter terpilih | Pesan keadaan kosong yang sesuai ditampilkan | Sesuai | PASS | ![keadaankosong](screenshots/FE-LOC-08.png) |
+| FE-LOC-09 | Memilih marker laporan pada peta | Popup menampilkan nama, kategori, status, dan tautan ke detail laporan | Sesuai | PASS | ![markerlaporan](screenshots/FE-LOC-09.png) |
 
 ### 3.2 Melihat daftar, detail, dan lokasi laporan (UC04)
 
