@@ -8,6 +8,7 @@ const lokasiRoutes = require("./routes/lokasiRoutes");
 const upvoteRoutes = require("./routes/upvoteRoutes");
 const tutorialRoutes = require("./routes/tutorialRoutes");
 const profileRoutes = require("./routes/profileRoutes");
+const homepageRoutes = require("./routes/homepageRoutes");
 const { mulaiPembersihLaporan } = require("./jobs/pembersihLaporan");
 
 const app = express();
@@ -26,6 +27,7 @@ app.use("/api/laporan", laporanRoutes);
 app.use("/api/lokasi", lokasiRoutes);
 app.use("/api/upvote", upvoteRoutes);
 app.use("/api/tutorial", tutorialRoutes);
+app.use("/api/homepage", homepageRoutes);
 
 //Mulai server
 async function startServer() {

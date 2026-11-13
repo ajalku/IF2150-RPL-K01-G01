@@ -16,6 +16,7 @@ const BOBOT_URGENSI_PADA_SKOR = 2.0;
 const KOLOM_URUT = {
     waktu: "l.waktu_lapor",
     populer: "l.skor_populer",
+    urgensi: "l.bobot_urgensi", // urutan bawaan Beranda
 };
 
 const SELECT_LAPORAN = `
