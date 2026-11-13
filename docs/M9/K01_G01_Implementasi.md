@@ -250,7 +250,8 @@ Tabel B.4. Kontribusi Anggota
 
 | NIM | Nama | Modul / Fitur yang Dikerjakan | Persentase Kontribusi |
 | :--- | :--- | :--- | :--- |
-| *13525013* | *Samanth Michelle S. Silaban* | *Login, Registrasi, Profil* | *[%]* |
+| *13525013* | *Samanth Michelle S. Silaban* | *Login, Registrasi, Profil* | *20%* |
+| *13525103* | *Ravinka Fathia Adinegara* | *Lokasi, Laporan* | *20%* |
 | *...* | *...* | *...* | *...* |
 
 ## B.5 Traceability Kelas Perancangan ke Implementasi
@@ -261,12 +262,21 @@ Tabel B.5. Traceability Kelas Perancangan ke Implementasi
 
 | ID Kelas | Nama Kelas Perancangan | Bentuk Implementasi | Lokasi (File dan Nama) | Keterangan |
 | :--- | :--- | :--- | :--- | :--- |
+| C01 | Pengguna | Kelas | `backend/src/models/Pengguna.js`  — `Pengguna` | Atribut diwujudkan sebagai private fields dan operasi diwujudkan sebagai method.|
+| C03 | Laporan | Model dan skema basis data | `src/backend/src/models/Laporan.js` - `Laporan`; `src/backend/db/schema_laporan.sql` - tabel `laporan` | Menyimpan dan mengambil data laporan, termasuk detail, daftar, status, validasi, serta lokasi yang terkait. |
+| C04 | Lokasi | Model dan skema basis data | `src/backend/src/models/Lokasi.js` - `Lokasi`; `src/backend/db/schema_laporan.sql` - tabel `lokasi` | Memvalidasi koordinat, menyediakan koordinat dan alamat, serta menyimpan lokasi laporan. |
 | C06 | Tanggapan | Model, migrasi SQL | `src/backend/src/models/Tanggapan.js` - `Tanggapan`; `src/backend/db/migration_tanggapan_id_admin.sql` | Menyimpan id admin sesi pada INSERT; membaca tanggapan terbaru dengan JOIN pengguna dan hanya menambahkan `idAdmin`/`namaAdmin` untuk viewer admin. |
 | C13 | TanggapanView | Komponen React dan layanan API | `src/frontend/src/view/TanggapanView.jsx` - `TanggapanView`; `src/frontend/src/view/LaporanView.jsx` - `LaporanView`; `src/frontend/src/services/tanggapanService.js` - `simpanHasilTanggapan` | Form tidak mengirim id admin; halaman detail menampilkan nama admin hanya untuk admin dan menyediakan fallback jika admin tidak tercatat. |
 | C20 | TanggapanController | Controller dan route Express | `src/backend/src/controllers/TanggapanController.js` - `simpan`; `src/backend/src/controllers/LaporanController.js` - `detail`; `src/backend/src/routes/laporanRoutes.js` - `POST /:idLaporan/tanggapan` | Memvalidasi sesi/role admin, mengambil id penanggap hanya dari sesi, dan menjaga penyimpanan tanggapan serta status dalam satu transaksi. |
-| C01 | Pengguna | Kelas | `backend/src/models/Pengguna.js`  — `Pengguna` | Atribut diwujudkan sebagai private fields dan operasi diwujudkan sebagai method.|
 | C08 | PenggunaView | Kelas, Komponen, service | `frontend/src/view/PenggunaView.jsx — PenggunaView`; `frontend/src/view/ProfilView.jsx — ProfilView`; `backend/src/services/authService.js`; `backend/src/services/profileService.js` | Operasi tampilan diwujudkan melalui method dan komponen React, sedangkan service menangani komunikasi dengan API. |
+| C10 | LaporanView | Komponen React dan layanan API | `src/frontend/src/view/LaporanView.jsx` - `LaporanView`; `src/frontend/src/view/BuatLaporanView.jsx` - `BuatLaporanView`; `src/frontend/src/view/PeriksaLaporanView.jsx` - `PeriksaLaporanView`; `src/frontend/src/services/laporanService.js` | Menampilkan detail, membuat, dan memeriksa laporan; layanan API menghubungkan tampilan dengan endpoint laporan. |
+| C11 | LokasiView | Komponen React dan layanan API | `src/frontend/src/view/LokasiView.jsx` - `LokasiView`; `src/frontend/src/view/BuatLaporanView.jsx` - `BuatLaporanView`; `src/frontend/src/components/PetaLaporan.jsx` - `PetaLaporan`; `src/frontend/src/services/lokasiService.js` | Menampilkan peta dan laporan berdasarkan lokasi, mencari alamat, mengambil lokasi pengguna, serta memilih titik lokasi laporan. |
 | C15 | PenggunaController | Kelas, route, middleware | `controllers/PenggunaController.js`; `routes/authRoutes.js`; `routes/profileRoutes.js`; `middleware/authMiddleware.js`; `middleware/roleMiddleware.js` | Operasi diwujudkan sebagai method controller, dengan routing API dan middleware autentikasi serta otorisasi. |
+| C17 | LaporanController | Controller dan route Express | `src/backend/src/controllers/LaporanController.js` - `LaporanController`; `src/backend/src/routes/laporanRoutes.js` | Menangani pembuatan, daftar, detail, pemeriksaan, pembaruan status, konfirmasi ulang, dan penghapusan laporan melalui endpoint API. |
+| C18 | LokasiController | Controller dan route Express | `src/backend/src/controllers/LokasiController.js` - `LokasiController`; `src/backend/src/routes/lokasiRoutes.js` | Menangani geocoding alamat dan pencarian laporan terdekat berdasarkan koordinat serta radius. |
+| C22 | MapAPI | Konfigurasi layanan peta | `src/backend/src/config/mapApi.js` - konfigurasi `MapAPI` | Menyediakan konfigurasi URL, API key opsional, identitas aplikasi, negara, dan batas waktu untuk layanan geocoding. |
+| C23 | MapAPIService | Service | `src/backend/src/services/MapAPIService.js` - `MapAPIService` | Mengirim permintaan geocoding ke layanan peta dan mengubah hasilnya menjadi alamat serta koordinat. |
+| C24 | MapAPIView | Komponen peta React | `src/frontend/src/components/PetaLaporan.jsx` - `PetaLaporan` | Menampilkan peta, penanda laporan dan lokasi pengguna, serta mendukung pemilihan titik pada peta. |
 | *...* | *...* | *...* | *...* | *...* |
 
 Catatan:
