@@ -1,6 +1,7 @@
 import { Eye, Users, MapPin } from 'lucide-react';
 import brandIcon from '../assets/brand-icon.svg';
-import townPreview from '../assets/kota-preview.jpg';
+// Foto ada di frontend/public/kota-preview.jpg (disajikan Vite dari akar situs)
+const townPreview = '/kota-preview.jpg';
 export default function BrandPanel() {
   return <aside className="brand-panel">
     <div className="brand-logo"><img src={brandIcon} alt=""/><div><strong>RAWAT</strong><span>Ruang Aspirasi Warga dan Aduan Terpadu</span></div></div>

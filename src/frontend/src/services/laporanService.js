@@ -8,6 +8,7 @@ export function daftarLaporan(params = {}) {
   return request(`/api/laporan?${query}`);
 }
 
+export const ringkasanLaporan = () => request("/api/laporan/ringkasan");
 export const laporanSaya = () => request("/api/laporan/saya");
 export const laporanDitangani = () => request("/api/laporan/ditangani");
 export const detailLaporan = (id) => request(`/api/laporan/${id}`);

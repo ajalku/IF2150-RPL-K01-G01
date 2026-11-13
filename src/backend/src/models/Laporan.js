@@ -16,6 +16,7 @@ const BOBOT_URGENSI_PADA_SKOR = 2.0;
 const KOLOM_URUT = {
     waktu: "l.waktu_lapor",
     populer: "l.skor_populer",
+    urgensi: "l.bobot_urgensi", // urutan bawaan Beranda
 };
 
 const SELECT_LAPORAN = `
@@ -148,7 +149,7 @@ class Laporan {
 
         let sql = `${SELECT_LAPORAN}
                    ${where.length ? "WHERE " + where.join(" AND ") : ""}
-                   ORDER BY ${kolom} ${arah}, l.id_laporan`;
+                   ORDER BY ${kolom} ${arah}, l.waktu_lapor DESC, l.id_laporan`;
         if (limit !== null) {
             params.push(limit, offset);
             sql += ` LIMIT $${params.length - 1} OFFSET $${params.length}`;
@@ -156,6 +157,29 @@ class Laporan {
 
         const result = await pool.query(sql, params);
         return result.rows.map(row => Laporan.#format(row, viewer));
+    }
+
+    // Angka kartu ringkasan beranda. Laporan tidak valid tidak dihitung.
+    // Tiap laporan aktif masuk tepat satu kelompok, sehingga aktif = jumlah ketiganya.
+    static async getRingkasan() {
+        const result = await pool.query(`
+            SELECT
+                COUNT(*) FILTER (WHERE status_laporan <> 'SELESAI')  AS aktif,
+                COUNT(*) FILTER (WHERE status_laporan = 'DIPERBAIKI') AS dalam_penanganan,
+                COUNT(*) FILTER (WHERE status_laporan NOT IN ('SELESAI', 'DIPERBAIKI')
+                                   AND status_validasi = 'BELUM_DIPERIKSA') AS menunggu_verifikasi,
+                COUNT(*) FILTER (WHERE status_laporan NOT IN ('SELESAI', 'DIPERBAIKI')
+                                   AND status_validasi = 'VALID')            AS terverifikasi
+            FROM laporan
+            WHERE status_validasi <> 'TIDAK_VALID'
+        `);
+        const r = result.rows[0];
+        return {
+            aktif: Number(r.aktif),
+            menungguVerifikasi: Number(r.menunggu_verifikasi),
+            terverifikasi: Number(r.terverifikasi),
+            dalamPenanganan: Number(r.dalam_penanganan),
+        };
     }
 
     // EXISTS keeps each report unique even when the admin responded more than once.

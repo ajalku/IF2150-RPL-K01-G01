@@ -34,7 +34,7 @@ function Halaman({ rute, sesi, onLogout, onProfileUpdated, onAkunDihapus }) {
         ? <PeriksaLaporanView key={rute.id ?? "daftar"} idAwal={rute.id} />
         : <Kosong>Halaman ini hanya untuk admin.</Kosong>;
     default:
-      return <HomepageView />;
+      return <HomepageView sesi={sesi} />;
   }
 }
 
