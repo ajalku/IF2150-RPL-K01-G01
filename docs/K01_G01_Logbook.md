@@ -144,4 +144,10 @@
 | *28-10-2026* | *Ghiffari Arya Adhitya* | *Mengerjakan bab 7* | *0.1* | *Done* | *-* |
 | *28-10-2026* | *Syakira Azzahra Rachmania* | *Mengerjakan desain antarmuka* | *2* | *Done* | *-* |
 
+| Tanggal | Nama Anggota | Deskripsi Pekerjaan | Durasi (Jam) | Status | Kendala / *Blocker* | 
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| *07-11-2026* | *Ravinka Fathia Adinegara* | *Menyusun backend untuk laporan dan lokasi* | *5* | *Done* | *-* |
+| *09-11-2026* | *Ravinka Fathia Adinegara* | *Membuat frontend untuk laporan* | *5* | *Done* | *-* |
+| *10-11-2026* | *Ravinka Fathia Adinegara* | *Melakukan testing* | *4* | *Done* | *-* |
+
 <!-- Gunakan format penulisan Logbook yang sama untuk setiap Milestone dan pastikan pembuatan Daftar Isi juga sudah sesuai sebelum Logbook dikumpulkan. -->
