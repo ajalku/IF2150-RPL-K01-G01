@@ -208,8 +208,10 @@ Tabel B.2. Bukti Best Practices
 | Branching | *[Tautan Branches](https://github.com/ajalku/IF2150-RPL-K01-G01/branches)* | *Menggunakan main sebagai branch utama, develop untuk integrasi, feat/ untuk pengembangan fitur, integration/ jika ada conflict, dan fix/ untuk perbaikan* |
 | Semantic commit | *[Tautan Commit](https://github.com/ajalku/IF2150-RPL-K01-G01/commits)* | *[Ringkasan]* |
 | Track tasks | *[Tautan Issues](https://github.com/ajalku/IF2150-RPL-K01-G01/issues)* | *[Jumlah issue, pembagian]* |
-| Pull request dan review | *[Tautan ke 2-3 PR representatif]* | *[Siapa me-review siapa]* |
-| Pengujian | *[Tautan ke `src/tests/` dan hasil test]* | *[Apa yang diuji, cara menjalankan]* |
+| Pull request dan review | *[PR 1](https://github.com/ajalku/IF2150-RPL-K01-G01/pull/2)* | *michrousb (Samantha) direview Ajalku (Ravinka)* |
+| Pull request dan review | *[PR 2](https://github.com/ajalku/IF2150-RPL-K01-G01/pull/19)* | *michrousb (Samantha) mereview araended(Syakirra)* |
+| Pull request dan review | *[PR 3](https://github.com/ajalku/IF2150-RPL-K01-G01/pull/15)* | *ufaufaufa (Aufa) mereview Accashiya (Arya)* |
+| Pengujian | *[Test dan Hasil Test](https://github.com/ajalku/IF2150-RPL-K01-G01/tree/develop/src/test)* | *Unit Test per module, cara menjalankan dijelaskan pada file masing-masing.* |
 
 ### B.2.1 Profiling dan Optimasi
 
@@ -231,10 +233,14 @@ Jika tidak ada perbaikan yang perlu dilakukan, jelaskan hasil profiling dan alas
 1. Menggunakan PostgreSQL lokal sehingga data antaranggota tidak tersinkronisasi secara otomatis.
 
 ### Catatan Pengujian 
-1. Database: Pastikan tabel yang diperlukan (ada di backend/db) sudah dijalankan di PostgreSQL.
+1. Database: Pastikan tabel yang diperlukan (ada di backend/db) sudah dijalankan di PostgreSQL. Urutannya: schema.sql -> scehma_laporan.sql -> migration_tanggapan.sql -> migraiton_tanggapan_id_admin.sql -> migration_upvote.sql -> migration_tutorial.sql -> schema_sessions.sql
 2. Autentikasi: Pengujian fitur yang memerlukan login harus menggunakan akun sesuai role warga atau admin. 
-3. Akun uji: Untuk akun warga, bisa melakukan registrasi. Untuk akun admin, gunakan kredensial email : admin.rawat@gmail.com | password : iniAdmin1! . Role admin didapatkan melalui registrasi manual dan pengubahan role pada database.
-
+3. Akun uji: Untuk akun warga, bisa melakukan registrasi. Role admin didapatkan dengan menjalankan `node scripts/seedAdmin.js` pada terminal. Pastikan juga sudah ada file .env yang berisi kredensial admin yang dibuat. Contoh: 
+ADMIN_NAME=Admin RAWAT
+ADMIN_NIK=3273010101010001
+ADMIN_EMAIL=admin@example.test
+ADMIN_PASSWORD=AdminRawat123!
+ADMIN_PHONE=081234567890
 
 Tuliskan kendala yang ditemui, fitur yang belum sempurna (*known issues*), serta hal yang perlu diketahui asisten saat menjalankan atau menilai aplikasi (misalnya akun uji khusus, urutan menjalankan, atau batasan).
 
