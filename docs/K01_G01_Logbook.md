@@ -144,10 +144,24 @@
 | *28-10-2026* | *Ghiffari Arya Adhitya* | *Mengerjakan bab 7* | *0.1* | *Done* | *-* |
 | *28-10-2026* | *Syakira Azzahra Rachmania* | *Mengerjakan desain antarmuka* | *2* | *Done* | *-* |
 
+## Milestone 9
+**Periode:** 24 Oktober 2026 -  13 November 2026
 | Tanggal | Nama Anggota | Deskripsi Pekerjaan | Durasi (Jam) | Status | Kendala / *Blocker* | 
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | *07-11-2026* | *Ravinka Fathia Adinegara* | *Menyusun backend untuk laporan dan lokasi* | *5* | *Done* | *-* |
 | *09-11-2026* | *Ravinka Fathia Adinegara* | *Membuat frontend untuk laporan* | *5* | *Done* | *-* |
 | *10-11-2026* | *Ravinka Fathia Adinegara* | *Melakukan testing* | *4* | *Done* | *-* |
+| *06-11-2026* | *Samantha Michelle S. Silaban* | *Menyusun backend untuk login dan registrasi* | *5* | *Done* | *-* |
+| *07-11-2026* | *Samantha Michelle S. Silaban* | *Membuat frontend untuk login dan registrasi* | *6* | *Done* | *-* |
+| *13-11-2026* | *Samantha Michelle S. Silaban* | *Melakukan testing* | *4* | *Done* | *-* |
+| *07-11-2026* | *Syakira Azzahra Rachmania* | *Membuat backend untuk tanggapan* | *5* | *Done* | *-* |
+| *08-11-2026* | *Syakira Azzahra Rachmania* | *Membuat frontend untuk tanggapan* | *4* | *Done* | *-* |
+| *13-11-2026* | *Syakira Azzahra Rachmania*| *Melakukan testing* | *4* | *Done* | *-* |
+| *08-11-2026* | *Aufa Tatsbita Zahra* | *Membuat backend homepage* | *5* | *Done* | *-* |
+| *09-11-2026* | *Aufa Tatsbita Zahra* | *Membuat backend tutorial* | *5* | *Done* | *-* |
+| *10-11-2026* | *Aufa Tatsbita Zahra* | *Membuat backend upvote* | *4* | *Done* | *-* |
+| *11-11-2026* | *Aufa Tatsbita Zahra*| *Membuat frontend untuk homepage, tutorial, upvote* | *4* | *Done* |
+| *13-11-2026* | *Aufa Tatsbita Zahra*| *Testing* | *4* | *Done* | *-* |
+| *15-11-2026* | *Ghiffari Arya Adhitya*| *Mengerjakan laporan* | *3* | *Done* | *-* |
 
 <!-- Gunakan format penulisan Logbook yang sama untuk setiap Milestone dan pastikan pembuatan Daftar Isi juga sudah sesuai sebelum Logbook dikumpulkan. -->

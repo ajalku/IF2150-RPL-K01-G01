@@ -189,8 +189,8 @@ Data laporan disimpan pada tabel `laporan` dan `lokasi`.
 |---|---|---|
 | Akun | Registrasi, Login, Logout, Session, Profil | [Samantha Michelle S. Silaban] |
 | Tutorial | Panduan penggunaan aplikasi | [Aufa Tatsbita Zahra] |
-| Laporan | Membuat, melihat detail, mencari, memfilter, dan mengurutkan laporan | [Ravinka Fathia Adinegara] |
-| Lokasi + peta| Menyimpan lokasi laporan dan menampilkan peta | [Ghiffari Arya Adhitya + Ravinka Fathia Adinegara] |
+| Laporan | Membuat, melihat detail, mencari, memfilter, dan mengurutkan laporan | [Ghiffari Arya Adhitya + Ravinka Fathia Adinegara] |
+| Lokasi + peta| Menyimpan lokasi laporan dan menampilkan peta | [Ravinka Fathia Adinegara] |
 | Pemeriksaan Laporan | Validasi laporan oleh Admin, Memperbarui status dan memberikan tanggapan | [Syakira Azzahra Rachmania] |
 | Upvote | Memberikan dukungan pada laporan | [Aufa Tatsbita Zahra] |
 | Homepage | Menampilkan daftar laporan, sorting, filtering, dan pagination | [Aufa Tatsbita Zahra] |
