@@ -1,11 +1,7 @@
 -- Skema untuk fitur Laporan & Lokasi (RAWAT)
 -- Jalankan SETELAH tabel "pengguna" sudah ada.
 --
--- PENTING: tipe kolom id_pengguna di bawah (INTEGER) harus SAMA dengan tipe
--- pengguna.id_pengguna di database Anda. Cek dengan:
---   SELECT data_type FROM information_schema.columns
---   WHERE table_name = 'pengguna' AND column_name = 'id_pengguna';
--- Jika hasilnya "uuid", ganti INTEGER menjadi UUID. Jika "bigint", ganti BIGINT.
+-- Selaraskan tipe FK ini dengan pengguna.id_pengguna (UUID pada skema RAWAT).
 
 CREATE TABLE IF NOT EXISTS laporan (
     id_laporan            UUID PRIMARY KEY,

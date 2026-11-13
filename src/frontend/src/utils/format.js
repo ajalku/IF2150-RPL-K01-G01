@@ -1,9 +1,9 @@
 export const STATUS_LAPORAN = ["DITERIMA", "TERVERIFIKASI", "DIPROSES", "SELESAI"];
 
 export const LABEL_STATUS = {
-  DITERIMA: "Laporan Diterima",
-  TERVERIFIKASI: "Terverifikasi",
-  DIPROSES: "Sedang diproses",
+  BELUM_DILIHAT: "Belum dilihat",
+  DILIHAT: "Sedang ditinjau",
+  DIPERBAIKI: "Sedang diperbaiki",
   SELESAI: "Selesai",
 };
 export const WARNA_STATUS = {
