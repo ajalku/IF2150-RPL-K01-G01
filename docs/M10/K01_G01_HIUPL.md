@@ -72,7 +72,7 @@ Dipersiapkan oleh:
 Tuliskan uraian ringkas mengenai isi dokumen, tujuan pembuatan dokumen HIUPL ini, dan siapa saja target pembacanya.
 
 ## 1.2 Lingkup Masalah
-Tuliskan lingkup masalah, yaitu membangun perangkat lunak *[nama perangkat lunak]*. Jelaskan dengan singkat dan jelas deskripsi aplikasi serta keterkaitannya dengan perangkat lunak atau sistem lain (jika ada). Bagian ini maksimal berisi satu paragraf, dapat diambil dari SKPL/DPPL.
+Guna membangun kota yang berkelanjutan, fasilitas publik yang aman dan universal menjadi instrumen utama yang tercantum pada Indikator SDG 11.7.1. Namun, pada kenyataannya fasilitas publik justru memiliki banyak catatan yang harus diperbaiki. Mulai dari infrastruktur layanan publik yang terbengkalai, akses jalan yang tidak ramah pejalan kaki, hingga maraknya aksi vandalisme. Sudah banyak metode untuk melaporkan fasilitas publik yang rusak, namun masih berjalan satu arah. Oleh karena itu, website RAWAT (Ruang Aspirasi Warga dan Aduan Terpadu) hadir untuk memfasilitasi sistem pelaporan yang lebih modern dan interaktif. Website ini diharapkan dapat meningkatkan _awareness_ masyarakat tentang kondisi fasilitas dan berkolaborasi dalam permintaan perbaikan fasilitas publik. Melalui fitur-fitur interaktif selayaknya media sosial, warga tidak hanya dapat menyampaikan laporan tetapi juga saling memvalidasi laporan, memberikan tanggapan, dan membangun kepedulian bersama terhadap fasilitas publik.
 
 ## 1.3 Definisi, Istilah, dan Singkatan
 Semua definisi dan singkatan yang digunakan dalam dokumen ini beserta penjelasannya.
@@ -114,10 +114,17 @@ Tabel 1.4. Aturan Penomoran
 | *...* | *...* | *...* |
 
 ## 1.5 Referensi
-Cantumkan daftar buku, panduan, atau dokumentasi lain yang dirujuk dalam pembuatan dokumen dan pengembangan P/L, **minimal dokumen SKPL, APL, DPPL, dan Implementasi (Tugas 9)**. Tambahkan dokumentasi *framework*/*library*/*testing tool* atau referensi lain apabila digunakan.
+<!-- Cantumkan daftar buku, panduan, atau dokumentasi lain yang dirujuk dalam pembuatan dokumen dan pengembangan P/L, **minimal dokumen SKPL, APL, DPPL, dan Implementasi (Tugas 9)**. Tambahkan dokumentasi *framework*/*library*/*testing tool* atau referensi lain apabila digunakan. -->
+Berikut ini adalah dokumentasi yang dirujuk oleh dokumen ini.
+* [SKPL RAWAT](https://github.com/ajalku/IF2150-RPL-K01-G01/blob/main/docs/M5/K01_G01_SKPL.md)
+* [APL RAWAT](https://github.com/ajalku/IF2150-RPL-K01-G01/blob/main/docs/M6/K01_G01_APL.md)
+* [DPPL1 RAWAT](...)
+* [DPPL2 RAWAT]()
+* [Implementasi RAWAT](...)
 
 ## 1.6 Deskripsi Umum Dokumen (Ikhtisar)
-Tuliskan sistematika pembahasan dokumen ini secara ringkas dan runut bab demi bab, dengan maksimal 1 paragraf.
+<!-- Tuliskan sistematika pembahasan dokumen ini secara ringkas dan runut bab demi bab, dengan maksimal 1 paragraf. -->
+Dokumen ini terdiri atas 5 bab, yakni Pendahuluan, Deskripsi Umum perangkat Lunak, Implementasi, Hasil Pengujian, dan Traceability. Pada Pendahuluan, terdapat bagian Tujuan Penulisan Dokumen; Lingkup Masalah; Definisi, Istilah, dan Singkatan; Aturan Penomoran; Referensi; serta Deskripsi Umum Dokumen atau Ikhtisar. Bab 2 mencakup gambar dan narasi terkait aplikasi dan konteksnya. Bab 3 yang berisi implementasi berisi lingkungan implementasi, implementasi modul, implementasi antarmuka, dan file lain. Kemudian, bab 4 memiliki berbagai pengujian dari berbagai fungsi dan sudut pandang, seperti strategi dan kedalaman pengujian kelas, pengujian unit kelas, pengujian integrasi, pengujian use case, pengujian KNF, dan tangkapan layar sebagai bukti pengujian. Terakhir, traceability berisi pemetaan KF ke berbagai komponan lainnya.
 
 <br>
 
