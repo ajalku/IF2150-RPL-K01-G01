@@ -411,22 +411,48 @@ Tabel 4.3.2. Hasil Pengujian Integrasi
 
 Pengujian use case dilakukan pada seluruh skenario normal dan alternatif sesuai Subbab 4.4 SKPL, dengan minimal satu test case untuk setiap skenario. Kolom ID KF menunjukkan KF yang diverifikasi oleh test case tersebut.
 
-### 4.4.1 Use Case [Nama Use Case 1]
+### 4.4.1 Use Case Melakukan Registrasi Akun
 
-**ID Use Case:** *[UC01 sesuai SKPL]*  
-**Nama Use Case:** *[Nama use case sesuai SKPL]*
+**ID Use Case:** *UC01*  
+**Nama Use Case:** *Melakukan Registrasi Akun*
 
-Tabel 4.4.1. Hasil Pengujian Use Case [UC01]
+Tabel 4.4.1. Hasil Pengujian Use Case UC01
 
 | ID Pengujian | ID KF | Skenario | Prosedur Pengujian | Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| *UC01-TC01* | *KF01* | *Normal* | *1. Buka halaman login.<br>2. Masukkan kredensial.<br>3. Klik tombol "Login".* | *User: rpl@gmail.com<br>Pass: 123456* | *Pengguna diarahkan ke Halaman Dashboard.* | *Pengguna diarahkan ke Halaman Dashboard sesuai hasil yang diharapkan.* | *Pass* |
-| *UC01-TC02* | *KF01* | *Alternatif 1: [Nama skenario]* | *[Langkah-langkah pengujian]* | *[Data masukan]* | *[Hasil yang diharapkan]* | *[Hasil aktual]* | *[Pass/Fail. Jika Fail: penjelasan dan solusi]* |
-| *...* | *...* | *...* | *...* | *...* | *...* | *...* | *...* |
+| *UC01-TC01* | *KF01, KF02* | *Normal: Registrasi berhasil* | *1. Buka halaman registrasi.<br>2. Isi seluruh field dengan data valid dan email/NIK yang belum terdaftar.<br>3. Klik Daftar.<br>4. Periksa hasil registrasi dan database.* | *Nama: Pengguna Test<br>NIK: 1234567890123456<br>Email: registrasi.test@example.com<br>Password: Password1!<br>No. telepon: 081234567890* | *Registrasi berhasil dan pesan keberhasilan ditampilkan.* | *Registrasi berhasil dan pesan “Registrasi berhasil! Silahkan masuk menggunakan akun Anda.” ditampilkan. Beralih ke halaman login*  | *Pass* |
+| *UC01-TC02* | *KF01, KF02* | *Alternatif 1: Data registrasi tidak lengkap* | *1. Buka halaman registrasi.<br>2. Kosongkan field nama atau NIK.<br>3. Klik Daftar.<br>4. Periksa pesan validasi.* | *Nama: kosong atau NIK: kosong* | *Registrasi ditolak dan sistem menampilkan pesan bahwa field wajib harus diisi tanpa menyimpan akun.* | *Registrasi tidak berhasil dan muncul tulisan “Please fill out this field” pada kolom yang belum terisi.* | *Pass* |
+| *UC01-TC03* | *KF01, KF02* | *Alternatif 2: Format NIK tidak valid* | *1. Buka halaman registrasi.<br>2. Isi data lain dengan benar.<br>3. Masukkan NIK dengan panjang 15 digit atau mengandung huruf.<br>4. Klik Daftar.* | *NIK: 123456789012345 atau 12345678901234A6* | *Registrasi ditolak dan sistem menampilkan pesan bahwa NIK harus terdiri dari 16 digit angka.* | *Registrasi ditolak dan sistem menampilkan pesan “Please match the requested format” pada bagian field NIK.* | *Pass* |
+| *UC01-TC04* | *KF01, KF02* | *Alternatif 3: Format password tidak valid* | *1. Buka halaman registrasi.<br>2. Isi data lain dengan benar.<br>3. Masukkan password yang tidak memenuhi ketentuan.<br>4. Klik Daftar.* | *Password: abcdefg atau password123!* | *Registrasi ditolak dan sistem menampilkan pesan ketentuan password minimal 8 karakter serta harus mengandung huruf kapital, angka, dan simbol.* | *Registrasi ditolak dan muncul pesan kesalahan “Kata sandi harus mengandung huruf kapital, angka, dan simbol”.* | *Pass* |
 
-### 4.4.2 Use Case [Nama Use Case 2]
+### 4.4.2 Use Case Melakukan Registrasi Akun
 
-*[Lanjutkan untuk seluruh use case dengan pola yang sama, hingga 4.4.N.]*
+**ID Use Case:** *UC02*  
+**Nama Use Case:** *Melakukan Proses Login*
+
+Tabel 4.4.2. Hasil Pengujian Use Case UC02
+
+| ID Pengujian | ID KF | Skenario | Prosedur Pengujian | Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| *UC02-TC01* | *KF01, KF02* | *Normal: Login berhasil* | *1. Buka halaman login.<br>2. Masukkan email dan password akun terdaftar.<br>3. Klik Masuk.<br>4. Periksa session dan halaman setelah login.* | *Email: initestAKU@gmail.com<br>Password: INIpasswordAKU123! (warga) Email: admin@example.test<br>Password: AdminRawat123! (admin)* | *Login berhasil dan pengguna diarahkan ke halaman utama sesuai role.* | *Login berhasil dan pengguna diarahkan ke halaman utama sesuai role.* | *Pass* |
+| *UC02-TC02* | *KF01, KF02* | *Alternatif 1: Data login belum lengkap* | *1. Buka halaman login.<br>2. Kosongkan email atau password.<br>3. Klik Masuk.<br>4. Periksa validasi.* | *Email: kosong atau Password: kosong* | *Login ditolak, sistem menampilkan pesan bahwa email/password wajib diisi* | *Login ditolak, pada field yang kosong ditampilkan pesan “Please fill out this field”.* | *Pass* |
+| *UC02-TC03* | *KF01, KF02* | *Alternatif 2: Email belum terdaftar* | *1. Buka halaman login.<br>2. Masukkan email yang tidak terdaftar dan password valid.<br>3. Klik Masuk.<br>4. Periksa respons autentikasi.* | *Email: tidakterdaftar@example.com<br>Password: Password1!* | *Login ditolak dan sistem menampilkan pesan kesalahan.* | *Login ditolak dan muncul pesan “Wrong Email or Password* | *Pass* |
+| *UC02-TC04* | *KF01, KF02* | *Alternatif 3: Password tidak sesuai* | *1. Buka halaman login.<br>2. Masukkan email terdaftar dan password yang salah.<br>3. Klik Masuk.<br>4. Periksa pesan kesalahan.* | *Email: wawaw@gmail.com<br>Password: InstagramdanWA123!* | *Login ditolak dan pesan kesalahan kredensial ditampilkan.* | *Login ditolak dan muncul pesan “Wrong Email or Password* | *Pass* |
+
+
+### 4.4.10 Use Case Mengelola Profil
+
+**ID Use Case:** *UC10*  
+**Nama Use Case:** *Mengelola Profil*
+
+Tabel 4.4.10. Hasil Pengujian Use Case UC10
+
+| ID Pengujian | ID KF | Skenario | Prosedur Pengujian | Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| *UC10-TC01* | *KF16* | *Normal: Pengguna mengubah profil* | *1. Login menggunakan akun terdaftar.<br>2. Buka halaman Profil.<br>3. Klik Ubah Profil.<br>4. Masukkan nama dan nomor telepon baru.<br>5. Klik Simpan.<br>6. Muat ulang halaman untuk memeriksa perubahan.* | *Nama: Integration Test Updated<br>No. telepon: 081298765432* | *Sistem berhasil memperbarui data profil dan menampilkan informasi terbaru.* | *Nama dan nomor telepon pada informasi pribadi berubah.* | *Pass* |
+| *UC10-TC02* | *KF16* | *Normal: Pengguna berhasil menghapus akun* | *1. Login menggunakan akun terdaftar.<br>2. Buka halaman Profil.<br>3. Klik Hapus Akun.<br>4. Pada dialog konfirmasi, klik Ya.<br>5.Coba login dengan email dan password akun yang dihapus.* | *Akun pengguna terdaftar<br>Konfirmasi: Ya* | *Ketika login menggunakan akun terhapus, terdapat pesan kesalahan. | *Ketika login menggunakan akun terhapus, dan muncul pesan kesalahan “Wrong email or password”.* | *Pass* |
+| *UC10-TC03* | *KF16* | *Alternatif 1: Pengguna membatalkan penghapusan akun* | *1. Login menggunakan akun terdaftar.<br>2. Buka halaman Profil.<br>3. Klik Hapus Akun.<br>4. Ketika dialog konfirmasi muncul, klik Batal.<br>5. Periksa keberadaan akun dan tampilan halaman.* | *Akun pengguna terdaftar<br>Konfirmasi: Batal* | *Dialog konfirmasi ditutup dan akun pengguna tetap tersedia.* | *Akun pengguna tetap tersedia* | *Pass* |
+
 
 <br>
 
