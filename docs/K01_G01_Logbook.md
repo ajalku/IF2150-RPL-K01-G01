@@ -170,5 +170,6 @@
 | Tanggal | Nama Anggota | Deskripsi Pekerjaan | Durasi (Jam) | Status | Kendala / *Blocker* | 
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | *20-11-2026* | *Samantha Michelle S. Silaban* | *Menyusun testing untuk kelas pengguna, penggunacontroller, dan penggunaView* | *6* | *Done* | *-* |
+| *20-11-2026* | *Syakira Azzahra Rachmania* | *Menyusun testing untuk kelas tanggapan, tanggapancontroller, dan tanggapanView* | *6* | *Done* | *-* |
 
 <!-- Gunakan format penulisan Logbook yang sama untuk setiap Milestone dan pastikan pembuatan Daftar Isi juga sudah sesuai sebelum Logbook dikumpulkan. -->
