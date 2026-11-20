@@ -7,37 +7,64 @@ const TanggapanController = require("../src/controllers/TanggapanController");
 const LaporanController = require("../src/controllers/LaporanController");
 const { authorizeRoles } = require("../src/middleware/roleMiddleware");
 
-const clientBerhasil = {
-    async query() {
-        return { rowCount: 1 };
-    },
-};
+function responseRecorder() {
+    return {
+        statusCode: undefined,
+        body: undefined,
+        status(code) {
+            this.statusCode = code;
+            return this;
+        },
+        json(body) {
+            this.body = body;
+            return this;
+        },
+    };
+}
 
-// Algo-044 - Memastikan aturan validasi hasil dan deskripsi tanggapan.
-test("validasiTanggapan menerima hasil valid tanpa deskripsi", () => {
+function requestSimpan(overrides = {}) {
+    return {
+        params: { idLaporan: "00000000-0000-0000-0000-000000000001" },
+        session: { idPengguna: "admin-sesi", role: "admin" },
+        body: {
+            statusTanggapan: true,
+            deskripsiTanggapan: "",
+            statusLaporan: "SELESAI",
+        },
+        ...overrides,
+    };
+}
+
+test("C20-UT01 validasiTanggapan menerima hasil valid tanpa deskripsi", () => {
     assert.equal(TanggapanController.validasiTanggapan({
         statusTanggapan: true,
         deskripsiTanggapan: "",
     }), true);
 });
 
-test("validasiTanggapan menerima hasil tidak valid dengan alasan", () => {
+test("C20-UT02 validasiTanggapan menerima hasil tidak valid dengan alasan", () => {
     assert.equal(TanggapanController.validasiTanggapan({
         statusTanggapan: false,
         deskripsiTanggapan: "Bukti laporan tidak sesuai.",
     }), true);
 });
 
-test("validasiTanggapan menolak hasil tidak valid tanpa alasan", () => {
-    assert.equal(TanggapanController.validasiTanggapan({
-        statusTanggapan: false,
-        deskripsiTanggapan: "  ",
-    }), false);
+test("C20-UT03 validasiTanggapan menolak alasan kosong atau hanya spasi", () => {
+    for (const deskripsiTanggapan of ["", "  \t\n"]) {
+        assert.equal(TanggapanController.validasiTanggapan({
+            statusTanggapan: false,
+            deskripsiTanggapan,
+        }), false);
+    }
 });
 
-// Q-016 - Memastikan penyimpanan menggunakan parameter dan mengembalikan hasil query.
-test("simpanTanggapan berhasil dan gagal mengikuti hasil query", async () => {
+test("C20-UT04 simpanTanggapan mengikuti hasil penyimpanan model", async () => {
     const data = { statusTanggapan: false, deskripsiTanggapan: "Tidak valid." };
+    const clientBerhasil = {
+        async query() {
+            return { rowCount: 1 };
+        },
+    };
     assert.equal(await TanggapanController.simpanTanggapan(
         "laporan-id", "admin-id", data, clientBerhasil
     ), true);
@@ -58,7 +85,7 @@ test("simpanTanggapan berhasil dan gagal mengikuti hasil query", async () => {
     }
 });
 
-test("Model Tanggapan menyimpan id admin dengan query berparameter", async () => {
+test("C06-UT01 Model Tanggapan menyimpan id admin dengan query berparameter", async () => {
     let panggilan;
     const client = {
         async query(sql, values) {
@@ -67,10 +94,10 @@ test("Model Tanggapan menyimpan id admin dengan query berparameter", async () =>
         },
     };
     const model = new Tanggapan();
-    await model.simpanTanggapan("laporan-id", "admin-id", {
+    assert.equal(await model.simpanTanggapan("laporan-id", "admin-id", {
         statusTanggapan: true,
         deskripsiTanggapan: "Ditinjau.",
-    }, client);
+    }, client), true);
 
     assert.match(panggilan.sql, /VALUES \(\$1, \$2, \$3, CURRENT_TIMESTAMP, \$4\)/);
     assert.match(panggilan.sql, /id_admin/);
@@ -78,7 +105,7 @@ test("Model Tanggapan menyimpan id admin dengan query berparameter", async () =>
     assert.equal(model.getIdAdmin(), "admin-id");
 });
 
-test("pembacaan tanggapan terbaru hanya menyertakan identitas admin untuk admin", async () => {
+test("C06-UT02 getTanggapanByLaporan hanya membuka identitas admin kepada admin", async () => {
     const client = {
         async query() {
             return {
@@ -106,8 +133,7 @@ test("pembacaan tanggapan terbaru hanya menyertakan identitas admin untuk admin"
     assert.equal(tanggapanAdmin.namaAdmin, "Admin RAWAT");
 });
 
-// Algo-046 - Memastikan pembaruan status mengikuti keberhasilan model laporan.
-test("simpanStatus berhasil dan gagal mengikuti pembaruan laporan", async () => {
+test("C20-UT05 simpanStatus mengikuti hasil pembaruan laporan", async () => {
     const updateSebelumnya = Laporan.updateStatusLaporan;
     try {
         Laporan.updateStatusLaporan = async () => true;
@@ -120,15 +146,13 @@ test("simpanStatus berhasil dan gagal mengikuti pembaruan laporan", async () => 
     }
 });
 
-// C20 - Memastikan perubahan pemeriksaan, tanggapan, dan status berada dalam transaksi.
-test("simpan menggulung balik transaksi jika pembaruan status gagal", async () => {
+test("C20-UT06 simpan menggulung balik transaksi jika pembaruan status gagal", async () => {
     const connectSebelumnya = pool.connect;
     const simpanTanggapanSebelumnya = TanggapanController.simpanTanggapan;
     const simpanStatusSebelumnya = TanggapanController.simpanStatus;
     const simpanPemeriksaanSebelumnya = Laporan.simpanHasilPemeriksaan;
     const query = [];
-    let responseStatus;
-    let responseBody;
+    const response = responseRecorder();
     let dilepas = false;
     const client = {
         async query(sql) {
@@ -146,28 +170,11 @@ test("simpan menggulung balik transaksi jika pembaruan status gagal", async () =
         TanggapanController.simpanTanggapan = async () => true;
         TanggapanController.simpanStatus = async () => false;
 
-        await TanggapanController.simpan({
-            params: { idLaporan: "00000000-0000-0000-0000-000000000001" },
-            session: { idPengguna: "admin-sesi", role: "admin" },
-            body: {
-                statusTanggapan: true,
-                deskripsiTanggapan: "",
-                statusLaporan: "SELESAI",
-            },
-        }, {
-            status(code) {
-                responseStatus = code;
-                return this;
-            },
-            json(body) {
-                responseBody = body;
-                return this;
-            },
-        });
+        await TanggapanController.simpan(requestSimpan(), response);
 
         assert.deepEqual(query, ["BEGIN", "ROLLBACK"]);
-        assert.equal(responseStatus, 404);
-        assert.equal(responseBody.message, "Laporan tidak ditemukan");
+        assert.equal(response.statusCode, 404);
+        assert.equal(response.body.message, "Laporan tidak ditemukan");
         assert.equal(dilepas, true);
     } finally {
         pool.connect = connectSebelumnya;
@@ -177,14 +184,14 @@ test("simpan menggulung balik transaksi jika pembaruan status gagal", async () =
     }
 });
 
-test("simpan mengabaikan idAdmin klien dan menggunakan id dari sesi", async () => {
+test("C20-UT07 simpan mengabaikan idAdmin dari body dan memakai identitas sesi", async () => {
     const connectSebelumnya = pool.connect;
     const simpanTanggapanSebelumnya = TanggapanController.simpanTanggapan;
     const simpanStatusSebelumnya = TanggapanController.simpanStatus;
     const simpanPemeriksaanSebelumnya = Laporan.simpanHasilPemeriksaan;
     const query = [];
     let argumenTanggapan;
-    let responseStatus;
+    const response = responseRecorder();
     const client = {
         async query(sql) {
             query.push(sql);
@@ -192,25 +199,14 @@ test("simpan mengabaikan idAdmin klien dan menggunakan id dari sesi", async () =
         },
         release() {},
     };
-    const req = {
-        params: { idLaporan: "00000000-0000-0000-0000-000000000001" },
-        session: { idPengguna: "admin-sesi", role: "admin" },
+    const req = requestSimpan({
         body: {
             statusTanggapan: true,
             deskripsiTanggapan: "",
             statusLaporan: "SELESAI",
             idAdmin: "admin-palsu",
         },
-    };
-    const res = {
-        status(code) {
-            responseStatus = code;
-            return this;
-        },
-        json() {
-            return this;
-        },
-    };
+    });
 
     try {
         pool.connect = async () => client;
@@ -221,9 +217,9 @@ test("simpan mengabaikan idAdmin klien dan menggunakan id dari sesi", async () =
         };
         TanggapanController.simpanStatus = async () => true;
 
-        await TanggapanController.simpan(req, res);
+        await TanggapanController.simpan(req, response);
 
-        assert.equal(responseStatus, 200);
+        assert.equal(response.statusCode, 200);
         assert.equal(argumenTanggapan[1], "admin-sesi");
         assert.equal(Object.hasOwn(argumenTanggapan[2], "idAdmin"), false);
         assert.deepEqual(query, ["BEGIN", "COMMIT"]);
@@ -235,7 +231,7 @@ test("simpan mengabaikan idAdmin klien dan menggunakan id dari sesi", async () =
     }
 });
 
-test("detail laporan hanya mengirim id dan nama admin dalam respons admin", async () => {
+test("C20-UT08 detail laporan menyembunyikan identitas admin dari warga", async () => {
     const querySebelumnya = pool.query;
     const getDetailSebelumnya = Laporan.getDetailLaporan;
     pool.query = async () => ({
@@ -250,20 +246,12 @@ test("detail laporan hanya mengirim id dan nama admin dalam respons admin", asyn
     Laporan.getDetailLaporan = async () => ({ idLaporan: "laporan-id" });
 
     const panggilDetail = async (session) => {
-        let body;
+        const response = responseRecorder();
         await LaporanController.detail({
             params: { idLaporan: "00000000-0000-0000-0000-000000000001" },
             session,
-        }, {
-            status() {
-                return this;
-            },
-            json(value) {
-                body = value;
-                return this;
-            },
-        });
-        return body.laporan.tanggapanTeratas;
+        }, response);
+        return response.body.laporan.tanggapanTeratas;
     };
 
     try {
@@ -280,31 +268,18 @@ test("detail laporan hanya mengirim id dan nama admin dalam respons admin", asyn
     }
 });
 
-test("handler menolak sesi tanpa pengguna dan role non-admin", async () => {
+test("C20-UT09 handler menolak sesi tanpa pengguna dan role non-admin", async () => {
     for (const [session, statusDiharapkan] of [
         [null, 401],
         [{ idPengguna: "warga-id", role: "warga" }, 403],
     ]) {
-        let responseStatus;
-        await TanggapanController.simpan({
-            params: { idLaporan: "00000000-0000-0000-0000-000000000001" },
-            session,
-            body: {},
-        }, {
-            status(code) {
-                responseStatus = code;
-                return this;
-            },
-            json() {
-                return this;
-            },
-        });
-        assert.equal(responseStatus, statusDiharapkan);
+        const response = responseRecorder();
+        await TanggapanController.simpan(requestSimpan({ session, body: {} }), response);
+        assert.equal(response.statusCode, statusDiharapkan);
     }
 });
 
-// Auth - Pengguna non-admin wajib ditolak oleh middleware otorisasi yang sudah ada.
-test("akses endpoint ditolak untuk pengguna non-admin", () => {
+test("C20-UT10 middleware menolak akses pengguna non-admin", () => {
     let status;
     let diteruskan = false;
     const middleware = authorizeRoles("admin");
@@ -325,7 +300,7 @@ test("akses endpoint ditolak untuk pengguna non-admin", () => {
     assert.equal(diteruskan, false);
 });
 
-test("akses tanpa sesi ditolak dengan 401", () => {
+test("C20-UT11 middleware menolak request tanpa sesi dengan 401", () => {
     let status;
     authorizeRoles("admin")(
         { session: null },
@@ -343,8 +318,7 @@ test("akses tanpa sesi ditolak dengan 401", () => {
     assert.equal(status, 401);
 });
 
-// C13 - Pembatalan konfirmasi tidak memanggil aksi penyimpanan.
-test("batal konfirmasi tidak menyimpan atau mengubah laporan", async () => {
+test("C13-UT01 pembatalan konfirmasi tidak memanggil aksi penyimpanan", async () => {
     const { simpanJikaTerkonfirmasi } = await import(
         "../../frontend/src/utils/tanggapanForm.js"
     );
@@ -352,4 +326,258 @@ test("batal konfirmasi tidak menyimpan atau mengubah laporan", async () => {
     const simpan = () => { jumlahSimpan += 1; };
     assert.equal(simpanJikaTerkonfirmasi(false, simpan), false);
     assert.equal(jumlahSimpan, 0);
+});
+
+test("C13-UT02 konfirmasi memanggil aksi penyimpanan tepat satu kali", async () => {
+    const { simpanJikaTerkonfirmasi } = await import(
+        "../../frontend/src/utils/tanggapanForm.js"
+    );
+    let jumlahSimpan = 0;
+    const hasil = simpanJikaTerkonfirmasi(true, () => {
+        jumlahSimpan += 1;
+        return "tersimpan";
+    });
+    assert.equal(hasil, "tersimpan");
+    assert.equal(jumlahSimpan, 1);
+});
+
+test("C20-UT12 validasiTanggapan menerima deskripsi tepat 2000 karakter", () => {
+    assert.equal(TanggapanController.validasiTanggapan({
+        statusTanggapan: false,
+        deskripsiTanggapan: "x".repeat(2000),
+    }), true);
+});
+
+test("C20-UT13 validasiTanggapan menolak deskripsi 2001 karakter", () => {
+    assert.equal(TanggapanController.validasiTanggapan({
+        statusTanggapan: false,
+        deskripsiTanggapan: "x".repeat(2001),
+    }), false);
+});
+
+test("C20-UT14 validasiTanggapan menolak status atau deskripsi dengan tipe tidak valid", () => {
+    assert.equal(TanggapanController.validasiTanggapan({
+        statusTanggapan: "true",
+        deskripsiTanggapan: "",
+    }), false);
+    assert.equal(TanggapanController.validasiTanggapan({
+        statusTanggapan: true,
+        deskripsiTanggapan: null,
+    }), false);
+    assert.equal(TanggapanController.validasiTanggapan(null), false);
+});
+
+test("C06-UT03 simpanTanggapan mengembalikan false saat INSERT tidak membuat baris", async () => {
+    const model = new Tanggapan();
+    assert.equal(await model.simpanTanggapan("laporan-id", null, {
+        statusTanggapan: true,
+        deskripsiTanggapan: "",
+    }, {
+        async query() {
+            return { rowCount: 0 };
+        },
+    }), false);
+    assert.equal(model.getIdAdmin(), null);
+});
+
+test("C06-UT04 getTanggapanByLaporan mengembalikan null jika laporan belum ditanggapi", async () => {
+    const tanggapan = await Tanggapan.getTanggapanByLaporan(
+        "laporan-id",
+        { role: "warga" },
+        { async query() { return { rows: [] }; } }
+    );
+    assert.equal(tanggapan, null);
+});
+
+test("C06-UT05 tanggapan lama dengan id_admin NULL aman dibaca admin", async () => {
+    const tanggapan = await Tanggapan.getTanggapanByLaporan(
+        "laporan-id",
+        { role: "admin" },
+        {
+            async query() {
+                return {
+                    rows: [{
+                        status_tanggapan: false,
+                        waktu_tanggapan: "2020-01-01T00:00:00.000Z",
+                        deskripsi_tanggapan: "Alasan lama.",
+                        id_admin: null,
+                        nama_admin: null,
+                    }],
+                };
+            },
+        }
+    );
+    assert.equal(tanggapan.idAdmin, null);
+    assert.equal(tanggapan.namaAdmin, null);
+});
+
+test("C06-UT06 simpanTanggapan menerima id_admin NULL untuk kompatibilitas data lama", async () => {
+    let values;
+    const model = new Tanggapan();
+    assert.equal(await model.simpanTanggapan("laporan-id", null, {
+        statusTanggapan: true,
+        deskripsiTanggapan: "",
+    }, {
+        async query(_sql, parameter) {
+            values = parameter;
+            return { rowCount: 1 };
+        },
+    }), true);
+    assert.equal(values[1], null);
+    assert.equal(model.getIdAdmin(), null);
+});
+
+test("C20-UT15 simpanTanggapan tidak menyimpan form yang tidak valid", async () => {
+    let jumlahQuery = 0;
+    assert.equal(await TanggapanController.simpanTanggapan(
+        "laporan-id",
+        "admin-id",
+        { statusTanggapan: false, deskripsiTanggapan: " " },
+        {
+            async query() {
+                jumlahQuery += 1;
+                return { rowCount: 1 };
+            },
+        }
+    ), false);
+    assert.equal(jumlahQuery, 0);
+});
+
+test("C20-UT16 simpanStatus menerima status pertama dalam urutan domain", async () => {
+    const updateSebelumnya = Laporan.updateStatusLaporan;
+    let args;
+    try {
+        Laporan.updateStatusLaporan = async (...nilai) => {
+            args = nilai;
+            return true;
+        };
+        assert.equal(await TanggapanController.simpanStatus(
+            "laporan-id", Laporan.STATUS_LAPORAN[0]
+        ), true);
+        assert.equal(args[1], "BELUM_DILIHAT");
+    } finally {
+        Laporan.updateStatusLaporan = updateSebelumnya;
+    }
+});
+
+test("C20-UT17 simpanStatus menerima status terakhir dalam urutan domain", async () => {
+    const updateSebelumnya = Laporan.updateStatusLaporan;
+    let args;
+    try {
+        Laporan.updateStatusLaporan = async (...nilai) => {
+            args = nilai;
+            return true;
+        };
+        assert.equal(await TanggapanController.simpanStatus(
+            "laporan-id", Laporan.STATUS_LAPORAN.at(-1)
+        ), true);
+        assert.equal(args[1], "SELESAI");
+    } finally {
+        Laporan.updateStatusLaporan = updateSebelumnya;
+    }
+});
+
+test("C20-UT18 simpanStatus menolak status di luar enum", async () => {
+    const updateSebelumnya = Laporan.updateStatusLaporan;
+    let dipanggil = false;
+    try {
+        Laporan.updateStatusLaporan = async () => {
+            dipanggil = true;
+            return true;
+        };
+        assert.equal(await TanggapanController.simpanStatus("laporan-id", "TIDAK_VALID"), false);
+        assert.equal(dipanggil, false);
+    } finally {
+        Laporan.updateStatusLaporan = updateSebelumnya;
+    }
+});
+
+test("C20-UT19 simpanStatus melaporkan laporan yang tidak ditemukan", async () => {
+    const updateSebelumnya = Laporan.updateStatusLaporan;
+    try {
+        Laporan.updateStatusLaporan = async () => false;
+        assert.equal(await TanggapanController.simpanStatus("laporan-hilang", "SELESAI"), false);
+    } finally {
+        Laporan.updateStatusLaporan = updateSebelumnya;
+    }
+});
+
+test("C20-UT20 handler menolak format idLaporan yang tidak valid sebelum transaksi", async () => {
+    const connectSebelumnya = pool.connect;
+    let koneksiDibuka = false;
+    const response = responseRecorder();
+    try {
+        pool.connect = async () => {
+            koneksiDibuka = true;
+            throw new Error("Tidak boleh membuka koneksi");
+        };
+        await TanggapanController.simpan(requestSimpan({
+            params: { idLaporan: "bukan-uuid" },
+        }), response);
+        assert.equal(response.statusCode, 404);
+        assert.equal(koneksiDibuka, false);
+    } finally {
+        pool.connect = connectSebelumnya;
+    }
+});
+
+test("C20-UT21 handler menerima catatan pemeriksaan tepat 1000 karakter", async () => {
+    const connectSebelumnya = pool.connect;
+    const simpanPemeriksaanSebelumnya = Laporan.simpanHasilPemeriksaan;
+    const simpanTanggapanSebelumnya = TanggapanController.simpanTanggapan;
+    const simpanStatusSebelumnya = TanggapanController.simpanStatus;
+    const query = [];
+    const response = responseRecorder();
+    const client = {
+        async query(sql) {
+            query.push(sql);
+            return { rowCount: 1 };
+        },
+        release() {},
+    };
+    try {
+        pool.connect = async () => client;
+        Laporan.simpanHasilPemeriksaan = async () => true;
+        TanggapanController.simpanTanggapan = async () => true;
+        TanggapanController.simpanStatus = async () => true;
+        await TanggapanController.simpan(requestSimpan({
+            body: {
+                statusTanggapan: true,
+                deskripsiTanggapan: "",
+                catatanPemeriksaan: "x".repeat(1000),
+                statusLaporan: "SELESAI",
+            },
+        }), response);
+        assert.equal(response.statusCode, 200);
+        assert.deepEqual(query, ["BEGIN", "COMMIT"]);
+    } finally {
+        pool.connect = connectSebelumnya;
+        Laporan.simpanHasilPemeriksaan = simpanPemeriksaanSebelumnya;
+        TanggapanController.simpanTanggapan = simpanTanggapanSebelumnya;
+        TanggapanController.simpanStatus = simpanStatusSebelumnya;
+    }
+});
+
+test("C20-UT22 handler menolak catatan pemeriksaan 1001 karakter", async () => {
+    const connectSebelumnya = pool.connect;
+    let koneksiDibuka = false;
+    const response = responseRecorder();
+    try {
+        pool.connect = async () => {
+            koneksiDibuka = true;
+            throw new Error("Tidak boleh membuka koneksi");
+        };
+        await TanggapanController.simpan(requestSimpan({
+            body: {
+                statusTanggapan: true,
+                deskripsiTanggapan: "",
+                catatanPemeriksaan: "x".repeat(1001),
+                statusLaporan: "SELESAI",
+            },
+        }), response);
+        assert.equal(response.statusCode, 400);
+        assert.equal(koneksiDibuka, false);
+    } finally {
+        pool.connect = connectSebelumnya;
+    }
 });
