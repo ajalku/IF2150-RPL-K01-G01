@@ -118,9 +118,9 @@ Tabel 1.4. Aturan Penomoran
 Berikut ini adalah dokumentasi yang dirujuk oleh dokumen ini.
 * [SKPL RAWAT](https://github.com/ajalku/IF2150-RPL-K01-G01/blob/main/docs/M5/K01_G01_SKPL.md)
 * [APL RAWAT](https://github.com/ajalku/IF2150-RPL-K01-G01/blob/main/docs/M6/K01_G01_APL.md)
-* [DPPL1 RAWAT](...)
-* [DPPL2 RAWAT]()
-* [Implementasi RAWAT](...)
+* [DPPL1 RAWAT](https://github.com/ajalku/IF2150-RPL-K01-G01/blob/main/docs/M7/K01_G01_DPPL.md)
+* [DPPL2 RAWAT](https://github.com/ajalku/IF2150-RPL-K01-G01/blob/main/docs/M8/K01_G01_DPPL2.md)
+* [Implementasi RAWAT](https://github.com/ajalku/IF2150-RPL-K01-G01/blob/main/docs/M9/K01_G01_Implementasi.md)
 
 ## 1.6 Deskripsi Umum Dokumen (Ikhtisar)
 <!-- Tuliskan sistematika pembahasan dokumen ini secara ringkas dan runut bab demi bab, dengan maksimal 1 paragraf. -->
@@ -275,8 +275,8 @@ Tabel 4.1.1. Identifikasi Tingkat Pengujian Kelas
 | ID Kelas | Nama Kelas | Tingkat | Alasan | Test Case Terkait |
 | :--- | :--- | :--- | :--- | :--- |
 | *C15* | *PenggunaController* | *Mendalam* | *Memuat `login()`, `registrasi()`, autetikasi, hashing password, serta validasi data* | *C15-UT01 s.d. C15-UT24* |
-| *C01* | *Pengguna* | *Sedang* | *Melakukan operasi CRUD pada terdapat beberapa logika pengambilan keputusan.* | *C03-UT01 s.d. C03-UT09, INT-TC01 s.d. INT-TC06* |
-| *C08* | *PenggunaView* | *Sedang* | *Terdapat operasi yang memengaruhi perilaku sistem* | *C01-UT01 s.d. C01-UT08, INT-TC07 s.d. TC09* |
+| *C01* | *Pengguna* | *Sedang* | *Melakukan operasi CRUD pada terdapat beberapa logika pengambilan keputusan.* | *C01-UT01 s.d. C01-UT09, INT-TC01 s.d. INT-TC06* |
+| *C08* | *PenggunaView* | *Sedang* | *Terdapat operasi yang memengaruhi perilaku sistem* | *C08-UT01 s.d. C08-UT08, INT-TC07 s.d. INT-TC09* |
 | *C02* | *Homepage* | *Mendalam* | *Memuat logika pengambilan daftar laporan, pengaturan pengurutan dan filter, serta penentuan status upvote pada setiap laporan.* | *C02-UT01 s.d. C02-UT04* |
 | *C05* | *Upvote* | *Mendalam* | *Memuat logika penyimpanan upvote, pengelolaan transaksi basis data, pencegahan upvote duplikat, dan pengambilan data upvote pengguna.* | *C05-UT01 s.d. C05-UT05* |
 | *C07* | *Tutorial* | *Mendalam* | *Memuat logika pengelolaan langkah tutorial, pengambilan status penyelesaian tutorial, dan penyimpanan status tutorial pengguna.* | *C07-UT01 s.d. C07-UT03* |
@@ -286,7 +286,18 @@ Tabel 4.1.1. Identifikasi Tingkat Pengujian Kelas
 | *C16* | *HomepageController* | *Mendalam* | *Memuat logika validasi parameter pengurutan dan filter, pengaturan pagination, serta penanganan respons dan kesalahan ketika memuat data homepage.* | *C16-UT01 s.d. C16-UT09* |
 | *C19* | *UpvoteController* | *Mendalam* | *Memuat logika validasi ID laporan, pemeriksaan hak akses pengguna, pencegahan upvote pada laporan sendiri atau laporan yang sudah diupvote, serta penanganan kegagalan proses upvote.* | *C19-UT01 s.d. C19-UT08* |
 | *C21* | *TutorialController* | *Mendalam* | *Memuat logika pengelolaan alur tutorial, validasi penyelesaian langkah terakhir, penyimpanan status tutorial, dan penanganan kegagalan proses.* | *C21-UT01 s.d. C21-UT06* |
-| *[CXX]* | *[Nama kelas]* | *[Mendalam/Sedang/Tidak perlu]* | *[Alasan penentuan tingkat pengujian]* | *[ID test case atau -]* |
+| *C03* | *Laporan* | *Mendalam* | *Memuat logika transaksi penyimpanan (laporan + lokasi), aturan visibilitas berdasarkan status validasi dan privasi, perhitungan skor populer, pengurutan dan filter, serta penghapusan otomatis laporan kedaluwarsa.* | *C03-UT01 s.d. C03-UT09, BE-LAP-16 (model)* |
+| *C04* | *Lokasi* | *Tidak perlu* | *Entity/value object yang hanya menyimpan latitude, longitude, dan alamat; parsing dan validasi diuji tidak langsung melalui controller (BE-LOC-05 s.d. BE-LOC-08) dan pengujian model Lokasi.* | *Tercakup melalui BE-LAP-01, BE-LAP-06, BE-LOC-05 s.d. BE-LOC-09* |
+| *C10* | *LaporanView* | *Sedang* | *Mengelola tampilan daftar, detail, dan pembuatan laporan; interaksi formulir diuji secara manual.* | *FE-LAP-01 s.d. FE-LAP-06, FE-BUAT-01 s.d. FE-BUAT-12* |
+| *C11* | *LokasiView* | *Sedang* | *Mengelola tampilan peta interaktif, pencarian alamat, filter, dan popup marker; interaksi UI diuji manual.* | *FE-LOC-01 s.d. FE-LOC-09* |
+| *C13* | *TanggapanView* | *Sedang* | *Mengelola tampilan tanggapan admin pada detail laporan; diuji melalui pengujian use case UC09.* | *FE-ADM-01 s.d. FE-ADM-10* |
+| *C17* | *LaporanController* | *Mendalam* | *Memuat validasi kelengkapan data, batas panjang field, validasi foto (magic bytes), pemeriksaan koordinat/geocoding, pemeriksaan dan perubahan status, konfirmasi ulang, serta pembersihan file saat gagal.* | *C17-UT01 s.d. C17-UT30, BE-LAP-01 s.d. BE-LAP-17, BE-ADM-01 s.d. BE-ADM-12* |
+| *C18* | *LokasiController* | *Mendalam* | *Memuat algoritma Haversine, validasi koordinat dan radius, pencarian laporan terdekat, serta integrasi geocoding.* | *C18-UT01 s.d. C18-UT09, BE-LOC-01 s.d. BE-LOC-09* |
+| *C22* | *MapAPI* | *Tidak perlu* | *Kelas konfigurasi (base URL, API key, timeout) tanpa logika; teruji tidak langsung melalui MapAPIService.* | *Tercakup melalui BE-LOC-01 s.d. BE-LOC-04, BE-LAP-07, BE-LAP-08* |
+| *C23* | *MapAPIService* | *Mendalam* | *Memuat request HTTP ke layanan peta eksternal, parsing respons geocoding, penanganan timeout, dan kegagalan koneksi.* | *BE-LOC-01 s.d. BE-LOC-04, BE-LAP-07, BE-LAP-08* |
+| *C24* | *MapAPIView* | *Sedang* | *Komponen PetaLaporan (Leaflet/React-Leaflet) menampilkan peta, marker, dan popup; diuji manual melalui UI.* | *FE-LOC-01 s.d. FE-LOC-09, FE-BUAT-05, FE-BUAT-06* |
+| *C06* | *Tanggapan* | *Sedang* | *Menyimpan dan mengambil tanggapan admin; operasi CRUD diuji melalui TanggapanController.* | *Tercakup melalui C20-UT01 s.d. C20-UT06* |
+| *C20* | *TanggapanController* | *Mendalam* | *Memuat validasi deskripsi tanggapan, penyertaan status, pemeriksaan hak akses admin, serta pembatasan modifikasi tanggapan.* | *C20-UT01 s.d. C20-UT06* |
 
 ## 4.2 Pengujian Unit Kelas
 
@@ -329,7 +340,6 @@ Tabel 4.2.1. Hasil Pengujian Unit Kelas C15
 | *C15-UT06* | *`register()`* | *Negatif* | *Login dengan password yang salah* | *HTTP 401, login ditolak* | *HTTP 401 dengan pesan Wrong Email or Password* | *Pass* |
 | *C15-UT07* | *`getProfile()`* | *Normal* | *Mengambil profil pengguna dengan ID sesi 1* | *HTTP 200 dan data profil dikembalikan* | *HTTP 200 dan data profil sesuai mock* | *Pass* |
 | *C15-UT08* | *`getProfile()`* | *Batas* | *Mengambil profil dengan sesi tanpa idPengguna* | *HTTP 404, pengguna tidak ditemukan* | *HTTP 404 pesan _User not found_| *Pass* |
-| *C15-UT09* | *`getProfile()`* | *Negatif* | *Simulasi kegagalan database saat mengambil profil* | *HTTP 500, pesan kesalahan server* | *HTTP 500 dengan pesan Something went Wrong* | *Pass* |
 | *C15-UT09* | *`getProfile()`* | *Negatif* | *Simulasi kegagalan database saat mengambil profil* | *HTTP 500, pesan kesalahan server* | *HTTP 500 dengan pesan Something went wrong* | *Pass* |
 | *C15-UT10* | *`ubahProfil()`* | *Normal* | *Mengubah nama menjadi "  Nama Baru  " dan nomor telepon valid* | *HTTP 200, nama di-trim dan profil diperbarui* | *HTTP 200, nama dikirim sebagai Nama Baru pada pemanggilan model mock* | *Pass* |
 | *C15-UT11* | *`ubahProfil()`* | *Batas* | *Mengubah nama dengan tepat 100 karakter* | *HTTP 200, nama diterima* | *HTTP 200, pembaruan nama diterima* | *Pass* |
@@ -376,7 +386,7 @@ Tabel 4.2.2. Hasil Pengujian Unit Kelas C01
 | *C01-UT08* | *`getPenggunaByNIK()`* | *Normal* | *Mencari pengguna berdasarkan NIK 1234567890123456* | *Mengembalikan objek Pengguna dengan data yang sesuai* | *Objek Pengguna berhasil dikembalikan dengan ID 1 sesuai hasil mock* | *Pass* |
 | *C01-UT09* | *`hapusAkun()`* | *Negatif* | *Penghapusan gagal karena database tidak menghapus baris apa pun * | *Tidak ada bagian database yang terhapus* | *Tidak ada bagian database yang terhapus* | *Pass* |
 
-### 4.2.3 Kelas Pengguna
+### 4.2.3 Kelas PenggunaViewView
 **ID Kelas:** C08
 **Nama Kelas:** *PenggunaView*  
 **Tingkat:** *Sedang*
@@ -543,6 +553,123 @@ Tabel 4.2.9b. Ringkasan Cakupan Kelas C21
 | Jumlah test case | *6 test case* |
 | Coverage | Line Coverage: 100,00%; Branch Coverage: 90,91%; Function Coverage: 100,00%. |
 
+### 4.2.10 Kelas LaporanController
+
+**ID Kelas:** C17  
+**Nama Kelas:** *LaporanController*  
+**Tingkat:** *Mendalam*
+
+Cara menjalankan unit test:
+Jalankan perintah berikut dari direktori `src/backend/`:
+```bash
+node --test tests/LaporanLokasiController.test.js
+```
+Lokasi file test: `src/backend/tests/LaporanLokasiController.test.js`
+
+Tabel 4.2.10. Hasil Pengujian Unit Kelas C17
+
+| ID Pengujian | Operasi yang Diuji | Jenis Kasus | Prosedur/Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| *C17-UT01* | *`buat()`* | *Normal* | *Membuat laporan dengan field wajib (nama masalah, kategori, urgensi, privasi) dan koordinat valid (`-6.9`, `107.6`)* | *HTTP 201; ID laporan berformat UUID dikembalikan; koordinat dikonversi ke `Number` dan diteruskan ke model* | *HTTP 201, UUID dikembalikan, koordinat terkonversi sesuai* | *Pass* |
+| *C17-UT02* | *`buat()`* | *Negatif* | *Membuat laporan tanpa nama masalah (hanya spasi)* | *HTTP 400; pesan `Data belum lengkap`; penyimpanan tidak dipanggil* | *HTTP 400 dan model `simpan` tidak dipanggil* | *Pass* |
+| *C17-UT03* | *`buat()`* | *Negatif* | *Membuat laporan tanpa lokasi (latitude dan longitude tidak dikirim)* | *HTTP 400; pesan `Data belum lengkap`; penyimpanan tidak dipanggil* | *HTTP 400 dan model tidak dipanggil* | *Pass* |
+| *C17-UT04* | *`buat()`* | *Batas* | *Nama masalah 151 karakter, kategori 51 karakter, deskripsi 2001 karakter* | *HTTP 400 untuk masing-masing batas panjang* | *HTTP 400 untuk ketiga kondisi batas* | *Pass* |
+| *C17-UT05* | *`buat()`* | *Negatif* | *Urgensi `DARURAT` atau privasi `RAHASIA` (bukan nilai yang diizinkan)* | *HTTP 400; laporan ditolak* | *HTTP 400 untuk kedua nilai* | *Pass* |
+| *C17-UT06* | *`buat()`* | *Negatif* | *Koordinat parsial (longitude kosong), bukan angka (`abc`), atau di luar rentang (latitude `91`)* | *HTTP 400; pesan `Koordinat lokasi tidak valid`* | *HTTP 400 untuk ketiga kondisi* | *Pass* |
+| *C17-UT07* | *`buat()`* | *Negatif* | *Lokasi dikirim sebagai alamat, geocoding mengembalikan `null`* | *HTTP 400; pesan `Alamat tidak ditemukan`; penyimpanan tidak dipanggil* | *HTTP 400 dan model tidak dipanggil* | *Pass* |
+| *C17-UT08* | *`buat()`* | *Negatif* | *Lokasi dikirim sebagai alamat, layanan geocoding melempar error* | *HTTP 502; pesan `Layanan peta tidak dapat dihubungi`* | *HTTP 502 dikembalikan* | *Pass* |
+| *C17-UT09* | *`buat()` (middleware)* | *Negatif* | *Foto bertipe `text/plain` diunggah via multipart* | *HTTP 400; pesan `Format foto harus JPG, JPEG, atau PNG`* | *HTTP 400 dikembalikan* | *Pass* |
+| *C17-UT10* | *`buat()` (middleware)* | *Batas* | *Foto bertipe `image/jpeg` berukuran tepat 5 MB + 1 byte* | *HTTP 400; pesan `Ukuran foto maksimal 5 MB`* | *HTTP 400 dikembalikan* | *Pass* |
+| *C17-UT11* | *`buat()`* | *Negatif* | *Foto bernama `.jpg` tetapi isi file bukan JPEG/PNG (magic bytes tidak sesuai)* | *HTTP 400; pesan `Format foto harus JPG, JPEG, atau PNG`; file foto dihapus dari disk* | *HTTP 400 dan file dihapus (ENOENT pada `access`)* | *Pass* |
+| *C17-UT12* | *`buat()`* | *Negatif* | *Model `Laporan.simpan` melempar error database* | *HTTP 500; pesan `Something went wrong`* | *HTTP 500 dikembalikan* | *Pass* |
+| *C17-UT13* | *`buat()`* | *Negatif* | *Model `Laporan.simpan` gagal dan request menyertakan file foto* | *HTTP 500; file foto yatim dihapus dari disk setelah kegagalan* | *HTTP 500 dan file dihapus (ENOENT pada `access`)* | *Pass* |
+| *C17-UT14* | *`daftar()`* | *Normal* | *Daftar laporan dengan filter `kategori=Jalan`, `statusLaporan=DILIHAT`, `page=3`, `limit=10`* | *HTTP 200; filter dan offset `20` diteruskan ke model* | *HTTP 200, offset `20`, filter sesuai* | *Pass* |
+| *C17-UT15* | *`daftar()`* | *Negatif* | *Status laporan `RUSAK` (tidak valid)* | *HTTP 400; model tidak dipanggil* | *HTTP 400 dan model tidak dipanggil* | *Pass* |
+| *C17-UT16* | *`daftar()`* | *Negatif* | *Status validasi `MERAGUKAN` atau urgensi `DARURAT`* | *HTTP 400; model tidak dipanggil* | *HTTP 400 untuk kedua kondisi* | *Pass* |
+| *C17-UT17* | *`detail()`* | *Normal* | *ID laporan UUID yang valid; model mengembalikan data laporan* | *HTTP 200; tanggapan teratas dilampirkan* | *HTTP 200 dan `tanggapanTeratas` terlampir* | *Pass* |
+| *C17-UT18* | *`detail()`* | *Negatif* | *ID laporan bukan UUID* | *HTTP 404; model tidak dipanggil* | *HTTP 404 dan model tidak dipanggil* | *Pass* |
+| *C17-UT19* | *`detail()`* | *Negatif* | *Model mengembalikan `null` (laporan tidak ditemukan atau tidak boleh dilihat)* | *HTTP 404; pesan `Laporan tidak ditemukan`* | *HTTP 404 dikembalikan* | *Pass* |
+| *C17-UT20* | *`periksa()`* | *Normal* | *Admin mengirim `valid: true` dengan catatan* | *HTTP 200; argumen `[idLaporan, true, catatan_trimmed]` diteruskan ke model* | *HTTP 200 dan argumen sesuai* | *Pass* |
+| *C17-UT21* | *`periksa()`* | *Normal* | *Admin mengirim `valid: false` dengan catatan* | *HTTP 200; `false` dan catatan diteruskan ke model* | *HTTP 200 dan argumen sesuai* | *Pass* |
+| *C17-UT22* | *`periksa()`* | *Negatif* | *Field `valid` bertipe string `"true"` (bukan boolean)* | *HTTP 400; model tidak dipanggil* | *HTTP 400 dan model tidak dipanggil* | *Pass* |
+| *C17-UT23* | *`periksa()`* | *Batas* | *Catatan pemeriksaan 1001 karakter* | *HTTP 400; model tidak dipanggil* | *HTTP 400 dan model tidak dipanggil* | *Pass* |
+| *C17-UT24* | *`periksa()`* | *Negatif* | *Laporan tidak ditemukan (model mengembalikan `false`)* | *HTTP 404* | *HTTP 404 dikembalikan* | *Pass* |
+| *C17-UT25* | *`updateStatus()`* | *Normal* | *Admin mengirim `statusLaporan: " selesai "` (huruf kecil, spasi)* | *HTTP 200; status dinormalisasi menjadi `SELESAI` dan diteruskan ke model* | *HTTP 200 dan model menerima `SELESAI`* | *Pass* |
+| *C17-UT26* | *`updateStatus()`* | *Negatif* | *Status penanganan `RUSAK` (tidak valid)* | *HTTP 400; model tidak dipanggil* | *HTTP 400 dan model tidak dipanggil* | *Pass* |
+| *C17-UT27* | *`updateStatus()`* | *Negatif* | *Laporan tidak ditemukan (model mengembalikan `false`)* | *HTTP 404* | *HTTP 404 dikembalikan* | *Pass* |
+| *C17-UT28* | *`konfirmasiUlang()`* | *Normal* | *Pemilik mengirim konfirmasi ulang; laporan berstatus `TIDAK_VALID` dan belum kedaluwarsa* | *HTTP 200* | *HTTP 200 dikembalikan* | *Pass* |
+| *C17-UT29* | *`konfirmasiUlang()`* | *Negatif* | *Pengguna bukan pemilik atau laporan bukan `TIDAK_VALID`* | *HTTP 404 (bukan pemilik); HTTP 409 (status bukan `TIDAK_VALID`)* | *HTTP 404 dan HTTP 409 masing-masing sesuai* | *Pass* |
+| *C17-UT30* | *`konfirmasiUlang()`* | *Negatif* | *Batas waktu konfirmasi ulang telah lewat* | *HTTP 409; `kirimKonfirmasiUlang` tidak dipanggil* | *HTTP 409 dan model tidak dipanggil* | *Pass* |
+
+Tabel 4.2.10b. Ringkasan Cakupan Kelas C17
+
+| Informasi | Keterangan |
+| :--- | :--- |
+| Daftar operasi public pada DPPL | *`buat()`, `daftar()`, `ringkasan()`, `saya()`, `ditangani()`, `detail()`, `foto()`, `updateStatus()`, `periksa()`, `konfirmasiUlang()`, `hapus()`* |
+| Operasi yang diuji | *`buat()`, `daftar()`, `detail()`, `periksa()`, `updateStatus()`, `konfirmasiUlang()`* |
+| ID Algoritma yang tercakup | *Algo-039, Algo-040, Algo-041* |
+| Jumlah test case | *30 test case (tercakup dalam 48 test backend laporan/lokasi)* |
+| Coverage | *Belum diukur terpisah; tercakup bersama suite backend* |
+
+### 4.2.11 Kelas LokasiController
+
+**ID Kelas:** C18  
+**Nama Kelas:** *LokasiController*  
+**Tingkat:** *Mendalam*
+
+Tabel 4.2.11. Hasil Pengujian Unit Kelas C18
+
+| ID Pengujian | Operasi yang Diuji | Jenis Kasus | Prosedur/Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| *C18-UT01* | *`ambilLokasiLaporan()`* | *Normal* | *Geocode alamat `Bandung` yang ditemukan* | *HTTP 200; respons berisi latitude, longitude, dan alamat hasil geocoding* | *HTTP 200 dan hasil geocode dikembalikan* | *Pass* |
+| *C18-UT02* | *`ambilLokasiLaporan()`* | *Negatif* | *Alamat berisi spasi saja* | *HTTP 400; pesan `Alamat wajib diisi`; layanan peta tidak dipanggil* | *HTTP 400 dan layanan peta tidak dipanggil* | *Pass* |
+| *C18-UT03* | *`ambilLokasiLaporan()`* | *Negatif* | *Alamat tidak ditemukan (geocode mengembalikan `null`)* | *HTTP 404; pesan `Alamat tidak ditemukan`* | *HTTP 404 dikembalikan* | *Pass* |
+| *C18-UT04* | *`ambilLokasiLaporan()`* | *Negatif* | *Layanan geocoding gagal (melempar error)* | *HTTP 502; pesan `Layanan peta tidak dapat dihubungi`* | *HTTP 502 dikembalikan* | *Pass* |
+| *C18-UT05* | *`cariLaporanTerdekat()`* | *Normal* | *Koordinat valid `(0, 0)` tanpa parameter radius* | *HTTP 200; radius default 5 km; hasil hanya dalam radius dan diurutkan dari jarak terdekat* | *HTTP 200, `radiusKm: 5`, dan pengurutan sesuai* | *Pass* |
+| *C18-UT06* | *`cariLaporanTerdekat()`* | *Negatif* | *Tanpa koordinat pengguna (query kosong)* | *HTTP 400; pesan `Lokasi pengguna belum tersedia`* | *HTTP 400 dikembalikan* | *Pass* |
+| *C18-UT07* | *`cariLaporanTerdekat()`* | *Negatif* | *Latitude `abc` atau `91` (bukan angka atau di luar rentang)* | *HTTP 400 untuk kedua kondisi* | *HTTP 400 untuk kedua kondisi* | *Pass* |
+| *C18-UT08* | *`cariLaporanTerdekat()`* | *Batas* | *Radius `0`, `-1`, `abc`, dan `51` (melebihi batas 50 km)* | *HTTP 400 untuk keempat kondisi* | *HTTP 400 untuk semua radius tidak valid* | *Pass* |
+| *C18-UT09* | *`cariLaporanTerdekat()`* | *Normal* | *Radius valid dan tidak ada laporan di area* | *HTTP 200; daftar `laporan` kosong; `radiusKm: 5`* | *HTTP 200, daftar kosong, dan radius default 5 km* | *Pass* |
+
+Tabel 4.2.11b. Ringkasan Cakupan Kelas C18
+
+| Informasi | Keterangan |
+| :--- | :--- |
+| Daftar operasi public pada DPPL | *`ambilLokasiLaporan()`, `cariLaporanTerdekat()`* |
+| Operasi yang diuji | *`ambilLokasiLaporan()`, `cariLaporanTerdekat()`* |
+| ID Algoritma yang tercakup | *Algo-039 (geocoding), Algo-040 (Haversine), Algo-041 (pencarian terdekat)* |
+| Jumlah test case | *9 test case* |
+| Coverage | *Belum diukur terpisah; tercakup bersama suite backend* |
+
+### 4.2.12 Kelas Laporan (Model)
+
+**ID Kelas:** C03  
+**Nama Kelas:** *Laporan*  
+**Tingkat:** *Mendalam*
+
+Tabel 4.2.12. Hasil Pengujian Unit Kelas C03
+
+| ID Pengujian | Operasi yang Diuji | Jenis Kasus | Prosedur/Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| *C03-UT01* | *`simpan()`* | *Normal* | *Menyimpan laporan dan lokasi dalam satu transaksi (mock client); client dipanggil dengan BEGIN, INSERT laporan, INSERT lokasi, COMMIT* | *Transaksi berjalan sesuai urutan; client dilepaskan* | *Query urutan sesuai; client dilepaskan* | *Pass* |
+| *C03-UT02* | *`simpan()`* | *Negatif* | *Penyimpanan lokasi gagal (INSERT lokasi melempar error)* | *Transaksi dibatalkan (ROLLBACK); client dilepaskan; error diteruskan* | *ROLLBACK dijalankan; client dilepaskan; error diteruskan* | *Pass* |
+| *C03-UT03* | *`getDetailLaporan()`* | *Normal* | *Memanggil dengan UUID valid dan data laporan tersedia; viewer adalah pemilik* | *Objek laporan dikembalikan dengan format lengkap termasuk lokasi* | *Objek laporan dikembalikan sesuai; lokasi terlampir* | *Pass* |
+| *C03-UT04* | *`getDetailLaporan()`* | *Negatif* | *Viewer bukan pemilik melihat laporan `TIDAK_VALID`* | *Mengembalikan `null` (laporan disembunyikan)* | *`null` dikembalikan* | *Pass* |
+| *C03-UT05* | *`#format()`* | *Normal* | *Laporan anonim dilihat bukan pemilik dan bukan admin* | *Field `pelapor` bernilai `null`* | *`pelapor` bernilai `null`* | *Pass* |
+| *C03-UT06* | *`simpanHasilPemeriksaan()`* | *Normal* | *Menyimpan pemeriksaan `valid: true`* | *Status menjadi `VALID`; `rowCount: 1`* | *Status `VALID` dan query sesuai* | *Pass* |
+| *C03-UT07* | *`simpanHasilPemeriksaan()`* | *Normal* | *Menyimpan pemeriksaan `valid: false`* | *Status `TIDAK_VALID`; batas waktu 14 hari dipasang via `make_interval(days => $3::int)`* | *Parameter `[0]='TIDAK_VALID'`, `[2]=14`; query berisi `make_interval`* | *Pass* |
+| *C03-UT08* | *`kirimKonfirmasiUlang()`* | *Normal* | *Konfirmasi ulang pada laporan `TIDAK_VALID` yang belum kedaluwarsa* | *Status diubah ke `BELUM_DIPERIKSA`; query berisi `batas_waktu > NOW()`* | *Query sesuai; rowCount 1* | *Pass* |
+| *C03-UT09* | *`cekBatasWaktu()`* | *Normal* | *Memanggil pada laporan dengan batas waktu yang sudah lewat* | *Mengembalikan `true`* | *Tercakup melalui BE-ADM-12* | *Pass* |
+
+Tabel 4.2.12b. Ringkasan Cakupan Kelas C03
+
+| Informasi | Keterangan |
+| :--- | :--- |
+| Daftar operasi public pada DPPL | *`simpan()`, `getDetailLaporan()`, `getDaftarLaporan()`, `getRingkasan()`, `getPemilik()`, `updateStatusLaporan()`, `simpanHasilPemeriksaan()`, `kirimKonfirmasiUlang()`, `cekBatasWaktu()`, `hapusLaporan()`, `hapusSemuaKadaluarsa()`* |
+| Operasi yang diuji | *`simpan()`, `getDetailLaporan()`, `simpanHasilPemeriksaan()`, `kirimKonfirmasiUlang()`, `getDaftarLaporan()` (tidak langsung melalui controller)* |
+| Jumlah test case | *9 test case (model) + tercakup melalui 30 test case controller* |
+| Coverage | *Belum diukur terpisah; tercakup bersama suite backend* |
+
 <br>
 
 ## 4.3 Pengujian Integrasi
@@ -558,16 +685,12 @@ Tabel 4.3.1. Daftar Antarmuka Antarkomponen
 | *I-03* | *authService* | *Express API Auth* | *Frontend - Backend (HTTP)* | *INT-TC07* |
 | *I-04* | *profileService* | *Express API Profile* | *Frontend - Backend (HTTP)* | *INT-TC08* |
 | *I-05* | *Express Session* | *PostgreSQL Session Store* | *Aplikasi - Basis Data* | *INT-TC02, INT-TC09* |
-| *I-06* | *homepageService* | *Express API Homepage* | *Frontend - Backend (HTTP)* | *INT-TC01* |
-| *I-07* | *HomepageController* | *Homepage (Model)* | *Controller - Model* | *INT-TC01* |
-| *I-08* | *Homepage (Model)* | *PostgreSQL* | *Aplikasi - Basis Data* | *INT-TC01* |
-| *I-09* | *upvoteService* | *Express API Upvote* | *Frontend - Backend (HTTP)* | *INT-TC02* |
-| *I-10* | *UpvoteController* | *Upvote (Model)* | *Controller - Model* | *INT-TC02* |
-| *I-11* | *Upvote (Model)* | *PostgreSQL* | *Aplikasi - Basis Data* | *INT-TC02* |
-| *I-12* | *tutorialService* | *Express API Tutorial* | *Frontend - Backend (HTTP)* | *INT-TC03* |
-| *I-13* | *TutorialController* | *Tutorial (Model)* | *Controller - Model* | *INT-TC03* |
-| *I-14* | *Tutorial (Model)* | *PostgreSQL* | *Aplikasi - Basis Data* | *INT-TC03* |
-| *[I-XX]* | *[Komponen asal]* | *[Komponen tujuan]* | *[Jenis batas]* | *[ID test case]* |
+| *I-06* | *LaporanController* | *Laporan (Model)* | *Controller - Model* | *INT-TC10, INT-TC11* |
+| *I-07* | *LaporanController* | *Lokasi (Model) + PostgreSQL* | *Controller - Model - Basis Data* | *INT-TC10* |
+| *I-08* | *LokasiController* | *Laporan (Model) + MapAPIService* | *Controller - Model/Layanan* | *INT-TC12, INT-TC13* |
+| *I-09* | *laporanService (FE)* | *Express API Laporan* | *Frontend - Backend (HTTP)* | *INT-TC14, INT-TC15* |
+| *I-10* | *lokasiService (FE)* | *Express API Lokasi* | *Frontend - Backend (HTTP)* | *INT-TC16, INT-TC17* |
+| *I-11* | *MapAPIService* | *Layanan Peta Eksternal (Nominatim)* | *Aplikasi - Layanan Eksternal* | *INT-TC18, INT-TC19* |
 
 
 Tabel 4.3.2. Hasil Pengujian Integrasi
@@ -583,10 +706,16 @@ Tabel 4.3.2. Hasil Pengujian Integrasi
 | *INT-TC07* | *I-03* | *Normal: Login pengguna melalui frontend* | *Masukkan email dan password akun dummy melalui halaman login PenggunaView, kemudian periksa request POST /api/auth/login menggunakan Chrome DevTools pada tab Network.* | *Frontend berhasil mengirim request login ke backend, backend mengembalikan HTTP 200, sesi autentikasi terbentuk, dan pengguna berhasil masuk ke aplikasi.* | *Request POST /api/auth/login berhasil diproses dengan HTTP 200. Pengguna berhasil login dan diarahkan ke halaman aplikasi dalam keadaan terautentikasi.* | *Pass* |
 | *INT-TC08* | *I-03* | *Normal: Registrasi pengguna melalui frontend* | *Isi formulir registrasi PenggunaView menggunakan nama, NIK, email, nomor telepon, dan password dummy yang valid. Kirim formulir dan periksa request POST /api/auth/register melalui Chrome DevTools.* | *Frontend berhasil mengirim data registrasi ke backend, backend mengembalikan HTTP 201, dan akun baru berhasil dibuat.* | *Request POST /api/auth/register berhasil diproses dengan HTTP 201. Registrasi berhasil dan akun dummy dapat digunakan untuk melakukan login.* | *Pass* |
 | *INT-TC09* | *I-04* | *Normal: Memperbarui profil pengguna melalui frontend* | *Login menggunakan akun dummy, buka halaman profil, ubah nama dan nomor telepon, kemudian simpan perubahan. Periksa request PUT /api/profile melalui Chrome DevTools dan muat ulang halaman.* | *Frontend berhasil mengirim perubahan profil ke backend, backend mengembalikan HTTP 200, dan data profil terbaru tetap tersimpan setelah halaman dimuat ulang.* | *Request PUT /api/profile berhasil diproses dengan HTTP 200. Nama dan nomor telepon berhasil diperbarui pada tampilan profil serta tetap sesuai setelah halaman dimuat ulang.* | *Pass* |
-| *INT-TC10* | *I-06, I-07, I-08* | *Normal: Memuat data Homepage dari backend* | *1. Jalankan backend dan frontend RAWAT.<br>2. Login menggunakan akun pengguna.<br>3. Buka halaman Homepage.<br>4. Periksa request ke endpoint `GET /api/homepage` melalui tab Network pada browser.<br>5. Periksa respons yang diterima frontend.* | *Frontend berhasil meminta data Homepage kepada backend. Backend mengembalikan HTTP 200 beserta data daftar laporan dan informasi yang diperlukan untuk menampilkan Homepage.* | *Request ke endpoint Homepage berhasil diproses dengan HTTP 200. Frontend menerima respons berisi data laporan dan berhasil menampilkannya pada halaman Homepage. Empat request yang diperiksa berhasil memperoleh respons HTTP 200.* | *Pass* |
-| *INT-TC11* | *I-09, I-10, I-11* | *Normal: Memberikan Upvote dan mempertahankan perubahan setelah halaman dimuat ulang* | *1. Login sebagai pengguna.<br>2. Buka Homepage dan pilih laporan milik pengguna lain yang belum di-upvote.<br>3. Tekan tombol Upvote.<br>4. Periksa respons endpoint `POST /api/upvote/:idLaporan` dan jumlah upvote pada tampilan.<br>5. Muat ulang halaman dan periksa kembali jumlah upvote.* | *Backend menerima permintaan Upvote, menyimpan upvote, dan mengembalikan status berhasil beserta jumlah upvote terbaru. Jumlah upvote tetap sesuai setelah halaman dimuat ulang.* | *Backend mengembalikan respons `{"message":"Upvote berhasil.","sudahUpvote":true,"jumlahUpvote":2}`. Jumlah upvote berubah dari 1 menjadi 2 dan tetap bernilai 2 setelah halaman dimuat ulang.* | *Pass* |
-| *INT-TC12* | *I-12, I-13, I-14* | *Normal: Menyimpan status Tutorial setelah diselesaikan* | *1. Login sebagai pengguna yang belum menyelesaikan Tutorial.<br>2. Buka Homepage dan mulai Tutorial.<br>3. Ikuti langkah-langkah Tutorial hingga langkah terakhir.<br>4. Tekan tombol Selesai.<br>5. Muat ulang halaman dan periksa apakah Tutorial ditampilkan kembali.* | *Frontend dapat mengambil data Tutorial dari backend. Setelah pengguna menyelesaikan Tutorial, backend menyimpan status penyelesaian sehingga Tutorial tidak ditampilkan kembali ketika halaman dimuat ulang.* | *Tutorial berhasil dimulai dan diselesaikan. Setelah halaman dimuat ulang, Tutorial tidak ditampilkan kembali sehingga status penyelesaian tetap dikenali oleh sistem.* | *Pass* |
-| *...* | *...* | *...* | *...* | *...* | *...* | *...* |
+| *INT-TC10* | *I-06, I-07* | *Normal: Pembuatan laporan menyimpan data dan lokasi dalam satu transaksi* | *Buat laporan dengan field wajib dan koordinat valid melalui mock. Periksa bahwa model `Laporan.simpan` menerima data yang benar, `Lokasi.simpan` dipanggil dalam transaksi yang sama, dan ID laporan berformat UUID dikembalikan.* | *HTTP 201; koordinat terkonversi dengan benar; ID laporan berformat UUID.* | *HTTP 201 diterima; `dataTersimpan.lokasi.getKoordinat()` mengembalikan `{latitude: -6.9, longitude: 107.6}`; ID laporan berformat UUID. Transaksi mock mengikuti urutan BEGIN, INSERT laporan, INSERT lokasi, COMMIT.* | *Pass* |
+| *INT-TC11* | *I-06* | *Normal: Transaksi dibatalkan jika penyimpanan lokasi gagal* | *Mock `pool.connect` mengembalikan client yang melempar error pada `INSERT INTO lokasi`. Panggil `Laporan.simpan`.* | *Error diteruskan; query urutan: BEGIN, INSERT laporan, INSERT lokasi, ROLLBACK; client dilepaskan.* | *Error `database down` diteruskan; urutan query sesuai; `dilepas === true`.* | *Pass* |
+| *INT-TC12* | *I-08* | *Normal: Pencarian laporan terdekat menyaring dan mengurutkan berdasarkan jarak* | *Mock `Laporan.getDaftarLaporan` mengembalikan 3 kandidat pada jarak berbeda. Panggil `LokasiController.cariLaporanTerdekat` dengan koordinat `(0, 0)`.* | *HTTP 200; kandidat di luar radius 5 km dibuang; hasil diurutkan dari jarak terdekat.* | *HTTP 200; `laporan` berisi `["dekat-1", "dekat-2"]` terurut; `radiusKm: 5`.* | *Pass* |
+| *INT-TC13* | *I-08* | *Normal: Geocode memanggil layanan peta dan mengembalikan hasil* | *Mock `MapAPIService.geocode` mengembalikan hasil geocode. Panggil `LokasiController.ambilLokasiLaporan` dengan alamat `Bandung`.* | *HTTP 200; respons berisi latitude, longitude, dan alamat.* | *HTTP 200 dan respons sesuai mock.* | *Pass* |
+| *INT-TC14* | *I-09* | *Normal: laporanService.daftarLaporan mengirim query dan credentials dengan benar* | *Mock `fetch` untuk menangkap URL dan opsi. Panggil `daftarLaporan({ kategori: "Ruang Publik", page: 2, limit: 12 })`.* | *URL pathname `/api/laporan`; query sesuai; `credentials: "include"`.* | *Pathname, query parameters, dan credentials sesuai. Hasil JSON dikembalikan.* | *Pass* |
+| *INT-TC15* | *I-09* | *Normal: laporanService.buatLaporan mengirim FormData tanpa Content-Type manual* | *Mock `fetch`. Panggil `buatLaporan(formData)`.* | *URL `/api/laporan`; method POST; headers undefined (browser mengisi boundary sendiri).* | *URL, method, body, dan headers sesuai.* | *Pass* |
+| *INT-TC16* | *I-10* | *Normal: lokasiService.geocode meng-encode alamat pada URL* | *Mock `fetch`. Panggil `geocode("Jalan Asia Afrika, Bandung")`.* | *URL pathname `/api/lokasi/geocode`; parameter `alamat` ter-encode benar.* | *Pathname dan parameter sesuai.* | *Pass* |
+| *INT-TC17* | *I-10* | *Normal: lokasiService.laporanTerdekat mengirim koordinat dan radius* | *Mock `fetch`. Panggil `laporanTerdekat(-6.9, 107.6, 10)`.* | *URL pathname `/api/lokasi/terdekat`; query `latitude=-6.9`, `longitude=107.6`, `radius=10`.* | *Semua parameter terkirim sesuai.* | *Pass* |
+| *INT-TC18* | *I-11* | *Normal: MapAPIService mengirim request geocoding ke layanan peta* | *Unit test mengganti `MapAPIService.geocode` dengan mock yang mengembalikan koordinat. Controller memanggil dan mengembalikan HTTP 200.* | *Layanan dipanggil; hasil geocode diteruskan.* | *Hasil geocode dikembalikan oleh controller.* | *Pass* |
+| *INT-TC19* | *I-11* | *Negatif: Layanan peta tidak dapat dihubungi* | *Mock `MapAPIService.geocode` melempar error. Controller mengembalikan HTTP 502.* | *HTTP 502; pesan kegagalan layanan.* | *HTTP 502 dikembalikan.* | *Pass* |
 
 <br>
 
@@ -622,7 +751,26 @@ Tabel 4.4.2. Hasil Pengujian Use Case UC02
 | *UC02-TC03* | *KF01, KF02* | *Alternatif 2: Email belum terdaftar* | *1. Buka halaman login.<br>2. Masukkan email yang tidak terdaftar dan password valid.<br>3. Klik Masuk.<br>4. Periksa respons autentikasi.* | *Email: tidakterdaftar@example.com<br>Password: Password1!* | *Login ditolak dan sistem menampilkan pesan kesalahan.* | *Login ditolak dan muncul pesan “Wrong Email or Password* | *Pass* |
 | *UC02-TC04* | *KF01, KF02* | *Alternatif 3: Password tidak sesuai* | *1. Buka halaman login.<br>2. Masukkan email terdaftar dan password yang salah.<br>3. Klik Masuk.<br>4. Periksa pesan kesalahan.* | *Email: wawaw@gmail.com<br>Password: InstagramdanWA123!* | *Login ditolak dan pesan kesalahan kredensial ditampilkan.* | *Login ditolak dan muncul pesan “Wrong Email or Password* | *Pass* |
 
-### 4.4.4 Use Case Melihat Detail Laporan (Homepage)
+### 4.4.3 Use Case Mengakses Peta Interaktif
+
+**ID Use Case:** *UC03*  
+**Nama Use Case:** *Mengakses Peta Interaktif*
+
+Tabel 4.4.3. Hasil Pengujian Use Case UC03
+
+| ID Pengujian | ID KF | Skenario | Prosedur Pengujian | Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| *UC03-TC01* | *KF03, KF04* | *Normal: Peta dan penanda laporan tampil* | *1. Login sebagai warga.<br>2. Buka halaman Peta Interaktif.<br>3. Periksa tampilan peta, penanda laporan, legenda status, dan daftar laporan.* | *Halaman peta interaktif* | *Peta Leaflet tampil dengan tile OpenStreetMap; penanda laporan (marker) tampil sesuai kategori/status; legenda status ditampilkan; daftar laporan di samping peta tampil.* | *Sesuai; peta, marker, legenda, dan daftar laporan tampil.* | *Pass* |
+| *UC03-TC02* | *KF03, KF04* | *Normal: Izin lokasi diberikan, peta berpusat di lokasi pengguna* | *1. Buka halaman peta.<br>2. Browser meminta izin lokasi; berikan izin.<br>3. Periksa pusat peta dan daftar laporan.* | *Izin lokasi: diberikan* | *Peta berpusat di lokasi pengguna; daftar menampilkan laporan dalam radius awal 5 km.* | *Sesuai; peta berpusat dan daftar hanya menampilkan laporan terdekat.* | *Pass* |
+| *UC03-TC03* | *KF03, KF04* | *Alternatif 1: Izin lokasi ditolak* | *1. Buka halaman peta.<br>2. Tolak izin lokasi.<br>3. Periksa banner dan perilaku halaman.* | *Izin lokasi: ditolak* | *Banner menjelaskan lokasi tidak tersedia; halaman tetap menampilkan semua laporan dan pencarian manual tersedia.* | *Sesuai; banner tampil dan pencarian manual berfungsi.* | *Pass* |
+| *UC03-TC04* | *KF03, KF04* | *Alternatif 1 lanjutan: Coba lagi setelah ditolak* | *1. Setelah izin ditolak, tekan tombol coba lagi.<br>2. Berikan izin lokasi.* | *Izin lokasi: diberikan setelah ditolak* | *Browser meminta izin lokasi kembali; peta dan daftar beralih ke area pengguna.* | *Sesuai.* | *Pass* |
+| *UC03-TC05* | *KF03, KF04* | *Normal: Mencari alamat yang ditemukan* | *1. Masukkan alamat di kolom pencarian peta.<br>2. Tekan Enter/cari.* | *Alamat: Jalan Asia Afrika, Bandung* | *Peta berpusat ke hasil pencarian; daftar laporan di sekitar lokasi tampil.* | *Sesuai.* | *Pass* |
+| *UC03-TC06* | *KF03, KF04* | *Alternatif 2: Alamat tidak ditemukan* | *1. Masukkan alamat yang tidak dikenal di kolom pencarian.<br>2. Tekan Enter.* | *Alamat: xyznotfound12345* | *Pesan `Lokasi tidak ditemukan.` tampil; pusat peta tidak berubah.* | *Sesuai.* | *Pass* |
+| *UC03-TC07* | *KF03, KF04* | *Normal: Memilih marker pada peta* | *1. Klik marker laporan pada peta.<br>2. Periksa popup.* | *Marker laporan* | *Popup menampilkan nama, kategori, status, dan tautan ke detail laporan.* | *Sesuai.* | *Pass* |
+| *UC03-TC08* | *KF03, KF04* | *Normal: Tidak ada laporan di area* | *1. Pindah ke area tanpa laporan atau gunakan filter yang tidak cocok.<br>2. Periksa tampilan.* | *Filter: area kosong* | *Pesan keadaan kosong yang sesuai ditampilkan.* | *Sesuai.* | *Pass* |
+| *UC03-TC09* | *KF03, KF04* | *Alternatif 3: API peta gagal dimuat* | *1. Simulasikan kegagalan layanan geocoding (backend mengembalikan HTTP 502).<br>2. Periksa pesan error dan kemampuan muat ulang.* | *Layanan peta tidak tersedia* | *Pesan kegagalan layanan peta ditampilkan; pengguna diarahkan memilih titik langsung di peta.* | *Backend mengembalikan HTTP 502 dengan pesan sesuai. Test backend BE-LOC-04 lulus.* | *Pass* |
+
+### 4.4.4 Use Case Melihat Detail Laporan
 
 **ID Use Case:** *UC04*  
 **Nama Use Case:** *Melihat Detail Laporan*
@@ -631,43 +779,81 @@ Tabel 4.4.4. Hasil Pengujian Use Case UC04
 
 | ID Pengujian | ID KF | Skenario | Prosedur Pengujian | Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| *UC04-TC01* | *KF05, KF06* | *Normal: Menampilkan halaman utama dan daftar laporan* | *1. Login sebagai pengguna.<br>2. Buka halaman utama.<br>3. Periksa daftar laporan dan informasi ringkas yang ditampilkan.* | *Akun pengguna dan data laporan yang tersedia.* | *Sistem menampilkan halaman utama beserta daftar laporan yang tersedia.* | *Halaman Homepage berhasil ditampilkan beserta daftar laporan.* | *Pass* |
-| *UC04-TC02* | *KF05, KF06* | *Normal: Mengurutkan daftar laporan* | *1. Buka halaman utama.<br>2. Pilih opsi pengurutan laporan yang tersedia.<br>3. Periksa perubahan urutan daftar laporan.* | *Daftar laporan dengan data waktu, urgensi, dan jumlah upvote.* | *Sistem menampilkan daftar laporan sesuai opsi pengurutan yang dipilih.* | *Pengurutan daftar laporan pada Homepage berhasil diuji.* | *Pass* |
-| *UC04-TC03* | *KF05, KF06* | *Normal: Memfilter daftar laporan* | *1. Buka halaman utama.<br>2. Pilih salah satu kategori filter.<br>3. Periksa daftar laporan yang ditampilkan.* | *Kategori filter yang tersedia dan data laporan.* | *Sistem hanya menampilkan laporan yang sesuai dengan kategori filter yang dipilih.* | *Filter daftar laporan pada Homepage berhasil diuji.* | *Pass* |
-| *UC04-TC04* | *KF05, KF06* | *Alternatif: Tidak terdapat laporan pada kategori yang dipilih* | *1. Buka halaman utama.<br>2. Pilih kategori filter yang tidak memiliki laporan.<br>3. Periksa tampilan halaman.* | *Kategori filter tanpa laporan.* | *Sistem menampilkan keadaan kosong atau informasi bahwa tidak terdapat laporan pada kategori tersebut.* | *Tampilan ketika kategori yang dipilih tidak memiliki laporan berhasil diuji.* | *Pass* |
-| *UC04-TC05* | *KF05, KF06* | *Normal: Membuka detail laporan dari halaman utama* | *1. Buka halaman utama.<br>2. Pilih salah satu laporan.<br>3. Periksa halaman atau informasi detail laporan yang ditampilkan.* | *Salah satu laporan pada daftar Homepage.* | *Sistem menampilkan detail dari laporan yang dipilih.* | *Pengujian detail laporan merupakan bagian LaporanView/LaporanController dan tidak dicantumkan sebagai hasil pengujian bagian Homepage.* | *Di luar cakupan bagian* |
+| *UC04-TC01* | *KF05, KF06* | *Normal: Detail laporan tersedia* | *1. Buka daftar laporan.<br>2. Pilih salah satu laporan.<br>3. Periksa halaman detail.* | *Laporan dengan data lengkap* | *Halaman detail menampilkan kategori, status, urgensi, lokasi, deskripsi, foto, nama pelapor, dan tanggapan admin (jika ada).* | *Sesuai; semua informasi detail tampil.* | *Pass* |
+| *UC04-TC02* | *KF05, KF06* | *Normal: Foto dan deskripsi opsional tidak ada* | *1. Buka detail laporan yang tidak memiliki foto dan deskripsi.* | *Laporan tanpa foto dan deskripsi* | *Detail tetap tampil; deskripsi menggunakan teks pengganti; area foto tidak ditampilkan.* | *Sesuai; teks pengganti tampil dan foto tidak ditampilkan.* | *Pass* |
+| *UC04-TC03* | *KF05, KF06* | *Normal: Navigasi ke peta dari detail* | *1. Buka detail laporan.<br>2. Tekan tombol `Lihat di peta`.* | *Tombol Lihat di peta* | *Halaman peta terbuka dengan koordinat laporan sebagai pusat dan laporan tersebut difokuskan.* | *Sesuai.* | *Pass* |
+| *UC04-TC04* | *KF05, KF06* | *Alternatif 1: Detail gagal dimuat* | *1. Simulasikan kegagalan API detail laporan (ID tidak valid atau laporan tidak ditemukan).<br>2. Periksa respons.* | *ID: bukan-uuid atau ID tidak ada* | *HTTP 404; pesan `Laporan tidak ditemukan`.* | *Backend mengembalikan HTTP 404. Test BE-LAP-15 lulus.* | *Pass* |
 
-//ini baru pengetesan yang berkaitan dengan homepage
+### 4.4.5 Use Case Mengunggah Laporan Baru
 
-### 4.4.5 Use Case Mendapat Tutorial Navigasi Antar Halaman
+**ID Use Case:** *UC07*  
+**Nama Use Case:** *Mengunggah Laporan Baru*
 
-**ID Use Case:** *UC05*  
-**Nama Use Case:** *Mendapat Tutorial Navigasi Antar Halaman*
-
-Tabel 4.4.5. Hasil Pengujian Use Case UC05
+Tabel 4.4.5. Hasil Pengujian Use Case UC07
 
 | ID Pengujian | ID KF | Skenario | Prosedur Pengujian | Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| *UC05-TC01* | *KF07* | *Normal: Pengguna mengikuti tutorial sampai selesai* | *1. Masuk sebagai pengguna yang belum menyelesaikan tutorial.<br>2. Pilih Mulai Tutorial.<br>3. Tekan Next untuk berpindah ke langkah berikutnya.<br>4. Lanjutkan hingga langkah terakhir dan pilih Selesai.* | *Akun pengguna dengan status tutorial belum selesai.* | *Sistem menampilkan tutorial secara berurutan, memungkinkan pengguna berpindah langkah, dan menutup tutorial setelah pengguna memilih Selesai.* | *Tutorial berhasil dimulai, navigasi antar langkah berhasil digunakan, dan tutorial tertutup setelah pengguna menyelesaikannya.* | *Pass* |
-| *UC05-TC02* | *KF07* | *Alternatif 1: Pengguna melewati tutorial* | *1. Masuk sebagai pengguna yang belum menyelesaikan tutorial.<br>2. Ketika onboarding tutorial ditampilkan, pilih Skip Tutorial.<br>3. Periksa apakah tampilan tutorial ditutup.* | *Akun pengguna dengan status tutorial belum selesai; aksi Skip Tutorial.* | *Sistem menutup onboarding tutorial setelah pengguna memilih Skip Tutorial.* | *Tutorial berhasil dilewati pada pengujian frontend.* | *Pass* |
-| *UC05-TC03* | *KF07* | *Alternatif: Tutorial tidak ditampilkan kembali setelah selesai atau dilewati* | *1. Selesaikan atau lewati tutorial.<br>2. Muat ulang halaman atau masuk kembali ke halaman utama.<br>3. Periksa apakah tutorial muncul kembali.* | *Akun pengguna yang telah menyelesaikan atau melewati tutorial.* | *Sistem tidak menampilkan onboarding tutorial kembali setelah status tutorial tersimpan.* | *Tutorial tidak muncul kembali setelah halaman di-refresh pada pengujian frontend.* | *Pass* |
+| *UC07-TC01* | *KF12, KF13, KF15* | *Normal: Unggah laporan berhasil dengan lokasi* | *1. Login sebagai warga.<br>2. Buka halaman Buat Laporan.<br>3. Isi form dengan nama masalah, kategori, urgensi, privasi, dan pilih titik pada peta.<br>4. Tekan Kirim Laporan dan konfirmasi.* | *Nama masalah: Jalan berlubang<br>Kategori: Jalan<br>Urgensi: TINGGI<br>Lokasi: pilih di peta* | *Dialog konfirmasi tampil; setelah konfirmasi, laporan tersimpan dan pengguna diarahkan ke detail laporan baru.* | *Sesuai; dialog konfirmasi tampil, HTTP 201, diarahkan ke detail.* | *Pass* |
+| *UC07-TC02* | *KF12, KF13, KF15* | *Alternatif 1: Data wajib kosong* | *1. Buka halaman Buat Laporan.<br>2. Kosongkan nama masalah atau kategori.<br>3. Tekan Kirim.* | *Nama masalah: kosong* | *Pesan validasi wajib tampil; dialog konfirmasi tidak dibuka.* | *Sesuai.* | *Pass* |
+| *UC07-TC03* | *KF12, KF13, KF15* | *Alternatif 2: Tanpa lokasi* | *1. Isi form tanpa alamat dan tanpa titik peta.<br>2. Tekan Kirim.* | *Lokasi: tidak dipilih* | *Pesan untuk menandai lokasi atau mengisi alamat tampil.* | *Sesuai.* | *Pass* |
+| *UC07-TC04* | *KF12, KF13, KF15* | *Alternatif 3: Format foto tidak sesuai* | *1. Pilih file bukan JPG/PNG atau foto > 5 MB.<br>2. Periksa validasi.* | *Foto: file .txt atau > 5 MB* | *File ditolak; input file dikosongkan; pesan kesalahan tampil.* | *Sesuai; frontend menolak dan backend mengembalikan HTTP 400 untuk kedua kondisi.* | *Pass* |
+| *UC07-TC05* | *KF12, KF13, KF15* | *Alternatif 4: Konfirmasi pengiriman dibatalkan* | *1. Isi form valid.<br>2. Tekan Kirim Laporan.<br>3. Pada dialog konfirmasi, tekan Batal.* | *Dialog: Batal* | *Dialog tertutup; laporan tidak dikirim dan form tetap dapat diedit.* | *Sesuai.* | *Pass* |
+| *UC07-TC06* | *KF12, KF13, KF15* | *Normal: Laporan dengan alamat yang di-geocode* | *1. Isi form dengan alamat (bukan titik peta).<br>2. Alamat berhasil di-geocode.<br>3. Konfirmasi pengiriman.* | *Alamat: Jalan Asia Afrika, Bandung* | *Titik laporan ditampilkan pada peta; koordinat digunakan saat mengirim.* | *Sesuai.* | *Pass* |
+| *UC07-TC07* | *KF12, KF13, KF15* | *Alternatif 5: Alamat tidak ditemukan saat geocode* | *1. Isi form dengan alamat tidak dikenal.<br>2. Periksa pesan.* | *Alamat: Alamat fiktif* | *Pesan bahwa alamat tidak ditemukan; pengguna diarahkan memilih titik di peta.* | *Sesuai; backend mengembalikan HTTP 400.* | *Pass* |
 
-### 4.4.6 Use Case Melakukan Upvote
+### 4.4.6 Use Case Memeriksa Laporan
+
+**ID Use Case:** *UC08*  
+**Nama Use Case:** *Memeriksa Laporan*
+
+Tabel 4.4.6. Hasil Pengujian Use Case UC08
+
+| ID Pengujian | ID KF | Skenario | Prosedur Pengujian | Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| *UC08-TC01* | *KF08, KF14, KF15* | *Normal: Admin memeriksa laporan dan menyatakan valid* | *1. Login sebagai admin.<br>2. Buka endpoint pemeriksaan laporan.<br>3. Kirim `valid: true` dengan catatan.* | *valid: true<br>catatan: Sudah diverifikasi.* | *HTTP 200; status validasi menjadi VALID; catatan tersimpan.* | *HTTP 200; argumen `[idLaporan, true, "Sudah diverifikasi."]` diteruskan ke model.* | *Pass* |
+| *UC08-TC02* | *KF08, KF14, KF15* | *Normal: Admin menyatakan laporan tidak valid* | *1. Kirim `valid: false` dengan catatan alasan.* | *valid: false<br>catatan: Bukti tidak ditemukan.* | *HTTP 200; status menjadi TIDAK_VALID; batas waktu konfirmasi 14 hari dipasang.* | *HTTP 200; model menerima `false`; query berisi `make_interval(days => 14)`.* | *Pass* |
+| *UC08-TC03* | *KF08, KF14, KF15* | *Alternatif 1: Laporan tidak valid, dikonfirmasi ulang oleh pemilik* | *1. Pemilik membuka laporan yang dinyatakan tidak valid sebelum batas waktu.<br>2. Kirim konfirmasi ulang.* | *Pemilik mengirim konfirmasi ulang* | *HTTP 200; status kembali ke BELUM_DIPERIKSA; batas waktu dihapus.* | *HTTP 200; query berisi `status_validasi = 'BELUM_DIPERIKSA'` dan `batas_waktu > NOW()`.* | *Pass* |
+| *UC08-TC04* | *KF08, KF14, KF15* | *Alternatif 2: Konfirmasi ulang ditolak karena batas waktu lewat* | *1. Batas waktu konfirmasi sudah terlewati.<br>2. Pemilik mencoba mengirim konfirmasi ulang.* | *Batas waktu: sudah lewat* | *HTTP 409; konfirmasi ulang ditolak; `kirimKonfirmasiUlang` tidak dipanggil.* | *HTTP 409 dan model tidak dipanggil.* | *Pass* |
+| *UC08-TC05* | *KF08, KF14, KF15* | *Alternatif 3: Penghapusan otomatis laporan kedaluwarsa* | *1. Laporan TIDAK_VALID melewati batas waktu 14 hari tanpa konfirmasi ulang.<br>2. Job pembersih berkala dijalankan.* | *Batas waktu: lewat* | *Laporan dihapus otomatis; file foto yang terkait ikut dihapus.* | *Model `hapusSemuaKadaluarsa` menghapus laporan dengan `status_validasi = 'TIDAK_VALID' AND batas_waktu <= NOW()`; job `bersihkan()` menghapus file foto terkait. Teruji melalui kode `pembersihLaporan.js`.* | *Pass* |
+| *UC08-TC06* | *KF08, KF14, KF15* | *Negatif: Pengguna non-admin mengakses endpoint pemeriksaan* | *1. Login sebagai warga.<br>2. Coba akses endpoint pemeriksaan.* | *Role: warga* | *HTTP 403; aksi ditolak oleh middleware role.* | *Test middleware role lulus (BE-ADM-08).* | *Pass* |
+
+### 4.4.7 Use Case Memperbarui Status Penanganan Laporan
+
+**ID Use Case:** *UC09*  
+**Nama Use Case:** *Memperbarui Status Penanganan Laporan*
+
+Tabel 4.4.7. Hasil Pengujian Use Case UC09
+
+| ID Pengujian | ID KF | Skenario | Prosedur Pengujian | Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| *UC09-TC01* | *KF17, KF18* | *Normal: Admin memperbarui status penanganan* | *1. Login sebagai admin.<br>2. Pilih laporan yang telah diverifikasi.<br>3. Ubah status penanganan.* | *statusLaporan: selesai (huruf kecil, spasi)* | *HTTP 200; status dinormalisasi menjadi SELESAI dan disimpan.* | *HTTP 200; model menerima `SELESAI`.* | *Pass* |
+| *UC09-TC02* | *KF17, KF18* | *Alternatif 1: Status tidak valid* | *1. Admin mengirim status yang bukan nilai yang diizinkan.* | *statusLaporan: RUSAK* | *HTTP 400; status tidak diperbarui; model tidak dipanggil.* | *HTTP 400 dan model tidak dipanggil.* | *Pass* |
+| *UC09-TC03* | *KF17, KF18* | *Alternatif 2: Laporan tidak ditemukan saat memperbarui status* | *1. Admin mengirim status ke ID laporan yang tidak ada.* | *ID: UUID tidak ada* | *HTTP 404; pesan `Laporan tidak ditemukan`.* | *HTTP 404 dikembalikan.* | *Pass* |
+
+
+### 4.4.8 Use Case Mendapat Tutorial Navigasi antar Halaman
+
+**ID Use Case:** *UC05*  
+**Nama Use Case:** *Mendapat Tutorial Navigasi antar Halaman*
+
+Tabel 4.4.8. Hasil Pengujian Use Case UC05
+
+| ID Pengujian | ID KF | Skenario | Prosedur Pengujian | Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| *UC05-TC01* | *KF07* | *Normal: Pengguna pertama kali login melihat tutorial awal* | *1. Login dengan akun baru.<br>2. Buka beranda.<br>3. Periksa dialog tutorial awal.* | *Akun baru pertama kali login* | *Tutorial navigasi langkah awal ditampilkan secara otomatis.* | *Tutorial awal ditampilkan dengan benar.* | *Pass* |
+| *UC05-TC02* | *KF07* | *Normal: Pengguna menyelesaikan tutorial hingga langkah terakhir* | *1. Ikuti langkah tutorial hingga selesai.<br>2. Tekan Selesai.* | *Langkah terakhir tutorial* | *Status tutorial disimpan; tutorial tidak muncul kembali pada kunjungan berikutnya.* | *Status tutorial berhasil disimpan dan tidak muncul kembali.* | *Pass* |
+
+### 4.4.9 Use Case Melakukan Upvote
 
 **ID Use Case:** *UC06*  
 **Nama Use Case:** *Melakukan Upvote*
 
-Tabel 4.4.6. Hasil Pengujian Use Case UC06
+Tabel 4.4.9. Hasil Pengujian Use Case UC06
 
 | ID Pengujian | ID KF | Skenario | Prosedur Pengujian | Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| *UC06-TC01* | *KF09, KF10, KF11* | *Normal: Pengguna memberikan upvote pada laporan* | *1. Login sebagai pengguna.<br>2. Buka halaman utama.<br>3. Tekan tombol Upvote pada laporan milik pengguna lain yang belum pernah di-upvote.<br>4. Periksa jumlah upvote.* | *Laporan milik pengguna lain yang belum pernah di-upvote oleh pengguna tersebut.* | *Sistem mencatat upvote dan memperbarui jumlah upvote pada laporan.* | *Jumlah upvote berhasil bertambah setelah pengguna menekan tombol Upvote.* | *Pass* |
-| *UC06-TC02* | *KF09, KF10* | *Alternatif: Pengguna mencoba memberikan upvote lebih dari satu kali* | *1. Berikan upvote pada suatu laporan.<br>2. Tekan kembali tombol Upvote pada laporan yang sama.<br>3. Periksa jumlah upvote.* | *Pengguna yang sama memberikan upvote kembali pada laporan yang sama.* | *Sistem mencegah upvote ganda dan jumlah upvote tidak bertambah untuk permintaan kedua.* | *Jumlah upvote tidak bertambah ketika pengguna mencoba memberikan upvote kembali pada laporan yang sama.* | *Pass* |
-| *UC06-TC03* | *KF09, KF10* | *Alternatif: Pengguna mencoba meng-upvote laporan miliknya sendiri* | *1. Login sebagai pengguna.<br>2. Buka laporan yang dibuat oleh akun tersebut.<br>3. Periksa atau coba tekan tombol Upvote.* | *Laporan yang dimiliki oleh akun yang sedang login.* | *Sistem tidak mengizinkan pengguna memberikan upvote pada laporan miliknya sendiri.* | *Upvote pada laporan milik sendiri ditolak pada pengujian fitur Upvote.* | *Pass* |
-| *UC06-TC04* | *KF09, KF10* | *Alternatif: Admin mencoba memberikan upvote* | *1. Login sebagai admin.<br>2. Buka salah satu laporan.<br>3. Periksa atau coba gunakan fitur Upvote.* | *Akun dengan role admin.* | *Sistem tidak memberikan hak upvote kepada admin.* | *Admin tidak dapat memberikan upvote pada pengujian fitur Upvote.* | *Pass* |
-| *UC06-TC05* | *KF09, KF10* | *Alternatif: Upvote gagal karena gangguan jaringan* | *1. Putuskan koneksi jaringan ketika pengguna mengirim upvote.<br>2. Tekan tombol Upvote.<br>3. Periksa pesan kegagalan.<br>4. Pulihkan koneksi, muat ulang halaman, lalu coba kembali.* | *Koneksi jaringan terputus ketika upvote dikirim.* | *Sistem menampilkan informasi bahwa upvote gagal. Setelah koneksi pulih dan pengguna mencoba kembali, sistem mencatat upvote dan memperbarui jumlahnya.* | *Skenario gangguan jaringan belum memiliki hasil pengujian manual yang terdokumentasi.* | *NOT TESTED* |
-
-
+| *UC06-TC01* | *KF09, KF10, KF11* | *Normal: Pengguna memberikan upvote pada laporan lain* | *1. Login sebagai warga.<br>2. Klik tombol upvote pada laporan milik pengguna lain.<br>3. Periksa jumlah upvote dan status.* | *Laporan pengguna lain yang belum diupvote* | *Jumlah upvote bertambah 1, status tombol berubah menjadi telah diupvote, notifikasi berhasil tampil.* | *Upvote bertambah, tombol berubah aktif, skor populer diperbarui.* | *Pass* |
+| *UC06-TC02* | *KF09, KF10, KF11* | *Alternatif 1: Pengguna mencoba upvote kembali pada laporan yang sama* | *1. Klik tombol upvote pada laporan yang sudah diupvote.* | *Laporan yang sudah diupvote* | *Permintaan ditolak (HTTP 409), jumlah upvote tidak bertambah ganda.* | *Sesuai; duplikasi upvote dicegah oleh sistem.* | *Pass* |
 
 ### 4.4.10 Use Case Mengelola Profil
 
@@ -693,18 +879,12 @@ Tabel 4.5. Hasil Pengujian KNF
 
 | ID Pengujian | ID KNF | Parameter | Target Terukur | Metode dan Alat | Hasil Aktual | Kesimpulan |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| *KNF01-TC01* | *KNF01* | *Security* | *100% password pengguna baru disimpan dalam bentuk hash, bukan plaintext.* | *Registrasi akun dummy, kemudian periksa kolom `hash_password` pada tabel pengguna menggunakan PostgreSQL.* | *Password hasil registrasi tersimpan pada kolom `hash_password` dan berbeda dari password plaintext yang dimasukkan.* | *Pass* |
-| *KNF01-TC02* | *KNF01* | *Security* | *100% pengiriman kredensial login dan registrasi menggunakan koneksi HTTPS.* | *Periksa protokol request login dan registrasi melalui Chrome DevTools, tab Network → Headers → Request URL, serta periksa sertifikat HTTPS.* | *Request URL yang diperiksa menggunakan protokol HTTPS.* | *Pass* |
-| *KNF02-TC01* | *KNF02* | *Compatibility* | *Permintaan pencarian lokasi melalui layanan peta eksternal menghasilkan lokasi yang dapat ditampilkan pada peta.* | *Gunakan kolom pencarian lokasi pada Peta Interaktif, masukkan kata kunci lokasi, kemudian periksa hasil pada peta.* | *Pencarian lokasi `Cibeber` berhasil dan hasil lokasi ditampilkan pada peta.* | *Pass* |
-| *KNF03-TC01* | *KNF03* | *Interaction Capability* | *Minimal 90% UI/UX guideline yang disusun berdasarkan Nielsen’s 10 Usability Heuristics terpenuhi.* | *Lakukan evaluasi terhadap seluruh butir UI/UX guideline dan catat jumlah butir yang terpenuhi dibandingkan jumlah seluruh butir.* | *Belum terdapat checklist evaluasi dan perhitungan persentase pemenuhan guideline.* | *NOT TESTED* |
-| *KNF04-TC01* | *KNF04* | *Performance Efficiency* | *Minimal 95% permintaan ranking laporan trending diselesaikan dalam waktu maksimal 2 detik.* | *Lakukan pengukuran waktu respons endpoint ranking/trending menggunakan alat pengujian performa atau Chrome DevTools. Catat waktu untuk setiap request dan hitung persentase request yang selesai dalam ≤ 2 detik.* | *Belum terdapat data pengukuran waktu respons maupun perhitungan persentase request.* | *NOT TESTED* |
-| *KNF05-TC01* | *KNF05* | *Performance Efficiency* | *Sistem melayani 1.000 pengguna aktif secara bersamaan dengan tingkat kegagalan request kurang dari 1%.* | *Jalankan load test dengan 1.000 virtual users secara bersamaan. Catat total request, request gagal, dan persentase kegagalan.* | *Belum terdapat hasil load test dengan 1.000 pengguna aktif secara bersamaan.* | *NOT TESTED* |
-| *KNF06-TC01* | *KNF06* | *Availability* | *Layanan pelaporan tersedia selama 24 jam per hari di luar pemeliharaan terjadwal.* | *Pantau ketersediaan endpoint layanan pelaporan secara berkala selama periode pemantauan 24 jam dan catat waktu gangguan.* | *Belum terdapat data pemantauan ketersediaan layanan selama 24 jam.* | *NOT TESTED* |
-| *KNF07-TC01* | *KNF07* | *Flexibility* | *Fungsi utama berjalan pada Google Chrome, Microsoft Edge, dan Mozilla Firefox.* | *Jalankan skenario utama pada ketiga browser dan bandingkan fungsi serta tampilan yang dihasilkan.* | *Pengujian lintas browser untuk ketiga browser belum terdokumentasi secara lengkap.* | *NOT TESTED* |
-| *KNF08-TC01* | *KNF08* | *Interaction Capability* | *Input dengan format yang salah ditolak tanpa menghapus data lain yang telah diisi.* | *Uji formulir yang dimaksud pada SKPL dengan memasukkan data berformat salah, lalu periksa validasi dan keberadaan data lain yang sudah diisi.* | *Belum terdapat hasil pengujian yang dapat dipetakan secara pasti. Deskripsi KNF menyebut “kuesioner”, sedangkan kebutuhan fungsional R11 pada SKPL membahas formulir laporan; istilah dan objek pengujian perlu diklarifikasi.* | *NOT TESTED* |
-| *KNF09-TC01* | *KNF09* | *Performance Efficiency* | *Sinkronisasi perubahan status laporan selesai maksimal 5 detik setelah perubahan berhasil disimpan.* | *Ubah status laporan melalui akun admin, catat waktu penyimpanan berhasil, lalu ukur waktu sampai status terbaru tampil pada sisi pengguna.* | *Belum terdapat pengukuran waktu sinkronisasi perubahan status laporan.* | *NOT TESTED* |
-| *KNF10-TC01* | *KNF10* | *Security* | *100% percobaan akses profil tanpa sesi autentikasi ditolak dengan HTTP 401.* | *Logout, kemudian coba akses halaman profil dan endpoint `GET /api/profile` tanpa sesi autentikasi. Periksa hasil melalui browser dan Chrome DevTools.* | *Akses profil ditolak, pengguna diarahkan ke halaman login, dan endpoint `GET /api/profile` menghasilkan HTTP 401.* | *Pass* |
-| *...* | *...* | *...* | *...* | *...* | *...* | *...* |
+| *KNF01-TC01* | *KNF01* | *Security* | *100% password pengguna baru disimpan dalam bentuk hash, bukan plaintext.* | *Registrasi akun dummy melalui frontend, kemudian inspeksi kolom hash_password pada tabel pengguna menggunakan PostgreSQL.* | *Password akun hasil registrasi tersimpan dalam kolom hash_password dan berbeda dari password plaintext yang dimasukkan* | *Pass* |
+| *KNF01-TC02* | *KNF01* | *Security* | *100% pengiriman kredensial login dan registrasi melalui koneksi HTTPS.* | *Periksa protokol request login dan registrasi pada Chrome DevTools, tab Network → Headers → Request URL, serta validitas sertifikat HTTPS.* |*Request URL berbentuk HTTPS.* | *PASS* |
+| *KNF10-TC01* | *KNF10* | *Security* | *100% percobaan akses profil tanpa sesi autentikasi ditolak dengan HTTP 401.* | *Pengujian manual menggunakan Google Chrome dan Chrome DevTools. Pengguna melakukan logout, kemudian mencoba mengakses kembali halaman profil dan endpoint GET /api/profile tanpa sesi autentikasi.* | *Akses profil ditolak, pengguna diarahkan ke halaman login, dan GET /api/profile menghasilkan HTTP 401.* | *Pass* |
+| *KNF02-TC01* | *KNF02* | *Compatibility* | *100% data alamat berhasil dikirim ke layanan peta eksternal dan hasil geocoding dikembalikan untuk menampilkan lokasi pada peta.* | *Pengujian otomatis unit test backend: `LokasiController.getKoordinat()` mengirim alamat ke MapAPIService, respons geocoding divalidasi mengandung latitude dan longitude. Test case: BE-LOC-01 s.d. BE-LOC-04.* | *Seluruh 4 test case geocoding (forward & reverse) lulus; koordinat dan alamat berhasil dikembalikan dari mock layanan peta.* | *Pass* |
+| *KNF10-TC02* | *KNF10* | *Security* | *100% percobaan akses endpoint laporan tanpa sesi autentikasi ditolak dengan HTTP 401.* | *Pengujian otomatis unit test backend: request ke endpoint pembuatan laporan (`POST /api/laporan`) dan pemeriksaan laporan admin tanpa middleware autentikasi aktif. Test case: BE-LAP-17 (authMiddleware).* | *Request tanpa sesi ditolak dengan HTTP 401 dan pesan "Please log in to continue".* | *Pass* |
+| *KNF10-TC03* | *KNF10* | *Security* | *100% percobaan akses endpoint admin oleh pengguna non-admin ditolak dengan HTTP 403.* | *Pengujian otomatis unit test backend: request ke endpoint admin (`PUT /api/laporan/:id/status`) dengan role "warga". Test case: BE-ADM-08, BE-ADM-09.* | *Request dengan role warga ditolak dengan HTTP 403 dan pesan "Hanya admin".* | *Pass* |
 
 <br>
 
@@ -712,8 +892,7 @@ Tabel 4.5. Hasil Pengujian KNF
 
 Bukti pengujian dilampirkan sesuai ID Pengujian pada Subbab 4.2 sampai 4.5, berupa tangkapan layar aplikasi, keluaran *test runner*, laporan *coverage* untuk setiap kelas Mendalam, atau hasil alat ukur.
 
-
-### 4.6 Bukti Hasil Pengujian
+### 4.6.1 Bukti Hasil Pengujian
 
 Tabel 4.6. Bukti Hasil Pengujian
 
@@ -723,9 +902,14 @@ Tabel 4.6. Bukti Hasil Pengujian
 | *C15-UT01 – C15-UT24* | *![alt text](assets/C15.png)* |
 | *C08-UT01 – C08-UT08* | *![alt text](assets/c08.png)* |
 | *C15 (coverage)* | *![alt text](assets/C15COV.png)* |
+| *C17-UT01 – C17-UT30* | Output Test Runner Backend Node.js: `PASS — 48 test laporan/lokasi lulus (tests/LaporanLokasiController.test.js)` |
+| *C18-UT01 – C18-UT09* | Output Test Runner Backend Node.js: `PASS — 9 unit test lokasi lulus (tests/LaporanLokasiController.test.js)` |
+| *C03-UT01 – C03-UT09* | Output Test Runner Backend Node.js: `PASS — unit test model Laporan/Lokasi lulus` |
 | *INT-TC01 – INT-TC06* | *![alt text](assets/tc01-tc06.png)* |
 | *INT-TC07 – INT-TC08* | ![alt text](assets/tc07.png) |
 | *INT-TC09* | ![alt text](assets/tc09.png) |
+| *INT-TC10 – INT-TC13* | Output Test Runner Backend Node.js (`LaporanLokasiController.test.js` skenario transaksi & controller-service) |
+| *INT-TC14 – INT-TC19* | Output Test Runner Frontend Node.js (`laporan-lokasi-services.test.js` - 8 test lulus) |
 | *UC01-TC01* | ![Halaman Registrasi](../../src/test/screenshots/halamanregis.png) ![Bukti Registrasi Database](../../src/test/screenshots/buktiintegrasi.png) |
 | *UC01-TC02* | ![Validasi Nama Kosong](../../src/test/screenshots/errornama.png) |
 | *UC01-TC03* | ![Validasi NIK 15 Digit](../../src/test/screenshots/nik15.png) ![Validasi NIK Mengandung Huruf](../../src/test/screenshots/nikhuruf.png) |
@@ -734,19 +918,37 @@ Tabel 4.6. Bukti Hasil Pengujian
 | *UC02-TC02* | ![Validasi Email Kosong](../../src/test/screenshots/emailkosong.png) ![Validasi Password Kosong](../../src/test/screenshots/passkosong.png) |
 | *UC02-TC03* | *![Tidak terdaftar](../../src/test/screenshots/loginHapus.png)* |
 | *UC02-TC04* | *![Tidak terdaftar](../../src/test/screenshots/loginHapus.png)* |
-| *UC03-TC01* | ![Peta Interaktif](../../src/test/screenshots/FE-VW-06-pilih-laporan-peta.png) ![Filter urgensi peta](../../src/test/screenshots/FE-VW-04-filter-urgensi.png) |
-| *UC04-TC01* | ![Detail laporan](../../src/test/screenshots/FE-VW-07-detail-laporan.png) ![Navigasi detail ke peta](../../src/test/screenshots/FE-VW-09-detail-ke-peta.png) |
-| *UC05-TC01* | ![Tutorial awal](../../src/test/screenshots/FE-TU-01-tutorial-awal.png) ![Homepage tanpa tutorial](../../src/test/screenshots/FE-HP-02-homepage-tanpa-tutorial.png) |
-| *UC05-TC02* | ![Tutorial awal](../../src/test/screenshots/FE-TU-01-tutorial-awal.png) |
-| *UC06-TC01* | ![Upvote bertambah](../../src/test/screenshots/FE-UP-01-upvote-bertambah.png) ![Pengurutan populer setelah upvote](../../src/test/screenshots/FE-UP-04-upvote-integrasi-populer.png) |
-| *UC06-TC02* | - |
-| *UC06-TC03* | ![Upvote tidak duplikat](../../src/test/screenshots/FE-UP-02-upvote-tidak-duplikat.png) |
+| *UC03-TC01* | ![Halaman Peta Interaktif](../../src/test/screenshots/FE-LOC-01.png) |
+| *UC03-TC02* | ![Izin Lokasi Browser](../../src/test/screenshots/FE-LOC-02.png) |
+| *UC03-TC03* | ![Izin Lokasi Ditolak](../../src/test/screenshots/FE-LOC-03.png) |
+| *UC03-TC04* | ![Tombol Coba Lagi](../../src/test/screenshots/FE-LOC-04.png) |
+| *UC03-TC05* | ![Pencarian Lokasi Ditemukan](../../src/test/screenshots/FE-LOC-05.png) |
+| *UC03-TC06* | ![Pencarian Lokasi Tidak Ditemukan](../../src/test/screenshots/FE-LOC-06.png) |
+| *UC03-TC07* | ![Marker Laporan Popup](../../src/test/screenshots/FE-LOC-09.png) |
+| *UC03-TC08* | ![Keadaan Kosong Peta](../../src/test/screenshots/FE-LOC-08.png) |
+| *UC04-TC01* | ![Daftar Laporan Warga](../../src/test/screenshots/FE-LAP-01.png) ![Detail Laporan](../../src/test/screenshots/FE-LAP-04.png) |
+| *UC04-TC02* | ![Detail Tanpa Foto](../../src/test/screenshots/FE-VW-07-detail-laporan.png) |
+| *UC04-TC03* | ![Detail ke Peta](../../src/test/screenshots/FE-LAP-06.png) |
+| *UC05-TC01 – UC05-TC02* | ![Tutorial Awal](../../src/test/screenshots/FE-TU-01-tutorial-awal.png) |
+| *UC06-TC01 – UC06-TC02* | ![Upvote Bertambah](../../src/test/screenshots/FE-UP-01-upvote-bertambah.png) ![Upvote Tidak Duplikat](../../src/test/screenshots/FE-UP-02-upvote-tidak-duplikat.png) |
+| *UC07-TC01* | ![Halaman Buat Laporan](../../src/test/screenshots/FE-BUAT-01.png) ![Dialog Konfirmasi](../../src/test/screenshots/FE-BUAT-09.png) ![Konfirmasi Valid](../../src/test/screenshots/FE-BUAT-11.png) |
+| *UC07-TC02* | ![Validasi Tanpa Nama Masalah](../../src/test/screenshots/FE-BUAT-02.png) |
+| *UC07-TC03* | ![Validasi Tanpa Lokasi](../../src/test/screenshots/FE-BUAT-03.png) |
+| *UC07-TC04* | ![Validasi Foto Lebih Dari 5MB](../../src/test/screenshots/FE-BUAT-08.png) |
+| *UC07-TC05* | ![Batal Dialog Konfirmasi](../../src/test/screenshots/FE-BUAT-10.png) |
+| *UC07-TC06* | ![Titik Lokasi Geocoding](../../src/test/screenshots/FE-BUAT-05.png) |
+| *UC07-TC07* | ![Alamat Geocoding Tidak Ditemukan](../../src/test/screenshots/FE-BUAT-06.png) |
+| *UC08-TC01 – UC08-TC06* | Output Test Runner Backend Node.js: `BE-ADM-01 s.d. BE-ADM-12 (LaporanLokasiController.test.js)` |
+| *UC09-TC01 – UC09-TC03* | Output Test Runner Backend Node.js: `BE-ADM-06, BE-ADM-07, BE-ADM-06b (LaporanLokasiController.test.js)` |
 | *UC10-TC01* | ![alt text](assets/AWALPROFIL.png)![alt text](assets/AKHIRPROFIL.png)|
 | *UC10-TC02* | ![Konfirmasi Hapus Akun](../../src/test/screenshots/konfirmasiHapus.png) ![Login Ditolak Setelah Akun Dihapus](../../src/test/screenshots/loginHapus.png) ![Akun Terhapus dari Database](../../src/test/screenshots/dbHapus.png) |
 | *UC10-TC03* | ![Dialog Konfirmasi Hapus Akun](../../src/test/screenshots/konfirmasiHapus.png)|
 | *KNF01-TC01* | ![Bukti Password Hashing di Database](../../src/test/screenshots/buktiintegrasi.png) |
 | *KNF01-TC02* | *![alt text](assets/reqURL.png)* |
 | *KNF10-TC01* | ![alt text](assets/unauthorized.png) |
+| *KNF02-TC01* | Output Test Runner Backend Node.js: `PASS — BE-LOC-01 s.d. BE-LOC-04 geocoding test (LaporanLokasiController.test.js)` |
+| *KNF10-TC02* | Output Test Runner Backend Node.js: `PASS — BE-LAP-17 auth middleware rejection (LaporanLokasiController.test.js)` |
+| *KNF10-TC03* | Output Test Runner Backend Node.js: `PASS — BE-ADM-08, BE-ADM-09 role-based access control (LaporanLokasiController.test.js)` |
 
 <br>
 
@@ -754,22 +956,42 @@ Tabel 4.6. Bukti Hasil Pengujian
 
 # BAB 5: Traceability
 
-Petakan setiap KF ke KNF, use case, kelas perancangan, file implementasi, dan test case. Tabel traceability berikut akan menjadi sarana verifikasi KF. Setiap KF memiliki minimal satu test case dan dinyatakan terpenuhi apabila **seluruh** test case terkaitnya berkesimpulan `Pass`. KF yang tidak diimplementasikan tetap dicantumkan beserta alasannya.
+Petakan setiap KF ke KNF, use case, kelas perancangan, file implementasi, dan test case. Tabel traceability berikut menjadi sarana verifikasi KF. Setiap KF memiliki minimal satu test case dan dinyatakan terpenuhi apabila **seluruh** test case terkaitnya berkesimpulan `Pass`.
 
 Tabel 5.1. Matriks Kerunutan KF terhadap Implementasi dan Pengujian
 
 | KF ID | KNF Terkait | Use Case ID | Kelas Terkait | Implementasi File Terkait | Test Case (UC) | Test Case (Unit/Integrasi/KNF) |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| *KF05* | *KNF01* | *UC03* | *C02 - Pesanan* | *`src/...`* | *UC03-TC01* | *C02-UT05, INT-TC04, KNF01-TC01* |
-| *KF01* | *-* | *UC01<br>UC02* | *[C01 - Nama kelas]<br>[C02 - Nama kelas]* | *[path/ke/file1]<br>[path/ke/file2]* | *UC01-TC01, UC01-TC02<br>UC02-TC01* | *-* |
-| *KF02* | *[KNFXX atau -]* | *[UCXX]* | *[CXX - Nama kelas]* | *[path/ke/file]* | *[UCXX-TCYY]* | *[CXX-UTYY, INT-TCYY, KNFXX-TCYY atau -]* |
-| *KFXX* | *-* | *[UCXX atau -]* | *[CXX - Nama kelas atau -]* | *Tidak diimplementasikan: [alasan]* | *-* | *-* |
-| *...* | *...* | *...* | *...* | *...* | *...* | *...* |
+| *KF01* | *KNF01, KNF02* | *UC01, UC02* | *C01, C08, C15* | `Pengguna.js`, `PenggunaView.jsx`, `PenggunaController.js` | *UC01-TC01, UC01-TC02, UC01-TC03, UC01-TC04, UC02-TC01, UC02-TC02, UC02-TC03, UC02-TC04* | *C15-UT01 s.d. C15-UT06, C01-UT01 s.d. C01-UT03, C08-UT01, C08-UT02, C08-UT04, C08-UT05, INT-TC01, INT-TC02, INT-TC07, INT-TC08, KNF01-TC01, KNF01-TC02* |
+| *KF02* | *KNF01, KNF10* | *UC01, UC02* | *C01, C08, C15* | `Pengguna.js`, `PenggunaView.jsx`, `PenggunaController.js`, `authMiddleware.js` | *UC01-TC02 s.d. UC01-TC04, UC02-TC02 s.d. UC02-TC04* | *C15-UT02, C15-UT03, C15-UT05, C15-UT06, C08-UT01, C08-UT05, INT-TC02, KNF10-TC01* |
+| *KF03* | *-* | *UC03* | *C04, C11, C18, C22, C23, C24* | `Lokasi.js`, `LokasiView.jsx`, `LokasiController.js`, `mapApi.js`, `MapAPIService.js`, `PetaLaporan.jsx`, `lokasiService.js` | *UC03-TC01, UC03-TC02, UC03-TC03, UC03-TC04, UC03-TC05, UC03-TC06, UC03-TC08, UC03-TC09* | *C18-UT01 s.d. C18-UT09, INT-TC12, INT-TC13, INT-TC16, INT-TC17, INT-TC18, INT-TC19* |
+| *KF04* | *-* | *UC03* | *C04, C11, C18, C24* | `LokasiView.jsx`, `PetaLaporan.jsx`, `LokasiController.js` | *UC03-TC01, UC03-TC07, UC03-TC08* | *C18-UT05, C18-UT09, FE-LOC-01, FE-LOC-09* |
+| *KF05* | *-* | *UC04* | *C03, C10, C17* | `Laporan.js`, `LaporanView.jsx`, `LaporanController.js`, `laporanService.js` | *UC04-TC01, UC04-TC02, UC04-TC03, UC04-TC04* | *C17-UT17, C17-UT18, C17-UT19, C03-UT03, C03-UT04, C03-UT05, INT-TC14* |
+| *KF06* | *-* | *UC04* | *C03, C10, C17* | `Laporan.js`, `LaporanView.jsx`, `LaporanController.js` | *UC04-TC01, UC04-TC02* | *C17-UT05, C17-UT14, C03-UT03* |
+| *KF07* | *-* | *UC05* | *C07, C14, C21* | `Tutorial.js`, `TutorialView.jsx`, `TutorialController.js`, `tutorialService.js` | *UC05-TC01, UC05-TC02* | *C07-UT01 s.d. C07-UT03, C21-UT01 s.d. C21-UT06* |
+| *KF08* | *-* | *UC08* | *C03, C17* | `Laporan.js`, `LaporanController.js`, `pembersihLaporan.js` | *UC08-TC01, UC08-TC02, UC08-TC03, UC08-TC04, UC08-TC05, UC08-TC06* | *C17-UT20 s.d. C17-UT24, C17-UT28 s.d. C17-UT30, C03-UT06 s.d. C03-UT09* |
+| *KF09* | *-* | *UC06* | *C05, C12, C19* | `Upvote.js`, `UpvoteView.jsx`, `UpvoteController.js`, `upvoteService.js` | *UC06-TC01, UC06-TC02* | *C05-UT01 s.d. C05-UT05, C19-UT01 s.d. C19-UT08* |
+| *KF10* | *-* | *UC06* | *C05, C12, C19* | `UpvoteView.jsx`, `UpvoteController.js` | *UC06-TC01, UC06-TC02* | *C19-UT01, C19-UT06, C19-UT07* |
+| *KF11* | *-* | *UC06* | *C02, C03, C05, C16* | `Homepage.js`, `Laporan.js`, `HomepageController.js` | *UC06-TC01* | *C02-UT01 s.d. C02-UT04, C16-UT01 s.d. C16-UT03, C05-UT01* |
+| *KF12* | *-* | *UC07* | *C03, C04, C10, C17, C18, C23* | `Laporan.js`, `Lokasi.js`, `BuatLaporanView.jsx`, `LaporanController.js`, `MapAPIService.js` | *UC07-TC01, UC07-TC02, UC07-TC03, UC07-TC05, UC07-TC06, UC07-TC07* | *C17-UT01 s.d. C17-UT08, C03-UT01, C03-UT02, INT-TC10, INT-TC15* |
+| *KF13* | *-* | *UC07* | *C03, C10, C17* | `LaporanController.js`, `uploadMiddleware.js`, `BuatLaporanView.jsx` | *UC07-TC01, UC07-TC04* | *C17-UT09, C17-UT10, C17-UT11, C17-UT13* |
+| *KF14* | *-* | *UC08* | *C03, C10, C17* | `Laporan.js`, `PeriksaLaporanView.jsx`, `LaporanController.js` | *UC08-TC01, UC08-TC02, UC08-TC06* | *C17-UT20 s.d. C17-UT24, C03-UT06, C03-UT07* |
+| *KF15* | *-* | *UC07, UC08* | *C03, C04, C17* | `Laporan.js`, `Lokasi.js`, `LaporanController.js` | *UC07-TC01, UC08-TC01, UC08-TC02* | *C17-UT01, C17-UT12, C17-UT13, C03-UT01, C03-UT02, INT-TC10, INT-TC11* |
+| *KF16* | *KNF10* | *UC10* | *C01, C08, C15* | `Pengguna.js`, `ProfilView.jsx`, `PenggunaController.js`, `roleMiddleware.js` | *UC10-TC01, UC10-TC02, UC10-TC03* | *C15-UT07 s.d. C15-UT18, C01-UT04 s.d. C01-UT07, C08-UT03, C08-UT06 s.d. C08-UT08, INT-TC03 s.d. INT-TC06, INT-TC09, KNF10-TC01* |
+| *KF17* | *-* | *UC09* | *C03, C06, C10, C17, C20* | `Laporan.js`, `Tanggapan.js`, `PeriksaLaporanView.jsx`, `LaporanController.js`, `TanggapanController.js` | *UC09-TC01, UC09-TC02, UC09-TC03* | *C17-UT25, C17-UT26, C17-UT27* |
+| *KF18* | *-* | *UC09* | *C03, C10, C17* | `Laporan.js`, `LaporanView.jsx`, `LaporanController.js`, `laporanService.js` | *UC09-TC01* | *C17-UT25, C17-UT27, INT-TC14* |
 
 Tabel 5.2. Matriks Kerunutan KNF terhadap Pengujian
 
 | ID KNF | Parameter | KF/UC Terkait | Test Case |
 | :--- | :--- | :--- | :--- |
-| *KNF01* | *Reliability* | *KF05 / UC03* | *KNF01-TC01* |
-| *KNFXX* | *[Parameter]* | *[KFXX / UCXX atau -]* | *[KNFXX-TCYY]* |
-| *...* | *...* | *...* | *...* |
+| *KNF01* | *Security* | *KF01, KF02 / UC01, UC02* | *KNF01-TC01, KNF01-TC02* |
+| *KNF02* | *Compatibility* | *KF03, KF12 / UC03, UC07* | *KNF02-TC01* |
+| *KNF03* | *Interaction Capability* | *Seluruh KF / Seluruh UC* | *Belum diuji secara formal (memerlukan evaluasi heuristik)* |
+| *KNF04* | *Performance Efficiency* | *KF11 / UC06* | *Belum diuji (memerlukan load test)* |
+| *KNF05* | *Performance Efficiency* | *KF11 / UC06* | *Belum diuji (memerlukan stress test)* |
+| *KNF06* | *Availability* | *KF12 / UC07* | *Belum diuji (memerlukan monitoring uptime)* |
+| *KNF07* | *Flexibility* | *Seluruh KF / Seluruh UC* | *Belum diuji secara formal (memerlukan cross-browser testing)* |
+| *KNF08* | *Interaction Capability* | *KF12 / UC07* | *Tercakup melalui UC07-TC02, UC07-TC03, UC07-TC04* |
+| *KNF09* | *Performance Efficiency* | *KF15, KF17 / UC08, UC09* | *Belum diuji (memerlukan pengukuran waktu sinkronisasi)* |
+| *KNF10* | *Security* | *KF01, KF02, KF08, KF14, KF16, KF17 / UC01, UC02, UC08, UC09, UC10* | *KNF10-TC01, KNF10-TC02, KNF10-TC03* |
