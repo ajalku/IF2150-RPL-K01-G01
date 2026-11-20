@@ -612,6 +612,52 @@ Tabel 4.4.2. Hasil Pengujian Use Case UC02
 | *UC02-TC03* | *KF01, KF02* | *Alternatif 2: Email belum terdaftar* | *1. Buka halaman login.<br>2. Masukkan email yang tidak terdaftar dan password valid.<br>3. Klik Masuk.<br>4. Periksa respons autentikasi.* | *Email: tidakterdaftar@example.com<br>Password: Password1!* | *Login ditolak dan sistem menampilkan pesan kesalahan.* | *Login ditolak dan muncul pesan “Wrong Email or Password* | *Pass* |
 | *UC02-TC04* | *KF01, KF02* | *Alternatif 3: Password tidak sesuai* | *1. Buka halaman login.<br>2. Masukkan email terdaftar dan password yang salah.<br>3. Klik Masuk.<br>4. Periksa pesan kesalahan.* | *Email: wawaw@gmail.com<br>Password: InstagramdanWA123!* | *Login ditolak dan pesan kesalahan kredensial ditampilkan.* | *Login ditolak dan muncul pesan “Wrong Email or Password* | *Pass* |
 
+### 4.4.4 Use Case Melihat Detail Laporan (Homepage)
+
+**ID Use Case:** *UC04*  
+**Nama Use Case:** *Melihat Detail Laporan*
+
+Tabel 4.4.4. Hasil Pengujian Use Case UC04
+
+| ID Pengujian | ID KF | Skenario | Prosedur Pengujian | Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| *UC04-TC01* | *KF05, KF06* | *Normal: Menampilkan halaman utama dan daftar laporan* | *1. Login sebagai pengguna.<br>2. Buka halaman utama.<br>3. Periksa daftar laporan dan informasi ringkas yang ditampilkan.* | *Akun pengguna dan data laporan yang tersedia.* | *Sistem menampilkan halaman utama beserta daftar laporan yang tersedia.* | *Halaman Homepage berhasil ditampilkan beserta daftar laporan.* | *Pass* |
+| *UC04-TC02* | *KF05, KF06* | *Normal: Mengurutkan daftar laporan* | *1. Buka halaman utama.<br>2. Pilih opsi pengurutan laporan yang tersedia.<br>3. Periksa perubahan urutan daftar laporan.* | *Daftar laporan dengan data waktu, urgensi, dan jumlah upvote.* | *Sistem menampilkan daftar laporan sesuai opsi pengurutan yang dipilih.* | *Pengurutan daftar laporan pada Homepage berhasil diuji.* | *Pass* |
+| *UC04-TC03* | *KF05, KF06* | *Normal: Memfilter daftar laporan* | *1. Buka halaman utama.<br>2. Pilih salah satu kategori filter.<br>3. Periksa daftar laporan yang ditampilkan.* | *Kategori filter yang tersedia dan data laporan.* | *Sistem hanya menampilkan laporan yang sesuai dengan kategori filter yang dipilih.* | *Filter daftar laporan pada Homepage berhasil diuji.* | *Pass* |
+| *UC04-TC04* | *KF05, KF06* | *Alternatif: Tidak terdapat laporan pada kategori yang dipilih* | *1. Buka halaman utama.<br>2. Pilih kategori filter yang tidak memiliki laporan.<br>3. Periksa tampilan halaman.* | *Kategori filter tanpa laporan.* | *Sistem menampilkan keadaan kosong atau informasi bahwa tidak terdapat laporan pada kategori tersebut.* | *Tampilan ketika kategori yang dipilih tidak memiliki laporan berhasil diuji.* | *Pass* |
+| *UC04-TC05* | *KF05, KF06* | *Normal: Membuka detail laporan dari halaman utama* | *1. Buka halaman utama.<br>2. Pilih salah satu laporan.<br>3. Periksa halaman atau informasi detail laporan yang ditampilkan.* | *Salah satu laporan pada daftar Homepage.* | *Sistem menampilkan detail dari laporan yang dipilih.* | *Pengujian detail laporan merupakan bagian LaporanView/LaporanController dan tidak dicantumkan sebagai hasil pengujian bagian Homepage.* | *Di luar cakupan bagian* |
+
+//ini baru pengetesan yang berkaitan dengan homepage
+
+### 4.4.5 Use Case Mendapat Tutorial Navigasi Antar Halaman
+
+**ID Use Case:** *UC05*  
+**Nama Use Case:** *Mendapat Tutorial Navigasi Antar Halaman*
+
+Tabel 4.4.5. Hasil Pengujian Use Case UC05
+
+| ID Pengujian | ID KF | Skenario | Prosedur Pengujian | Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| *UC05-TC01* | *KF07* | *Normal: Pengguna mengikuti tutorial sampai selesai* | *1. Masuk sebagai pengguna yang belum menyelesaikan tutorial.<br>2. Pilih Mulai Tutorial.<br>3. Tekan Next untuk berpindah ke langkah berikutnya.<br>4. Lanjutkan hingga langkah terakhir dan pilih Selesai.* | *Akun pengguna dengan status tutorial belum selesai.* | *Sistem menampilkan tutorial secara berurutan, memungkinkan pengguna berpindah langkah, dan menutup tutorial setelah pengguna memilih Selesai.* | *Tutorial berhasil dimulai, navigasi antar langkah berhasil digunakan, dan tutorial tertutup setelah pengguna menyelesaikannya.* | *Pass* |
+| *UC05-TC02* | *KF07* | *Alternatif 1: Pengguna melewati tutorial* | *1. Masuk sebagai pengguna yang belum menyelesaikan tutorial.<br>2. Ketika onboarding tutorial ditampilkan, pilih Skip Tutorial.<br>3. Periksa apakah tampilan tutorial ditutup.* | *Akun pengguna dengan status tutorial belum selesai; aksi Skip Tutorial.* | *Sistem menutup onboarding tutorial setelah pengguna memilih Skip Tutorial.* | *Tutorial berhasil dilewati pada pengujian frontend.* | *Pass* |
+| *UC05-TC03* | *KF07* | *Alternatif: Tutorial tidak ditampilkan kembali setelah selesai atau dilewati* | *1. Selesaikan atau lewati tutorial.<br>2. Muat ulang halaman atau masuk kembali ke halaman utama.<br>3. Periksa apakah tutorial muncul kembali.* | *Akun pengguna yang telah menyelesaikan atau melewati tutorial.* | *Sistem tidak menampilkan onboarding tutorial kembali setelah status tutorial tersimpan.* | *Tutorial tidak muncul kembali setelah halaman di-refresh pada pengujian frontend.* | *Pass* |
+
+### 4.4.6 Use Case Melakukan Upvote
+
+**ID Use Case:** *UC06*  
+**Nama Use Case:** *Melakukan Upvote*
+
+Tabel 4.4.6. Hasil Pengujian Use Case UC06
+
+| ID Pengujian | ID KF | Skenario | Prosedur Pengujian | Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| *UC06-TC01* | *KF09, KF10, KF11* | *Normal: Pengguna memberikan upvote pada laporan* | *1. Login sebagai pengguna.<br>2. Buka halaman utama.<br>3. Tekan tombol Upvote pada laporan milik pengguna lain yang belum pernah di-upvote.<br>4. Periksa jumlah upvote.* | *Laporan milik pengguna lain yang belum pernah di-upvote oleh pengguna tersebut.* | *Sistem mencatat upvote dan memperbarui jumlah upvote pada laporan.* | *Jumlah upvote berhasil bertambah setelah pengguna menekan tombol Upvote.* | *Pass* |
+| *UC06-TC02* | *KF09, KF10* | *Alternatif: Pengguna mencoba memberikan upvote lebih dari satu kali* | *1. Berikan upvote pada suatu laporan.<br>2. Tekan kembali tombol Upvote pada laporan yang sama.<br>3. Periksa jumlah upvote.* | *Pengguna yang sama memberikan upvote kembali pada laporan yang sama.* | *Sistem mencegah upvote ganda dan jumlah upvote tidak bertambah untuk permintaan kedua.* | *Jumlah upvote tidak bertambah ketika pengguna mencoba memberikan upvote kembali pada laporan yang sama.* | *Pass* |
+| *UC06-TC03* | *KF09, KF10* | *Alternatif: Pengguna mencoba meng-upvote laporan miliknya sendiri* | *1. Login sebagai pengguna.<br>2. Buka laporan yang dibuat oleh akun tersebut.<br>3. Periksa atau coba tekan tombol Upvote.* | *Laporan yang dimiliki oleh akun yang sedang login.* | *Sistem tidak mengizinkan pengguna memberikan upvote pada laporan miliknya sendiri.* | *Upvote pada laporan milik sendiri ditolak pada pengujian fitur Upvote.* | *Pass* |
+| *UC06-TC04* | *KF09, KF10* | *Alternatif: Admin mencoba memberikan upvote* | *1. Login sebagai admin.<br>2. Buka salah satu laporan.<br>3. Periksa atau coba gunakan fitur Upvote.* | *Akun dengan role admin.* | *Sistem tidak memberikan hak upvote kepada admin.* | *Admin tidak dapat memberikan upvote pada pengujian fitur Upvote.* | *Pass* |
+| *UC06-TC05* | *KF09, KF10* | *Alternatif: Upvote gagal karena gangguan jaringan* | *1. Putuskan koneksi jaringan ketika pengguna mengirim upvote.<br>2. Tekan tombol Upvote.<br>3. Periksa pesan kegagalan.<br>4. Pulihkan koneksi, muat ulang halaman, lalu coba kembali.* | *Koneksi jaringan terputus ketika upvote dikirim.* | *Sistem menampilkan informasi bahwa upvote gagal. Setelah koneksi pulih dan pengguna mencoba kembali, sistem mencatat upvote dan memperbarui jumlahnya.* | *Skenario gangguan jaringan belum memiliki hasil pengujian manual yang terdokumentasi.* | *NOT TESTED* |
+
+
 
 ### 4.4.10 Use Case Mengelola Profil
 
@@ -637,9 +683,17 @@ Tabel 4.5. Hasil Pengujian KNF
 
 | ID Pengujian | ID KNF | Parameter | Target Terukur | Metode dan Alat | Hasil Aktual | Kesimpulan |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| *KNF01-TC01* | *KNF01* | *Security* | *100% password pengguna baru disimpan dalam bentuk hash, bukan plaintext.* | *Registrasi akun dummy melalui frontend, kemudian inspeksi kolom hash_password pada tabel pengguna menggunakan PostgreSQL.* | *Password akun hasil registrasi tersimpan dalam kolom hash_password dan berbeda dari password plaintext yang dimasukkan* | *Pass* |
-| *KNF01-TC02* | *KNF01* | *Security* | *100% pengiriman kredensial login dan registrasi melalui koneksi HTTPS.* | *Periksa protokol request login dan registrasi pada Chrome DevTools, tab Network → Headers → Request URL, serta validitas sertifikat HTTPS.* |*Request URL berbentuk HTTPS.* | *PASS* |
-| *KNF10-TC01* | *KNF10* | *Security* | *100% percobaan akses profil tanpa sesi autentikasi ditolak dengan HTTP 401.* | *Pengujian manual menggunakan Google Chrome dan Chrome DevTools. Pengguna melakukan logout, kemudian mencoba mengakses kembali halaman profil dan endpoint GET /api/profile tanpa sesi autentikasi.* | *Akses profil ditolak, pengguna diarahkan ke halaman login, dan GET /api/profile menghasilkan HTTP 401.* | *Pass* |
+| *KNF01-TC01* | *KNF01* | *Security* | *100% password pengguna baru disimpan dalam bentuk hash, bukan plaintext.* | *Registrasi akun dummy, kemudian periksa kolom `hash_password` pada tabel pengguna menggunakan PostgreSQL.* | *Password hasil registrasi tersimpan pada kolom `hash_password` dan berbeda dari password plaintext yang dimasukkan.* | *Pass* |
+| *KNF01-TC02* | *KNF01* | *Security* | *100% pengiriman kredensial login dan registrasi menggunakan koneksi HTTPS.* | *Periksa protokol request login dan registrasi melalui Chrome DevTools, tab Network → Headers → Request URL, serta periksa sertifikat HTTPS.* | *Request URL yang diperiksa menggunakan protokol HTTPS.* | *Pass* |
+| *KNF02-TC01* | *KNF02* | *Compatibility* | *Permintaan pencarian lokasi melalui layanan peta eksternal menghasilkan lokasi yang dapat ditampilkan pada peta.* | *Gunakan kolom pencarian lokasi pada Peta Interaktif, masukkan kata kunci lokasi, kemudian periksa hasil pada peta.* | *Pencarian lokasi `Cibeber` berhasil dan hasil lokasi ditampilkan pada peta.* | *Pass* |
+| *KNF03-TC01* | *KNF03* | *Interaction Capability* | *Minimal 90% UI/UX guideline yang disusun berdasarkan Nielsen’s 10 Usability Heuristics terpenuhi.* | *Lakukan evaluasi terhadap seluruh butir UI/UX guideline dan catat jumlah butir yang terpenuhi dibandingkan jumlah seluruh butir.* | *Belum terdapat checklist evaluasi dan perhitungan persentase pemenuhan guideline.* | *NOT TESTED* |
+| *KNF04-TC01* | *KNF04* | *Performance Efficiency* | *Minimal 95% permintaan ranking laporan trending diselesaikan dalam waktu maksimal 2 detik.* | *Lakukan pengukuran waktu respons endpoint ranking/trending menggunakan alat pengujian performa atau Chrome DevTools. Catat waktu untuk setiap request dan hitung persentase request yang selesai dalam ≤ 2 detik.* | *Belum terdapat data pengukuran waktu respons maupun perhitungan persentase request.* | *NOT TESTED* |
+| *KNF05-TC01* | *KNF05* | *Performance Efficiency* | *Sistem melayani 1.000 pengguna aktif secara bersamaan dengan tingkat kegagalan request kurang dari 1%.* | *Jalankan load test dengan 1.000 virtual users secara bersamaan. Catat total request, request gagal, dan persentase kegagalan.* | *Belum terdapat hasil load test dengan 1.000 pengguna aktif secara bersamaan.* | *NOT TESTED* |
+| *KNF06-TC01* | *KNF06* | *Availability* | *Layanan pelaporan tersedia selama 24 jam per hari di luar pemeliharaan terjadwal.* | *Pantau ketersediaan endpoint layanan pelaporan secara berkala selama periode pemantauan 24 jam dan catat waktu gangguan.* | *Belum terdapat data pemantauan ketersediaan layanan selama 24 jam.* | *NOT TESTED* |
+| *KNF07-TC01* | *KNF07* | *Flexibility* | *Fungsi utama berjalan pada Google Chrome, Microsoft Edge, dan Mozilla Firefox.* | *Jalankan skenario utama pada ketiga browser dan bandingkan fungsi serta tampilan yang dihasilkan.* | *Pengujian lintas browser untuk ketiga browser belum terdokumentasi secara lengkap.* | *NOT TESTED* |
+| *KNF08-TC01* | *KNF08* | *Interaction Capability* | *Input dengan format yang salah ditolak tanpa menghapus data lain yang telah diisi.* | *Uji formulir yang dimaksud pada SKPL dengan memasukkan data berformat salah, lalu periksa validasi dan keberadaan data lain yang sudah diisi.* | *Belum terdapat hasil pengujian yang dapat dipetakan secara pasti. Deskripsi KNF menyebut “kuesioner”, sedangkan kebutuhan fungsional R11 pada SKPL membahas formulir laporan; istilah dan objek pengujian perlu diklarifikasi.* | *NOT TESTED* |
+| *KNF09-TC01* | *KNF09* | *Performance Efficiency* | *Sinkronisasi perubahan status laporan selesai maksimal 5 detik setelah perubahan berhasil disimpan.* | *Ubah status laporan melalui akun admin, catat waktu penyimpanan berhasil, lalu ukur waktu sampai status terbaru tampil pada sisi pengguna.* | *Belum terdapat pengukuran waktu sinkronisasi perubahan status laporan.* | *NOT TESTED* |
+| *KNF10-TC01* | *KNF10* | *Security* | *100% percobaan akses profil tanpa sesi autentikasi ditolak dengan HTTP 401.* | *Logout, kemudian coba akses halaman profil dan endpoint `GET /api/profile` tanpa sesi autentikasi. Periksa hasil melalui browser dan Chrome DevTools.* | *Akses profil ditolak, pengguna diarahkan ke halaman login, dan endpoint `GET /api/profile` menghasilkan HTTP 401.* | *Pass* |
 | *...* | *...* | *...* | *...* | *...* | *...* | *...* |
 
 <br>
@@ -670,6 +724,13 @@ Tabel 4.6. Bukti Hasil Pengujian
 | *UC02-TC02* | ![Validasi Email Kosong](../../src/test/screenshots/emailkosong.png) ![Validasi Password Kosong](../../src/test/screenshots/passkosong.png) |
 | *UC02-TC03* | *![Tidak terdaftar](../../src/test/screenshots/loginHapus.png)* |
 | *UC02-TC04* | *![Tidak terdaftar](../../src/test/screenshots/loginHapus.png)* |
+| *UC03-TC01* | ![Peta Interaktif](../../src/test/screenshots/FE-VW-06-pilih-laporan-peta.png) ![Filter urgensi peta](../../src/test/screenshots/FE-VW-04-filter-urgensi.png) |
+| *UC04-TC01* | ![Detail laporan](../../src/test/screenshots/FE-VW-07-detail-laporan.png) ![Navigasi detail ke peta](../../src/test/screenshots/FE-VW-09-detail-ke-peta.png) |
+| *UC05-TC01* | ![Tutorial awal](../../src/test/screenshots/FE-TU-01-tutorial-awal.png) ![Homepage tanpa tutorial](../../src/test/screenshots/FE-HP-02-homepage-tanpa-tutorial.png) |
+| *UC05-TC02* | ![Tutorial awal](../../src/test/screenshots/FE-TU-01-tutorial-awal.png) |
+| *UC06-TC01* | ![Upvote bertambah](../../src/test/screenshots/FE-UP-01-upvote-bertambah.png) ![Pengurutan populer setelah upvote](../../src/test/screenshots/FE-UP-04-upvote-integrasi-populer.png) |
+| *UC06-TC02* | - |
+| *UC06-TC03* | ![Upvote tidak duplikat](../../src/test/screenshots/FE-UP-02-upvote-tidak-duplikat.png) |
 | *UC10-TC01* | ![alt text](assets/AWALPROFIL.png)![alt text](assets/AKHIRPROFIL.png)|
 | *UC10-TC02* | ![Konfirmasi Hapus Akun](../../src/test/screenshots/konfirmasiHapus.png) ![Login Ditolak Setelah Akun Dihapus](../../src/test/screenshots/loginHapus.png) ![Akun Terhapus dari Database](../../src/test/screenshots/dbHapus.png) |
 | *UC10-TC03* | ![Dialog Konfirmasi Hapus Akun](../../src/test/screenshots/konfirmasiHapus.png)|
