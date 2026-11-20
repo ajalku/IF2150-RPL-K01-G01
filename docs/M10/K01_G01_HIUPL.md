@@ -176,7 +176,7 @@ Tabel 3.1. Lingkungan Implementasi
 
 | Aspek | Keterangan |
 | :--- | :--- |
-| *Hardware* | *[Spesifikasi perangkat keras]* |
+| *Hardware* | *Prosesor i7 13700H Yoga* |
 | *Operating System* | *Microsoft Windows [Version 10.0.26200.9974]* |
 | *Bahasa Pemrograman* | *JavaScript; backend berjalan di Node.js versi v26.13.0* |
 | *Framework/Library* | *Backend: Express.js 5.3.0, pg 8.23.1, express-session 1.19.0. Frontend: React 19.3.1, Vite 8.3.5, Leaflet 1.9.4, React-Leaflet 5.0.0.* |
