@@ -1040,6 +1040,14 @@ Tabel 4.6. Bukti Hasil Pengujian
 | *KNF02-TC01* | Output Test Runner Backend Node.js: `PASS — BE-LOC-01 s.d. BE-LOC-04 geocoding test (LaporanLokasiController.test.js)` |
 | *KNF10-TC02* | Output Test Runner Backend Node.js: `PASS — BE-LAP-17 auth middleware rejection (LaporanLokasiController.test.js)` |
 | *KNF10-TC03* | Output Test Runner Backend Node.js: `PASS — BE-ADM-08, BE-ADM-09 role-based access control (LaporanLokasiController.test.js)` |
+| **INT-TC11 (Upvote)** | ![Upvote Berhasil](../../src/test/INT-TC11-Upvote-Berhasil.png) ![Upvote Tetap Tersimpan Setelah Refresh](../../src/test/INT-TC11-Upvote-Persist.png) |
+| **INT-TC12 (Tutorial)** | ![Tutorial Ditampilkan](../../src/test/INT-TC12-Tutorial.png) ![Tutorial Tidak Muncul Kembali Setelah Refresh](../../src/test/INT-TC12-Tutorial-Persist.png) |
+| **UC06-TC02** | ![Pencegahan Upvote Duplikat](../../src/test/UC06-TC02-Duplicate.png) |
+| **UC04-TC03** | ![Filter Homepage Berhasil Diterapkan](../../src/test/UC04-TC03-Filter.png) |
+| **INT-TC11 (Upvote)** | ![Upvote Berhasil](../../src/test/INT-TC11-Upvote-Berhasil.png) ![Upvote Tetap Tersimpan Setelah Refresh](../../src/test/INT-TC11-Upvote-Persist.png) |
+| **INT-TC12 (Tutorial)** | ![Tutorial Ditampilkan](../../src/test/INT-TC12-Tutorial.png) ![Tutorial Tidak Muncul Kembali Setelah Refresh](../../src/test/INT-TC12-Tutorial-Persist.png) |
+| **UC06-TC02** | ![Pencegahan Upvote Duplikat](../../src/test/UC06-TC02-Duplicate.png) |
+| **UC04-TC03** | ![Filter Homepage Berhasil Diterapkan](../../src/test/UC04-TC03-Filter.png) |
 
 <br>
 
