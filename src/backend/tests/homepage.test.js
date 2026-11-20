@@ -112,3 +112,28 @@ describe("Homepage (model)", () => {
             { kategori: "Jalan", sortBy: "waktu", sortType: "asc", limit: 5, offset: 10 });
     });
 });
+describe("Homepage (tambahan coverage)", () => {
+    it("getFilterBy(): mengembalikan filter yang diberikan saat konstruksi", () => {
+        const filter = { kategori: "Jalan" };
+        const h = new Homepage({ filterBy: filter });
+
+        assert.deepEqual(h.getFilterBy(), filter);
+    });
+});
+
+describe("HomepageController (tambahan coverage)", () => {
+    it("ambilListLaporan(): meneruskan parameter ke model Homepage", async () => {
+        const daftar = [{ idLaporan: "a" }];
+        mock.method(Homepage.prototype, "getDaftarLaporan", async () => daftar);
+
+        const hasil = await HomepageController.ambilListLaporan(warga, {
+            sortBy: "waktu",
+            sortType: "asc",
+            filterBy: { kategori: "Jalan" },
+            limit: 5,
+            offset: 10
+        });
+
+        assert.deepEqual(hasil, daftar);
+    });
+});

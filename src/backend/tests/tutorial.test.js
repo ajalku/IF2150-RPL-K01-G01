@@ -82,3 +82,43 @@ describe("TutorialController (UC05)", () => {
         assert.equal(res.statusCode, 400);
     });
 });
+describe("Tutorial (tambahan coverage)", () => {
+    it("tandaiSudahLihat(): true jika status berhasil diperbarui", async () => {
+        mock.method(fakePool, "query", async () => ({ rowCount: 1, rows: [] }));
+        assert.equal(await Tutorial.tandaiSudahLihat(ID_PENGGUNA), true);
+    });
+
+    it("tandaiSudahLihat(): false jika pengguna tidak ditemukan", async () => {
+        mock.method(fakePool, "query", async () => ({ rowCount: 0, rows: [] }));
+        assert.equal(await Tutorial.tandaiSudahLihat(ID_PENGGUNA), false);
+    });
+});
+
+describe("TutorialController (tambahan coverage)", () => {
+    it("startTutorial: 500 jika gagal mengambil status tutorial", async () => {
+        mock.method(Tutorial, "sudahLihat", async () => { throw new Error("db error"); });
+        mock.method(console, "error", () => {});
+        const res = fakeRes();
+
+        await TutorialController.startTutorial(req(), res);
+        assert.equal(res.statusCode, 500);
+    });
+
+    it("skipTutorial: 500 jika gagal menyimpan status tutorial", async () => {
+        mock.method(Tutorial, "tandaiSudahLihat", async () => { throw new Error("db error"); });
+        mock.method(console, "error", () => {});
+        const res = fakeRes();
+
+        await TutorialController.skipTutorial(req(), res);
+        assert.equal(res.statusCode, 500);
+    });
+
+    it("finishTutorial: 500 jika terjadi error saat menyimpan status", async () => {
+        mock.method(Tutorial, "tandaiSudahLihat", async () => { throw new Error("db error"); });
+        mock.method(console, "error", () => {});
+        const res = fakeRes();
+
+        await TutorialController.finishTutorial(req({ langkahSaatIni: TOTAL }), res);
+        assert.equal(res.statusCode, 500);
+    });
+});

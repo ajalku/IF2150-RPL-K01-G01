@@ -136,3 +136,32 @@ describe("Upvote (model)", () => {
         assert.deepEqual([...hasil], ["a"]);
     });
 });
+
+describe("Upvote (tambahan coverage)", () => {
+    it("sudahUpvote(): true jika pengguna sudah melakukan upvote", async () => {
+        mock.method(fakePool, "query", async () => ({ rowCount: 1, rows: [{ "?column?": 1 }] }));
+        assert.equal(await Upvote.sudahUpvote(ID_PENGGUNA, ID_LAPORAN), true);
+    });
+
+    it("sudahUpvote(): false jika pengguna belum melakukan upvote", async () => {
+        mock.method(fakePool, "query", async () => ({ rowCount: 0, rows: [] }));
+        assert.equal(await Upvote.sudahUpvote(ID_PENGGUNA, ID_LAPORAN), false);
+    });
+
+    it("getDiupvoteOleh(): input bukan array menghasilkan Set kosong", async () => {
+        const q = mock.method(fakePool, "query", async () => ({ rows: [] }));
+        const hasil = await Upvote.getDiupvoteOleh(ID_PENGGUNA, null);
+        assert.equal(hasil.size, 0);
+        assert.equal(q.mock.callCount(), 0);
+    });
+
+    it("upvote(): rollback jika penambahan jumlah upvote laporan gagal", async () => {
+        const client = fakeClient();
+        mock.method(fakePool, "connect", async () => client);
+        mock.method(Laporan, "tambahUpvote", async () => false);
+
+        assert.equal(await Upvote.upvote(ID_PENGGUNA, ID_LAPORAN), false);
+        assert.equal(client.log.at(-1), "ROLLBACK");
+        assert.equal(client.released, true);
+    });
+});
