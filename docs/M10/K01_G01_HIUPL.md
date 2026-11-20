@@ -417,7 +417,7 @@ Tabel 4.2.4b. Ringkasan Cakupan Kelas C02
 | :--- | :--- |
 | Operasi yang diuji | *`getSortBy()`, `getSortType()`, `getDaftarLaporan()`* |
 | Jumlah test case | *4 test case* |
-| Coverage | *Belum diukur secara terpisah.* |
+| Coverage | Line Coverage: 100,00%; Branch Coverage: 100,00%; Function Coverage: 100,00%. |
 
 ### 4.2.5 Kelas HomepageController
 
@@ -445,7 +445,7 @@ Tabel 4.2.5b. Ringkasan Cakupan Kelas C16
 | :--- | :--- |
 | Operasi yang diuji | *`urutkanLaporan()`, `filterLaporan()`, `loadHomepage()`* |
 | Jumlah test case | *9 test case* |
-| Coverage | *Belum diukur secara terpisah.* |
+| Coverage | Line Coverage: 100,00%; Branch Coverage: 93,94%; Function Coverage: 100,00%. |
 
 ### 4.2.6 Kelas Upvote
 
@@ -469,7 +469,7 @@ Tabel 4.2.6b. Ringkasan Cakupan Kelas C05
 | :--- | :--- |
 | Operasi yang diuji | *`upvote()`, `getDiupvoteOleh()`* |
 | Jumlah test case | *5 test case* |
-| Coverage | *Belum diukur secara terpisah.* |
+| Coverage | Line Coverage: 100,00%; Branch Coverage: 92,31%; Function Coverage: 80,00%. |
 
 ### 4.2.7 Kelas UpvoteController
 
@@ -496,8 +496,7 @@ Tabel 4.2.7b. Ringkasan Cakupan Kelas C19
 | :--- | :--- |
 | Operasi yang diuji | *`prosesUpvote()`* |
 | Jumlah test case | *8 test case* |
-| Coverage | *Belum diukur secara terpisah.* |
-
+| Coverage | Line Coverage: 100,00%; Branch Coverage: 93,75%; Function Coverage: 100,00%. |
 ### 4.2.8 Kelas Tutorial
 
 **ID Kelas:** C07  
@@ -518,8 +517,7 @@ Tabel 4.2.8b. Ringkasan Cakupan Kelas C07
 | :--- | :--- |
 | Operasi yang diuji | *`getLangkahSaatIni()`, `getTotalLangkah()`, `getDaftarLangkah()`, `sudahLihat()`* |
 | Jumlah test case | *3 test case* |
-| Coverage | *Belum diukur secara terpisah.* |
-
+| Coverage | Line Coverage: 100,00%; Branch Coverage: 100,00%; Function Coverage: 100,00%. |
 ### 4.2.9 Kelas TutorialController
 
 **ID Kelas:** C21  
@@ -543,7 +541,7 @@ Tabel 4.2.9b. Ringkasan Cakupan Kelas C21
 | :--- | :--- |
 | Operasi yang diuji | *`startTutorial()`, `skipTutorial()`, `finishTutorial()`* |
 | Jumlah test case | *6 test case* |
-| Coverage | *Belum diukur secara terpisah.* |
+| Coverage | Line Coverage: 100,00%; Branch Coverage: 90,91%; Function Coverage: 100,00%. |
 
 <br>
 
