@@ -464,9 +464,9 @@ Tabel 4.5. Hasil Pengujian KNF
 
 | ID Pengujian | ID KNF | Parameter | Target Terukur | Metode dan Alat | Hasil Aktual | Kesimpulan |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| *KNF01-TC01* | *KNF01* | *Reliability* | *Tidak ada data hilang/ganda saat jaringan putus di tengah transaksi* | *Simulasi putus koneksi saat bayar, lalu cek status di DB* | *[Hasil aktual]* | *Pass/Fail* |
-| *KNF02-TC01* | *KNF02* | *Security* | *Password tersimpan sebagai hash, bukan plain-text* | *Inspeksi tabel pengguna di DB* | *[...]* | *Pass/Fail* |
-| *KNFXX-TC01* | *KNFXX* | *Response time* | *Halaman tampil ≤ 4 detik* | *Chrome DevTools, 5 kali ukur, ambil rata-rata* | *[Rata-rata ... detik, maks ... detik]* | *Pass/Fail* |
+| *KNF01-TC01* | *KNF01* | *Security* | *100% password pengguna baru disimpan dalam bentuk hash, bukan plaintext.* | *Registrasi akun dummy melalui frontend, kemudian inspeksi kolom hash_password pada tabel pengguna menggunakan PostgreSQL.* | *Password akun hasil registrasi tersimpan dalam kolom hash_password dan berbeda dari password plaintext yang dimasukkan* | *Pass* |
+| *KNF01-TC02* | *KNF01* | *Security* | *100% pengiriman kredensial login dan registrasi melalui koneksi HTTPS.* | *Periksa protokol request login dan registrasi pada Chrome DevTools, tab Network → Headers → Request URL, serta validitas sertifikat HTTPS.* |*Request URL berbentuk HTTPS.* | *PASS* |
+| *KNF10-TC01* | *KNF10* | *Security* | *100% percobaan akses profil tanpa sesi autentikasi ditolak dengan HTTP 401.* | *Pengujian manual menggunakan Google Chrome dan Chrome DevTools. Pengguna melakukan logout, kemudian mencoba mengakses kembali halaman profil dan endpoint GET /api/profile tanpa sesi autentikasi.* | *Akses profil ditolak, pengguna diarahkan ke halaman login, dan GET /api/profile menghasilkan HTTP 401.* | *Pass* |
 | *...* | *...* | *...* | *...* | *...* | *...* | *...* |
 
 <br>
