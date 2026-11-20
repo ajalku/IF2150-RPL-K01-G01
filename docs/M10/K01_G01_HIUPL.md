@@ -218,11 +218,10 @@ Tabel 4.1.1. Identifikasi Tingkat Pengujian Kelas
 
 | ID Kelas | Nama Kelas | Tingkat | Alasan | Test Case Terkait |
 | :--- | :--- | :--- | :--- | :--- |
-| *C02* | *Pesanan* | *Mendalam* | *Memuat `hitungTotal()` dan transisi status pembayaran* | *C02-UT01 s.d. C02-UT08* |
-| *C03* | *Keranjang* | *Sedang* | *Delegasi sederhana ke Produk dan Pesanan* | *C03-UT01 s.d. C03-UT03, INT-TC02* |
-| *C01* | *Pelanggan* | *Tidak perlu* | *Hanya menyimpan data akun, tanpa logika* | *-* |
+| *C15* | *PenggunaController* | *Mendalam* | *Memuat `login()`, `registrasi()`, autetikasi, hashing password, serta validasi data* | *C15-UT01 s.d. C15-UT24* |
+| *C01* | *Pengguna* | *Sedang* | *Melakukan operasi CRUD pada terdapat beberapa logika pengambilan keputusan.* | *C03-UT01 s.d. C03-UT09, INT-TC01 s.d. INT-TC06* |
+| *C08* | *PenggunaView* | *Sedang* | *Terdapat operasi yang memengaruhi perilaku sistem* | *C01-UT01 s.d. C01-UT08, INT-TC07 s.d. TC09* |
 | *[CXX]* | *[Nama kelas]* | *[Mendalam/Sedang/Tidak perlu]* | *[Alasan penentuan tingkat pengujian]* | *[ID test case atau -]* |
-| *...* | *...* | *...* | *...* | *...* |
 
 ## 4.2 Pengujian Unit Kelas
 
@@ -232,35 +231,90 @@ Cara menjalankan unit test: *[tuliskan perintah, mis. `pytest src/tests/`]*.
 
 Lokasi file test: *[path, mis. `src/tests/`]*.
 
-### 4.2.1 Kelas [Nama Kelas 1]
+### 4.2.1 Kelas PenggunaController
 
-**ID Kelas:** *[C02]*  
-**Nama Kelas:** *[Pesanan]*  
-**Tingkat:** *[Mendalam]*
+**ID Kelas:** C15  
+**Nama Kelas:** *PenggunaController*  
+**Tingkat:** *Mendalam*
 
-Tabel 4.2.1. Hasil Pengujian Unit Kelas [C02]
+Tabel 4.2.1. Hasil Pengujian Unit Kelas C15
 
 | ID Pengujian | Operasi yang Diuji | Jenis Kasus | Prosedur/Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| *C02-UT01* | *`hitungTotal(): Decimal`* | *Normal* | *Pesanan berisi 2 item: 10.000 x 2 dan 5.000 x 1* | *Total = 25.000* | *[Hasil aktual]* | *Pass/Fail* |
-| *C02-UT02* | *`hitungTotal(): Decimal`* | *Batas* | *Pesanan berisi tepat 1 item dengan jumlah 1* | *Total = harga item tersebut* | *[...]* | *Pass/Fail* |
-| *C02-UT03* | *`hitungTotal(): Decimal`* | *Negatif* | *Pesanan tanpa item* | *Total = 0 atau melempar kesalahan sesuai rancangan* | *[...]* | *Pass/Fail* |
-| *...* | *...* | *...* | *...* | *...* | *...* | *...* |
+| *C15-UT01* | *`register()`* | *Normal* | *Registrasi menggunakan nama, NIK 16 digit, email, password, dan nomor telepon valid* | *HTTP 201 dan password di-hash* | *HTTP 201 dan bycrypt dipanggil untuk melakukan hash* | *Pass* |
+| *C15-UT02* | *`register()`* | *Batas* | *Registrasi dengan password tepat 8 karakter* | *HTTP 201 dan password diterima* | *HTTP 201 dan password diterima* | *Pass* |
+| *C15-UT03* | *`register()`* | *Negatif* | *Registrasi dengan NIK 5 digit* | *HTTP 400, pesan NIK tidak valid* | *HTTP 400 dengan pesan yang sesuai* | *Pass* |
+| *C15-UT04* | *`login()`* | *Normal* | *Login dengan email dan password valid* | *HTTP 200 dan sesi pengguna disimpan* | *HTTP 200 dan idPengguna dan role disimpan dalam mock session* | *Pass* |
+| *C15-UT05* | *`login()`* | *Batas* | *Login menggunakan email berisi spasi saja* | *HTTP 400 dan password diwajibkan* | *HTTP 400 pesan Email and _password are required_| *Pass* |
+| *C15-UT06* | *`register()`* | *Negatif* | *Login dengan password yang salah* | *HTTP 401, login ditolak* | *HTTP 401 dengan pesan Wrong Email or Password* | *Pass* |
+| *C15-UT07* | *`getProfile()`* | *Normal* | *Mengambil profil pengguna dengan ID sesi 1* | *HTTP 200 dan data profil dikembalikan* | *HTTP 200 dan data profil sesuai mock* | *Pass* |
+| *C15-UT08* | *`getProfile()`* | *Batas* | *Mengambil profil dengan sesi tanpa idPengguna* | *HTTP 404, pengguna tidak ditemukan* | *HTTP 404 pesan _User not found_| *Pass* |
+| *C15-UT09* | *`getProfile()`* | *Negatif* | *Simulasi kegagalan database saat mengambil profil* | *HTTP 500, pesan kesalahan server* | *HTTP 500 dengan pesan Something went Wrong* | *Pass* |
+| *C15-UT09* | *`getProfile()`* | *Negatif* | *Simulasi kegagalan database saat mengambil profil* | *HTTP 500, pesan kesalahan server* | *HTTP 500 dengan pesan Something went wrong* | *Pass* |
+| *C15-UT10* | *`ubahProfil()`* | *Normal* | *Mengubah nama menjadi "  Nama Baru  " dan nomor telepon valid* | *HTTP 200, nama di-trim dan profil diperbarui* | *HTTP 200, nama dikirim sebagai Nama Baru pada pemanggilan model mock* | *Pass* |
+| *C15-UT11* | *`ubahProfil()`* | *Batas* | *Mengubah nama dengan tepat 100 karakter* | *HTTP 200, nama diterima* | *HTTP 200, pembaruan nama diterima* | *Pass* |
+| *C15-UT12* | *`ubahProfil()`* | *Negatif* | *Mengubah field terlindungi role menjadi admin* | *HTTP 400, perubahan field terlindungi ditolak* | *HTTP 400 dengan pesan Protected profile fields cannot be changed* | *Pass* |
+| *C15-UT13* | *`changePassword()`* | *Normal* | *Mengganti password dengan password lama benar dan password baru valid serta berbeda* | *HTTP 200, password baru di-hash dan diperbarui* | *HTTP 200, pesan Password updated successfully dan hash baru dikirim ke model mock* | *Pass* |
+| *C15-UT14* | *`changePassword()`* | *Batas* | *Mengganti password dengan password baru tepat 8 karakter (Abcdef1!)* | *HTTP 200, password baru diterima* | *HTTP 200, password diterima dan proses hashing dipanggil* | *Pass* |
+| *C15-UT15* | *`changePassword()`* | *Negatif* | *Mengganti password menggunakan password lama yang salah* | *HTTP 401, perubahan password ditolak* | *HTTP 401 dengan pesan Current password is incorrect* | *Pass* |
+| *C15-UT16* | *`hapusAkun()`* | *Normal* | *Pengguna dengan role warga melakukan penghapusan akun* | *HTTP 200, akun dihapus dan sesi diakhiri* | *HTTP 200, fungsi penghapusan akun dan destroy session mock dipanggil* | *Pass* |
+| *C15-UT17* | *`hapusAkun()`* | *Batas* | *Menghapus akun tanpa ID pengguna dalam sesi* | *HTTP 401, penghapusan akun ditolak* | *HTTP 401 dengan pesan Please log in to continue* | *Pass* |
+| *C15-UT18* | *`hapusAkun()`* | *Negatif* | *Pengguna dengan role admin mencoba menghapus akun* | *HTTP 403, akses penghapusan ditolak* | *HTTP 403 dengan pesan Hanya warga yang dapat menghapus akun* | *Pass* |
+| *C15-UT19* | *`me()`* | *Normal* | *Mengambil informasi pengguna yang sedang login* | *HTTP 200, informasi pengguna dikembalikan* | *HTTP 200 dengan data ID, nama, email, nomor telepon, dan role sesuai mock* | *Pass* |
+| *C15-UT20* | *`me()`* | *Batas* | *Mengambil informasi pengguna ketika akun tidak ditemukan* | *HTTP 401, sesi pengguna diakhiri* | *HTTP 401, pesan Please log in to continue dan destroy session mock dipanggil* | *Pass* |
+| *C15-UT21* | *`me()`* | *Negatif* | *Simulasi kegagalan database saat mengambil informasi pengguna* | *HTTP 500, pesan kesalahan server* | *HTTP 500 dengan pesan Something went wrong* | *Pass* |
+| *C15-UT22* | *`logout()`* | *Normal* | *Logout dengan sesi pengguna aktif* | *HTTP 200, sesi diakhiri dan cookie dihapus* | *HTTP 200, pesan Logout succeeded, destroy session dan clearCookie mock dipanggil* | *Pass* |
+| *C15-UT23* | *`logout()`* | *Batas* | *Logout dengan sesi tanpa idPengguna* | *HTTP 200, logout tetap berhasil* | *HTTP 200, destroy session dan clearCookie mock dipanggil* | *Pass* |
+| *C15-UT24* | *`logout()`* | *Negatif* | *Simulasi kegagalan proses destroy session* | *HTTP 500, pesan kesalahan server* | *HTTP 500 dengan pesan Something went wrong* | *Pass* |
 
-Khusus kelas **Mendalam**:
-
-Tabel 4.2.1b. Ringkasan Cakupan Kelas [C02]
+Tabel 4.2.1b. Ringkasan Cakupan Kelas C15
 
 | Informasi | Keterangan |
 | :--- | :--- |
-| Daftar operasi public pada DPPL | *[op1(), op2(), ...]* |
-| Operasi yang diuji | *[op1(), op2(), ...]* |
-| ID Algoritma yang tercakup | *[Algo-001, ...]* |
-| Coverage (wajib ≥ 70%) | *[% baris / % cabang, alat dan bukti pada 4.6]* |
+| Daftar operasi public pada DPPL | *registrasi(), login(), setIzinLokasi(), cekIzinLokasi(), cekStatusTutorial(), sudahLogin(), kirimKonfirmasiUlang(), ubahProfil(), hapusAkun()* |
+| Operasi yang diuji | *register(), login(), getProfile(), ubahProfil(), changePassword(), hapusAkun(), me(), logout()* |
+| ID Algoritma yang tercakup | *Algo-020, Algo-021, Algo-022, Algo-023, Algo-024, Algo-025* |
+| Coverage (wajib ≥ 70%) | *Statement Coverage: 75,97%; Branch Coverage: 70,94%; Function Coverage: 100%; Line Coverage: 76,87%. Pengukuran menggunakan Jest dengan 24 test case Passed (bukti pengujian pada Subbab 4.6).* |
 
-### 4.2.2 Kelas [Nama Kelas 2]
+### 4.2.2 Kelas Pengguna
 
-*[Ulangi pola 4.2.1 untuk setiap kelas bertingkat Mendalam atau Sedang.]*
+**ID Kelas:** C01
+**Nama Kelas:** *Pengguna*  
+**Tingkat:** *Sedang*
+
+Tabel 4.2.2. Hasil Pengujian Unit Kelas C01
+
+| ID Pengujian | Operasi yang Diuji | Jenis Kasus | Prosedur/Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| *C01-UT01* | *`simpanDataPengguna()`* | *Normal* | *Menyimpan data pengguna baru dengan nama, NIK, email, hash password, dan nomor telepon valid* | *Query INSERT dijalankan dan mengembalikan ID pengguna 1* | *Query INSERT dipanggil dengan parameter sesuai, ID pengguna 1 berhasil dikembalikan* | *Pass* |
+| *C01-UT02* | *`getPenggunaByEmail()`* | *Normal* | *Mencari pengguna berdasarkan email samantha@example.com* | *Mengembalikan objek Pengguna dengan email yang sesuai* | *Objek Pengguna berhasil dikembalikan dengan email samantha@example.com* | *Pass* |
+| *C01-UT03* | *`getPenggunaById()`* | *Normal* | *Mencari pengguna dengan ID 1* | *Mengembalikan objek Pengguna dengan ID 1* | *Objek Pengguna berhasil dikembalikan dengan ID 1* | *Pass* |
+| *C01-UT04* | *`getProfilPenggunaById()`* | *Normal* | *Mengambil profil pengguna dengan ID 1* | *Mengembalikan data profil berisi ID, nama, email, nomor telepon, dan role* | *Data profil berhasil dikembalikan dengan seluruh atribut sesuai hasil mock* | *Pass* |
+| *C01-UT05* | *`updateDataPengguna()`* | *Normal* | *Memperbarui nama menjadi Samantha Baru dan nomor telepon menjadi 081234567890 untuk pengguna ID 1* | *Query UPDATE dijalankan dengan parameter sesuai dan mengembalikan true* | *Query UPDATE dijalankan dengan parameter sesuai dan method mengembalikan true* | *Pass* |
+| *C01-UT06* | *`hapusDataPengguna()`* | *Normal* | *Menghapus data pengguna dengan ID 1* | *Query DELETE dijalankan dan mengembalikan true* | *Query DELETE dijalankan dengan ID 1 dan method mengembalikan true* | *Pass* |
+| *C01-UT07* | *`hapusAkun()`* | *Normal* | *Memanggil penghapusan akun pengguna dengan ID 1* | *Method hapusDataPengguna dipanggil dan mengembalikan true* | *Method hapusDataPengguna berhasil dipanggil satu kali dan mengembalikan true* | *Pass* |
+| *C01-UT08* | *`getPenggunaByNIK()`* | *Normal* | *Mencari pengguna berdasarkan NIK 1234567890123456* | *Mengembalikan objek Pengguna dengan data yang sesuai* | *Objek Pengguna berhasil dikembalikan dengan ID 1 sesuai hasil mock* | *Pass* |
+| *C01-UT09* | *`hapusAkun()`* | *Negatif* | *Penghapusan gagal karena database tidak menghapus baris apa pun * | *Tidak ada bagian database yang terhapus* | *Tidak ada bagian database yang terhapus* | *Pass* |
+
+### 4.2.3 Kelas Pengguna
+**ID Kelas:** C08
+**Nama Kelas:** *PenggunaView*  
+**Tingkat:** *Sedang*
+
+Tabel 4.2.3. Hasil Pengujian Unit Kelas C08
+
+
+| ID Pengujian | Operasi yang Diuji | Jenis Kasus | Prosedur/Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| *C17-UT01* | *`handleRegister()`* | *Negatif* | *Melakukan registrasi dengan NIK 12345 yang tidak memenuhi ketentuan 16 digit* | *Registrasi ditolak, pesan kesalahan NIK ditampilkan, dan request registrasi tidak dikirim* | *Pesan "NIK harus terdiri dari 16 digit angka." ditampilkan dan requestRegister tidak dipanggil* | *Pass* |
+| *C17-UT02* | *`handleLogin()`* | *Normal* | *Melakukan login menggunakan email samantha@example.com dan password Password1! dengan respons service berhasil* | *Request login dikirim, callback onLoginSuccess dipanggil, pesan berhasil ditampilkan, dan input password dikosongkan* | *Request login dipanggil dengan kredensial sesuai, callback berhasil dijalankan, pesan "Login berhasil. Anda sudah masuk ke RAWAT." ditampilkan, dan input password dikosongkan* | *Pass* |
+| *C17-UT03* | *`konfirmasiHapusAkun()`* | *Negatif* | *Melakukan konfirmasi penghapusan akun ketika service hapusAkun mengembalikan error "Gagal menghapus akun."* | *Pesan kegagalan ditampilkan, dialog konfirmasi tetap terbuka, dan callback keberhasilan tidak dipanggil* | *Pesan "Gagal menghapus akun." ditampilkan pada dialog, dialog tetap terbuka, dan onAkunDihapus tidak dipanggil* | *Pass* |
+| *C17-UT04* | *`handleRegister()`* | *Normal* | *Melakukan registrasi dengan nama, NIK 16 digit, email, nomor telepon, password, dan konfirmasi password yang valid* | *Request registrasi dikirim ke authService, registrasi berhasil, halaman kembali ke login, dan pesan keberhasilan ditampilkan* | *Request register dipanggil dengan data yang sesuai, pesan "Registrasi berhasil! Silakan masuk menggunakan akun Anda." ditampilkan, dan email pengguna terisi pada form login* | *Pass* |
+| *C17-UT05* | *`handleLogin()`* | *Negatif* | *Melakukan login menggunakan email valid dan password salah sehingga authService mengembalikan error "Email atau password salah"* | *Pesan kesalahan ditampilkan, callback onLoginSuccess tidak dipanggil, dan tombol login kembali aktif* | *Pesan "Email atau password salah" ditampilkan, onLoginSuccess tidak dipanggil, dan tombol login kembali aktif setelah request gagal* | *Pass* |
+| *C17-UT06* | *`konfirmasiHapusAkun()`* | *Normal* | *Melakukan konfirmasi penghapusan akun ketika service hapusAkun mengembalikan respons berhasil* | *Request penghapusan akun diproses, callback onAkunDihapus dipanggil dengan status success, dan dialog konfirmasi ditutup* | *Service hapusAkun dipanggil satu kali, onAkunDihapus menerima pesan "Akun berhasil dihapus." dengan status success, dan dialog konfirmasi ditutup* | *Pass* |
+| *C17-UT07* | *`batalHapusAkun()`* | *Normal* | *Membuka dialog konfirmasi penghapusan akun, kemudian menekan tombol Batal sebelum proses penghapusan dimulai* | *Dialog konfirmasi ditutup dan tidak ada request penghapusan akun yang dikirim* | *Dialog konfirmasi berhasil ditutup dan service hapusAkun tidak dipanggil* | *Pass* |
+| *C17-UT08* | *`batalHapusAkun()`* | *Negatif* | *Mencoba membatalkan penghapusan akun ketika request hapusAkun masih berlangsung (pending)* | *Pembatalan ditolak, dialog tetap terbuka, dan callback keberhasilan belum dipanggil selama proses berlangsung* | *Dialog tetap terbuka ketika tombol Batal ditekan selama proses berlangsung; setelah request berhasil, onAkunDihapus dipanggil dan dialog ditutup* | *Pass* |
+
 
 <br>
 
@@ -272,19 +326,27 @@ Tabel 4.3.1. Daftar Antarmuka Antarkomponen
 
 | ID Antarmuka | Komponen Asal | Komponen Tujuan | Jenis Batas | Test Case |
 | :--- | :--- | :--- | :--- | :--- |
-| *I-01* | *KeranjangController* | *Keranjang (Model)* | *Controller - Model* | *INT-TC01, INT-TC02* |
-| *I-02* | *Pesanan (Model)* | *Database* | *Aplikasi - Basis data* | *INT-TC03* |
-| *I-03* | *PaymentGatewayAdapter* | *Payment Gateway (dummy)* | *Aplikasi - Sistem eksternal* | *INT-TC04, INT-TC05* |
+| *I-01* | *PenggunaController* | *Pengguna (Model)* | *Controller - Model* | *INT-TC01, INT-TC02, INT-TC03, INT-TC04, INT-TC05, INT-TC06* |
+| *I-02* | *Pengguna (Model)* | *PostgreSQL* | *Aplikasi - Basis Data* | *INT-TC01, INT-TC03, INT-TC04, INT-TC05, INT-TC06* |
+| *I-03* | *authService* | *Express API Auth* | *Frontend - Backend (HTTP)* | *INT-TC07* |
+| *I-04* | *profileService* | *Express API Profile* | *Frontend - Backend (HTTP)* | *INT-TC08* |
+| *I-05* | *Express Session* | *PostgreSQL Session Store* | *Aplikasi - Basis Data* | *INT-TC02, INT-TC09* |
 | *[I-XX]* | *[Komponen asal]* | *[Komponen tujuan]* | *[Jenis batas]* | *[ID test case]* |
-| *...* | *...* | *...* | *...* | *...* |
+
 
 Tabel 4.3.2. Hasil Pengujian Integrasi
 
 | ID Pengujian | ID Antarmuka | Skenario | Prosedur/Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| *INT-TC01* | *I-01* | *Normal: tambah item ke keranjang* | *Panggil `tambahItem()` melalui KeranjangController dengan produk valid* | *Item tersimpan pada Keranjang dan tampil pada daftar item* | *[Hasil aktual]* | *Pass/Fail* |
-| *INT-TC03* | *I-02* | *Normal: simpan pesanan* | *Buat pesanan, lalu baca ulang langsung dari basis data* | *Baris pesanan ada dengan nilai total dan status yang sama* | *[...]* | *Pass/Fail* |
-| *INT-TC05* | *I-03* | *Gagal: gateway mengembalikan status gagal* | *Kirim otorisasi dengan saldo dummy tidak cukup* | *Status pesanan tidak berubah menjadi "Lunas", pesan gagal diteruskan ke pengguna* | *[...]* | *Pass/Fail* |
+| *INT-TC01* | *I-01, I-02* | *Normal: Registrasi pengguna* | *Kirim POST /api/auth/register dengan nama, NIK 16 digit, email unik, password valid, dan nomor telepon valid melalui Supertest. Kemudian baca ulang data dari PostgreSQL.* | *HTTP 201, akun tersimpan dalam database dengan atribut sesuai masukan, ID pengguna dikembalikan, dan password disimpan dalam bentuk hash.* | *HTTP 201 diterima, ID pengguna dikembalikan, data berhasil ditemukan kembali pada PostgreSQL dengan atribut sesuai, dan password tersimpan dalam bentuk hash.* | *Pass* |
+| *INT-TC02* | *I-01, I-02, I-05* | *Normal: Login pengguna* | *Kirim POST /api/auth/login menggunakan email dan password akun yang telah diregistrasi, kemudian kirim GET /api/auth/me menggunakan cookie sesi yang sama melalui Supertest agent.* | *HTTP 200, login berhasil, role warga dikembalikan, sesi dikenali, dan endpoint /api/auth/me mengembalikan informasi pengguna yang sesuai.* | *HTTP 200 diterima, pesan Login succeeded. dan role warga dikembalikan. Request GET /api/auth/me menggunakan sesi yang sama berhasil mengembalikan HTTP 200 dengan email dan role pengguna sesuai.* | *Pass* |
+| *INT-TC03* | *I-01, I-02* | *Normal: Mengambil profil pengguna* | *Kirim GET /api/profile menggunakan sesi login aktif, kemudian bandingkan respons API dengan data pengguna pada PostgreSQL.* | *HTTP 200, data profil pengguna dikembalikan dan sesuai dengan data yang tersimpan pada database.* | *HTTP 200 diterima, data nama, email, nomor telepon, dan role berhasil dikembalikan. ID, nama, dan nomor telepon sesuai dengan hasil query PostgreSQL.* | *Pass* |
+| *INT-TC04* | *I-01, I-02* | *Normal: Memperbarui profil pengguna* | *Kirim PUT /api/profile dengan nama "Integration Test Updated" dan nomor telepon "081298765432", kemudian baca ulang data melalui API dan PostgreSQL.* | *HTTP 200, perubahan profil berhasil disimpan dan data yang dibaca ulang sesuai dengan masukan.* | *HTTP 200 diterima dengan pesan "Profile updated successfully.". Nama dan nomor telepon berhasil diperbarui pada PostgreSQL serta sesuai saat dibaca ulang melalui GET /api/profile.* | *Pass* |
+| *INT-TC05* | *I-01, I-02* | *Normal: Mengganti password pengguna* | *Kirim PUT /api/profile/password menggunakan password lama yang benar dan password baru "NewPassword2!", kemudian periksa perubahan hash pada PostgreSQL dan lakukan login ulang.* | *HTTP 200, hash password berubah, password tidak tersimpan sebagai plaintext, dan login dengan password baru berhasil.* | *HTTP 200 diterima dengan pesan "Password updated successfully.". Hash password pada PostgreSQL berubah dan berbeda dari plaintext. Login menggunakan password baru berhasil dengan HTTP 200 dan sesi baru dikenali melalui GET /api/auth/me.* | *Pass* |
+| *INT-TC06* | *I-01, I-02, I-05* | *Normal: Menghapus akun pengguna* | *Kirim request DELETE melalui endpoint penghapusan akun dengan sesi login aktif, kemudian periksa keberadaan akun di PostgreSQL dan validitas sesi sebelumnya.* | *HTTP 200, akun terhapus dari database dan sesi pengguna tidak lagi dapat digunakan.* | *HTTP 200 diterima dengan pesan "Akun berhasil dihapus.". Query PostgreSQL tidak menemukan akun yang dihapus, sedangkan GET /api/auth/me menggunakan sesi lama mengembalikan HTTP 401.* | *Pass* |
+| *INT-TC07* | *I-03* | *Normal: Login pengguna melalui frontend* | *Masukkan email dan password akun dummy melalui halaman login PenggunaView, kemudian periksa request POST /api/auth/login menggunakan Chrome DevTools pada tab Network.* | *Frontend berhasil mengirim request login ke backend, backend mengembalikan HTTP 200, sesi autentikasi terbentuk, dan pengguna berhasil masuk ke aplikasi.* | *Request POST /api/auth/login berhasil diproses dengan HTTP 200. Pengguna berhasil login dan diarahkan ke halaman aplikasi dalam keadaan terautentikasi.* | *Pass* |
+| *INT-TC08* | *I-03* | *Normal: Registrasi pengguna melalui frontend* | *Isi formulir registrasi PenggunaView menggunakan nama, NIK, email, nomor telepon, dan password dummy yang valid. Kirim formulir dan periksa request POST /api/auth/register melalui Chrome DevTools.* | *Frontend berhasil mengirim data registrasi ke backend, backend mengembalikan HTTP 201, dan akun baru berhasil dibuat.* | *Request POST /api/auth/register berhasil diproses dengan HTTP 201. Registrasi berhasil dan akun dummy dapat digunakan untuk melakukan login.* | *Pass* |
+| *INT-TC09* | *I-04* | *Normal: Memperbarui profil pengguna melalui frontend* | *Login menggunakan akun dummy, buka halaman profil, ubah nama dan nomor telepon, kemudian simpan perubahan. Periksa request PUT /api/profile melalui Chrome DevTools dan muat ulang halaman.* | *Frontend berhasil mengirim perubahan profil ke backend, backend mengembalikan HTTP 200, dan data profil terbaru tetap tersimpan setelah halaman dimuat ulang.* | *Request PUT /api/profile berhasil diproses dengan HTTP 200. Nama dan nomor telepon berhasil diperbarui pada tampilan profil serta tetap sesuai setelah halaman dimuat ulang.* | *Pass* |
 | *...* | *...* | *...* | *...* | *...* | *...* | *...* |
 
 <br>
