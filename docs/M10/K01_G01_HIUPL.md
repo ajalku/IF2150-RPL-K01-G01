@@ -69,7 +69,7 @@ Dipersiapkan oleh:
 # BAB 1: Pendahuluan
 
 ## 1.1 Tujuan Penulisan Dokumen
-Tuliskan uraian ringkas mengenai isi dokumen, tujuan pembuatan dokumen HIUPL ini, dan siapa saja target pembacanya.
+Dokumen ini ditulis untuk pengguna serta untuk pengembang sebagai laporan hasil perangkat lunak yang telah diuji. Pengujian dilakukan untuk mengetahui apakah implementasi perangkat lunak telah memenuhi dokumen-dokumen acuannya seperti SKPL, APL, dan DPPL. Sebagai laporan, dokumen ini memastikan apakah perangkat lunak mampu bekerja sesuai harapan, apakah perangkat lunak telah bekerja secara efektif, apakah sistem berfungsi dengan baik, baik secara fungsional maupun nonfungsional, serta apakah perangkat lunak dapat berjalan sebagaimana semestinya.
 
 ## 1.2 Lingkup Masalah
 Guna membangun kota yang berkelanjutan, fasilitas publik yang aman dan universal menjadi instrumen utama yang tercantum pada Indikator SDG 11.7.1. Namun, pada kenyataannya fasilitas publik justru memiliki banyak catatan yang harus diperbaiki. Mulai dari infrastruktur layanan publik yang terbengkalai, akses jalan yang tidak ramah pejalan kaki, hingga maraknya aksi vandalisme. Sudah banyak metode untuk melaporkan fasilitas publik yang rusak, namun masih berjalan satu arah. Oleh karena itu, website RAWAT (Ruang Aspirasi Warga dan Aduan Terpadu) hadir untuk memfasilitasi sistem pelaporan yang lebih modern dan interaktif. Website ini diharapkan dapat meningkatkan _awareness_ masyarakat tentang kondisi fasilitas dan berkolaborasi dalam permintaan perbaikan fasilitas publik. Melalui fitur-fitur interaktif selayaknya media sosial, warga tidak hanya dapat menyampaikan laporan tetapi juga saling memvalidasi laporan, memberikan tanggapan, dan membangun kepedulian bersama terhadap fasilitas publik.
@@ -132,16 +132,33 @@ Dokumen ini terdiri atas 5 bab, yakni Pendahuluan, Deskripsi Umum perangkat Luna
 
 # BAB 2: Deskripsi Umum Perangkat Lunak
 
-Bagian ini diisi dengan *System Overview*, dalam bentuk gambar dan narasi yang memberikan gambaran tentang aplikasi dan konteksnya. **Batasan dan keterkaitan** antara sistem yang dibangun dengan sistem lain di luarnya harus jelas. Deskripsi umum sistem perlu dilengkapi dengan pemodelan kasus yang dihadapi, seperti *use case diagram*. Berikan narasi yang jelas untuk setiap gambar yang ditampilkan.
+<!-- Bagian ini diisi dengan *System Overview*, dalam bentuk gambar dan narasi yang memberikan gambaran tentang aplikasi dan konteksnya. **Batasan dan keterkaitan** antara sistem yang dibangun dengan sistem lain di luarnya harus jelas. Deskripsi umum sistem perlu dilengkapi dengan pemodelan kasus yang dihadapi, seperti *use case diagram*. Berikan narasi yang jelas untuk setiap gambar yang ditampilkan.
 
-Bagian ini dapat menyalin atau meringkas dari dokumen SKPL atau DPPL.
+Bagian ini dapat menyalin atau meringkas dari dokumen SKPL atau DPPL. -->
+
+*RAWAT* merupakan perangkat lunak berbasis _website_ yang memfasilitasi pelaporan interaktif terkait kondisi dan kerusakan fasilitas atau infrastruktur publik. P/L ini berinteraksi dengan sistem pihak ketiga yaitu *Map API* untuk mendukung fitur lokasi pelaporan. Sistem mengirimkan data alamat yang dicatat ke layanan peta eksternal melalui API, lalu menerima dan memproses hasil tersebut untuk memvisualisasikan titik koordinat lokasi kerusakan pada peta interaktif yang dapat diakses pengguna. Sistem menerima input laporan dari *Pengguna* yang berisi nama masalah, lokasi, tingkat permasalahan, foto, deskripsi, serta data interaksi sosial berupa *upvote*. Seluruh data tersebut kemudian diolah dan dikelola di dalam sistem sehingga *Admin* dapat memantau, melakukan varifikasi laporan, dan memperbarui progres terkait laporan sesuai dengan kondisi lapangan.
+
+Dalam memahami bentuk implementasi dari *RAWAT*, akan ditampilkan diagram use case dari perangkat lunak tersebut. Berikut ini adalah diagram use case yang telah dibuat.
 
 <p align="center">
-<img alt="System Overview / Use Case Diagram" src="./assets/contoh-uc-diagram.webp" width="90%">
+<img alt="Use Case Diagram" src="./assets/diagram.revisi2.drawio.png" width="90%">
 </p>
 <p align="center">
-<i>Gambar 2.1. Use Case Diagram [Nama P/L]</i>
+<i>Gambar 2.1. Use Case Diagram RAWAT</i>
 </p>
+
+Use case diagram ini menjelaskan bagaimana aktor-aktor di sekeliling RAWAT dapat berinteraksi dengan sistem.  Misalnya, dalam use case di atas, terdapat beberapa fungsi pengguna dan aktor yang beririsan seperti dapat melakukan login, mendapatkan tutorial apabila baru pertama kali masuk aplikasi, serta mengakses peta interaktif dan memeriksa laporan. Selain fungsi yang beririsan, terdapat fungsi yang berbeda, seperti pengguna dapat melakukan pelaporan dan upvote, sementara admin dapat mengubah status laporan atau memberikan tanggapan.
+
+Selain use case diagram, terdapat juga activity diagram yang dapat menjelaskan proses bisnis perangkat lunak. Berikut ini adalah activity diagram yang telah dibuat.
+
+<p align="center">
+<img alt="Use Case Diagram" src="./assets/diagram-activity-1-revisi-2.jpg" width="90%">
+</p>
+<p align="center">
+<i>Gambar 2.2. Activity Diagram RAWAT</i>
+</p>
+
+Sesuai dengan activity diagram, pengguna dapat berinteraksi secara tidak langsung dengan admin dengan cara melaporkan sesuatu. Dengan melaporkan sesuatu, admin dapat melihat laporan dan menanggapi dengan cara mengubah-ubah status laporan, misalnya ketika laporan sudah dikaji atau sudah diperbaiki sehingga statusnya selesai. Sementara itu, sistem yang berinteraksi langsung dengan pengguna dapat memberikan feedback secara langsung seperti menyimpan laporan ke database serta menaruh laporan terbaru di paling atas.
 
 <br>
 
@@ -149,23 +166,23 @@ Bagian ini dapat menyalin atau meringkas dari dokumen SKPL atau DPPL.
 
 # BAB 3: Implementasi
 
-Bagian ini diisi dengan informasi tentang elemen P/L yang dikembangkan (*executable files*, *configuration files*, *data files*, dan sebagainya) serta perubahannya terhadap rancangan pada DPPL (jika ada).
+<!-- Bagian ini diisi dengan informasi tentang elemen P/L yang dikembangkan (*executable files*, *configuration files*, *data files*, dan sebagainya) serta perubahannya terhadap rancangan pada DPPL (jika ada). -->
 
 ## 3.1 Lingkungan Implementasi
 
-Tuliskan *hardware* dan *software* yang digunakan untuk implementasi, mencakup *operating system*, bahasa pemrograman beserta versinya, *framework*/*library*, DBMS, *development tools*, dan *version control*. Lingkungan ini harus konsisten dengan **Subbab 2.1 DPPL**; jelaskan jika ada perubahan. Cantumkan juga *framework* dan alat pengujian yang dipakai.
+<!-- Tuliskan *hardware* dan *software* yang digunakan untuk implementasi, mencakup *operating system*, bahasa pemrograman beserta versinya, *framework*/*library*, DBMS, *development tools*, dan *version control*. Lingkungan ini harus konsisten dengan **Subbab 2.1 DPPL**; jelaskan jika ada perubahan. Cantumkan juga *framework* dan alat pengujian yang dipakai. -->
 
 Tabel 3.1. Lingkungan Implementasi
 
 | Aspek | Keterangan |
 | :--- | :--- |
 | *Hardware* | *[Spesifikasi perangkat keras]* |
-| *Operating System* | *[Nama dan versi OS]* |
-| *Bahasa Pemrograman* | *[Bahasa dan versi]* |
-| *Framework/Library* | *[Daftar framework/library beserta versi]* |
-| *DBMS* | *[Nama dan versi DBMS]* |
-| *Development Tools* | *[IDE, version control, tools lain]* |
-| *Testing Tools* | *[Framework unit test, alat ukur performa, alat coverage]* |
+| *Operating System* | *Microsoft Windows [Version 10.0.26200.9974]* |
+| *Bahasa Pemrograman* | *JavaScript; backend berjalan di Node.js versi v26.13.0* |
+| *Framework/Library* | *Backend: Express.js 5.3.0, pg 8.23.1, express-session 1.19.0. Frontend: React 19.3.1, Vite 8.3.5, Leaflet 1.9.4, React-Leaflet 5.0.0.* |
+| *DBMS* | *PostgreSQL versi 16.15* |
+| *Development Tools* | *Visual Studio Code, Git, Node.js/np* |
+| *Testing Tools* | *Node.js Test runner (npm test) di backend and frontend, ESLint (npm run lint), Vite (npm run build), UI manual di browser* |
 
 ## 3.2 Implementasi Modul
 
@@ -175,9 +192,33 @@ Tabel 3.2. Implementasi Modul
 
 | No | ID Kelas | Nama Modul/Kelas | Nama File Fisik | Nama File Executable |
 | :--- | :--- | :--- | :--- | :--- |
-| 1 | *[C01]* | *[Nama modul/kelas]* | *[path/ke/file]* | *[Nama file executable, atau - jika tidak ada]* |
+| 1 | C01 | Pengguna | `../../src/backend/src/models/Pengguna.js` | - |
+| 2 | C02 | Homepage | `../../src/backend/src/src/models/Homepage.js` | - |
+| 3 | C03 | Laporan | `../../src/backend/src/src/models/Laporan.js` | - |
+| 4 | C04 | Lokasi | `../../src/backend/src/src/models/Lokasi.js` | - |
+| 5 | C05 | Upvote | `../../src/backend/src/src/models/Upvote.js` | - |
+| 6 | C06 | Tanggapan | `../../src/backend/src/src/models/Tanggapan.js | - |
+| 7 | C07 | Tutorial | `../../src/backend/src/src/models/Tutorial.js | - |
+| 8 | C08 | PenggunaView | `../../src/frontend/src/view/PenggunaView.jsx` | - |
+| 9 | C09 | HomepageView | `../../src/frontend/src/view/HomepageView.jsx` | - |
+| 10 | C10 | LaporanView | `../../src/frontend/src/view/LaporanView.jsx` | - |
+| 11 | C11 | LokasiView | `../../src/frontend/src/view/LokasiView.jsx` | - |
+| 12 | C12 | UpvoteView | `../../src/frontend/src/view/UpvoteView.jsx` | - |
+| 13 | C13 | TanggapanView | `../../src/frontend/src/view/TanggapanView.jsx` | - |
+| 14 | C14 | TutorialView | `../../src/frontend/src/view/TutorialView.jsx` |
+| 15 | C15 | PenggunaController | `../../src/backend/src/controllers/PenggunaController.js` | - |
+| 16 | C16 | HomepageController | `../../src/backend/src/controllers/HomepageController.js` | - |
+| 17 | C17 | LaporanController | `../../src/backend/src/controllers/LaporanController.js` | - |
+| 18 | C18 | LokasiController | `../../src/backend/src/controllers/LokasiController.js` | - |
+| 19 | C19 | UpvoteController | `../../src/backend/src/controllers/UpvoteController.js` | - |
+| 20 | C20 | TanggapanController | `../../src/backend/src/controllers/TanggapanController.js` | - |
+| 21 | C21 | TutorialController | `../../src/backend/src/controllers/TutorialController | - |
+| 22 | C22 | MapAPI | `../../src/backend/src/config/mapApi.js` | - |
+| 23 | C23 | MapAPIService | `../..src/backend/src/services/MapAPIService.js` | - |
+| 24 | C24 | MapAPIView | `../../src/frontend/src/components/PetaLaporan.jsx` | - |
+<!-- | 1 | *[C01]* | *[Nama modul/kelas]* | *[path/ke/file]* | *[Nama file executable, atau - jika tidak ada]* |
 | 2 | *[C02]* | *[Nama modul/kelas]* | *[path/ke/file]* | *[...]* |
-| ... | *...* | *...* | *...* | *...* |
+| ... | *...* | *...* | *...* | *...* | -->
 
 ## 3.3 Implementasi Antarmuka
 
