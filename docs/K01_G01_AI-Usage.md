@@ -56,6 +56,10 @@ Silakan catat penggunaan AI yang berdampak signifikan pada pengerjaan tugas (mis
 | Copilot | Membantu troubleshooting PostgreSQL, startup backend, koneksi frontend, dan autentikasi akun uji | Bantu jelaskan error, cara menjalankan aplikasi, serta apakah password dapat dilihat dari SQL | Saran dibandingkan dengan konfigurasi dan kode RAWAT; langkah koneksi dan database dijalankan serta diverifikasi oleh anggota kelompok tanpa membagikan kredensial |
 | Copilot | Menjalankan test TanggapanController dan menyusun dokumentasi hasil pengujian UC08/UC09 beserta bukti screenshot | Jalankan test TanggapanController, buat dokumentasi seperti AuthController.test.md, dan tautkan screenshot berdasarkan ID test case | Automated test dijalankan: 14 lulus, 0 gagal; screenshot ditautkan sesuai nama file. FE-TGP-03 ditandai perlu dicek karena bukti menampilkan status penanganan `undefined` |
 
+### Milestone 10
+| Tool AI | Tujuan Penggunaan | Contoh Prompt Utama | Modifikasi & Validasi Manusia |
+| :--- | :--- | :--- | :--- |
+| Copilot (Model GPT-6 Luna) | Membantu penyusunan Bab 3 untuk laporan | Apa saja yang harus ditulis di tabel 3.1, 3.2, dan 3.3? | Parafrasa berbagai keterangan, pengecekan ulang beberapa kelas, dan penulisan beberapa tambahan |
 
 
 ---

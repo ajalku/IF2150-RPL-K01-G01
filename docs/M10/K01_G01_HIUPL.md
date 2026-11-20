@@ -186,7 +186,7 @@ Tabel 3.1. Lingkungan Implementasi
 
 ## 3.2 Implementasi Modul
 
-Daftar modul/kelas yang **TELAH** diimplementasikan. Gunakan nama dan ID kelas yang sama dengan DPPL, dan konsisten dengan Tabel B.5 pada dokumen Implementasi (Tugas 9).
+<!-- Daftar modul/kelas yang **TELAH** diimplementasikan. Gunakan nama dan ID kelas yang sama dengan DPPL, dan konsisten dengan Tabel B.5 pada dokumen Implementasi (Tugas 9). -->
 
 Tabel 3.2. Implementasi Modul
 
@@ -222,26 +222,41 @@ Tabel 3.2. Implementasi Modul
 
 ## 3.3 Implementasi Antarmuka
 
-Daftar antarmuka yang telah diimplementasikan. Gunakan ID dan nama layar yang sama dengan ID dan nama layar pada tugas DPPL.
+<!-- Daftar antarmuka yang telah diimplementasikan. Gunakan ID dan nama layar yang sama dengan ID dan nama layar pada tugas DPPL. -->
 
 Tabel 3.3. Implementasi Antarmuka
 
 | No | ID Antarmuka | Nama Antarmuka | Nama File Fisik | Nama File Executable |
 | :--- | :--- | :--- | :--- | :--- |
-| 1 | *[I-01]* | *[Nama layar]* | *[path/ke/file]* | *[Nama file executable, atau - jika tidak ada]* |
-| 2 | *[I-02]* | *[Nama layar]* | *[path/ke/file]* | *[...]* |
-| ... | *...* | *...* | *...* | *...* |
+| 1 | I-01 | Login Page | `../../src/frontend/src/view/PenggunaView.jsx` | - |
+| 2 | I-02 | Registration Page | `../../src/frontend/src/view/PenggunaView.jsx` | - |
+| 3 | I-03 | Homepage | `../../src/frontend/src/view/HomepageView.jsx` | - |
+| 4 | I-04 | Page Laporan | `../../src/frontend/src/view/LaporanView.jsx` | - |
+| 5 | I-05 | Buat Laporan | `../../src/frontend/src/view/BuatLaporanView.jsx` | - |
+| 6 | I-06 | Periksa Laporan | `../../src/frontend/src/view/PeriksaLaporanView.jsx` | - |
+| 7 | I-07 | Peta Interaktif | `../../src/frontend/src/view/LokasiView.jsx`; `../../src/frontend/src/components/PetaLaporan.jsx` | - |
+| 8 | I-08 | Profil | `../../src/frontend/src/view/ProfilView.jsx` | - |
 
 ## 3.4 File Lain
 
-Daftar file lain yang dibuat selain file kelas dan antarmuka, misalnya file *utility*, *configuration*, *database schema/seed*, *file test*, atau *data*.
+<!-- Daftar file lain yang dibuat selain file kelas dan antarmuka, misalnya file *utility*, *configuration*, *database schema/seed*, *file test*, atau *data*. -->
 
 Tabel 3.4. File Lain
 
 | No | Nama File | Keterangan |
 | :--- | :--- | :--- |
-| 1 | *[Nama file]* | *[Fungsi file]* |
-| ... | *...* | *...* |
+| 1 | `../../src/backend/src/index.js` | Inisialisasi Express, middleware, dan route API. |
+| 2 | `../../src/frontend/src/main.jsx`, `../../src/frontend/src/App.jsx` | Entry point frontend dan komponen root yang mengatur tampilan serta navigasi aplikasi. |
+| 3 | `../../src/backend/src/routes/authRoutes.js`, `../../src/backend/src/routes/profileRoutes.js`; `../../src/backend/src/routes/laporanRoutes.js`; `../../src/backend/src/routes/lokasiRoutes.js`; `../../src/backend/src/routes/upvoteRoutes.js`; `../../src/backend/src/routes/tutorialRoutes.js`; `../../src/backend/src/routes/homepageRoutes.js` | Mendefinisikan endpoint API autentikasi, profil, laporan/tanggapan, lokasi, upvote, tutorial, dan homepage. |
+| 4 | `../../src/backend/src/middleware/authMiddleware.js`, `../../src/backend/src/middleware/roleMiddleware.js`; `../../src/backend/src/middleware/uploadMiddleware.js` | Middleware autentikasi, pemeriksaan role, dan unggah berkas. |
+| 5 | `../../src/backend/src/config/database.js`, `../../src/backend/src/config/session.js` | Konfigurasi koneksi PostgreSQL dan penyimpanan session. |
+| 6 | `../../src/backend/src/jobs/pembersihLaporan.js` | Untuk membersihkan laporan yang melewati batas waktu. |
+| 7 | `../../src/frontend/src/services/apiClient.js`, `../../src/frontend/src/services/authService.js`; `../../src/frontend/src/services/homepageService.js`; `../../src/frontend/src/services/laporanService.js`; `../../src/frontend/src/services/lokasiService.js`; `../../src/frontend/src/services/profileService.js`; `../../src/frontend/src/services/tanggapanService.js`; `../../src/frontend/src/services/tutorialService.js`; `../../src/frontend/src/services/upvoteService.js` | Service frontend yang digunakan untuk me-request API dan mengelola respons fitur. |
+| 8 | `../../src/frontend/src/hooks/useData.js`; `../../src/frontend/src/hooks/useRute.js`; `../../src/frontend/src/utils/format.js`; `../../src/frontend/src/utils/jarak.js`; `../../src/frontend/src/utils/tanggapanForm.js` | Hook dan utilitas bersama untuk data, navigasi, format, jarak, dan formulir tanggapan. |
+| 9 | `../../src/backend/db/schema.sql`; `../../src/backend/db/schema_laporan.sql`; `../../src/backend/db/schema_sessions.sql` | Skema awal basis data pengguna, laporan/lokasi, dan session. |
+| 10 | `../../src/backend/db/migration_tanggapan.sql`; `../../src/backend/db/migration_tanggapan_id_admin.sql`; `../../src/backend/db/migration_upvote.sql`; `../../src/backend/db/migration_tutorial.sql`; `../../src/backend/db/migration_homepage.sql`; `../../src/backend/db/migration_index_urgensi.sql` | Migrasi tabel/kolom tanggapan, upvote, tutorial, homepage, dan indeks urgensi. |
+| 11 | `../../src/backend/scripts/seedAdmin.js` | Membuat akun admin awal dari konfigurasi environment untuk kebutuhan pengembangan/pengujian. |
+| 12 | `../../src/backend/tests/AuthController.test.js`; `../../src/backend/tests/LaporanLokasiController.test.js`; `../../src/backend/tests/ProfileController.test.js`; `../../src/backend/tests/TanggapanController.test.js`; `../../src/backend/tests/homepage.test.js`; `../../src/backend/tests/tutorial.test.js`; `../../src/backend/tests/upvote.test.js`; `../../src/frontend/tests/laporan-lokasi-services.test.js` | Tes yang dijalankan secara otomatis untuk backend dan frontend dalam fitur autentikasi, laporan/lokasi, profil, homepage, tutorial, tanggapan, dan upvote. |
 
 <br>
 
