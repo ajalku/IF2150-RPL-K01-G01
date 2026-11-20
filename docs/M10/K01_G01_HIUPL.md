@@ -670,6 +670,90 @@ Tabel 4.2.12b. Ringkasan Cakupan Kelas C03
 | Jumlah test case | *9 test case (model) + tercakup melalui 30 test case controller* |
 | Coverage | *Belum diukur terpisah; tercakup bersama suite backend* |
 
+### 4.2.13 Kelas Tanggapan
+
+**ID Kelas:** *C06*  
+**Nama Kelas:** *Tanggapan*  
+**Tingkat:** *Mendalam*
+
+Tabel 4.2.13. Hasil Pengujian Unit Kelas C06
+
+| ID Pengujian | Operasi yang Diuji | Jenis Kasus | Prosedur/Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| *C06-UT01* | *`simpanTanggapan()`* | *Normal* | *Simpan tanggapan valid dengan `id_admin` dan query berparameter.* | *Satu baris tersimpan; parameter query dan `idAdmin` sesuai masukan.* | *Query dan nilai parameter sesuai; operasi menghasilkan `true`.* | *Pass* |
+| *C06-UT02* | *`getTanggapanByLaporan()` (implementasi)* | *Normal* | *Baca tanggapan dengan admin dan warga sebagai viewer.* | *Isi tanggapan tersedia; identitas admin hanya ada pada hasil admin.* | *Kedua hasil sesuai aturan visibilitas.* | *Pass* |
+| *C06-UT03* | *`simpanTanggapan()`* | *Negatif* | *Model menerima hasil query `rowCount = 0`.* | *Operasi menghasilkan `false`.* | *Menghasilkan `false`; `idAdmin` tetap `null` pada kasus data lama.* | *Pass* |
+| *C06-UT04* | *`getTanggapanByLaporan()` (implementasi)* | *Negatif* | *Query mengembalikan tanpa baris.* | *Operasi menghasilkan `null`.* | *Menghasilkan `null`.* | *Pass* |
+| *C06-UT05* | *`getTanggapanByLaporan()` (implementasi)* | *Batas* | *Baca tanggapan lama dengan `id_admin` dan nama admin bernilai `NULL`.* | *Tanggapan tetap terbaca; identitas admin bernilai `null`, bukan error.* | *Tanggapan terbaca dan kedua properti identitas bernilai `null`.* | *Pass* |
+| *C06-UT06* | *`simpanTanggapan()`* | *Batas* | *Simpan tanggapan dengan `id_admin = NULL` untuk kompatibilitas data lama.* | *Query menerima `NULL`; satu baris dianggap tersimpan.* | *Parameter `id_admin` bernilai `null`; operasi menghasilkan `true`.* | *Pass* |
+
+Pengujian `getTanggapanByLaporan()` adalah pengujian perilaku publik yang ada pada implementasi, tetapi operasi itu tidak tercantum pada daftar operasi C06 DPPL. DPPL juga belum menambahkan parameter `idAdmin` pada signature dan belum memperbarui query Q-016.
+
+Tabel 4.2.13b. Ringkasan Cakupan Kelas C06
+
+| Informasi | Keterangan |
+| :--- | :--- |
+| *Daftar operasi public pada DPPL* | *`simpanTanggapan(idLaporan:String, dataPopupForm:FormTanggapan): Boolean`* |
+| *Operasi yang diuji* | *`simpanTanggapan()`; perilaku implementasi `getTanggapanByLaporan()` juga diuji* |
+| *ID Algoritma yang tercakup* | *Algo-017* |
+| *Coverage (wajib ≥ 70%)* | *100.00% baris / 100.00% cabang; Node.js `node:test` bawaan; bukti: `docs/M10/evidence/TanggapanController-coverage.txt`* |
+
+### 4.2.14 Kelas TanggapanController
+
+**ID Kelas:** *C20*  
+**Nama Kelas:** *TanggapanController*  
+**Tingkat:** *Mendalam*
+
+Tabel 4.2.14. Hasil Pengujian Unit Kelas C20
+
+| ID Pengujian | Operasi yang Diuji | Jenis Kasus | Prosedur/Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| *C20-UT01* | *`validasiTanggapan()`* | *Normal* | *Status valid, deskripsi kosong.* | *Form diterima.* | *Menghasilkan `true`.* | *Pass* |
+| *C20-UT02* | *`validasiTanggapan()`* | *Normal* | *Status tidak valid dengan alasan berisi teks.* | *Form diterima.* | *Menghasilkan `true`.* | *Pass* |
+| *C20-UT03* | *`validasiTanggapan()`* | *Negatif* | *Alasan kosong, spasi, tab, dan baris baru untuk laporan tidak valid.* | *Form ditolak.* | *Semua masukan menghasilkan `false`.* | *Pass* |
+| *C20-UT04* | *`simpanTanggapan()`* | *Normal/Negatif* | *Simpan dengan query berhasil, lalu query melempar error.* | *Hasil mengikuti operasi model: `true` untuk satu baris, `false` jika gagal.* | *Kedua hasil sesuai; jalur error model menghasilkan `false`.* | *Pass* |
+| *C20-UT05* | *`simpanStatus()`* | *Normal/Negatif* | *Model laporan mengembalikan berhasil lalu gagal.* | *Hasil mengikuti pembaruan laporan.* | *`true` dan `false` sesuai hasil model.* | *Pass* |
+| *C20-UT06* | *`simpan()`* | *Negatif* | *Simulasikan pembaruan status gagal di tengah transaksi.* | *Transaksi di-rollback; client dilepas; respons 404.* | *Query transaksi `BEGIN`, `ROLLBACK`; respons 404; client dilepas.* | *Pass* |
+| *C20-UT07* | *`simpan()`* | *Negatif/Keamanan* | *Body berisi `idAdmin` palsu; sesi memuat `admin-sesi`.* | *ID admin diambil dari sesi, bukan body; transaksi commit.* | *Argumen model memakai ID sesi dan transaksi commit.* | *Pass* |
+| *C20-UT08* | *`LaporanController.detail()` terkait tanggapan* | *Keamanan* | *Ambil detail sebagai warga dan admin.* | *Identitas admin disembunyikan dari warga dan diberikan kepada admin.* | *Kedua respons sesuai aturan visibilitas.* | *Pass* |
+| *C20-UT09* | *`simpan()`* | *Negatif* | *Sesi kosong lalu role warga.* | *Respons 401 lalu 403.* | *Handler menghasilkan status sesuai harapan.* | *Pass* |
+| *C20-UT10* | *`authorizeRoles()` pada route* | *Negatif/Keamanan* | *Middleware admin menerima sesi warga.* | *Respons 403 dan handler tidak diteruskan.* | *Status 403; `next()` tidak dipanggil.* | *Pass* |
+| *C20-UT11* | *`authorizeRoles()` pada route* | *Negatif/Keamanan* | *Middleware admin menerima request tanpa sesi.* | *Respons 401 dan handler tidak diteruskan.* | *Status 401; `next()` tidak dipanggil.* | *Pass* |
+| *C20-UT12* | *`validasiTanggapan()`* | *Batas* | *Deskripsi tepat 2000 karakter.* | *Form diterima.* | *Menghasilkan `true`.* | *Pass* |
+| *C20-UT13* | *`validasiTanggapan()`* | *Batas/Negatif* | *Deskripsi 2001 karakter.* | *Form ditolak.* | *Menghasilkan `false`.* | *Pass* |
+| *C20-UT14* | *`validasiTanggapan()`* | *Negatif* | *Status bukan boolean, deskripsi bukan string, dan data `null`.* | *Form ditolak.* | *Semua masukan menghasilkan `false`.* | *Pass* |
+| *C20-UT15* | *`simpanTanggapan()`* | *Negatif* | *Form laporan tidak valid; query diberi penghitung pemanggilan.* | *Model tidak dipanggil.* | *Menghasilkan `false`; query tidak dipanggil.* | *Pass* |
+| *C20-UT16* | *`simpanStatus()`* | *Batas* | *Status pertama pada `Laporan.STATUS_LAPORAN`, `BELUM_DILIHAT`.* | *Status diteruskan ke model dan berhasil.* | *Argumen status sesuai; menghasilkan `true`.* | *Pass* |
+| *C20-UT17* | *`simpanStatus()`* | *Batas* | *Status terakhir pada `Laporan.STATUS_LAPORAN`, `SELESAI`.* | *Status diteruskan ke model dan berhasil.* | *Argumen status sesuai; menghasilkan `true`.* | *Pass* |
+| *C20-UT18* | *`simpanStatus()`* | *Negatif* | *Status di luar enum, `TIDAK_VALID`.* | *Model laporan tidak dipanggil; hasil `false`.* | *Model tidak dipanggil; hasil `false`.* | *Pass* |
+| *C20-UT19* | *`simpanStatus()`* | *Negatif* | *Model laporan melaporkan ID tidak ditemukan.* | *Hasil `false`.* | *Menghasilkan `false`.* | *Pass* |
+| *C20-UT20* | *`simpan()`* | *Negatif* | *`idLaporan` bukan UUID.* | *Ditolak sebelum koneksi/transaksi, respons 404.* | *Respons 404; koneksi tidak dibuka.* | *Pass* |
+| *C20-UT21* | *`simpan()`* | *Batas* | *Catatan pemeriksaan tepat 1000 karakter.* | *Pemeriksaan diteruskan dan transaksi berhasil.* | *Respons 200; transaksi commit.* | *Pass* |
+| *C20-UT22* | *`simpan()`* | *Batas/Negatif* | *Catatan pemeriksaan 1001 karakter.* | *Ditolak sebelum koneksi/transaksi, respons 400.* | *Respons 400; koneksi tidak dibuka.* | *Pass* |
+
+Tabel 4.2.14b. Ringkasan Cakupan Kelas C20
+
+| Informasi | Keterangan |
+| :--- | :--- |
+| *Daftar operasi public pada DPPL* | *`validasiTanggapan()`, `simpanTanggapan()`, `simpanStatus()`* |
+| *Operasi yang diuji* | *Ketiga operasi DPPL; handler publik `simpan(req, res)` juga diuji karena dipakai route* |
+| *ID Algoritma yang tercakup* | *Algo-044, Algo-045, Algo-046* |
+| *Coverage (wajib ≥ 70%)* | *78.77% baris / 80.39% cabang; Node.js `node:test` bawaan; bukti: `docs/M10/evidence/TanggapanController-coverage.txt`* |
+
+### 4.2.15 Kelas TanggapanView
+
+**ID Kelas:** *C13*  
+**Nama Kelas:** *TanggapanView*  
+**Tingkat:** *Sedang*
+
+Tabel 4.2.15. Hasil Pengujian Unit Kelas C13
+
+| ID Pengujian | Operasi yang Diuji | Jenis Kasus | Prosedur/Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| *C13-UT01* | *`simpanJikaTerkonfirmasi()`* | *Negatif* | *Konfirmasi dibatalkan.* | *Callback penyimpanan tidak dipanggil.* | *Menghasilkan `false`; callback tidak dipanggil.* | *Pass* |
+| *C13-UT02* | *`simpanJikaTerkonfirmasi()`* | *Normal* | *Konfirmasi diterima; callback mengembalikan `"tersimpan"`.* | *Callback dipanggil satu kali dan hasilnya diteruskan.* | *Callback dipanggil satu kali; hasil diteruskan.* | *Pass* |
+
+
 <br>
 
 ## 4.3 Pengujian Integrasi
@@ -784,12 +868,38 @@ Tabel 4.4.4. Hasil Pengujian Use Case UC04
 | *UC04-TC03* | *KF05, KF06* | *Normal: Navigasi ke peta dari detail* | *1. Buka detail laporan.<br>2. Tekan tombol `Lihat di peta`.* | *Tombol Lihat di peta* | *Halaman peta terbuka dengan koordinat laporan sebagai pusat dan laporan tersebut difokuskan.* | *Sesuai.* | *Pass* |
 | *UC04-TC04* | *KF05, KF06* | *Alternatif 1: Detail gagal dimuat* | *1. Simulasikan kegagalan API detail laporan (ID tidak valid atau laporan tidak ditemukan).<br>2. Periksa respons.* | *ID: bukan-uuid atau ID tidak ada* | *HTTP 404; pesan `Laporan tidak ditemukan`.* | *Backend mengembalikan HTTP 404. Test BE-LAP-15 lulus.* | *Pass* |
 
-### 4.4.5 Use Case Mengunggah Laporan Baru
+### 4.4.5 Use Case Mendapat Tutorial Navigasi antar Halaman
+
+**ID Use Case:** *UC05*  
+**Nama Use Case:** *Mendapat Tutorial Navigasi antar Halaman*
+
+Tabel 4.4.5. Hasil Pengujian Use Case UC05
+
+| ID Pengujian | ID KF | Skenario | Prosedur Pengujian | Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| *UC05-TC01* | *KF07* | *Normal: Pengguna pertama kali login melihat tutorial awal* | *1. Login dengan akun baru.<br>2. Buka beranda.<br>3. Periksa dialog tutorial awal.* | *Akun baru pertama kali login* | *Tutorial navigasi langkah awal ditampilkan secara otomatis.* | *Tutorial awal ditampilkan dengan benar.* | *Pass* |
+| *UC05-TC02* | *KF07* | *Normal: Pengguna menyelesaikan tutorial hingga langkah terakhir* | *1. Ikuti langkah tutorial hingga selesai.<br>2. Tekan Selesai.* | *Langkah terakhir tutorial* | *Status tutorial disimpan; tutorial tidak muncul kembali pada kunjungan berikutnya.* | *Status tutorial berhasil disimpan dan tidak muncul kembali.* | *Pass* |
+
+
+
+### 4.4.6 Use Case Melakukan Upvote
+
+**ID Use Case:** *UC06*  
+**Nama Use Case:** *Melakukan Upvote*
+
+Tabel 4.4.6. Hasil Pengujian Use Case UC06
+
+| ID Pengujian | ID KF | Skenario | Prosedur Pengujian | Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| *UC06-TC01* | *KF09, KF10, KF11* | *Normal: Pengguna memberikan upvote pada laporan lain* | *1. Login sebagai warga.<br>2. Klik tombol upvote pada laporan milik pengguna lain.<br>3. Periksa jumlah upvote dan status.* | *Laporan pengguna lain yang belum diupvote* | *Jumlah upvote bertambah 1, status tombol berubah menjadi telah diupvote, notifikasi berhasil tampil.* | *Upvote bertambah, tombol berubah aktif, skor populer diperbarui.* | *Pass* |
+| *UC06-TC02* | *KF09, KF10, KF11* | *Alternatif 1: Pengguna mencoba upvote kembali pada laporan yang sama* | *1. Klik tombol upvote pada laporan yang sudah diupvote.* | *Laporan yang sudah diupvote* | *Permintaan ditolak (HTTP 409), jumlah upvote tidak bertambah ganda.* | *Sesuai; duplikasi upvote dicegah oleh sistem.* | *Pass* |
+
+### 4.4.7 Use Case Mengunggah Laporan Baru
 
 **ID Use Case:** *UC07*  
 **Nama Use Case:** *Mengunggah Laporan Baru*
 
-Tabel 4.4.5. Hasil Pengujian Use Case UC07
+Tabel 4.4.7. Hasil Pengujian Use Case UC07
 
 | ID Pengujian | ID KF | Skenario | Prosedur Pengujian | Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -801,12 +911,13 @@ Tabel 4.4.5. Hasil Pengujian Use Case UC07
 | *UC07-TC06* | *KF12, KF13, KF15* | *Normal: Laporan dengan alamat yang di-geocode* | *1. Isi form dengan alamat (bukan titik peta).<br>2. Alamat berhasil di-geocode.<br>3. Konfirmasi pengiriman.* | *Alamat: Jalan Asia Afrika, Bandung* | *Titik laporan ditampilkan pada peta; koordinat digunakan saat mengirim.* | *Sesuai.* | *Pass* |
 | *UC07-TC07* | *KF12, KF13, KF15* | *Alternatif 5: Alamat tidak ditemukan saat geocode* | *1. Isi form dengan alamat tidak dikenal.<br>2. Periksa pesan.* | *Alamat: Alamat fiktif* | *Pesan bahwa alamat tidak ditemukan; pengguna diarahkan memilih titik di peta.* | *Sesuai; backend mengembalikan HTTP 400.* | *Pass* |
 
-### 4.4.6 Use Case Memeriksa Laporan
+
+### 4.4.8 Use Case Memeriksa Laporan
 
 **ID Use Case:** *UC08*  
 **Nama Use Case:** *Memeriksa Laporan*
 
-Tabel 4.4.6. Hasil Pengujian Use Case UC08
+Tabel 4.4.8. Hasil Pengujian Use Case UC08
 
 | ID Pengujian | ID KF | Skenario | Prosedur Pengujian | Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -817,43 +928,23 @@ Tabel 4.4.6. Hasil Pengujian Use Case UC08
 | *UC08-TC05* | *KF08, KF14, KF15* | *Alternatif 3: Penghapusan otomatis laporan kedaluwarsa* | *1. Laporan TIDAK_VALID melewati batas waktu 14 hari tanpa konfirmasi ulang.<br>2. Job pembersih berkala dijalankan.* | *Batas waktu: lewat* | *Laporan dihapus otomatis; file foto yang terkait ikut dihapus.* | *Model `hapusSemuaKadaluarsa` menghapus laporan dengan `status_validasi = 'TIDAK_VALID' AND batas_waktu <= NOW()`; job `bersihkan()` menghapus file foto terkait. Teruji melalui kode `pembersihLaporan.js`.* | *Pass* |
 | *UC08-TC06* | *KF08, KF14, KF15* | *Negatif: Pengguna non-admin mengakses endpoint pemeriksaan* | *1. Login sebagai warga.<br>2. Coba akses endpoint pemeriksaan.* | *Role: warga* | *HTTP 403; aksi ditolak oleh middleware role.* | *Test middleware role lulus (BE-ADM-08).* | *Pass* |
 
-### 4.4.7 Use Case Memperbarui Status Penanganan Laporan
+
+### 4.4.9 Use Case Memperbarui Status Penanganan Laporan
 
 **ID Use Case:** *UC09*  
 **Nama Use Case:** *Memperbarui Status Penanganan Laporan*
 
-Tabel 4.4.7. Hasil Pengujian Use Case UC09
+Tabel 4.4.9. Hasil Pengujian Use Case UC09
 
 | ID Pengujian | ID KF | Skenario | Prosedur Pengujian | Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| *UC09-TC01* | *KF17, KF18* | *Normal: Admin memperbarui status penanganan* | *1. Login sebagai admin.<br>2. Pilih laporan yang telah diverifikasi.<br>3. Ubah status penanganan.* | *statusLaporan: selesai (huruf kecil, spasi)* | *HTTP 200; status dinormalisasi menjadi SELESAI dan disimpan.* | *HTTP 200; model menerima `SELESAI`.* | *Pass* |
-| *UC09-TC02* | *KF17, KF18* | *Alternatif 1: Status tidak valid* | *1. Admin mengirim status yang bukan nilai yang diizinkan.* | *statusLaporan: RUSAK* | *HTTP 400; status tidak diperbarui; model tidak dipanggil.* | *HTTP 400 dan model tidak dipanggil.* | *Pass* |
-| *UC09-TC03* | *KF17, KF18* | *Alternatif 2: Laporan tidak ditemukan saat memperbarui status* | *1. Admin mengirim status ke ID laporan yang tidak ada.* | *ID: UUID tidak ada* | *HTTP 404; pesan `Laporan tidak ditemukan`.* | *HTTP 404 dikembalikan.* | *Pass* |
+| *UC09-TC01* | *KF17, KF18* | *Normal* | *1. Login admin dan pilih laporan.<br>2. Buka form pemeriksaan/tanggapan.<br>3. Isi hasil valid, catatan, tanggapan, dan status.<br>4. Tinjau konfirmasi dan tekan “Simpan hasil”.<br>5. Periksa hasil pada daftar laporan admin.* | *Hasil valid; catatan pemeriksaan; tanggapan kosong; status `SELESAI`.* | *Sistem menyimpan tanggapan dan status; pesan berhasil ditampilkan dan laporan berstatus Valid/Selesai.* | *FE-TGP-03.1 menunjukkan konfirmasi hasil valid/status Selesai; FE-TGP-03.2 menunjukkan pesan berhasil dan laporan berstatus Valid/Selesai. Sesuai catatan uji manual lama.* | *Pass (catatan uji dan screenshot lama; tidak diuji ulang pada tag release)* |
+| *UC09-TC02* | *KF17, KF18* | *Alternatif 1: admin membatalkan konfirmasi perubahan status* | *1. Login admin dan isi form tanggapan/status.<br>2. Tinjau konfirmasi.<br>3. Tekan “Batal”.<br>4. Pastikan form kembali tanpa penyimpanan.<br>5. Ubah status, simpan ulang, lalu konfirmasi.* | *Status awal `DILIHAT`; batalkan konfirmasi pertama; pilih `SELESAI` pada percobaan kedua.* | *Pembatalan tidak mengirim penyimpanan dan mengembalikan form; hanya konfirmasi kedua yang mengubah laporan.* | *FE-TGP-04.1/.2 menunjukkan dialog dengan tombol Batal, tetapi tidak menunjukkan tombol ditekan atau form dikembalikan. C13-UT01 hanya menguji utility, bukan UI.* | *[BELUM DIUJI]* |
+| *UC09-TC03* | *KF17* | *Tambahan: validasi alasan untuk laporan tidak valid* | *1. Login admin.<br>2. Pilih hasil tidak valid dan kosongkan tanggapan.<br>3. Kirim form untuk ditinjau.* | *`statusTanggapan = false`; deskripsi kosong atau hanya spasi.* | *UI menampilkan validasi dan tidak mengirim penyimpanan.* | *FE-TGP-02.1 menunjukkan pesan “Alasan tanggapan wajib diisi” saat tanggapan kosong.* | *Pass (screenshot uji manual lama)* |
+| *UC09-TC04* | *KF17* | *Tambahan: batas panjang masukan* | *1. Isi catatan pemeriksaan dan tanggapan hingga batas karakter.* | *Catatan maksimal 1000 karakter; tanggapan maksimal 2000 karakter.* | *Form membatasi catatan hingga 1000 karakter dan tanggapan hingga 2000 karakter.* | *FE-TGP-06 dan catatan uji manual lama menunjukkan form dengan teks panjang. Batas backend 2000/2001 dan 1000/1001 juga lulus pada C20-UT12/13 dan C20-UT21/22; jumlah karakter pada screenshot tidak terbaca persis.* | *Pass (bukti manual lama dan batas backend; hitungan UI persis tidak diverifikasi)* |
+| *UC09-TC05* | *KF17, KF18* | *Tambahan: pelapor melihat hasil pemeriksaan pada detail laporan* | *1. Admin menyimpan hasil pemeriksaan tidak valid beserta alasan.<br>2. Pelapor membuka detail laporan.* | *Laporan `TIDAK_VALID`; alasan tanggapan dan batas konfirmasi ulang ditampilkan.* | *Detail laporan menampilkan hasil pemeriksaan, tanggapan admin, dan batas konfirmasi ulang kepada pelapor.* | *FE-TGP-05.1–05.4 dan catatan uji manual lama menunjukkan hasil tidak valid, tanggapan, serta batas konfirmasi ulang pada daftar/detail pelapor. Aksi kirim konfirmasi ulang tidak termasuk kasus ini.* | *Pass (catatan uji dan screenshot lama; tidak diuji ulang pada tag release)* |
 
 
-### 4.4.8 Use Case Mendapat Tutorial Navigasi antar Halaman
-
-**ID Use Case:** *UC05*  
-**Nama Use Case:** *Mendapat Tutorial Navigasi antar Halaman*
-
-Tabel 4.4.8. Hasil Pengujian Use Case UC05
-
-| ID Pengujian | ID KF | Skenario | Prosedur Pengujian | Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| *UC05-TC01* | *KF07* | *Normal: Pengguna pertama kali login melihat tutorial awal* | *1. Login dengan akun baru.<br>2. Buka beranda.<br>3. Periksa dialog tutorial awal.* | *Akun baru pertama kali login* | *Tutorial navigasi langkah awal ditampilkan secara otomatis.* | *Tutorial awal ditampilkan dengan benar.* | *Pass* |
-| *UC05-TC02* | *KF07* | *Normal: Pengguna menyelesaikan tutorial hingga langkah terakhir* | *1. Ikuti langkah tutorial hingga selesai.<br>2. Tekan Selesai.* | *Langkah terakhir tutorial* | *Status tutorial disimpan; tutorial tidak muncul kembali pada kunjungan berikutnya.* | *Status tutorial berhasil disimpan dan tidak muncul kembali.* | *Pass* |
-
-### 4.4.9 Use Case Melakukan Upvote
-
-**ID Use Case:** *UC06*  
-**Nama Use Case:** *Melakukan Upvote*
-
-Tabel 4.4.9. Hasil Pengujian Use Case UC06
-
-| ID Pengujian | ID KF | Skenario | Prosedur Pengujian | Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| *UC06-TC01* | *KF09, KF10, KF11* | *Normal: Pengguna memberikan upvote pada laporan lain* | *1. Login sebagai warga.<br>2. Klik tombol upvote pada laporan milik pengguna lain.<br>3. Periksa jumlah upvote dan status.* | *Laporan pengguna lain yang belum diupvote* | *Jumlah upvote bertambah 1, status tombol berubah menjadi telah diupvote, notifikasi berhasil tampil.* | *Upvote bertambah, tombol berubah aktif, skor populer diperbarui.* | *Pass* |
-| *UC06-TC02* | *KF09, KF10, KF11* | *Alternatif 1: Pengguna mencoba upvote kembali pada laporan yang sama* | *1. Klik tombol upvote pada laporan yang sudah diupvote.* | *Laporan yang sudah diupvote* | *Permintaan ditolak (HTTP 409), jumlah upvote tidak bertambah ganda.* | *Sesuai; duplikasi upvote dicegah oleh sistem.* | *Pass* |
 
 ### 4.4.10 Use Case Mengelola Profil
 
@@ -867,21 +958,6 @@ Tabel 4.4.10. Hasil Pengujian Use Case UC10
 | *UC10-TC01* | *KF16* | *Normal: Pengguna mengubah profil* | *1. Login menggunakan akun terdaftar.<br>2. Buka halaman Profil.<br>3. Klik Ubah Profil.<br>4. Masukkan nama dan nomor telepon baru.<br>5. Klik Simpan.<br>6. Muat ulang halaman untuk memeriksa perubahan.* | *Nama: Integration Test Updated<br>No. telepon: 081298765432* | *Sistem berhasil memperbarui data profil dan menampilkan informasi terbaru.* | *Nama dan nomor telepon pada informasi pribadi berubah.* | *Pass* |
 | *UC10-TC02* | *KF16* | *Normal: Pengguna berhasil menghapus akun* | *1. Login menggunakan akun terdaftar.<br>2. Buka halaman Profil.<br>3. Klik Hapus Akun.<br>4. Pada dialog konfirmasi, klik Ya.<br>5.Coba login dengan email dan password akun yang dihapus.* | *Akun pengguna terdaftar<br>Konfirmasi: Ya* | *Ketika login menggunakan akun terhapus, terdapat pesan kesalahan. | *Ketika login menggunakan akun terhapus, dan muncul pesan kesalahan “Wrong email or password”.* | *Pass* |
 | *UC10-TC03* | *KF16* | *Alternatif 1: Pengguna membatalkan penghapusan akun* | *1. Login menggunakan akun terdaftar.<br>2. Buka halaman Profil.<br>3. Klik Hapus Akun.<br>4. Ketika dialog konfirmasi muncul, klik Batal.<br>5. Periksa keberadaan akun dan tampilan halaman.* | *Akun pengguna terdaftar<br>Konfirmasi: Batal* | *Dialog konfirmasi ditutup dan akun pengguna tetap tersedia.* | *Akun pengguna tetap tersedia* | *Pass* |
-
-### 4.4.11 Use Case Memperbarui Status Penanganan Laporan
-
-**ID Use Case:** *UC09*  
-**Nama Use Case:** *Memperbarui Status Penanganan Laporan*
-
-Tabel 4.4.11. Hasil Pengujian Use Case UC09
-
-| ID Pengujian | ID KF | Skenario | Prosedur Pengujian | Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| *UC09-TC01* | *KF17, KF18* | *Normal* | *1. Login admin dan pilih laporan.<br>2. Buka form pemeriksaan/tanggapan.<br>3. Isi hasil valid, catatan, tanggapan, dan status.<br>4. Tinjau konfirmasi dan tekan “Simpan hasil”.<br>5. Periksa hasil pada daftar laporan admin.* | *Hasil valid; catatan pemeriksaan; tanggapan kosong; status `SELESAI`.* | *Sistem menyimpan tanggapan dan status; pesan berhasil ditampilkan dan laporan berstatus Valid/Selesai.* | *FE-TGP-03.1 menunjukkan konfirmasi hasil valid/status Selesai; FE-TGP-03.2 menunjukkan pesan berhasil dan laporan berstatus Valid/Selesai. Sesuai catatan uji manual lama.* | *Pass (catatan uji dan screenshot lama; tidak diuji ulang pada tag release)* |
-| *UC09-TC02* | *KF17, KF18* | *Alternatif 1: admin membatalkan konfirmasi perubahan status* | *1. Login admin dan isi form tanggapan/status.<br>2. Tinjau konfirmasi.<br>3. Tekan “Batal”.<br>4. Pastikan form kembali tanpa penyimpanan.<br>5. Ubah status, simpan ulang, lalu konfirmasi.* | *Status awal `DILIHAT`; batalkan konfirmasi pertama; pilih `SELESAI` pada percobaan kedua.* | *Pembatalan tidak mengirim penyimpanan dan mengembalikan form; hanya konfirmasi kedua yang mengubah laporan.* | *FE-TGP-04.1/.2 menunjukkan dialog dengan tombol Batal, tetapi tidak menunjukkan tombol ditekan atau form dikembalikan. C13-UT01 hanya menguji utility, bukan UI.* | *[BELUM DIUJI]* |
-| *UC09-TC03* | *KF17* | *Tambahan: validasi alasan untuk laporan tidak valid* | *1. Login admin.<br>2. Pilih hasil tidak valid dan kosongkan tanggapan.<br>3. Kirim form untuk ditinjau.* | *`statusTanggapan = false`; deskripsi kosong atau hanya spasi.* | *UI menampilkan validasi dan tidak mengirim penyimpanan.* | *FE-TGP-02.1 menunjukkan pesan “Alasan tanggapan wajib diisi” saat tanggapan kosong.* | *Pass (screenshot uji manual lama)* |
-| *UC09-TC04* | *KF17* | *Tambahan: batas panjang masukan* | *1. Isi catatan pemeriksaan dan tanggapan hingga batas karakter.* | *Catatan maksimal 1000 karakter; tanggapan maksimal 2000 karakter.* | *Form membatasi catatan hingga 1000 karakter dan tanggapan hingga 2000 karakter.* | *FE-TGP-06 dan catatan uji manual lama menunjukkan form dengan teks panjang. Batas backend 2000/2001 dan 1000/1001 juga lulus pada C20-UT12/13 dan C20-UT21/22; jumlah karakter pada screenshot tidak terbaca persis.* | *Pass (bukti manual lama dan batas backend; hitungan UI persis tidak diverifikasi)* |
-| *UC09-TC05* | *KF17, KF18* | *Tambahan: pelapor melihat hasil pemeriksaan pada detail laporan* | *1. Admin menyimpan hasil pemeriksaan tidak valid beserta alasan.<br>2. Pelapor membuka detail laporan.* | *Laporan `TIDAK_VALID`; alasan tanggapan dan batas konfirmasi ulang ditampilkan.* | *Detail laporan menampilkan hasil pemeriksaan, tanggapan admin, dan batas konfirmasi ulang kepada pelapor.* | *FE-TGP-05.1–05.4 dan catatan uji manual lama menunjukkan hasil tidak valid, tanggapan, serta batas konfirmasi ulang pada daftar/detail pelapor. Aksi kirim konfirmasi ulang tidak termasuk kasus ini.* | *Pass (catatan uji dan screenshot lama; tidak diuji ulang pada tag release)* |
 
 
 <br>
