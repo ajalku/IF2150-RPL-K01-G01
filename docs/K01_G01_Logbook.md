@@ -164,4 +164,11 @@
 | *13-11-2026* | *Aufa Tatsbita Zahra*| *Testing* | *4* | *Done* | *-* |
 | *15-11-2026* | *Ghiffari Arya Adhitya*| *Mengerjakan laporan* | *3* | *Done* | *-* |
 
+
+## Milestone 9
+**Periode:** 13 November 2026 -  20 November 2026
+| Tanggal | Nama Anggota | Deskripsi Pekerjaan | Durasi (Jam) | Status | Kendala / *Blocker* | 
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| *20-11-2026* | *Samantha Michelle S. Silaban* | *Menyusun testing untuk kelas pengguna, penggunacontroller, dan penggunaView* | *6* | *Done* | *-* |
+
 <!-- Gunakan format penulisan Logbook yang sama untuk setiap Milestone dan pastikan pembuatan Daftar Isi juga sudah sesuai sebelum Logbook dikumpulkan. -->

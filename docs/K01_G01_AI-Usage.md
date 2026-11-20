@@ -60,6 +60,7 @@ Silakan catat penggunaan AI yang berdampak signifikan pada pengerjaan tugas (mis
 | Tool AI | Tujuan Penggunaan | Contoh Prompt Utama | Modifikasi & Validasi Manusia |
 | :--- | :--- | :--- | :--- |
 | Copilot (Model GPT-6 Luna) | Membantu penyusunan Bab 3 untuk laporan | Apa saja yang harus ditulis di tabel 3.1, 3.2, dan 3.3? | Parafrasa berbagai keterangan, pengecekan ulang beberapa kelas, dan penulisan beberapa tambahan |
+| ChatGPT | Membuat code unit testing, membantu cara testing manual | Buatkan code testing yang sesuai dengan kelas ini. Bagaiamana cara melakukan testing menggunakan chrome dev tools?| Ada test case yang kurang menyeluruh, mengoreksi pemanggilan file karena struktur folder tidak sesuai. |
 
 
 ---

@@ -283,9 +283,24 @@ Tabel 4.1.1. Identifikasi Tingkat Pengujian Kelas
 
 Pengujian unit dilakukan pada kelas bertingkat Mendalam dan Sedang. Kelas Mendalam diuji pada seluruh operasi public dengan kasus normal, batas, dan negatif, serta mencapai *coverage* minimal 70%. Kelas Sedang diuji minimal dengan satu kasus normal dan satu kasus gagal pada operasi public utama.
 
-Cara menjalankan unit test: *[tuliskan perintah, mis. `pytest src/tests/`]*.
+Cara menjalankan unit test: 
 
-Lokasi file test: *[path, mis. `src/tests/`]*.
+Jalankan perintah berikut dari direktori `src/backend/`:
+```bash
+   npm test -- PenggunaController.test.js 
+   npm test -- Pengguna.test.js
+    npm test -- --coverage
+```
+(Untuk C08)
+Jalankan perintah berikut dari direktori `src/frontend/`:
+
+   ```bash
+   npx vitest run tests/PenggunaView.test.jsx
+   ```
+Lokasi file test: 
+- `src/backend/tests/PenggunaController.test.js`
+- `src/backend/tests/Pengguna.test.js`
+- `src/frontend/tests/PenggunaView.test.jsx.`
 
 ### 4.2.1 Kelas PenggunaController
 
@@ -362,14 +377,14 @@ Tabel 4.2.3. Hasil Pengujian Unit Kelas C08
 
 | ID Pengujian | Operasi yang Diuji | Jenis Kasus | Prosedur/Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| *C17-UT01* | *`handleRegister()`* | *Negatif* | *Melakukan registrasi dengan NIK 12345 yang tidak memenuhi ketentuan 16 digit* | *Registrasi ditolak, pesan kesalahan NIK ditampilkan, dan request registrasi tidak dikirim* | *Pesan "NIK harus terdiri dari 16 digit angka." ditampilkan dan requestRegister tidak dipanggil* | *Pass* |
-| *C17-UT02* | *`handleLogin()`* | *Normal* | *Melakukan login menggunakan email samantha@example.com dan password Password1! dengan respons service berhasil* | *Request login dikirim, callback onLoginSuccess dipanggil, pesan berhasil ditampilkan, dan input password dikosongkan* | *Request login dipanggil dengan kredensial sesuai, callback berhasil dijalankan, pesan "Login berhasil. Anda sudah masuk ke RAWAT." ditampilkan, dan input password dikosongkan* | *Pass* |
-| *C17-UT03* | *`konfirmasiHapusAkun()`* | *Negatif* | *Melakukan konfirmasi penghapusan akun ketika service hapusAkun mengembalikan error "Gagal menghapus akun."* | *Pesan kegagalan ditampilkan, dialog konfirmasi tetap terbuka, dan callback keberhasilan tidak dipanggil* | *Pesan "Gagal menghapus akun." ditampilkan pada dialog, dialog tetap terbuka, dan onAkunDihapus tidak dipanggil* | *Pass* |
-| *C17-UT04* | *`handleRegister()`* | *Normal* | *Melakukan registrasi dengan nama, NIK 16 digit, email, nomor telepon, password, dan konfirmasi password yang valid* | *Request registrasi dikirim ke authService, registrasi berhasil, halaman kembali ke login, dan pesan keberhasilan ditampilkan* | *Request register dipanggil dengan data yang sesuai, pesan "Registrasi berhasil! Silakan masuk menggunakan akun Anda." ditampilkan, dan email pengguna terisi pada form login* | *Pass* |
-| *C17-UT05* | *`handleLogin()`* | *Negatif* | *Melakukan login menggunakan email valid dan password salah sehingga authService mengembalikan error "Email atau password salah"* | *Pesan kesalahan ditampilkan, callback onLoginSuccess tidak dipanggil, dan tombol login kembali aktif* | *Pesan "Email atau password salah" ditampilkan, onLoginSuccess tidak dipanggil, dan tombol login kembali aktif setelah request gagal* | *Pass* |
-| *C17-UT06* | *`konfirmasiHapusAkun()`* | *Normal* | *Melakukan konfirmasi penghapusan akun ketika service hapusAkun mengembalikan respons berhasil* | *Request penghapusan akun diproses, callback onAkunDihapus dipanggil dengan status success, dan dialog konfirmasi ditutup* | *Service hapusAkun dipanggil satu kali, onAkunDihapus menerima pesan "Akun berhasil dihapus." dengan status success, dan dialog konfirmasi ditutup* | *Pass* |
-| *C17-UT07* | *`batalHapusAkun()`* | *Normal* | *Membuka dialog konfirmasi penghapusan akun, kemudian menekan tombol Batal sebelum proses penghapusan dimulai* | *Dialog konfirmasi ditutup dan tidak ada request penghapusan akun yang dikirim* | *Dialog konfirmasi berhasil ditutup dan service hapusAkun tidak dipanggil* | *Pass* |
-| *C17-UT08* | *`batalHapusAkun()`* | *Negatif* | *Mencoba membatalkan penghapusan akun ketika request hapusAkun masih berlangsung (pending)* | *Pembatalan ditolak, dialog tetap terbuka, dan callback keberhasilan belum dipanggil selama proses berlangsung* | *Dialog tetap terbuka ketika tombol Batal ditekan selama proses berlangsung; setelah request berhasil, onAkunDihapus dipanggil dan dialog ditutup* | *Pass* |
+| *C08-UT01* | *`handleRegister()`* | *Negatif* | *Melakukan registrasi dengan NIK 12345 yang tidak memenuhi ketentuan 16 digit* | *Registrasi ditolak, pesan kesalahan NIK ditampilkan, dan request registrasi tidak dikirim* | *Pesan "NIK harus terdiri dari 16 digit angka." ditampilkan dan requestRegister tidak dipanggil* | *Pass* |
+| *C08-UT02* | *`handleLogin()`* | *Normal* | *Melakukan login menggunakan email samantha@example.com dan password Password1! dengan respons service berhasil* | *Request login dikirim, callback onLoginSuccess dipanggil, pesan berhasil ditampilkan, dan input password dikosongkan* | *Request login dipanggil dengan kredensial sesuai, callback berhasil dijalankan, pesan "Login berhasil. Anda sudah masuk ke RAWAT." ditampilkan, dan input password dikosongkan* | *Pass* |
+| *C08-UT03* | *`konfirmasiHapusAkun()`* | *Negatif* | *Melakukan konfirmasi penghapusan akun ketika service hapusAkun mengembalikan error "Gagal menghapus akun."* | *Pesan kegagalan ditampilkan, dialog konfirmasi tetap terbuka, dan callback keberhasilan tidak dipanggil* | *Pesan "Gagal menghapus akun." ditampilkan pada dialog, dialog tetap terbuka, dan onAkunDihapus tidak dipanggil* | *Pass* |
+| *C08-UT04* | *`handleRegister()`* | *Normal* | *Melakukan registrasi dengan nama, NIK 16 digit, email, nomor telepon, password, dan konfirmasi password yang valid* | *Request registrasi dikirim ke authService, registrasi berhasil, halaman kembali ke login, dan pesan keberhasilan ditampilkan* | *Request register dipanggil dengan data yang sesuai, pesan "Registrasi berhasil! Silakan masuk menggunakan akun Anda." ditampilkan, dan email pengguna terisi pada form login* | *Pass* |
+| *C08-UT05* | *`handleLogin()`* | *Negatif* | *Melakukan login menggunakan email valid dan password salah sehingga authService mengembalikan error "Email atau password salah"* | *Pesan kesalahan ditampilkan, callback onLoginSuccess tidak dipanggil, dan tombol login kembali aktif* | *Pesan "Email atau password salah" ditampilkan, onLoginSuccess tidak dipanggil, dan tombol login kembali aktif setelah request gagal* | *Pass* |
+| *C08-UT06* | *`konfirmasiHapusAkun()`* | *Normal* | *Melakukan konfirmasi penghapusan akun ketika service hapusAkun mengembalikan respons berhasil* | *Request penghapusan akun diproses, callback onAkunDihapus dipanggil dengan status success, dan dialog konfirmasi ditutup* | *Service hapusAkun dipanggil satu kali, onAkunDihapus menerima pesan "Akun berhasil dihapus." dengan status success, dan dialog konfirmasi ditutup* | *Pass* |
+| *C08-UT07* | *`batalHapusAkun()`* | *Normal* | *Membuka dialog konfirmasi penghapusan akun, kemudian menekan tombol Batal sebelum proses penghapusan dimulai* | *Dialog konfirmasi ditutup dan tidak ada request penghapusan akun yang dikirim* | *Dialog konfirmasi berhasil ditutup dan service hapusAkun tidak dipanggil* | *Pass* |
+| *C08-UT08* | *`batalHapusAkun()`* | *Negatif* | *Mencoba membatalkan penghapusan akun ketika request hapusAkun masih berlangsung (pending)* | *Pembatalan ditolak, dialog tetap terbuka, dan callback keberhasilan belum dipanggil selama proses berlangsung* | *Dialog tetap terbuka ketika tombol Batal ditekan selama proses berlangsung; setelah request berhasil, onAkunDihapus dipanggil dan dialog ditutup* | *Pass* |
 
 
 <br>
@@ -475,17 +490,34 @@ Tabel 4.5. Hasil Pengujian KNF
 
 Bukti pengujian dilampirkan sesuai ID Pengujian pada Subbab 4.2 sampai 4.5, berupa tangkapan layar aplikasi, keluaran *test runner*, laporan *coverage* untuk setiap kelas Mendalam, atau hasil alat ukur.
 
+
+### 4.6 Bukti Hasil Pengujian
+
 Tabel 4.6. Bukti Hasil Pengujian
 
 | ID Pengujian | Bukti Hasil Pengujian |
 | :--- | :--- |
-| *C02-UT01 – C02-UT08* | *[Sisipkan hasil keluaran unit test]* |
-| *C02 (coverage)* | *[Sisipkan laporan coverage kelas C02]* |
-| *INT-TC01* | *[Sisipkan bukti pengujian integrasi]* |
-| *UC01-TC01* | *[Sisipkan tangkapan layar UC01-TC01 sesuai prosedur pengujian]* |
-| *UC01-TC02* | *[Sisipkan tangkapan layar UC01-TC02 sesuai prosedur pengujian]* |
-| *KNF01-TC01* | *[Sisipkan bukti pengukuran parameter KNF01-TC01]* |
-| *...* | *...* |
+| *C01-UT01 – C01-UT09* | *![alt text](assets/c01.png)* |
+| *C15-UT01 – C15-UT24* | *![alt text](assets/C15.png)* |
+| *C08-UT01 – C08-UT08* | *![alt text](assets/c08.png)* |
+| *C15 (coverage)* | *![alt text](assets/C15COV.png)* |
+| *INT-TC01 – INT-TC06* | *![alt text](assets/tc01-tc06.png)* |
+| *INT-TC07 – INT-TC08* | ![alt text](assets/tc07.png) |
+| *INT-TC09* | ![alt text](assets/tc09.png) |
+| *UC01-TC01* | ![Halaman Registrasi](../../src/test/screenshots/halamanregis.png) ![Bukti Registrasi Database](../../src/test/screenshots/buktiintegrasi.png) |
+| *UC01-TC02* | ![Validasi Nama Kosong](../../src/test/screenshots/errornama.png) |
+| *UC01-TC03* | ![Validasi NIK 15 Digit](../../src/test/screenshots/nik15.png) ![Validasi NIK Mengandung Huruf](../../src/test/screenshots/nikhuruf.png) |
+| *UC01-TC04* | ![Validasi Format Password](../../src/test/screenshots/sandiformat.png) ![Validasi Password 7 Karakter](../../src/test/screenshots/password7.png) |
+| *UC02-TC01* | ![Halaman Login](../../src/test/screenshots/login.png) |
+| *UC02-TC02* | ![Validasi Email Kosong](../../src/test/screenshots/emailkosong.png) ![Validasi Password Kosong](../../src/test/screenshots/passkosong.png) |
+| *UC02-TC03* | *![Tidak terdaftar](../../src/test/screenshots/loginHapus.png)* |
+| *UC02-TC04* | *![Tidak terdaftar](../../src/test/screenshots/loginHapus.png)* |
+| *UC10-TC01* | ![alt text](assets/AWALPROFIL.png)![alt text](assets/AKHIRPROFIL.png)|
+| *UC10-TC02* | ![Konfirmasi Hapus Akun](../../src/test/screenshots/konfirmasiHapus.png) ![Login Ditolak Setelah Akun Dihapus](../../src/test/screenshots/loginHapus.png) ![Akun Terhapus dari Database](../../src/test/screenshots/dbHapus.png) |
+| *UC10-TC03* | ![Dialog Konfirmasi Hapus Akun](../../src/test/screenshots/konfirmasiHapus.png)|
+| *KNF01-TC01* | ![Bukti Password Hashing di Database](../../src/test/screenshots/buktiintegrasi.png) |
+| *KNF01-TC02* | *![alt text](assets/reqURL.png)* |
+| *KNF10-TC01* | ![alt text](assets/unauthorized.png) |
 
 <br>
 

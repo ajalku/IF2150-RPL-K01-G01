@@ -7,7 +7,8 @@
     "start": "node src/index.js",
     "dev": "node --watch src/index.js",
     "check:db": "node cek-db.js",
-    "test": "node --test"
+    "test": "jest --runInBand",
+    "test:coverage": "jest --coverage --runInBand"
   },
   "keywords": [],
   "author": "",
@@ -21,5 +22,9 @@
     "express-session": "^1.19.0",
     "multer": "^2.5.0",
     "pg": "^8.23.1"
+  },
+  "devDependencies": {
+    "jest": "^30.5.2",
+    "supertest": "^7.3.2"
   }
 }
