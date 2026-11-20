@@ -277,6 +277,15 @@ Tabel 4.1.1. Identifikasi Tingkat Pengujian Kelas
 | *C15* | *PenggunaController* | *Mendalam* | *Memuat `login()`, `registrasi()`, autetikasi, hashing password, serta validasi data* | *C15-UT01 s.d. C15-UT24* |
 | *C01* | *Pengguna* | *Sedang* | *Melakukan operasi CRUD pada terdapat beberapa logika pengambilan keputusan.* | *C03-UT01 s.d. C03-UT09, INT-TC01 s.d. INT-TC06* |
 | *C08* | *PenggunaView* | *Sedang* | *Terdapat operasi yang memengaruhi perilaku sistem* | *C01-UT01 s.d. C01-UT08, INT-TC07 s.d. TC09* |
+| *C02* | *Homepage* | *Mendalam* | *Memuat logika pengambilan daftar laporan, pengaturan pengurutan dan filter, serta penentuan status upvote pada setiap laporan.* | *C02-UT01 s.d. C02-UT04* |
+| *C05* | *Upvote* | *Mendalam* | *Memuat logika penyimpanan upvote, pengelolaan transaksi basis data, pencegahan upvote duplikat, dan pengambilan data upvote pengguna.* | *C05-UT01 s.d. C05-UT05* |
+| *C07* | *Tutorial* | *Mendalam* | *Memuat logika pengelolaan langkah tutorial, pengambilan status penyelesaian tutorial, dan penyimpanan status tutorial pengguna.* | *C07-UT01 s.d. C07-UT03* |
+| *C09* | *HomepageView* | *Sedang* | *Mengelola tampilan halaman beranda, interaksi pengguna terhadap daftar laporan, filter, pengurutan, dan navigasi ke halaman lain.* | *FE-HP-01 s.d. FE-HP-10* |
+| *C12* | *UpvoteView* | *Sedang* | *Mengelola tampilan dan interaksi pengguna dalam memberikan upvote pada laporan serta memperbarui informasi jumlah upvote.* | *FE-UP-01 s.d. FE-UP-05* |
+| *C14* | *TutorialView* | *Sedang* | *Mengelola tampilan tutorial, navigasi antar langkah, serta interaksi pengguna untuk memulai, melewati, dan menyelesaikan tutorial.* | *FE-TU-01 s.d. FE-TU-06* |
+| *C16* | *HomepageController* | *Mendalam* | *Memuat logika validasi parameter pengurutan dan filter, pengaturan pagination, serta penanganan respons dan kesalahan ketika memuat data homepage.* | *C16-UT01 s.d. C16-UT09* |
+| *C19* | *UpvoteController* | *Mendalam* | *Memuat logika validasi ID laporan, pemeriksaan hak akses pengguna, pencegahan upvote pada laporan sendiri atau laporan yang sudah diupvote, serta penanganan kegagalan proses upvote.* | *C19-UT01 s.d. C19-UT08* |
+| *C21* | *TutorialController* | *Mendalam* | *Memuat logika pengelolaan alur tutorial, validasi penyelesaian langkah terakhir, penyimpanan status tutorial, dan penanganan kegagalan proses.* | *C21-UT01 s.d. C21-UT06* |
 | *[CXX]* | *[Nama kelas]* | *[Mendalam/Sedang/Tidak perlu]* | *[Alasan penentuan tingkat pengujian]* | *[ID test case atau -]* |
 
 ## 4.2 Pengujian Unit Kelas
@@ -386,6 +395,155 @@ Tabel 4.2.3. Hasil Pengujian Unit Kelas C08
 | *C08-UT07* | *`batalHapusAkun()`* | *Normal* | *Membuka dialog konfirmasi penghapusan akun, kemudian menekan tombol Batal sebelum proses penghapusan dimulai* | *Dialog konfirmasi ditutup dan tidak ada request penghapusan akun yang dikirim* | *Dialog konfirmasi berhasil ditutup dan service hapusAkun tidak dipanggil* | *Pass* |
 | *C08-UT08* | *`batalHapusAkun()`* | *Negatif* | *Mencoba membatalkan penghapusan akun ketika request hapusAkun masih berlangsung (pending)* | *Pembatalan ditolak, dialog tetap terbuka, dan callback keberhasilan belum dipanggil selama proses berlangsung* | *Dialog tetap terbuka ketika tombol Batal ditekan selama proses berlangsung; setelah request berhasil, onAkunDihapus dipanggil dan dialog ditutup* | *Pass* |
 
+
+### 4.2.4 Kelas Homepage
+
+**ID Kelas:** C02  
+**Nama Kelas:** *Homepage*  
+**Tingkat:** *Mendalam*
+
+Tabel 4.2.4. Hasil Pengujian Unit Kelas C02
+
+| ID Pengujian | Operasi yang Diuji | Jenis Kasus | Prosedur/Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| *C02-UT01* | *`getSortBy()` dan `getSortType()`* | *Normal* | *Membuat objek Homepage tanpa parameter pengurutan.* | *Pengurutan bawaan menggunakan urgensi secara menurun.* | *Nilai pengurutan yang dikembalikan adalah `urgensi` dan `desc`.* | *Pass* |
+| *C02-UT02* | *`getDaftarLaporan()`* | *Normal* | *Mengambil daftar laporan yang terdiri atas laporan milik sendiri dan laporan milik pengguna lain, dengan satu laporan yang telah diupvote.* | *Status `sudahUpvote` dan `bisaUpvote` ditentukan sesuai kondisi setiap laporan. Pengambilan data upvote dilakukan melalui satu query untuk seluruh laporan.* | *Status setiap laporan sesuai kondisi. Method `getDiupvoteOleh()` dipanggil satu kali untuk seluruh daftar laporan.* | *Pass* |
+| *C02-UT03* | *`getDaftarLaporan()`* | *Negatif* | *Mengambil daftar laporan menggunakan akun dengan role admin.* | *Admin tidak memperoleh hak untuk memberikan upvote pada laporan.* | *Nilai `bisaUpvote` pada laporan milik admin bernilai `false`.* | *Pass* |
+| *C02-UT04* | *`getDaftarLaporan()`* | *Normal* | *Mengambil daftar laporan dengan parameter pengurutan waktu menaik, filter kategori Jalan, limit 5, dan offset 10.* | *Parameter pengurutan, filter, dan pagination diteruskan dengan benar ke `Laporan.getDaftarLaporan()`.* | *Seluruh parameter diteruskan sesuai nilai yang diberikan.* | *Pass* |
+
+Tabel 4.2.4b. Ringkasan Cakupan Kelas C02
+
+| Informasi | Keterangan |
+| :--- | :--- |
+| Operasi yang diuji | *`getSortBy()`, `getSortType()`, `getDaftarLaporan()`* |
+| Jumlah test case | *4 test case* |
+| Coverage | *Belum diukur secara terpisah.* |
+
+### 4.2.5 Kelas HomepageController
+
+**ID Kelas:** C16  
+**Nama Kelas:** *HomepageController*  
+**Tingkat:** *Mendalam*
+
+Tabel 4.2.5. Hasil Pengujian Unit Kelas C16
+
+| ID Pengujian | Operasi yang Diuji | Jenis Kasus | Prosedur/Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| *C16-UT01* | *`urutkanLaporan()`* | *Normal* | *Memanggil fungsi tanpa parameter pengurutan.* | *Pengurutan bawaan menggunakan urgensi secara menurun.* | *Fungsi mengembalikan `sortBy: urgensi` dan `sortType: desc`.* | *Pass* |
+| *C16-UT02* | *`urutkanLaporan()`* | *Normal* | *Memasukkan pilihan pengurutan waktu, urgensi, dan populer dengan variasi huruf besar dan kecil.* | *Ketiga pilihan pengurutan diterima tanpa memperhatikan kapitalisasi huruf.* | *Seluruh pilihan pengurutan berhasil diterima dan dikembalikan dalam bentuk huruf kecil.* | *Pass* |
+| *C16-UT03* | *`urutkanLaporan()`* | *Negatif* | *Memasukkan nama kolom yang tidak diizinkan dan tipe pengurutan yang tidak valid.* | *Input pengurutan yang tidak valid ditolak.* | *Fungsi mengembalikan `null` untuk kolom dan tipe pengurutan yang tidak valid.* | *Pass* |
+| *C16-UT04* | *`filterLaporan()`* | *Normal* | *Memasukkan filter kategori, status laporan, dan tingkat permasalahan yang valid.* | *Filter diteruskan sesuai nilai yang diberikan. Tanpa filter, fungsi mengembalikan objek kosong.* | *Fungsi mengembalikan objek filter sesuai masukan dan objek kosong ketika tidak terdapat filter.* | *Pass* |
+| *C16-UT05* | *`filterLaporan()`* | *Negatif* | *Memasukkan status laporan dan tingkat permasalahan yang tidak dikenal.* | *Filter dengan nilai tidak valid ditolak.* | *Fungsi mengembalikan `null` untuk nilai filter yang tidak dikenal.* | *Pass* |
+| *C16-UT06* | *`loadHomepage()`* | *Normal* | *Meminta data homepage dengan pengurutan waktu menaik dan limit 1.* | *HTTP 200, data laporan dikembalikan, serta parameter pengurutan dan pagination diterapkan.* | *HTTP 200 diterima. Parameter `sortBy`, `limit`, dan `offset` sesuai dengan masukan.* | *Pass* |
+| *C16-UT07* | *`loadHomepage()`* | *Batas* | *Meminta data homepage dengan nilai limit 9999.* | *Nilai limit dibatasi maksimal 50.* | *Nilai limit yang diteruskan ke proses pengambilan data adalah 50.* | *Pass* |
+| *C16-UT08* | *`loadHomepage()`* | *Negatif* | *Memasukkan parameter pengurutan, filter, limit, atau offset yang tidak valid.* | *Backend mengembalikan HTTP 400 dan menolak permintaan.* | *HTTP 400 dikembalikan untuk seluruh parameter yang tidak valid.* | *Pass* |
+| *C16-UT09* | *`loadHomepage()`* | *Negatif* | *Mensimulasikan kegagalan ketika mengambil data laporan dari model.* | *Backend mengembalikan HTTP 500 ketika terjadi kegagalan pengambilan data.* | *HTTP 500 dikembalikan ketika proses pengambilan data menghasilkan error.* | *Pass* |
+
+Tabel 4.2.5b. Ringkasan Cakupan Kelas C16
+
+| Informasi | Keterangan |
+| :--- | :--- |
+| Operasi yang diuji | *`urutkanLaporan()`, `filterLaporan()`, `loadHomepage()`* |
+| Jumlah test case | *9 test case* |
+| Coverage | *Belum diukur secara terpisah.* |
+
+### 4.2.6 Kelas Upvote
+
+**ID Kelas:** C05  
+**Nama Kelas:** *Upvote*  
+**Tingkat:** *Mendalam*
+
+Tabel 4.2.6. Hasil Pengujian Unit Kelas C05
+
+| ID Pengujian | Operasi yang Diuji | Jenis Kasus | Prosedur/Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| *C05-UT01* | *`upvote()`* | *Normal* | *Melakukan upvote menggunakan ID pengguna dan ID laporan yang valid.* | *Transaksi berjalan dengan urutan BEGIN, INSERT, UPDATE laporan, dan COMMIT. Koneksi dilepaskan setelah transaksi selesai.* | *Seluruh proses transaksi berjalan sesuai urutan dan koneksi berhasil dilepaskan.* | *Pass* |
+| *C05-UT02* | *`upvote()`* | *Negatif* | *Melakukan upvote pada laporan yang sudah memiliki data upvote dari pengguna yang sama.* | *Transaksi dibatalkan menggunakan ROLLBACK dan skor laporan tidak diperbarui.* | *Fungsi mengembalikan `false`, proses UPDATE tidak dijalankan, dan transaksi diakhiri dengan ROLLBACK.* | *Pass* |
+| *C05-UT03* | *`upvote()`* | *Negatif* | *Mensimulasikan kesalahan database ketika proses UPDATE laporan berlangsung.* | *Transaksi dibatalkan, koneksi dilepaskan, dan error diteruskan kepada pemanggil.* | *ROLLBACK dijalankan, koneksi berhasil dilepaskan, dan error diteruskan.* | *Pass* |
+| *C05-UT04* | *`getDiupvoteOleh()`* | *Batas* | *Meminta data upvote pengguna dengan daftar ID laporan kosong.* | *Fungsi mengembalikan Set kosong tanpa menjalankan query database.* | *Fungsi mengembalikan Set kosong dan tidak menjalankan query.* | *Pass* |
+| *C05-UT05* | *`getDiupvoteOleh()`* | *Normal* | *Meminta data upvote pengguna untuk tiga ID laporan sekaligus.* | *Pengambilan data dilakukan menggunakan satu query dan hasil dikembalikan dalam bentuk Set.* | *Query hanya dijalankan satu kali dan hasil berhasil dikembalikan sebagai Set.* | *Pass* |
+
+Tabel 4.2.6b. Ringkasan Cakupan Kelas C05
+
+| Informasi | Keterangan |
+| :--- | :--- |
+| Operasi yang diuji | *`upvote()`, `getDiupvoteOleh()`* |
+| Jumlah test case | *5 test case* |
+| Coverage | *Belum diukur secara terpisah.* |
+
+### 4.2.7 Kelas UpvoteController
+
+**ID Kelas:** C19  
+**Nama Kelas:** *UpvoteController*  
+**Tingkat:** *Mendalam*
+
+Tabel 4.2.7. Hasil Pengujian Unit Kelas C19
+
+| ID Pengujian | Operasi yang Diuji | Jenis Kasus | Prosedur/Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| *C19-UT01* | *`prosesUpvote()`* | *Normal* | *Pengguna memberikan upvote pada laporan yang valid dan belum pernah diupvote.* | *HTTP 201 dan jumlah upvote terbaru dikembalikan. ID pengguna diambil dari session.* | *HTTP 201 diterima dengan informasi upvote berhasil dan jumlah upvote terbaru.* | *Pass* |
+| *C19-UT02* | *`prosesUpvote()`* | *Negatif* | *Memasukkan ID laporan yang bukan UUID.* | *HTTP 400 dan permintaan ditolak.* | *HTTP 400 dikembalikan.* | *Pass* |
+| *C19-UT03* | *`prosesUpvote()`* | *Negatif* | *Pengguna dengan role admin mencoba memberikan upvote.* | *HTTP 403 dan permintaan ditolak.* | *HTTP 403 dikembalikan.* | *Pass* |
+| *C19-UT04* | *`prosesUpvote()`* | *Negatif* | *Memberikan upvote pada laporan yang tidak ditemukan atau tidak dapat dilihat.* | *HTTP 404 dan proses upvote tidak dilanjutkan.* | *HTTP 404 dikembalikan.* | *Pass* |
+| *C19-UT05* | *`prosesUpvote()`* | *Negatif* | *Pengguna mencoba memberikan upvote pada laporan miliknya sendiri.* | *HTTP 403 dan proses penyimpanan upvote tidak dijalankan.* | *HTTP 403 dikembalikan dan fungsi penyimpanan upvote tidak dipanggil.* | *Pass* |
+| *C19-UT06* | *`prosesUpvote()`* | *Negatif* | *Pengguna mencoba memberikan upvote pada laporan yang sudah pernah diupvote.* | *HTTP 409 dan penyimpanan upvote tidak dilakukan kembali.* | *HTTP 409 dikembalikan dan fungsi penyimpanan tidak dipanggil.* | *Pass* |
+| *C19-UT07* | *`prosesUpvote()`* | *Negatif* | *Mensimulasikan dua permintaan upvote yang dilakukan secara bersamaan.* | *Permintaan kedua ditolak dengan HTTP 409 sehingga tidak terjadi upvote ganda.* | *HTTP 409 dikembalikan ketika proses penyimpanan upvote menghasilkan `false`.* | *Pass* |
+| *C19-UT08* | *`prosesUpvote()`* | *Negatif* | *Mensimulasikan kegagalan database ketika memproses upvote.* | *HTTP 500 dan pesan kesalahan yang dapat dipahami dikembalikan.* | *HTTP 500 dikembalikan dengan pesan kegagalan proses upvote.* | *Pass* |
+
+Tabel 4.2.7b. Ringkasan Cakupan Kelas C19
+
+| Informasi | Keterangan |
+| :--- | :--- |
+| Operasi yang diuji | *`prosesUpvote()`* |
+| Jumlah test case | *8 test case* |
+| Coverage | *Belum diukur secara terpisah.* |
+
+### 4.2.8 Kelas Tutorial
+
+**ID Kelas:** C07  
+**Nama Kelas:** *Tutorial*  
+**Tingkat:** *Mendalam*
+
+Tabel 4.2.8. Hasil Pengujian Unit Kelas C07
+
+| ID Pengujian | Operasi yang Diuji | Jenis Kasus | Prosedur/Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| *C07-UT01* | *`getLangkahSaatIni()` dan `getTotalLangkah()`* | *Normal* | *Membuat objek Tutorial tanpa perubahan langkah.* | *Langkah saat ini bernilai 1 dan total langkah sesuai jumlah langkah tutorial.* | *Langkah saat ini bernilai 1 dan total langkah sesuai daftar tutorial.* | *Pass* |
+| *C07-UT02* | *`getDaftarLangkah()`* | *Normal* | *Memeriksa seluruh langkah yang tersedia pada daftar tutorial.* | *Setiap langkah memiliki judul dan isi.* | *Seluruh langkah memiliki atribut judul dan isi.* | *Pass* |
+| *C07-UT03* | *`sudahLihat()`* | *Normal dan Negatif* | *Memeriksa status tutorial ketika nilai `status_tutorial` bernilai true, false, dan ketika data pengguna tidak ditemukan.* | *Fungsi mengembalikan true hanya ketika status tutorial bernilai true.* | *Fungsi mengembalikan true untuk status true dan false untuk status false maupun ketika data tidak ditemukan.* | *Pass* |
+
+Tabel 4.2.8b. Ringkasan Cakupan Kelas C07
+
+| Informasi | Keterangan |
+| :--- | :--- |
+| Operasi yang diuji | *`getLangkahSaatIni()`, `getTotalLangkah()`, `getDaftarLangkah()`, `sudahLihat()`* |
+| Jumlah test case | *3 test case* |
+| Coverage | *Belum diukur secara terpisah.* |
+
+### 4.2.9 Kelas TutorialController
+
+**ID Kelas:** C21  
+**Nama Kelas:** *TutorialController*  
+**Tingkat:** *Mendalam*
+
+Tabel 4.2.9. Hasil Pengujian Unit Kelas C21
+
+| ID Pengujian | Operasi yang Diuji | Jenis Kasus | Prosedur/Masukan | Hasil yang Diharapkan | Hasil Pengujian | Kesimpulan |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| *C21-UT01* | *`startTutorial()`* | *Normal* | *Pengguna meminta untuk memulai tutorial.* | *HTTP 200 dan daftar langkah, langkah saat ini, total langkah, serta status tutorial dikembalikan.* | *HTTP 200 diterima dan seluruh informasi tutorial dikembalikan sesuai kondisi pengguna.* | *Pass* |
+| *C21-UT02* | *`skipTutorial()`* | *Normal* | *Pengguna memilih untuk melewati tutorial.* | *Status tutorial disimpan dan HTTP 200 dikembalikan.* | *HTTP 200 dikembalikan dan fungsi penyimpanan status dipanggil menggunakan ID pengguna dari session.* | *Pass* |
+| *C21-UT03* | *`finishTutorial()`* | *Negatif* | *Pengguna mencoba menyelesaikan tutorial sebelum mencapai langkah terakhir.* | *HTTP 400 dan status penyelesaian tidak disimpan.* | *HTTP 400 dikembalikan dan fungsi penyimpanan tidak dipanggil.* | *Pass* |
+| *C21-UT04* | *`finishTutorial()`* | *Normal* | *Pengguna menyelesaikan tutorial ketika berada pada langkah terakhir.* | *Status tutorial berhasil disimpan dan HTTP 200 dikembalikan.* | *HTTP 200 dikembalikan.* | *Pass* |
+| *C21-UT05* | *`finishTutorial()`* | *Negatif* | *Mensimulasikan kegagalan penyimpanan status penyelesaian tutorial.* | *HTTP 500 dikembalikan ketika proses penyimpanan gagal.* | *HTTP 500 dikembalikan.* | *Pass* |
+| *C21-UT06* | *`finishTutorial()`* | *Negatif* | *Mengirim permintaan penyelesaian tutorial tanpa body yang berisi langkah saat ini.* | *Permintaan ditolak dengan HTTP 400 tanpa menyebabkan server error.* | *HTTP 400 dikembalikan tanpa menyebabkan server error.* | *Pass* |
+
+Tabel 4.2.9b. Ringkasan Cakupan Kelas C21
+
+| Informasi | Keterangan |
+| :--- | :--- |
+| Operasi yang diuji | *`startTutorial()`, `skipTutorial()`, `finishTutorial()`* |
+| Jumlah test case | *6 test case* |
+| Coverage | *Belum diukur secara terpisah.* |
 
 <br>
 
