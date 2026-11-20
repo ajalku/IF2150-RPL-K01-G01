@@ -63,6 +63,7 @@ Silakan catat penggunaan AI yang berdampak signifikan pada pengerjaan tugas (mis
 | ChatGPT | Membuat code unit testing, membantu cara testing manual | Buatkan code testing yang sesuai dengan kelas ini. Bagaiamana cara melakukan testing menggunakan chrome dev tools?| Ada test case yang kurang menyeluruh, mengoreksi pemanggilan file karena struktur folder tidak sesuai. |
 | Copilot (Model GPT-6 Luna) | Membuat code unit testing, membantu cara testing manual, penyusunan laporan | Buatkan code testing yang sesuai dengan kelas ini. | Ada dokumen yang belum sesuai dan ada test masih perlu dilakukan manual. |
 | Claude | Menyusun laporan & menjalani test buat kelas laporan | Jalankan test laporan dan lengkapi dokumen di docs | Melakukan verifikasi manual dan koreksi. |
+| ChatGPT | Membantu penyusunan dokumentasi pengujian Bab 4 | Bantu susun dokumentasi hasil unit testing, integration testing, use case testing, dan test coverage yg telah dilakukan jadi dokumen bab 4 yang rapi | Menyesuaikan dokumentasi dengan hasil pengujian aktual, melakukan verifikasi manual, serta melengkapi bukti pengujian. |
 
 
 ---
